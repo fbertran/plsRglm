@@ -1,0 +1,37 @@
+citHeader("To cite the plsRglm package in publications use:")
+
+titl <- meta$Title
+year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
+vers <- paste("R package version", meta$Version)
+
+citEntry(entry="Manual",
+         title = titl,
+         author = personList(as.person("F. Bertrand"), 
+                             as.person("M. Maumy-Bertrand"),
+				     as.person("N. Meyer")),
+	 publisher = "manual",
+         year         = year,
+         note         = vers,
+         url          = "http://www-irma.u-strasbg.fr/~fbertran/",
+         textVersion = 
+         paste("Frédéric Bertrand, Nicolas Meyer and Myriam Maumy-Bertrand (",year ,"). ", 
+               titl, ", ", vers, ".", sep=""
+               )
+)
+
+citEntry(entry="article",
+         title = "Comparaison de la régression PLS et de la régression logistique
+PLS : application aux données d'allélotypage",
+         author = personList(as.person("N. Meyer"), 
+                             as.person("M. Maumy-Bertrand"),
+				     as.person("F. Bertrand")),
+	 journal = "Journal de la Société Française de Statistique",
+	 publisher = "Société Française de Statistique",
+         year         = 2010,
+         note         = "adresse",
+         url          = "http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf",
+         textVersion = 
+         paste("Nicolas Meyer, Myriam Maumy-Bertrand et Frédéric Bertrand (2010).", 
+               "Comparaison de la régression PLS et de la régression logistique
+PLS : application aux données d'allélotypage.", "Journal de la Société Française de Statistique", "151(2)", "pages 1-18.")
+)
