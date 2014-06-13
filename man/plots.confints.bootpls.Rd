@@ -7,7 +7,7 @@
 \usage{
 plots.confints.bootpls(ic_bootobject, indices = NULL, legendpos = "topleft", 
 prednames = TRUE, articlestyle = TRUE, xaxisticks=TRUE, ltyIC=c(2, 4, 5, 1), 
-colIC=c("darkgreen", "blue", "red", "black"), typeIC, ...)
+colIC=c("darkgreen", "blue", "red", "black"), typeIC, las = par("las"), ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,6 +20,7 @@ colIC=c("darkgreen", "blue", "red", "black"), typeIC, ...)
   \item{ltyIC}{ ~~Explain \code{ltyIC} here~~ }
   \item{colIC}{ ~~Explain \code{colIC} here~~ }
   \item{typeIC}{ ~~Explain \code{typeIC} here~~ }
+  \item{las}{ ~~Explain \code{las} here~~ }
   \item{\dots}{ ~~Explain \code{\dots} here~~ }
 }
 \details{
@@ -33,7 +34,7 @@ colIC=c("darkgreen", "blue", "red", "black"), typeIC, ...)
   ...
 }
 \references{ ~put references to the literature/web site here ~ }
-\author{\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
@@ -47,7 +48,7 @@ data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
 
-# Lazraq-Cléroux PLS ordinary bootstrap
+# Lazraq-Cl?roux PLS ordinary bootstrap
 
 set.seed(250)
 Cornell.boot <- bootpls(plsR(yCornell,XCornell,3), typeboot="plsmodel", 
@@ -93,7 +94,7 @@ data(aze_compl)
 Xaze_compl<-aze_compl[,2:34]
 yaze_compl<-aze_compl$y
 
-# Lazraq-Cléroux PLS ordinary bootstrap
+# Lazraq-Cl?roux PLS ordinary bootstrap
 #should be run with R=1000 but takes much longer time
 aze_compl.boot3 <- bootplsglm(plsRglm(yaze_compl,Xaze_compl,3,modele="pls-glm-logistic"), 
 typeboot="plsmodel", sim="ordinary", stype="i", R=250)
