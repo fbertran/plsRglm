@@ -7,7 +7,8 @@
 \usage{
 plots.confints.bootpls(ic_bootobject, indices = NULL, legendpos = "topleft", 
 prednames = TRUE, articlestyle = TRUE, xaxisticks=TRUE, ltyIC=c(2, 4, 5, 1), 
-colIC=c("darkgreen", "blue", "red", "black"), typeIC, las = par("las"), ...)
+colIC=c("darkgreen", "blue", "red", "black"), typeIC, las = par("las"), 
+mar, mgp, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -21,6 +22,8 @@ colIC=c("darkgreen", "blue", "red", "black"), typeIC, las = par("las"), ...)
   \item{colIC}{ ~~Explain \code{colIC} here~~ }
   \item{typeIC}{ ~~Explain \code{typeIC} here~~ }
   \item{las}{ ~~Explain \code{las} here~~ }
+  \item{mar}{ ~~Explain \code{las} here~~ }
+  \item{mgp}{ ~~Explain \code{las} here~~ }
   \item{\dots}{ ~~Explain \code{\dots} here~~ }
 }
 \details{

@@ -1,5 +1,5 @@
 plots.confints.bootpls = function (ic_bootobject, indices = NULL, legendpos = "topleft", 
-    prednames = TRUE, articlestyle = TRUE, xaxisticks=TRUE, ltyIC=c(2, 4, 5, 1), colIC=c("darkgreen", "blue", "red", "black"), typeIC, las=par("las"), ...) 
+    prednames = TRUE, articlestyle = TRUE, xaxisticks=TRUE, ltyIC=c(2, 4, 5, 1), colIC=c("darkgreen", "blue", "red", "black"), typeIC, las=par("las"), mar, mgp, ...) 
 {  
     if(missing(typeIC)){
       if(attr(ic_bootobject, "typeBCa")){
@@ -19,7 +19,9 @@ plots.confints.bootpls = function (ic_bootobject, indices = NULL, legendpos = "t
     plotpos <- (1:nr)[1:length(indices)]
     if (articlestyle) {
         oldpar <- suppressWarnings(par())
-        par(mar = c(2, 2, 1, 1) + 0.1, mgp = c(2, 1, 0))
+        if(missing(mar)){mar=c(2, 2, 1, 1) + 0.1}
+        if(missing(mgp)){mgp=c(2, 1, 0)}
+        par(mar = mar); par(mgp = mgp)
     }
     plot(c(1, 1), xlab = "", ylab = "", type = "n", xlim = c(1, 
         length(indices) + 0.5), ylim = c(min(ic_bootobject[indices,]), 
