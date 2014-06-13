@@ -21,7 +21,7 @@ CVinfos <- vector("list",length(pls_kfolds[[1]]))
 limQ2 <- rep(as.numeric(as.character(pls_kfolds$call["limQ2set"])),computed_nt)
 
     for (nnkk in 1:length(pls_kfolds[[1]])) {
-      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", "))}
+      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", ", nnkk))}
             Q2_2 <- 1-press_kfolds[[nnkk]][1:min(length(press_kfolds[[nnkk]]),computed_nt)]/tempres$RSS[1:min(length(press_kfolds[[nnkk]]),computed_nt)]
             for (k in 1:min(length(press_kfolds[[nnkk]]),computed_nt)) {Q2cum_2[k] <- prod(press_kfolds[[nnkk]][1:k])/prod(tempres$RSS[1:k])}
             Q2cum_2 <- 1 - Q2cum_2
@@ -52,7 +52,7 @@ CVinfos <- vector("list",length(pls_kfolds[[1]]))
 limQ2 <- rep(as.numeric(as.character(pls_kfolds$call["limQ2set"])),computed_nt)
 
     for (nnkk in 1:length(pls_kfolds[[1]])) {
-      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", "))}
+      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", ", nnkk))}
       Q2Chisq_2 <- 1-preChisq_kfolds[[nnkk]][1:min(length(preChisq_kfolds[[nnkk]]),computed_nt)]/tempres$ChisqPearson[1:min(length(preChisq_kfolds[[nnkk]]),computed_nt)]
 
             for (k in 1:min(length(preChisq_kfolds[[nnkk]]),computed_nt)) {Q2Chisqcum_2[k] <- prod(preChisq_kfolds[[nnkk]][1:k])/prod(tempres$ChisqPearson[1:k])}
@@ -82,7 +82,7 @@ CVinfos <- vector("list",length(pls_kfolds[[1]]))
 limQ2 <- rep(as.numeric(as.character(pls_kfolds$call["limQ2set"])),computed_nt)
 
     for (nnkk in 1:length(pls_kfolds[[1]])) {
-      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", "))}
+      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", ", nnkk))}
       Q2Chisq_2 <- 1-preChisq_kfolds[[nnkk]][1:min(length(preChisq_kfolds[[nnkk]]),computed_nt)]/tempres$ChisqPearson[1:min(length(preChisq_kfolds[[nnkk]]),computed_nt)]
 
             for (k in 1:min(length(preChisq_kfolds[[nnkk]]),computed_nt)) {Q2Chisqcum_2[k] <- prod(preChisq_kfolds[[nnkk]][1:k])/prod(tempres$ChisqPearson[1:k])}
@@ -129,7 +129,7 @@ CVinfos <- vector("list",length(pls_kfolds[[1]]))
 limQ2 <- rep(as.numeric(as.character(pls_kfolds$call["limQ2set"])),computed_nt)
 
     for (nnkk in 1:length(pls_kfolds[[1]])) {
-      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", "))}
+      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", ", nnkk))}
       Q2_2 <- 1-press_kfolds[[nnkk]][1:min(length(press_kfolds[[nnkk]]),computed_nt)]/tempres$RSS[1:min(length(press_kfolds[[nnkk]]),computed_nt)]
             for (k in 1:min(length(press_kfolds[[nnkk]]),computed_nt)) {Q2cum_2[k] <- prod(press_kfolds[[nnkk]][1:k])/prod(tempres$RSS[1:k])}
             Q2cum_2 <- 1 - Q2cum_2
@@ -160,7 +160,7 @@ CVinfos <- vector("list",length(pls_kfolds[[1]]))
 limQ2 <- rep(as.numeric(as.character(pls_kfolds$call["limQ2set"])),computed_nt)
 
     for (nnkk in 1:length(pls_kfolds[[1]])) {
-      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", "))}
+      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", ", nnkk))}
       Q2Chisq_2 <- 1-preChisq_kfolds[[nnkk]][1:min(length(preChisq_kfolds[[nnkk]]),computed_nt)]/tempres$ChisqPearson[1:min(length(preChisq_kfolds[[nnkk]]),computed_nt)]
 
             for (k in 1:min(length(preChisq_kfolds[[nnkk]]),computed_nt)) {Q2Chisqcum_2[k] <- prod(preChisq_kfolds[[nnkk]][1:k])/prod(tempres$ChisqPearson[1:k])}
@@ -190,7 +190,7 @@ CVinfos <- vector("list",length(pls_kfolds[[1]]))
 limQ2 <- rep(as.numeric(as.character(pls_kfolds$call["limQ2set"])),computed_nt)
 
     for (nnkk in 1:length(pls_kfolds[[1]])) {
-      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", "))}
+      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", ", nnkk))}
       Q2Chisq_2 <- 1-preChisq_kfolds[[nnkk]][1:min(length(preChisq_kfolds[[nnkk]]),computed_nt)]/tempres$ChisqPearson[1:min(length(preChisq_kfolds[[nnkk]]),computed_nt)]
 
             for (k in 1:min(length(preChisq_kfolds[[nnkk]]),computed_nt)) {Q2Chisqcum_2[k] <- prod(preChisq_kfolds[[nnkk]][1:k])/prod(tempres$ChisqPearson[1:k])}
