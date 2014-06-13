@@ -19,8 +19,8 @@ limQ2 <- rep(as.numeric(as.character(pls_kfolds$call["limQ2set"])),computed_nt)
 if (as.character(pls_kfolds$call["modele"]) == "pls") {
 
     for (nnkk in 1:length(pls_kfolds[[1]])) {
-            cat(paste("NK:", nnkk, "\n"))
-            Q2_2 <- 1-press_kfolds[[nnkk]][1:min(length(press_kfolds[[nnkk]]),computed_nt)]/tempres$RSS[1:min(length(press_kfolds[[nnkk]]),computed_nt)]
+      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", "))}
+      Q2_2 <- 1-press_kfolds[[nnkk]][1:min(length(press_kfolds[[nnkk]]),computed_nt)]/tempres$RSS[1:min(length(press_kfolds[[nnkk]]),computed_nt)]
             for (k in 1:min(length(press_kfolds[[nnkk]]),computed_nt)) {Q2cum_2[k] <- prod(press_kfolds[[nnkk]][1:k])/prod(tempres$RSS[1:k])}
             Q2cum_2 <- 1 - Q2cum_2
             if(length(Q2_2)<computed_nt) {Q2_2 <- c(Q2_2,rep(NA,computed_nt-length(Q2_2)))}
@@ -65,8 +65,8 @@ limQ2 <- rep(as.numeric(as.character(pls_kfolds$call["limQ2set"])),computed_nt)
 if (as.character(pls_kfolds$call["modele"]) == "pls") {
 
     for (nnkk in 1:length(pls_kfolds[[1]])) {
-            cat(paste("NK:", nnkk, "\n"))
-            Q2_2 <- 1-press_kfolds[[nnkk]][1:min(length(press_kfolds[[nnkk]]),computed_nt)]/tempres$RSS[1:min(length(press_kfolds[[nnkk]]),computed_nt)]
+      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", "))}
+      Q2_2 <- 1-press_kfolds[[nnkk]][1:min(length(press_kfolds[[nnkk]]),computed_nt)]/tempres$RSS[1:min(length(press_kfolds[[nnkk]]),computed_nt)]
             for (k in 1:min(length(press_kfolds[[nnkk]]),computed_nt)) {Q2cum_2[k] <- prod(press_kfolds[[nnkk]][1:k])/prod(tempres$RSS[1:k])}
             Q2cum_2 <- 1 - Q2cum_2
             if(length(Q2_2)<computed_nt) {Q2_2 <- c(Q2_2,rep(NA,computed_nt-length(Q2_2)))}
