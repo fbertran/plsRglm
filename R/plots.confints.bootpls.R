@@ -18,8 +18,9 @@ plots.confints.bootpls = function (ic_bootobject, indices = NULL, legendpos = "t
     }
     plotpos <- (1:nr)[1:length(indices)]
     if (articlestyle) {
-        oldpar <- suppressWarnings(par())
-        if(missing(mar)){mar=c(2, 2, 1, 1) + 0.1}
+      oldparmar <- par("mar")
+      oldparmgp <- par("mgp")
+      if(missing(mar)){mar=c(2, 2, 1, 1) + 0.1}
         if(missing(mgp)){mgp=c(2, 1, 0)}
         par(mar = mar); par(mgp = mgp)
     }
@@ -82,6 +83,7 @@ plots.confints.bootpls = function (ic_bootobject, indices = NULL, legendpos = "t
         abline(h = 0, lty = 3, lwd = 2)
         legend(legendpos, legend = legendtxt, lty = ltyIC[indictypeIC], col = colIC[indictypeIC], lwd = 2)
     if (articlestyle) {
-        suppressWarnings(par(oldpar))
+      par(mar=oldparmar)
+      par(mgp=oldparmgp)
     }
 }

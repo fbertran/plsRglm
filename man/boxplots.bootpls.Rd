@@ -6,7 +6,8 @@ Boxplot plots for bootstrap distributions.
 }
 \usage{
 boxplots.bootpls(bootobject, indices = NULL, prednames = TRUE, 
-articlestyle = TRUE, xaxisticks=TRUE, ranget0= FALSE, ...)
+articlestyle = TRUE, xaxisticks=TRUE, ranget0= FALSE, las = par("las"), 
+mar, mgp, ...)
 }
 \arguments{
   \item{bootobject}{ ~~Explain \code{bootobject} here~~ }
@@ -15,6 +16,9 @@ articlestyle = TRUE, xaxisticks=TRUE, ranget0= FALSE, ...)
   \item{articlestyle}{ ~~Explain \code{articlestyle} here~~ }
   \item{xaxisticks}{ ~~Explain \code{articlestyle} here~~ }
   \item{ranget0}{ ~~Explain \code{articlestyle} here~~ }
+  \item{las}{ ~~Explain \code{las} here~~ }
+  \item{mar}{ ~~Explain \code{las} here~~ }
+  \item{mgp}{ ~~Explain \code{las} here~~ }
   \item{\dots}{ ~~Explain \code{\dots} here~~ }
 }
 \details{
@@ -28,7 +32,7 @@ articlestyle = TRUE, xaxisticks=TRUE, ranget0= FALSE, ...)
   ...
 }
 \references{ ~put references to the literature/web site here ~ }
-\author{\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
@@ -41,7 +45,7 @@ data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
 
-# Lazraq-Cléroux PLS ordinary bootstrap
+# Lazraq-Cl?roux PLS ordinary bootstrap
 
 set.seed(250)
 Cornell.boot <- bootpls(plsR(yCornell,XCornell,3), sim="ordinary", stype="i", R=250)
