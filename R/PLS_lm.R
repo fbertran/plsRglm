@@ -766,14 +766,14 @@ res$Q2cum <- 1 - res$Q2cum
 for (k in 1:res$computed_nt) {res$Q2cum_2[k] <- prod(res$press.tot2[1:k])/prod(res$RSS[1:k])}
 res$Q2cum_2 <- 1 - res$Q2cum_2
 if (MClassed==FALSE) {
-res$CVinfos <- t(rbind(res$AIC,c(NA,res$Q2cum_2), c(NA,res$limQ2), c(NA,res$Q2_2[1:res$computed_nt]), c(NA,res$press.tot2[1:res$computed_nt]), res$RSS, c(NA,res$R2), c(NA,res$R2residY), res$RSSresidY, c(NA,res$press.tot), c(NA,res$Q2), c(NA,res$limQ2), c(NA,res$Q2cum), res$AIC.std))
-dimnames(res$CVinfos) <- list(paste("Nb_Comp_",0:res$computed_nt,sep=""), c("AIC", "Q2cum_Y", "LimQ2_Y", "Q2_Y", "PRESS_Y", "RSS_Y", "R2_Y", "R2_residY", "RSS_residY", "PRESS_residY", "Q2_residY", "LimQ2", "Q2cum_residY", "AIC.std"))
+res$InfCrit <- t(rbind(res$AIC,c(NA,res$Q2cum_2), c(NA,res$limQ2), c(NA,res$Q2_2[1:res$computed_nt]), c(NA,res$press.tot2[1:res$computed_nt]), res$RSS, c(NA,res$R2), c(NA,res$R2residY), res$RSSresidY, c(NA,res$press.tot), c(NA,res$Q2), c(NA,res$limQ2), c(NA,res$Q2cum), res$AIC.std))
+dimnames(res$InfCrit) <- list(paste("Nb_Comp_",0:res$computed_nt,sep=""), c("AIC", "Q2cum_Y", "LimQ2_Y", "Q2_Y", "PRESS_Y", "RSS_Y", "R2_Y", "R2_residY", "RSS_residY", "PRESS_residY", "Q2_residY", "LimQ2", "Q2cum_residY", "AIC.std"))
 } else {
-res$CVinfos <- t(rbind(res$AIC,c(NA,res$Q2cum_2), c(NA,res$limQ2), c(NA,res$Q2_2[1:res$computed_nt]), c(NA,res$press.tot2[1:res$computed_nt]), res$RSS, c(NA,res$R2), res$MissClassed, c(NA,res$R2residY), res$RSSresidY, c(NA,res$press.tot), c(NA,res$Q2), c(NA,res$limQ2), c(NA,res$Q2cum), res$AIC.std))
-dimnames(res$CVinfos) <- list(paste("Nb_Comp_",0:res$computed_nt,sep=""), c("AIC", "Q2cum_Y", "LimQ2_Y", "Q2_Y", "PRESS_Y", "RSS_Y", "R2_Y", "MissClassed", "R2_residY", "RSS_residY", "PRESS_residY", "Q2_residY", "LimQ2", "Q2cum_residY", "AIC.std"))
+res$InfCrit <- t(rbind(res$AIC,c(NA,res$Q2cum_2), c(NA,res$limQ2), c(NA,res$Q2_2[1:res$computed_nt]), c(NA,res$press.tot2[1:res$computed_nt]), res$RSS, c(NA,res$R2), res$MissClassed, c(NA,res$R2residY), res$RSSresidY, c(NA,res$press.tot), c(NA,res$Q2), c(NA,res$limQ2), c(NA,res$Q2cum), res$AIC.std))
+dimnames(res$InfCrit) <- list(paste("Nb_Comp_",0:res$computed_nt,sep=""), c("AIC", "Q2cum_Y", "LimQ2_Y", "Q2_Y", "PRESS_Y", "RSS_Y", "R2_Y", "MissClassed", "R2_residY", "RSS_residY", "PRESS_residY", "Q2_residY", "LimQ2", "Q2cum_residY", "AIC.std"))
 }
 res$ic.dof<-infcrit.dof(res,naive=naive)
-res$CVinfos <- cbind(res$CVinfos,res$ic.dof)
+res$InfCrit <- cbind(res$InfCrit,res$ic.dof)
 } else {
 if (MClassed==FALSE) {
 res$InfCrit <- t(rbind(res$AIC, res$RSS, c(NA,res$R2), c(NA,res$R2residY), res$RSSresidY, res$AIC.std))

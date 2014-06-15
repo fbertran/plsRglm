@@ -14,6 +14,6 @@ print.plsRmodel <- function(x,...)
   if (x$typeVC %in% c("standard","missingdata","adaptative"))
   {
     cat("Leave one out cross validated PRESS, Information criteria and Fit statistics:\n")
-    print(x$CVinfos)
+    print(x$InfCrit)
   }
 }
