@@ -210,6 +210,7 @@ for (jj in 1:(res$nc)) {
 res$residXX <- XXwotNA-temptt%*%temppp
 
 if (na.miss.X & !na.miss.Y) {
+  if(sparse==FALSE){
 for (ii in 1:res$nr) {
 if(rcond(t(cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])<tol_Xi) {
 break_nt <- TRUE; res$computed_nt <- kk-1
@@ -221,9 +222,11 @@ break
 rm(ii)
 if(break_nt==TRUE) {res$computed_nt <- kk-1;break}
 }
+}
 
 if(!PredYisdataX){
-if (na.miss.PredictY & !na.miss.Y) {
+  if(sparse==FALSE){
+    if (na.miss.PredictY & !na.miss.Y) {
 for (ii in 1:nrow(PredictYwotNA)) {
 if(rcond(t(cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])<tol_Xi) {
 break_nt <- TRUE; res$computed_nt <- kk-1
@@ -234,6 +237,7 @@ break
 }
 rm(ii)
 if(break_nt==TRUE) {res$computed_nt <- kk-1;break}
+}
 }
 }
 

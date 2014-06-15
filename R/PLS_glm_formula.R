@@ -290,11 +290,8 @@ for (jj in 1:(res$nc)) {
     tempvalpvalstep[jj] <- 2 * pnorm(-abs(tmww[3])) 
     temppvalstep[jj] <- (tempvalpvalstep[jj] < alpha.pvals.expli)
 }
-if(sparse&sparseStop){
-      if(sum(temppvalstep)==0L){
-        break_nt_sparse <- TRUE}
-      else 
-      {tempww[!temppvalstep] <- 0}}
+if(sparse){tempww[!temppvalstep] <- 0}
+if(sparseStop){if(sum(temppvalstep)==0L){break_nt_sparse <- TRUE}}
 XXwotNA[!XXNA] <- 0
 rm(jj,tts)
 mf2$Hess <- FALSE
@@ -335,7 +332,8 @@ for (jj in 1:(res$nc)) {
 res$residXX <- XXwotNA-temptt%*%temppp
 
 if (na.miss.X & !na.miss.Y) {
-for (ii in 1:res$nr) {
+  if(sparse==FALSE){
+    for (ii in 1:res$nr) {
 if(rcond(t(cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])<tol_Xi) {
 break_nt <- TRUE; res$computed_nt <- kk-1
 cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE] < 10^{-12}\n",sep=""))
@@ -346,8 +344,10 @@ break
 rm(ii)
 if(break_nt==TRUE) {res$computed_nt <- kk-1;break}
 }
+}
 
 if(!PredYisdataX){
+  if(sparse==FALSE){
 if (na.miss.PredictY & !na.miss.Y) {
 for (ii in 1:nrow(PredictYwotNA)) {
 if(rcond(t(cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])<tol_Xi) {
@@ -359,6 +359,7 @@ break
 }
 rm(ii)
 if(break_nt==TRUE) {res$computed_nt <- kk-1;break}
+}
 }
 }
 

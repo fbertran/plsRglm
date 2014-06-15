@@ -236,11 +236,8 @@ for (jj in 1:(res$nc)) {
     tempvalpvalstep[jj] <- 2 * pnorm(-abs(tmww[3])) 
     temppvalstep[jj] <- (tempvalpvalstep[jj] < alpha.pvals.expli)
 }
-if(sparse&sparseStop){
-      if(sum(temppvalstep)==0L){
-        break_nt_sparse <- TRUE}
-      else 
-      {tempww[!temppvalstep] <- 0}}
+if(sparse){tempww[!temppvalstep] <- 0}
+if(sparseStop){if(sum(temppvalstep)==0L){break_nt_sparse <- TRUE}}
 XXwotNA[!XXNA] <- 0
 rm(jj,tts)
 res$valpvalstep <- cbind(res$valpvalstep,tempvalpvalstep)
@@ -278,6 +275,7 @@ for (jj in 1:(res$nc)) {
 res$residXX <- XXwotNA-temptt%*%temppp
 
 if (na.miss.X & !na.miss.Y) {
+  if(sparse==FALSE){
 for (ii in 1:res$nr) {
 if(rcond(t(cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])<tol_Xi) {
 break_nt <- TRUE; res$computed_nt <- kk-1
@@ -289,9 +287,11 @@ break
 rm(ii)
 if(break_nt==TRUE) {break}
 }
+}
 
 if(!PredYisdataX){
 if (na.miss.PredictY & !na.miss.Y) {
+  if(sparse==FALSE){    
 for (ii in 1:nrow(PredictYwotNA)) {
 if(rcond(t(cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])<tol_Xi) {
 break_nt <- TRUE; res$computed_nt <- kk-1
@@ -302,6 +302,7 @@ break
 }
 rm(ii)
 if(break_nt==TRUE) {break}
+}
 }
 }
 
