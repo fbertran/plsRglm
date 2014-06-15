@@ -1,4 +1,4 @@
-PLS_lm_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,subset,contrasts=NULL,sparse=FALSE,sparseStop=TRUE,naive=FALSE) {
+PLS_lm_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,subset,contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE) {
 
 ##################################################
 #                                                #
@@ -7,7 +7,8 @@ PLS_lm_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=da
 ##################################################
 
 cat("____************************************************____\n")
-if(sparse){pvals.expli=TRUE}
+if(sparse){sparseStop=TRUE}
+if(sparseStop){pvals.expli=TRUE}
 
 if (missing(data)) {data <- environment(formula)}
 mf <- match.call(expand.dots = FALSE)
@@ -172,11 +173,8 @@ tempww <- t(XXwotNA*weights)%*%YwotNA/(t(XXNA*weights)%*%YwotNA^2)
 if (pvals.expli) {
 tempvalpvalstep <- 2 * pnorm(-abs(tempww)) 
 temppvalstep <- (tempvalpvalstep < alpha.pvals.expli)
-if(sparse&sparseStop){
-  if(sum(temppvalstep)==0L){
-    break_nt_sparse <- TRUE}
-  else 
-  {tempww[!temppvalstep] <- 0}}
+if(sparse){tempww[!temppvalstep] <- 0}
+if(sparseStop){if(sum(temppvalstep)==0L){break_nt_sparse <- TRUE}}
 res$valpvalstep <- cbind(res$valpvalstep,tempvalpvalstep)
 res$pvalstep <- cbind(res$pvalstep,temppvalstep)
 }
@@ -791,14 +789,14 @@ res$Q2cum <- 1 - res$Q2cum
 for (k in 1:res$computed_nt) {res$Q2cum_2[k] <- prod(res$press.tot2[1:k])/prod(res$RSS[1:k])}
 res$Q2cum_2 <- 1 - res$Q2cum_2
 if (MClassed==FALSE) {
-res$CVinfos <- t(rbind(res$AIC,c(NA,res$Q2cum_2), c(NA,res$limQ2), c(NA,res$Q2_2[1:res$computed_nt]), c(NA,res$press.tot2[1:res$computed_nt]), res$RSS, c(NA,res$R2), c(NA,res$R2residY), res$RSSresidY, c(NA,res$press.tot), c(NA,res$Q2), c(NA,res$limQ2), c(NA,res$Q2cum), res$AIC.std))
-dimnames(res$CVinfos) <- list(paste("Nb_Comp_",0:res$computed_nt,sep=""), c("AIC", "Q2cum_Y", "LimQ2_Y", "Q2_Y", "PRESS_Y", "RSS_Y", "R2_Y", "R2_residY", "RSS_residY", "PRESS_residY", "Q2_residY", "LimQ2", "Q2cum_residY", "AIC.std"))
+res$InfCrit <- t(rbind(res$AIC,c(NA,res$Q2cum_2), c(NA,res$limQ2), c(NA,res$Q2_2[1:res$computed_nt]), c(NA,res$press.tot2[1:res$computed_nt]), res$RSS, c(NA,res$R2), c(NA,res$R2residY), res$RSSresidY, c(NA,res$press.tot), c(NA,res$Q2), c(NA,res$limQ2), c(NA,res$Q2cum), res$AIC.std))
+dimnames(res$InfCrit) <- list(paste("Nb_Comp_",0:res$computed_nt,sep=""), c("AIC", "Q2cum_Y", "LimQ2_Y", "Q2_Y", "PRESS_Y", "RSS_Y", "R2_Y", "R2_residY", "RSS_residY", "PRESS_residY", "Q2_residY", "LimQ2", "Q2cum_residY", "AIC.std"))
 } else {
-res$CVinfos <- t(rbind(res$AIC,c(NA,res$Q2cum_2), c(NA,res$limQ2), c(NA,res$Q2_2[1:res$computed_nt]), c(NA,res$press.tot2[1:res$computed_nt]), res$RSS, c(NA,res$R2), res$MissClassed, c(NA,res$R2residY), res$RSSresidY, c(NA,res$press.tot), c(NA,res$Q2), c(NA,res$limQ2), c(NA,res$Q2cum), res$AIC.std))
-dimnames(res$CVinfos) <- list(paste("Nb_Comp_",0:res$computed_nt,sep=""), c("AIC", "Q2cum_Y", "LimQ2_Y", "Q2_Y", "PRESS_Y", "RSS_Y", "R2_Y", "MissClassed", "R2_residY", "RSS_residY", "PRESS_residY", "Q2_residY", "LimQ2", "Q2cum_residY", "AIC.std"))
+res$InfCrit <- t(rbind(res$AIC,c(NA,res$Q2cum_2), c(NA,res$limQ2), c(NA,res$Q2_2[1:res$computed_nt]), c(NA,res$press.tot2[1:res$computed_nt]), res$RSS, c(NA,res$R2), res$MissClassed, c(NA,res$R2residY), res$RSSresidY, c(NA,res$press.tot), c(NA,res$Q2), c(NA,res$limQ2), c(NA,res$Q2cum), res$AIC.std))
+dimnames(res$InfCrit) <- list(paste("Nb_Comp_",0:res$computed_nt,sep=""), c("AIC", "Q2cum_Y", "LimQ2_Y", "Q2_Y", "PRESS_Y", "RSS_Y", "R2_Y", "MissClassed", "R2_residY", "RSS_residY", "PRESS_residY", "Q2_residY", "LimQ2", "Q2cum_residY", "AIC.std"))
 }
 res$ic.dof<-infcrit.dof(res,naive=naive)
-res$CVinfos <- cbind(res$CVinfos,res$ic.dof)
+res$InfCrit <- cbind(res$InfCrit,res$ic.dof)
 } else {
 if (MClassed==FALSE) {
 res$InfCrit <- t(rbind(res$AIC, res$RSS, c(NA,res$R2), c(NA,res$R2residY), res$RSSresidY, res$AIC.std))

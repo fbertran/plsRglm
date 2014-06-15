@@ -5,7 +5,7 @@ if (missing(data)) {data <- environment(formula)}
 mf <- match.call(expand.dots = FALSE)
 m <- match(c("formula","data","nt","limQ2set","dataPredictY","modele","family","typeVC","EstimXNA","scaleX","scaleY","pvals.expli","alpha.pvals.expli","MClassed","tol_Xi","weights","subset","contrasts","sparse","sparseStop","naive"), names(mf), 0L)
 mf <- mf[c(1L, m)]
-mf[[1L]] <- as.name("PLS_glm_formula")
+mf[[1L]] <- as.name("PLS_lm_formula")
 estmodel <- eval(mf, parent.frame())
   class(estmodel) <- "plsRmodel"
   estmodel$call <- match.call()

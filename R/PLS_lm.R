@@ -1,4 +1,4 @@
-PLS_lm <- function(dataY,dataX,nt=2,limQ2set=.0975,dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,sparse=FALSE,sparseStop=TRUE,naive=FALSE) {
+PLS_lm <- function(dataY,dataX,nt=2,limQ2set=.0975,dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,sparse=FALSE,sparseStop=FALSE,naive=FALSE) {
 
 ##################################################
 #                                                #
@@ -21,7 +21,8 @@ if(any(is.na(dataY))) {na.miss.Y <- TRUE} else na.miss.Y <- FALSE
 if(any(is.na(dataPredictY))) {na.miss.PredictY <- TRUE} else {na.miss.PredictY <- FALSE}
 if(na.miss.X|na.miss.Y){naive=TRUE; cat(paste("Only naive DoF can be used with missing data\n",sep="")); if(!NoWeights){cat(paste("Weights cannot be used with missing data\n",sep=""))}}
 if(!NoWeights){naive=TRUE; cat(paste("Only naive DoF can be used with weighted PLS\n",sep=""))}
-if(sparse){pvals.expli=TRUE}
+if(sparse){sparseStop=TRUE}
+if(sparseStop){pvals.expli=TRUE}
 
 if (!is.data.frame(dataX)) {dataX <- data.frame(dataX)}
 if (!(modele %in% c("pls"))) {print(modele);stop("'modele' not recognized. For plsRglm models use plsRglm")}
@@ -147,11 +148,8 @@ tempww <- t(XXwotNA*weights)%*%YwotNA/(t(XXNA*weights)%*%YwotNA^2)
 if (pvals.expli) {
 tempvalpvalstep <- 2 * pnorm(-abs(tempww)) 
 temppvalstep <- (tempvalpvalstep < alpha.pvals.expli)
-if(sparse&sparseStop){
-  if(sum(temppvalstep)==0L){
-    break_nt_sparse <- TRUE}
-  else 
-  {tempww[!temppvalstep] <- 0}}
+if(sparse){tempww[!temppvalstep] <- 0}
+if(sparseStop){if(sum(temppvalstep)==0L){break_nt_sparse <- TRUE}}
 res$valpvalstep <- cbind(res$valpvalstep,tempvalpvalstep)
 res$pvalstep <- cbind(res$pvalstep,temppvalstep)
 }

@@ -1,4 +1,4 @@
-PLS_glm_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,subset,start=NULL,etastart,mustart,offset,method,control= list(),contrasts=NULL,sparse=FALSE,sparseStop=TRUE,naive=FALSE) {  
+PLS_glm_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,subset,start=NULL,etastart,mustart,offset,method,control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE) {  
 
 
 ##################################################
@@ -9,7 +9,8 @@ PLS_glm_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=d
 
 cat("____************************************************____\n")
 if(is.null(modele)){naive=FALSE} else {if(modele=="pls"){naive=FALSE} else {if(!missing(naive)){cat(paste("Only naive DoF can be used with PLS GLM\n",sep=""))}; naive=TRUE}}
-if(sparse){pvals.expli=TRUE}
+if(sparse){sparseStop=TRUE}
+if(sparseStop){pvals.expli=TRUE}
 
 if (missing(data)) {data <- environment(formula)}
 mf <- mf2 <- match.call(expand.dots = FALSE)
@@ -220,11 +221,8 @@ tempww <- t(XXwotNA*weights)%*%YwotNA/(t(XXNA*weights)%*%YwotNA^2)
 if (pvals.expli) {
 tempvalpvalstep <- 2 * pnorm(-abs(tempww)) 
 temppvalstep <- (tempvalpvalstep < alpha.pvals.expli)
-if(sparse&sparseStop){
-  if(sum(temppvalstep)==0L){
-    break_nt_sparse <- TRUE}
-  else 
-  {tempww[!temppvalstep] <- 0}}
+if(sparse){tempww[!temppvalstep] <- 0}
+if(sparseStop){if(sum(temppvalstep)==0L){break_nt_sparse <- TRUE}}
 res$valpvalstep <- cbind(res$valpvalstep,tempvalpvalstep)
 res$pvalstep <- cbind(res$pvalstep,temppvalstep)
 }
@@ -254,11 +252,8 @@ for (jj in 1:(res$nc)) {
     tempvalpvalstep[jj] <- tmww[4]
     temppvalstep[jj] <- (tmww[4] < alpha.pvals.expli)
 }
-if(sparse&sparseStop){
-  if(sum(temppvalstep)==0L){
-    break_nt_sparse <- TRUE}
-  else 
-  {tempww[!temppvalstep] <- 0}}
+if(sparse){tempww[!temppvalstep] <- 0}
+if(sparseStop){if(sum(temppvalstep)==0L){break_nt_sparse <- TRUE}}
 XXwotNA[!XXNA] <- 0
 rm(jj)
 res$valpvalstep <- cbind(res$valpvalstep,tempvalpvalstep)

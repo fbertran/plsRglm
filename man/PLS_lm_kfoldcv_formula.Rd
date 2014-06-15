@@ -89,7 +89,7 @@ bbb <- PLS_lm_kfoldcv_formula(Y~scale(as.matrix(Cornell))[,-8],Cornell,nt=6,K=12
 bbb2 <- PLS_lm_kfoldcv_formula(Y~scale(as.matrix(Cornell))[,-8],Cornell,nt=6,K=6,NK=1)
 kfolds2CVinfos_lm(bbb)
 kfolds2CVinfos_lm(bbb2)
-PLS_lm_formula(Y~.,Cornell,6,typeVC="standard")$CVinfos
+PLS_lm_formula(Y~.,Cornell,6,typeVC="standard")$InfCrit
 rm(list=c("bbb","bbb2"))
 
 
@@ -99,7 +99,7 @@ bbb <- PLS_lm_kfoldcv_formula(log(x11)~.,pine,nt=10,K=12,NK=1)
 bbb2 <- PLS_lm_kfoldcv_formula(log(x11)~.,pine,nt=10,K=6,NK=1)
 kfolds2CVinfos_lm(bbb)
 kfolds2CVinfos_lm(bbb2)
-PLS_lm_formula(log(x11)~.,pine,10,typeVC="standard")$CVinfos
+PLS_lm_formula(log(x11)~.,pine,10,typeVC="standard")$InfCrit
 
 pineNAX21 <- pine
 pineNAX21[1,2] <- NA
@@ -107,7 +107,7 @@ bbbNA <- PLS_lm_kfoldcv_formula(log(x11)~.,pineNAX21,nt=10,K=12,NK=1)
 bbbNA2 <- PLS_lm_kfoldcv_formula(log(x11)~.,pineNAX21,nt=10,K=6,NK=1)
 kfolds2CVinfos_lm(bbbNA)
 kfolds2CVinfos_lm(bbbNA2)
-PLS_lm_formula(log(x11)~.,pineNAX21,10,typeVC="standard")$CVinfos
+PLS_lm_formula(log(x11)~.,pineNAX21,10,typeVC="standard")$InfCrit
 rm(list=c("bbb","bbb2","bbbNA","bbbNA2"))
 }
 }

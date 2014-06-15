@@ -4,7 +4,7 @@ data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
 plsR(yCornell,XCornell,10)$InfCrit
-plsR(yCornell,XCornell,10,typeVC="standard")$CVinfos
+plsR(yCornell,XCornell,10,typeVC="standard")$InfCrit
 plsR(yCornell,XCornell,6)$AIC 
 plsR(yCornell,XCornell,6)$AIC.std    
 plsRglm(yCornell,XCornell,3)$uscores
@@ -36,7 +36,7 @@ bbb <- PLS_lm_kfoldcv(dataY=yCornell,dataX=data.frame(scale(as.matrix(XCornell))
 bbb2 <- PLS_lm_kfoldcv(dataY=yCornell,dataX=data.frame(scale(as.matrix(XCornell))[,]),nt=6,K=6,NK=1)
 kfolds2CVinfos_lm(bbb)
 kfolds2CVinfos_lm(bbb2)
-PLS_lm(yCornell,XCornell,6,typeVC="standard")$CVinfos
+PLS_lm(yCornell,XCornell,6,typeVC="standard")$InfCrit
 
 
 data(aze_compl)
@@ -55,8 +55,8 @@ modpls$Probs-modpls$Probs.trc
 modpls$InfCrit
 PLS_lm(yaze_compl,Xaze_compl,10)$InfCrit
 
-PLS_lm(yaze_compl,Xaze_compl,10,typeVC="standard")$CVinfos
-PLS_lm(yaze_compl,Xaze_compl,10,typeVC="standard",MClassed=TRUE)$CVinfos
+PLS_lm(yaze_compl,Xaze_compl,10,typeVC="standard")$InfCrit
+PLS_lm(yaze_compl,Xaze_compl,10,typeVC="standard",MClassed=TRUE)$InfCrit
 rm(list=c("Xaze_compl","yaze_compl","modpls"))
 
 
@@ -71,9 +71,9 @@ Xsimbin1 <- dicho(XdataAstar2)
 PLS_lm(ysimbin1,Xsimbin1,10,MClassed=TRUE)$Probs
 PLS_lm(ysimbin1,Xsimbin1,10,MClassed=TRUE)$Probs.trc
 PLS_lm(ysimbin1,Xsimbin1,10,MClassed=TRUE)$MissClassed
-PLS_lm(ysimbin1,Xsimbin1,10,typeVC="standard",MClassed=TRUE)$CVinfos
-PLS_lm(ysimbin1,XdataAstar2,10,typeVC="standard",MClassed=TRUE)$CVinfos
-PLS_lm(ydataAstar2,XdataAstar2,10,typeVC="standard")$CVinfos
+PLS_lm(ysimbin1,Xsimbin1,10,typeVC="standard",MClassed=TRUE)$InfCrit
+PLS_lm(ysimbin1,XdataAstar2,10,typeVC="standard",MClassed=TRUE)$InfCrit
+PLS_lm(ydataAstar2,XdataAstar2,10,typeVC="standard")$InfCrit
 rm(list=c("dimX","Astar","dataAstar2","ysimbin1","Xsimbin1","ydataAstar2","XdataAstar2"))
 
 
@@ -84,7 +84,7 @@ ydataAstar4 <- dataAstar4[,1]
 XdataAstar4 <- dataAstar4[,2:(dimX+1)]
 modpls <- PLS_lm(ydataAstar4,XdataAstar4,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 str(modpls)
 rm(list=c("dimX","Astar","dataAstar4","modpls","ydataAstar4","XdataAstar4"))
 
@@ -96,7 +96,7 @@ ydataAstar2 <- dataAstar2[,1]
 XdataAstar2 <- dataAstar2[,2:(dimX+1)]
 modpls <- PLS_lm(ydataAstar2,XdataAstar2,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar2","modpls","ydataAstar2","XdataAstar2"))
 
 
@@ -124,7 +124,7 @@ PLS_lm(yCornell,XCornell,3)$Coeffs
 
 PLS_lm(yCornell,XCornell,4,typeVC="standard")$press.ind
 PLS_lm(yCornell,XCornell,4,typeVC="standard")$press.tot
-PLS_lm(yCornell,XCornell,4,typeVC="standard")$CVinfos
+PLS_lm(yCornell,XCornell,4,typeVC="standard")$InfCrit
 
 PLS_lm_wvc(dataY=yCornell,dataX=XCornell,nt=3,dataPredictY=XCornell[1,])
 PLS_lm_wvc(dataY=yCornell[-c(1,2)],dataX=XCornell[-c(1,2),],nt=3,dataPredictY=XCornell[c(1,2),])
@@ -138,7 +138,7 @@ PLS_lm(log(ypine),Xpine,4)$Std.Coeffs
 PLS_lm(log(ypine),Xpine,4)$Coeffs
 PLS_lm(log(ypine),Xpine,1)$Std.Coeffs
 PLS_lm(log(ypine),Xpine,1)$Coeffs
-PLS_lm(log(ypine),Xpine,10,typeVC="standard")$CVinfos
+PLS_lm(log(ypine),Xpine,10,typeVC="standard")$InfCrit
 
 
 data(pine_full)
@@ -161,13 +161,13 @@ PLS_lm(log(ypine),XpineNAX21,4)$CoeffC
 PLS_lm(log(ypine),XpineNAX21,2,dataPredictY=XpineNAX21[1,])$ValsPredictY
 
 PLS_lm(log(ypine),Xpine,10,typeVC="none")$InfCrit
-PLS_lm(log(ypine),Xpine,10,typeVC="standard")$CVinfos
-PLS_lm(log(ypine),Xpine,10,typeVC="adaptative")$CVinfos
-PLS_lm(log(ypine),Xpine,10,typeVC="missingdata")$CVinfos
+PLS_lm(log(ypine),Xpine,10,typeVC="standard")$InfCrit
+PLS_lm(log(ypine),Xpine,10,typeVC="adaptative")$InfCrit
+PLS_lm(log(ypine),Xpine,10,typeVC="missingdata")$InfCrit
 PLS_lm(log(ypine),XpineNAX21,10,typeVC="none")$InfCrit
-PLS_lm(log(ypine),XpineNAX21,10,typeVC="standard")$CVinfos
-PLS_lm(log(ypine),XpineNAX21,10,typeVC="adaptative")$CVinfos
-PLS_lm(log(ypine),XpineNAX21,10,typeVC="missingdata")$CVinfos
+PLS_lm(log(ypine),XpineNAX21,10,typeVC="standard")$InfCrit
+PLS_lm(log(ypine),XpineNAX21,10,typeVC="adaptative")$InfCrit
+PLS_lm(log(ypine),XpineNAX21,10,typeVC="missingdata")$InfCrit
 
 PLS_lm(log(ypine),XpineNAX21,4,EstimXNA=TRUE)$XChapeau
 PLS_lm(log(ypine),XpineNAX21,4,EstimXNA=TRUE)$XChapeauNA
@@ -194,7 +194,7 @@ bbb <- PLS_lm_kfoldcv(dataY=log(ypine),dataX=Xpine,nt=10,K=12,NK=1)
 bbb2 <- PLS_lm_kfoldcv(dataY=log(ypine),dataX=Xpine,nt=10,K=6,NK=1)
 kfolds2CVinfos_lm(bbb)
 kfolds2CVinfos_lm(bbb2)
-PLS_lm(log(ypine),Xpine,10,typeVC="standard")$CVinfos
+PLS_lm(log(ypine),Xpine,10,typeVC="standard")$InfCrit
 
 XpineNAX21 <- Xpine
 XpineNAX21[1,2] <- NA
@@ -202,7 +202,7 @@ bbbNA <- PLS_lm_kfoldcv(dataY=log(ypine),dataX=XpineNAX21,nt=10,K=12,NK=1)
 bbbNA2 <- PLS_lm_kfoldcv(dataY=log(ypine),dataX=XpineNAX21,nt=10,K=6,NK=1)
 kfolds2CVinfos_lm(bbbNA)
 kfolds2CVinfos_lm(bbbNA2)
-PLS_lm(log(ypine),XpineNAX21,10,typeVC="standard")$CVinfos
+PLS_lm(log(ypine),XpineNAX21,10,typeVC="standard")$InfCrit
 
 
 data(XpineNAX21)
@@ -220,7 +220,7 @@ ydataAstar3 <- dataAstar3[,1]
 XdataAstar3 <- dataAstar3[,2:(dimX+1)]
 modpls <- PLS_lm(ydataAstar3,XdataAstar3,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar3","modpls","ydataAstar3","XdataAstar3"))
 
 
@@ -231,7 +231,7 @@ ydataAstar4 <- dataAstar4[,1]
 XdataAstar4 <- dataAstar4[,2:(dimX+1)]
 modpls <- PLS_lm(ydataAstar4,XdataAstar4,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar4","modpls","ydataAstar4","XdataAstar4"))
 
 
@@ -242,7 +242,7 @@ ydataAstar5 <- dataAstar5[,1]
 XdataAstar5 <- dataAstar5[,2:(dimX+1)]
 modpls <- PLS_lm(ydataAstar5,XdataAstar5,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar5","modpls","ydataAstar5","XdataAstar5"))
 
 
@@ -253,7 +253,7 @@ ydataAstar6 <- dataAstar6[,1]
 XdataAstar6 <- dataAstar6[,2:(dimX+1)]
 modpls <- PLS_lm(ydataAstar6,XdataAstar6,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar6","modpls","ydataAstar6","XdataAstar6"))
 
 

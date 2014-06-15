@@ -9,7 +9,7 @@ PLS_glm(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = dataX,
 modele = "pls", family = NULL, typeVC = "none", EstimXNA = FALSE, 
 scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
 alpha.pvals.expli = 0.05, MClassed = FALSE, tol_Xi = 10^(-12), weights, 
-method, sparse = FALSE, sparseStop=TRUE, naive=FALSE)
+method, sparse = FALSE, sparseStop=FALSE, naive=FALSE)
 }
 \arguments{
   \item{dataY}{response (training) dataset}
@@ -64,10 +64,10 @@ The default estimator for Degrees of Freedom is the Kramer and Sugiyama's one wh
 Depends on the model that was used to fit the model.
 }
 \references{
-Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frédéric}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{régression}{r\'egression} PLS et de la \enc{régression}{r\'egression} logistique PLS : application aux \enc{données}{donn\'ees} \enc{d'allélotypage}{d'all\'elotypage}. \emph{Journal de la Société Française de Statistique}, 151(2), pages 1-18.
+Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{r?gression}{r\'egression} PLS et de la \enc{r?gression}{r\'egression} logistique PLS : application aux \enc{donn?es}{donn\'ees} \enc{d'all?lotypage}{d'all\'elotypage}. \emph{Journal de la Soci?t? Fran?aise de Statistique}, 151(2), pages 1-18.
 \url{http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf}
 }
-\author{\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }

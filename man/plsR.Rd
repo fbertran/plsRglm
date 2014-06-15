@@ -126,15 +126,9 @@ The default estimator for Degrees of Freedom is the Kramer and Sugiyama's one. I
   \item{\code{Q2_2}}{Description of 'comp2'}
   \item{\code{Q2cum}}{Description of 'comp2'}
   \item{\code{Q2cum_2}}{Description of 'comp2'}
-  \item{\code{CVinfos}}{Description of 'comp2'}
   }
   }
-  \item{optional}{If no cross validation was requested :\cr
-        i.e. \code{typeVC="none"}.
-  \describe{
-  \item{\code{InfCrit}}{Several information criteria of fit statistics}
-  }
-  }
+  \item{InfCrit}{Description of 'comp2'}
   \item{Std.ValsPredictY}{Description of 'comp2'}
   \item{ValsPredictY}{Description of 'comp2'}
   \item{Std.XChapeau}{Description of 'comp2'}
@@ -155,7 +149,7 @@ data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
 plsR(yCornell,XCornell,10)$InfCrit
-plsR(yCornell,XCornell,10,typeVC="standard")$CVinfos
+plsR(yCornell,XCornell,10,typeVC="standard")$InfCrit
 plsR(yCornell,XCornell,6)$AIC 
 plsR(yCornell,XCornell,6)$AIC.std    
 rm(list=c("XCornell","yCornell"))
@@ -178,8 +172,8 @@ modpls$Probs-modpls$Probs.trc
 modpls$InfCrit
 plsR(yaze_compl,Xaze_compl,10)$InfCrit
 
-plsR(yaze_compl,Xaze_compl,10,typeVC="standard")$CVinfos
-plsR(yaze_compl,Xaze_compl,10,typeVC="standard",MClassed=TRUE)$CVinfos
+plsR(yaze_compl,Xaze_compl,10,typeVC="standard")$InfCrit
+plsR(yaze_compl,Xaze_compl,10,typeVC="standard",MClassed=TRUE)$InfCrit
 rm(list=c("Xaze_compl","yaze_compl","modpls"))
 
 
@@ -194,9 +188,9 @@ Xsimbin1 <- dicho(XdataAstar2)
 plsR(ysimbin1,Xsimbin1,10,MClassed=TRUE)$Probs
 plsR(ysimbin1,Xsimbin1,10,MClassed=TRUE)$Probs.trc
 plsR(ysimbin1,Xsimbin1,10,MClassed=TRUE)$MissClassed
-plsR(ysimbin1,Xsimbin1,10,typeVC="standard",MClassed=TRUE)$CVinfos
-plsR(ysimbin1,XdataAstar2,10,typeVC="standard",MClassed=TRUE)$CVinfos
-plsR(ydataAstar2,XdataAstar2,10,typeVC="standard")$CVinfos
+plsR(ysimbin1,Xsimbin1,10,typeVC="standard",MClassed=TRUE)$InfCrit
+plsR(ysimbin1,XdataAstar2,10,typeVC="standard",MClassed=TRUE)$InfCrit
+plsR(ydataAstar2,XdataAstar2,10,typeVC="standard")$InfCrit
 rm(list=c("dimX","Astar","dataAstar2","ysimbin1","Xsimbin1","ydataAstar2","XdataAstar2"))
 
 
@@ -207,7 +201,7 @@ ydataAstar4 <- dataAstar4[,1]
 XdataAstar4 <- dataAstar4[,2:(dimX+1)]
 modpls <- plsR(ydataAstar4,XdataAstar4,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 str(modpls)
 rm(list=c("dimX","Astar","dataAstar4","modpls","ydataAstar4","XdataAstar4"))
 
@@ -219,7 +213,7 @@ ydataAstar2 <- dataAstar2[,1]
 XdataAstar2 <- dataAstar2[,2:(dimX+1)]
 modpls <- plsR(ydataAstar2,XdataAstar2,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar2","modpls","ydataAstar2","XdataAstar2"))
 
 
@@ -230,7 +224,7 @@ ydataAstar3 <- dataAstar3[,1]
 XdataAstar3 <- dataAstar3[,2:(dimX+1)]
 modpls <- plsR(ydataAstar3,XdataAstar3,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar3","modpls","ydataAstar3","XdataAstar3"))
 
 
@@ -241,7 +235,7 @@ ydataAstar4 <- dataAstar4[,1]
 XdataAstar4 <- dataAstar4[,2:(dimX+1)]
 modpls <- plsR(ydataAstar4,XdataAstar4,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar4","modpls","ydataAstar4","XdataAstar4"))
 
 
@@ -252,7 +246,7 @@ ydataAstar5 <- dataAstar5[,1]
 XdataAstar5 <- dataAstar5[,2:(dimX+1)]
 modpls <- plsR(ydataAstar5,XdataAstar5,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar5","modpls","ydataAstar5","XdataAstar5"))
 
 
@@ -263,7 +257,7 @@ ydataAstar6 <- dataAstar6[,1]
 XdataAstar6 <- dataAstar6[,2:(dimX+1)]
 modpls <- plsR(ydataAstar3,XdataAstar6,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar6","modpls","ydataAstar6","XdataAstar6"))
 }
 }

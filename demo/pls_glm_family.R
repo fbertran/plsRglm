@@ -186,7 +186,7 @@ boxplot(kfolds2coeff(bbb2)[,1])
 kfolds2Chisqind(bbb2)
 kfolds2Chisq(bbb2)
 kfolds2CVinfos_glm(bbb2)
-PLS_lm(log(yCornell),XCornell,10,typeVC="standard")$CVinfos
+PLS_lm(log(yCornell),XCornell,10,typeVC="standard")$InfCrit
 
 
 data(pine)
@@ -202,7 +202,7 @@ boxplot(kfolds2coeff(bbb)[,1])
 kfolds2Chisqind(bbb)
 kfolds2Chisq(bbb)
 kfolds2CVinfos_glm(bbb)
-PLS_lm(log(ypine),Xpine,10,typeVC="standard")$CVinfos
+PLS_lm(log(ypine),Xpine,10,typeVC="standard")$InfCrit
 
 XpineNAX21 <- Xpine
 XpineNAX21[1,2] <- NA
@@ -216,7 +216,7 @@ boxplot(kfolds2coeff(bbb2)[,1])
 kfolds2Chisqind(bbb2)
 kfolds2Chisq(bbb2)
 kfolds2CVinfos_glm(bbb2)
-PLS_lm(log(ypine),XpineNAX21,10,typeVC="standard")$CVinfos
+PLS_lm(log(ypine),XpineNAX21,10,typeVC="standard")$InfCrit
 
 
 data(aze_compl)
@@ -251,7 +251,7 @@ boxplot(kfolds2coeff(bbb)[,1])
 kfolds2Chisqind(bbb)
 kfolds2Chisq(bbb)
 kfolds2CVinfos_glm(bbb)
-PLS_lm(log(ypine),Xpine,10,typeVC="standard")$CVinfos
+PLS_lm(log(ypine),Xpine,10,typeVC="standard")$InfCrit
 
 XpineNAX21 <- Xpine
 XpineNAX21[1,2] <- NA
@@ -265,7 +265,7 @@ boxplot(kfolds2coeff(bbb2)[,1])
 kfolds2Chisqind(bbb2)
 kfolds2Chisq(bbb2)
 kfolds2CVinfos_glm(bbb2)
-PLS_lm(log(ypine),XpineNAX21,10,typeVC="standard")$CVinfos
+PLS_lm(log(ypine),XpineNAX21,10,typeVC="standard")$InfCrit
 
 
 
@@ -282,7 +282,7 @@ boxplot(kfolds2coeff(bbb)[,1])
 kfolds2Chisqind(bbb)
 kfolds2Chisq(bbb)
 kfolds2CVinfos_glm(bbb)
-PLS_lm(log(ypine),Xpine,10,typeVC="standard")$CVinfos
+PLS_lm(log(ypine),Xpine,10,typeVC="standard")$InfCrit
 
 XpineNAX21 <- Xpine
 XpineNAX21[1,2] <- NA
@@ -296,7 +296,7 @@ boxplot(kfolds2coeff(bbb2)[,1])
 kfolds2Chisqind(bbb2)
 kfolds2Chisq(bbb2)
 kfolds2CVinfos_glm(bbb2)
-PLS_lm(log(ypine),XpineNAX21,10,typeVC="standard")$CVinfos
+PLS_lm(log(ypine),XpineNAX21,10,typeVC="standard")$InfCrit
 
 
 
@@ -322,7 +322,7 @@ boxplot(kfolds2coeff(bbb2)[,1])
 kfolds2Chisqind(bbb2)
 kfolds2Chisq(bbb2)
 kfolds2CVinfos_glm(bbb2)
-PLS_lm(log(yCornell),XCornell,10,typeVC="standard")$CVinfos
+PLS_lm(log(yCornell),XCornell,10,typeVC="standard")$InfCrit
 
 
 

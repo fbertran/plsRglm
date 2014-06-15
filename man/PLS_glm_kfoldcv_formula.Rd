@@ -138,7 +138,7 @@ boxplot(kfolds2coeff(bbb2)[,1])
 kfolds2Chisqind(bbb2)
 kfolds2Chisq(bbb2)
 kfolds2CVinfos_glm(bbb2)
-PLS_lm_formula(log(Y)~.,data=Cornell,10,typeVC="standard")$CVinfos
+PLS_lm_formula(log(Y)~.,data=Cornell,10,typeVC="standard")$InfCrit
 rm(list=c("bbb","bbb2"))
 
 
@@ -155,7 +155,7 @@ boxplot(kfolds2coeff(bbb)[,1])
 kfolds2Chisqind(bbb)
 kfolds2Chisq(bbb)
 kfolds2CVinfos_glm(bbb)
-PLS_lm_formula(log(x11)~.,data=pine,nt=10,typeVC="standard")$CVinfos
+PLS_lm_formula(log(x11)~.,data=pine,nt=10,typeVC="standard")$InfCrit
 
 pineNAX21 <- pine
 pineNAX21[1,2] <- NA
@@ -171,7 +171,7 @@ boxplot(kfolds2coeff(bbb2)[,1])
 kfolds2Chisqind(bbb2)
 kfolds2Chisq(bbb2)
 kfolds2CVinfos_glm(bbb2)
-PLS_lm_formula(log(x11)~.,data=pineNAX21,nt=10,typeVC="standard")$CVinfos
+PLS_lm_formula(log(x11)~.,data=pineNAX21,nt=10,typeVC="standard")$InfCrit
 rm(list=c("pineNAX21","bbb","bbb2"))
 
 
@@ -209,7 +209,7 @@ boxplot(kfolds2coeff(bbb)[,1])
 kfolds2Chisqind(bbb)
 kfolds2Chisq(bbb)
 kfolds2CVinfos_glm(bbb)
-PLS_lm_formula(log(x11)~.,data=pine,10,typeVC="standard")$CVinfos
+PLS_lm_formula(log(x11)~.,data=pine,10,typeVC="standard")$InfCrit
 
 pineNAX21 <- pine
 pineNAX21[1,2] <- NA
@@ -225,7 +225,7 @@ boxplot(kfolds2coeff(bbb2)[,1])
 kfolds2Chisqind(bbb2)
 kfolds2Chisq(bbb2)
 kfolds2CVinfos_glm(bbb2)
-PLS_lm_formula(log(x11)~.,data=pineNAX21,10,typeVC="standard")$CVinfos
+PLS_lm_formula(log(x11)~.,data=pineNAX21,10,typeVC="standard")$InfCrit
 rm(list=c("pineNAX21","bbb","bbb2"))
 
 
@@ -243,7 +243,7 @@ boxplot(kfolds2coeff(bbb)[,1])
 kfolds2Chisqind(bbb)
 kfolds2Chisq(bbb)
 kfolds2CVinfos_glm(bbb)
-PLS_lm_formula(log(x11)~.,data=pine,10,typeVC="standard")$CVinfos
+PLS_lm_formula(log(x11)~.,data=pine,10,typeVC="standard")$InfCrit
 
 pineNAX21 <- pine
 pineNAX21[1,2] <- NA
@@ -259,7 +259,7 @@ boxplot(kfolds2coeff(bbb2)[,1])
 kfolds2Chisqind(bbb2)
 kfolds2Chisq(bbb2)
 kfolds2CVinfos_glm(bbb2)
-PLS_lm_formula(log(x11)~.,data=pineNAX21,10,typeVC="standard")$CVinfos
+PLS_lm_formula(log(x11)~.,data=pineNAX21,10,typeVC="standard")$InfCrit
 rm(list=c("pineNAX21","bbb","bbb2"))
 
 
@@ -293,7 +293,7 @@ boxplot(kfolds2coeff(bbb2)[,1])
 kfolds2Chisqind(bbb2)
 kfolds2Chisq(bbb2)
 kfolds2CVinfos_glm(bbb2)
-PLS_lm_formula(log(Y)~.,data=Cornell,10,typeVC="standard")$CVinfos
+PLS_lm_formula(log(Y)~.,data=Cornell,10,typeVC="standard")$InfCrit
 rm(list=c("bbb","bbb2"))
 
 

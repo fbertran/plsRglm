@@ -35,12 +35,12 @@ boxplot(kfolds2coeff(bbb2)[,1])
 kfolds2Chisqind(bbb2)
 kfolds2Chisq(bbb2)
 kfolds2CVinfos_glm(bbb2)
-PLS_lm(log(yCornell),XCornell,10,typeVC="standard")$CVinfos
+PLS_lm(log(yCornell),XCornell,10,typeVC="standard")$InfCrit
 rm(list=c("XCornell","yCornell","bbb","bbbbis","bbb2"))
 
 data(Cornell)
 PLS_lm_formula(Y~.,data=Cornell,10)$InfCrit
-PLS_lm_formula(Y~.,data=Cornell,10,typeVC="standard")$CVinfos
+PLS_lm_formula(Y~.,data=Cornell,10,typeVC="standard")$InfCrit
 PLS_lm_formula(Y~.,data=Cornell,6)$AIC 
 PLS_lm_formula(Y~.,data=Cornell,6)$AIC.std    
 
@@ -56,7 +56,7 @@ bbb <- PLS_lm_kfoldcv_formula(Y~.,data=data.frame(scale(as.matrix(Cornell))[,]),
 bbb2 <- PLS_lm_kfoldcv_formula(Y~.,data=data.frame(scale(as.matrix(Cornell))[,]),nt=6,K=6,NK=1)
 kfolds2CVinfos_lm(bbb)
 kfolds2CVinfos_lm(bbb2)
-PLS_lm_formula(Y~.,data=Cornell,6,typeVC="standard")$CVinfos
+PLS_lm_formula(Y~.,data=Cornell,6,typeVC="standard")$InfCrit
 rm(list=c("bbb","bbb2"))
 
 data(aze_compl)

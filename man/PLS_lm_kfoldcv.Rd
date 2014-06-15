@@ -83,7 +83,7 @@ bbb <- PLS_lm_kfoldcv(dataY=yCornell,dataX=data.frame(scale(as.matrix(XCornell))
 bbb2 <- PLS_lm_kfoldcv(dataY=yCornell,dataX=data.frame(scale(as.matrix(XCornell))[,]),nt=6,K=6,NK=1)
 kfolds2CVinfos_lm(bbb)
 kfolds2CVinfos_lm(bbb2)
-PLS_lm(yCornell,XCornell,6,typeVC="standard")$CVinfos
+PLS_lm(yCornell,XCornell,6,typeVC="standard")$InfCrit
 rm(list=c("XCornell","yCornell","bbb","bbb2"))
 
 
@@ -95,7 +95,7 @@ bbb <- PLS_lm_kfoldcv(dataY=log(ypine),dataX=Xpine,nt=10,K=12,NK=1)
 bbb2 <- PLS_lm_kfoldcv(dataY=log(ypine),dataX=Xpine,nt=10,K=6,NK=1)
 kfolds2CVinfos_lm(bbb)
 kfolds2CVinfos_lm(bbb2)
-PLS_lm(log(ypine),Xpine,10,typeVC="standard")$CVinfos
+PLS_lm(log(ypine),Xpine,10,typeVC="standard")$InfCrit
 
 XpineNAX21 <- Xpine
 XpineNAX21[1,2] <- NA
@@ -103,7 +103,7 @@ bbbNA <- PLS_lm_kfoldcv(dataY=log(ypine),dataX=XpineNAX21,nt=10,K=12,NK=1)
 bbbNA2 <- PLS_lm_kfoldcv(dataY=log(ypine),dataX=XpineNAX21,nt=10,K=6,NK=1)
 kfolds2CVinfos_lm(bbbNA)
 kfolds2CVinfos_lm(bbbNA2)
-PLS_lm(log(ypine),XpineNAX21,10,typeVC="standard")$CVinfos
+PLS_lm(log(ypine),XpineNAX21,10,typeVC="standard")$InfCrit
 rm(list=c("Xpine","XpineNAX21","ypine","bbb","bbb2","bbbNA","bbbNA2"))
 }
 }

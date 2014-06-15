@@ -9,7 +9,7 @@ PLS_lm(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = dataX,
 modele = "pls", family = NULL, typeVC = "none", EstimXNA = FALSE, 
 scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
 alpha.pvals.expli = 0.05, MClassed = FALSE, tol_Xi = 10^(-12),
-weights,sparse=FALSE,sparseStop=TRUE,naive=FALSE)
+weights,sparse=FALSE,sparseStop=FALSE,naive=FALSE)
 }
 \arguments{
   \item{dataY}{response (training) dataset}
@@ -104,25 +104,19 @@ The default estimator for Degrees of Freedom is the Kramer and Sugiyama's one. I
   \item{\code{Q2_2}}{Description of 'comp2'}
   \item{\code{Q2cum}}{Description of 'comp2'}
   \item{\code{Q2cum_2}}{Description of 'comp2'}
-  \item{\code{CVinfos}}{Description of 'comp2'}
   }
   }
-  \item{optional}{If no cross validation was requested :\cr
-          i.e. \code{typeVC="none"}.
-  \describe{
-  \item{\code{InfCrit}}{Several information criteria of fit statistics}
-  }
-  }
+  \item{InfCrit}{Description of 'comp2'}
   \item{Std.ValsPredictY}{Description of 'comp2'}
   \item{ValsPredictY}{Description of 'comp2'}
   \item{Std.XChapeau}{Description of 'comp2'}
   \item{XXwotNA}{Description of 'comp2'}
 }
 \references{
-Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frédéric}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{régression}{r\'egression} PLS et de la \enc{régression}{r\'egression} logistique PLS : application aux \enc{données}{donn\'ees} \enc{d'allélotypage}{d'all\'elotypage}. \emph{Journal de la Société Française de Statistique}, 151(2), pages 1-18.
+Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{r?gression}{r\'egression} PLS et de la \enc{r?gression}{r\'egression} logistique PLS : application aux \enc{donn?es}{donn\'ees} \enc{d'all?lotypage}{d'all\'elotypage}. \emph{Journal de la Soci?t? Fran?aise de Statistique}, 151(2), pages 1-18.
 \url{http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf}
 }
-\author{\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
@@ -135,7 +129,7 @@ data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
 PLS_lm(yCornell,XCornell,10)$InfCrit
-PLS_lm(yCornell,XCornell,10,typeVC="standard")$CVinfos
+PLS_lm(yCornell,XCornell,10,typeVC="standard")$InfCrit
 PLS_lm(yCornell,XCornell,6)$AIC 
 PLS_lm(yCornell,XCornell,6)$AIC.std   
 
@@ -162,8 +156,8 @@ modpls$Probs-modpls$Probs.trc
 modpls$InfCrit
 PLS_lm(yaze_compl,Xaze_compl,10)$InfCrit
 
-PLS_lm(yaze_compl,Xaze_compl,10,typeVC="standard")$CVinfos
-PLS_lm(yaze_compl,Xaze_compl,10,typeVC="standard",MClassed=TRUE)$CVinfos
+PLS_lm(yaze_compl,Xaze_compl,10,typeVC="standard")$InfCrit
+PLS_lm(yaze_compl,Xaze_compl,10,typeVC="standard",MClassed=TRUE)$InfCrit
 rm(list=c("Xaze_compl","yaze_compl","modpls"))
 
 
@@ -178,9 +172,9 @@ Xsimbin1 <- dicho(XdataAstar2)
 PLS_lm(ysimbin1,Xsimbin1,10,MClassed=TRUE)$Probs
 PLS_lm(ysimbin1,Xsimbin1,10,MClassed=TRUE)$Probs.trc
 PLS_lm(ysimbin1,Xsimbin1,10,MClassed=TRUE)$MissClassed
-PLS_lm(ysimbin1,Xsimbin1,10,typeVC="standard",MClassed=TRUE)$CVinfos
-PLS_lm(ysimbin1,XdataAstar2,10,typeVC="standard",MClassed=TRUE)$CVinfos
-PLS_lm(ydataAstar2,XdataAstar2,10,typeVC="standard")$CVinfos
+PLS_lm(ysimbin1,Xsimbin1,10,typeVC="standard",MClassed=TRUE)$InfCrit
+PLS_lm(ysimbin1,XdataAstar2,10,typeVC="standard",MClassed=TRUE)$InfCrit
+PLS_lm(ydataAstar2,XdataAstar2,10,typeVC="standard")$InfCrit
 rm(list=c("dimX","Astar","dataAstar2","ysimbin1","Xsimbin1","ydataAstar2","XdataAstar2"))
 
 
@@ -191,7 +185,7 @@ ydataAstar4 <- dataAstar4[,1]
 XdataAstar4 <- dataAstar4[,2:(dimX+1)]
 modpls <- PLS_lm(ydataAstar4,XdataAstar4,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 str(modpls)
 rm(list=c("dimX","Astar","dataAstar4","modpls","ydataAstar4","XdataAstar4"))
 
@@ -203,7 +197,7 @@ ydataAstar2 <- dataAstar2[,1]
 XdataAstar2 <- dataAstar2[,2:(dimX+1)]
 modpls <- PLS_lm(ydataAstar2,XdataAstar2,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar2","modpls","ydataAstar2","XdataAstar2"))
 
 
@@ -221,7 +215,7 @@ PLS_lm(yCornell,XCornell,3)$Coeffs
 plsreg1(x=XCornell,y=as.vector(yCornell),nc=4,cv=TRUE)
 PLS_lm(yCornell,XCornell,4,typeVC="standard")$press.ind
 PLS_lm(yCornell,XCornell,4,typeVC="standard")$press.tot
-PLS_lm(yCornell,XCornell,4,typeVC="standard")$CVinfos
+PLS_lm(yCornell,XCornell,4,typeVC="standard")$InfCrit
 plsreg1(x=XCornell,y=as.vector(yCornell),nc=4,cv=TRUE)$Q2
 
 
@@ -235,7 +229,7 @@ plsreg1(x=Xpine,y=log(as.vector(ypine)),nc=4)$coeffs
 PLS_lm(log(ypine),Xpine,1)$Std.Coeffs
 PLS_lm(log(ypine),Xpine,1)$Coeffs
 plsreg1(x=Xpine,y=log(as.vector(ypine)),nc=10)$Q2
-PLS_lm(log(ypine),Xpine,10,typeVC="standard")$CVinfos
+PLS_lm(log(ypine),Xpine,10,typeVC="standard")$InfCrit
 plsreg1(x=Xpine,y=log(as.vector(ypine)),nc=4,cv=TRUE)$Q2
 
 
@@ -261,13 +255,13 @@ plsreg1(x=XpineNAX21,y=as.vector(log(ypine)),nc=4,cv=TRUE)
 PLS_lm(log(ypine),XpineNAX21,2,dataPredictY=XpineNAX21[1,])$ValsPredictY
 
 PLS_lm(log(ypine),Xpine,10,typeVC="none")$InfCrit
-PLS_lm(log(ypine),Xpine,10,typeVC="standard")$CVinfos
-PLS_lm(log(ypine),Xpine,10,typeVC="adaptative")$CVinfos
-PLS_lm(log(ypine),Xpine,10,typeVC="missingdata")$CVinfos
+PLS_lm(log(ypine),Xpine,10,typeVC="standard")$InfCrit
+PLS_lm(log(ypine),Xpine,10,typeVC="adaptative")$InfCrit
+PLS_lm(log(ypine),Xpine,10,typeVC="missingdata")$InfCrit
 PLS_lm(log(ypine),XpineNAX21,10,typeVC="none")$InfCrit
-PLS_lm(log(ypine),XpineNAX21,10,typeVC="standard")$CVinfos
-PLS_lm(log(ypine),XpineNAX21,10,typeVC="adaptative")$CVinfos
-PLS_lm(log(ypine),XpineNAX21,10,typeVC="missingdata")$CVinfos
+PLS_lm(log(ypine),XpineNAX21,10,typeVC="standard")$InfCrit
+PLS_lm(log(ypine),XpineNAX21,10,typeVC="adaptative")$InfCrit
+PLS_lm(log(ypine),XpineNAX21,10,typeVC="missingdata")$InfCrit
 
 PLS_lm(log(ypine),XpineNAX21,4,EstimXNA=TRUE)$XChapeau
 PLS_lm(log(ypine),XpineNAX21,4,EstimXNA=TRUE)$XChapeauNA
@@ -282,7 +276,7 @@ ydataAstar3 <- dataAstar3[,1]
 XdataAstar3 <- dataAstar3[,2:(dimX+1)]
 modpls <- PLS_lm(ydataAstar3,XdataAstar3,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar3","modpls","ydataAstar3","XdataAstar3"))
 
 
@@ -293,7 +287,7 @@ ydataAstar4 <- dataAstar4[,1]
 XdataAstar4 <- dataAstar4[,2:(dimX+1)]
 modpls <- PLS_lm(ydataAstar4,XdataAstar4,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar4","modpls","ydataAstar4","XdataAstar4"))
 
 
@@ -304,7 +298,7 @@ ydataAstar5 <- dataAstar5[,1]
 XdataAstar5 <- dataAstar5[,2:(dimX+1)]
 modpls <- PLS_lm(ydataAstar5,XdataAstar5,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar5","modpls","ydataAstar5","XdataAstar5"))
 
 
@@ -315,7 +309,7 @@ ydataAstar6 <- dataAstar6[,1]
 XdataAstar6 <- dataAstar6[,2:(dimX+1)]
 modpls <- PLS_lm(ydataAstar6,XdataAstar6,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar6","modpls","ydataAstar6","XdataAstar6"))
 }
 }

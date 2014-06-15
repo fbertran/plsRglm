@@ -9,7 +9,7 @@ PLS_lm_formula(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,
 modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,
 scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,
 tol_Xi=10^(-12),weights,subset,contrasts=NULL,sparse=FALSE,
-sparseStop=TRUE,naive=FALSE)
+sparseStop=FALSE,naive=FALSE)
 }
 \arguments{
   \item{formula}{an object of class "\code{\link{formula}}" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.}
@@ -114,25 +114,19 @@ The default estimator for Degrees of Freedom is the Kramer and Sugiyama's one. I
   \item{\code{Q2_2}}{Description of 'comp2'}
   \item{\code{Q2cum}}{Description of 'comp2'}
   \item{\code{Q2cum_2}}{Description of 'comp2'}
-  \item{\code{CVinfos}}{Description of 'comp2'}
   }
   }
-  \item{optional}{If no cross validation was requested :\cr
-          i.e. \code{typeVC="none"}.
-  \describe{
-  \item{\code{InfCrit}}{Several information criteria of fit statistics}
-  }
-  }
+  \item{InfCrit}{Description of 'comp2'}
   \item{Std.ValsPredictY}{Description of 'comp2'}
   \item{ValsPredictY}{Description of 'comp2'}
   \item{Std.XChapeau}{Description of 'comp2'}
   \item{XXwotNA}{Description of 'comp2'}
 }
 \references{
-Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frédéric}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{régression}{r\'egression} PLS et de la \enc{régression}{r\'egression} logistique PLS : application aux \enc{données}{donn\'ees} \enc{d'allélotypage}{d'all\'elotypage}. \emph{Journal de la Société Française de Statistique}, 151(2), pages 1-18.
+Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{r?gression}{r\'egression} PLS et de la \enc{r?gression}{r\'egression} logistique PLS : application aux \enc{donn?es}{donn\'ees} \enc{d'all?lotypage}{d'all\'elotypage}. \emph{Journal de la Soci?t? Fran?aise de Statistique}, 151(2), pages 1-18.
 \url{http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf}
 }
-\author{\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
@@ -143,7 +137,7 @@ Use \code{plsR} instead.
 \examples{
 data(Cornell)
 PLS_lm_formula(Y~.,data=Cornell,nt=10)$InfCrit
-PLS_lm_formula(Y~.,data=Cornell,nt=10,typeVC="standard")$CVinfos
+PLS_lm_formula(Y~.,data=Cornell,nt=10,typeVC="standard")$InfCrit
 PLS_lm_formula(Y~.,data=Cornell,nt=6)$AIC 
 PLS_lm_formula(Y~.,data=Cornell,nt=6)$AIC.std    
 
@@ -166,8 +160,8 @@ modpls$Probs-modpls$Probs.trc
 modpls$InfCrit
 PLS_lm_formula(y~.,data=aze_compl,nt=10)$InfCrit
 
-PLS_lm_formula(y~.,data=aze_compl,nt=10,typeVC="standard")$CVinfos
-PLS_lm_formula(y~.,data=aze_compl,nt=10,typeVC="standard",MClassed=TRUE)$CVinfos
+PLS_lm_formula(y~.,data=aze_compl,nt=10,typeVC="standard")$InfCrit
+PLS_lm_formula(y~.,data=aze_compl,nt=10,typeVC="standard",MClassed=TRUE)$InfCrit
 rm(list=c("modpls"))
 
 
@@ -182,9 +176,9 @@ Xsimbin1 <- dicho(XdataAstar2)
 PLS_lm_formula(ysimbin1~Xsimbin1,nt=10,MClassed=TRUE)$Probs
 PLS_lm_formula(ysimbin1~Xsimbin1,nt=10,MClassed=TRUE)$Probs.trc
 PLS_lm_formula(ysimbin1~Xsimbin1,nt=10,MClassed=TRUE)$MissClassed
-PLS_lm_formula(ysimbin1~Xsimbin1,nt=10,typeVC="standard",MClassed=TRUE)$CVinfos
-PLS_lm_formula(ysimbin1~XdataAstar2,nt=10,typeVC="standard",MClassed=TRUE)$CVinfos
-PLS_lm_formula(ydataAstar2~XdataAstar2,nt=10,typeVC="standard")$CVinfos
+PLS_lm_formula(ysimbin1~Xsimbin1,nt=10,typeVC="standard",MClassed=TRUE)$InfCrit
+PLS_lm_formula(ysimbin1~XdataAstar2,nt=10,typeVC="standard",MClassed=TRUE)$InfCrit
+PLS_lm_formula(ydataAstar2~XdataAstar2,nt=10,typeVC="standard")$InfCrit
 rm(list=c("dimX","Astar","dataAstar2","ysimbin1","Xsimbin1","ydataAstar2","XdataAstar2"))
 
 
@@ -195,7 +189,7 @@ ydataAstar4 <- dataAstar4[,1]
 XdataAstar4 <- dataAstar4[,2:(dimX+1)]
 modpls <- PLS_lm_formula(ydataAstar4~XdataAstar4,nt=10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 str(modpls)
 rm(list=c("dimX","Astar","dataAstar4","modpls","ydataAstar4","XdataAstar4"))
 
@@ -207,7 +201,7 @@ ydataAstar2 <- dataAstar2[,1]
 XdataAstar2 <- dataAstar2[,2:(dimX+1)]
 modpls <- PLS_lm_formula(ydataAstar2~XdataAstar2,nt=10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar2","modpls","ydataAstar2","XdataAstar2"))
 
 
@@ -225,7 +219,7 @@ PLS_lm_formula(Y~.,data=Cornell,nt=3)$Coeffs
 plsreg1(x=XCornell,y=as.vector(yCornell),nc=4,cv=TRUE)
 PLS_lm_formula(Y~.,data=Cornell,nt=4,typeVC="standard")$press.ind
 PLS_lm_formula(Y~.,data=Cornell,nt=4,typeVC="standard")$press.tot
-PLS_lm_formula(Y~.,data=Cornell,nt=4,typeVC="standard")$CVinfos
+PLS_lm_formula(Y~.,data=Cornell,nt=4,typeVC="standard")$InfCrit
 plsreg1(x=XCornell,y=as.vector(yCornell),nc=4,cv=TRUE)$Q2
 
 
@@ -237,7 +231,7 @@ plsreg1(x=Xpine,y=log(as.vector(ypine)),nc=4)$coeffs
 PLS_lm_formula(log(x11)~.,data=pine,nt=1)$Std.Coeffs
 PLS_lm_formula(log(x11)~.,data=pine,nt=1)$Coeffs
 plsreg1(x=Xpine,y=log(as.vector(ypine)),nc=10)$Q2
-PLS_lm_formula(log(x11)~.,data=pine,nt=10,typeVC="standard")$CVinfos
+PLS_lm_formula(log(x11)~.,data=pine,nt=10,typeVC="standard")$InfCrit
 plsreg1(x=Xpine,y=log(as.vector(ypine)),nc=4,cv=TRUE)$Q2
 
 
@@ -260,13 +254,13 @@ plsreg1(x=XpineNAX21,y=as.vector(log(ypine)),nc=4,cv=TRUE)
 PLS_lm_formula(log(x11)~.,data=pineNAX21,nt=2,dataPredictY=pineNAX21[1,-11])$ValsPredictY
 
 PLS_lm_formula(log(x11)~.,data=pine,10,typeVC="none")$InfCrit
-PLS_lm_formula(log(x11)~.,data=pine,10,typeVC="standard")$CVinfos
-PLS_lm_formula(log(x11)~.,data=pine,10,typeVC="adaptative")$CVinfos
-PLS_lm_formula(log(x11)~.,data=pine,10,typeVC="missingdata")$CVinfos
+PLS_lm_formula(log(x11)~.,data=pine,10,typeVC="standard")$InfCrit
+PLS_lm_formula(log(x11)~.,data=pine,10,typeVC="adaptative")$InfCrit
+PLS_lm_formula(log(x11)~.,data=pine,10,typeVC="missingdata")$InfCrit
 PLS_lm_formula(log(x11)~.,data=pineNAX21,10,typeVC="none")$InfCrit
-PLS_lm_formula(log(x11)~.,data=pineNAX21,10,typeVC="standard")$CVinfos
-PLS_lm_formula(log(x11)~.,data=pineNAX21,10,typeVC="adaptative")$CVinfos
-PLS_lm_formula(log(x11)~.,data=pineNAX21,10,typeVC="missingdata")$CVinfos
+PLS_lm_formula(log(x11)~.,data=pineNAX21,10,typeVC="standard")$InfCrit
+PLS_lm_formula(log(x11)~.,data=pineNAX21,10,typeVC="adaptative")$InfCrit
+PLS_lm_formula(log(x11)~.,data=pineNAX21,10,typeVC="missingdata")$InfCrit
 
 PLS_lm_formula(log(x11)~.,data=pineNAX21,4,EstimXNA=TRUE)$XChapeau
 PLS_lm_formula(log(x11)~.,data=pineNAX21,4,EstimXNA=TRUE)$XChapeauNA
@@ -281,7 +275,7 @@ ydataAstar3 <- dataAstar3[,1]
 XdataAstar3 <- dataAstar3[,2:(dimX+1)]
 modpls <- PLS_lm_formula(ydataAstar3~XdataAstar3,,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar3","modpls","ydataAstar3","XdataAstar3"))
 
 
@@ -292,7 +286,7 @@ ydataAstar4 <- dataAstar4[,1]
 XdataAstar4 <- dataAstar4[,2:(dimX+1)]
 modpls <- PLS_lm_formula(ydataAstar4~XdataAstar4,,10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar4","modpls","ydataAstar4","XdataAstar4"))
 
 
@@ -303,7 +297,7 @@ ydataAstar5 <- dataAstar5[,1]
 XdataAstar5 <- dataAstar5[,2:(dimX+1)]
 modpls <- PLS_lm_formula(ydataAstar5~XdataAstar5,nt=10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar5","modpls","ydataAstar5","XdataAstar5"))
 
 
@@ -314,7 +308,7 @@ ydataAstar6 <- dataAstar6[,1]
 XdataAstar6 <- dataAstar6[,2:(dimX+1)]
 modpls <- PLS_lm_formula(ydataAstar6~XdataAstar6,nt=10,typeVC="standard")
 modpls$computed_nt
-modpls$CVinfos
+modpls$InfCrit
 rm(list=c("dimX","Astar","dataAstar6","modpls","ydataAstar6","XdataAstar6"))
 }
 }
