@@ -12,7 +12,7 @@ if(any(apply(is.na(dataX),MARGIN=2,"all"))){return(vector("list",0)); cat("One o
 if(any(apply(is.na(dataX),MARGIN=1,"all"))){return(vector("list",0)); cat("One of the rows of dataX is completely filled with missing data\n"); stop()}
 if(identical(dataPredictY,dataX)){PredYisdataX <- TRUE} else {PredYisdataX <- FALSE}
 if(!PredYisdataX){
-if(any(apply(is.na(dataPredictY),MARGIN=2,"all"))){return(vector("list",0)); cat("One of the columns of dataPredictY is completely filled with missing data\n"); stop()}
+#if(any(apply(is.na(dataPredictY),MARGIN=2,"all"))){return(vector("list",0)); cat("One of the columns of dataPredictY is completely filled with missing data\n"); stop()}
 if(any(apply(is.na(dataPredictY),MARGIN=1,"all"))){return(vector("list",0)); cat("One of the rows of dataPredictY is completely filled with missing data\n"); stop()}
 }
 if(missing(weights)){NoWeights=TRUE} else {if(all(weights==rep(1,length(dataY)))){NoWeights=TRUE} else {NoWeights=FALSE}}
@@ -21,7 +21,7 @@ if(any(is.na(dataX))) {na.miss.X <- TRUE} else na.miss.X <- FALSE
 if(any(is.na(dataY))) {na.miss.Y <- TRUE} else na.miss.Y <- FALSE
 if(any(is.na(dataPredictY))) {na.miss.PredictY <- TRUE} else {na.miss.PredictY <- FALSE}
 if(is.null(modele)){naive=FALSE} else {if(modele=="pls"){naive=FALSE} else {if(!missing(naive)){cat(paste("Only naive DoF can be used with PLS GLM\n",sep=""))}; naive=TRUE}}
-if(na.miss.X|na.miss.Y){naive=TRUE; cat(paste("Only naive DoF can be used with missing data\n",sep="")); if(!NoWeights){cat(paste("Weights cannot be used with missing data\n",sep=""))}}
+if(na.miss.X|na.miss.Y){naive=TRUE; cat(paste("Only naive DoF can be used with missing data\n",sep="")); if(!NoWeights){cat(paste("Weights cannot be used with missing data\n",sep=""))};  if(sparse){cat(paste("sparse option cannot be used with missing data\n",sep="")); sparse=FALSE}}
 if(!NoWeights){naive=TRUE; cat(paste("Only naive DoF can be used with weighted PLS\n",sep=""))} else {NoWeights=TRUE}
 if(sparse){sparseStop=TRUE}
 if(sparseStop){pvals.expli=TRUE}
