@@ -11,7 +11,7 @@ if(articlestyle){
   par(mar = mar); par(mgp = mgp)
 }
 if(!ranget0){boxplot(as.vector(bootobject$t[,indices])~factor(rep(1:length(indices),rep(nboot,length(indices)))),ylim=c(max(-5,min(as.vector(bootobject$t[,indices]))),min(5,max(as.vector(bootobject$t[,indices])))),xaxt="n",...)} else
-{boxplot(as.vector(bootobject$t[,indices])~factor(rep(1:length(indices),rep(nboot,length(indices)))),ylim=c(max(-5, min(min(bootobject$t0[indices]),min(as.vector(bootobject$t[,indices])))), min(5, max(max(bootobject$t0[indices]),max(as.vector(bootobject$t[, indices]))))),xaxt="n",...)}
+{boxplot(as.vector(bootobject$t[,indices])~factor(rep(1:length(indices),rep(nboot,length(indices)))),ylim=c(max(min(min(bootobject$t0[indices]),min(as.vector(bootobject$t[,indices])))), min(max(max(bootobject$t0[indices]),max(as.vector(bootobject$t[, indices]))))),xaxt="n",...)}
 #if(prednames){axis(1, at = plotpos+.225, labels = rownames(bootobject$t0)[indices])} else {axis(1, at = plotpos+.225, labels = paste("x",(1:nr)[indices],sep=""))} 
 if(xaxisticks)
   {
