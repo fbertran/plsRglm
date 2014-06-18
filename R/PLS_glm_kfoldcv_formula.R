@@ -131,6 +131,7 @@ if (!is.data.frame(dataX)) {dataX <- data.frame(dataX)}
         return(comp)
     }
     nnkk=1;while(nnkk<=NK) {
+      restartnnkk=FALSE
             cat(paste("NK:", nnkk, "\n"))
         if (K == res$nr) {
             cat("Leave One Out\n")
@@ -188,7 +189,7 @@ if (modele %in% c("pls-glm-polr")) {
 if(match("method",names(call), 0L)==0L){mf2$method<-"logistic"} else {if(!(call$method %in% c("logistic", "probit", "cloglog", "cauchit"))) {mf2$method<-"logistic"}}
 }
                 temptemp <- try(eval(mf2, parent.frame()),silent=TRUE)
-                if(class(temptemp)=="try-error"){nnkk=nnkk-1;next}
+                if(class(temptemp)=="try-error"){restartnnkk=TRUE;break}
                 respls_kfolds[[nnkk]][[ii]] <- temptemp$valsPredict
                 if(!NoWeights) {attr(respls_kfolds[[nnkk]],"XWeights")=weights; attr(respls_kfolds[[nnkk]],"YWeights")=NULL}
                 if (keepcoeffs) {coeffskfolds[[nnkk]][[ii]] = temptemp$coeffs}
@@ -206,15 +207,17 @@ if(match("method",names(call), 0L)==0L){mf2$method<-"logistic"} else {if(!(call$
                   mf2$dataX <- dataX[-nofolds,]
                   mf2$dataPredictY <- dataX[nofolds,]
                   temptemp <- try(eval(mf2, parent.frame()),silent=TRUE)
-                  if(class(temptemp)=="try-error"){nnkk=nnkk-1;next}
+                  if(class(temptemp)=="try-error"){restartnnkk=TRUE;break}
                   respls_kfolds[[nnkk]][[ii]] <- temptemp$valsPredict
                   if(!NoWeights) {attr(respls_kfolds[[nnkk]][[ii]],"XWeights")=weights[-nofolds]; attr(respls_kfolds[[nnkk]][[ii]],"YWeights")=weights[nofolds]}
                   if (keepcoeffs) {coeffs_kfolds[[nnkk]][[ii]] = temptemp$coeffs}
                   if (keepdataY) {dataY_kfolds[[nnkk]][[ii]] = dataY[nofolds]}
                   }
         }
+        if(!restartnnkk){
         folds_kfolds[[nnkk]]<-folds
         nnkk<-nnkk+1
+        }
     }
 results <- list(results_kfolds=respls_kfolds)
 if (keepcoeffs) {results$coeffs_kfolds <- coeffs_kfolds}

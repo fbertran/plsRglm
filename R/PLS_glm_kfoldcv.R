@@ -84,6 +84,7 @@ PLS_glm_kfoldcv <- function(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", family
         return(comp)
     }
     nnkk=1;while(nnkk<=NK) {
+      restartnnkk=FALSE
             cat(paste("NK:", nnkk, "\n"))
         if (K == res$nr) {
             cat("Leave One Out\n")
@@ -127,11 +128,11 @@ PLS_glm_kfoldcv <- function(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", family
             if (K == 1) {
                 if(NoWeights){
                 temptemp <- try(PLS_glm_wvc(dataY=dataY, dataX=dataX, nt=nt, dataPredictY=dataX, modele=modele, family=family,scaleX=scaleX,scaleY=scaleY,keepcoeffs=keepcoeffs,tol_Xi=tol_Xi,method=method),silent=TRUE)
-                if(class(temptemp)=="try-error"){nnkk=nnkk-1;next}
+                if(class(temptemp)=="try-error"){restartnnkk=TRUE;break}
                 respls_kfolds[[nnkk]][[ii]] <- temptemp$valsPredict
                 } else {
                 temptemp <- try(PLS_glm_wvc(dataY=dataY, dataX=dataX, nt=nt, dataPredictY=dataX, modele=modele, family=family,scaleX=scaleX,scaleY=scaleY,keepcoeffs=keepcoeffs,tol_Xi=tol_Xi,method=method),silent=TRUE)
-                if(class(temptemp)=="try-error"){nnkk=nnkk-1;next}
+                if(class(temptemp)=="try-error"){restartnnkk=TRUE;break}
                 respls_kfolds[[nnkk]][[ii]] <- temptemp$valsPredict; attr(respls_kfolds[[nnkk]],"XWeights")=weights; attr(respls_kfolds[[nnkk]],"YWeights")=NULL}             
                 if (keepdataY) {dataY_kfolds[[nnkk]][[ii]] = NULL}
                 if (keepcoeffs) {coeffskfolds[[nnkk]][[ii]] = temptemp$coeffs}
@@ -140,19 +141,21 @@ PLS_glm_kfoldcv <- function(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", family
                   cat(paste(ii,"\n"))
                   if(NoWeights){
                   temptemp <- try(PLS_glm_wvc(dataY=dataY[-nofolds], dataX=dataX[-nofolds,], nt=nt, dataPredictY=dataX[nofolds,], modele=modele,family=family,scaleX=scaleX,scaleY=scaleY,keepcoeffs=keepcoeffs,tol_Xi=tol_Xi,method=method),silent=TRUE)
-                  if(class(temptemp)=="try-error"){nnkk=nnkk-1;next}
+                  if(class(temptemp)=="try-error"){restartnnkk=TRUE;break}
                   respls_kfolds[[nnkk]][[ii]] <- temptemp$valsPredict
                   } else {
                   temptemp <- try(PLS_glm_wvc(dataY=dataY[-nofolds], dataX=dataX[-nofolds,], nt=nt, dataPredictY=dataX[nofolds,], modele=modele,family=family,scaleX=scaleX,scaleY=scaleY,keepcoeffs=keepcoeffs,tol_Xi=tol_Xi,weights=weights[-nofolds],method=method),silent=TRUE) 
-                  if(class(temptemp)=="try-error"){nnkk=nnkk-1;next}
-                respls_kfolds[[nnkk]][[ii]] <- temptemp$valsPredict; attr(respls_kfolds[[nnkk]][[ii]],"XWeights")=weights[-nofolds]; attr(respls_kfolds[[nnkk]][[ii]],"YWeights")=weights[nofolds]}
+                  if(class(temptemp)=="try-error"){restartnnkk=TRUE;break}
+                  respls_kfolds[[nnkk]][[ii]] <- temptemp$valsPredict; attr(respls_kfolds[[nnkk]][[ii]],"XWeights")=weights[-nofolds]; attr(respls_kfolds[[nnkk]][[ii]],"YWeights")=weights[nofolds]}
                   if (keepdataY) {dataY_kfolds[[nnkk]][[ii]] = dataY[nofolds]}
                   if (keepcoeffs) {coeffs_kfolds[[nnkk]][[ii]] = temptemp$coeffs}
                   }
         }
+      if(!restartnnkk){
         folds_kfolds[[nnkk]]<-folds
-        nnkk<-nnkk+1        
-    }
+        nnkk<-nnkk+1
+      }
+      }
 results <- list(results_kfolds=respls_kfolds)
 if (keepcoeffs) {results$coeffs_kfolds <- coeffs_kfolds}
 if (keepfolds) {results$folds <- folds_kfolds}
