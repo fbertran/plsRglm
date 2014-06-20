@@ -2,6 +2,8 @@
 \alias{plsRglm}
 \alias{plsRglmmodel.default}
 \alias{plsRglmmodel.formula}
+\alias{PLS_glm}
+\alias{PLS_glm_formula}
 \title{Partial least squares Regression generalized linear models}
 \description{
 This function implements Partial least squares Regression generalized linear models complete or incomplete datasets.
@@ -19,6 +21,16 @@ EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,
 alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,subset,
 start=NULL,etastart,mustart,offset,method="glm.fit",control= list(),
 contrasts=NULL,sparse=FALSE,sparseStop=TRUE,naive=FALSE)
+PLS_glm(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = dataX, 
+modele = "pls", family = NULL, typeVC = "none", EstimXNA = FALSE, 
+scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
+alpha.pvals.expli = 0.05, MClassed = FALSE, tol_Xi = 10^(-12), weights, 
+method, sparse = FALSE, sparseStop=FALSE, naive=FALSE)
+PLS_glm_formula(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,
+modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,
+scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,
+tol_Xi=10^(-12),weights,subset,start=NULL,etastart,mustart,offset,method,
+control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE)
 }
 \arguments{
   \item{x}{a formula or a response (training) dataset}
@@ -93,10 +105,10 @@ The default estimator for Degrees of Freedom is the Kramer and Sugiyama's one wh
 Depends on the model that was used to fit the model.
 }
 \references{
-Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frédéric}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{régression}{r\'egression} PLS et de la \enc{régression}{r\'egression} logistique PLS : application aux \enc{données}{donn\'ees} \enc{d'allélotypage}{d'all\'elotypage}. \emph{Journal de la Société Française de Statistique}, 151(2), pages 1-18.
+Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{r?gression}{r\'egression} PLS et de la \enc{r?gression}{r\'egression} logistique PLS : application aux \enc{donn?es}{donn\'ees} \enc{d'all?lotypage}{d'all\'elotypage}. \emph{Journal de la Soci?t? Fran?aise de Statistique}, 151(2), pages 1-18.
 \url{http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf}
 }
-\author{\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
