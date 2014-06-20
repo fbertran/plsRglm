@@ -15,7 +15,7 @@ Mclassed_kfolds <- kfolds2Mclassed(pls_kfolds)
 }
 Q2cum_2=rep(NA, nt)
 CVinfos <- vector("list",length(pls_kfolds[[1]]))
-if(is.numeric(bbb$call["limQ2set"])){limQ2 <- rep(as.numeric(as.character(pls_kfolds$call["limQ2set"])),computed_nt)} else {limQ2=rep(as.numeric(as.character(0.0975)),computed_nt)}
+if(is.numeric(pls_kfolds$call["limQ2set"])){limQ2 <- rep(as.numeric(as.character(pls_kfolds$call["limQ2set"])),computed_nt)} else {limQ2=rep(as.numeric(as.character(0.0975)),computed_nt)}
 if (as.character(pls_kfolds$call["modele"]) == "pls") {
 
     for (nnkk in 1:length(pls_kfolds[[1]])) {
