@@ -717,7 +717,7 @@ cat("No component could be extracted please check the data for NA only lines or 
 if (!(na.miss.PredictY | na.miss.Y)) {
 cat("____Predicting X without NA neither in X nor in Y____\n")
 res$ttPredictY <- PredictYwotNA%*%res$wwetoile 
-colnames(res$ttPredictY) <- paste("tt",1:res$computed_nt,sep="")
+colnames(res$ttPredictY) <- paste("Comp_",1:res$computed_nt,sep="")
 }
 else {
 if (na.miss.PredictY & !na.miss.Y) {
@@ -726,7 +726,7 @@ cat("____Predicting X with NA in X and not in Y____\n")
 for (ii in 1:nrow(PredictYwotNA)) {  
       res$ttPredictY <- rbind(res$ttPredictY,t(solve(t(res$pp[PredictYNA[ii,],,drop=FALSE])%*%res$pp[PredictYNA[ii,],,drop=FALSE])%*%t(res$pp[PredictYNA[ii,],,drop=FALSE])%*%(PredictYwotNA[ii,])[PredictYNA[ii,]]))
 }
-colnames(res$ttPredictY) <- paste("tt",1:res$computed_nt,sep="")
+colnames(res$ttPredictY) <- paste("Comp_",1:res$computed_nt,sep="")
 }
 else {
 cat("____There are some NAs both in X and Y____\n")
@@ -819,20 +819,20 @@ res$XChapeauNA <- sweep(sweep(res$Std.XChapeau,2,attr(res$ExpliX,"scaled:scale")
 rownames(res$XChapeau) <- rownames(ExpliX)
 colnames(res$XChapeau) <- colnames(ExpliX)
 }
-names(res$CoeffC) <- paste("Coeff_Comp_Reg",1:res$computed_nt)
+names(res$CoeffC) <- paste("Coeff_Comp_Reg",1:res$computed_nt,sep="")
 rownames(res$Coeffs) <- c("Intercept",colnames(ExpliX))
 }
 
 rownames(res$pp) <- colnames(ExpliX)
-colnames(res$pp) <- paste("Comp_",1:res$computed_nt)
+colnames(res$pp) <- paste("Comp_",1:res$computed_nt,sep="")
 rownames(res$ww) <- colnames(ExpliX)
-colnames(res$ww) <- paste("Comp_",1:res$computed_nt)
+colnames(res$ww) <- paste("Comp_",1:res$computed_nt,sep="")
 rownames(res$wwnorm) <- colnames(ExpliX)
-colnames(res$wwnorm) <- paste("Comp_",1:res$computed_nt)
+colnames(res$wwnorm) <- paste("Comp_",1:res$computed_nt,sep="")
 rownames(res$wwetoile) <- colnames(ExpliX)
-colnames(res$wwetoile) <- paste("Coord_Comp_",1:res$computed_nt)
+colnames(res$wwetoile) <- paste("Coord_Comp_",1:res$computed_nt,sep="")
 rownames(res$tt) <- rownames(ExpliX)
-colnames(res$tt) <- paste("Comp_",1:res$computed_nt)
+colnames(res$tt) <- paste("Comp_",1:res$computed_nt,sep="")
 res$XXwotNA <- XXwotNA
 cat("****________________________________________________****\n")
 cat("\n")

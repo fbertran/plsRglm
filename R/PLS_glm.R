@@ -367,9 +367,9 @@ res$ChisqPearson <- crossprod(residuals.glm(tempconstglm,type="pearson"))
 res$MissClassed <- sum(unclass(res$RepY)!=ifelse(predict(tempconstglm,type="response") < 0.5, 0,1))
 #}
 rm(tempconstglm)
-tt<-res$tt
-tempregglm <- glm(YwotNA~tt,family=family)
-rm(tt)
+tttrain<-data.frame(YwotNA=YwotNA,tt=res$tt)
+tempregglm <- glm(YwotNA~.,data=tttrain,family=family)
+rm(tttrain)
 res$AIC <- cbind(res$AIC,AIC(tempregglm))
 res$BIC <- cbind(res$BIC,AIC(tempregglm, k = log(res$nr)))
 res$Coeffsmodel_vals <- cbind(res$Coeffsmodel_vals,rbind(summary(tempregglm)$coefficients,matrix(rep(NA,4*(nt-kk)),ncol=4)))
@@ -384,9 +384,9 @@ res$CoeffConstante <- tempCoeffConstante
 tempCoeffC <- tempCoeffC[-1]
 } else {
 if (!(na.miss.X | na.miss.Y)) {
-tt<-res$tt
-tempregglm <- glm(YwotNA~tt,family=family)
-rm(tt)
+tttrain<-data.frame(YwotNA=YwotNA,tt=res$tt)
+tempregglm <- glm(YwotNA~.,data=tttrain,family=family)
+rm(tttrain)
 res$AIC <- cbind(res$AIC,AIC(tempregglm))
 res$BIC <- cbind(res$BIC,AIC(tempregglm, k = log(res$nr)))
 res$Coeffsmodel_vals <- cbind(res$Coeffsmodel_vals,rbind(summary(tempregglm)$coefficients,matrix(rep(NA,4*(nt-kk)),ncol=4)))
@@ -402,9 +402,9 @@ tempCoeffC <- tempCoeffC[-1]
 }
 else
 {
-tt<-res$tt
-tempregglm <- glm(YwotNA~tt,family=family)
-rm(tt)
+tttrain<-data.frame(YwotNA=YwotNA,tt=res$tt)
+tempregglm <- glm(YwotNA~.,data=tttrain,family=family)
+rm(tttrain)
 res$AIC <- cbind(res$AIC,AIC(tempregglm))
 res$BIC <- cbind(res$BIC,AIC(tempregglm, k = log(res$nr)))
 res$Coeffsmodel_vals <- cbind(res$Coeffsmodel_vals,rbind(summary(tempregglm)$coefficients,matrix(rep(NA,4*(nt-kk)),ncol=4)))
@@ -454,9 +454,9 @@ tempm <- model.frame(tempfff, tempmodord)
 tempmat <- model.matrix(tempfff, model.frame(tempfff, tempmodord))
 res$ChisqPearson <- sum(Chiscompmatrix(as.list(as.data.frame(t(predict(tempconstpolr,type="probs")))),as.list(as.data.frame(t(tempmat)))))
 rm(tempconstpolr)
-tts<-res$tt
-tempregpolr <- MASS::polr(YwotNA~tts,na.action=na.exclude,Hess=TRUE,method=method)
-rm(tts)
+tttrain<-data.frame(YwotNA=YwotNA,tt=res$tt)
+tempregpolr <- MASS::polr(YwotNA~.,data=tttrain,na.action=na.exclude,Hess=TRUE,method=method)
+rm(tttrain)
 res$AIC <- cbind(res$AIC,AIC(tempregpolr))
 res$BIC <- cbind(res$BIC,AIC(tempregpolr, k = log(res$nr)))
 res$MissClassed <- cbind(res$MissClassed,sum(!(unclass(predict(tempregpolr,type="class"))==unclass(res$RepY))))
@@ -472,9 +472,9 @@ res$CoeffCFull <- matrix(c(tempCoeffConstante,tempCoeffC,rep(NA,nt-kk)),ncol=1)
 res$CoeffConstante <- tempCoeffConstante
 } else {
 if (!(na.miss.X | na.miss.Y)) {
-tts <- res$tt
-tempregpolr <- MASS::polr(YwotNA~tts,na.action=na.exclude,Hess=TRUE,method=method)
-rm(tts)
+tttrain<-data.frame(YwotNA=YwotNA,tt=res$tt)
+tempregpolr <- MASS::polr(YwotNA~.,data=tttrain,na.action=na.exclude,Hess=TRUE,method=method)
+rm(tttrain)
 res$AIC <- cbind(res$AIC,AIC(tempregpolr))
 res$BIC <- cbind(res$BIC,AIC(tempregpolr, k = log(res$nr)))
 res$MissClassed <- cbind(res$MissClassed,sum(!(unclass(predict(tempregpolr,type="class"))==unclass(res$RepY))))
@@ -491,9 +491,9 @@ res$CoeffConstante <- cbind(res$CoeffConstante,tempCoeffConstante)
 }
 else
 {
-tts<-res$tt
-tempregpolr <- MASS::polr(YwotNA~tts,na.action=na.exclude,Hess=TRUE,method=method)
-rm(tts)
+tttrain<-data.frame(YwotNA=YwotNA,tt=res$tt)
+tempregpolr <- MASS::polr(YwotNA~.,data=tttrain,na.action=na.exclude,Hess=TRUE,method=method)
+rm(tttrain)
 res$AIC <- cbind(res$AIC,AIC(tempregpolr))
 res$BIC <- cbind(res$BIC,AIC(tempregpolr, k = log(res$nr)))
 res$MissClassed <- cbind(res$MissClassed,sum(!(unclass(predict(tempregpolr,type="class"))==unclass(res$RepY))))
@@ -890,15 +890,14 @@ res$Coeffsmodel_vals<-res$Coeffsmodel_vals[1:(dim(res$Coeffsmodel_vals)[1]-(nt-r
 if (!(na.miss.PredictY | na.miss.Y)) {
 cat("____Predicting X without NA neither in X nor in Y____\n")
 res$ttPredictY <- PredictYwotNA%*%res$wwetoile 
-colnames(res$ttPredictY) <- paste("tt",1:res$computed_nt,sep="")
-}
+colnames(res$ttPredictY) <- NULL}
 else {
 if (na.miss.PredictY & !na.miss.Y) {
 cat("____Predicting X with NA in X and not in Y____\n")
 for (ii in 1:nrow(PredictYwotNA)) {  
       res$ttPredictY <- rbind(res$ttPredictY,t(solve(t(res$pp[PredictYNA[ii,],,drop=FALSE])%*%res$pp[PredictYNA[ii,],,drop=FALSE])%*%t(res$pp[PredictYNA[ii,],,drop=FALSE])%*%(PredictYwotNA[ii,])[PredictYNA[ii,]]))
 }
-colnames(res$ttPredictY) <- paste("tt",1:res$computed_nt,sep="")
+colnames(res$ttPredictY) <- NULL
 }
 else {
 cat("____There are some NAs both in X and Y____\n")
@@ -1004,9 +1003,9 @@ if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-i
 res$YChapeau <- as.matrix(tempregglm$fitted.values)            
 rownames(res$YChapeau) <- rownames(ExpliX)
 
-tt <- res$ttPredictY
-res$Std.ValsPredictY <- predict(tempregglm,newdata=data.frame(tt))
-res$ValsPredictY <- predict(tempregglm,newdata=data.frame(tt),type = "response")
+ttpred <- data.frame(tt=res$ttPredictY)
+res$Std.ValsPredictY <- predict(tempregglm,newdata=ttpred)
+res$ValsPredictY <- predict(tempregglm,newdata=ttpred,type = "response")
 
 res$Std.XChapeau <- res$tt%*%t(res$pp)
 rownames(res$Std.XChapeau) <- rownames(ExpliX)
@@ -1024,26 +1023,28 @@ res$YChapeau <- tempregpolr$fitted.values
 res$YChapeauCat <- predict(tempregpolr,type="class")
 rownames(res$YChapeau) <- rownames(ExpliX)
 
-res$ValsPredictY <- predict(tempregpolr, data.frame(tts=I(res$ttPredictY)),type="probs")
-res$ValsPredictYCat <- predict(tempregpolr, data.frame(tts=I(res$ttPredictY)),type="class")
+ttpred <- data.frame(tt=res$ttPredictY)
+res$ValsPredictY <- predict(tempregpolr, newdata=ttpred,type="probs")
+res$ValsPredictYCat <- predict(tempregpolr, newdata=ttpred,type="class")
 
 res$Std.XChapeau <- res$tt%*%t(res$pp)
 rownames(res$Std.XChapeau) <- rownames(ExpliX)
-names(res$CoeffC) <- paste("Coeff_Comp_Reg",1:res$computed_nt)
+names(res$CoeffC) <- paste("Coeff_Comp_Reg",1:res$computed_nt,sep="")
 res$FinalModel <- tempregpolr
 }
 
 
+colnames(res$ttPredictY) <- paste("Comp_",1:res$computed_nt,sep="")
 rownames(res$pp) <- colnames(ExpliX)
-colnames(res$pp) <- paste("Comp_",1:res$computed_nt)
+colnames(res$pp) <- paste("Comp_",1:res$computed_nt,sep="")
 rownames(res$ww) <- colnames(ExpliX)
-colnames(res$ww) <- paste("Comp_",1:res$computed_nt)
+colnames(res$ww) <- paste("Comp_",1:res$computed_nt,sep="")
 rownames(res$wwnorm) <- colnames(ExpliX)
-colnames(res$wwnorm) <- paste("Comp_",1:res$computed_nt)
+colnames(res$wwnorm) <- paste("Comp_",1:res$computed_nt,sep="")
 rownames(res$wwetoile) <- colnames(ExpliX)
-colnames(res$wwetoile) <- paste("Coord_Comp_",1:res$computed_nt)
+colnames(res$wwetoile) <- paste("Coord_Comp_",1:res$computed_nt,sep="")
 rownames(res$tt) <- rownames(ExpliX)
-colnames(res$tt) <- paste("Comp_",1:res$computed_nt)
+colnames(res$tt) <- paste("Comp_",1:res$computed_nt,sep="")
 res$XXwotNA <- XXwotNA
 cat("****________________________________________________****\n")
 cat("\n")
