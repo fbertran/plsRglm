@@ -11,11 +11,11 @@ cvtable.plsRglm <- function(x,...)
   }
   
   if("Q2Chisq_Y" %in% colnames(x[[1]])){
-    cat("\nCV Q2Chisq criterion:")
-    mincvQ2<-function(lll){ if(all(lll[-1,5+2*MClassed]>lll[-1,4+2*MClassed])){return(length(lll[-1,5+2*MClassed]))} else { return(which.max(lll[-1,5+2*MClassed]<lll[-1,4+2*MClassed])-1)}}  
-    mincvQ2obs<-sapply(x,mincvQ2)
-    rescvQ2<-table(factor(mincvQ2obs,levels=1:max(mincvQ2obs)))
-    print(rescvQ2)    
+    cat("\nCV Q2Chi2 criterion:")
+    mincvQ2Chisq<-function(lll){ if(all(lll[-1,5+2*MClassed]>lll[-1,4+2*MClassed])){return(length(lll[-1,5+2*MClassed]))} else { return(which.max(lll[-1,5+2*MClassed]<lll[-1,4+2*MClassed])-1)}}  
+    mincvQ2Chisqobs<-sapply(x,mincvQ2Chisq)
+    rescvQ2Chisq<-table(factor(mincvQ2Chisqobs,levels=0:max(mincvQ2Chisqobs)))
+    print(rescvQ2Chisq)    
     }
   
   if("PREChi2_Pearson_Y" %in% colnames(x[[1]])){
@@ -27,12 +27,12 @@ cvtable.plsRglm <- function(x,...)
   }
   
   if(MClassed){
-    res=list(CVMC=rescvMC,CVQ2=rescvQ2,CVPreChi2=rescvPreChi2)
-    class(res) <- "table.summary.cv.plsRmodel"
+    res=list(CVMC=rescvMC,CVQ2Chi2=rescvQ2Chisq,CVPreChi2=rescvPreChi2)
+    class(res) <- "table.summary.cv.plsRglmmodel"
     res    
   } else {
-    res=list(CVQ2=rescvQ2,CVPreChi2=rescvPreChi2)  
-    class(res) <- "table.summary.cv.plsRmodel"
+    res=list(CVQ2Chi2=rescvQ2Chisq,CVPreChi2=rescvPreChi2)  
+    class(res) <- "table.summary.cv.plsRglmmodel"
     res    
   }  
 }

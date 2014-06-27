@@ -1,5 +1,4 @@
-PLS_lm_kfoldcv <- function(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", K=5, NK=1, grouplist=NULL, random=FALSE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights) {
-
+PLS_lm_kfoldcv <- function(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights) {
     if(missing(weights)){NoWeights=TRUE} else {if(all(weights==rep(1,length(dataY)))){NoWeights=TRUE} else {NoWeights=FALSE}}
     if(!NoWeights){naive=TRUE; cat(paste("Only naive DoF can be used with weighted PLS\n",sep=""))} else {NoWeights=TRUE}
     res <- NULL
@@ -11,6 +10,7 @@ PLS_lm_kfoldcv <- function(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", K=5, NK
             random = FALSE
         }
     call <- match.call(expand.dots=FALSE)
+    if(as.character(call["random"])=="NULL"){random=TRUE}
     if (as.character(call["modele"])=="NULL") {call$modele <- "pls"}
     if (as.character(call["limQ2set"])=="NULL") {call$limQ2set <- .0975}
     if (as.character(call["tol_Xi"])=="NULL") {call$tol_Xi <- 10^(-12)}

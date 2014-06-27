@@ -1,41 +1,36 @@
 \name{permcoefs.plsR}
 \alias{permcoefs.plsR}
-\title{Coefficients computation for permutation bootstrap}
+\title{Coefficients for permutation bootstrap computations of PLSR models}
 \description{
-  ~~ A (1-5 lines) description of what the function does. ~~
+A function passed to \code{boot} to perform bootstrap.
 }
 \usage{
 permcoefs.plsR(dataset,ind,nt,modele, maxcoefvalues,ifbootfail)
 }
 \arguments{
-  \item{dataset}{ ~~Explain \code{dataset} here~~ }
-  \item{ind}{ ~~Explain \code{ind} here~~ }
-  \item{nt}{ ~~Explain \code{nt} here~~ }
-  \item{modele}{ ~~Explain \code{modele} here~~ }
-  \item{maxcoefvalues}{ ~~Explain \code{maxcoefvalues} here~~ }
-  \item{ifbootfail}{ ~~Explain \code{ifbootfail} here~~ }
+  \item{dataset}{dataset to resample}
+  \item{ind}{indices for resampling}
+  \item{nt}{number of components to use}
+  \item{modele}{type of modele to use, see \link{plsR}}
+  \item{maxcoefvalues}{maximum values allowed for the estimates of the coefficients to discard those coming from singular bootstrap samples}
+  \item{ifbootfail}{value to return if the estimation fails on a bootstrap sample}
 }
-\details{
-  ~~ More details than the description above ~~
-}
-\value{
-  ~Describe the value returned
-  If it is a LIST, use
-  \item{comp1 }{Description of 'comp1'}
-  \item{comp2 }{Description of 'comp2'}
-  ...
-}
-\references{ ~put references to the literature/web site here ~ }
-\author{\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\value{estimates on a bootstrap sample or \code{ifbootfail} value if the bootstrap computation fails.}
+%\references{ ~put references to the literature/web site here ~ }
+\author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
-\note{ ~~some notes~~ 
+\seealso{See also \code{\link{bootpls}}.}
+\examples{
+data(Cornell)
+XCornell<-Cornell[,1:7]
+yCornell<-Cornell[,8]
 
-
+# Lazraq-Cleroux PLS (Y,X) bootstrap
+# statistic=permcoefs.plsR is the default for (Y,X) permutation resampling of PLSR models.
+set.seed(250)
+modpls <- plsR(yCornell,XCornell,1)
+Cornell.bootYX <- bootpls(modpls, sim="permutation", R=250, statistic=permcoefs.plsR)
 }
-\seealso{ ~~objects to See Also as \code{\link{help}}, ~~~ }
-\examples{\donttest{
-\dontrun{print("to do")}
-}
-}\keyword{models}
+\keyword{models}

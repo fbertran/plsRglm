@@ -21,9 +21,11 @@ type=c("response","scores"),weights,methodNA="adaptative",...)
 When type is "\code{response}", a matrix of predicted response values is returned.\cr
 When type is "\code{scores}", a score matrix is returned. 
 }
-\references{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand, Myriam Maumy-Bertrand et Nicolas Meyer (2011). \enc{R?gression}{R\'egression} \enc{B?ta}{B\^eta} PLS. \emph{Preprint}.
+\references{
+Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. \emph{Journal de la Societe Francaise de Statistique}, 151(2), pages 1-18.
+\url{http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf}
 }
-\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
@@ -36,10 +38,10 @@ Xpine_sup<-pine_sup[,1:10]
 Xpine_supNA<-Xpine_sup
 Xpine_supNA[1,1]<-NA
 
-modpls=plsR(dataY=log(ypine),dataX=Xpine,nt=6,modele="pls")
-modplsform=plsR(log(x11)~.,data=pine,nt=6,modele="pls")
-modpls2=plsR(dataY=log(ypine),dataX=Xpine,nt=6,modele="pls",dataPredictY=Xpine_sup)
-modpls2NA=plsR(dataY=log(ypine),dataX=Xpine,nt=6,modele="pls",dataPredictY=Xpine_supNA)
+modpls=plsR(dataY=ypine,dataX=Xpine,nt=6,modele="pls")
+modplsform=plsR(x11~.,data=pine,nt=6,modele="pls")
+modpls2=plsR(dataY=ypine,dataX=Xpine,nt=6,modele="pls",dataPredictY=Xpine_sup)
+modpls2NA=plsR(dataY=ypine,dataX=Xpine,nt=6,modele="pls",dataPredictY=Xpine_supNA)
 
 #Identical to predict(modpls,type="response") or modpls$ValsPredictY
 cbind(predict(modpls),predict(modplsform))

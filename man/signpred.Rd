@@ -20,10 +20,9 @@ labsize = 1, plotsize = 12)
 This function is based on the \code{\link[bipartite]{visweb}} function from the bipartite package.
 }
 \value{A plot window.}
-\references{
-Vázquez, P.D., Chacoff, N.,P. and Cagnolo, L. (2009) Evaluating multiple determinants of the structure of plant-animal mutualistic networks. \emph{Ecology}}
+\references{Vazquez, P.D., Chacoff, N.,P. and Cagnolo, L. (2009) Evaluating multiple determinants of the structure of plant-animal mutualistic networks. \emph{Ecology}, 90:2039-2046.}
 \author{Bernd Gruber with minor modifications from
-\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}}
 \seealso{See Also \code{\link{visweb}}}

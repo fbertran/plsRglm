@@ -11,19 +11,19 @@ This function implements k-fold cross-validation on complete or incomplete datas
 \usage{
 cv.plsR(x, \dots)
 \method{cv.plsRmodel}{default}(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", 
-K=5, NK=1, grouplist=NULL, random=FALSE, scaleX=TRUE, 
+K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, 
 scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, 
 keepMclassed=FALSE, tol_Xi=10^(-12), weights)
 \method{cv.plsRmodel}{formula}(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls", 
-K=5, NK=1, grouplist=NULL, random=FALSE, scaleX=TRUE, 
+K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, 
 scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, 
 keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL)
 PLS_lm_kfoldcv(dataY, dataX, nt = 2, limQ2set = 0.0975, modele = "pls", 
-K = 5, NK = 1, grouplist = NULL, random = FALSE, scaleX = TRUE, 
+K = 5, NK = 1, grouplist = NULL, random = TRUE, scaleX = TRUE, 
 scaleY = NULL, keepcoeffs = FALSE, keepfolds = FALSE, keepdataY = TRUE, 
 keepMclassed=FALSE, tol_Xi = 10^(-12), weights)
 PLS_lm_kfoldcv_formula(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls", 
-K=5, NK=1, grouplist=NULL, random=FALSE, scaleX=TRUE, 
+K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, 
 scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, 
 keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL)
 }
@@ -36,10 +36,10 @@ keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL)
   \item{nt}{number of components to be extracted}
   \item{limQ2set}{limit value for the Q2}
   \item{modele}{name of the PLS model to be fitted, only (\code{"pls"} available for this fonction.}
-  \item{K}{number of groups}
+  \item{K}{number of groups. Defaults to 5.}
   \item{NK}{number of times the group division is made}
   \item{grouplist}{to specify the members of the \code{K} groups}
-  \item{random}{should the \code{K} groups be made randomly}
+  \item{random}{should the \code{K} groups be made randomly. Defaults to \code{TRUE}}
   \item{scaleX}{scale the predictor(s) : must be set to TRUE for \code{modele="pls"} and should be for glms pls.}
   \item{scaleY}{scale the response : Yes/No. Ignored since non always possible for glm responses.}
   \item{keepcoeffs}{shall the coefficients for each model be returned}
@@ -63,7 +63,7 @@ The terms in the formula will be re-ordered so that main effects come first, fol
 
 Non-NULL weights can be used to indicate that different observations have different dispersions (with the values in weights being inversely proportional to the dispersions); or equivalently, when the elements of weights are positive integers w_i, that each response y_i is the mean of w_i unit-weight observations. 
  }
-\value{
+\value{An object of class \code{"cv.plsRmodel"}.\cr 
   \item{results_kfolds}{list of \code{NK}. Each element of the list sums up the results for a group division:
   \describe{
     \item{}{list of \code{K} matrices of size about \code{nrow(dataX)/K * nt} with the predicted values for a growing number of components}
@@ -88,87 +88,34 @@ Non-NULL weights can be used to indicate that different observations have differ
   \item{call}{the call of the function}
 }
 \references{
-Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{r?gression}{r\'egression} PLS et de la \enc{r?gression}{r\'egression} logistique PLS : application aux \enc{donn?es}{donn\'ees} \enc{d'all?lotypage}{d'all\'elotypage}. \emph{Journal de la Soci?t? Fran?aise de Statistique}, 151(2), pages 1-18.
+Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. \emph{Journal de la Societe Francaise de Statistique}, 151(2), pages 1-18.
 \url{http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf}
 }
-\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
 \note{Work for complete and incomplete datasets.}
-\seealso{\code{\link{kfolds2coeff}}, \code{\link{kfolds2Pressind}}, \code{\link{kfolds2Press}}, \code{\link{kfolds2Mclassedind}}, \code{\link{kfolds2Mclassed}} and \code{\link{kfolds2CVinfos_lm}} to extract and transform results from k-fold cross-validation.}
+\seealso{Summary method \code{summary.cv.plsRmodel}. \code{\link{kfolds2coeff}}, \code{\link{kfolds2Pressind}}, \code{\link{kfolds2Press}}, \code{\link{kfolds2Mclassedind}}, \code{\link{kfolds2Mclassed}} and \code{\link{kfolds2CVinfos_lm}} to extract and transform results from k-fold cross-validation.}
 \examples{
 data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
-PLS_lm_kfoldcv(dataY=yCornell,dataX=XCornell,nt=3,K=12,keepfolds=TRUE)
-PLS_lm_kfoldcv(dataY=yCornell,dataX=XCornell,nt=3,K=12,keepfolds=FALSE)
-PLS_lm_kfoldcv(dataY=yCornell,dataX=XCornell,nt=3,K=6,NK=2,random=FALSE,keepfolds=TRUE)
-PLS_lm_kfoldcv(dataY=yCornell,dataX=XCornell,nt=3,K=6,NK=2,random=TRUE,keepfolds=TRUE)
-PLS_lm_kfoldcv(dataY=yCornell,dataX=XCornell,nt=3,keepcoeffs=TRUE,keepfolds=TRUE)
-PLS_lm_kfoldcv(dataY=yCornell,dataX=XCornell,nt=3,keepcoeffs=TRUE,keepfolds=FALSE)
 
-bbb <- PLS_lm_kfoldcv(dataY=yCornell,dataX=data.frame(scale(as.matrix(XCornell))[,]),nt=6,K=12,NK=1)
-bbb2 <- PLS_lm_kfoldcv(dataY=yCornell,dataX=data.frame(scale(as.matrix(XCornell))[,]),nt=6,K=6,NK=1)
-kfolds2CVinfos_lm(bbb)
-kfolds2CVinfos_lm(bbb2)
-PLS_lm(yCornell,XCornell,6,typeVC="standard")$InfCrit
-rm(list=c("XCornell","yCornell","bbb","bbb2"))
+#Leave one out CV (K=nrow(Cornell)) one time (NK=1)
+bbb <- cv.plsR(dataY=yCornell,dataX=XCornell,nt=6,K=nrow(Cornell),NK=1)
+bbb2 <- cv.plsR(Y~.,data=Cornell,nt=6,K=12,NK=1)
+(sum1<-summary(bbb))
 
+#6-fold CV (K=6) two times (NK=2)
+#use random=TRUE to randomly create folds for repeated CV
+bbb3 <- cv.plsR(dataY=yCornell,dataX=XCornell,nt=6,K=6,NK=2)
+bbb4 <- cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=2)
+(sum3<-summary(bbb3))
 
-\donttest{
-data(pine)
-Xpine<-pine[,1:10]
-ypine<-pine[,11]
-bbb <- PLS_lm_kfoldcv(dataY=log(ypine),dataX=Xpine,nt=10,K=12,NK=1)
-bbb2 <- PLS_lm_kfoldcv(dataY=log(ypine),dataX=Xpine,nt=10,K=6,NK=1)
-kfolds2CVinfos_lm(bbb)
-kfolds2CVinfos_lm(bbb2)
-PLS_lm(log(ypine),Xpine,10,typeVC="standard")$InfCrit
-
-XpineNAX21 <- Xpine
-XpineNAX21[1,2] <- NA
-bbbNA <- PLS_lm_kfoldcv(dataY=log(ypine),dataX=XpineNAX21,nt=10,K=12,NK=1)
-bbbNA2 <- PLS_lm_kfoldcv(dataY=log(ypine),dataX=XpineNAX21,nt=10,K=6,NK=1)
-kfolds2CVinfos_lm(bbbNA)
-kfolds2CVinfos_lm(bbbNA2)
-PLS_lm(log(ypine),XpineNAX21,10,typeVC="standard")$InfCrit
-rm(list=c("Xpine","XpineNAX21","ypine","bbb","bbb2","bbbNA","bbbNA2"))
-}
-
-data(Cornell)
-PLS_lm_kfoldcv_formula(Y~.,Cornell,nt=3,K=12,keepfolds=TRUE)
-PLS_lm_kfoldcv_formula(Y~.,Cornell,nt=3,K=12,keepfolds=FALSE)
-PLS_lm_kfoldcv_formula(Y~.,Cornell,nt=3,K=6,NK=2,random=FALSE,keepfolds=TRUE)
-PLS_lm_kfoldcv_formula(Y~.,Cornell,nt=3,K=6,NK=2,random=TRUE,keepfolds=TRUE)
-PLS_lm_kfoldcv_formula(Y~.,Cornell,nt=3,keepcoeffs=TRUE,keepfolds=TRUE)
-PLS_lm_kfoldcv_formula(Y~.,Cornell,nt=3,keepcoeffs=TRUE,keepfolds=FALSE)
-
-bbb <- PLS_lm_kfoldcv_formula(Y~scale(as.matrix(Cornell))[,-8],Cornell,nt=6,K=12,NK=1)
-bbb2 <- PLS_lm_kfoldcv_formula(Y~scale(as.matrix(Cornell))[,-8],Cornell,nt=6,K=6,NK=1)
-kfolds2CVinfos_lm(bbb)
-kfolds2CVinfos_lm(bbb2)
-PLS_lm_formula(Y~.,Cornell,6,typeVC="standard")$InfCrit
-rm(list=c("bbb","bbb2"))
-
-
-\donttest{
-data(pine)
-bbb <- PLS_lm_kfoldcv_formula(log(x11)~.,pine,nt=10,K=12,NK=1)
-bbb2 <- PLS_lm_kfoldcv_formula(log(x11)~.,pine,nt=10,K=6,NK=1)
-kfolds2CVinfos_lm(bbb)
-kfolds2CVinfos_lm(bbb2)
-PLS_lm_formula(log(x11)~.,pine,10,typeVC="standard")$InfCrit
-
-pineNAX21 <- pine
-pineNAX21[1,2] <- NA
-bbbNA <- PLS_lm_kfoldcv_formula(log(x11)~.,pineNAX21,nt=10,K=12,NK=1)
-bbbNA2 <- PLS_lm_kfoldcv_formula(log(x11)~.,pineNAX21,nt=10,K=6,NK=1)
-kfolds2CVinfos_lm(bbbNA)
-kfolds2CVinfos_lm(bbbNA2)
-PLS_lm_formula(log(x11)~.,pineNAX21,10,typeVC="standard")$InfCrit
-rm(list=c("bbb","bbb2","bbbNA","bbbNA2"))
-}
+cvtable(sum1)
+cvtable(sum3)
+rm(list=c("XCornell","yCornell","bbb","bbb2","bbb3","bbb4"))
 }
 \keyword{models}
 \keyword{regression}

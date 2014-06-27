@@ -3,7 +3,7 @@
 \docType{data}
 \title{Cornell dataset}
 \description{
-  ~~ A concise (1-5 lines) description of the dataset. ~~
+The famous Cornell dataset. A mixture experiment on \code{X1}, \code{X2}, \code{X3}, \code{X4}, \code{X5}, \code{X6} and \code{X7} to analyse octane degree (\code{Y}) in gazoline.
 }
 \usage{data(Cornell)}
 \format{
@@ -16,20 +16,17 @@
     \item{\code{X5}}{a numeric vector}
     \item{\code{X6}}{a numeric vector}
     \item{\code{X7}}{a numeric vector}
-    \item{\code{Y}}{a numeric vector}
+    \item{\code{Y}}{response value: a numeric vector}
   }
 }
-\details{
-  ~~ More details than the description above ~~
-}
 \source{
-  ~~ reference to a publication or URL from which the data were obtained ~~
+M. Tenenhaus. (1998). \emph{La regression PLS, Theorie et pratique}. Editions Technip, Paris.
 }
 \references{
-  ~~ possibly secondary sources and usages ~~
+N. Kettaneh-Wold. Analysis of mixture data with partial least squares. (1992). \emph{Chemometrics and Intelligent Laboratory Systems}, 14(1):57-69.
 }
 \examples{
 data(Cornell)
-## maybe str(Cornell) ; plot(Cornell) ...
+str(Cornell)
 }
 \keyword{datasets}

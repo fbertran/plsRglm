@@ -3,6 +3,21 @@ if(!(match("dataY",names(pls_kfolds$call), 0L)==0L)){
 (mf <- pls_kfolds$call)
 (m <- match(c("dataY", "dataX", "nt", "limQ2set", "modele", "family", "scaleX", "scaleY", "weights", "method", "sparse", "naive"), names(pls_kfolds$call), 0))
 (mf <- mf[c(1, m)])
+if(is.null(mf$modele)){mf$modele<-"pls"}
+if (is.null(mf$family)) {
+  if (mf$modele=="pls") {mf$family<-NULL}
+  if (mf$modele=="pls-glm-Gamma") {mf$family<-Gamma(link = "inverse")}
+  if (mf$modele=="pls-glm-gaussian") {mf$family<-gaussian(link = "identity")}
+  if (mf$modele=="pls-glm-inverse.gaussian") {mf$family<-inverse.gaussian(link = "1/mu^2")}
+  if (mf$modele=="pls-glm-logistic") {mf$family<-binomial(link = "logit")}
+  if (mf$modele=="pls-glm-poisson") {mf$family<-poisson(link = "log")}
+  if (mf$modele=="pls-glm-polr") {mf$family<-NULL}
+}
+if (!is.null(mf$family)) {
+  if (is.character(mf$family)) {mf$family <- get(mf$family, mode = "function", envir = parent.frame())}
+  if (is.function(mf$family)) {mf$family <- mf$family()}
+  if (is.language(mf$family)) {mf$family <- eval(mf$family)}
+}
 (mf$typeVC <- "none")
 (mf$MClassed <- MClassed)
 if (!is.null(mf$family)) {mf$modele <- "pls-glm-family"}
@@ -14,7 +29,7 @@ if (MClassed==TRUE) {
 Mclassed_kfolds <- kfolds2Mclassed(pls_kfolds)
 }
 
-if (as.character(pls_kfolds$call["modele"]) == "pls") {
+if (mf$modele == "pls") {
 press_kfolds <- kfolds2Press(pls_kfolds)
 Q2cum_2=rep(NA, nt)
 CVinfos <- vector("list",length(pls_kfolds[[1]]))
@@ -41,7 +56,14 @@ if (MClassed==FALSE) {
 
 
     }
+class(CVinfos) <- "summary.cv.plsRmodel"
 }
+
+
+
+
+
+
 
 if (as.character(pls_kfolds$call["modele"]) %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {
 press_kfolds <- kfolds2Press(pls_kfolds)
@@ -72,6 +94,7 @@ if (MClassed==FALSE) {
 }
 
     }
+class(CVinfos) <- "summary.cv.plsRglmmodel"
 }
 
 if (as.character(pls_kfolds$call["modele"]) == "pls-glm-polr") {
@@ -102,6 +125,7 @@ if (MClassed==FALSE) {
 }
 
     }
+class(CVinfos) <- "summary.cv.plsRglmmodel"
 }
 return(CVinfos)
 }
@@ -110,6 +134,7 @@ if(!(match("formula",names(pls_kfolds$call), 0L)==0L)){
 (mf <- pls_kfolds$call)
 (m <- match(c("formula", "data", "nt", "limQ2set", "modele", "family", "scaleX", "scaleY", "weights","subset","start","etastart","mustart","offset","control","method","contrasts", "method", "sparse", "naive"), names(pls_kfolds$call), 0))
 (mf <- mf[c(1, m)])
+if(is.null(mf$modele)){mf$modele<-"pls"}
 (mf$typeVC <- "none")
 (mf$MClassed <- MClassed)
 if (mf$modele %in% c("pls","pls-glm-logistic","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-poisson","pls-glm-polr")){mf$family <- NULL}
@@ -121,7 +146,7 @@ if (MClassed==TRUE) {
 Mclassed_kfolds <- kfolds2Mclassed(pls_kfolds)
 }
 
-if (as.character(pls_kfolds$call["modele"]) == "pls") {
+if (mf$modele == "pls") {
 press_kfolds <- kfolds2Press(pls_kfolds)
 Q2cum_2=rep(NA, nt)
 CVinfos <- vector("list",length(pls_kfolds[[1]]))
@@ -149,6 +174,7 @@ if (MClassed==FALSE) {
 
 
     }
+class(CVinfos) <- "summary.cv.plsRmodel"
 }
 
 if (as.character(pls_kfolds$call["modele"]) %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {
@@ -180,6 +206,7 @@ if (MClassed==FALSE) {
 }
 
     }
+class(CVinfos) <- "summary.cv.plsRglmmodel"
 }
 
 if (as.character(pls_kfolds$call["modele"]) == "pls-glm-polr") {
@@ -210,7 +237,9 @@ if (MClassed==FALSE) {
 }
 
     }
+class(CVinfos) <- "summary.cv.plsRglmmodel"
 }
-cat("\n");return(CVinfos)
+cat("\n");
+return(CVinfos)
 }
 }

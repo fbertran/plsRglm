@@ -25,11 +25,11 @@ The original code from Nicole Kraemer and Mikio L. Braun was unable to handle mo
   \item{RSS}{Residual Sums of Squares}
 }
 \references{
-N. Kraemer, M. Sugiyama, The Degrees of Freedom of Partial Least Squares Regression. Preprint (2010). \url{http://arxiv.org/abs/1002.4112}.\cr
-N. Kraemer, M. Sugiyama, M.L. Braun, Lanczos Approximations for the Speedup of Kernel Partial Least Squares Regression, \emph{Proceedings of the Twelfth International Conference on Artificial Intelligence and Statistics (AISTATS)}, (2009) 272-279.
+N. Kraemer, M. Sugiyama. (2011). The Degrees of Freedom of Partial Least Squares Regression. \emph{Journal of the American Statistical Association}, 106(494), 697-705.\cr
+N. Kraemer, M. Sugiyama, M.L. Braun. (2009). Lanczos Approximations for the Speedup of Kernel Partial Least Squares Regression, \emph{Proceedings of the Twelfth International Conference on Artificial Intelligence and Statistics (AISTATS)}, 272-279.
 }
 \author{Nicole Kraemer, Mikio L. Braun with improvements from
-\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }

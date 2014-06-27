@@ -1,44 +1,39 @@
 \name{permcoefs.plsRglmnp}
 \alias{permcoefs.plsRglmnp}
-\title{Coefficients computation for permutation bootstrap}
+\title{Coefficients for permutation bootstrap computations of PLSGLR models}
 \description{
-  ~~ A (1-5 lines) description of what the function does. ~~
+A function passed to \code{boot} to perform bootstrap.
 }
 \usage{
-permcoefs.plsRglmnp(dataRepYtt, ind, nt, modele, family = NULL, 
+permcoefs.plsRglmnp(dataRepYtt, ind, nt, modele, family=NULL, 
 maxcoefvalues, wwetoile,ifbootfail)
 }
 \arguments{
-  \item{dataRepYtt}{ ~~Explain \code{dataRepYtt} here~~ }
-  \item{ind}{ ~~Explain \code{ind} here~~ }
-  \item{nt}{ ~~Explain \code{nt} here~~ }
-  \item{modele}{ ~~Explain \code{modele} here~~ }
-  \item{family}{ ~~Explain \code{family} here~~ }
-  \item{maxcoefvalues}{ ~~Explain \code{maxcoefvalues} here~~ }
-  \item{wwetoile}{ ~~Explain \code{wwetoile} here~~ }
-  \item{ifbootfail}{ ~~Explain \code{ifbootfail} here~~ }
+  \item{dataRepYtt}{components' coordinates to bootstrap}
+  \item{ind}{indices for resampling}
+  \item{nt}{number of components to use}
+  \item{modele}{type of modele to use, see \link{plsRglm}}
+  \item{family}{glm family to use, see \link{plsRglm}}
+  \item{maxcoefvalues}{maximum values allowed for the estimates of the coefficients to discard those coming from singular bootstrap samples}
+  \item{wwetoile}{values of the Wstar matrix in the original fit}  
+  \item{ifbootfail}{value to return if the estimation fails on a bootstrap sample}
 }
-\details{
-  ~~ More details than the description above ~~
-}
-\value{
-  ~Describe the value returned
-  If it is a LIST, use
-  \item{comp1 }{Description of 'comp1'}
-  \item{comp2 }{Description of 'comp2'}
-  ...
-}
-\references{ ~put references to the literature/web site here ~ }
-\author{\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\value{estimates on a bootstrap sample or \code{ifbootfail} value if the bootstrap computation fails.}
+%\references{ ~put references to the literature/web site here ~ }
+\author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
 \note{ ~~some notes~~ 
-
-
 }
-\seealso{ ~~objects to See Also as \code{\link{help}}, ~~~ }
-\examples{\donttest{
-\dontrun{print("to do")}
+\seealso{See also \code{\link{bootplsglm}}}
+\examples{
+data(Cornell)
+
+# (Y,X) bootstrap of a PLSGLR model
+# statistic=coefs.plsRglm is the default for (Y,X) bootstrap of a PLSGLR models.
+set.seed(250)
+modplsglm <- plsRglm(Y~.,data=Cornell,1,modele="pls-glm-family",family=gaussian)
+Cornell.bootYT <- bootplsglm(modplsglm, R=250, statistic=permcoefs.plsRglmnp)
 }
-}\keyword{models}
+\keyword{models}

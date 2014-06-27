@@ -2,221 +2,114 @@
 \alias{bootplsglm}
 \title{Non-parametric Bootstrap for PLS generalized linear models}
 \description{
-Provides a wrapper for the bootstrap function \code{boot} from the \code{boot} R package.\cr Implements non-parametric bootstrap for PLS generalized linear models by case resampling.
+Provides a wrapper for the bootstrap function \code{boot} from the \code{boot} R package.\cr Implements non-parametric bootstraps for PLS Generalized Linear Regression models by either (Y,X) or (Y,T) resampling.
 }
 \usage{
 bootplsglm(object, typeboot="fmodel_np", R=250, statistic=coefs.plsRglmnp, 
 sim="ordinary", stype="i", stabvalue=1e6,...)
 }
 \arguments{
-  \item{object}{ ~~Explain \code{object} here~~ }
-  \item{typeboot}{ ~~Explain \code{typeboot} here~~ }
-  \item{R}{ ~~Explain \code{R} here~~ }
-  \item{statistic}{ ~~Explain \code{statistic} here~~ }
-  \item{sim}{ ~~Explain \code{sim} here~~ }
-  \item{stype}{ ~~Explain \code{stype} here~~ }
-  \item{stabvalue}{ ~~Explain \code{stabvalue} here~~ }
-  \item{\dots}{ ~~Explain \code{\dots} here~~ }
+  \item{object}{An object of class \code{plsRglmmodel} to bootstrap}
+  \item{typeboot}{The type of bootstrap. Either (Y,X) boostrap (\code{typeboot="plsmodel"}) or (Y,T) bootstrap (\code{typeboot="fmodel_np"}). Defaults to (Y,T) resampling.}
+  \item{R}{The number of bootstrap replicates. Usually this will be a single positive integer. For importance resampling, some resamples may use one set of weights and others use a different set of weights. In this case \code{R} would be a vector of integers where each component gives the number of resamples from each of the rows of weights.}
+  \item{statistic}{A function which when applied to data returns a vector containing the statistic(s) of interest. \code{statistic} must take at least two arguments. The first argument passed will always be the original data. The second will be a vector of indices, frequencies or weights which define the bootstrap sample. Further, if predictions are required, then a third argument is required which would be a vector of the random indices used to generate the bootstrap predictions. Any further arguments can be passed to statistic through the \code{...} argument.}
+  \item{sim}{A character string indicating the type of simulation required. Possible values are  \code{"ordinary"} (the default), \code{"balanced"}, \code{"permutation"}, or \code{"antithetic"}.}
+  \item{stype}{A character string indicating what the second argument of \code{statistic} represents. Possible values of stype are \code{"i"} (indices - the default), \code{"f"} (frequencies), or \code{"w"} (weights).}
+  \item{stabvalue}{A value to hard threshold bootstrap estimates computed from atypical resamplings. Especially useful for Generalized Linear Models.}
+  \item{\dots}{Other named arguments for \code{statistic} which are passed unchanged each time it is called. Any such arguments to \code{statistic} should follow the arguments which \code{statistic} is required to have for the simulation. Beware of partial matching to arguments of \code{boot} listed above.}
 }
 \details{
-  ~~ More details than the description above ~~
+More details on bootstrap techniques are available in the help of the \code{\link[boot:boot]{boot}} function.
 }
 \value{
-  ~Describe the value returned
-  If it is a LIST, use
-  \item{comp1 }{Description of 'comp1'}
-  \item{comp2 }{Description of 'comp2'}
-  ...
+  An object of class \code{"boot"}. See the Value part of the help of the function \code{\link[boot:boot]{boot}}.
 }
-\references{ ~put references to the literature/web site here ~ }
-\author{\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\references{
+A. Lazraq, R. Cleroux, and J.-P. Gauchi. (2003). Selecting both latent and explanatory variables in the PLS1 regression model. \emph{Chemometrics and Intelligent Laboratory Systems}, 66(2):117-126.\cr 
+P. Bastien, V. Esposito-Vinzi, and M. Tenenhaus. (2005). PLS generalised linear regression. \emph{Computational Statistics & Data Analysis}, 48(1):17-46.\cr 
+A. C. Davison and D. V. Hinkley. (1997). \emph{Bootstrap Methods and Their Applications}. Cambridge University Press, Cambridge.
+}
+\author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
-\note{ ~~some notes~~ 
-}
 \seealso{\code{\link[boot:boot]{boot}}}
-\examples{\donttest{
+\examples{
+#Imputed aze dataset
 data(aze_compl)
 Xaze_compl<-aze_compl[,2:34]
 yaze_compl<-aze_compl$y
 
 dataset <- cbind(y=yaze_compl,Xaze_compl)
+modplsglm <- plsRglm(y~.,data=dataset,3,modele="pls-glm-logistic")
 
 library(boot)
-# Lazraq-Cléroux PLS bootstrap Classic
+# Bastien (Y,T) PLS bootstrap
+aze_compl.bootYT <- bootplsglm(modplsglm, R=250)
+boxplots.bootpls(aze_compl.bootYT)
+confints.bootpls(aze_compl.bootYT)
+plots.confints.bootpls(confints.bootpls(aze_compl.bootYT))
 
-aze_compl.boot2 <- boot(data=dataset, statistic=coefs.plsRglm, sim="ordinary", stype="i", R=250, 
-nt=3, modele="pls-glm-logistic")
-# The same
-aze_compl.boot2 <- boot(data=dataset, statistic=coefs.plsRglm, sim="ordinary", stype="i", R=250, 
-nt=3, modele="pls-glm-family",family=binomial)
-aze_compl.boot <- bootplsglm(plsRglm(yaze_compl,Xaze_compl,3,modele="pls-glm-logistic"), 
-sim="ordinary", stype="i", R=250)
-# The same
-aze_compl.boot <- bootplsglm(plsRglm(yaze_compl,Xaze_compl,3,modele="pls-glm-family",
-family=binomial), sim="ordinary", stype="i", R=250)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=1)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=2)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=3)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=4)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=5)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=6)
-
-boxplots.bootpls(aze_compl.boot)
-confints.bootpls(aze_compl.boot)
-plots.confints.bootpls(confints.bootpls(aze_compl.boot))
-
-
-plot(aze_compl.boot,index=2)
-jack.after.boot(aze_compl.boot, index=2, useJ=TRUE, nt=3)
-plot(aze_compl.boot, index=2,jack=TRUE)
-# tilt.boot(data=dataset, statistic=coefs.plsRglm, R=c(499, 100, 100), alpha=c(0.025, 0.975), 
-sim="ordinary", stype="i", index=1, nt=3, modele="pls-glm-logistic")
-aze_compl.tilt.boot <- tilt.bootplsglm(plsRglm(yaze_compl,Xaze_compl,3, 
-modele="pls-glm-logistic"), statistic=coefs.plsR, R=c(499, 100, 100), alpha=c(0.025, 0.975), 
-sim="ordinary", stype="i", index=1)
+\donttest{
+plot(aze_compl.bootYT,index=2)
+jack.after.boot(aze_compl.bootYT, index=2, useJ=TRUE, nt=3)
+plot(aze_compl.bootYT, index=2,jack=TRUE)
+aze_compl.tilt.boot <- tilt.bootplsglm(modplsglm, statistic=coefs.plsRglm, 
+R=c(499, 100, 100), alpha=c(0.025, 0.975), sim="ordinary", stype="i", index=1)
 
 # PLS bootstrap balanced
-
-aze_compl.boot <- boot(data=dataset, statistic=coefs.plsRglm, sim="balanced", stype="i", R=250, 
-nt=3, modele="pls-glm-logistic")
-aze_compl.boot <- bootplsglm(plsRglm(yaze_compl,Xaze_compl,3,modele="pls-glm-logistic"), 
-sim="balanced", stype="i", R=250)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=1)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=2)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=3)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=4)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=5)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=6)
+aze_compl.bootYT <- bootplsglm(modplsglm, sim="balanced", R=250)
+boxplots.bootpls(aze_compl.bootYT)
+confints.bootpls(aze_compl.bootYT)
+plots.confints.bootpls(confints.bootpls(aze_compl.bootYT))
 
 
-boxplots.bootpls(aze_compl.boot)
-confints.bootpls(aze_compl.boot)
-plots.confints.bootpls(confints.bootpls(aze_compl.boot))
-
-
-
-plot(aze_compl.boot)
-jack.after.boot(aze_compl.boot, index=1, useJ=TRUE, nt=3)
-plot(aze_compl.boot,jack=TRUE)
-# tilt.boot(data=dataset, statistic=coefs.plsRglm, R=c(499, 250, 250), alpha=c(0.025, 0.975), 
-sim="balanced", stype="i", index=1, nt=3, modele="pls-glm-logistic")
-aze_compl.tilt.boot <- tilt.bootplsglm(plsRglm(yaze_compl,Xaze_compl,3, 
-modele="pls-glm-logistic"), statistic=coefs.plsR, R=c(499, 100, 100), alpha=c(0.025, 0.975), 
-sim="balanced", stype="i", index=1)
+plot(aze_compl.bootYT)
+jack.after.boot(aze_compl.bootYT, index=1, useJ=TRUE, nt=3)
+plot(aze_compl.bootYT,jack=TRUE)
+aze_compl.tilt.boot <- tilt.bootplsglm(modplsglm, statistic=coefs.plsR,
+R=c(499, 100, 100), alpha=c(0.025, 0.975), sim="balanced", stype="i", index=1)
 
 
 # PLS permutation bootstrap
 
-aze_compl.boot <- boot(data=dataset, statistic=permcoefs.plsRglm, sim="permutation", stype="i", 
-R=250, nt=3, modele="pls-glm-logistic")
-aze_compl.boot <- bootplsglm(plsRglm(yaze_compl,Xaze_compl,3,modele="pls-glm-logistic"), 
-sim="permutation", stype="i", R=250)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc"), index=1)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc"), index=2)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc"), index=3)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc"), index=4)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc"), index=5)
-boot.ci(aze_compl.boot, conf = c(0.90,0.95), type = c("norm","basic","perc"), index=6)
+aze_compl.bootYT <- bootplsglm(modplsglm, sim="permutation", R=250)
+boxplots.bootpls(aze_compl.bootYT)
+plot(aze_compl.bootYT)
 
 
-boxplots.bootpls(aze_compl.boot)
-
-
-plot(aze_compl.boot)
-
-
-
+#Original aze dataset with missing values
 data(aze)
 Xaze<-aze[,2:34]
 yaze<-aze$y
 
-dataset <- cbind(y=yaze,Xaze)
-
 library(boot)
-aze.boot2 <- boot(data=dataset, statistic=coefs.plsRglm, sim="ordinary", stype="i", R=250, 
-nt=3, modele="pls-glm-logistic")
-aze.boot <- bootplsglm(plsRglm(yaze,Xaze,3,modele="pls-glm-logistic"), sim="ordinary", 
-stype="i", R=250)
-boot.ci(aze.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=1)
-boot.ci(aze.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=2)
-boot.ci(aze.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=3)
-boot.ci(aze.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=4)
-boot.ci(aze.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=5)
-boot.ci(aze.boot, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=6)
-
-
-boxplots.bootpls(aze_compl.boot)
-confints.bootpls(aze_compl.boot)
-plots.confints.bootpls(confints.bootpls(aze_compl.boot))
-
-
-
-plot(aze.boot)
-jack.after.boot(aze.boot, index=1, useJ=TRUE, nt=3)
-plot(aze.boot,jack=TRUE)
-# tilt.boot(data=dataset, statistic=coefs.plsRglm, R=c(499, 100, 100), alpha=c(0.025, 
-0.975), sim="ordinary", stype="i", index=1, nt=3, modele="pls-glm-logistic")
-aze.tilt.boot <- tilt.bootplsglm(plsRglm(yaze,Xaze,3, modele="pls-glm-logistic"), 
-statistic=coefs.plsR, R=c(499, 100, 100), alpha=c(0.025, 0.975), sim="ordinary", 
-stype="i", index=1)
+modplsglm2 <- plsRglm(yaze,Xaze,3,modele="pls-glm-logistic")
+aze.bootYT <- bootplsglm(modplsglm2, R=250)
+boxplots.bootpls(aze.bootYT)
+confints.bootpls(aze.bootYT)
+plots.confints.bootpls(confints.bootpls(aze.bootYT))
 
 
 
 
+#Ordinal logistic regression
 data(bordeaux)
 Xbordeaux<-bordeaux[,1:4]
 ybordeaux<-factor(bordeaux$Quality,ordered=TRUE)
 dataset <- cbind(y=ybordeaux,Xbordeaux)
 options(contrasts = c("contr.treatment", "contr.poly"))
-library(boot)
-bordeaux.boot3<- bootplsglm(plsRglm(ybordeaux,Xbordeaux,1,modele="pls-glm-polr"), 
-sim="permutation", stype="i", R=250)
-#bordeaux.boot3 <- boot(data=dataset, statistic=permcoefs.plsRglm, sim="permutation", 
-stype="i", R=250, nt=1, modele="pls-glm-polr")
-boxplots.bootpls(bordeaux.boot3)
-boxplots.bootpls(bordeaux.boot3,ranget0=TRUE)
+modplsglm3 <- plsRglm(ybordeaux,Xbordeaux,1,modele="pls-glm-polr")
+bordeaux.bootYT<- bootplsglm(modplsglm3, sim="permutation", R=250)
+boxplots.bootpls(bordeaux.bootYT)
+boxplots.bootpls(bordeaux.bootYT,ranget0=TRUE)
 
-bordeaux.boot2<- bootplsglm(plsRglm(ybordeaux,Xbordeaux,1,modele="pls-glm-polr"), 
-sim="permutation", stype="i", R=250, strata=unclass(ybordeaux))
-bordeaux.boot2 <- boot(data=dataset, statistic=permcoefs.plsRglm, sim="permutation", 
-stype="i", R=250, nt=1, modele="pls-glm-polr", strata=unclass(ybordeaux))
-boxplots.bootpls(bordeaux.boot2)
+bordeaux.bootYT2<- bootplsglm(modplsglm3, sim="permutation", R=250, 
+strata=unclass(ybordeaux))
+boxplots.bootpls(bordeaux.bootYT2,ranget0=TRUE)
 
 
-bordeaux.boot4<- bootplsglm(plsRglm(ybordeaux,Xbordeaux,1,modele="pls-glm-polr"), 
-sim="balanced", stype="i", R=250)
-#bordeaux.boot4 <- boot(data=dataset, statistic=coefs.plsRglm, sim="balanced", 
-stype="i", R=250, nt=1, modele="pls-glm-polr")
-#tempboot4 <- bordeaux.boot4
-#tempboot4$t0=bordeaux.boot4$t0
-#tempboot4$t=bordeaux.boot4$t[!is.na(bordeaux.boot4$t[,1]),]
-#tempboot4$R=sum(!is.na(bordeaux.boot4$t[,1]))
-#tempboot4$call$R<-sum(!is.na(bordeaux.boot4$t[,1]))
-#tempboot4
-boxplots.bootpls(bordeaux.boot4)
-boot.ci(bordeaux.boot4)
-confints.bootpls(bordeaux.boot4)
-plots.confints.bootpls(confints.bootpls(bordeaux.boot4))
-
-bordeaux.boot5<- bootplsglm(plsRglm(ybordeaux,Xbordeaux,1,modele="pls-glm-polr"), 
-sim="balanced", stype="i", R=250, strata=unclass(ybordeaux))
-#bordeaux.boot5 <- boot(data=dataset, statistic=coefs.plsRglm, sim="balanced", 
-stype="i", R=250, nt=1, modele="pls-glm-polr", strata=unclass(ybordeaux))
-#tempboot5 <- bordeaux.boot5
-#tempboot5$t0=bordeaux.boot5$t0
-#tempboot5$t=bordeaux.boot5$t[!is.na(bordeaux.boot5$t[,1]),]
-#tempboot5$R=sum(!is.na(bordeaux.boot5$t[,1]))
-#tempboot5$call$R<-sum(!is.na(bordeaux.boot5$t[,1]))
-#tempboot5
-boxplots.bootpls(bordeaux.boot5)
-boot.ci(bordeaux.boot5)
-confints.bootpls(bordeaux.boot5)
-plots.confints.bootpls(confints.bootpls(bordeaux.boot5))
-
-
-#install.packages("chemometrics")
+if(!require(chemometrics)){install.packages("chemometrics")}
 library(chemometrics)
 data(hyptis)
 hyptis
@@ -224,67 +117,13 @@ yhyptis <- factor(hyptis$Group,ordered=TRUE)
 Xhyptis <- as.data.frame(hyptis[,c(1:6)])
 dataset <- cbind(y=yhyptis,Xhyptis)
 options(contrasts = c("contr.treatment", "contr.poly"))
-hyptis.boot3<- bootplsglm(plsRglm(yhyptis,Xhyptis,3,modele="pls-glm-polr"), 
-sim="permutation", stype="i", R=250)
-#library(boot)
-#hyptis.boot3 <- boot(data=dataset, statistic=permcoefs.plsRglm, sim="permutation", 
-stype="i", R=250, nt=3, modele="pls-glm-polr")
-rownames(hyptis.boot3$t0)<-c("1|2\n","2|3\n","3|4\n","Sabi\nnene","Pin\nene",
+modplsglm4 <- plsRglm(yhyptis,Xhyptis,3,modele="pls-glm-polr")
+hyptis.bootYT3<- bootplsglm(modplsglm4, sim="permutation", R=250)
+rownames(hyptis.bootYT3$t0)<-c("Sabi\nnene","Pin\nene",
 "Cine\nole","Terpi\nnene","Fenc\nhone","Terpi\nnolene")
-boxplots.bootpls(hyptis.boot3)
+boxplots.bootpls(hyptis.bootYT3)
 boxplots.bootpls(hyptis.boot3,xaxisticks=FALSE)
 boxplots.bootpls(hyptis.boot3,ranget0=TRUE)
 boxplots.bootpls(hyptis.boot3,ranget0=TRUE,xaxisticks=FALSE)
-
-hyptis.boot2<- bootplsglm(plsRglm(yhyptis,Xhyptis,3,modele="pls-glm-polr"), 
-sim="permutation", stype="i", R=250, strata=unclass(yhyptis))
-#hyptis.boot2 <- boot(data=dataset, statistic=permcoefs.plsRglm, sim="permutation", 
-stype="i", R=250, nt=3, modele="pls-glm-polr", strata=unclass(yhyptis))
-rownames(hyptis.boot2$t0)<-c("1|2\n","2|3\n","3|4\n","Sabi\nnene","Pin\nene",
-"Cine\nole","Terpi\nnene","Fenc\nhone","Terpi\nnolene")
-boxplots.bootpls(hyptis.boot2)
-boxplots.bootpls(hyptis.boot2,xaxisticks=FALSE)
-boxplots.bootpls(hyptis.boot2,ranget0=TRUE)
-boxplots.bootpls(hyptis.boot2,ranget0=TRUE,xaxisticks=FALSE)
-
-
-hyptis.boot4<- bootplsglm(plsRglm(yhyptis,Xhyptis,3,modele="pls-glm-polr"), 
-sim="balanced", stype="i", R=250)
-#hyptis.boot4 <- boot(data=dataset, statistic=coefs.plsRglm, sim="balanced", 
-stype="i", R=500, nt=3, modele="pls-glm-polr")
-#tempboot4 <- hyptis.boot4
-#tempboot4$t0=hyptis.boot4$t0
-#tempboot4$t=hyptis.boot4$t[!is.na(hyptis.boot4$t[,1]),]
-#tempboot4$R=sum(!is.na(hyptis.boot4$t[,1]))
-#tempboot4$call$R<-sum(!is.na(hyptis.boot4$t[,1]))
-#tempboot4
-rownames(hyptis.boot4$t0)<-c("1|2\n","2|3\n","3|4\n","Sabi\nnene","Pin\nene",
-"Cine\nole","Terpi\nnene","Fenc\nhone","Terpi\nnolene")
-boxplots.bootpls(hyptis.boot4)
-boxplots.bootpls(hyptis.boot4,xaxisticks=FALSE)
-confints.bootpls(hyptis.boot4)
-plots.confints.bootpls(confints.bootpls(hyptis.boot4),legendpos = "bottomleft",
-xaxisticks=TRUE)
-plots.confints.bootpls(confints.bootpls(hyptis.boot4),legendpos = "bottomleft",
-xaxisticks=FALSE)
-
-
-hyptis.boot5 <- boot(data=dataset, statistic=coefs.plsRglm, sim="balanced", 
-stype="i", R=250, nt=3, modele="pls-glm-polr", strata=unclass(yhyptis))
-#tempboot5 <- hyptis.boot5
-#tempboot5$t0=hyptis.boot5$t0
-#tempboot5$t=hyptis.boot5$t[!is.na(hyptis.boot5$t[,1]),]
-#tempboot5$R=sum(!is.na(hyptis.boot5$t[,1]))
-#tempboot5$call$R<-sum(!is.na(hyptis.boot5$t[,1]))
-#tempboot5
-rownames(hyptis.boot5$t0)<-c("1|2\n","2|3\n","3|4\n","Sabi\nnene","Pin\nene",
-"Cine\nole","Terpi\nnene","Fenc\nhone","Terpi\nnolene")
-boxplots.bootpls(hyptis.boot5)
-boxplots.bootpls(hyptis.boot5,xaxisticks=FALSE)
-confints.bootpls(hyptis.boot5)
-plots.confints.bootpls(confints.bootpls(hyptis.boot5),legendpos = "bottomleft",
-xaxisticks=TRUE)
-plots.confints.bootpls(confints.bootpls(hyptis.boot5),legendpos = "bottomleft",
-xaxisticks=FALSE)
 }
 }\keyword{models}

@@ -21,15 +21,14 @@ This function should be combined with the replicate function to give rise to a l
 }
 \references{
 T. Naes, H. Martens, Comparison of prediction methods for 
-multicollinear data, Commun. Stat., Simul. 14 (1985) 545-576.
-\url{http://dx.doi.org/10.1080/03610918508812458}
- 
-Baibing Li, Julian Morris, Elaine B. Martin,
+multicollinear data, Commun. Stat., Simul. 14 (1985) 545-576.\cr
+\url{http://dx.doi.org/10.1080/03610918508812458}\cr
+ Baibing Li, Julian Morris, Elaine B. Martin,
 Model selection for partial least squares regression, 
-Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.
+Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.\cr
 \url{http://dx.doi.org/10.1016/S0169-7439(02)00051-5}
 }
-\author{\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
@@ -38,7 +37,6 @@ Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.
 \examples{
 \donttest{
 layout(matrix(1:6,nrow=2))
-
 # logit link
 hist(t(replicate(100,simul_data_UniYX_binom(4,4)))[,1])
 # probit link
@@ -51,12 +49,10 @@ hist(t(replicate(100,simul_data_UniYX_binom(4,4,link="cauchit")))[,1])
 hist(t(replicate(100,simul_data_UniYX_binom(4,4,link="loglog")))[,1])
 # log link
 hist(t(replicate(100,simul_data_UniYX_binom(4,4,link="log")))[,1])
-
 layout(1)
 
 
 layout(matrix(1:6,nrow=2))
-
 # logit link
 hist(t(replicate(100,simul_data_UniYX_binom(4,4,offset=5)))[,1])
 # probit link
@@ -69,12 +65,10 @@ hist(t(replicate(100,simul_data_UniYX_binom(4,4,link="cauchit",offset=5)))[,1])
 hist(t(replicate(100,simul_data_UniYX_binom(4,4,link="loglog",offset=5)))[,1])
 # log link
 hist(t(replicate(100,simul_data_UniYX_binom(4,4,link="log",offset=5)))[,1])
-
 layout(1)
 
 
 layout(matrix(1:6,nrow=2))
-
 # logit link
 hist(t(replicate(100,simul_data_UniYX_binom(4,4,offset=-5)))[,1])
 # probit link
@@ -87,7 +81,6 @@ hist(t(replicate(100,simul_data_UniYX_binom(4,4,link="cauchit",offset=-5)))[,1])
 hist(t(replicate(100,simul_data_UniYX_binom(4,4,link="loglog",offset=-5)))[,1])
 # log link
 hist(t(replicate(100,simul_data_UniYX_binom(4,4,link="log",offset=-5)))[,1])
-
 layout(1)
 }
 }

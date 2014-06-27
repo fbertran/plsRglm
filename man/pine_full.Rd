@@ -1,58 +1,36 @@
 \name{pine_full}
 \alias{pine_full}
 \docType{data}
-\title{Full pine dataset}
+\title{Complete Pine dataset}
 \description{
-Le jeu de données comporte 33 observations sur la 
-processionnaire du pin (variete de chenille). 
-L'etude a ete realisee en 1973.
-Les experimentateurs souhaitent connaitre l'influence
-de caracteristiques forestieres sur le developpement
-de la processionnaire du pin. 
-
-L'unite qui represente l'observation est une parcelle
-forestiere de 10 hectares d'un seul tenant. Cette parcelle
-est consideree comme homogene par rapport aux variables
-etudiees. Les valeurs de ces variables ont ete obtenues
-comme des moyennes des valeurs mesurees sur des placettes
-de 5 ares.
-
-Le jeu de données complet.
+This is the complete caterpillar dataset from a 1973 study on pine_full processionary caterpillars. It assesses the influence of some forest settlement characteristics on the development of caterpillar colonies. The response variable is the logarithmic transform of the average number of nests of caterpillars per tree in an area of 500 square meters (\code{x11}). There are k=10 potentially explanatory variables defined on n=55 areas.
 }
 \usage{data(pine_full)}
 \format{
-  A data frame with 58 observations on the following 11 variables.
+  A data frame with 55 observations on the following 11 variables.
   \describe{
-    \item{\code{x1}}{altitude (en metre)}
-    \item{\code{x2}}{pente (en degre)}
-    \item{\code{x3}}{nombre de pins dans une placette de 5 ares}
-    \item{\code{x4}}{hauteur de l'arbre echantillonne au centre de la placette (en metre)}
-    \item{\code{x5}}{diametre de cet arbre (en metre)}
-    \item{\code{x6}}{note de densite du peuplement}
-    \item{\code{x7}}{orientation de la placette (1=sud, 2=nord)}
-    \item{\code{x8}}{hauteur des arbres dominants (en metre)}
-    \item{\code{x9}}{nombre de strates de vegetation}
-    \item{\code{x10}}{melange du peuplement (1=pas melange, 2=melange)}
-    \item{\code{x11}}{nombre moyen de nids de processionnaires par arbre d'une placette}
+    \item{\code{x1}}{altitude (in meters)}
+    \item{\code{x2}}{slope (en degrees)}
+    \item{\code{x3}}{number of pine_fulls in the area}
+    \item{\code{x4}}{height (in meters) of the tree sampled at the center of the area}
+    \item{\code{x5}}{diameter (in meters) of the tree sampled at the center of the area}
+    \item{\code{x6}}{index of the settlement density}
+    \item{\code{x7}}{orientation of the area (from 1 if southbound to 2 otherwise)}
+    \item{\code{x8}}{height (in meters) of the dominant tree}
+    \item{\code{x9}}{number of vegetation strata}
+    \item{\code{x10}}{mix settlement index (from 1 if not mixed to 2 if mixed)}
+    \item{\code{x11}}{logarithmic transform of the average number of nests of caterpillars per tree}
   }
 }
 \details{
-La variable a expliquer est la variable x11 (log décimal du nombre de nids de
-processionnaires par arbre d'une placette). C est pour des raisons
-partiellement statistiques que  l'on analyse le log du nb de nids que 
-le nb de nids lui-même.
+These caterpillars got their names from their habit of moving over the ground in incredibly long head-to-tail processions when leaving their nest to create a new colony.
 }
 \source{
-R. Tomassone et al.
-\enc{Actualités}{Actualit\'es} scientifiques et agronomiques
-Masson, Paris (1992)
-Tomassone R., Audrain S., Lesquoy-de Turckeim E., Millier C. (1992), 
-\dQuote{La \enc{régression}{r\'egression}, nouveaux regards sur une ancienne \enc{méthode}{m\'ethode} statistique}, 
-INRA, \emph{\enc{Actualités}{Actualit\'es} Scientifiques et Agronomiques}, Masson, Paris, 188 p.
+Tomassone R., Audrain S., Lesquoy-de Turckeim E., Millier C. (1992), \dQuote{La \enc{regression}{r\'egression}, nouveaux regards sur une ancienne \enc{methode}{m\'ethode} statistique}, INRA, \emph{\enc{Actualites}{Actualit\'es} Scientifiques et Agronomiques}, Masson, Paris.
 }
-%\references{}
+\references{
+J.-M. Marin, C. Robert. (2007). \emph{Bayesian Core: A Practical Approach to Computational Bayesian Statistics}. Springer, New-York, pages 48-49.}
 \examples{
 data(pine_full)
-## maybe str(pine_full) ; plot(pine_full) ...
-}
-\keyword{datasets}
+str(pine_full)
+}\keyword{datasets}

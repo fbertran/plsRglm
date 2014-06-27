@@ -24,13 +24,15 @@ se.fit=FALSE,weights, dispersion = NULL,methodNA="adaptative",...)
 When type is "\code{response}", a matrix of predicted response values is returned.\cr
 When type is "\code{scores}", a score matrix is returned. 
 }
-\references{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand, Myriam Maumy-Bertrand et Nicolas Meyer (2011). \enc{R?gression}{R\'egression} \enc{B?ta}{B\^eta} PLS. \emph{Preprint}.
+\references{
+Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. \emph{Journal de la Societe Francaise de Statistique}, 151(2), pages 1-18.
+\url{http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf}
 }
-\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
-\seealso{\code{\link[stats]{predict.glm}}}
+\seealso{See Also \code{\link[stats]{predict.glm}}}
 \examples{
 data(pine)
 Xpine<-pine[,1:10]
@@ -40,11 +42,11 @@ Xpine_sup<-pine_sup[,1:10]
 Xpine_supNA<-Xpine_sup
 Xpine_supNA[1,1]<-NA
 
-modpls=plsRglm(dataY=log(ypine),dataX=Xpine,nt=6,modele="pls-glm-family",family="gaussian")
-modplsform=plsRglm(log(x11)~.,data=pine,nt=6,modele="pls-glm-family",family="gaussian")
-modpls2=plsRglm(dataY=log(ypine),dataX=Xpine,nt=6,modele="pls-glm-family",
+modpls=plsRglm(dataY=ypine,dataX=Xpine,nt=6,modele="pls-glm-family",family="gaussian")
+modplsform=plsRglm(x11~.,data=pine,nt=6,modele="pls-glm-family",family="gaussian")
+modpls2=plsRglm(dataY=ypine,dataX=Xpine,nt=6,modele="pls-glm-family",
 dataPredictY=Xpine_sup,family="gaussian")
-modpls2NA=plsRglm(dataY=log(ypine),dataX=Xpine,nt=6,modele="pls-glm-family",
+modpls2NA=plsRglm(dataY=ypine,dataX=Xpine,nt=6,modele="pls-glm-family",
 dataPredictY=Xpine_supNA,family="gaussian")
 
 #Identical to predict(modpls,type="link") or modpls$Std.ValsPredictY

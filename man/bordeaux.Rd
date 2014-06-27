@@ -3,7 +3,7 @@
 \docType{data}
 \title{Quality of wine dataset}
 \description{
-  ~~ A concise (1-5 lines) description of the dataset. ~~
+Quality of Bordeaux wines (\code{Quality}) and four potentially predictive variables (\code{Temperature}, \code{Sunshine}, \code{Heat} and \code{Rain}).
 }
 \usage{data(bordeaux)}
 \format{
@@ -16,17 +16,13 @@
     \item{\code{Quality}}{an ordered factor with levels \code{1} < \code{2} < \code{3}}
   }
 }
-\details{
-  ~~ More details than the description above ~~
-}
 \source{
-  ~~ reference to a publication or URL from which the data were obtained ~~
+P. Bastien, V. Esposito-Vinzi, and M. Tenenhaus. (2005). PLS generalised linear regression. \emph{Computational Statistics & Data Analysis}, 48(1):17-46.
 }
 \references{
-  ~~ possibly secondary sources and usages ~~
-}
+M. Tenenhaus. (2005). La regression logistique PLS. In J.-J. Droesbeke, M. Lejeune, and G. Saporta, editors, Modeles statistiques pour donnees qualitatives. Editions Technip, Paris.}
 \examples{
 data(bordeaux)
-## maybe str(bordeaux) ; plot(bordeaux) ...
+str(bordeaux)
 }
 \keyword{datasets}

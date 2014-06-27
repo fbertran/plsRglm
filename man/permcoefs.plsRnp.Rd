@@ -2,41 +2,37 @@
 \alias{permcoefs.plsRnp}
 \title{Coefficients computation for permutation bootstrap}
 \description{
-  ~~ A (1-5 lines) description of what the function does. ~~
+A function passed to \code{boot} to perform bootstrap.
 }
 \usage{
 permcoefs.plsRnp(dataRepYtt,ind,nt,modele, maxcoefvalues,wwetoile,ifbootfail)
 }
 \arguments{
-  \item{dataRepYtt}{ ~~Explain \code{dataRepYtt} here~~ }
-  \item{ind}{ ~~Explain \code{ind} here~~ }
-  \item{nt}{ ~~Explain \code{nt} here~~ }
-  \item{modele}{ ~~Explain \code{modele} here~~ }
-  \item{maxcoefvalues}{ ~~Explain \code{maxcoefvalues} here~~ }
-  \item{wwetoile}{ ~~Explain \code{wwetoile} here~~ }
-  \item{ifbootfail}{ ~~Explain \code{ifbootfail} here~~ }
+  \item{dataRepYtt}{components' coordinates to bootstrap}
+  \item{ind}{indices for resampling}
+  \item{nt}{number of components to use}
+  \item{modele}{type of modele to use, see \link{plsRglm}}
+  \item{maxcoefvalues}{maximum values allowed for the estimates of the coefficients to discard those coming from singular bootstrap samples}
+  \item{wwetoile}{values of the Wstar matrix in the original fit}  
+  \item{ifbootfail}{value to return if the estimation fails on a bootstrap sample}
 }
-\details{
-  ~~ More details than the description above ~~
-}
-\value{
-  ~Describe the value returned
-  If it is a LIST, use
-  \item{comp1 }{Description of 'comp1'}
-  \item{comp2 }{Description of 'comp2'}
-  ...
-}
-\references{ ~put references to the literature/web site here ~ }
-\author{\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\value{estimates on a bootstrap sample or \code{ifbootfail} value if the bootstrap computation fails.}
+%\references{ ~put references to the literature/web site here ~ }
+\author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
-\note{ ~~some notes~~ 
+\seealso{See also \code{\link{bootpls}}}
+\examples{
+data(Cornell)
+XCornell<-Cornell[,1:7]
+yCornell<-Cornell[,8]
 
-
+# Lazraq-Cleroux PLS (Y,X) bootstrap
+# statistic=coefs.plsR is the default for (Y,X) resampling of PLSR models.
+set.seed(250)
+modpls <- plsR(yCornell,XCornell,1)
+Cornell.bootYT <- bootpls(modpls, R=250, typeboot="fmodel_np", sim="permutation",
+statistic=permcoefs.plsRnp)
 }
-\seealso{ ~~objects to See Also as \code{\link{help}}, ~~~ }
-\examples{\donttest{
-\dontrun{print("to do")}
-}
-}\keyword{models}
+\keyword{models}

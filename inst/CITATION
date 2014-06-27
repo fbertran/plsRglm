@@ -14,24 +14,24 @@ citEntry(entry="Manual",
          note         = vers,
          url          = "http://www-irma.u-strasbg.fr/~fbertran/",
          textVersion = 
-         paste("Frédéric Bertrand, Nicolas Meyer and Myriam Maumy-Bertrand (",year ,"). ", 
+         paste("Frederic Bertrand, Nicolas Meyer and Myriam Maumy-Bertrand (",year ,"). ", 
                titl, ", ", vers, ".", sep=""
                )
 )
 
 citEntry(entry="article",
-         title = "Comparaison de la régression PLS et de la régression logistique
-PLS : application aux données d'allélotypage",
+         title = "Comparaison de la regression PLS et de la regression logistique
+PLS : application aux donnees d'allelotypage",
          author = personList(as.person("N. Meyer"), 
                              as.person("M. Maumy-Bertrand"),
 				     as.person("F. Bertrand")),
-	 journal = "Journal de la Société Française de Statistique",
-	 publisher = "Société Française de Statistique",
+	 journal = "Journal de la Societe Francaise de Statistique",
+	 publisher = "Societe Francaise de Statistique",
          year         = 2010,
          note         = "adresse",
          url          = "http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf",
          textVersion = 
-         paste("Nicolas Meyer, Myriam Maumy-Bertrand et Frédéric Bertrand (2010).", 
-               "Comparaison de la régression PLS et de la régression logistique
-PLS : application aux données d'allélotypage.", "Journal de la Société Française de Statistique", "151(2)", "pages 1-18.")
+         paste("Nicolas Meyer, Myriam Maumy-Bertrand et Frederic Bertrand (2010).", 
+               "Comparaison de la regression PLS et de la regression logistique
+PLS : application aux donnees d'allelotypage.", "Journal de la Societe Francaise de Statistique", "151(2)", "pages 1-18.")
 )

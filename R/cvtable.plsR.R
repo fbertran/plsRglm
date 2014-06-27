@@ -14,7 +14,7 @@ cvtable.plsR <- function(x,...)
     cat("\nCV Q2 criterion:")
     mincvQ2<-function(lll){ if(all(lll[-1,4+2*MClassed]>lll[-1,3+2*MClassed])){return(length(lll[-1,4+2*MClassed]))} else { return(which.max(lll[-1,4+2*MClassed]<lll[-1,3+2*MClassed])-1)}}  
     mincvQ2obs<-sapply(x,mincvQ2)
-    rescvQ2<-table(factor(mincvQ2obs,levels=1:max(mincvQ2obs)))   
+    rescvQ2<-table(factor(mincvQ2obs,levels=0:max(mincvQ2obs)))   
     print(rescvQ2)    
   }
   

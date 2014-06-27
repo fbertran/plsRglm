@@ -3,7 +3,7 @@
 \docType{data}
 \title{Correlation matrix for simulating plsR datasets}
 \description{
-  ~~ A concise (1-5 lines) description of the dataset. ~~
+A correlation matrix to simulate datasets
 }
 \usage{data(CorMat)}
 \format{
@@ -28,17 +28,13 @@
     \item{\code{x64}}{a numeric vector}
   }
 }
-\details{
-  ~~ More details than the description above ~~
-}
-\source{
-  ~~ reference to a publication or URL from which the data were obtained ~~
-}
+\source{Handmade.}
 \references{
-  ~~ possibly secondary sources and usages ~~
+Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. \emph{Journal de la Societe Francaise de Statistique}, 151(2), pages 1-18.
+\url{http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf}
 }
 \examples{
 data(CorMat)
-## maybe str(CorMat) ; plot(CorMat) ...
+str(CorMat)
 }
 \keyword{datasets}

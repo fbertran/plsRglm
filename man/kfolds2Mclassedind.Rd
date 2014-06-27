@@ -16,27 +16,25 @@ kfolds2Mclassedind(pls_kfolds)
   \item{list}{Number of missclassified individuals per group vs number of components for the last group partition}
 }
 \references{
-Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{r?gression}{r\'egression} PLS et de la \enc{r?gression}{r\'egression} logistique PLS : application aux \enc{donn?es}{donn\'ees} \enc{d'all?lotypage}{d'all\'elotypage}. \emph{Journal de la Soci?t? Fran?aise de Statistique}, 151(2), pages 1-18.
+Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. \emph{Journal de la Societe Francaise de Statistique}, 151(2), pages 1-18.
 \url{http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf}
 }
-\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
-\note{Use \code{\link{PLS_lm_kfoldcv}} to create k-fold cross validated partial least squares regression models.}
+\note{Use \code{\link{cv.plsR}} or \code{\link{cv.plsRglm}} to create k-fold cross validated partial least squares regression models or generalized linear ones.}
 \seealso{\code{\link{kfolds2coeff}}, \code{\link{kfolds2Press}}, \code{\link{kfolds2Pressind}} and \code{\link{kfolds2Mclassed}} to extract and transforms results from k-fold cross-validation.}
 \examples{
 \donttest{
 data(aze_compl)
 Xaze_compl<-aze_compl[,2:34]
 yaze_compl<-aze_compl$y
-bbb <- PLS_lm_kfoldcv(dataY=yaze_compl,dataX=Xaze_compl,nt=10,K=12,NK=1)
-bbb2 <- PLS_lm_kfoldcv(dataY=yaze_compl,dataX=Xaze_compl,nt=10,K=6,NK=2)
-bbb3 <- PLS_lm_kfoldcv(dataY=yaze_compl,dataX=Xaze_compl,nt=10,K=6,NK=2,random=TRUE)
+bbb <- cv.plsR(dataY=yaze_compl,dataX=Xaze_compl,nt=10,K=8,NK=1)
+bbb2 <- cv.plsR(dataY=yaze_compl,dataX=Xaze_compl,nt=10,K=8,NK=2)
 kfolds2Mclassedind(bbb)
 kfolds2Mclassedind(bbb2)
-kfolds2Mclassedind(bbb3)
-rm(list=c("Xaze_compl","yaze_compl","bbb","bbb2","bbb3"))
+rm(list=c("Xaze_compl","yaze_compl","bbb","bbb2"))
 }
 }
 \keyword{models}

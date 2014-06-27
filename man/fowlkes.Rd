@@ -3,13 +3,13 @@
 \docType{data}
 \title{Fowlkes dataset}
 \description{
-  ~~ A concise (1-5 lines) description of the dataset. ~~
+A classic dataset from Fowlkes.
 }
 \usage{data(fowlkes)}
 \format{
   A data frame with 9949 observations on the following 13 variables.
   \describe{
-    \item{\code{Y}}{a numeric vector}
+    \item{\code{Y}}{binary response}
     \item{\code{MA}}{a numeric vector}
     \item{\code{MW}}{a numeric vector}
     \item{\code{NE}}{a numeric vector}
@@ -24,17 +24,10 @@
     \item{\code{sexe}}{a numeric vector}
   }
 }
-\details{
-  ~~ More details than the description above ~~
-}
-\source{
-  ~~ reference to a publication or URL from which the data were obtained ~~
-}
-\references{
-  ~~ possibly secondary sources and usages ~~
-}
+%\source{  ~~ reference to a publication or URL from which the data were obtained ~~}
+%\references{  ~~ possibly secondary sources and usages ~~}
 \examples{
 data(fowlkes)
-## maybe str(fowlkes) ; plot(fowlkes) ...
+str(fowlkes)
 }
 \keyword{datasets}

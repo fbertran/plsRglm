@@ -1,9 +1,10 @@
 \name{XbordeauxNA}
 \alias{XbordeauxNA}
 \docType{data}
-\title{Missing data analysis for the quality of wine dataset}
+\title{Incomplete dataset for the quality of wine dataset}
 \description{
-  ~~ A concise (1-5 lines) description of the dataset. ~~
+Quality of Bordeaux wines (\code{Quality}) and four potentially predictive variables (\code{Temperature}, \code{Sunshine}, \code{Heat} and \code{Rain}).\cr
+The value of Temperature for the first observation was remove from the matrix of predictors on purpose.
 }
 \usage{data(XbordeauxNA)}
 \format{
@@ -15,17 +16,13 @@
     \item{\code{Rain}}{a numeric vector}
   }
 }
-\details{
-  ~~ More details than the description above ~~
-}
 \source{
-  ~~ reference to a publication or URL from which the data were obtained ~~
+P. Bastien, V. Esposito-Vinzi, and M. Tenenhaus. (2005). PLS generalised linear regression. \emph{Computational Statistics & Data Analysis}, 48(1):17-46.
 }
 \references{
-  ~~ possibly secondary sources and usages ~~
-}
+M. Tenenhaus. (2005). La regression logistique PLS. In J.-J. Droesbeke, M. Lejeune, and G. Saporta, editors, Modeles statistiques pour donnees qualitatives. Editions Technip, Paris.}
 \examples{
 data(XbordeauxNA)
-## maybe str(XbordeauxNA) ; plot(XbordeauxNA) ...
+str(XbordeauxNA)
 }
 \keyword{datasets}

@@ -1,6 +1,6 @@
 {
     "dialog-state" : {
-        "caseSensitive" : false,
+        "caseSensitive" : true,
         "filePatterns" : [
             "*.r",
             "*.R",
@@ -19,8 +19,8 @@
             "*.c",
             "*.cpp"
         ],
-        "path" : "~/Documents/package/plsRglm",
-        "query" : "Fr?d?ric",
+        "path" : "~/GitHub/plsRglm/R",
+        "query" : "random=FALSE",
         "regex" : false
     }
 }

@@ -1,4 +1,4 @@
-PLS_lm_kfoldcv_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls", K=5, NK=1, grouplist=NULL, random=FALSE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL) {
+PLS_lm_kfoldcv_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls", K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL) {
 
     if (missing(data)) {data <- environment(formula)}
     mf <- match.call(expand.dots = FALSE)
@@ -33,6 +33,7 @@ PLS_lm_kfoldcv_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,modele=
             random = FALSE
         }
     call <- match.call(expand.dots=FALSE)
+    if(as.character(call["random"])=="NULL"){random=TRUE}
     if (as.character(call["modele"])=="NULL") {call$modele <- "pls"}
     if (as.character(call["limQ2set"])=="NULL") {call$limQ2set <- .0975}
     if (as.character(call["tol_Xi"])=="NULL") {call$tol_Xi <- 10^(-12)}

@@ -1,4 +1,4 @@
-cv.plsRmodel.default <- function(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", K=5, NK=1, grouplist=NULL, random=FALSE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights) 
+cv.plsRmodel.default <- function(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights) 
 {
 if (!(modele %in% c("pls"))) {stop("Use cv.plsRglm to cross-validate PLSRGLRs")}
 mf <- match.call(expand.dots = FALSE)
@@ -9,5 +9,5 @@ cvmodel <- eval(mf, parent.frame())
 
 cvmodel$call <- match.call()
 class(cvmodel) <- "cv.plsRmodel"
-cvmodel
+return(cvmodel)
 }

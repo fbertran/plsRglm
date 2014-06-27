@@ -30,12 +30,12 @@ with
   \item{vector}{numerical values of the requested AIC, BIC or GMDL.}
 }
 \references{
-M. Hansen, B. Yu, Model Selection and Minimum Descripion Length Principle, Journal of the American Statistical Association, 96 (2001) 746-774.\cr
-N. Kraemer, M. Sugiyama, The Degrees of Freedom of Partial Least Squares Regression. Preprint (2010). \url{http://arxiv.org/abs/1002.4112}.\cr
+M. Hansen, B. Yu. (2001). Model Selection and Minimum Descripion Length Principle, \emph{Journal of the American Statistical Association}, 96, 746-774.\cr 
+N. Kraemer, M. Sugiyama. (2011). The Degrees of Freedom of Partial Least Squares Regression. \emph{Journal of the American Statistical Association}, 106(494), 697-705.\cr
 N. Kraemer, M.L. Braun, Kernelizing PLS, Degrees of Freedom, and Efficient Model Selection,
 \emph{Proceedings of the 24th International Conference on Machine Learning}, Omni Press, (2007) 441-448. 
 }
-\author{\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }

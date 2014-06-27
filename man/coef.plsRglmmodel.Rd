@@ -12,16 +12,13 @@ This function provides a coef method for the class \code{"plsRglmmodel"}
   \item{type}{if \code{scaled}, the coefficients of the predictors are given for the scaled predictors, if \code{original} the coefficients are to be used with the predictors on their original scale.}
   \item{\dots}{not used}
 }
-\value{
+\value{An object of class \code{coef.plsRglmmodel}.\cr
    \item{CoeffC}{Coefficients of the components.}
    \item{Std.Coeffs}{Coefficients of the scaled predictors in the regression function.}
    \item{Coeffs}{Coefficients of the untransformed predictors (on their original scale).}
 }
-\references{
-Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{r?gression}{r\'egression} PLS et de la \enc{r?gression}{r\'egression} logistique PLS : application aux \enc{donn?es}{donn\'ees} \enc{d'all?lotypage}{d'all\'elotypage}. \emph{Journal de la Soci?t? Fran?aise de Statistique}, 151(2), pages 1-18.
-\url{http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf}
-}
-\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
+%\references{}
+\author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }

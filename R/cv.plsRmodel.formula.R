@@ -1,4 +1,4 @@
-cv.plsRmodel.formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls", K=5, NK=1, grouplist=NULL, random=FALSE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL) 
+cv.plsRmodel.formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls", K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL) 
 {
 if (!(modele %in% c("pls"))) {stop("Use cv.plsRglm to cross-validate PLSRGLRs")}
 if (missing(data)) {data <- environment(formula)}
@@ -9,5 +9,5 @@ mf[[1L]] <- as.name("PLS_lm_kfoldcv_formula")
 cvmodel <- eval(mf, parent.frame())
   class(cvmodel) <- "cv.plsRmodel"
   cvmodel$call <- match.call()
-  cvmodel
+  return(cvmodel)
 }

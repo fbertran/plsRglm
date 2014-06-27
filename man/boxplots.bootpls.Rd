@@ -2,7 +2,7 @@
 \alias{boxplots.bootpls}
 \title{Boxplot bootstrap distributions}
 \description{
-Boxplot plots for bootstrap distributions.
+Boxplots for bootstrap distributions.
 }
 \usage{
 boxplots.bootpls(bootobject, indices = NULL, prednames = TRUE, 
@@ -10,34 +10,22 @@ articlestyle = TRUE, xaxisticks=TRUE, ranget0= FALSE, las = par("las"),
 mar, mgp, ...)
 }
 \arguments{
-  \item{bootobject}{ ~~Explain \code{bootobject} here~~ }
-  \item{indices}{ ~~Explain \code{indices} here~~ }
-  \item{prednames}{ ~~Explain \code{prednames} here~~ }
-  \item{articlestyle}{ ~~Explain \code{articlestyle} here~~ }
-  \item{xaxisticks}{ ~~Explain \code{articlestyle} here~~ }
-  \item{ranget0}{ ~~Explain \code{articlestyle} here~~ }
-  \item{las}{ ~~Explain \code{las} here~~ }
-  \item{mar}{ ~~Explain \code{las} here~~ }
-  \item{mgp}{ ~~Explain \code{las} here~~ }
-  \item{\dots}{ ~~Explain \code{\dots} here~~ }
+  \item{bootobject}{a object of class \code{"boot"}}
+  \item{indices}{vector of indices of the variables to plot. Defaults to \code{NULL}: all the predictors will be used.}
+  \item{prednames}{do the original names of the predictors shall be plotted ? Defaults to \code{TRUE}: the names are plotted.}
+  \item{articlestyle}{do the extra blank zones of the margin shall be removed from the plot ? Defaults to \code{TRUE}: the margins are removed.}
+  \item{xaxisticks}{do ticks for the x axis shall be plotted ? Defaults to \code{TRUE}: the ticks are plotted.}
+  \item{ranget0}{does the vertival range of the plot shall be computed to include the initial estimates of the coefficients ? Defaults to \code{FALSE}: the vertical range is calculated only using the bootstrapped values of the statistics. Especially using for permutation bootstrap.}
+  \item{las}{numeric in {0,1,2,3}; the style of axis labels. 0: always parallel to the axis [default], 1: always horizontal, 2: always perpendicular to the axis, 3: always vertical.}
+  \item{mar}{A numerical vector of the form \code{c(bottom, left, top, right)} which gives the number of lines of margin to be specified on the four sides of the plot. The default is \code{c(5, 4, 4, 2) + 0.1.}}
+  \item{mgp}{The margin line (in mex units) for the axis title, axis labels and axis line. Note that \code{mgp[1]} affects title whereas \code{mgp[2:3]} affect axis. The default is \code{c(3, 1, 0)}.}
+  \item{\dots}{further options to pass to the \code{\link[graphics:boxplot]{boxplot}} function.}
 }
-\details{
-  ~~ More details than the description above ~~
-}
-\value{
-  ~Describe the value returned
-  If it is a LIST, use
-  \item{comp1 }{Description of 'comp1'}
-  \item{comp2 }{Description of 'comp2'}
-  ...
-}
-\references{ ~put references to the literature/web site here ~ }
-\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
+\value{\code{NULL}}
+%\references{Chambers, J. M., Cleveland, W. S., Kleiner, B. and Tukey, P. A. (1983) Graphical Methods for Data Analysis. Wadsworth & Brooks/Cole.}
+\author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
-}
-\note{ ~~some notes~~ 
-
 }
 \seealso{\code{\link{bootpls}}}
 \examples{
@@ -45,27 +33,20 @@ data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
 
-# Lazraq-Cl?roux PLS ordinary bootstrap
-
+# Lazraq-Cleroux PLS ordinary bootstrap
 set.seed(250)
-Cornell.boot <- bootpls(plsR(yCornell,XCornell,3), sim="ordinary", stype="i", R=250)
+modpls <- plsR(yCornell,XCornell,3)
+Cornell.bootYX <- bootpls(modpls, R=250)
 
 # Graph similar to the one of Bastien et al. in CSDA 2005
-boxplots.bootpls(Cornell.boot,indices=2:8)
+boxplots.bootpls(Cornell.bootYX,indices=2:8)
 
 \donttest{
 data(aze_compl)
-Xaze_compl<-aze_compl[,2:34]
-yaze_compl<-aze_compl$y
-
-#should be run with R=1000 but takes much longer time
-aze_compl.boot3 <- bootplsglm(plsRglm(yaze_compl,Xaze_compl,3,
-modele="pls-glm-logistic"), sim="ordinary", stype="i", R=250)
+modplsglm<-plsRglm(y~.,data=aze_compl,3,modele="pls-glm-logistic")
+aze_compl.boot3 <- bootplsglm(modplsglm, R=250)
 boxplots.bootpls(aze_compl.boot3)
-boxplots.bootpls(aze_compl.boot3,prednames=FALSE)
-boxplots.bootpls(aze_compl.boot3,prednames=FALSE,articlestyle=FALSE,
-main="Bootstrap distribution for the bj")
-boxplots.bootpls(aze_compl.boot3,indices=1:34,prednames=FALSE)
+boxplots.bootpls(aze_compl.boot3,las=3,mar=c(5,2,1,1))
 boxplots.bootpls(aze_compl.boot3,indices=c(2,4,6),prednames=FALSE)
 }
 }

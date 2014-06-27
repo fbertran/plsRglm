@@ -1,42 +1,36 @@
 \name{permcoefs.plsRglm}
 \alias{permcoefs.plsRglm}
-\title{Coefficients computation for permutation bootstrap}
+\title{Coefficients for permutation bootstrap computations of PLSGLR models}
 \description{
-  ~~ A (1-5 lines) description of what the function does. ~~
+A function passed to \code{boot} to perform bootstrap.
 }
 \usage{
-permcoefs.plsRglm(dataset, ind, nt, modele, family = NULL, maxcoefvalues,ifbootfail)
+permcoefs.plsRglm(dataset, ind, nt, modele, family=NULL, maxcoefvalues,ifbootfail)
 }
 \arguments{
-  \item{dataset}{ ~~Explain \code{dataset} here~~ }
-  \item{ind}{ ~~Explain \code{ind} here~~ }
-  \item{nt}{ ~~Explain \code{nt} here~~ }
-  \item{modele}{ ~~Explain \code{modele} here~~ }
-  \item{family}{ ~~Explain \code{family} here~~ }
-  \item{maxcoefvalues}{ ~~Explain \code{maxcoefvalues} here~~ }
-  \item{ifbootfail}{ ~~Explain \code{ifbootfail} here~~ }
+  \item{dataset}{dataset to resample}
+  \item{ind}{indices for resampling}
+  \item{nt}{number of components to use}
+  \item{modele}{type of modele to use, see \link{plsRglm}}
+  \item{family}{glm family to use, see \link{plsRglm}}
+  \item{maxcoefvalues}{maximum values allowed for the estimates of the coefficients to discard those coming from singular bootstrap samples}
+  \item{ifbootfail}{value to return if the estimation fails on a bootstrap sample}
 }
-\details{
-  ~~ More details than the description above ~~
-}
-\value{
-  ~Describe the value returned
-  If it is a LIST, use
-  \item{comp1 }{Description of 'comp1'}
-  \item{comp2 }{Description of 'comp2'}
-  ...
-}
-\references{ ~put references to the literature/web site here ~ }
-\author{\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\value{estimates on a bootstrap sample or \code{ifbootfail} value if the bootstrap computation fails.}
+%\references{ ~put references to the literature/web site here ~ }
+\author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
-\note{ ~~some notes~~ 
+\seealso{See also \code{\link{bootplsglm}}.}
+\examples{
+data(Cornell)
 
-
+# (Y,X) bootstrap of a PLSGLR model
+# statistic=coefs.plsRglm is the default for (Y,X) bootstrap of a PLSGLR models.
+set.seed(250)
+modplsglm <- plsRglm(Y~.,data=Cornell,1,modele="pls-glm-family",family=gaussian)
+Cornell.bootYX <- bootplsglm(modplsglm, R=250, typeboot="plsmodel", 
+sim="permutation", statistic=permcoefs.plsRglm)
 }
-\seealso{ ~~objects to See Also as \code{\link{help}}, ~~~ }
-\examples{\donttest{
-\dontrun{print("to do")}
-}
-}\keyword{models}
+\keyword{models}

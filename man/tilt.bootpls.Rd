@@ -32,14 +32,10 @@ stype="i", index=1, stabvalue=1e6,...)
   \item{comp2 }{Description of 'comp2'}
   ...
 }
-\references{ ~put references to the literature/web site here ~ }
-\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
+%\references{ ~put references to the literature/web site here ~ }
+\author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
-}
-\note{ ~~some notes~~ 
-
-
 }
 \seealso{\code{\link[boot:boot]{tilt.boot}}}
 \examples{

@@ -76,201 +76,166 @@ The terms in the formula will be re-ordered so that main effects come first, fol
 
 Non-NULL weights can be used to indicate that different observations have different dispersions (with the values in weights being inversely proportional to the dispersions); or equivalently, when the elements of weights are positive integers w_i, that each response y_i is the mean of w_i unit-weight observations. 
 
-The default estimator for Degrees of Freedom is the Kramer and Sugiyama's one. Information criteria are computed accordingly to these estimations. Naive Degrees of Freedom and Information Criteria are also provided for comparison purposes. For more details, see Kraemer, N., Sugiyama M. (2010). "The Degrees of Freedom of Partial Least Squares Regression". preprint, http://arxiv.org/abs/1002.4112. 
+The default estimator for Degrees of Freedom is the Kramer and Sugiyama's one. Information criteria are computed accordingly to these estimations. Naive Degrees of Freedom and Information Criteria are also provided for comparison purposes. For more details, see N. Kraemer and M. Sugiyama. (2011). The Degrees of Freedom of Partial Least Squares Regression. \emph{Journal of the American Statistical Association}, 106(494), 697-705, 2011. 
 }
 \value{
-  \item{nr}{Description of 'comp1'}
-  \item{nc}{Description of 'comp2'}
-  \item{nt}{Description of 'comp2'}
-  \item{ww}{Description of 'comp2'}
-  \item{wwnorm}{Description of 'comp2'}
-  \item{wwetoile}{Description of 'comp2'}
-  \item{tt}{Description of 'comp2'}
-  \item{pp}{Description of 'comp2'}
-  \item{CoeffC}{Description of 'comp2'}
-  \item{uscores}{Description of 'comp2'}
-  \item{YChapeau}{Description of 'comp2'}
-  \item{residYChapeau}{Description of 'comp2'}
-  \item{RepY}{Description of 'comp2'}
-  \item{na.miss.Y}{Description of 'comp2'}
-  \item{YNA}{Description of 'comp2'}
-  \item{residY}{Description of 'comp2'}
-  \item{ExpliX}{Description of 'comp2'}
-  \item{na.miss.X}{Description of 'comp2'}
-  \item{XXNA}{Description of 'comp2'}
-  \item{residXX}{Description of 'comp2'}
-  \item{PredictY}{Description of 'comp2'}
-  \item{press.ind}{Description of 'comp2'}
-  \item{press.tot}{Description of 'comp2'}
-  \item{familly}{Description of 'comp2'}
-  \item{ttPredictY}{Description of 'comp2'}
-  \item{typeVC}{Description of 'comp2'}
-  \item{dataY}{Description of 'comp2'}
-  \item{computed_nt}{Description of 'comp2'}
-  \item{CoeffCFull}{Description of 'comp2'}
-  \item{CoeffConstante}{Description of 'comp2'}
-  \item{Std.Coeffs}{Description of 'comp2'}
-  \item{press.ind2}{Description of 'comp2'}
-  \item{RSSresidY}{Description of 'comp2'}
-  \item{Coeffs}{Description of 'comp2'}
-  \item{Yresidus}{Description of 'comp2'}
-  \item{RSS}{Description of 'comp2'}
-  \item{residusY}{Description of 'comp2'}
+  \item{nr}{Number of observations}
+  \item{nc}{Number of predictors}
+  \item{nt}{Number of requested components}
+  \item{ww}{raw weights (before L2-normalization)}
+  \item{wwnorm}{L2 normed weights (to be used with deflated matrices of predictor variables)}
+  \item{wwetoile}{modified weights (to be used with original matrix of predictor variables)}
+  \item{tt}{PLS components}
+  \item{pp}{loadings of the predictor variables}
+  \item{CoeffC}{coefficients of the PLS components}
+  \item{uscores}{scores of the response variable}
+  \item{YChapeau}{predicted response values for the dataX set}
+  \item{residYChapeau}{residuals of the deflated response on the standardized scale}
+  \item{RepY}{scaled response vector}
+  \item{na.miss.Y}{is there any NA value in the response vector}
+  \item{YNA}{indicatrix vector of missing values in RepY}
+  \item{residY}{deflated scaled response vector}
+  \item{ExpliX}{scaled matrix of predictors}
+  \item{na.miss.X}{is there any NA value in the predictor matrix}
+  \item{XXNA}{indicator of non-NA values in the predictor matrix}
+  \item{residXX}{deflated predictor matrix}
+  \item{PredictY}{response values with NA replaced with 0}
+  \item{press.ind}{individual PRESS value for each observation (scaled scale)}
+  \item{press.tot}{total PRESS value for all observations (scaled scale)}
+  \item{family}{glm family used to fit PLSGLR model}
+  \item{ttPredictY}{PLS components for the dataset on which prediction was requested}
+  \item{typeVC}{type of leave one out cross-validation used}
+  \item{dataX}{predictor values}
+  \item{dataY}{response values}
+  \item{computed_nt}{number of components that were computed}
+  \item{CoeffCFull}{matrix of the coefficients of the predictors}
+  \item{CoeffConstante}{value of the intercept (scaled scale)}
+  \item{Std.Coeffs}{Vector of standardized regression coefficients}
+  \item{press.ind2}{individual PRESS value for each observation (original scale)}
+  \item{RSSresidY}{residual sum of squares (scaled scale)}
+  \item{Coeffs}{Vector of regression coefficients (used with the original data scale)}
+  \item{Yresidus}{residuals of the PLS model}
+  \item{RSS}{residual sum of squares (original scale)}
+  \item{residusY}{residuals of the deflated response on the standardized scale}
   \item{AIC.std}{AIC.std vs number of components (AIC computed for the standardized model}
-  \item{AIC}{AIC vs nber of components}
+  \item{AIC}{AIC vs number of components}
   \item{optional}{If the response is assumed to be binary:\cr
         i.e. \code{MClassed=TRUE}.    
   \describe{
   \item{\code{MissClassed}}{Number of miss classed results}
-  \item{\code{Probs}}{Probability predicted by the model. These atre not true probabilities since they may lay outside of [0,1]}
-  \item{\code{Probs.trc}}{Probability predicted by the model constrined in [0,1]}
+  \item{\code{Probs}}{"Probability" predicted by the model. These are not true probabilities since they may lay outside of [0,1]}
+  \item{\code{Probs.trc}}{Probability predicted by the model and constrained to belong to [0,1]}
   }
   }
   \item{ttPredictFittedMissingY}{Description of 'comp2'}
   \item{optional}{If cross validation was requested:\cr
         i.e. \code{typeVC="standard"}, \code{typeVC="missingdata"} or \code{typeVC="adaptative"}.
   \describe{
-  \item{\code{R2residY}}{Description of 'comp2'}
-  \item{\code{R2}}{Description of 'comp2'}
-  \item{\code{press.tot2}}{Description of 'comp2'}
-  \item{\code{Q2}}{Description of 'comp2'}
-  \item{\code{limQ2}}{Description of 'comp2'}
-  \item{\code{Q2_2}}{Description of 'comp2'}
-  \item{\code{Q2cum}}{Description of 'comp2'}
-  \item{\code{Q2cum_2}}{Description of 'comp2'}
+  \item{\code{R2residY}}{R2 coefficient value on the standardized scale}
+  \item{\code{R2}}{R2 coefficient value on the original scale}
+  \item{\code{press.tot2}}{total PRESS value for all observations (original scale)}
+  \item{\code{Q2}}{Q2 value (standardized scale)}
+  \item{\code{limQ2}}{limit of the Q2 value}
+  \item{\code{Q2_2}}{Q2 value (original scale)}
+  \item{\code{Q2cum}}{cumulated Q2 (standardized scale)}
+  \item{\code{Q2cum_2}}{cumulated Q2 (original scale)}
   }
   }
-  \item{InfCrit}{Description of 'comp2'}
-  \item{Std.ValsPredictY}{Description of 'comp2'}
-  \item{ValsPredictY}{Description of 'comp2'}
-  \item{Std.XChapeau}{Description of 'comp2'}
-  \item{XXwotNA}{Description of 'comp2'}
+  \item{InfCrit}{table of Information Criteria}
+  \item{Std.ValsPredictY}{predicted response values for supplementary dataset (standardized scale)}
+  \item{ValsPredictY}{predicted response values for supplementary dataset (original scale)}
+  \item{Std.XChapeau}{estimated values for missing values in the predictor matrix (standardized scale)}
+  \item{XXwotNA}{predictor matrix with missing values replaced with 0}
 }
 \references{
-Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{r?gression}{r\'egression} PLS et de la \enc{r?gression}{r\'egression} logistique PLS : application aux \enc{donn?es}{donn\'ees} \enc{d'all?lotypage}{d'all\'elotypage}. \emph{Journal de la Soci?t? Fran?aise de Statistique}, 151(2), pages 1-18.
+Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. \emph{Journal de la Societe Francaise de Statistique}, 151(2), pages 1-18.
 \url{http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf}
 }
-\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
-%\note{Use \code{plsR} instead.}
-\seealso{\code{\link{plsRglm}}}
+\note{Use \code{\link{cv.plsR}} to cross-validate the plsRglm models and \code{\link{bootpls}} to bootstrap them.}
+\seealso{See also \code{\link{plsRglm}} to fit PLSGLR models.}
 \examples{
 data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
-plsR(yCornell,XCornell,10)$InfCrit
-plsR(yCornell,XCornell,10,typeVC="standard")$InfCrit
-plsR(yCornell,XCornell,6)$AIC 
-plsR(yCornell,XCornell,6)$AIC.std    
-rm(list=c("XCornell","yCornell"))
 
+#maximum 6 components could be extracted from this dataset
+#trying 10 to trigger automatic stopping criterion
+modpls10<-plsR(yCornell,XCornell,10)
+modpls10
+
+#With iterative leave one out CV PRESS
+modpls6cv<-plsR(yCornell,XCornell,6,typeVC="standard")
+modpls6cv
+cv.modpls<-cv.plsR(yCornell,XCornell,6,NK=100)
+res.cv.modpls<-cvtable(summary(cv.modpls))
+plot(res.cv.modpls)
+
+rm(list=c("XCornell","yCornell","modpls10","modpls6cv"))
 
 \donttest{
+#A binary response example
 data(aze_compl)
 Xaze_compl<-aze_compl[,2:34]
 yaze_compl<-aze_compl$y
+modpls.aze <- plsR(yaze_compl,Xaze_compl,10,MClassed=TRUE,typeVC="standard")
+modpls.aze
 
-modpls <- plsR(yaze_compl,Xaze_compl,10,MClassed=TRUE)
+#Direct access to not cross validated values
+modpls.aze$AIC
+modpls.aze$AIC.std
+modpls.aze$MissClassed
 
-modpls$AIC
-modpls$AIC.std
-modpls$MissClassed
-modpls$Probs
-modpls$Probs.trc
-modpls$Probs-modpls$Probs.trc
+#Raw predicted values (not really probabily since not constrained in [0,1]
+modpls.aze$Probs
+#Truncated to [0;1] predicted values (true probabilities)
+modpls.aze$Probs.trc
+modpls.aze$Probs-modpls$Probs.trc
 
-modpls$InfCrit
-plsR(yaze_compl,Xaze_compl,10)$InfCrit
+#Repeated cross validation of the model (NK=100 times)
+cv.modpls.aze<-cv.plsR(yaze_compl,Xaze_compl,10,NK=100)
+res.cv.modpls.aze<-cvtable(summary(cv.modpls.aze,MClassed=TRUE))
+#High discrepancy in the number of component choice using repeated cross validation
+#and missclassed criterion
+plot(res.cv.modpls.aze)
 
-plsR(yaze_compl,Xaze_compl,10,typeVC="standard")$InfCrit
-plsR(yaze_compl,Xaze_compl,10,typeVC="standard",MClassed=TRUE)$InfCrit
-rm(list=c("Xaze_compl","yaze_compl","modpls"))
+rm(list=c("Xaze_compl","yaze_compl","modpls.aze","cv.modpls.aze","res.cv.modpls.aze"))
 
-
+#24 predictors
 dimX <- 24
+#2 components
 Astar <- 2
 simul_data_UniYX(dimX,Astar)
 dataAstar2 <- t(replicate(250,simul_data_UniYX(dimX,Astar)))
 ydataAstar2 <- dataAstar2[,1]
 XdataAstar2 <- dataAstar2[,2:(dimX+1)]
+modpls.A2<- plsR(ydataAstar2,XdataAstar2,10,typeVC="standard")
+modpls.A2
+cv.modpls.A2<-cv.plsR(ydataAstar2,XdataAstar2,10,NK=100)
+res.cv.modpls.A2<-cvtable(summary(cv.modpls.A2))
+#Perfect choice for the Q2 criterion in PLSR
+plot(res.cv.modpls.A2)
+
+#Binarized response
 ysimbin1 <- dicho(ydataAstar2)
+#Binarized predictors
 Xsimbin1 <- dicho(XdataAstar2)
-plsR(ysimbin1,Xsimbin1,10,MClassed=TRUE)$Probs
-plsR(ysimbin1,Xsimbin1,10,MClassed=TRUE)$Probs.trc
-plsR(ysimbin1,Xsimbin1,10,MClassed=TRUE)$MissClassed
-plsR(ysimbin1,Xsimbin1,10,typeVC="standard",MClassed=TRUE)$InfCrit
+modpls.B10 <- plsR(ysimbin1,Xsimbin1,10,typeVC="standard",MClassed=TRUE)
+modpls.B10
+modpls.B10$Probs
+modpls.B10$Probs.trc
+modpls.B10$MissClassed
 plsR(ysimbin1,XdataAstar2,10,typeVC="standard",MClassed=TRUE)$InfCrit
-plsR(ydataAstar2,XdataAstar2,10,typeVC="standard")$InfCrit
-rm(list=c("dimX","Astar","dataAstar2","ysimbin1","Xsimbin1","ydataAstar2","XdataAstar2"))
+cv.modpls.B10<-cv.plsR(ysimbin1,Xsimbin1,10,NK=100)
+res.cv.modpls.B10<-cvtable(summary(cv.modpls.B10,MClassed=TRUE))
+#Only one component found by repeated CV missclassed criterion
+plot(res.cv.modpls.B10)
 
-
-dimX <- 6
-Astar <- 4
-dataAstar4 <- t(replicate(250,simul_data_UniYX(dimX,Astar)))
-ydataAstar4 <- dataAstar4[,1]
-XdataAstar4 <- dataAstar4[,2:(dimX+1)]
-modpls <- plsR(ydataAstar4,XdataAstar4,10,typeVC="standard")
-modpls$computed_nt
-modpls$InfCrit
-str(modpls)
-rm(list=c("dimX","Astar","dataAstar4","modpls","ydataAstar4","XdataAstar4"))
-
-
-dimX <- 24
-Astar <- 2
-dataAstar2 <- t(replicate(250,simul_data_UniYX(dimX,Astar)))
-ydataAstar2 <- dataAstar2[,1]
-XdataAstar2 <- dataAstar2[,2:(dimX+1)]
-modpls <- plsR(ydataAstar2,XdataAstar2,10,typeVC="standard")
-modpls$computed_nt
-modpls$InfCrit
-rm(list=c("dimX","Astar","dataAstar2","modpls","ydataAstar2","XdataAstar2"))
-
-
-dimX <- 24
-Astar <- 3
-dataAstar3 <- t(replicate(200,simul_data_UniYX(dimX,Astar)))
-ydataAstar3 <- dataAstar3[,1]
-XdataAstar3 <- dataAstar3[,2:(dimX+1)]
-modpls <- plsR(ydataAstar3,XdataAstar3,10,typeVC="standard")
-modpls$computed_nt
-modpls$InfCrit
-rm(list=c("dimX","Astar","dataAstar3","modpls","ydataAstar3","XdataAstar3"))
-
-
-dimX <- 24
-Astar <- 4
-dataAstar4 <- t(replicate(200,simul_data_UniYX(dimX,Astar)))
-ydataAstar4 <- dataAstar4[,1]
-XdataAstar4 <- dataAstar4[,2:(dimX+1)]
-modpls <- plsR(ydataAstar4,XdataAstar4,10,typeVC="standard")
-modpls$computed_nt
-modpls$InfCrit
-rm(list=c("dimX","Astar","dataAstar4","modpls","ydataAstar4","XdataAstar4"))
-
-
-dimX <- 24
-Astar <- 5
-dataAstar5 <- t(replicate(200,simul_data_UniYX(dimX,Astar)))
-ydataAstar5 <- dataAstar5[,1]
-XdataAstar5 <- dataAstar5[,2:(dimX+1)]
-modpls <- plsR(ydataAstar5,XdataAstar5,10,typeVC="standard")
-modpls$computed_nt
-modpls$InfCrit
-rm(list=c("dimX","Astar","dataAstar5","modpls","ydataAstar5","XdataAstar5"))
-
-
-dimX <- 24
-Astar <- 6
-dataAstar6 <- t(replicate(200,simul_data_UniYX(dimX,Astar)))
-ydataAstar6 <- dataAstar6[,1]
-XdataAstar6 <- dataAstar6[,2:(dimX+1)]
-modpls <- plsR(ydataAstar3,XdataAstar6,10,typeVC="standard")
-modpls$computed_nt
-modpls$InfCrit
-rm(list=c("dimX","Astar","dataAstar6","modpls","ydataAstar6","XdataAstar6"))
+rm(list=c("dimX","Astar","dataAstar2","XdataAstar2","ydataAstar2","modpls.A2","cv.modpls.A2",
+"res.cv.modpls.A2","Xsimbin1","ysimbin1","modpls.B10","cv.modpls.B10","res.cv.modpls.B10"))
 }
 }
 \keyword{models}

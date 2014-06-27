@@ -34,10 +34,10 @@ Non-NULL weights can be used to indicate that different observations have differ
         \code{ncol(dataX) * 1} matrix of the coefficients of the the eXplanatory variables}
 }
 \references{
-Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{r?gression}{r\'egression} PLS et de la \enc{r?gression}{r\'egression} logistique PLS : application aux \enc{donn?es}{donn\'ees} \enc{d'all?lotypage}{d'all\'elotypage}. \emph{Journal de la Soci?t? Fran?aise de Statistique}, 151(2), pages 1-18.
+Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. \emph{Journal de la Societe Francaise de Statistique}, 151(2), pages 1-18.
 \url{http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf}
 }
-\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
@@ -59,10 +59,10 @@ rm("XCornell","yCornell")
 data(pine)
 ypine <- pine[,11]
 data(XpineNAX21)
-PLS_lm_wvc(dataY=log(ypine)[-1],dataX=XpineNAX21[-1,],nt=3)
-PLS_lm_wvc(dataY=log(ypine)[-1],dataX=XpineNAX21[-1,],nt=3,dataPredictY=XpineNAX21[1,])
-PLS_lm_wvc(dataY=log(ypine)[-2],dataX=XpineNAX21[-2,],nt=3,dataPredictY=XpineNAX21[2,])
-PLS_lm_wvc(dataY=log(ypine),dataX=XpineNAX21,nt=3)
+PLS_lm_wvc(dataY=ypine[-1],dataX=XpineNAX21[-1,],nt=3)
+PLS_lm_wvc(dataY=ypine[-1],dataX=XpineNAX21[-1,],nt=3,dataPredictY=XpineNAX21[1,])
+PLS_lm_wvc(dataY=ypine[-2],dataX=XpineNAX21[-2,],nt=3,dataPredictY=XpineNAX21[2,])
+PLS_lm_wvc(dataY=ypine,dataX=XpineNAX21,nt=3)
 rm("XpineNAX21","ypine")
 }
 \keyword{models}
