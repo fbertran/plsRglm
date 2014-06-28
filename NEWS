@@ -1,5 +1,6 @@
 This file documents software changes.
 
+1.0.1 Fix for sPLS like option.
 1.0.0 Major upgrade to enhance generics support. Package vignette (130 p.) release. Help of package completed.
 0.9.0 Tilted bootstrap and demos fixed.
 0.8.3 Code upgrade requested by R Core Team due to change in namespace policies.

@@ -221,7 +221,7 @@ tempww <- t(XXwotNA*weights)%*%YwotNA/(t(XXNA*weights)%*%YwotNA^2)
 if (pvals.expli) {
 tempvalpvalstep <- 2 * pnorm(-abs(tempww)) 
 temppvalstep <- (tempvalpvalstep < alpha.pvals.expli)
-if(sparse){tempww[!temppvalstep] <- 0}
+if(sparse){if(sum(temppvalstep)>1L){tempww[!temppvalstep] <- 0}}
 if(sparseStop){if(sum(temppvalstep)==0L){break_nt_sparse <- TRUE}}
 res$valpvalstep <- cbind(res$valpvalstep,tempvalpvalstep)
 res$pvalstep <- cbind(res$pvalstep,temppvalstep)
@@ -252,7 +252,7 @@ for (jj in 1:(res$nc)) {
     tempvalpvalstep[jj] <- tmww[4]
     temppvalstep[jj] <- (tmww[4] < alpha.pvals.expli)
 }
-if(sparse){tempww[!temppvalstep] <- 0}
+if(sparse){if(sum(temppvalstep)>1L){tempww[!temppvalstep] <- 0}}
 if(sparseStop){if(sum(temppvalstep)==0L){break_nt_sparse <- TRUE}}
 XXwotNA[!XXNA] <- 0
 rm(jj)
@@ -290,7 +290,7 @@ for (jj in 1:(res$nc)) {
     tempvalpvalstep[jj] <- 2 * pnorm(-abs(tmww[3])) 
     temppvalstep[jj] <- (tempvalpvalstep[jj] < alpha.pvals.expli)
 }
-if(sparse){tempww[!temppvalstep] <- 0}
+if(sparse){if(sum(temppvalstep)>1L){tempww[!temppvalstep] <- 0}}
 if(sparseStop){if(sum(temppvalstep)==0L){break_nt_sparse <- TRUE}}
 XXwotNA[!XXNA] <- 0
 rm(jj,tts)
