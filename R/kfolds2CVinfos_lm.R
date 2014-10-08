@@ -1,8 +1,9 @@
-kfolds2CVinfos_lm <- function(pls_kfolds,MClassed=FALSE) {
+kfolds2CVinfos_lm <- function(pls_kfolds,MClassed=FALSE,verbose=TRUE) {
 if(!(match("dataY",names(pls_kfolds$call), 0L)==0L)){
 (mf <- pls_kfolds$call)
-(m <- match(c("dataY", "dataX", "nt", "limQ2set", "modele", "family", "scaleX", "scaleY", "weights", "method", "sparse", "naive"), names(pls_kfolds$call), 0))
+(m <- match(c("dataY", "dataX", "nt", "limQ2set", "modele", "family", "scaleX", "scaleY", "weights", "method", "sparse", "naive", "verbose"), names(pls_kfolds$call), 0))
 (mf <- mf[c(1, m)])
+mf$verbose<-verbose
 if(is.null(mf$modele)){mf$modele<-"pls"}
 (mf$typeVC <- "none")
 (mf$MClassed <- MClassed)
@@ -20,7 +21,7 @@ if(is.numeric(pls_kfolds$call["limQ2set"])){limQ2 <- rep(as.numeric(as.character
 if (mf$modele == "pls") {
 
     for (nnkk in 1:length(pls_kfolds[[1]])) {
-      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", ", nnkk))}
+      if(verbose){if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", ", nnkk))}}
       Q2_2 <- 1-press_kfolds[[nnkk]][1:min(length(press_kfolds[[nnkk]]),computed_nt)]/tempres$RSS[1:min(length(press_kfolds[[nnkk]]),computed_nt)]
             for (k in 1:min(length(press_kfolds[[nnkk]]),computed_nt)) {Q2cum_2[k] <- prod(press_kfolds[[nnkk]][1:k])/prod(tempres$RSS[1:k])}
             Q2cum_2 <- 1 - Q2cum_2
@@ -48,8 +49,9 @@ return(CVinfos)
 
 if(!(match("formula",names(pls_kfolds$call), 0L)==0L)){
 (mf <- pls_kfolds$call)
-(m <- match(c("formula", "data", "nt", "limQ2set", "modele", "scaleX", "scaleY","weights","subset","contrasts", "method", "sparse", "naive"), names(pls_kfolds$call), 0))
+(m <- match(c("formula", "data", "nt", "limQ2set", "modele", "scaleX", "scaleY","weights","subset","contrasts", "method", "sparse", "naive", "verbose"), names(pls_kfolds$call), 0))
 (mf <- mf[c(1, m)])
+mf$verbose<-verbose
 if(is.null(mf$modele)){mf$modele<-"pls"}
 (mf$typeVC <- "none")
 (mf$MClassed <- MClassed)
@@ -67,7 +69,7 @@ if(is.numeric(pls_kfolds$call["limQ2set"])){limQ2 <- rep(as.numeric(as.character
 if (mf$modele == "pls") {
 
     for (nnkk in 1:length(pls_kfolds[[1]])) {
-      if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", ", nnkk))}
+      if(verbose){if(nnkk%%10==1){cat("\n");cat(paste("NK:", nnkk))} else {cat(paste(", ", nnkk))}}
       Q2_2 <- 1-press_kfolds[[nnkk]][1:min(length(press_kfolds[[nnkk]]),computed_nt)]/tempres$RSS[1:min(length(press_kfolds[[nnkk]]),computed_nt)]
             for (k in 1:min(length(press_kfolds[[nnkk]]),computed_nt)) {Q2cum_2[k] <- prod(press_kfolds[[nnkk]][1:k])/prod(tempres$RSS[1:k])}
             Q2cum_2 <- 1 - Q2cum_2
@@ -88,6 +90,7 @@ if (MClassed==FALSE) {
 attr(CVinfos[[nnkk]],"computed_nt") <- computed_nt
     }
 }
-cat("\n");return(CVinfos)
+if(verbose){cat("\n")};
+return(CVinfos)
 }
 }

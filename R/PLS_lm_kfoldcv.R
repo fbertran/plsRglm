@@ -1,11 +1,11 @@
-PLS_lm_kfoldcv <- function(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights) {
+PLS_lm_kfoldcv <- function(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights, verbose=TRUE) {
     if(missing(weights)){NoWeights=TRUE} else {if(all(weights==rep(1,length(dataY)))){NoWeights=TRUE} else {NoWeights=FALSE}}
-    if(!NoWeights){naive=TRUE; cat(paste("Only naive DoF can be used with weighted PLS\n",sep=""))} else {NoWeights=TRUE}
+    if(!NoWeights){naive=TRUE; if(verbose){if(verbose){cat(paste("Only naive DoF can be used with weighted PLS\n",sep=""))}}} else {NoWeights=TRUE}
     res <- NULL
     res$nr <- nrow(dataX)
         if (K > res$nr) {
-            cat(paste("K cannot be > than nrow(dataX) =",res$nr,"\n"))
-            cat(paste("K is set to", nrow(dataX), "\n"))
+          if(verbose){cat(paste("K cannot be > than nrow(dataX) =",res$nr,"\n"))}
+          if(verbose){cat(paste("K is set to", nrow(dataX), "\n"))}
             K <- res$nr
             random = FALSE
         }
@@ -77,12 +77,12 @@ PLS_lm_kfoldcv <- function(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", K=5, NK
         return(comp)
     }
     for (nnkk in 1:NK) {
-            cat(paste("NK:", nnkk, "\n"))
+      if(verbose){cat(paste("NK:", nnkk, "\n"))}
         if (K == res$nr) {
-            cat("Leave One Out\n")
+          if(verbose){cat("Leave One Out\n")}
             random = FALSE
         }
-            cat(paste("Number of groups :", K, "\n"))
+      if(verbose){cat(paste("Number of groups :", K, "\n"))}
         if (!is.list(grouplist)) {
             if (random == TRUE) {
                 randsample = sample(1:res$nr, replace = FALSE)
@@ -119,22 +119,22 @@ PLS_lm_kfoldcv <- function(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", K=5, NK
             else folds = c(folds, list(as.vector(unlist(groups[-ii]))))
             if (K == 1) {
                 if(NoWeights){
-                temptemp <- PLS_lm_wvc(dataY=dataY, dataX=dataX, nt=nt, dataPredictY=dataX,scaleX=scaleX,scaleY=scaleY,keepcoeffs=keepcoeffs,tol_Xi=tol_Xi)
+                temptemp <- PLS_lm_wvc(dataY=dataY, dataX=dataX, nt=nt, dataPredictY=dataX,scaleX=scaleX,scaleY=scaleY,keepcoeffs=keepcoeffs,tol_Xi=tol_Xi,verbose=verbose)
                 respls_kfolds[[nnkk]][[ii]] <- temptemp$valsPredict
                 } else {
-                temptemp <- PLS_lm_wvc(dataY=dataY, dataX=dataX, nt=nt, dataPredictY=dataX,scaleX=scaleX,scaleY=scaleY,keepcoeffs=keepcoeffs,tol_Xi=tol_Xi,weights=weights)
+                temptemp <- PLS_lm_wvc(dataY=dataY, dataX=dataX, nt=nt, dataPredictY=dataX,scaleX=scaleX,scaleY=scaleY,keepcoeffs=keepcoeffs,tol_Xi=tol_Xi,weights=weights,verbose=verbose)
                 respls_kfolds[[nnkk]][[ii]] <- temptemp$valsPredict; attr(respls_kfolds[[nnkk]],"XWeights")=weights; attr(respls_kfolds[[nnkk]],"YWeights")=NULL}             
                 if (keepdataY) {dataY_kfolds[[nnkk]][[ii]] = NULL}
                 if (keepcoeffs) {coeffskfolds[[nnkk]][[ii]] = temptemp$coeffs}
                 if (keepMclassed) {Mclassed_kfolds[[nnkk]][[ii]] = unclass(dataY) !=ifelse(temptemp$valsPredict < 0.5, 0, 1)}
                 }
             else {
-                  cat(paste(ii,"\n"))
+              if(verbose){cat(paste(ii,"\n"))}
                   if(NoWeights){
-                  temptemp <- PLS_lm_wvc(dataY=dataY[-nofolds], dataX=dataX[-nofolds,], nt=nt, dataPredictY=dataX[nofolds,], scaleX=scaleX,scaleY=scaleY,keepcoeffs=keepcoeffs,tol_Xi=tol_Xi)
+                  temptemp <- PLS_lm_wvc(dataY=dataY[-nofolds], dataX=dataX[-nofolds,], nt=nt, dataPredictY=dataX[nofolds,], scaleX=scaleX,scaleY=scaleY,keepcoeffs=keepcoeffs,tol_Xi=tol_Xi,verbose=verbose)
                   respls_kfolds[[nnkk]][[ii]] <- temptemp$valsPredict
                   } else {
-                  temptemp <- PLS_lm_wvc(dataY=dataY[-nofolds], dataX=dataX[-nofolds,], nt=nt, dataPredictY=dataX[nofolds,], scaleX=scaleX,scaleY=scaleY,keepcoeffs=keepcoeffs,tol_Xi=tol_Xi,weights=weights[-nofolds])           
+                  temptemp <- PLS_lm_wvc(dataY=dataY[-nofolds], dataX=dataX[-nofolds,], nt=nt, dataPredictY=dataX[nofolds,], scaleX=scaleX,scaleY=scaleY,keepcoeffs=keepcoeffs,tol_Xi=tol_Xi,weights=weights[-nofolds],verbose=verbose)           
                 respls_kfolds[[nnkk]][[ii]] <- temptemp$valsPredict; attr(respls_kfolds[[nnkk]][[ii]],"XWeights")=weights[-nofolds]; attr(respls_kfolds[[nnkk]][[ii]],"YWeights")=weights[nofolds]}
                   if(keepdataY) {dataY_kfolds[[nnkk]][[ii]] = dataY[nofolds]}
                   if(keepcoeffs) {coeffs_kfolds[[nnkk]][[ii]] = temptemp$coeffs}

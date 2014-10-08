@@ -5,7 +5,7 @@
 A function passed to \code{boot} to perform bootstrap.
 }
 \usage{
-permcoefs.plsR(dataset,ind,nt,modele, maxcoefvalues,ifbootfail)
+permcoefs.plsR(dataset,ind,nt,modele, maxcoefvalues,ifbootfail,verbose)
 }
 \arguments{
   \item{dataset}{dataset to resample}
@@ -14,6 +14,7 @@ permcoefs.plsR(dataset,ind,nt,modele, maxcoefvalues,ifbootfail)
   \item{modele}{type of modele to use, see \link{plsR}}
   \item{maxcoefvalues}{maximum values allowed for the estimates of the coefficients to discard those coming from singular bootstrap samples}
   \item{ifbootfail}{value to return if the estimation fails on a bootstrap sample}
+  \item{verbose}{should info messages be displayed ?}
 }
 \value{estimates on a bootstrap sample or \code{ifbootfail} value if the bootstrap computation fails.}
 %\references{ ~put references to the literature/web site here ~ }

@@ -6,7 +6,7 @@ This function provides a predict method for the class \code{"plsRcoxmodel"}
 }
 \usage{
 \method{predict}{plsRmodel}(object,newdata,comps=object$computed_nt,
-type=c("response","scores"),weights,methodNA="adaptative",...)
+type=c("response","scores"),weights,methodNA="adaptative",verbose=TRUE,...)
 }
 \arguments{
   \item{object}{An object of the class \code{"plsRmodel"}.}
@@ -15,6 +15,7 @@ type=c("response","scores"),weights,methodNA="adaptative",...)
   \item{type}{Type of predicted value. Available choices are the response values ("\code{response}") or the scores ("\code{scores}").}
   \item{weights}{Vector of case weights. If \code{weights} is a vector of integers, then the estimated coefficients are equivalent to estimating the model from data with the individual \code{cases} replicated as many times as indicated by \code{weights}.}
   \item{methodNA}{Selects the way of predicting the response or the scores of the new data. For complete rows, without any missing value, there are two different ways of computing the prediction. As a consequence, for mixed datasets, with complete and incomplete rows, there are two ways of computing prediction : either predicts any row as if there were missing values in it (\code{missingdata}) or selects the prediction method accordingly to the completeness of the row (\code{adaptative}).}
+  \item{verbose}{should info messages be displayed ?}
   \item{\dots}{Arguments to be passed on to \code{plsRglm::plsR}.}
 }
 \value{

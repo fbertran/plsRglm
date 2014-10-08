@@ -3,12 +3,13 @@ citHeader("To cite the plsRglm package in publications use:")
 titl <- meta$Title
 year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
 vers <- paste("R package version", meta$Version)
+note <- "book of abstracts, User2014!, Los Angeles, page 150"
 
 citEntry(entry="Manual",
          title = titl,
          author = personList(as.person("F. Bertrand"), 
                              as.person("M. Maumy-Bertrand"),
-				     as.person("N. Meyer")),
+  			     as.person("N. Meyer")),
 	 publisher = "manual",
          year         = year,
          note         = vers,
@@ -16,6 +17,21 @@ citEntry(entry="Manual",
          textVersion = 
          paste("Frederic Bertrand, Nicolas Meyer and Myriam Maumy-Bertrand (",year ,"). ", 
                titl, ", ", vers, ".", sep=""
+               )
+)
+
+citEntry(entry="Manual",
+         title = titl,
+         author = personList(as.person("F. Bertrand"), 
+                             as.person("M. Maumy-Bertrand"),
+  			     as.person("N. Meyer")),
+	 publisher = "manual",
+         year         = year,
+         note         = note,
+         url          = "http://www-irma.u-strasbg.fr/~fbertran/",
+         textVersion = 
+         paste("Frederic Bertrand, Nicolas Meyer and Myriam Maumy-Bertrand (",year ,"). ", 
+               titl, ", ", note, ".", sep=""
                )
 )
 

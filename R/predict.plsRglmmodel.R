@@ -1,4 +1,4 @@
-predict.plsRglmmodel <- function(object,newdata,comps=object$computed_nt,type=c("link", "response", "terms", "scores", "class", "probs"),se.fit=FALSE,weights, dispersion = NULL,methodNA="adaptative",...)
+predict.plsRglmmodel <- function(object,newdata,comps=object$computed_nt,type=c("link", "response", "terms", "scores", "class", "probs"),se.fit=FALSE,weights, dispersion = NULL,methodNA="adaptative",verbose=TRUE,...)
 {
   if (!inherits(object, "plsRglmmodel")) 
     stop("Primary argument much be a plsRglmmodel object")
@@ -56,11 +56,11 @@ predict.plsRglmmodel <- function(object,newdata,comps=object$computed_nt,type=c(
         ttpredY <- rbind(ttpredY, c(newdata.scaledwotNA[ii,]%*%object$wwetoile[,1:comps],rep(0,object$computed_nt-comps))) 
       }
       else {
-        cat("Missing value in row ",ii,".\n")
+        if(verbose){cat("Missing value in row ",ii,".\n")}
         ttpredY <- rbind(ttpredY, c(t(solve(t(object$pp[newdataNA[ii,],,drop=FALSE])%*%object$pp[newdataNA[ii,],,drop=FALSE])%*%t(object$pp[newdataNA[ii,],,drop=FALSE])%*%(newdata.scaledwotNA[ii,])[newdataNA[ii,]])[1:comps],rep(0,object$computed_nt-comps)))
       }}}
   if(methodNA=="missingdata") {
-    cat("Prediction as if missing values in every row.\n")
+    if(verbose){cat("Prediction as if missing values in every row.\n")}
     for (ii in 1:nrnd) {  
       ttpredY <- rbind(ttpredY, c(t(solve(t(object$pp[newdataNA[ii,],,drop=FALSE])%*%object$pp[newdataNA[ii,],,drop=FALSE])%*%t(object$pp[newdataNA[ii,],,drop=FALSE])%*%(newdata.scaledwotNA[ii,])[newdataNA[ii,]])[1:comps],rep(0,object$computed_nt-comps)))
     }

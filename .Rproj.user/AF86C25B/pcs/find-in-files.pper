@@ -19,8 +19,8 @@
             "*.c",
             "*.cpp"
         ],
-        "path" : "~/GitHub/plsRglm/R",
-        "query" : "random=FALSE",
+        "path" : "~/GitHub/plsRglm/man",
+        "query" : "\\references{",
         "regex" : false
     }
 }

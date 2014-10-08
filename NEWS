@@ -1,5 +1,6 @@
 This file documents software changes.
 
+1.1.0 Verbose option (request from Max Kuhn, caret package).
 1.0.1 Fix for sPLS like option.
 1.0.0 Major upgrade to enhance generics support. Package vignette (130 p.) release. Help of package completed.
 0.9.0 Tilted bootstrap and demos fixed.

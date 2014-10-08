@@ -7,10 +7,12 @@
 The function \code{cvtable} is wrapper of \code{cvtable.plsR} and \code{cvtable.plsRglm} that provides a table summary for the classes \code{"summary.cv.plsRmodel"} and \code{"summary.cv.plsRglmmodel"}
 }
 \usage{
-cvtable.plsR(x, \dots)
+cvtable.plsR(x,verbose=TRUE, \dots)
+cvtable.plsRglm(x,verbose=TRUE, \dots)
 }
 \arguments{
   \item{x}{an object of the class \code{"summary.cv.plsRmodel"}}
+  \item{verbose}{should results be displayed ?}
   \item{\dots}{further arguments to be passed to or from methods.}  
 }
 %\details{}

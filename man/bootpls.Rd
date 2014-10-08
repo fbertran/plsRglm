@@ -6,7 +6,7 @@ Provides a wrapper for the bootstrap function \code{boot} from the \code{boot} R
 }
 \usage{
 bootpls(object, typeboot="plsmodel", R=250, statistic=coefs.plsR, sim="ordinary", 
-stype="i", stabvalue=1e6,...)
+stype="i", stabvalue=1e6, verbose=TRUE,...)
 }
 \arguments{
   \item{object}{An object of class \code{plsRmodel} to bootstrap}
@@ -16,6 +16,7 @@ stype="i", stabvalue=1e6,...)
   \item{sim}{A character string indicating the type of simulation required. Possible values are  \code{"ordinary"} (the default), \code{"balanced"}, \code{"permutation"}, or \code{"antithetic"}.}
   \item{stype}{A character string indicating what the second argument of \code{statistic} represents. Possible values of stype are \code{"i"} (indices - the default), \code{"f"} (frequencies), or \code{"w"} (weights).}
   \item{stabvalue}{A value to hard threshold bootstrap estimates computed from atypical resamplings. Especially useful for Generalized Linear Models.}
+  \item{verbose}{should info messages be displayed ?}
   \item{\dots}{Other named arguments for \code{statistic} which are passed unchanged each time it is called. Any such arguments to \code{statistic} should follow the arguments which \code{statistic} is required to have for the simulation. Beware of partial matching to arguments of \code{boot} listed above.}
 }
 \details{

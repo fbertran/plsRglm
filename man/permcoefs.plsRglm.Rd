@@ -5,7 +5,7 @@
 A function passed to \code{boot} to perform bootstrap.
 }
 \usage{
-permcoefs.plsRglm(dataset, ind, nt, modele, family=NULL, maxcoefvalues,ifbootfail)
+permcoefs.plsRglm(dataset, ind, nt, modele, family=NULL, maxcoefvalues,ifbootfail,verbose)
 }
 \arguments{
   \item{dataset}{dataset to resample}
@@ -15,6 +15,7 @@ permcoefs.plsRglm(dataset, ind, nt, modele, family=NULL, maxcoefvalues,ifbootfai
   \item{family}{glm family to use, see \link{plsRglm}}
   \item{maxcoefvalues}{maximum values allowed for the estimates of the coefficients to discard those coming from singular bootstrap samples}
   \item{ifbootfail}{value to return if the estimation fails on a bootstrap sample}
+  \item{verbose}{should info messages be displayed ?}
 }
 \value{estimates on a bootstrap sample or \code{ifbootfail} value if the bootstrap computation fails.}
 %\references{ ~put references to the literature/web site here ~ }

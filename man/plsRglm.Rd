@@ -14,23 +14,23 @@ plsRglm(x, \dots)
 dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",
 EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,
 alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,
-sparse=FALSE,sparseStop=TRUE,naive=FALSE)
+sparse=FALSE,sparseStop=TRUE,naive=FALSE,verbose=TRUE)
 \method{plsRglmmodel}{formula}(formula,data=NULL,nt=2,limQ2set=.0975,
 dataPredictY,modele="pls",family=NULL,typeVC="none",
 EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,
 alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,subset,
 start=NULL,etastart,mustart,offset,method="glm.fit",control= list(),
-contrasts=NULL,sparse=FALSE,sparseStop=TRUE,naive=FALSE)
+contrasts=NULL,sparse=FALSE,sparseStop=TRUE,naive=FALSE,verbose=TRUE)
 PLS_glm(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = dataX, 
 modele = "pls", family = NULL, typeVC = "none", EstimXNA = FALSE, 
 scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
 alpha.pvals.expli = 0.05, MClassed = FALSE, tol_Xi = 10^(-12), weights, 
-method, sparse = FALSE, sparseStop=FALSE, naive=FALSE)
+method, sparse = FALSE, sparseStop=FALSE, naive=FALSE,verbose=TRUE)
 PLS_glm_formula(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,
 modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,
 scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,
 tol_Xi=10^(-12),weights,subset,start=NULL,etastart,mustart,offset,method,
-control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE)
+control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE,verbose=TRUE)
 }
 \arguments{
   \item{x}{a formula or a response (training) dataset}
@@ -67,6 +67,7 @@ control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE)
   \item{sparse}{should the coefficients of non-significant predictors (<\code{alpha.pvals.expli}) be set to 0}
   \item{sparseStop}{should component extraction stop when no significant predictors (<\code{alpha.pvals.expli}) are found}
   \item{naive}{Use the naive estimates for the Degrees of Freedom in plsR? Default is \code{FALSE}.}
+  \item{verbose}{Should details be displayed ?}
   \item{\dots}{arguments to pass to \code{plsRmodel.default} or to \code{plsRmodel.formula}}
 }
 \details{

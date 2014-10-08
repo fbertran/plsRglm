@@ -14,22 +14,23 @@ plsR(x, \dots)
 dataPredictY = dataX, modele = "pls", family = NULL, typeVC = "none", 
 EstimXNA = FALSE, scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
 alpha.pvals.expli = 0.05, MClassed = FALSE, tol_Xi = 10^(-12), weights,
-sparse = FALSE, sparseStop = TRUE, naive = FALSE)
+sparse = FALSE, sparseStop = TRUE, naive = FALSE,verbose=TRUE)
 \method{plsRmodel}{formula}(formula, data, nt = 2, limQ2set = 0.0975,
 dataPredictY, modele = "pls", family = NULL, typeVC = "none",
 EstimXNA = FALSE, scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
 alpha.pvals.expli = 0.05, MClassed = FALSE, tol_Xi = 10^(-12), weights,
-subset, contrasts = NULL, sparse = FALSE, sparseStop = TRUE, naive = FALSE)
+subset, contrasts = NULL, sparse = FALSE, sparseStop = TRUE, naive = FALSE,
+verbose=TRUE)
 PLS_lm(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = dataX, 
 modele = "pls", family = NULL, typeVC = "none", EstimXNA = FALSE, 
 scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
 alpha.pvals.expli = 0.05, MClassed = FALSE, tol_Xi = 10^(-12),
-weights,sparse=FALSE,sparseStop=FALSE,naive=FALSE)
+weights,sparse=FALSE,sparseStop=FALSE,naive=FALSE,verbose=TRUE)
 PLS_lm_formula(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,
 modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,
 scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,
 tol_Xi=10^(-12),weights,subset,contrasts=NULL,sparse=FALSE,
-sparseStop=FALSE,naive=FALSE)
+sparseStop=FALSE,naive=FALSE,verbose=TRUE)
 }
 \arguments{
   \item{x}{a formula or a response (training) dataset}
@@ -63,6 +64,7 @@ sparseStop=FALSE,naive=FALSE)
   \item{sparse}{should the coefficients of non-significant predictors (<\code{alpha.pvals.expli}) be set to 0}
   \item{sparseStop}{should component extraction stop when no significant predictors (<\code{alpha.pvals.expli}) are found}
   \item{naive}{Use the naive estimates for the Degrees of Freedom in plsR? Default is \code{FALSE}.}
+  \item{verbose}{should info messages be displayed ?}
   \item{\dots}{arguments to pass to \code{plsRmodel.default} or to \code{plsRmodel.formula}}
 }
 \details{

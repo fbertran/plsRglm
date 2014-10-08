@@ -1,4 +1,4 @@
-predict.plsRmodel <- function(object,newdata,comps=object$computed_nt,type=c("response","scores"),weights,methodNA="adaptative",...)
+predict.plsRmodel <- function(object,newdata,comps=object$computed_nt,type=c("response","scores"),weights,methodNA="adaptative",verbose=TRUE,...)
 {
     if (!inherits(object, "plsRmodel")) 
         stop("Primary argument much be a plsRmodel object")
@@ -41,11 +41,11 @@ predict.plsRmodel <- function(object,newdata,comps=object$computed_nt,type=c("re
     tt <- rbind(tt, c(newdata.scaledwotNA[ii,]%*%object$wwetoile[,1:comps],rep(0,object$computed_nt-comps))) 
     }
     else {
-    cat("Missing value in row ",ii,".\n")
+      if(verbose){cat("Missing value in row ",ii,".\n")}
       tt <- rbind(tt, c(t(solve(t(object$pp[newdataNA[ii,],,drop=FALSE])%*%object$pp[newdataNA[ii,],,drop=FALSE])%*%t(object$pp[newdataNA[ii,],,drop=FALSE])%*%(newdata.scaledwotNA[ii,])[newdataNA[ii,]])[1:comps],rep(0,object$computed_nt-comps)))
     }}}
     if(methodNA=="missingdata") {
-    cat("Prediction as if missing values in every row.\n")
+      if(verbose){cat("Prediction as if missing values in every row.\n")}
     for (ii in 1:nrnd) {  
       tt <- rbind(tt, c(t(solve(t(object$pp[newdataNA[ii,],,drop=FALSE])%*%object$pp[newdataNA[ii,],,drop=FALSE])%*%t(object$pp[newdataNA[ii,],,drop=FALSE])%*%(newdata.scaledwotNA[ii,])[newdataNA[ii,]])[1:comps],rep(0,object$computed_nt-comps)))
     }

@@ -13,19 +13,19 @@ cv.plsR(x, \dots)
 \method{cv.plsRmodel}{default}(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", 
 K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, 
 scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, 
-keepMclassed=FALSE, tol_Xi=10^(-12), weights)
+keepMclassed=FALSE, tol_Xi=10^(-12), weights, verbose=TRUE)
 \method{cv.plsRmodel}{formula}(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls", 
 K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, 
 scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, 
-keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL)
+keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL, verbose=TRUE)
 PLS_lm_kfoldcv(dataY, dataX, nt = 2, limQ2set = 0.0975, modele = "pls", 
 K = 5, NK = 1, grouplist = NULL, random = TRUE, scaleX = TRUE, 
 scaleY = NULL, keepcoeffs = FALSE, keepfolds = FALSE, keepdataY = TRUE, 
-keepMclassed=FALSE, tol_Xi = 10^(-12), weights)
+keepMclassed=FALSE, tol_Xi = 10^(-12), weights, verbose=TRUE)
 PLS_lm_kfoldcv_formula(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls", 
 K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, 
 scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, 
-keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL)
+keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL,verbose=TRUE)
 }
 \arguments{
   \item{x}{a formula or a response (training) dataset}
@@ -50,6 +50,7 @@ keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL)
   \item{weights}{an optional vector of 'prior weights' to be used in the fitting process. Should be \code{NULL} or a numeric vector.}
   \item{subset}{an optional vector specifying a subset of observations to be used in the fitting process.}
   \item{contrasts}{an optional list. See the \code{contrasts.arg} of \code{model.matrix.default}.}
+  \item{verbose}{should info messages be displayed ?}
 \item{\dots}{arguments to pass to \code{cv.plsRmodel.default} or to \code{cv.plsRmodel.formula}}
 }
 \details{

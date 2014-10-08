@@ -1,4 +1,4 @@
-PLS_lm_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,subset,contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE) {
+PLS_lm_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,subset,contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE,verbose=TRUE) {
 
 ##################################################
 #                                                #
@@ -6,7 +6,7 @@ PLS_lm_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=da
 #                                                #
 ##################################################
 
-cat("____************************************************____\n")
+if(verbose){cat("____************************************************____\n")}
 if(sparse){sparseStop=TRUE}
 if(sparseStop){pvals.expli=TRUE}
 
@@ -23,7 +23,7 @@ mt <- attr(mf, "terms")
 attr(mt,"intercept")<-0L
 dataY <- model.response(mf, "any")
 if(missing(weights)){NoWeights=TRUE} else {if(all(weights==rep(1,length(dataY)))){NoWeights=TRUE} else {NoWeights=FALSE}}
-if(!NoWeights){naive=TRUE; cat(paste("Only naive DoF can be used with weighted PLS\n",sep=""))} else {NoWeights=TRUE}
+if(!NoWeights){naive=TRUE; if(verbose){cat(paste("Only naive DoF can be used with weighted PLS\n",sep=""))}} else {NoWeights=TRUE}
 if (length(dim(dataY)) == 1L) {
     nm <- rownames(dataY)
     dim(dataY) <- NULL
@@ -46,7 +46,7 @@ if(any(apply(is.na(dataPredictY),MARGIN=1,"all"))){return(vector("list",0)); cat
 if(any(is.na(dataX))) {na.miss.X <- TRUE} else na.miss.X <- FALSE
 if(any(is.na(dataY))) {na.miss.Y <- TRUE} else na.miss.Y <- FALSE
 if(any(is.na(dataPredictY))) {na.miss.PredictY <- TRUE} else {na.miss.PredictY <- FALSE}
-if(na.miss.X|na.miss.Y){naive=TRUE; cat(paste("Only naive DoF can be used with missing data\n",sep="")); if(!NoWeights){cat(paste("Weights cannot be used with missing data\n",sep=""))};  if(sparse){cat(paste("sparse option cannot be used with missing data\n",sep="")); sparse=FALSE}}
+if(na.miss.X|na.miss.Y){naive=TRUE; if(verbose){cat(paste("Only naive DoF can be used with missing data\n",sep=""))}; if(!NoWeights){if(verbose){cat(paste("Weights cannot be used with missing data\n",sep=""))}};  if(sparse){if(verbose){cat(paste("sparse option cannot be used with missing data\n",sep=""))}; sparse=FALSE}}
 
 if (!is.data.frame(dataX)) {dataX <- data.frame(dataX)}
 if (!(modele %in% c("pls"))) {break}
@@ -140,11 +140,11 @@ temptest <- sqrt(colSums(res$residXX^2, na.rm=TRUE))
 if(any(temptest<tol_Xi)) {
 break_nt <- TRUE
 if (is.null(names(which(temptest<tol_Xi)))) {
-cat(paste("Warning : ",paste(names(which(temptest<tol_Xi)),sep="",collapse=" ")," < 10^{-12}\n",sep=""))
+  if(verbose){cat(paste("Warning : ",paste(names(which(temptest<tol_Xi)),sep="",collapse=" ")," < 10^{-12}\n",sep=""))}
 } else {
-cat(paste("Warning : ",paste((which(temptest<tol_Xi)),sep="",collapse=" ")," < 10^{-12}\n",sep=""))
+  if(verbose){cat(paste("Warning : ",paste((which(temptest<tol_Xi)),sep="",collapse=" ")," < 10^{-12}\n",sep=""))}
 }
-cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))
+if(verbose){cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))}
 rm(temptest)
 break
 }
@@ -187,15 +187,15 @@ res$pvalstep <- cbind(res$pvalstep,temppvalstep)
 #                                            #
 ##############################################
 if((break_nt_sparse)&(kk==1L)){
-cat(paste("No significant predictors (<",alpha.pvals.expli,") found\n",sep=""))
-cat(paste("Warning only one standard component (without sparse option) was thus extracted\n",sep=""))
+  if(verbose){cat(paste("No significant predictors (<",alpha.pvals.expli,") found\n",sep=""))}
+  if(verbose){cat(paste("Warning only one standard component (without sparse option) was thus extracted\n",sep=""))}
 break_nt_sparse1 <- TRUE
 }
 if((break_nt_sparse)&!(kk==1L)){
 res$computed_nt <- kk-1
 if(!(break_nt_sparse1)){
-cat(paste("No more significant predictors (<",alpha.pvals.expli,") found\n",sep=""))
-cat(paste("Warning only ",res$computed_nt," components were thus extracted\n",sep=""))
+  if(verbose){cat(paste("No more significant predictors (<",alpha.pvals.expli,") found\n",sep=""))}
+  if(verbose){cat(paste("Warning only ",res$computed_nt," components were thus extracted\n",sep=""))}
 }
 break}
 
@@ -214,8 +214,8 @@ if (na.miss.X & !na.miss.Y) {
 for (ii in 1:res$nr) {
 if(rcond(t(cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])<tol_Xi) {
 break_nt <- TRUE; res$computed_nt <- kk-1
-cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE] < 10^{-12}\n",sep=""))
-cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))
+if(verbose){cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE] < 10^{-12}\n",sep=""))}
+if(verbose){cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))}
 break
 }
 }
@@ -230,8 +230,8 @@ if(!PredYisdataX){
 for (ii in 1:nrow(PredictYwotNA)) {
 if(rcond(t(cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])<tol_Xi) {
 break_nt <- TRUE; res$computed_nt <- kk-1
-cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],])%*%cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],] < 10^{-12}\n",sep=""))
-cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))
+if(verbose){cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],])%*%cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],] < 10^{-12}\n",sep=""))}
+if(verbose){cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))}
 break
 }
 }
@@ -316,7 +316,7 @@ if (typeVC == "none") {} else {
 if(NoWeights){
 if (typeVC %in% c("standard","adaptative")) {
 if (kk==1) {
-cat(paste("____TypeVC____",typeVC,"____\n"))
+  if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
 temppred <- rep(0, res$nr)
 for (i in 1:(res$nr)) {     
@@ -333,7 +333,7 @@ res$press.ind2 <- cbind(res$press.ind2,(dataYwotNA-res$YChapeau-attr(res$RepY,"s
 }
 if (typeVC == "missingdata") {
 if (kk==1) {
-cat(paste("____TypeVC____",typeVC,"____\n"))
+  if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
 temppp.cv <- res$pp  
 temppred <- rep(0, res$nr)
@@ -347,8 +347,8 @@ for (i in 1:(res$nr)) {
                 }
                 if(rcond(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])<tol_Xi) {
                 break_nt_vc <- TRUE; res$computed_nt_vc <- kk-1
-                cat(paste("Warning : reciprocal condition number of t(temppp.cv[XXNA[",i,",],,drop=FALSE])%*%temppp.cv[XXNA[",i,",],,drop=FALSE]) < 10^{-12}\n",sep=""))
-                cat(paste("Please choose a smaller number of components to cross validate\n",sep=""))
+                if(verbose){cat(paste("Warning : reciprocal condition number of t(temppp.cv[XXNA[",i,",],,drop=FALSE])%*%temppp.cv[XXNA[",i,",],,drop=FALSE]) < 10^{-12}\n",sep=""))}
+                if(verbose){cat(paste("Please choose a smaller number of components to cross validate\n",sep=""))}
                 break
                 }
                 ttPredictY.cv <- (solve(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])%*%t(temppp.cv[XXNA[i,],,drop=FALSE])%*%(ExpliXwotNA[i,])[XXNA[i,]])[kk]
@@ -362,7 +362,7 @@ res$press.ind2 <- cbind(res$press.ind2,(dataYwotNA-res$YChapeau-attr(res$RepY,"s
 else {
 if (typeVC %in% c("standard","adaptative")) {
 if (kk==1) {
-cat(paste("____TypeVC____",typeVC,"____\n"))
+  if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
 temppred <- rep(0, res$nr)
 for (i in 1:(res$nr)) {     
@@ -379,7 +379,7 @@ res$press.ind2 <- cbind(res$press.ind2,weights*(dataYwotNA-res$YChapeau-attr(res
 }
 if (typeVC == "missingdata") {
 if (kk==1) {
-cat(paste("____TypeVC____",typeVC,"____\n"))
+  if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
 temppp.cv <- res$pp  
 temppred <- rep(0, res$nr)
@@ -393,8 +393,8 @@ for (i in 1:(res$nr)) {
                 }
                 if(rcond(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])<tol_Xi) {
                 break_nt_vc <- TRUE; res$computed_nt_vc <- kk-1
-                cat(paste("Warning : reciprocal condition number of t(temppp.cv[XXNA[",i,",],,drop=FALSE])%*%temppp.cv[XXNA[",i,",],,drop=FALSE]) < 10^{-12}\n",sep=""))
-                cat(paste("Please choose a smaller number of components to cross validate\n",sep=""))
+                if(verbose){cat(paste("Warning : reciprocal condition number of t(temppp.cv[XXNA[",i,",],,drop=FALSE])%*%temppp.cv[XXNA[",i,",],,drop=FALSE]) < 10^{-12}\n",sep=""))}
+                if(verbose){cat(paste("Please choose a smaller number of components to cross validate\n",sep=""))}
                 break
                 }
                 ttPredictY.cv <- (solve(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])%*%t(temppp.cv[XXNA[i,],,drop=FALSE])%*%(ExpliXwotNA[i,])[XXNA[i,]])[kk]
@@ -407,7 +407,7 @@ res$press.ind2 <- cbind(res$press.ind2,weights*(dataYwotNA-res$YChapeau-attr(res
 }
 if (!(typeVC %in% c("standard","adaptative","missingdata"))) {
 if (kk==1) {
-cat(paste("____TypeVC____",typeVC,"____unknown____\n"))
+  if(verbose){cat(paste("____TypeVC____",typeVC,"____unknown____\n"))}
 }
 }
 }
@@ -464,7 +464,7 @@ if (na.miss.X & !na.miss.Y) {
 
 
 if (kk==1) {
-cat("____There are some NAs in X but not in Y____\n")
+  if(verbose){cat("____There are some NAs in X but not in Y____\n")}
 }
 
 ##############################################
@@ -475,7 +475,7 @@ if (typeVC == "none") {} else {
 if(NoWeights){
 if (typeVC %in% c("standard","missingdata")) {
 if (kk==1) {
-cat(paste("____TypeVC____",typeVC,"____\n"))
+  if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
 temppp.cv <- res$pp  
 temppred <- rep(0, res$nr)
@@ -489,8 +489,8 @@ for (i in 1:(res$nr)) {
                 }
                 if(rcond(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])<tol_Xi) {
                 break_nt_vc <- TRUE; res$computed_nt_vc <- kk-1
-                cat(paste("Warning : reciprocal condition number of t(temppp.cv[XXNA[",i,",],,drop=FALSE])%*%temppp.cv[XXNA[",i,",],,drop=FALSE]) < 10^{-12}\n",sep=""))
-                cat(paste("Please choose a smaller number of components to cross validate\n",sep=""))
+                if(verbose){cat(paste("Warning : reciprocal condition number of t(temppp.cv[XXNA[",i,",],,drop=FALSE])%*%temppp.cv[XXNA[",i,",],,drop=FALSE]) < 10^{-12}\n",sep=""))}
+                if(verbose){cat(paste("Please choose a smaller number of components to cross validate\n",sep=""))}
                 break
                 }
                 ttPredictY.cv <- (solve(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])%*%t(temppp.cv[XXNA[i,],,drop=FALSE])%*%(XXwotNA[i,])[XXNA[i,]])[kk]
@@ -501,7 +501,7 @@ res$press.ind2 <- cbind(res$press.ind2,(dataYwotNA-res$YChapeau-attr(res$RepY,"s
 }
 if (typeVC == "adaptative") {
 if (kk==1) {
-cat(paste("____TypeVC____",typeVC,"____\n"))
+  if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
 temppp.cv <- res$pp  
 temppred <- rep(0, res$nr)
@@ -524,8 +524,8 @@ else {
                 }
                 if(rcond(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])<tol_Xi) {
                 break_nt_vc <- TRUE; res$computed_nt_vc <- kk-1
-                cat(paste("Warning : reciprocal condition number of t(temppp.cv[XXNA[",i,",],,drop=FALSE])%*%temppp.cv[XXNA[",i,",],,drop=FALSE]) < 10^{-12}\n",sep=""))
-                cat(paste("Please choose a smaller number of components to cross validate\n",sep=""))
+                if(verbose){cat(paste("Warning : reciprocal condition number of t(temppp.cv[XXNA[",i,",],,drop=FALSE])%*%temppp.cv[XXNA[",i,",],,drop=FALSE]) < 10^{-12}\n",sep=""))}
+                if(verbose){cat(paste("Please choose a smaller number of components to cross validate\n",sep=""))}
                 break
                 }
                 ttPredictY.cv <- (solve(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])%*%t(temppp.cv[XXNA[i,],,drop=FALSE])%*%(XXwotNA[i,])[XXNA[i,]])[kk]
@@ -537,14 +537,14 @@ res$press.ind2 <- cbind(res$press.ind2,(dataYwotNA-res$YChapeau-attr(res$RepY,"s
 }
 if (typeVC %in% c("standard","missingdata","adaptative")) {
 if (kk==1) {
-cat(paste("____TypeVC____",typeVC,"____unknown____\n"))
+  if(verbose){cat(paste("____TypeVC____",typeVC,"____unknown____\n"))}
 }
 }
 }
 else {
 if (typeVC %in% c("standard","missingdata")) {
 if (kk==1) {
-cat(paste("____TypeVC____",typeVC,"____\n"))
+  if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
 temppp.cv <- res$pp  
 temppred <- rep(0, res$nr)
@@ -558,8 +558,8 @@ for (i in 1:(res$nr)) {
                 }
                 if(rcond(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])<tol_Xi) {
                 break_nt_vc <- TRUE; res$computed_nt_vc <- kk-1
-                cat(paste("Warning : reciprocal condition number of t(temppp.cv[XXNA[",i,",],,drop=FALSE])%*%temppp.cv[XXNA[",i,",],,drop=FALSE]) < 10^{-12}\n",sep=""))
-                cat(paste("Please choose a smaller number of components to cross validate\n",sep=""))
+                if(verbose){cat(paste("Warning : reciprocal condition number of t(temppp.cv[XXNA[",i,",],,drop=FALSE])%*%temppp.cv[XXNA[",i,",],,drop=FALSE]) < 10^{-12}\n",sep=""))}
+                if(verbose){cat(paste("Please choose a smaller number of components to cross validate\n",sep=""))}
                 break
                 }
                 ttPredictY.cv <- (solve(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])%*%t(temppp.cv[XXNA[i,],,drop=FALSE])%*%(XXwotNA[i,])[XXNA[i,]])[kk]
@@ -570,7 +570,7 @@ res$press.ind2 <- cbind(res$press.ind2,weights*(dataYwotNA-res$YChapeau-attr(res
 }
 if (typeVC == "adaptative") {
 if (kk==1) {
-cat(paste("____TypeVC____",typeVC,"____\n"))
+  if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
 temppp.cv <- res$pp  
 temppred <- rep(0, res$nr)
@@ -593,8 +593,8 @@ else {
                 }
                 if(rcond(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])<tol_Xi) {
                 break_nt_vc <- TRUE; res$computed_nt_vc <- kk-1
-                cat(paste("Warning : reciprocal condition number of t(temppp.cv[XXNA[",i,",],,drop=FALSE])%*%temppp.cv[XXNA[",i,",],,drop=FALSE]) < 10^{-12}\n",sep=""))
-                cat(paste("Please choose a smaller number of components to cross validate\n",sep=""))
+                if(verbose){cat(paste("Warning : reciprocal condition number of t(temppp.cv[XXNA[",i,",],,drop=FALSE])%*%temppp.cv[XXNA[",i,",],,drop=FALSE]) < 10^{-12}\n",sep=""))}
+                if(verbose){cat(paste("Please choose a smaller number of components to cross validate\n",sep=""))}
                 break
                 }
                 ttPredictY.cv <- (solve(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])%*%t(temppp.cv[XXNA[i,],,drop=FALSE])%*%(XXwotNA[i,])[XXNA[i,]])[kk]
@@ -606,7 +606,7 @@ res$press.ind2 <- cbind(res$press.ind2,weights*(dataYwotNA-res$YChapeau-attr(res
 }
 if (!(typeVC %in% c("standard","missingdata","adaptative"))) {
 if (kk==1) {
-cat(paste("____TypeVC____",typeVC,"____unknown____\n"))
+  if(verbose){cat(paste("____TypeVC____",typeVC,"____unknown____\n"))}
 }
 }
 }
@@ -656,7 +656,7 @@ res$RSS <- cbind(res$RSS,crossprod(res$Yresidus,weights*res$Yresidus))
 
 else {
 if (kk==1) {
-cat("____There are some NAs both in X and Y____\n")
+  if(verbose){cat("____There are some NAs both in X and Y____\n")}
 }
 }
 }
@@ -715,7 +715,7 @@ rm(tempCoeffs)
 rm(tempConstante)
 }
 
-cat("____Component____",kk,"____\n")
+if(verbose){cat("____Component____",kk,"____\n")}
 if(break_nt_vc==TRUE) {break}
 }
 
@@ -730,7 +730,7 @@ if(break_nt_vc==TRUE) {break}
 ##############################################
 
 if(res$computed_nt==0){
-cat("No component could be extracted please check the data for NA only lines or columns\n"); stop()
+  cat("No component could be extracted please check the data for NA only lines or columns\n"); stop()
 }
 
 
@@ -741,20 +741,20 @@ cat("No component could be extracted please check the data for NA only lines or 
 ##############################################
 
 if (!(na.miss.PredictY | na.miss.Y)) {
-cat("____Predicting X without NA neither in X nor in Y____\n")
+  if(verbose){cat("____Predicting X without NA neither in X nor in Y____\n")}
 res$ttPredictY <- PredictYwotNA%*%res$wwetoile 
 colnames(res$ttPredictY) <- paste("Comp_",1:res$computed_nt,sep="")
 }
 else {
 if (na.miss.PredictY & !na.miss.Y) {
-cat("____Predicting X with NA in X and not in Y____\n")
+  if(verbose){cat("____Predicting X with NA in X and not in Y____\n")}
 for (ii in 1:nrow(PredictYwotNA)) {  
       res$ttPredictY <- rbind(res$ttPredictY,t(solve(t(res$pp[PredictYNA[ii,],,drop=FALSE])%*%res$pp[PredictYNA[ii,],,drop=FALSE])%*%t(res$pp[PredictYNA[ii,],,drop=FALSE])%*%(PredictYwotNA[ii,])[PredictYNA[ii,]]))
 }
 colnames(res$ttPredictY) <- paste("Comp_",1:res$computed_nt,sep="")
 }
 else {
-cat("____There are some NAs both in X and Y____\n")
+  if(verbose){cat("____There are some NAs both in X and Y____\n")}
 }
 }
 
@@ -859,7 +859,7 @@ colnames(res$wwetoile) <- paste("Coord_Comp_",1:res$computed_nt,sep="")
 rownames(res$tt) <- rownames(ExpliX)
 colnames(res$tt) <- paste("Comp_",1:res$computed_nt,sep="")
 res$XXwotNA <- XXwotNA
-cat("****________________________________________________****\n")
-cat("\n")
+if(verbose){cat("****________________________________________________****\n")}
+if(verbose){cat("\n")}
 return(res)
 }

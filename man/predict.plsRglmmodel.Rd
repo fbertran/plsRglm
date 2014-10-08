@@ -7,7 +7,7 @@ This function provides a predict method for the class \code{"plsRglmmodel"}
 \usage{
 \method{predict}{plsRglmmodel}(object,newdata,comps=object$computed_nt,
 type=c("link", "response", "terms", "scores", "class", "probs"),
-se.fit=FALSE,weights, dispersion = NULL,methodNA="adaptative",...)
+se.fit=FALSE,weights, dispersion = NULL,methodNA="adaptative",verbose=TRUE,...)
 }
 \arguments{
   \item{object}{An object of the class \code{"plsRmodel"}.}
@@ -18,6 +18,7 @@ se.fit=FALSE,weights, dispersion = NULL,methodNA="adaptative",...)
   \item{weights}{Vector of case weights. If \code{weights} is a vector of integers, then the estimated coefficients are equivalent to estimating the model from data with the individual \code{cases} replicated as many times as indicated by \code{weights}.}
   \item{dispersion}{the dispersion of the GLM fit to be assumed in computing the standard errors. If omitted, that returned by summary applied to the object is used.}
   \item{methodNA}{Selects the way of predicting the response or the scores of the new data. For complete rows, without any missing value, there are two different ways of computing the prediction. As a consequence, for mixed datasets, with complete and incomplete rows, there are two ways of computing prediction : either predicts any row as if there were missing values in it (\code{missingdata}) or selects the prediction method accordingly to the completeness of the row (\code{adaptative}).}
+  \item{verbose}{should info messages be displayed ?}
   \item{\dots}{Arguments to be passed on to \code{stats::glm} and \code{plsRglm::plsRglm}.}
 }
 \value{

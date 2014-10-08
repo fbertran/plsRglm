@@ -1,4 +1,4 @@
-PLS_glm_kfoldcv_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls", family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12),weights,subset,start=NULL,etastart,mustart,offset,method,control= list(),contrasts=NULL) {
+PLS_glm_kfoldcv_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls", family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12),weights,subset,start=NULL,etastart,mustart,offset,method,control= list(),contrasts=NULL, verbose=TRUE) {
 
     if (missing(data)) {data <- environment(formula)}
     mf <- match.call(expand.dots = FALSE)
@@ -30,8 +30,8 @@ PLS_glm_kfoldcv_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,modele
     res <- NULL
     res$nr <- nrow(dataX)
         if (K > res$nr) {
-            cat(paste("K cannot be > than nrow(dataX) =",res$nr,"\n"))
-            cat(paste("K is set to", nrow(dataX), "\n"))
+          if(verbose){cat(paste("K cannot be > than nrow(dataX) =",res$nr,"\n"))}
+          if(verbose){cat(paste("K is set to", nrow(dataX), "\n"))}
             K <- res$nr
             random = FALSE
         }
@@ -63,9 +63,9 @@ if(match("method",names(call), 0L)==0L){method<-"logistic"} else {if(!(call$meth
         if (is.function(call$family)) {call$family <- call$family()}
         if (is.language(call$family)) {call$family <- eval(call$family)}
     }
-    if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {print(family)}
-    if (modele %in% c("pls-glm-polr")) {cat("\nModel:", modele, "\n");cat("Method:", method, "\n\n")}
-    if (modele=="pls") {cat("\nModel:", modele, "\n\n")}
+    if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {if(verbose){print(family)}}
+    if (modele %in% c("pls-glm-polr")) {if(verbose){cat("\nModel:", modele, "\n");cat("Method:", method, "\n\n")}}
+    if (modele=="pls") {if(verbose){cat("\nModel:", modele, "\n\n")}}
 
 
     if(as.character(call["random"])=="NULL"){random=TRUE}
@@ -79,8 +79,8 @@ if(match("method",names(call), 0L)==0L){method<-"logistic"} else {if(!(call$meth
     if (as.character(call["sparse"])=="NULL") {call$sparse <- FALSE}
     if (as.character(call["sparseStop"])=="NULL") {call$sparseStop <- FALSE}
     if (as.character(call["naive"])=="NULL") {call$contrasts <- FALSE}
-    
-    
+    if (as.character(call["verbose"])=="NULL") {call$verbose <- TRUE}
+
     
 if (!is.data.frame(dataX)) {dataX <- data.frame(dataX)}
     folds_kfolds <-vector("list",NK)
@@ -133,12 +133,12 @@ if (!is.data.frame(dataX)) {dataX <- data.frame(dataX)}
     }
     nnkk=1;while(nnkk<=NK) {
       restartnnkk=FALSE
-            cat(paste("NK:", nnkk, "\n"))
+      if(verbose){cat(paste("NK:", nnkk, "\n"))}
         if (K == res$nr) {
-            cat("Leave One Out\n")
+          if(verbose){cat("Leave One Out\n")}
             random = FALSE
         }
-            cat(paste("Number of groups :", K, "\n"))
+      if(verbose){cat(paste("Number of groups :", K, "\n"))}
         if (!is.list(grouplist)) {
             if (random == TRUE) {
                 randsample = sample(1:res$nr, replace = FALSE)
@@ -175,7 +175,7 @@ if (!is.data.frame(dataX)) {dataX <- data.frame(dataX)}
             else folds = c(folds, list(as.vector(unlist(groups[-ii]))))
             if (K == 1) {
                 mf2 <- match.call(expand.dots = FALSE)
-                m2 <- match(c("nt","modele","family","scaleX","scaleY","keepcoeffs","tol_Xi","weights","subset","start","etastart","mustart","offset","control","method","contrasts"), names(mf2), 0L)
+                m2 <- match(c("nt","modele","family","scaleX","scaleY","keepcoeffs","tol_Xi","weights","subset","start","etastart","mustart","offset","control","method","contrasts","verbose"), names(mf2), 0L)
                 mf2 <- mf2[c(1L, m2)]
                 mf2[[1L]] <- as.name("PLS_glm_wvc")
                 mf2$family <- family
@@ -197,9 +197,9 @@ if(match("method",names(call), 0L)==0L){mf2$method<-"logistic"} else {if(!(call$
                 if (keepdataY) {dataY_kfolds[[nnkk]][[ii]] = NULL}
                 }
             else {
-                  cat(paste(ii,"\n"))
+              if(verbose){cat(paste(ii,"\n"))}
                   mf2 <- match.call(expand.dots = FALSE)
-                  m2 <- match(c("nt","modele","family","scaleX","scaleY","keepcoeffs","tol_Xi","weights","subset","start","etastart","mustart","offset","control","method","contrasts","sparse","sparseStop","naive"), names(mf2), 0L)
+                  m2 <- match(c("nt","modele","family","scaleX","scaleY","keepcoeffs","tol_Xi","weights","subset","start","etastart","mustart","offset","control","method","contrasts","sparse","sparseStop","naive","verbose"), names(mf2), 0L)
                   mf2 <- mf2[c(1L, m2)]
                   mf2[[1L]] <- as.name("PLS_glm_wvc")
                   mf2$family <- family

@@ -5,11 +5,12 @@
 This function extracts and computes information criteria and fits statistics for k-fold cross validated partial least squares glm models for both formula or classic specifications of the model.
 }
 \usage{
-kfolds2CVinfos_glm(pls_kfolds, MClassed = FALSE)
+kfolds2CVinfos_glm(pls_kfolds, MClassed = FALSE,verbose=TRUE)
 }
 \arguments{
   \item{pls_kfolds}{an object computed using \code{\link{cv.plsRglm}}}
-  \item{MClassed}{should number of miss classed be computed}
+  \item{MClassed}{should number of miss classed be computed ?}
+  \item{verbose}{should infos be displayed ?}
 }
 \details{
 The Mclassed option should only set to \code{TRUE} if the response is binary. 

@@ -1,4 +1,4 @@
-PLS_lm_wvc <- function(dataY,dataX,nt=2,dataPredictY=dataX,modele="pls",scaleX=TRUE,scaleY=NULL,keepcoeffs=FALSE,keepstd.coeffs=FALSE,tol_Xi=10^(-12),weights) {
+PLS_lm_wvc <- function(dataY,dataX,nt=2,dataPredictY=dataX,modele="pls",scaleX=TRUE,scaleY=NULL,keepcoeffs=FALSE,keepstd.coeffs=FALSE,tol_Xi=10^(-12),weights,verbose=TRUE) {
 
 
 
@@ -8,7 +8,7 @@ PLS_lm_wvc <- function(dataY,dataX,nt=2,dataPredictY=dataX,modele="pls",scaleX=T
 #                                                #
 ##################################################
 
-cat("____************************************************____\n")
+if(verbose){cat("____************************************************____\n")}
 if(any(apply(is.na(dataX),MARGIN=2,"all"))){return(vector("list",0)); cat("One of the columns of dataX is completely filled with missing data"); stop()}
 if(any(apply(is.na(dataX),MARGIN=1,"all"))){return(vector("list",0)); cat("One of the rows of dataX is completely filled with missing data"); stop()}
 if(identical(dataPredictY,dataX)){PredYisdataX <- TRUE} else {PredYisdataX <- FALSE}
@@ -20,8 +20,8 @@ if(missing(weights)){NoWeights=TRUE} else {if(all(weights==rep(1,length(dataY)))
 if(any(is.na(dataX))) {na.miss.X <- TRUE} else na.miss.X <- FALSE
 if(any(is.na(dataY))) {na.miss.Y <- TRUE} else na.miss.Y <- FALSE
 if(any(is.na(dataPredictY))) {na.miss.PredictY <- TRUE} else {na.miss.PredictY <- FALSE}
-if(na.miss.X|na.miss.Y){naive=TRUE; cat(paste("Only naive DoF can be used with missing data\n",sep="")); if(!NoWeights){cat(paste("Weights cannot be used with missing data\n",sep=""))}}
-if(!NoWeights){naive=TRUE; cat(paste("Only naive DoF can be used with weighted PLS\n",sep=""))}
+if(na.miss.X|na.miss.Y){naive=TRUE; if(verbose){cat(paste("Only naive DoF can be used with missing data\n",sep=""))}; if(!NoWeights){if(verbose){cat(paste("Weights cannot be used with missing data\n",sep=""))}}}
+if(!NoWeights){naive=TRUE; if(verbose){cat(paste("Only naive DoF can be used with weighted PLS\n",sep=""))}}
 
 if (!(modele %in% c("pls"))) {print(modele);stop("'modele' not recognized")}
 scaleY <- NULL
@@ -106,11 +106,11 @@ temptest <- sqrt(colSums(res$residXX^2, na.rm=TRUE))
 if(any(temptest<tol_Xi)) {
 break_nt <- TRUE
 if (is.null(names(which(temptest<tol_Xi)))) {
-cat(paste("Warning : ",paste(names(which(temptest<tol_Xi)),sep="",collapse=" ")," < 10^{-12}\n",sep=""))
+  if(verbose){cat(paste("Warning : ",paste(names(which(temptest<tol_Xi)),sep="",collapse=" ")," < 10^{-12}\n",sep=""))}
 } else {
-cat(paste("Warning : ",paste((which(temptest<tol_Xi)),sep="",collapse=" ")," < 10^{-12}\n",sep=""))
+  if(verbose){cat(paste("Warning : ",paste((which(temptest<tol_Xi)),sep="",collapse=" ")," < 10^{-12}\n",sep=""))}
 }
-cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))
+if(verbose){cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))}
 #rm(temptest)
 break
 }
@@ -165,8 +165,8 @@ if (na.miss.X & !na.miss.Y) {
 for (ii in 1:res$nr) {
 if(rcond(t(cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])<tol_Xi) {
 break_nt <- TRUE; res$computed_nt <- kk-1
-cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE] < 10^{-12}\n",sep=""))
-cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))
+if(verbose){cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE] < 10^{-12}\n",sep=""))}
+if(verbose){cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))}
 break
 }
 }
@@ -179,8 +179,8 @@ if (na.miss.PredictY & !na.miss.Y) {
 for (ii in 1:nrow(PredictYwotNA)) {
 if(rcond(t(cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])<tol_Xi) {
 break_nt <- TRUE; res$computed_nt <- kk-1
-cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],])%*%cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],] < 10^{-12}\n",sep=""))
-cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))
+if(verbose){cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],])%*%cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],] < 10^{-12}\n",sep=""))}
+if(verbose){cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))}
 break
 }
 }
@@ -288,7 +288,7 @@ if (na.miss.X & !na.miss.Y) {
 
 
 if (kk==1) {
-cat("____There are some NAs in X but not in Y____\n")
+  if(verbose){cat("____There are some NAs in X but not in Y____\n")}
 }
 
 ##############################################
@@ -309,7 +309,7 @@ res$Yresidus <- dataY-res$YChapeau
 
 else {
 if (kk==1) {
-cat("____There are some NAs both in X and Y____\n")
+  if(verbose){cat("____There are some NAs both in X and Y____\n")}
 }
 }
 }
@@ -353,7 +353,7 @@ cat("No component could be extracted please check the data for NA only lines or 
 
 if (!(na.miss.PredictY | na.miss.Y)) {
 if(kk==1){
-cat("____Predicting X without NA neither in X nor in Y____\n")
+  if(verbose){cat("____Predicting X without NA neither in X nor in Y____\n")}
 }
 res$ttPredictY <- PredictYwotNA%*%res$wwetoile 
 colnames(res$ttPredictY) <- paste("tt",1:kk,sep="")
@@ -361,7 +361,7 @@ colnames(res$ttPredictY) <- paste("tt",1:kk,sep="")
 else {
 if (na.miss.PredictY & !na.miss.Y) {
 if(kk==1){
-cat("____Predicting X with NA in X and not in Y____\n")
+  if(verbose){cat("____Predicting X with NA in X and not in Y____\n")}
 }
 res$ttPredictY <- NULL
 
@@ -373,7 +373,7 @@ colnames(res$ttPredictY) <- paste("tt",1:kk,sep="")
 }
 else {
 if(kk==1){
-cat("____There are some NAs both in X and Y____\n")
+  if(verbose){cat("____There are some NAs both in X and Y____\n")}
 }
 }
 }
@@ -405,7 +405,7 @@ if (modele == "pls") {
 res$listValsPredictY <- cbind(res$listValsPredictY,attr(res$RepY,"scaled:center")+attr(res$RepY,"scaled:scale")*res$ttPredictY%*%res$CoeffC)
 }
 
-cat("____Component____",kk,"____\n")
+if(verbose){cat("____Component____",kk,"____\n")}
 }
 
 
@@ -419,8 +419,8 @@ cat("____Component____",kk,"____\n")
 ##############################################
 
 
-cat("****________________________________________________****\n")
-cat("\n")
+if(verbose){cat("****________________________________________________****\n")}
+if(verbose){cat("\n")}
 if (!keepcoeffs) {
 if (!keepstd.coeffs) {return(list(valsPredict=res$listValsPredictY))} else {return(list(valsPredict=res$listValsPredictY, std.coeffs=res$Std.Coeffs))}}
 else {

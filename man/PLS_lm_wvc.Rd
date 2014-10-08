@@ -7,7 +7,7 @@ Light version of \code{PLS_lm} for cross validation purposes either on complete 
 \usage{
 PLS_lm_wvc(dataY, dataX, nt = 2, dataPredictY = dataX, modele = "pls", 
 scaleX = TRUE, scaleY = NULL, keepcoeffs = FALSE, 
-keepstd.coeffs=FALSE, tol_Xi = 10^(-12), weights)
+keepstd.coeffs=FALSE, tol_Xi = 10^(-12), weights, verbose=TRUE)
 }
 \arguments{
   \item{dataY}{response (training) dataset}
@@ -21,6 +21,7 @@ keepstd.coeffs=FALSE, tol_Xi = 10^(-12), weights)
   \item{keepstd.coeffs}{whether the coefficients of standardized eXplanatory variables should be returned or not.}
   \item{tol_Xi}{minimal value for Norm2(Xi) and \eqn{\mathrm{det}(pp' \times pp)}{det(pp'*pp)} if there is any missing value in the \code{dataX}. It defaults to \eqn{10^{-12}}{10^{-12}}}
   \item{weights}{an optional vector of 'prior weights' to be used in the fitting process. Should be \code{NULL} or a numeric vector.}
+    \item{verbose}{should info messages be displayed ?}
 }
 \details{
 This function is called by \code{\link{PLS_lm_kfoldcv}} in order to perform cross-validation either on complete or incomplete datasets.

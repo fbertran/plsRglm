@@ -1,4 +1,4 @@
-PLS_glm <- function(dataY,dataX,nt=2,limQ2set=.0975,dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,method,sparse=FALSE,sparseStop=FALSE,naive=FALSE) {  
+PLS_glm <- function(dataY,dataX,nt=2,limQ2set=.0975,dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,method,sparse=FALSE,sparseStop=FALSE,naive=FALSE,verbose=TRUE) {  
 
 
 ##################################################
@@ -7,7 +7,7 @@ PLS_glm <- function(dataY,dataX,nt=2,limQ2set=.0975,dataPredictY=dataX,modele="p
 #                                                #
 ##################################################
 
-cat("____************************************************____\n")
+if(verbose){cat("____************************************************____\n")}
 if(any(apply(is.na(dataX),MARGIN=2,"all"))){return(vector("list",0)); cat("One of the columns of dataX is completely filled with missing data\n"); stop()}
 if(any(apply(is.na(dataX),MARGIN=1,"all"))){return(vector("list",0)); cat("One of the rows of dataX is completely filled with missing data\n"); stop()}
 if(identical(dataPredictY,dataX)){PredYisdataX <- TRUE} else {PredYisdataX <- FALSE}
@@ -20,9 +20,9 @@ if(missing(method)){method="logistic"}
 if(any(is.na(dataX))) {na.miss.X <- TRUE} else na.miss.X <- FALSE
 if(any(is.na(dataY))) {na.miss.Y <- TRUE} else na.miss.Y <- FALSE
 if(any(is.na(dataPredictY))) {na.miss.PredictY <- TRUE} else {na.miss.PredictY <- FALSE}
-if(is.null(modele)){naive=FALSE} else {if(modele=="pls"){naive=FALSE} else {if(!missing(naive)){cat(paste("Only naive DoF can be used with PLS GLM\n",sep=""))}; naive=TRUE}}
-if(na.miss.X|na.miss.Y){naive=TRUE; cat(paste("Only naive DoF can be used with missing data\n",sep="")); if(!NoWeights){cat(paste("Weights cannot be used with missing data\n",sep=""))};  if(sparse){cat(paste("sparse option cannot be used with missing data\n",sep="")); sparse=FALSE}}
-if(!NoWeights){naive=TRUE; cat(paste("Only naive DoF can be used with weighted PLS\n",sep=""))} else {NoWeights=TRUE}
+if(is.null(modele)){naive=FALSE} else {if(modele=="pls"){naive=FALSE} else {if(!missing(naive)){if(verbose){cat(paste("Only naive DoF can be used with PLS GLM\n",sep=""))}}; naive=TRUE}}
+if(na.miss.X|na.miss.Y){naive=TRUE; if(verbose){cat(paste("Only naive DoF can be used with missing data\n",sep=""))}; if(!NoWeights){if(verbose){cat(paste("Weights cannot be used with missing data\n",sep=""))}};  if(sparse){if(verbose){cat(paste("sparse option cannot be used with missing data\n",sep=""))}; sparse=FALSE}}
+if(!NoWeights){naive=TRUE; if(verbose){cat(paste("Only naive DoF can be used with weighted PLS\n",sep=""))}} else {NoWeights=TRUE}
 if(sparse){sparseStop=TRUE}
 if(sparseStop){pvals.expli=TRUE}
 
@@ -43,9 +43,9 @@ if (!is.null(family)) {
     if (is.language(family)) {family <- eval(family)}
 }
 
-    if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {print(family)}
-    if (modele %in% c("pls-glm-polr")) {cat("\nModel:", modele, "\n");cat("Method:", method, "\n\n")}
-    if (modele=="pls") {cat("\nModel:", modele, "\n\n")}
+    if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {if(verbose){print(family)}}
+    if (modele %in% c("pls-glm-polr")) {if(verbose){cat("\nModel:", modele, "\n");cat("Method:", method, "\n\n")}}
+    if (modele=="pls") {if(verbose){cat("\nModel:", modele, "\n\n")}}
 
 scaleY <- NULL
 if (is.null(scaleY)) {
@@ -143,11 +143,11 @@ temptest <- sqrt(colSums(res$residXX^2, na.rm=TRUE))
 if(any(temptest<tol_Xi)) {
 break_nt <- TRUE
 if (is.null(names(which(temptest<tol_Xi)))) {
-cat(paste("Warning : ",paste(names(which(temptest<tol_Xi)),sep="",collapse=" ")," < 10^{-12}\n",sep=""))
+  if(verbose){cat(paste("Warning : ",paste(names(which(temptest<tol_Xi)),sep="",collapse=" ")," < 10^{-12}\n",sep=""))}
 } else {
-cat(paste("Warning : ",paste((which(temptest<tol_Xi)),sep="",collapse=" ")," < 10^{-12}\n",sep=""))
+  if(verbose){cat(paste("Warning : ",paste((which(temptest<tol_Xi)),sep="",collapse=" ")," < 10^{-12}\n",sep=""))}
 }
-cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))
+if(verbose){cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))}
 rm(temptest)
 break
 }
@@ -252,15 +252,15 @@ res$pvalstep <- cbind(res$pvalstep,temppvalstep)
 #                                            #
 ##############################################
 if((break_nt_sparse)&(kk==1L)){
-cat(paste("No significant predictors (<",alpha.pvals.expli,") found\n",sep=""))
-cat(paste("Warning only one standard component (without sparse option) was thus extracted\n",sep=""))
+  if(verbose){cat(paste("No significant predictors (<",alpha.pvals.expli,") found\n",sep=""))}
+  if(verbose){cat(paste("Warning only one standard component (without sparse option) was thus extracted\n",sep=""))}
 break_nt_sparse1 <- TRUE
 }
 if((break_nt_sparse)&!(kk==1L)){
 res$computed_nt <- kk-1
 if(!(break_nt_sparse1)){
-cat(paste("No more significant predictors (<",alpha.pvals.expli,") found\n",sep=""))
-cat(paste("Warning only ",res$computed_nt," components were thus extracted\n",sep=""))
+  if(verbose){cat(paste("No more significant predictors (<",alpha.pvals.expli,") found\n",sep=""))}
+  if(verbose){cat(paste("Warning only ",res$computed_nt," components were thus extracted\n",sep=""))}
 }
 break}
 
@@ -279,8 +279,8 @@ if (na.miss.X & !na.miss.Y) {
 for (ii in 1:res$nr) {
 if(rcond(t(cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])<tol_Xi) {
 break_nt <- TRUE; res$computed_nt <- kk-1
-cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE] < 10^{-12}\n",sep=""))
-cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))
+if(verbose){cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE] < 10^{-12}\n",sep=""))}
+if(verbose){cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))}
 break
 }
 }
@@ -295,8 +295,8 @@ if (na.miss.PredictY & !na.miss.Y) {
 for (ii in 1:nrow(PredictYwotNA)) {
 if(rcond(t(cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])<tol_Xi) {
 break_nt <- TRUE; res$computed_nt <- kk-1
-cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],])%*%cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],] < 10^{-12}\n",sep=""))
-cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))
+if(verbose){cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],])%*%cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],] < 10^{-12}\n",sep=""))}
+if(verbose){cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))}
 break
 }
 }
@@ -655,7 +655,7 @@ if (na.miss.X & !na.miss.Y) {
 
 
 if (kk==1) {
-cat("____There are some NAs in X but not in Y____\n")
+  if(verbose){cat("____There are some NAs in X but not in Y____\n")}
 }
 
 ##############################################
@@ -762,7 +762,7 @@ rownames(res$Coeffs) <- rownames(res$Std.Coeffs)
 
 else {
 if (kk==1) {
-cat("____There are some NAs both in X and Y____\n")
+  if(verbose){cat("____There are some NAs both in X and Y____\n")}
 }
 }
 }
@@ -857,7 +857,7 @@ rm(tempConstante)
 }
 
 
-cat("____Component____",kk,"____\n")
+if(verbose){cat("____Component____",kk,"____\n")}
 }
 
 
@@ -888,19 +888,19 @@ res$Coeffsmodel_vals<-res$Coeffsmodel_vals[1:(dim(res$Coeffsmodel_vals)[1]-(nt-r
 ##############################################
 
 if (!(na.miss.PredictY | na.miss.Y)) {
-cat("____Predicting X without NA neither in X nor in Y____\n")
+  if(verbose){cat("____Predicting X without NA neither in X nor in Y____\n")}
 res$ttPredictY <- PredictYwotNA%*%res$wwetoile 
 colnames(res$ttPredictY) <- NULL}
 else {
 if (na.miss.PredictY & !na.miss.Y) {
-cat("____Predicting X with NA in X and not in Y____\n")
+  if(verbose){cat("____Predicting X with NA in X and not in Y____\n")}
 for (ii in 1:nrow(PredictYwotNA)) {  
       res$ttPredictY <- rbind(res$ttPredictY,t(solve(t(res$pp[PredictYNA[ii,],,drop=FALSE])%*%res$pp[PredictYNA[ii,],,drop=FALSE])%*%t(res$pp[PredictYNA[ii,],,drop=FALSE])%*%(PredictYwotNA[ii,])[PredictYNA[ii,]]))
 }
 colnames(res$ttPredictY) <- NULL
 }
 else {
-cat("____There are some NAs both in X and Y____\n")
+  if(verbose){cat("____There are some NAs both in X and Y____\n")}
 }
 }
 
@@ -1046,7 +1046,7 @@ colnames(res$wwetoile) <- paste("Coord_Comp_",1:res$computed_nt,sep="")
 rownames(res$tt) <- rownames(ExpliX)
 colnames(res$tt) <- paste("Comp_",1:res$computed_nt,sep="")
 res$XXwotNA <- XXwotNA
-cat("****________________________________________________****\n")
-cat("\n")
+if(verbose){cat("****________________________________________________****\n")}
+if(verbose){cat("\n")}
 return(res)
 }

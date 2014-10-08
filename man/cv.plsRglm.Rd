@@ -13,21 +13,24 @@ cv.plsRglm(x, \dots)
 \method{cv.plsRglmmodel}{default}(dataY,dataX,nt=2,limQ2set=.0975,
 modele="pls", family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, 
 scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, 
-keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights, method)
+keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights, method,
+verbose=TRUE)
 \method{cv.plsRglmmodel}{formula}(formula,data=NULL,nt=2,limQ2set=.0975,
 modele="pls", family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, 
 scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, 
 keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12),weights,subset,
-start=NULL,etastart,mustart,offset,method,control= list(),contrasts=NULL)
+start=NULL,etastart,mustart,offset,method,control= list(),contrasts=NULL,
+verbose=TRUE)
 PLS_glm_kfoldcv(dataY, dataX, nt = 2, limQ2set = 0.0975, modele = "pls", 
 family = NULL, K = 5, NK = 1, grouplist = NULL, random = TRUE, 
 scaleX = TRUE, scaleY = NULL, keepcoeffs = FALSE, keepfolds = FALSE, 
-keepdataY = TRUE, keepMclassed=FALSE, tol_Xi = 10^(-12), weights, method)
+keepdataY = TRUE, keepMclassed=FALSE, tol_Xi = 10^(-12), weights, method,
+verbose=TRUE)
 PLS_glm_kfoldcv_formula(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls",
 family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, 
 scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, 
 keepMclassed=FALSE, tol_Xi=10^(-12),weights,subset,start=NULL,etastart,
-mustart,offset,method,control= list(),contrasts=NULL)
+mustart,offset,method,control= list(),contrasts=NULL, verbose=TRUE)
 }
 \arguments{
   \item{x}{a formula or a response (training) dataset}
@@ -61,6 +64,7 @@ mustart,offset,method,control= list(),contrasts=NULL)
   \item{\code{pls-glm-polr}}{logistic, probit, complementary log-log or cauchit (corresponding to a Cauchy latent variable).}}}
   \item{control}{a list of parameters for controlling the fitting process. For \code{glm.fit} this is passed to \code{\link{glm.control}}.}
   \item{contrasts}{an optional list. See the \code{contrasts.arg} of \code{model.matrix.default}.}
+  \item{verbose}{should info messages be displayed ?}
 \item{\dots}{arguments to pass to \code{cv.plsRglmmodel.default} or to \code{cv.plsRglmmodel.formula}}
 }
 \details{
@@ -139,6 +143,7 @@ cvtable(sum1)
 bbb2 <- cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,
 modele="pls-glm-family",family=gaussian(),K=12)
 (sum2<-summary(bbb2))
+cvtable(sum2)
 
 #random=TRUE is the default to randomly create folds for repeated CV
 bbb3 <- cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,
