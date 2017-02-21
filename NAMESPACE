@@ -1,6 +1,7 @@
 # imports functions
 importFrom(mvtnorm,rmvnorm)
 importFrom(bipartite,visweb)
+importFrom(car,dataEllipse)
 import(boot)
 
 # functions

@@ -30,13 +30,14 @@ Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2
 }
 \note{Use \code{\link{summary}} and \code{\link{cv.plsRglm}} instead.}
 \seealso{\code{\link{kfolds2coeff}}, \code{\link{kfolds2Pressind}}, \code{\link{kfolds2Press}}, \code{\link{kfolds2Mclassedind}} and \code{\link{kfolds2Mclassed}} to extract and transforms results from k-fold cross-validation.}
-\examples{\donttest{
+\examples{
+\donttest{
 data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
 bbb <- cv.plsRglm(dataY=yCornell,dataX=data.frame(scale(as.matrix(XCornell))[,]),
 nt=6,K=12,NK=1,keepfolds=FALSE,keepdataY=TRUE,modele="pls")
-summary(bbb,MClassed)
+summary(bbb,MClassed=TRUE)
 rm(list=c("XCornell","yCornell","bbb"))
 
 
@@ -45,7 +46,7 @@ Xaze_compl<-aze_compl[,2:34]
 yaze_compl<-aze_compl$y
 bbb <- cv.plsR(yaze_compl,Xaze_compl,nt=10,K=8,modele="pls")
 summary(bbb,MClassed=TRUE)
-bbb <- cv.plsRglm(yaze_compl,Xaze_compl,nt=10,K=8,modele="pls")
+bbbbis <- cv.plsRglm(yaze_compl,Xaze_compl,nt=10,K=8,modele="pls")
 summary(bbbbis,MClassed=TRUE)
 bbba <- cv.plsRglm(yaze_compl,Xaze_compl,nt=10,K=8,
 modele="pls-glm-family",family=gaussian())
@@ -59,8 +60,7 @@ summary(bbb2a,MClassed=TRUE)
 rm(list=c("Xaze_compl","yaze_compl","bbb","bbbbis","bbb2","bbba","bbb2a"))
 
 
-#install.packages("chemometrics")
-library(chemometrics)
+if(require(chemometrics)){
 data(hyptis)
 hyptis
 yhyptis <- factor(hyptis$Group,ordered=TRUE)
@@ -77,8 +77,10 @@ table(yhyptis,predict(modpls2$FinalModel,type="class"))
 modpls3 <- PLS_glm(yhyptis[-c(1,2,3)],Xhyptis[-c(1,2,3),],3,modele="pls-glm-polr",
 dataPredictY=Xhyptis[c(1,2,3),])
 bbb <- cv.plsRglm(yhyptis,Xhyptis,nt=4,K=10,random=TRUE,modele="pls-glm-polr",
-keepcoeffs=T)
+keepcoeffs=TRUE)
 summary(bbb,MClassed=TRUE)
 }
-}\keyword{models}
+}
+}
+\keyword{models}
 \keyword{regression}

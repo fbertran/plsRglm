@@ -27,8 +27,8 @@ data(Cornell)
 set.seed(250)
 modpls <- plsR(Y~.,data=Cornell,3)
 Cornell.bootYX <- bootpls(modpls, R=250)
-confints.bootpls(Cornell.boot,2:8)
-confints.bootpls(Cornell.boot,2:8,typeBCa=FALSE)
+confints.bootpls(Cornell.bootYX,2:8)
+confints.bootpls(Cornell.bootYX,2:8,typeBCa=FALSE)
 }
 }\keyword{regression}
 \keyword{models}

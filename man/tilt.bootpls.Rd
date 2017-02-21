@@ -39,7 +39,7 @@ stype="i", index=1, stabvalue=1e6,...)
 }
 \seealso{\code{\link[boot:boot]{tilt.boot}}}
 \examples{
-\donttest{
+\dontrun{
 data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]

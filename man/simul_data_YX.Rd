@@ -42,6 +42,7 @@ The value of \eqn{r} depends on the value of \code{ncomp} :
 simul_data_YX(20,6)                          
 
 \donttest{
+if(require(plsdepot)){
 dimX <- 6
 Astar <- 2
 (dataAstar2 <- t(replicate(50,simul_data_YX(dimX,Astar))))
@@ -67,6 +68,7 @@ resAstar4$Q2
 resAstar4$Q2[,5]>0.0975
 
 rm(list=c("dimX","Astar"))
+}
 }
 }\keyword{datagen}
 \keyword{utilities}

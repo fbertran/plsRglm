@@ -195,7 +195,7 @@ modpls.aze$MissClassed
 modpls.aze$Probs
 #Truncated to [0;1] predicted values (true probabilities)
 modpls.aze$Probs.trc
-modpls.aze$Probs-modpls$Probs.trc
+modpls.aze$Probs-modpls.aze$Probs.trc
 
 #Repeated cross validation of the model (NK=100 times)
 cv.modpls.aze<-cv.plsR(yaze_compl,Xaze_compl,10,NK=100)
@@ -225,19 +225,19 @@ plot(res.cv.modpls.A2)
 ysimbin1 <- dicho(ydataAstar2)
 #Binarized predictors
 Xsimbin1 <- dicho(XdataAstar2)
-modpls.B10 <- plsR(ysimbin1,Xsimbin1,10,typeVC="standard",MClassed=TRUE)
-modpls.B10
-modpls.B10$Probs
-modpls.B10$Probs.trc
-modpls.B10$MissClassed
+modpls.B2 <- plsR(ysimbin1,Xsimbin1,10,typeVC="standard",MClassed=TRUE)
+modpls.B2
+modpls.B2$Probs
+modpls.B2$Probs.trc
+modpls.B2$MissClassed
 plsR(ysimbin1,XdataAstar2,10,typeVC="standard",MClassed=TRUE)$InfCrit
-cv.modpls.B10<-cv.plsR(ysimbin1,Xsimbin1,10,NK=100)
-res.cv.modpls.B10<-cvtable(summary(cv.modpls.B10,MClassed=TRUE))
+cv.modpls.B2<-cv.plsR(ysimbin1,Xsimbin1,2,NK=100)
+res.cv.modpls.B2<-cvtable(summary(cv.modpls.B2,MClassed=TRUE))
 #Only one component found by repeated CV missclassed criterion
-plot(res.cv.modpls.B10)
+plot(res.cv.modpls.B2)
 
 rm(list=c("dimX","Astar","dataAstar2","XdataAstar2","ydataAstar2","modpls.A2","cv.modpls.A2",
-"res.cv.modpls.A2","Xsimbin1","ysimbin1","modpls.B10","cv.modpls.B10","res.cv.modpls.B10"))
+"res.cv.modpls.A2","Xsimbin1","ysimbin1","modpls.B2","cv.modpls.B2","res.cv.modpls.B2"))
 }
 }
 \keyword{models}

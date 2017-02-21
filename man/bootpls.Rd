@@ -69,7 +69,7 @@ jack.after.boot(Cornell.bootYX, index=2, useJ=TRUE, nt=3)
 plot(Cornell.bootYX,index=2,jack=TRUE)
 
 car::dataEllipse(Cornell.bootYX$t[,2], Cornell.bootYX$t[,3], cex=.3, 
-levels=c(.5, .95, .99), robust=T)
+levels=c(.5, .95, .99), robust=TRUE)
 rm(Cornell.bootYX)
 
 

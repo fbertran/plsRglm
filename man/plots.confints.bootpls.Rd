@@ -82,7 +82,7 @@ modplsglm <- plsRglm(y~.,data=aze_compl,3,modele="pls-glm-logistic")
 
 # Lazraq-Cleroux PLS (Y,X) bootstrap
 # should be run with R=1000 but takes much longer time
-aze_compl.bootYX <- bootplsglm(modplsglm, typeboot="plsmodel", R=250)
+aze_compl.bootYX3 <- bootplsglm(modplsglm, typeboot="plsmodel", R=250)
 temp.ci <- confints.bootpls(aze_compl.bootYX3)
 
 plots.confints.bootpls(temp.ci)

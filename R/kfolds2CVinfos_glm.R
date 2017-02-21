@@ -133,7 +133,7 @@ return(CVinfos)
 
 if(!(match("formula",names(pls_kfolds$call), 0L)==0L)){
 (mf <- pls_kfolds$call)
-(m <- match(c("formula", "data", "nt", "limQ2set", "modele", "family", "scaleX", "scaleY", "weights","subset","start","etastart","mustart","offset","control","method","contrasts", "method", "sparse", "naive", "verbose"), names(pls_kfolds$call), 0))
+(m <- match(c("formula", "data", "nt", "limQ2set", "modele", "family", "scaleX", "scaleY", "weights","subset","start","etastart","mustart","offset","control","method","contrasts", "sparse", "naive", "verbose"), names(pls_kfolds$call), 0))
 (mf <- mf[c(1, m)])
 mf$verbose<-verbose
 if(is.null(mf$modele)){mf$modele<-"pls"}

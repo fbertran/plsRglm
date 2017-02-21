@@ -110,8 +110,7 @@ strata=unclass(ybordeaux))
 boxplots.bootpls(bordeaux.bootYT2,ranget0=TRUE)
 
 
-if(!require(chemometrics)){install.packages("chemometrics")}
-library(chemometrics)
+if(require(chemometrics)){
 data(hyptis)
 hyptis
 yhyptis <- factor(hyptis$Group,ordered=TRUE)
@@ -123,8 +122,9 @@ hyptis.bootYT3<- bootplsglm(modplsglm4, sim="permutation", R=250)
 rownames(hyptis.bootYT3$t0)<-c("Sabi\nnene","Pin\nene",
 "Cine\nole","Terpi\nnene","Fenc\nhone","Terpi\nnolene")
 boxplots.bootpls(hyptis.bootYT3)
-boxplots.bootpls(hyptis.boot3,xaxisticks=FALSE)
-boxplots.bootpls(hyptis.boot3,ranget0=TRUE)
-boxplots.bootpls(hyptis.boot3,ranget0=TRUE,xaxisticks=FALSE)
+boxplots.bootpls(hyptis.bootYT3,xaxisticks=FALSE)
+boxplots.bootpls(hyptis.bootYT3,ranget0=TRUE)
+boxplots.bootpls(hyptis.bootYT3,ranget0=TRUE,xaxisticks=FALSE)
+}
 }
 }\keyword{models}

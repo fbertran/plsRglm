@@ -296,7 +296,8 @@ plot(Cornell.boot,index=2)
 boot::jack.after.boot(Cornell.boot, index=2, useJ=TRUE, nt=3)
 plot(Cornell.boot,index=2,jack=TRUE)
 
-car::data.ellipse(Cornell.boot$t[,2], Cornell.boot$t[,3], cex=.3, levels=c(.5, .95, .99), robust=T)
+car::dataEllipse(Cornell.boot$t[,2], Cornell.boot$t[,3], cex=.3, levels=c(.5, .95, .99), robust=T)
+
 
 rm(Cornell.boot)
 

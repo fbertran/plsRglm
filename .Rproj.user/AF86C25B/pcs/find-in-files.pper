@@ -20,7 +20,7 @@
             "*.cpp"
         ],
         "path" : "~/GitHub/plsRglm/man",
-        "query" : "\\references{",
+        "query" : "dataEllipse",
         "regex" : false
     }
 }

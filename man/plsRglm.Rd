@@ -61,7 +61,8 @@ control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE,verbose
   \item{etastart}{starting values for the linear predictor.}
   \item{mustart}{starting values for the vector of means.}
   \item{offset}{this can be used to specify an \emph{a priori} known component to be included in the linear predictor during fitting. This should be \code{NULL} or a numeric vector of length equal to the number of cases. One or more \code{\link{offset}} terms can be included in the formula instead or as well, and if more than one is specified their sum is used. See \code{\link{model.offset}}.}
-  \item{method}{the method to be used in fitting the model. The default method \code{"glm.fit"} uses iteratively reweighted least squares (IWLS). User-supplied fitting functions can be supplied either as a function or a character string naming a function, with a function which takes the same arguments as \code{glm.fit}.}
+  \item{method}{For a glm model (\code{modele="pls-glm-family"}), the method to be used in fitting the model. The default method \code{"glm.fit"} uses iteratively reweighted least squares (IWLS). User-supplied fitting functions can be supplied either as a function or a character string naming a function, with a function which takes the same arguments as \code{glm.fit}.
+  For a polr model (\code{modele="pls-glm-polr"}), \code{logistic} or \code{probit} or (complementary) log-log (\code{loglog} or \code{cloglog}) or \code{cauchit} (corresponding to a Cauchy latent variable).}
   \item{control}{a list of parameters for controlling the fitting process. For \code{glm.fit} this is passed to \code{\link{glm.control}}.}
   \item{contrasts}{an optional list. See the \code{contrasts.arg} of \code{model.matrix.default}.}
   \item{sparse}{should the coefficients of non-significant predictors (<\code{alpha.pvals.expli}) be set to 0}
@@ -206,7 +207,7 @@ modpls$uscores
 modpls$pp
 modpls$Coeffs
 
-rm(list=c("XCornell","yCornell",modpls,modplsglm,finalmod,res.cv.modplsglm))
+#rm(list=c("XCornell","yCornell",modpls,cv.modplsglm,res.cv.modplsglm))
 }
 
 data(aze_compl)
@@ -275,7 +276,7 @@ cbind(ypine,modpls4$ValsPredictY,modplsglm4$ValsPredictY)
 # with missing data
 modplsglm4NA <- plsRglm(ypine,XpineNAX21,4,modele="pls-glm-gaussian")
 cbind((ypine),modpls4NA$ValsPredictY,modplsglm4NA$ValsPredictY)
-rm(list=c("Xpine","ypine",modpls4,modpls4NA,modplsglm4,modplsglm4NA))
+rm(list=c("Xpine","ypine","modpls4","modpls4NA","modplsglm4","modplsglm4NA"))
 
 data(fowlkes)
 Xfowlkes <- fowlkes[,2:13]
@@ -286,8 +287,7 @@ colSums(modpls$pvalstep)
 rm(list=c("Xfowlkes","yfowlkes","modpls"))
 
 
-#install.packages(chemometrics)
-library(chemometrics)
+if(require(chemometrics)){
 data(hyptis)
 yhyptis <- factor(hyptis$Group,ordered=TRUE)
 Xhyptis <- as.data.frame(hyptis[,c(1:6)])
@@ -300,7 +300,7 @@ modpls2$Std.Coeffs
 
 table(yhyptis,predict(modpls2$FinalModel,type="class"))
 rm(list=c("yhyptis","Xhyptis","modpls2"))
-
+}
 
 dimX <- 24
 Astar <- 6
