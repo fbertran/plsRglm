@@ -1,5 +1,6 @@
 This file documents software changes.
 
+1.2.0 Added naive AIC and BIC output for data with missing values.
 1.1.1 donttest update requested by CRAN.
 1.1.0 Verbose option (request from Max Kuhn, caret package).
 1.0.1 Fix for sPLS like option.
