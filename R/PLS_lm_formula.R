@@ -49,7 +49,7 @@ if(any(is.na(dataPredictY))) {na.miss.PredictY <- TRUE} else {na.miss.PredictY <
 if(na.miss.X|na.miss.Y){naive=TRUE; if(verbose){cat(paste("Only naive DoF can be used with missing data\n",sep=""))}; if(!NoWeights){if(verbose){cat(paste("Weights cannot be used with missing data\n",sep=""))}};  if(sparse){if(verbose){cat(paste("sparse option cannot be used with missing data\n",sep=""))}; sparse=FALSE}}
 
 if (!is.data.frame(dataX)) {dataX <- data.frame(dataX)}
-if (!(modele %in% c("pls"))) {break}
+if (!(modele %in% c("pls"))) {simpleError("model must be set to pls")}
 scaleY <- NULL
 if (is.null(scaleY)) {
 if (!(modele %in% c("pls"))) {scaleY <- FALSE} else {scaleY <- TRUE}

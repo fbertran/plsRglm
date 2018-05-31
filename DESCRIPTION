@@ -1,12 +1,12 @@
 Package: plsRglm
-Version: 1.2.0
-Date: 2017-12-01
+Version: 1.2.1
+Date: 2018-05-30
 Depends: 
 Imports: mvtnorm, boot, bipartite, car
 Enhances: pls
 Suggests: MASS, plsdof, R.rsp, chemometrics, plsdepot
 Title: Partial Least Squares Regression for Generalized Linear Models
-Author: Frederic Bertrand <frederic.bertrand@math.unistra.fr>, Nicolas Meyer <Nicolas.Meyer@nmeyer@unistra.fr>, Myriam Maumy-Bertrand <myriam.maumy-bertrand@math.unistra.fr>. 
+Author: Frederic Bertrand <frederic.bertrand@math.unistra.fr>, Myriam Maumy-Bertrand <myriam.maumy-bertrand@math.unistra.fr>. 
 Maintainer: Frederic Bertrand <frederic.bertrand@math.unistra.fr>
 Depends: R (>= 2.4.0)
 Description: Provides (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.

@@ -17,7 +17,7 @@ This function provides a print method for the class \code{"cv.plsRglmmodel"}
 }
 \references{
 Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frédéric}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{régression}{r\'egression} PLS et de la \enc{r?gression}{r\'egression} logistique PLS : application aux \enc{donn?es}{donn\'ees} \enc{d'allélotypage}{d'all\'elotypage}. \emph{Journal de la Société Française de Statistique}, 151(2), pages 1-18.
-\url{http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf}
+\url{http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47}
 }
 \author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr

@@ -10,7 +10,7 @@ colnames(temp.object$Yhat) <- paste("Nt_",0:modplsR$computed_nt,sep="")
 if(!naive){
 temp.object$TT <- sweep(modplsR$tt,MARGIN=2,FUN="/",sqrt(diag(crossprod(modplsR$tt))))
 
-require(plsdof)
+requireNamespace("plsdof")
 pls.doftemp <- function (pls.object, n, y, K, m, DoF.max) 
 {
     TT <- pls.object$TT

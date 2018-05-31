@@ -1,4 +1,15 @@
 # imports functions
+importFrom("graphics", "abline", "arrows", "axis", "barplot",
+           "boxplot", "legend", "par", "plot", "points", "strwidth",
+           "text")
+importFrom("stats", "AIC", "Gamma", "binomial", "coef", "contrasts",
+           "family", "gaussian", "glm", "inverse.gaussian",
+           "is.empty.model", "lm", "make.link", "model.frame",
+           "model.matrix", "model.offset", "model.response",
+           "model.weights", "na.exclude", "na.pass", "pnorm",
+           "poisson", "predict", "rbinom", "residuals.glm",
+           "weighted.mean")
+
 importFrom(mvtnorm,rmvnorm)
 importFrom(bipartite,visweb)
 importFrom(car,dataEllipse)

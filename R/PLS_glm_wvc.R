@@ -182,7 +182,7 @@ rm(jj)}
 if (modele %in% c("pls-glm-polr")) {
 YwotNA <- as.factor(YwotNA)
 XXwotNA[!XXNA] <- NA
-library(MASS)
+requireNamespace("MASS")
 tts <- res$tt
 for (jj in 1:(res$nc)) {
     tempww[jj] <- -1*MASS::polr(YwotNA~cbind(tts,XXwotNA[,jj]),na.action=na.exclude,method=method)$coef[kk]

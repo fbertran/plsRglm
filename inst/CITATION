@@ -8,14 +8,13 @@ note <- "book of abstracts, User2014!, Los Angeles, page 150"
 citEntry(entry="Manual",
          title = titl,
          author = personList(as.person("F. Bertrand"), 
-                             as.person("M. Maumy-Bertrand"),
-  			     as.person("N. Meyer")),
+                             as.person("M. Maumy-Bertrand")),
 	 publisher = "manual",
          year         = year,
          note         = vers,
          url          = "http://www-irma.u-strasbg.fr/~fbertran/",
          textVersion = 
-         paste("Frederic Bertrand, Nicolas Meyer and Myriam Maumy-Bertrand (",year ,"). ", 
+         paste("Frederic Bertrand and Myriam Maumy-Bertrand (",year ,"). ", 
                titl, ", ", vers, ".", sep=""
                )
 )
@@ -23,14 +22,13 @@ citEntry(entry="Manual",
 citEntry(entry="Manual",
          title = titl,
          author = personList(as.person("F. Bertrand"), 
-                             as.person("M. Maumy-Bertrand"),
-  			     as.person("N. Meyer")),
+                             as.person("M. Maumy-Bertrand")),
 	 publisher = "manual",
          year         = year,
          note         = note,
          url          = "http://www-irma.u-strasbg.fr/~fbertran/",
          textVersion = 
-         paste("Frederic Bertrand, Nicolas Meyer and Myriam Maumy-Bertrand (",year ,"). ", 
+         paste("Frederic Bertrand and Myriam Maumy-Bertrand (",year ,"). ", 
                titl, ", ", note, ".", sep=""
                )
 )
@@ -45,7 +43,7 @@ PLS : application aux donnees d'allelotypage",
 	 publisher = "Societe Francaise de Statistique",
          year         = 2010,
          note         = "adresse",
-         url          = "http://smf4.emath.fr/Publications/JSFdS/151_2/pdf/sfds_jsfds_151_2_1-18.pdf",
+         url          = "http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47",
          textVersion = 
          paste("Nicolas Meyer, Myriam Maumy-Bertrand et Frederic Bertrand (2010).", 
                "Comparaison de la regression PLS et de la regression logistique

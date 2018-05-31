@@ -268,7 +268,7 @@ if (modele %in% c("pls-glm-polr")) {
 YwotNA <- as.factor(YwotNA)
 if (!pvals.expli) {
 XXwotNA[!XXNA] <- NA
-library(MASS)
+requireNamespace("MASS")
 tts <- res$tt
 for (jj in 1:(res$nc)) {
     mf2[[2]]<-YwotNA~cbind(tts,XXwotNA[,jj])
@@ -278,7 +278,7 @@ XXwotNA[!XXNA] <- 0
 rm(jj,tts)}
 else {
 XXwotNA[!XXNA] <- NA
-library(MASS)
+requireNamespace("MASS")
 tts <- res$tt
 tempvalpvalstep <- rep(0,res$nc)
 temppvalstep <- rep(0,res$nc)
