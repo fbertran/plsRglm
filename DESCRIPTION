@@ -6,8 +6,7 @@ Imports: mvtnorm, boot, bipartite, car
 Enhances: pls
 Suggests: MASS, plsdof, R.rsp, chemometrics, plsdepot
 Title: Partial Least Squares Regression for Generalized Linear Models
-Author: Frederic Bertrand <frederic.bertrand@math.unistra.fr>, Myriam Maumy-Bertrand <myriam.maumy-bertrand@math.unistra.fr>. 
-Maintainer: Frederic Bertrand <frederic.bertrand@math.unistra.fr>
+Authors@R: c(person("Frederic", "Bertrand", email = "frederic.bertrand@math.unistra.fr", role = c("cre", "aut", "res"), comment = c(ORCID = "0000-0002-0837-8281")), person("Myriam", "Maumy-Bertrand", email = "myriam.maumy-bertrand@math.unistra.fr", role = c("aut", "res"), comment = c(ORCID = "0000-0002-4615-1512")))
 Depends: R (>= 2.4.0)
 Description: Provides (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.
 License: GPL-3

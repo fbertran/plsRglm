@@ -3,10 +3,10 @@ predict.plsRglmmodel <- function(object,newdata,comps=object$computed_nt,type=c(
   if (!inherits(object, "plsRglmmodel")) 
     stop("Primary argument much be a plsRglmmodel object")
   if(missing(type)){type="link"}
+  type <- match.arg(type)
   if (!(type %in% c("link", "response", "terms", "scores", "class", "probs")))
     stop("Invalid type specification")
   if (comps>object$computed_nt){stop("Cannot predict using more components than extracted.")}
-  type <- match.arg(type)
   if (missing(newdata) || is.null(newdata)) {
     nrtt <- nrow(object$tt)
     if (type=="link"){ttpredY<-data.frame(cbind(object$tt[,1:comps],matrix(0,nrow=nrtt,ncol=object$computed_nt-comps)));colnames(ttpredY) <- NULL

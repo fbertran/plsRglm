@@ -1,8 +1,8 @@
 \name{predict.plsRmodel}
 \alias{predict.plsRmodel}
-\title{Print method for plsRcox models}
+\title{Print method for plsR models}
 \description{
-This function provides a predict method for the class \code{"plsRcoxmodel"}
+This function provides a predict method for the class \code{"plsRmodel"}
 }
 \usage{
 \method{predict}{plsRmodel}(object,newdata,comps=object$computed_nt,

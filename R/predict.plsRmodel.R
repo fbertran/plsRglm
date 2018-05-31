@@ -2,10 +2,10 @@ predict.plsRmodel <- function(object,newdata,comps=object$computed_nt,type=c("re
 {
     if (!inherits(object, "plsRmodel")) 
         stop("Primary argument much be a plsRmodel object")
+    type <- match.arg(type)
     if (!(type %in% c("response","scores"))) 
       stop("Invalid type specification")
     if (comps>object$computed_nt){stop("Cannot predict using more components than extracted.")}
-    type <- match.arg(type)
     if (missing(newdata) || is.null(newdata)) {
     nrtt <- nrow(object$tt)
     if (type=="response"){return(attr(object$RepY,"scaled:center")+attr(object$RepY,"scaled:scale")*object$tt%*%object$CoeffC)}

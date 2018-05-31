@@ -24,7 +24,7 @@ citEntry(entry="Manual",
          author = personList(as.person("F. Bertrand"), 
                              as.person("M. Maumy-Bertrand")),
 	 publisher = "manual",
-         year         = year,
+         year         = 2014,
          note         = note,
          url          = "http://www-irma.u-strasbg.fr/~fbertran/",
          textVersion = 

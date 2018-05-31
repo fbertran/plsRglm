@@ -1,6 +1,6 @@
 \name{predict.plsRglmmodel}
 \alias{predict.plsRglmmodel}
-\title{Print method for plsRcox models}
+\title{Print method for plsRglm models}
 \description{
 This function provides a predict method for the class \code{"plsRglmmodel"}
 }

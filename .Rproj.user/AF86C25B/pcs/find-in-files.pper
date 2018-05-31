@@ -19,8 +19,8 @@
             "*.c",
             "*.cpp"
         ],
-        "path" : "~/GitHub/plsRglm/man",
-        "query" : "10.1080/03610918508812458",
+        "path" : "~/GitHub/plsRglm/R",
+        "query" : "plsRcox",
         "regex" : false
     }
 }
