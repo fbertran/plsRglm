@@ -29,9 +29,18 @@ Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2
 data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
-bbb <- cv.plsR(dataY=yCornell,dataX=XCornell,nt=6,K=6,NK=100)
+bbb <- cv.plsR(dataY=yCornell,dataX=XCornell,nt=6,K=6,NK=25)
 plot(cvtable(summary(bbb)),type="CVQ2")
 rm(list=c("XCornell","yCornell","bbb"))
+
+\donttest{
+data(Cornell)
+XCornell<-Cornell[,1:7]
+yCornell<-Cornell[,8]
+bbb <- cv.plsR(dataY=yCornell,dataX=XCornell,nt=6,K=6,NK=25)
+plot(cvtable(summary(bbb)),type="CVQ2")
+rm(list=c("XCornell","yCornell","bbb"))
+}
 }
 \keyword{methods}
 \keyword{print}

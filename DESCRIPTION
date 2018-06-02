@@ -1,13 +1,16 @@
 Package: plsRglm
-Version: 1.2.1
-Date: 2018-05-30
-Depends: 
+Version: 1.2.2
+Date: 2018-06-02
+Depends: R (>= 2.4.0)
 Imports: mvtnorm, boot, bipartite, car
 Enhances: pls
 Suggests: MASS, plsdof, R.rsp, chemometrics, plsdepot
 Title: Partial Least Squares Regression for Generalized Linear Models
-Authors@R: c(person("Frederic", "Bertrand", email = "frederic.bertrand@math.unistra.fr", role = c("cre", "aut", "res"), comment = c(ORCID = "0000-0002-0837-8281")), person("Myriam", "Maumy-Bertrand", email = "myriam.maumy-bertrand@math.unistra.fr", role = c("aut", "res"), comment = c(ORCID = "0000-0002-4615-1512")))
-Depends: R (>= 2.4.0)
+Authors@R: c(
+	person(given = "Frederic", family= "Bertrand", role = c("cre", "aut"), email = "frederic.bertrand@math.unistra.fr", comment = c(ORCID = "0000-0002-0837-8281")),
+	person(given = "Myriam", family= "Maumy-Bertrand", role = c("aut"), email = "myriam.maumy-bertrand@math.unistra.fr", comment = c(ORCID = "0000-0002-4615-1512")))
+Author: Frederic Bertrand [cre, aut] (<https://orcid.org/0000-0002-0837-8281>), Myriam Maumy-Bertrand [aut] (<https://orcid.org/0000-0002-4615-1512>)
+Maintainer: Frederic Bertrand <frederic.bertrand@math.unistra.fr>
 Description: Provides (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.
 License: GPL-3
 Encoding: latin1

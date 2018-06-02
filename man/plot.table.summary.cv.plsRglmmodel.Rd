@@ -33,6 +33,16 @@ bbb <- cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=10,NK=1,
 modele="pls-glm-family",family=gaussian())
 plot(cvtable(summary(bbb)),type="CVQ2Chi2")
 rm(list=c("XCornell","yCornell","bbb"))
+
+\donttest{
+data(Cornell)
+XCornell<-Cornell[,1:7]
+yCornell<-Cornell[,8]
+bbb <- cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=10,NK=1,
+modele="pls-glm-family",family=gaussian())
+plot(cvtable(summary(bbb)),type="CVQ2Chi2")
+rm(list=c("XCornell","yCornell","bbb"))
+}
 }
 \keyword{methods}
 \keyword{print}

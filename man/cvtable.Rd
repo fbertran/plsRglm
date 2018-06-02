@@ -32,12 +32,20 @@ Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2
 data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
+cv.modpls <- cv.plsR(dataY=yCornell,dataX=XCornell,nt=6,K=6,NK=25)
+res.cv.modpls <- cvtable(summary(cv.modpls))
+plot(res.cv.modpls) #defaults to type="CVQ2"
+rm(list=c("XCornell","yCornell","cv.modpls","res.cv.modpls"))
+	
+\donttest{
+data(Cornell)
+XCornell<-Cornell[,1:7]
+yCornell<-Cornell[,8]
 cv.modpls <- cv.plsR(dataY=yCornell,dataX=XCornell,nt=6,K=6,NK=100)
 res.cv.modpls <- cvtable(summary(cv.modpls))
 plot(res.cv.modpls) #defaults to type="CVQ2"
 rm(list=c("XCornell","yCornell","cv.modpls","res.cv.modpls"))
 
-\donttest{
 data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
