@@ -98,6 +98,14 @@ export(tilt.bootplsglm           )
 
 
 ## S3 methods for generics in base
+S3method("plsRmodel", "default")
+S3method("plsRmodel", "formula")
+S3method("plsRglmmodel", "default")
+S3method("plsRglmmodel", "formula")
+S3method("cv.plsRmodel", "default")
+S3method("cv.plsRmodel", "formula")
+S3method("cv.plsRglmmodel", "default")
+S3method("cv.plsRglmmodel", "formula")
 S3method("coef", "plsRmodel")
 S3method("coef", "plsRglmmodel")
 S3method("plot", "table.summary.cv.plsRglmmodel")

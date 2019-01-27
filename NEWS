@@ -1,5 +1,6 @@
 This file documents software changes.
 
+1.2.3 Complete S3 methods to pass CRAN checks.
 1.2.2 Sped up examples to pass CRAN checks.
 1.2.1 Updated code to pass CRAN checks.
 1.2.0 Added naive AIC and BIC output for data with missing values.

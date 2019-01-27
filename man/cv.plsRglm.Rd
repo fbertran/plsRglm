@@ -145,13 +145,13 @@ modele="pls-glm-family",family=gaussian(),K=12)
 (sum2<-summary(bbb2))
 cvtable(sum2)
 
+\donttest{
 #random=TRUE is the default to randomly create folds for repeated CV
 bbb3 <- cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,
 modele="pls-glm-family",family=gaussian(),K=6,NK=10)
 (sum3<-summary(bbb3))
 plot(cvtable(sum3))
 
-\donttest{
 data(aze_compl)
 Xaze_compl<-aze_compl[,2:34]
 yaze_compl<-aze_compl$y
@@ -282,10 +282,11 @@ bbb <- cv.plsRglm(Y~.,data=Cornell,nt=10,NK=1,modele="pls")
 summary(bbb)
 
 cv.plsRglm(Y~.,data=Cornell,nt=3,modele="pls-glm-family",family=gaussian(),K=12)
+
+\donttest{
 cv.plsRglm(Y~.,data=Cornell,nt=3,modele="pls-glm-family",family=gaussian(),K=6,
 NK=2,random=TRUE,keepfolds=TRUE)$results_kfolds
 
-\donttest{
 #Different ways of model specifications
 cv.plsRglm(Y~.,data=Cornell,nt=3,modele="pls-glm-family",family=gaussian(),K=6,
 NK=2)$results_kfolds

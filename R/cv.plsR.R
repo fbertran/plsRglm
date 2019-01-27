@@ -1,1 +1,1 @@
-cv.plsR <- function (x, ...) {UseMethod("cv.plsRmodel")}
+cv.plsR <- cv.plsRmodel <- function (x, ...) {UseMethod("cv.plsRmodel")}

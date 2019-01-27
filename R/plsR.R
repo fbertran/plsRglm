@@ -1,1 +1,1 @@
-plsR <- function (x, ...) UseMethod("plsRmodel")
+plsR <- plsRmodel <- function (x, ...) UseMethod("plsRmodel")
