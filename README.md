@@ -11,7 +11,7 @@ output: github_document
 
 # plsRglm
 
-The goal of plsRglm is to provide (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.
+The goal of plsRglm [<arXiv:1810.0100>](https://arxiv.org/abs/1810.01005) is to provide (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.
 
 
 Partial least squares Regression for generalized linear models were introduced in 
@@ -30,7 +30,10 @@ The package was presented at the [User2014!](http://user2014.r-project.org/) con
 For more involved number of component selection techniques, see "A new universal resample-stable bootstrap-based stopping criterion for PLS component construction"", Jérémy Magnanensi, Frédéric Bertrand, Myriam Maumy-Bertrand and Nicolas Meyer, *Statistics and Computing* (2017) **27**:757–774, <https://doi.org/10.1007/s11222-016-9651-4>. The new methods presented in that article will be packaged soon.
 
 
-A vignette is available for the package "plsRglm: Algorithmic insights and applications".
+A short paper that sums up some of features of the package is available on [arxiv](https://arxiv.org/), Frédéric Bertrand and Myriam Maumy-Bertrand (2018), "plsRglm: Partial least squares linear and generalized linear regression for processing incomplete datasets by cross-validation and bootstrap techniques with R", *arxiv*, [<arXiv:1810.0100>](https://arxiv.org/abs/1810.01005).
+
+
+A [vignette](https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf) is available for the package "plsRglm: Algorithmic insights and applications".
 
 
 The plsRglm package contains some interesting datasets including:
@@ -65,6 +68,8 @@ devtools::install_github("fbertran/plsRglm")
 
 ## Example for regular PLS regression: Cornell
 
+Read the [vignette of the package](https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf) for algorithmic insights and more examples.
+
 ### Cross validation
 
 
@@ -88,8 +93,7 @@ cv.modpls<-cv.plsR(Y~.,data=Cornell,nt=6,K=6)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
-#> Warning only 5 components could thus be extracted
+#> ____Component____ 6 ____
 #> ****________________________________________________****
 #> 
 #> 2 
@@ -111,7 +115,8 @@ cv.modpls<-cv.plsR(Y~.,data=Cornell,nt=6,K=6)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> ____Component____ 6 ____
+#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
+#> Warning only 5 components could thus be extracted
 #> ****________________________________________________****
 #> 
 #> 4 
@@ -172,8 +177,8 @@ res.cv.modpls<-cvtable(summary(cv.modpls))
 #> 0 1 
 #> 
 #> CV Press criterion:
-#> 1 2 3 
-#> 0 0 1
+#> 1 2 3 4 5 
+#> 0 0 0 0 1
 ```
 
 You can perform leave one out cross validation similar to the one that existed in previous versions of SIMCA by setting TypeVC="standard". Two other options, TypeVC="missing" or TypeVC="standard", exists to handle incomplete datasets. Indeed, of cross validation is required is that case, one needs to selects the way of predicting the response for left out observations. For complete rows, without any missing value, there are two different ways of computing these predictions. As a consequence, for mixed datasets, with complete and incomplete rows, there are two ways of computing prediction : either predicts any row as if there were missing values in it (missingdata) or selects the prediction method accordingly to the completeness of the row (adaptative).

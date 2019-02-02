@@ -1,0 +1,15 @@
+navbar:
+  title: "plsRglm"
+  type: inverse
+  left:
+    - icon: fa-home
+      href: index.html
+    - text: "Vignette"
+      href: https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf
+    - text: "Reference"
+      href: reference/index.html
+    - text: "Changelog"
+      href: news/index.html
+  right:
+    - icon: fa-github
+      href: https://github.com/fbertran/plsRglm
