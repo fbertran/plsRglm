@@ -27,19 +27,13 @@ Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2
 \seealso{\code{\link{summary}}}
 \examples{
 data(Cornell)
-XCornell<-Cornell[,1:7]
-yCornell<-Cornell[,8]
-bbb <- cv.plsR(dataY=yCornell,dataX=XCornell,nt=6,K=6,NK=5)
+bbb <- cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=5, verbose=FALSE)
 plot(cvtable(summary(bbb)),type="CVQ2")
-rm(list=c("XCornell","yCornell","bbb"))
+rm(list=c("bbb"))
 
 \donttest{
 data(Cornell)
-XCornell<-Cornell[,1:7]
-yCornell<-Cornell[,8]
-bbb <- cv.plsR(dataY=yCornell,dataX=XCornell,nt=6,K=6,NK=25)
-plot(cvtable(summary(bbb)),type="CVQ2")
-rm(list=c("XCornell","yCornell","bbb"))
+plot(cvtable(summary(cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=100, verbose=FALSE))),type="CVQ2")
 }
 }
 \keyword{methods}

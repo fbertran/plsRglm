@@ -28,8 +28,7 @@ Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2
 data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
-bbb <- cv.plsR(dataY=yCornell,dataX=XCornell,nt=10,K=6)
-print(bbb)
+print(cv.plsR(dataY=yCornell,dataX=XCornell,nt=10,K=6, verbose=FALSE))
 rm(list=c("XCornell","yCornell","bbb"))
 }
 \keyword{methods}

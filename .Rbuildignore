@@ -1,3 +1,17 @@
+#All packages
 ^.*\.Rproj$
 ^\.Rproj\.user$
-.gitignore
+^\.gitignore$
+^NEWS$    
+#For the pkgdown website
+^docs*$
+#For the cached chunks of README.Rmd
+^cache*$
+^README_cache*$
+#If README too big, not on CRAN but only on git
+^man/figures*$
+^README\.Rmd$
+^README\.md$
+#Specific
+^fullrespdf*$
+^inst/animation*$

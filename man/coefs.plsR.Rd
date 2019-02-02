@@ -32,6 +32,6 @@ yCornell<-Cornell[,8]
 # statistic=coefs.plsR is the default for (Y,X) resampling of PLSR models.
 set.seed(250)
 modpls <- plsR(yCornell,XCornell,1)
-Cornell.bootYX <- bootpls(modpls, R=250, statistic=coefs.plsR)
+Cornell.bootYX <- bootpls(modpls, R=250, statistic=coefs.plsR, verbose=FALSE)
 }
 \keyword{models}

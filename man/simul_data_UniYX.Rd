@@ -39,22 +39,22 @@ simul_data_UniYX(20,6)
 dimX <- 6
 Astar <- 2
 simul_data_UniYX(dimX,Astar)
-(dataAstar2 <- t(replicate(50,simul_data_UniYX(dimX,Astar))))
-cvtable(summary(cv.plsR(dataAstar2[,1],dataAstar2[,2:7],5,NK=100)))
+(dataAstar2 <- data.frame(t(replicate(50,simul_data_UniYX(dimX,Astar)))))
+cvtable(summary(cv.plsR(Y~.,data=dataAstar2,5,NK=100, verbose=FALSE)))
 
 dimX <- 6
 Astar <- 3
 simul_data_UniYX(dimX,Astar)
-(dataAstar3 <- t(replicate(50,simul_data_UniYX(dimX,Astar))))
-cvtable(summary(cv.plsR(dataAstar3[,1],dataAstar3[,2:7],5,NK=100)))
+(dataAstar3 <- data.frame(t(replicate(50,simul_data_UniYX(dimX,Astar)))))
+cvtable(summary(cv.plsR(Y~.,data=dataAstar3,5,NK=100, verbose=FALSE)))
 
 dimX <- 6
 Astar <- 4
 simul_data_UniYX(dimX,Astar)
-(dataAstar4 <- t(replicate(50,simul_data_UniYX(dimX,Astar))))
-cvtable(summary(cv.plsR(dataAstar4[,1],dataAstar4[,2:7],5,NK=100)))
+(dataAstar4 <- data.frame(t(replicate(50,simul_data_UniYX(dimX,Astar)))))
+cvtable(summary(cv.plsR(Y~.,data=dataAstar4,5,NK=100, verbose=FALSE)))
 
-rm(list=c("dimX","Astar"))
+rm(list=c("dimX","Astar","dataAstar2","dataAstar3","dataAstar4"))
 }
 }\keyword{datagen}
 \keyword{utilities}

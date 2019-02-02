@@ -1,0 +1,529 @@
+---
+title: "Partial Least Squares Regression for Generalized Linear Models"
+author: "Frédéric Bertrand and Myriam Maumy-Bertrand"
+output: github_document
+---
+
+[![CRAN status](https://www.r-pkg.org/badges/version/plsRglm)](https://cran.r-project.org/package=plsRglm)
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  dpi=300,fig.width=7,
+  fig.keep="all"
+)
+```
+# plsRglm
+
+The goal of plsRglm is to provide (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.
+
+
+Partial least squares Regression for generalized linear models were introduced in 
+Bastien, P., Vinzi, V. E. et Tenenhaus, M. (2005). "PLS generalised linear
+regression". *Computational Statistics & Data Analysis*, **48**(1), 17–46, <http://www.sciencedirect.com/science/article/pii/S0167947304000271>.
+
+
+The package was first developped for the article, written in French, Nicolas Meyer, Myriam Maumy-Bertrand and Frédéric Bertrand (2010), "Comparaison de la régression PLS et de la régression logistique PLS : application aux données d'allélotypage", *Journal de la Société Française de Statistique*, **151**(2), pages 1-18,
+<http://journal-sfds.fr/article/view/47>.
+
+
+The package was presented at the [User2014!](http://user2014.r-project.org/) conference. Frédéric Bertrand, Jérémy Magnanensi, Nicolas Meyer and Myriam Bertrand (2014). "plsRglm, PLS generalized linear models for R", *book of abstracts*, User2014!, Los Angeles, page 150,
+<http://user2014.r-project.org/abstracts/posters/172_Bertrand.pdf>.
+
+
+For more involved number of component selection techniques, see "A new universal resample-stable bootstrap-based stopping criterion for PLS component construction"", Jérémy Magnanensi, Frédéric Bertrand, Myriam Maumy-Bertrand and Nicolas Meyer, *Statistics and Computing* (2017) **27**:757–774, <https://doi.org/10.1007/s11222-016-9651-4>. The new methods presented in that article will be packaged soon.
+
+
+A vignette is available for the package "plsRglm: Algorithmic insights and applications".
+
+
+The plsRglm package contains some interesting datasets including:
+
+* the Cornell dataset from Kettaneh-Wold, "Analysis of mixture data with partial least squares", *Chemometrics and Intelligent Laboratory Systems*, **14**(1):57–69, 1992,
+* a study on the pine processionary caterpillars from R. Tomassone, S. Audrain, E. Lesquoy-de Turckeim, and C. Millier, "La régression, nouveaux regards sur une ancienne méethode statistique", *Actualitées scientifiques et agronomiques*, Masson, Paris, 1992,
+* an allelotyping study on cancer cells dataset with missing values from N. Meyer, M. Maumy-Bertrand, and F. Bertrand, "Comparaison de variantes de régressions logistiques pls et de régression pls sur variables qualitatives: application aux donnéees d’allélotypage". *Journal de la Sociéetée Franç̧aise de Statistique*, **151**(2):1–18, 2010, 
+* a Bordeaux wines quality study, M. Tenenhaus. "La régression logistique PLS". In J.-J. Droesbeke, M. Lejeune, and G. Saporta, editors, *Modèles statistiques pour donnéees qualitatives*, Éditions Technip, Paris, 2005.
+ 
+ 
+The package was also applied to the Phenyl and Hyptis datasets from the [chemometrics](https://CRAN.R-project.org/package=chemometrics) and the colonCA dataset from the [colonCA](http://bioconductor.org/packages/release/bioc/html/colonCA.html) package.
+
+
+Support for parallel computation and GPU is being developped.
+
+
+## Installation
+
+You can install the released version of plsRglm from [CRAN](https://CRAN.R-project.org) with:
+
+```{r, eval = FALSE}
+install.packages("plsRglm")
+```
+
+You can install the development version of plsRglm from [github](https://github.com) with:
+
+```{r, eval = FALSE}
+devtools::install_github("fbertran/plsRglm")
+```
+
+## Example for regular PLS regression: Cornell
+
+### Cross validation
+
+```{r chunk1}
+library(plsRglm)
+data(Cornell)
+```
+
+We use k = 6 balanced groups of 2 subjects to perform repeated k-fold cross validation. We set to 10, thanks to the option nt=6, the maximal number of components for the cross-validation function -cv.plsR- since the rank of the design matrix is equal to 6. The grouplist option enables the user to provide custom splits of the datasets on which cross validation will be carried out. As a consequence, one can use the [caret](http://bioconductor.org/packages/release/bioc/html/caret.html) (from Max Kuhn et al., 2019) package to find balanced splits of the dataset into folds with respect to the response values.
+
+```{r chunk2}
+cv.modpls<-cv.plsR(Y~.,data=Cornell,nt=6,K=6)
+```
+
+We sum up the results in a single table using the summary.
+
+```{r chunk3}
+res.cv.modpls<-cvtable(summary(cv.modpls))
+```
+
+You can perform leave one out cross validation similar to the one that existed in previous versions of SIMCA by setting TypeVC="standard". Two other options, TypeVC="missing" or TypeVC="standard", exists to handle incomplete datasets. Indeed, of cross validation is required is that case, one needs to selects the way of predicting the response for left out observations. For complete rows, without any missing value, there are two different ways of computing these predictions. As a consequence, for mixed datasets, with complete and incomplete rows, there are two ways of computing prediction : either predicts any row as if there were missing values in it (missingdata) or selects the prediction method accordingly to the completeness of the row (adaptative).
+
+```{r chunk4}
+res6<-plsR(Y~.,data=Cornell, nt=6, typeVC="standard", pvals.expli=TRUE)
+```
+
+```{r chunk5}
+colSums(res6$pvalstep)
+```
+
+```{r chunk6}
+res6$InfCrit
+```
+
+The number of significant predictors per components, which is a criteria of significance for [Bastien et al. (2005)](http://www.sciencedirect.com/science/article/pii/S0167947304000271), can be obtained via the following code:
+
+```{r chunk7}
+res6<-plsR(Y~.,data=Cornell, nt=6, pvals.expli=TRUE)
+```
+
+```{r chunk8}
+colSums(res6$pvalstep)
+```
+
+The number of significant predictors within each component tell us to only build 3 components when the AIC criteria gives us 5 components and the BIC concludes to 5 components. The cross-validated Q2cum criterion advocates for retaining 3 components either for leave one out and 1 for 6-fold CV. The 6-fold CV cross-validation was run 100 times by randomly creating groups. Here are the command lines:
+
+```{r chunk9, cache=TRUE}
+set.seed(123)
+cv.modpls<-cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=100,random=TRUE,verbose = FALSE)
+```
+
+Analyze the results of the cross-validation.
+```{r chunk11}
+res.cv.modpls=cvtable(summary(cv.modpls))
+```
+
+Plot the results of the cross-validation.
+```{r chunk10}
+plot(res.cv.modpls)
+```
+
+The results of the cross-validation, using of the Q^2 criterion, confirm those of the first 6-fold CV cross validation: we decide to retain 1 components. Even in the linear case, cross validation should be repeated to select the number of components in a PLSR model.
+
+Now, we fit the PLSGLR regression with one component to get the $c_h$ coefficients and the intercept.
+
+```{r chunk12}
+res<-plsR(Y~.,data=Cornell,nt=1,pvals.expli=TRUE)
+```
+
+```{r chunk13}
+res
+```
+
+It is also possible to obtain the matrix W∗ with the following command line:
+
+```{r chunk14}
+res$wwetoile
+```
+
+It is also possible to display the biplot of the observations and the predictors. 
+
+```{r chunk15}
+biplot(res6$tt,res6$pp)
+```
+
+Hard thresholding PLS regression and automatic selection of the number of components ([Bastien et al. (2005)](http://www.sciencedirect.com/science/article/pii/S0167947304000271)) is also available:
+
+```{r chunk16}
+modpls2 <- plsR(Y~.,data=Cornell,6,sparse=TRUE)
+```
+
+```{r chunk17}
+modpls3 <- plsR(Y~.,data=Cornell,6,sparse=TRUE,sparseStop=FALSE)
+```
+
+### Bootstrap (y,X)
+
+```{r chunk18, cache=TRUE}
+set.seed(123)
+Cornell.bootYX1=bootpls(res,R=1000,verbose=FALSE)
+```
+
+We do not bootstrap the intercept since the boostrap is done with the centered and scaled response and predictors. As a consequence we should exclude it from the boxplots using the option indice=2:8 and must exclude it from the CI computations, if we request BCa ones, again with the option indice=2:8.
+
+Graphical results of the bootstrap on the (Y,X): distributions of the estimators.
+```{r chunk19}
+boxplots.bootpls(Cornell.bootYX1,indice=2:8)
+```
+
+Graphical results of the bootstrap on the (Y,X): confidence intervals
+```{r chunk20}
+temp.ci=confints.bootpls(Cornell.bootYX1,indice=2:8)
+plots.confints.bootpls(temp.ci,typeIC="BCa",colIC=c("blue","blue","blue","blue"), legendpos ="topright")
+    ```
+                   
+Bootstrap is perfomed using the boot package. It allows the user to apply the functions, including jack.after.boot or plot.boot, of this package to the bootstrapped PLSR or PLSGLR models.
+
+```{r chunk21}
+plot(Cornell.bootYX1,index=2,jack=TRUE)
+```
+
+Using the dataEllipse of the car you can plot confidence ellipses for two parameters of the PLSR or PLSGLR models.
+
+```{r chunk22}
+car::dataEllipse(Cornell.bootYX1$t[,2], Cornell.bootYX1$t[,3], cex=.3, levels=c(.5, .95, .99), robust=T, xlab="X2", ylab="X3")
+```
+
+###Bootstrap (y, T)
+
+Re-sampling on the couple (Y,T) ([Bastien et al. (2005)](http://www.sciencedirect.com/science/article/pii/S0167947304000271)) is more stable and faster than the first one. We set at 1000 the number of re-sampling.
+
+```{r chunk23, cache=TRUE}
+set.seed(123)
+Cornell.bootYT1=bootpls(res,typeboot="fmodel_np",R=1000)
+```
+
+Boxplots for each of the predictors.
+```{r chunk24}
+boxplots.bootpls(Cornell.bootYT1,indices=2:8)
+```
+
+We do not bootstrap the intercept since the boostrap is done with the centered and scaled response and predictors. As a consequence we should exclude it from the boxplots using the option indice=2:8 and must exclude it from the CI computations, if we request BCa ones, again with the option indice=2:8.
+
+CIs for each of the predictors.
+```{r chunk25, warning=FALSE}
+temp.ci=confints.bootpls(Cornell.bootYT1,indices=2:8)
+plots.confints.bootpls(temp.ci,typeIC="BCa",colIC=c("blue","blue","blue","blue"), legendpos ="topright")
+```
+
+Since after cross validation we an empirical distribution of the retained number of components, it makes sense to perform (y,T) bootstrap for any of these numbers of components and compare the resulting significance of the predictors at a 5% level. The signpred function can be used to plot a summary of this selection.
+
+In addition, one can compute an empirical measure of significance $\pi_e$ by computing the weighted -with respect to the empirical distribution of components- average of the significance indicatrices. In that case, all the predictors are significant for the 1 and 2 components model and hence the empirical mesure of significance is equal to 1 for all of them.
+
+```{r chunk26}
+res2<-plsR(Y~.,data=Cornell,nt=2)
+```
+
+```{r chunk27, warning=FALSE}
+Cornell.bootYT2=bootpls(res2,typeboot="fmodel_np",R=1000)
+temp.ci2<-confints.bootpls(Cornell.bootYT2,indices=2:8)
+```
+
+```{r chunk28}
+ind.BCa.CornellYT1 <- (temp.ci[,7]<0&temp.ci[,8]<0)|(temp.ci[,7]>0&temp.ci[,8]>0)
+```
+
+```{r chunk29}
+ind.BCa.CornellYT2 <- (temp.ci2[,7]<0&temp.ci2[,8]<0)|(temp.ci2[,7]>0&temp.ci2[,8]>0)
+```
+
+```{r chunk30}
+(matind=(rbind(YT1=ind.BCa.CornellYT1,YT2=ind.BCa.CornellYT2)))
+```
+
+Compute the empirical measures of significance $\pi_e$.
+```{r chunk31}
+pi.e=prop.table(res.cv.modpls$CVQ2)[-1]%*%matind
+pi.e
+```
+
+The signpred function can be used to plot a summary of the variable selection.
+```{r chunk32, warning=FALSE, fig.keep='last'}
+signpred(t(matind),labsize=.5, plotsize = 12)
+text(1:(ncol(matind))-.5,-.5,pi.e,cex=1.4)
+mtext(expression(pi[e]),side=2,las=1,line=2,at=-.5,cex=1.4)
+```
+
+
+## Example for PLS ordinal logistic regression: Bordeaux wine quality
+
+### Cross-validation
+
+```{r chunk33}
+rm(list = ls())
+set.seed(12345)
+data(bordeaux)
+bordeaux$Quality<-factor(bordeaux$Quality,ordered=TRUE)
+modpls1 <- plsRglm(Quality~.,data=bordeaux,4,modele="pls-glm-polr",pvals.expli=TRUE)
+```
+
+```{r chunk34}
+modpls1
+```
+
+```{r chunk35}
+Xbordeaux<-bordeaux[,1:4]
+ybordeaux<-bordeaux$Quality
+modpls2 <- plsRglm(ybordeaux,Xbordeaux,4,modele="pls-glm-polr",pvals.expli=TRUE)
+```
+
+```{r chunk36}
+modpls2
+```
+
+```{r chunk37}
+all(modpls1$InfCrit==modpls2$InfCrit)
+```
+
+```{r chunk38}
+colSums(modpls2$pvalstep)
+```
+
+No discrepancy between formula specification (formula and data) and datasets (dataY and dataX) ones.
+Number of components to be retained:
+* AIC -> 2.
+* BIC -> 1.
+* Non cross validated missclassed -> 1.
+* Non significant predictor criterion -> 1.
+
+```{r chunk39, warning=FALSE, cache=TRUE}
+set.seed(123)
+cv.modpls<-cv.plsRglm(ybordeaux,Xbordeaux,nt=4,modele="pls-glm-polr",NK=100,verbose=FALSE)
+```
+
+```{r chunk40}
+res.cv.modpls=cvtable(summary(cv.modpls, MClassed = TRUE))
+```
+
+According to the results of the cross validation procedure, we retain a single component, which was also, by chance on this dataset, the BIC and raw cross-validation choices.
+
+```{r chunk41}
+plot(res.cv.modpls)
+```
+
+Fit the model that was selected according to cross validated missclassed criterion.
+
+```{r chunk42}
+res<-plsRglm(ybordeaux,Xbordeaux,1,modele="pls-glm-polr")
+```
+
+The final model.
+```{r chunk43}
+res$FinalModel
+```
+
+It is also possible to display the biplot of the observations and the predictors.
+
+```{r chunk44}
+biplot(modpls1$tt,modpls1$pp)
+```
+
+Application of the PLSGLR ordinal regression to an incomplete dataset.
+
+```{r chunk45}
+XbordeauxNA<-Xbordeaux
+XbordeauxNA[1,1] <- NA
+modplsNA <- plsRglm(ybordeaux,XbordeauxNA,4,modele="pls-glm-polr")
+```
+
+A warning was raised since there is a missing value, it is no longer possible to use a 4 (= number of variables in the dataset) component model.
+
+```{r chunk46}
+modplsNA
+```
+
+```{r chunk47}
+data.frame(formula=modpls1$Coeffs,datasets=modpls2$Coeffs,datasetsNA=modplsNA$Coeffs)
+```
+
+### Bootstrap (y,X)
+
+We now work again with the full dataset and apply an ordinary balanced bootstrap technique.
+```{r chunk48, warning=FALSE, cache=TRUE}
+options(contrasts = c("contr.treatment", "contr.poly"))
+modplsglm3 <- plsRglm(ybordeaux,Xbordeaux,1,modele="pls-glm-polr")
+bordeaux.bootYT<- bootplsglm(modplsglm3, sim="permutation", R=250, verbose=FALSE)
+boxplots.bootpls(bordeaux.bootYT)
+boxplots.bootpls(bordeaux.bootYT,ranget0=TRUE)
+
+
+bordeaux.bootYX1<- bootplsglm(res, typeboot = "plsmodel", sim="balanced", R=1000, verbose=FALSE)
+```
+
+Ordinary balanced bootstrap: Boxplots for each of the predictors distribution.
+```{r chunk49}
+boxplots.bootpls(bordeaux.bootYX1)
+```
+
+Ordinary balanced bootstrap: CIs for each of the predictors distribution.
+```{r chunk50}
+temp.ci=confints.bootpls(bordeaux.bootYX1)
+```
+
+Ordinary balanced bootstrap: plot of the CIs for each of the predictors distribution.
+```{r chunk51}
+plots.confints.bootpls(temp.ci,typeIC="BCa",colIC=c("blue","blue","blue","blue"),legendpos ="topright")
+```
+
+The strata option is an integer vector or factor specifying the strata for multi-sample problems. It ensures that, for a nonparametric bootstrap, the resampling are done within each of the specified strata. In our case it improves the results of the bootstrap as can been seen on the plot of the CIs for each of the predictors and on the plots of the boxplots as well.
+
+We apply a stratified balanced bootstrap technique.
+```{r chunk52, warning=FALSE, cache=TRUE}
+bordeaux.bootYX1strata<- bootplsglm(res,typeboot = "plsmodel", sim="balanced", R=1000, strata=unclass(ybordeaux), verbose=FALSE)
+```
+
+Stratified balanced bootstrap: Boxplots for each of the predictors distribution.
+```{r chunk53}
+boxplots.bootpls(bordeaux.bootYX1strata)
+```
+
+Stratified balanced bootstrap: CIs for each of the predictors distribution.
+```{r chunk54}
+confints.bootpls(bordeaux.bootYX1strata)
+```
+
+Stratified balanced bootstrap: plot of the CIs for each of the predictors distribution.
+```{r chunk55}
+plots.confints.bootpls(temp.ci,typeIC="BCa",colIC=c("blue","blue","blue","blue"),legendpos ="topright")
+```
+                       
+### Bootstrap (y,T)
+
+We apply an ordinary balanced bootstrap technique.
+```{r chunk56}
+bordeaux.bootYT1<- bootplsglm(res,sim="balanced", R=1000, verbose=FALSE)
+```
+
+Ordinary balanced bootstrap: Boxplots for each of the predictors distribution.
+```{r chunk57}
+boxplots.bootpls(bordeaux.bootYT1)
+```
+
+Ordinary balanced bootstrap: CIs for each of the predictors distribution.
+```{r chunk58}
+temp.ci=confints.bootpls(bordeaux.bootYT1)
+```
+
+Ordinary balanced bootstrap: plot of the CIs for each of the predictors distribution.
+```{r chunk59}
+plots.confints.bootpls(temp.ci,typeIC="BCa",colIC=c("blue","blue","blue","blue"),legendpos ="topright")
+```
+                       
+Again the strata option will improve the results of the bootstrap as can been seen on the CIs for each of the predictors and boxplots as well.
+
+We apply a stratified balanced bootstrap technique.
+```{r chunk60}
+bordeaux.bootYT1strata<- bootplsglm(res, sim="balanced", R=1000, strata=unclass(ybordeaux), verbose=FALSE)
+```
+ 
+Stratified balanced bootstrap: Boxplots for each of the predictors distribution.
+```{r chunk61}
+boxplots.bootpls(bordeaux.bootYT1strata)
+```
+
+Stratified balanced bootstrap: CIs for each of the predictors distribution.
+```{r chunk62}
+temp.cis <- confints.bootpls(bordeaux.bootYT1strata)
+```
+
+Stratified balanced bootstrap: plot of the CIs for each of the predictors distribution.
+```{r chunk63}
+plots.confints.bootpls(temp.cis,typeIC="BCa",colIC=c("blue","blue","blue","blue"),legendpos ="topright")
+```
+                      
+It could be interesting to display, for all the models with 1 to 4 components, which of the predictors are significantly different from zero so that we could know if there is a stability of significant predictors or not. A function is available in our package, called signpred, to do this kind of analysis
+As we can see below, there is a single difference between stratified bootstrap and regular one. Indeed, 1 predictor significant for stratified bootstrap of the 2 component model turn out to be non-significant for regular bootstrap in the 2 components model. During the cross-validation for the miss-classified criterion, 84 percents of results give 1 component and 7 percents give 2 components, representing than 91 percents of the results obtained during the 100 cross-validation made at the beginning.
+The bootstrap technique used in this study, which is clearly faster and more stable than the other one, but the results between the (y,X) and (y,T) bootstrap techniques are really different and so it could be interesting to confront them with the help of some simulations.
+
+We first compute all the bootstrap distributions of the coefficients with 1000 resampling. Then we derive the corresponding CIs.
+```{r chunk64, warning=FALSE, cache=TRUE}
+res2<-plsRglm(ybordeaux,Xbordeaux,2,modele="pls-glm-polr", verbose=FALSE)
+res3<-plsRglm(ybordeaux,Xbordeaux,3,modele="pls-glm-polr", verbose=FALSE)
+res4<-plsRglm(ybordeaux,Xbordeaux,4,modele="pls-glm-polr", verbose=FALSE)
+bordeaux.bootYT2=bootplsglm(res2,sim="balanced", R=1000, verbose=FALSE)
+bordeaux.bootYT3=bootplsglm(res3,sim="balanced", R=1000, verbose=FALSE)
+bordeaux.bootYT4=bootplsglm(res4,sim="balanced", R=1000, verbose=FALSE)
+bordeaux.bootYT2s=bootplsglm(res2,sim="balanced", R=1000,strata=unclass(ybordeaux), verbose=FALSE)
+bordeaux.bootYT3s=bootplsglm(res3,sim="balanced", R=1000,strata=unclass(ybordeaux), verbose=FALSE)
+bordeaux.bootYT4s=bootplsglm(res4,sim="balanced", R=1000,strata=unclass(ybordeaux), verbose=FALSE)
+temp.ci2<-confints.bootpls(bordeaux.bootYT2)
+temp.ci3<-confints.bootpls(bordeaux.bootYT3)
+temp.ci4<-confints.bootpls(bordeaux.bootYT4)
+temp.cis2<-confints.bootpls(bordeaux.bootYT2s)
+temp.cis3<-confints.bootpls(bordeaux.bootYT3s)
+temp.cis4<-confints.bootpls(bordeaux.bootYT4s)
+```
+
+A variable is significant in a model if 0 does not lie inside its BCa CI.
+```{r chunk65, warning=FALSE}
+ind.BCa.bordeauxYT1 <- (temp.ci[,7]<0&temp.ci[,8]<0)|(temp.ci[,7]>0&temp.ci[,8]>0)
+ind.BCa.bordeauxYT2 <- (temp.ci2[,7]<0&temp.ci2[,8]<0)|(temp.ci2[,7]>0&temp.ci2[,8]>0)
+ind.BCa.bordeauxYT3 <- (temp.ci3[,7]<0&temp.ci3[,8]<0)|(temp.ci3[,7]>0&temp.ci3[,8]>0)
+ind.BCa.bordeauxYT4 <- (temp.ci4[,7]<0&temp.ci4[,8]<0)|(temp.ci4[,7]>0&temp.ci4[,8]>0)
+ind.BCa.bordeauxYT1s <- (temp.cis[,7]<0&temp.cis[,8]<0)|(temp.cis[,7]>0&temp.cis[,8]>0)
+ind.BCa.bordeauxYT2s <- (temp.cis2[,7]<0&temp.cis2[,8]<0)|(temp.cis2[,7]>0&temp.cis2[,8]>0)
+ind.BCa.bordeauxYT3s <- (temp.cis3[,7]<0&temp.cis3[,8]<0)|(temp.cis3[,7]>0&temp.cis3[,8]>0)
+ind.BCa.bordeauxYT4s <- (temp.cis4[,7]<0&temp.cis4[,8]<0)|(temp.cis4[,7]>0&temp.cis4[,8]>0)
+```
+
+The matrix summing up all the results for ordinary balanced bootstrap.
+```{r chunk66}
+(matind=(rbind(YT1=ind.BCa.bordeauxYT1,YT2=ind.BCa.bordeauxYT2,YT3=ind.BCa.bordeauxYT3,YT4=ind.BCa.bordeauxYT4)))
+```
+
+Compute the empirical measures of significance $\pi_e$ for ordinary balanced bootstrap.
+```{r chunk67}
+pi.e=prop.table(res.cv.modpls$CVMC)%*%matind
+```
+
+Display the empirical measures of significance $\pi_e$ for ordinary balanced bootstrap.            
+```{r chunk68}
+pi.e
+```
+
+Plot variable selection results and the empirical measures of significance $\pi_e$ for ordinary balanced bootstrap.            
+```{r chunk69, warning=FALSE, fig.keep='last'}
+signpred(t(matind),labsize=.5, plotsize = 12)
+mtext(expression(pi[e]),side=2,las=1,line=2,at=-.3,cex=1.4)
+text(1:(ncol(matind))-.5,-.3,pi.e,cex=1.4)
+text(1:(ncol(matind))-.5,-.75,c("Temp","Sun","Heat","Rain"),cex=1.4)
+```
+
+The matrix summing up all the results for stratified balanced bootstrap.
+```{r chunk70}
+(matinds=(rbind(YT1=ind.BCa.bordeauxYT1s,YT2=ind.BCa.bordeauxYT2s,YT3=ind.BCa.bordeauxYT3s,YT4=ind.BCa.bordeauxYT4s)))
+```
+          
+Compute the empirical measures of significance $\pi_e$ for stratified balanced bootstrap.
+```{r chunk71}
+pi.es=prop.table(res.cv.modpls$CVMC)%*%matinds
+```
+
+Display the empirical measures of significance $\pi_e$ for stratified balanced bootstrap.            
+```{r chunk72}
+pi.es
+```
+
+Plot variable selection results and the empirical measures of significance $\pi_e$ for stratified balanced bootstrap.            
+```{r chunk73, warning=FALSE, fig.keep='last'}
+signpred(t(matinds),pred.lablength=10,labsize=.5, plotsize = 12)
+mtext(expression(pi[es]),side=2,las=1,line=2,at=-.3,cex=1.4)
+text(1:(ncol(matinds))-.5,-.3,pi.es,cex=1.4)
+text(1:(ncol(matinds))-.5,-.75,c("Temp","Sun","Heat","Rain"),cex=1.4)
+```
+
+More examples can be found in the vignette and in the online references. Unfortunately, a very few number of examples is not compatible with an online viewing even if they will work without any problem on your computer.              

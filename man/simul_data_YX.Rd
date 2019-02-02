@@ -30,7 +30,7 @@ Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.\cr
 }
 \note{
 The value of \eqn{r} depends on the value of \code{ncomp} :
-\tabular{cc}{
+\tabular{ccc}{
 \code{ncomp} \tab \eqn{r} \cr
 2 \tab 3 \cr
 3 \tab 3 \cr

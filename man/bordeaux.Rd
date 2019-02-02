@@ -3,8 +3,7 @@
 \docType{data}
 \title{Quality of wine dataset}
 \description{
-Quality of Bordeaux wines (\code{Quality}) and four potentially predictive variables (\code{Temperature}, \code{Sunshine}, \code{Heat} and \code{Rain}).
-}
+Quality of Bordeaux wines (\code{Quality}) and four potentially predictive variables (\code{Temperature}, \code{Sunshine}, \code{Heat} and \code{Rain}).}
 \usage{data(bordeaux)}
 \format{
   A data frame with 34 observations on the following 5 variables.

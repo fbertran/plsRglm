@@ -27,21 +27,16 @@ Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2
 \seealso{\code{\link{summary}}}
 \examples{
 data(Cornell)
-XCornell<-Cornell[,1:7]
-yCornell<-Cornell[,8]
-bbb <- cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=10,NK=1,
-modele="pls-glm-family",family=gaussian())
-plot(cvtable(summary(bbb)),type="CVQ2Chi2")
-rm(list=c("XCornell","yCornell","bbb"))
+bbb <- cv.plsRglm(Y~.,data=Cornell,nt=10,NK=1,
+modele="pls-glm-family",family=gaussian(), verbose=FALSE)
+plot(cvtable(summary(bbb,verbose=FALSE)),type="CVQ2Chi2")
+rm(list=c("bbb"))
 
 \donttest{
 data(Cornell)
-XCornell<-Cornell[,1:7]
-yCornell<-Cornell[,8]
-bbb <- cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=10,NK=1,
-modele="pls-glm-family",family=gaussian())
-plot(cvtable(summary(bbb)),type="CVQ2Chi2")
-rm(list=c("XCornell","yCornell","bbb"))
+plot(cvtable(summary(cv.plsRglm(Y~.,data=Cornell,nt=10,NK=100,
+modele="pls-glm-family",family=gaussian(), verbose=FALSE),
+verbose=FALSE)),type="CVQ2Chi2")
 }
 }
 \keyword{methods}

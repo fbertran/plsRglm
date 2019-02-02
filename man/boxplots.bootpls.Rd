@@ -44,7 +44,7 @@ boxplots.bootpls(Cornell.bootYX,indices=2:8)
 \donttest{
 data(aze_compl)
 modplsglm<-plsRglm(y~.,data=aze_compl,3,modele="pls-glm-logistic")
-aze_compl.boot3 <- bootplsglm(modplsglm, R=250)
+aze_compl.boot3 <- bootplsglm(modplsglm, R=250, verbose=FALSE)
 boxplots.bootpls(aze_compl.boot3)
 boxplots.bootpls(aze_compl.boot3,las=3,mar=c(5,2,1,1))
 boxplots.bootpls(aze_compl.boot3,indices=c(2,4,6),prednames=FALSE)

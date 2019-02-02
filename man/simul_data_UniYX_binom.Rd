@@ -28,7 +28,7 @@ Model selection for partial least squares regression,
 Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.\cr
 \url{http://dx.doi.org/10.1016/S0169-7439(02)00051-5}
 }
-\author{\enc{Fr?d?ric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }

@@ -7,7 +7,7 @@ The caterpillar dataset was extracted from a 1973 study on pine processionary ca
 The value of x2 for the first observation was remove from the matrix of predictors on purpose.}
 \usage{data(XpineNAX21)}
 \format{
-  A data frame with 33 observations on the following 10 variables.
+  A data frame with 33 observations on the following 10 variables and one missing value.
   \describe{
     \item{\code{x1}}{altitude (in meters)}
     \item{\code{x2}}{slope (en degrees)}
@@ -26,7 +26,7 @@ These caterpillars got their names from their habit of moving over the ground in
 The \code{XpineNAX21} is a dataset with a missing value for testing purpose.
 }
 \source{
-Tomassone R., Audrain S., Lesquoy-de Turckeim E., Millier C. (1992). \dQuote{La \enc{regression}{r\'egression}, nouveaux regards sur une ancienne \enc{methode}{m\'ethode} statistique}, INRA, \emph{\enc{Actualit?s}{Actualit\'es} Scientifiques et Agronomiques}, Masson, Paris.}
+Tomassone R., Audrain S., Lesquoy-de Turckeim E., Millier C. (1992). \dQuote{La \enc{régression}{r\'egression}, nouveaux regards sur une ancienne \enc{méthode}{m\'ethode} statistique}, INRA, \emph{\enc{Actualités}{Actualit\'es} Scientifiques et Agronomiques}, Masson, Paris.}
 %\references{}
 \examples{
 data(XpineNAX21)

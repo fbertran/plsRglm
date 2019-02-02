@@ -26,9 +26,8 @@ Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2
 data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
-bbb <- cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=10,NK=1,
-modele="pls-glm-family",family=gaussian())
-summary(bbb)
+summary(cv.plsRglm(Y~.,data=Cornell,nt=10,NK=1,
+modele="pls-glm-family",family=gaussian(), verbose=FALSE))
 rm(list=c("XCornell","yCornell","bbb"))
 }
 \keyword{methods}

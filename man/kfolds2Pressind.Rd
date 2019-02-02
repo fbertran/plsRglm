@@ -28,28 +28,24 @@ Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2
 data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
-bbb <- cv.plsR(dataY=yCornell,dataX=data.frame(scale(as.matrix(XCornell))[,]),nt=6,K=12,NK=1)
-bbb2 <- cv.plsR(dataY=yCornell,dataX=data.frame(scale(as.matrix(XCornell))[,]),nt=6,K=6,NK=1)
-kfolds2Pressind(bbb)
-kfolds2Pressind(bbb2)
-rm(list=c("XCornell","yCornell","bbb","bbb2"))
+kfolds2Pressind(cv.plsR(dataY=yCornell,dataX=data.frame(scale(as.matrix(XCornell))[,]),
+nt=6,K=12,NK=1))
+kfolds2Pressind(cv.plsR(dataY=yCornell,dataX=data.frame(scale(as.matrix(XCornell))[,]),
+nt=6,K=6,NK=1))
+rm(list=c("XCornell","yCornell"))
 
 \donttest{
 data(pine)
 Xpine<-pine[,1:10]
 ypine<-pine[,11]
-bbb <- cv.plsR(dataY=ypine,dataX=Xpine,nt=10,NK=1)
-bbb2 <- cv.plsR(dataY=ypine,dataX=Xpine,nt=10,NK=2)
-kfolds2Pressind(bbb)
-kfolds2Pressind(bbb2)
+kfolds2Pressind(cv.plsR(dataY=ypine,dataX=Xpine,nt=10,NK=1,verbose=FALSE))
+kfolds2Pressind(cv.plsR(dataY=ypine,dataX=Xpine,nt=10,NK=2,verbose=FALSE))
 
 XpineNAX21 <- Xpine
 XpineNAX21[1,2] <- NA
-bbbNA <- cv.plsR(dataY=ypine,dataX=XpineNAX21,nt=10,NK=1)
-bbbNA2 <- cv.plsR(dataY=ypine,dataX=XpineNAX21,nt=10,NK=2)
-kfolds2Pressind(bbbNA)
-kfolds2Pressind(bbbNA2)
-rm(list=c("Xpine","XpineNAX21","ypine","bbb","bbb2","bbbNA","bbbNA2"))
+kfolds2Pressind(cv.plsR(dataY=ypine,dataX=XpineNAX21,nt=10,NK=1,verbose=FALSE))
+kfolds2Pressind(cv.plsR(dataY=ypine,dataX=XpineNAX21,nt=10,NK=2,verbose=FALSE))
+rm(list=c("Xpine","XpineNAX21","ypine"))
 }
 }
 \keyword{models}

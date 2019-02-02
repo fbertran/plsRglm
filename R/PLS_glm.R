@@ -453,7 +453,7 @@ tempfff <- ~tempmodord-1
 tempm <- model.frame(tempfff, tempmodord)
 tempmat <- model.matrix(tempfff, model.frame(tempfff, tempmodord))
 res$ChisqPearson <- sum(Chiscompmatrix(as.list(as.data.frame(t(predict(tempconstpolr,type="probs")))),as.list(as.data.frame(t(tempmat)))))
-rm(tempconstpolr)
+suppressWarnings(rm(tempconstpolr))
 tttrain<-data.frame(YwotNA=YwotNA,tt=res$tt)
 tempregpolr <- MASS::polr(YwotNA~.,data=tttrain,na.action=na.exclude,Hess=TRUE,method=method)
 rm(tttrain)

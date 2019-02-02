@@ -33,6 +33,6 @@ yCornell<-Cornell[,8]
 set.seed(250)
 modpls <- plsR(yCornell,XCornell,1)
 Cornell.bootYT <- bootpls(modpls, R=250, typeboot="fmodel_np", sim="permutation",
-statistic=permcoefs.plsRnp)
+statistic=permcoefs.plsRnp, verbose=FALSE)
 }
 \keyword{models}

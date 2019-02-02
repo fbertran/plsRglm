@@ -74,11 +74,11 @@ yCornell<-Cornell[,8]
 PLS_glm_wvc(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-gaussian",
 dataPredictY=XCornell[1,])
 PLS_glm_wvc(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-family",
-family=gaussian(),dataPredictY=XCornell[1,])
+family=gaussian(),dataPredictY=XCornell[1,], verbose=FALSE)
 PLS_glm_wvc(dataY=yCornell[-1],dataX=XCornell[-1,],nt=3,modele="pls-glm-gaussian",
-dataPredictY=XCornell[1,])
+dataPredictY=XCornell[1,], verbose=FALSE)
 PLS_glm_wvc(dataY=yCornell[-1],dataX=XCornell[-1,],nt=3,modele="pls-glm-family",
-family=gaussian(),dataPredictY=XCornell[1,])
+family=gaussian(),dataPredictY=XCornell[1,], verbose=FALSE)
 rm("XCornell","yCornell")
 
 \donttest{
@@ -92,22 +92,22 @@ rm("XpineNAX21","ypine")
 data(pine)
 Xpine<-pine[,1:10]
 ypine<-pine[,11]
-PLS_glm_wvc(ypine,Xpine,10,modele="pls")
-PLS_glm_wvc(ypine,Xpine,10,modele="pls-glm-Gamma")
-PLS_glm_wvc(ypine,Xpine,10,modele="pls-glm-family",family=Gamma())
-PLS_glm_wvc(ypine,Xpine,10,modele="pls-glm-gaussian")
-PLS_glm_wvc(ypine,Xpine,10,modele="pls-glm-family",family=gaussian(log))
-PLS_glm_wvc(round(ypine),Xpine,10,modele="pls-glm-poisson")
-PLS_glm_wvc(round(ypine),Xpine,10,modele="pls-glm-family",family=poisson(log))
+PLS_glm_wvc(ypine,Xpine,10,modele="pls", verbose=FALSE)
+PLS_glm_wvc(ypine,Xpine,10,modele="pls-glm-Gamma", verbose=FALSE)
+PLS_glm_wvc(ypine,Xpine,10,modele="pls-glm-family",family=Gamma(), verbose=FALSE)
+PLS_glm_wvc(ypine,Xpine,10,modele="pls-glm-gaussian", verbose=FALSE)
+PLS_glm_wvc(ypine,Xpine,10,modele="pls-glm-family",family=gaussian(log), verbose=FALSE)
+PLS_glm_wvc(round(ypine),Xpine,10,modele="pls-glm-poisson", verbose=FALSE)
+PLS_glm_wvc(round(ypine),Xpine,10,modele="pls-glm-family",family=poisson(log), verbose=FALSE)
 rm(list=c("pine","ypine","Xpine"))
 
 
 data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
-PLS_glm_wvc(yCornell,XCornell,10,modele="pls-glm-inverse.gaussian")
+PLS_glm_wvc(yCornell,XCornell,10,modele="pls-glm-inverse.gaussian", verbose=FALSE)
 PLS_glm_wvc(yCornell,XCornell,10,modele="pls-glm-family",
-family=inverse.gaussian())
+family=inverse.gaussian(), verbose=FALSE)
 rm(list=c("XCornell","yCornell"))
 
 
@@ -115,16 +115,16 @@ data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
 PLS_glm_wvc(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-gaussian",
-dataPredictY=XCornell[1,])
+dataPredictY=XCornell[1,], verbose=FALSE)
 PLS_glm_wvc(dataY=yCornell[-1],dataX=XCornell[-1,],nt=3,modele="pls-glm-gaussian",
-dataPredictY=XCornell[1,])
+dataPredictY=XCornell[1,], verbose=FALSE)
 rm("XCornell","yCornell")
 
 data(aze_compl)
 Xaze_compl<-aze_compl[,2:34]
 yaze_compl<-aze_compl$y
-PLS_glm(yaze_compl,Xaze_compl,10,modele="pls-glm-logistic",typeVC="none")$InfCrit
-PLS_glm_wvc(yaze_compl,Xaze_compl,10,modele="pls-glm-logistic", keepcoeffs=TRUE)
+PLS_glm(yaze_compl,Xaze_compl,10,modele="pls-glm-logistic",typeVC="none", verbose=FALSE)$InfCrit
+PLS_glm_wvc(yaze_compl,Xaze_compl,10,modele="pls-glm-logistic", keepcoeffs=TRUE, verbose=FALSE)
 rm("Xaze_compl","yaze_compl")
 }
 }

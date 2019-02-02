@@ -49,7 +49,7 @@ This is a single imputation of the \code{\link{aze}} dataset which was collected
 Weber \emph{et al.} (2007). Allelotyping analyzes of synchronous primary and metastasis CIN colon cancers identified different subtypes. \emph{Int J Cancer}, 120(3), pages 524-32.
 }
 \references{
-Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. \emph{Journal de la Societe Francaise de Statistique}, 151(2), pages 1-18.
+Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frédéric}{Fr\'ed\'eric} Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. \emph{Journal de la Société Française de Statistique}, 151(2), pages 1-18.
 }
 \examples{
 data(aze_compl)

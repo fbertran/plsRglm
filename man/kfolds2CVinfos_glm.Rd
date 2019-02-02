@@ -33,31 +33,26 @@ Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2
 \examples{
 \donttest{
 data(Cornell)
-XCornell<-Cornell[,1:7]
-yCornell<-Cornell[,8]
-bbb <- cv.plsRglm(dataY=yCornell,dataX=data.frame(scale(as.matrix(XCornell))[,]),
-nt=6,K=12,NK=1,keepfolds=FALSE,keepdataY=TRUE,modele="pls")
-summary(bbb,MClassed=TRUE)
-rm(list=c("XCornell","yCornell","bbb"))
+summary(cv.plsRglm(Y~.,data=Cornell,
+nt=6,K=12,NK=1,keepfolds=FALSE,keepdataY=TRUE,modele="pls",verbose=FALSE),MClassed=TRUE)
 
 
 data(aze_compl)
-Xaze_compl<-aze_compl[,2:34]
-yaze_compl<-aze_compl$y
-bbb <- cv.plsR(yaze_compl,Xaze_compl,nt=10,K=8,modele="pls")
-summary(bbb,MClassed=TRUE)
-bbbbis <- cv.plsRglm(yaze_compl,Xaze_compl,nt=10,K=8,modele="pls")
-summary(bbbbis,MClassed=TRUE)
-bbba <- cv.plsRglm(yaze_compl,Xaze_compl,nt=10,K=8,
-modele="pls-glm-family",family=gaussian())
-summary(bbba,MClassed=TRUE)
-bbb2 <- cv.plsRglm(yaze_compl,Xaze_compl,nt=10,K=8,
-modele="pls-glm-logistic")
-summary(bbb2,MClassed=TRUE)
-bbb2a <- cv.plsRglm(yaze_compl,Xaze_compl,nt=10,K=8,
-modele="pls-glm-family",family=binomial())
-summary(bbb2a,MClassed=TRUE)
-rm(list=c("Xaze_compl","yaze_compl","bbb","bbbbis","bbb2","bbba","bbb2a"))
+summary(cv.plsR(y~.,data=aze_compl,nt=10,K=8,modele="pls",verbose=FALSE),
+MClassed=TRUE,verbose=FALSE)
+summary(cv.plsRglm(y~.,data=aze_compl,nt=10,K=8,modele="pls",verbose=FALSE),
+MClassed=TRUE,verbose=FALSE)
+summary(cv.plsRglm(y~.,data=aze_compl,nt=10,K=8,
+modele="pls-glm-family",
+family=gaussian(),verbose=FALSE),
+MClassed=TRUE,verbose=FALSE)
+summary(cv.plsRglm(y~.,data=aze_compl,nt=10,K=8,
+modele="pls-glm-logistic",
+verbose=FALSE),MClassed=TRUE,verbose=FALSE)
+summary(cv.plsRglm(y~.,data=aze_compl,nt=10,K=8,
+modele="pls-glm-family",
+family=binomial(),verbose=FALSE),
+MClassed=TRUE,verbose=FALSE)
 
 
 if(require(chemometrics)){
@@ -75,10 +70,11 @@ modpls2$std.coeffs
 table(yhyptis,predict(modpls2$FinalModel,type="class"))
 
 modpls3 <- PLS_glm(yhyptis[-c(1,2,3)],Xhyptis[-c(1,2,3),],3,modele="pls-glm-polr",
-dataPredictY=Xhyptis[c(1,2,3),])
-bbb <- cv.plsRglm(yhyptis,Xhyptis,nt=4,K=10,random=TRUE,modele="pls-glm-polr",
-keepcoeffs=TRUE)
-summary(bbb,MClassed=TRUE)
+dataPredictY=Xhyptis[c(1,2,3),],verbose=FALSE)
+
+summary(cv.plsRglm(factor(Group,ordered=TRUE)~.,data=hyptis[,-c(7,8)],nt=4,K=10,
+random=TRUE,modele="pls-glm-polr",keepcoeffs=TRUE,verbose=FALSE),
+MClassed=TRUE,verbose=FALSE)
 }
 }
 }

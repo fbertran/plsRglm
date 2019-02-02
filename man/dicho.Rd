@@ -17,7 +17,7 @@ dicho(val)
 0 or 1.
 }
 %\references{ ~put references to the literature/web site here ~ }
-\author{\enc{Frédéric}{Fr\'ed\'eric} Bertrand\cr
+\author{\enc{FrÃ©dÃ©ric}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }

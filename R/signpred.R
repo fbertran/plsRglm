@@ -1,4 +1,5 @@
 signpred <- function(matbin,pred.lablength=max(sapply(rownames(matbin),nchar)),labsize=1,plotsize = 12){
+if(!any(matbin)){matbin<-!matbin;colbin="white"} else{colbin="grey25"}
 if(is.null(rownames(matbin))){rownames(matbin) <- paste("x",1:nrow(matbin),sep="")}
 lll=max(sapply(rownames(matbin),nchar))
 text = "no"
@@ -25,6 +26,6 @@ clratio = cellsize/lettersize
 mm <- max(m.colsize, m.rowsize)
 op <- par(las=3,mar = c(2, 2, 1, 1) + 0.1, mgp = c(2, 1, 0))
 on.exit(par(op))
-visweb(t(matbin),type="None",labsize=labsize,square="b",box.col="grey25",prednames=FALSE,clear=FALSE)
+visweb(t(matbin),type="None",labsize=labsize,square="b",box.col=colbin,prednames=FALSE,clear=FALSE)
 text(.5+0:(length(rownames(matbin))-1),-lll+1,rownames(matbin),cex=0.4 * labsize *clratio,srt=90)
 }

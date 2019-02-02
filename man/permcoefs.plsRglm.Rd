@@ -32,6 +32,6 @@ data(Cornell)
 set.seed(250)
 modplsglm <- plsRglm(Y~.,data=Cornell,1,modele="pls-glm-family",family=gaussian)
 Cornell.bootYX <- bootplsglm(modplsglm, R=250, typeboot="plsmodel", 
-sim="permutation", statistic=permcoefs.plsRglm)
+sim="permutation", statistic=permcoefs.plsRglm, verbose=FALSE)
 }
 \keyword{models}

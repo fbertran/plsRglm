@@ -17,6 +17,7 @@ mf <- mf2 <- match.call(expand.dots = FALSE)
 if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {
 m2 <- match(c("formula","weights","subset","start","etastart","mustart","offset","control","method","contrasts"), names(mf2), 0L)
 mf2 <- mf2[c(1L, m2)]
+mf2$data <- data    
 mf2$na.action <- na.exclude    
 mf2$model <- FALSE
 mf2[[1L]] <- as.name("glm")
@@ -25,6 +26,7 @@ if(match("method",names(mf2), 0L)==0L){mf2$method<-"glm.fit";method<-"glm.fit"}
 if (modele %in% c("pls-glm-polr")) {
 m2 <- match(c("formula","weights","subset","start","method","contrasts"), names(mf2), 0L)
 mf2 <- mf2[c(1L, m2)]
+mf2$data <- data    
 mf2$na.action <- na.exclude    
 mf2$model <- FALSE
 mf2$Hess <- FALSE
@@ -269,23 +271,25 @@ YwotNA <- as.factor(YwotNA)
 if (!pvals.expli) {
 XXwotNA[!XXNA] <- NA
 requireNamespace("MASS")
+#library(MASS)
 tts <- res$tt
 for (jj in 1:(res$nc)) {
     mf2[[2]]<-YwotNA~cbind(tts,XXwotNA[,jj])
-    tempww[jj] <- -1*eval(mf2, parent.frame(n=sys.nframe()))$coef[kk]
+    tempww[jj] <- -1*eval(mf2)$coef[kk] #, parent.frame(n=sys.nframe())
 }
 XXwotNA[!XXNA] <- 0
 rm(jj,tts)}
 else {
 XXwotNA[!XXNA] <- NA
 requireNamespace("MASS")
+#library(MASS)
 tts <- res$tt
 tempvalpvalstep <- rep(0,res$nc)
 temppvalstep <- rep(0,res$nc)
 mf2$Hess <- TRUE
 for (jj in 1:(res$nc)) {
     mf2[[2]]<-YwotNA~cbind(tts,XXwotNA[,jj])
-    tmww <- -1*summary(eval(mf2, parent.frame(n=sys.nframe())))$coefficients[kk,]
+    tmww <- -1*summary(eval(mf2))$coefficients[kk,] #, parent.frame(n=sys.nframe())
     tempww[jj] <- tmww[1]
     tempvalpvalstep[jj] <- 2 * pnorm(-abs(tmww[3])) 
     temppvalstep[jj] <- (tempvalpvalstep[jj] < alpha.pvals.expli)
@@ -517,7 +521,7 @@ if (kk==1) {
 mf2$model <- TRUE
 mf2$Hess <- TRUE
 mf2[[2]]<-YwotNA~1
-tempconstpolr <- eval(mf2, parent.frame(n=sys.nframe()))
+tempconstpolr <- eval(mf2) #, parent.frame(n=sys.nframe())
 mf2$model <- FALSE
 mf2$Hess <- FALSE
 res$AIC <- AIC(tempconstpolr)
@@ -529,13 +533,13 @@ tempfff <- ~tempmodord-1
 tempm <- model.frame(tempfff, tempmodord)
 tempmat <- model.matrix(tempfff, model.frame(tempfff, tempmodord))
 res$ChisqPearson <- sum(Chiscompmatrix(as.list(as.data.frame(t(predict(tempconstpolr,type="probs")))),as.list(as.data.frame(t(tempmat)))))
-rm(tempconstpolr)
+suppressWarnings(rm(tempconstpolr))
 tttrain<-data.frame(YwotNA=YwotNA,tt=res$tt)
 mf2$model <- TRUE
 mf2$Hess <- TRUE
 mf2[[2]]<-YwotNA~.
 mf2$data <- tttrain
-tempregpolr <- eval(mf2, parent.frame(n=sys.nframe()))
+tempregpolr <- eval(mf2) #, parent.frame(n=sys.nframe())
 mf2$model <- FALSE
 mf2$Hess <- FALSE
 rm(tttrain)
@@ -559,7 +563,7 @@ mf2$model <- TRUE
 mf2$Hess <- TRUE
 mf2[[2]]<-YwotNA~.
 mf2$data <- tttrain
-tempregpolr <- eval(mf2, parent.frame(n=sys.nframe()))
+tempregpolr <- eval(mf2) #, parent.frame(n=sys.nframe())
 mf2$model <- FALSE
 mf2$Hess <- FALSE
 rm(tttrain)
@@ -579,13 +583,13 @@ res$CoeffConstante <- cbind(res$CoeffConstante,tempCoeffConstante)
 }
 else
 {
-rm(tempconstpolr)
+suppressWarnings(rm(tempconstpolr))
 tttrain<-data.frame(YwotNA=YwotNA,tt=res$tt)
 mf2$model <- TRUE
 mf2$Hess <- TRUE
 mf2[[2]]<-YwotNA~.
 mf2$data <- tttrain
-tempregpolr <- eval(mf2, parent.frame(n=sys.nframe()))
+tempregpolr <- eval(mf2) #, parent.frame(n=sys.nframe())
 mf2$model <- FALSE
 mf2$Hess <- FALSE
 rm(tttrain)

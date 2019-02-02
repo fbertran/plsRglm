@@ -45,10 +45,10 @@ set.seed(250)
 modpls <- plsR(yCornell,XCornell,3)
 
 #(Y,X) resampling
-Cornell.bootYX <- bootpls(modpls, R=250)
+Cornell.bootYX <- bootpls(modpls, R=250, verbose=FALSE)
 
 #(Y,T) resampling
-Cornell.bootYT <- bootpls(modpls, typeboot="fmodel_np", R=250)
+Cornell.bootYT <- bootpls(modpls, typeboot="fmodel_np", R=250, verbose=FALSE)
 
 # Using the boxplots.bootpls function
 boxplots.bootpls(Cornell.bootYX,indices=2:8)
@@ -76,7 +76,7 @@ rm(Cornell.bootYX)
 # PLS balanced bootstrap
 
 set.seed(225)
-Cornell.bootYX <- bootpls(modpls, sim="balanced", R=250)
+Cornell.bootYX <- bootpls(modpls, sim="balanced", R=250, verbose=FALSE)
 boot.array(Cornell.bootYX, indices=TRUE)
 
 # Using the boxplots.bootpls function
@@ -91,7 +91,8 @@ points(c(1:7),Cornell.bootYX$t0[-1],col="red",pch=19)
 
 
 library(boot)
-boot.ci(Cornell.bootYX, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), index=2)
+boot.ci(Cornell.bootYX, conf = c(0.90,0.95), type = c("norm","basic","perc","bca"), 
+index=2, verbose=FALSE)
 plot(Cornell.bootYX,index=2)
 jack.after.boot(Cornell.bootYX, index=2, useJ=TRUE, nt=3)
 plot(Cornell.bootYX,index=2,jack=TRUE)
@@ -101,7 +102,7 @@ rm(Cornell.bootYX)
 # PLS permutation bootstrap
 
 set.seed(500)
-Cornell.bootYX <- bootpls(modpls, sim="permutation", R=1000)
+Cornell.bootYX <- bootpls(modpls, sim="permutation", R=1000, verbose=FALSE)
 boot.array(Cornell.bootYX, indices=TRUE)
 
 

@@ -2,25 +2,9 @@
     "dialog-state" : {
         "caseSensitive" : true,
         "filePatterns" : [
-            "*.r",
-            "*.R",
-            "*.rnw",
-            "*.Rnw",
-            "*.rmd",
-            "*.Rmd",
-            "*.rmarkdown",
-            "*.Rmarkdown",
-            "*.rhtml",
-            "*.Rhtml",
-            "*.rd",
-            "*.Rd",
-            "*.h",
-            "*.hpp",
-            "*.c",
-            "*.cpp"
         ],
-        "path" : "~/GitHub/plsRglm/R",
-        "query" : "plsRcox",
+        "path" : "~/GitHub/plsRglm/docs/reference",
+        "query" : "error",
         "regex" : false
     }
 }

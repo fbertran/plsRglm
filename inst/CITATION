@@ -43,7 +43,7 @@ PLS : application aux donnees d'allelotypage",
 	 publisher = "Societe Francaise de Statistique",
          year         = 2010,
          note         = "adresse",
-         url          = "http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47",
+         url          = "http://journal-sfds.fr/article/view/47",
          textVersion = 
          paste("Nicolas Meyer, Myriam Maumy-Bertrand et Frederic Bertrand (2010).", 
                "Comparaison de la regression PLS et de la regression logistique

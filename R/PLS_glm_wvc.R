@@ -342,7 +342,7 @@ if (modele %in% c("pls-glm-polr")) {
 if (kk==1) {
 tempconstpolr <- MASS::polr(YwotNA~1,na.action=na.exclude,Hess=TRUE,method=method)
 res$Coeffsmodel_vals <- rbind(summary(tempconstpolr)$coefficients,matrix(rep(NA,3*nt),ncol=3))
-rm(tempconstpolr)
+suppressWarnings(rm(tempconstpolr))
 tts <- res$tt
 tempregpolr <- MASS::polr(YwotNA~tts,na.action=na.exclude,Hess=TRUE,method=method)
 rm(tts)

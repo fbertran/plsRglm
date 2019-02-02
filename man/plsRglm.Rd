@@ -179,7 +179,7 @@ Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2
 \email{frederic.bertrand@math.unistra.fr}\cr
 \url{http://www-irma.u-strasbg.fr/~fbertran/}
 }
-\note{Use \code{\link{cv.plsRglm}} to cross-validate the plsRglm models and \code{\link{bootpls}} to bootstrap them.}
+\note{Use \code{\link{cv.plsRglm}} to cross-validate the plsRglm models and \code{\link{bootplsglm}} to bootstrap them.}
 \seealso{See also \code{\link{plsR}}.}
 \examples{
 data(Cornell)
@@ -189,18 +189,18 @@ yCornell<-Cornell[,8]
 modplsglm <- plsRglm(yCornell,XCornell,10,modele="pls-glm-gaussian")
 
 #To retrieve the final GLR model on the PLS components
-finalmod <- plsRglm(yCornell,XCornell,10,modele="pls-glm-gaussian")$FinalModel
+finalmod <- modplsglm$FinalModel
 #It is a glm object.
 plot(finalmod)
 
 \donttest{
 #Cross validation
-cv.modplsglm<-cv.plsRglm(yCornell,XCornell,6,NK=100,modele="pls-glm-gaussian")
+cv.modplsglm<-cv.plsRglm(Y~.,data=Cornell,6,NK=100,modele="pls-glm-gaussian", verbose=FALSE)
 res.cv.modplsglm<-cvtable(summary(cv.modplsglm))
 plot(res.cv.modplsglm)
 
 #If no model specified, classic PLSR model
-modpls <- plsRglm(yCornell,XCornell,6)
+modpls <- plsRglm(Y~.,data=Cornell,6)
 modpls
 modpls$tt
 modpls$uscores
@@ -213,9 +213,9 @@ modpls$Coeffs
 data(aze_compl)
 Xaze_compl<-aze_compl[,2:34]
 yaze_compl<-aze_compl$y
-plsRglm(yaze_compl,Xaze_compl,nt=10,modele="pls",MClassed=TRUE)$InfCrit
+plsRglm(yaze_compl,Xaze_compl,nt=10,modele="pls",MClassed=TRUE, verbose=FALSE)$InfCrit
 modpls <- plsRglm(yaze_compl,Xaze_compl,nt=10,modele="pls-glm-logistic",
-MClassed=TRUE,pvals.expli=TRUE)
+MClassed=TRUE,pvals.expli=TRUE, verbose=FALSE)
 modpls
 colSums(modpls$pvalstep)
 modpls$Coeffsmodel_vals
@@ -309,9 +309,12 @@ ysimbin1 <- dicho(dataAstar6)[,1]
 Xsimbin1 <- dicho(dataAstar6)[,2:(dimX+1)]
 modplsglm <- plsRglm(ysimbin1,Xsimbin1,10,modele="pls-glm-logistic")
 modplsglm
-cv.modplsglm <- cv.plsRglm(ysimbin1,Xsimbin1,nt=10,
-modele="pls-glm-logistic",NK=100)
-res.cv.modplsglm <- cvtable(summary(cv.modplsglm,MClassed=TRUE))
+
+simbin=data.frame(dicho(dataAstar6))
+cv.modplsglm <- suppressWarnings(cv.plsRglm(Y~.,data=simbin,nt=10,
+modele="pls-glm-logistic",NK=100, verbose=FALSE))
+res.cv.modplsglm <- cvtable(summary(cv.modplsglm,MClassed=TRUE,
+verbose=FALSE))
 plot(res.cv.modplsglm) #defaults to type="CVMC"
 
 rm(list=c("dimX","Astar","dataAstar6","ysimbin1","Xsimbin1","modplsglm","cv.modplsglm",

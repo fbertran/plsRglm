@@ -30,18 +30,19 @@ Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2
 data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
-bbb <- PLS_lm_kfoldcv(dataY=yCornell,dataX=XCornell,nt=3,K=nrow(XCornell),keepcoeffs=TRUE)
+bbb <- PLS_lm_kfoldcv(dataY=yCornell,dataX=XCornell,nt=3,K=nrow(XCornell),keepcoeffs=TRUE,
+verbose=FALSE)
 kfolds2coeff(bbb)
 boxplot(kfolds2coeff(bbb)[,2])
-rm(list=c("XCornell","yCornell","Xpine","ypine","bbb"))
+rm(list=c("XCornell","yCornell","bbb"))
 
 data(pine)
 Xpine<-pine[,1:10]
 ypine<-pine[,11]
-bbb2 <- cv.plsR(dataY=ypine,dataX=Xpine,nt=4,K=nrow(Xpine),keepcoeffs=TRUE)
+bbb2 <- cv.plsR(dataY=ypine,dataX=Xpine,nt=4,K=nrow(Xpine),keepcoeffs=TRUE,verbose=FALSE)
 kfolds2coeff(bbb2)
 boxplot(kfolds2coeff(bbb2)[,1])
-rm(list=c("Xpine","ypine","Xpine","ypine","bbb2"))
+rm(list=c("Xpine","ypine","bbb2"))
 }
 \keyword{models}
 \keyword{regression}

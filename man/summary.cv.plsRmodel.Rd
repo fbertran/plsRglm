@@ -24,11 +24,7 @@ Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2
 \seealso{\code{\link{summary}}}
 \examples{
 data(Cornell)
-XCornell<-Cornell[,1:7]
-yCornell<-Cornell[,8]
-bbb <- cv.plsR(dataY=yCornell,dataX=XCornell,nt=10,K=6)
-summary(bbb)
-rm(list=c("XCornell","yCornell","bbb"))
+summary(cv.plsR(Y~.,data=Cornell,nt=10,K=6, verbose=FALSE), verbose=FALSE)
 }
 \keyword{methods}
 \keyword{print}

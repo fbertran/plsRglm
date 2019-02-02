@@ -32,6 +32,6 @@ yCornell<-Cornell[,8]
 # statistic=permcoefs.plsR is the default for (Y,X) permutation resampling of PLSR models.
 set.seed(250)
 modpls <- plsR(yCornell,XCornell,1)
-Cornell.bootYX <- bootpls(modpls, sim="permutation", R=250, statistic=permcoefs.plsR)
+Cornell.bootYX <- bootpls(modpls, sim="permutation", R=250, statistic=permcoefs.plsR, verbose=FALSE)
 }
 \keyword{models}

@@ -10,6 +10,7 @@ importFrom("stats", "AIC", "Gamma", "binomial", "coef", "contrasts",
            "poisson", "predict", "rbinom", "residuals.glm",
            "weighted.mean")
 
+importFrom(MASS,polr)
 importFrom(mvtnorm,rmvnorm)
 importFrom(bipartite,visweb)
 importFrom(car,dataEllipse)
