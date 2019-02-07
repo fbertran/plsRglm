@@ -3,7 +3,7 @@ citHeader("To cite the plsRglm package in publications use:")
 titl <- meta$Title
 year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
 vers <- paste("R package version", meta$Version)
-note <- "book of abstracts, User2014!, Los Angeles, page 150"
+note <- "book of abstracts, User2014!, Los Angeles, page 172"
 
 citEntry(entry="Manual",
          title = titl,

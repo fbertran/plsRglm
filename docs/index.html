@@ -82,7 +82,7 @@
 <p>The goal of plsRglm <a href="https://arxiv.org/abs/1810.01005">&lt;arXiv:1810.0100&gt;</a> is to provide (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.</p>
 <p>Partial least squares Regression for generalized linear models were introduced in Bastien, P., Vinzi, V. E. et Tenenhaus, M. (2005). “PLS generalised linear regression”. <em>Computational Statistics &amp; Data Analysis</em>, <strong>48</strong>(1), 17–46, <a href="http://www.sciencedirect.com/science/article/pii/S0167947304000271" class="uri">http://www.sciencedirect.com/science/article/pii/S0167947304000271</a>.</p>
 <p>The package was first developped for the article, written in French, Nicolas Meyer, Myriam Maumy-Bertrand and Frédéric Bertrand (2010), “Comparaison de la régression PLS et de la régression logistique PLS : application aux données d’allélotypage”, <em>Journal de la Société Française de Statistique</em>, <strong>151</strong>(2), pages 1-18, <a href="http://journal-sfds.fr/article/view/47" class="uri">http://journal-sfds.fr/article/view/47</a>.</p>
-<p>The package was presented at the <a href="http://user2014.r-project.org/">User2014!</a> conference. Frédéric Bertrand, Jérémy Magnanensi, Nicolas Meyer and Myriam Bertrand (2014). “plsRglm, PLS generalized linear models for R”, <em>book of abstracts</em>, User2014!, Los Angeles, page 150, <a href="http://user2014.r-project.org/abstracts/posters/172_Bertrand.pdf" class="uri">http://user2014.r-project.org/abstracts/posters/172_Bertrand.pdf</a>.</p>
+<p>The package was presented at the <a href="http://user2014.r-project.org/">User2014!</a> conference. Frédéric Bertrand, Jérémy Magnanensi, Nicolas Meyer and Myriam Bertrand (2014). “plsRglm, PLS generalized linear models for R”, <em>book of abstracts</em>, User2014!, Los Angeles, page 172, <a href="http://user2014.r-project.org/abstracts/posters/172_Bertrand.pdf" class="uri">http://user2014.r-project.org/abstracts/posters/172_Bertrand.pdf</a>.</p>
 <p>For more involved number of component selection techniques, see “A new universal resample-stable bootstrap-based stopping criterion for PLS component construction”“, Jérémy Magnanensi, Frédéric Bertrand, Myriam Maumy-Bertrand and Nicolas Meyer, <em>Statistics and Computing</em> (2017) <strong>27</strong>:757–774, <a href="https://doi.org/10.1007/s11222-016-9651-4" class="uri">https://doi.org/10.1007/s11222-016-9651-4</a>. The new methods presented in that article will be packaged soon.</p>
 <p>A short paper that sums up some of features of the package is available on <a href="https://arxiv.org/">arxiv</a>, Frédéric Bertrand and Myriam Maumy-Bertrand (2018), “plsRglm: Partial least squares linear and generalized linear regression for processing incomplete datasets by cross-validation and bootstrap techniques with R”, <em>arxiv</em>, <a href="https://arxiv.org/abs/1810.01005">&lt;arXiv:1810.0100&gt;</a>.</p>
 <p>A <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">vignette</a> is available for the package “plsRglm: Algorithmic insights and applications”.</p>
@@ -157,8 +157,7 @@
 <span class="co">#&gt; ____Component____ 3 ____</span>
 <span class="co">#&gt; ____Component____ 4 ____</span>
 <span class="co">#&gt; ____Component____ 5 ____</span>
-<span class="co">#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}</span>
-<span class="co">#&gt; Warning only 5 components could thus be extracted</span>
+<span class="co">#&gt; ____Component____ 6 ____</span>
 <span class="co">#&gt; ****________________________________________________****</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; 5 </span>
@@ -180,7 +179,8 @@
 <span class="co">#&gt; ____Component____ 3 ____</span>
 <span class="co">#&gt; ____Component____ 4 ____</span>
 <span class="co">#&gt; ____Component____ 5 ____</span>
-<span class="co">#&gt; ____Component____ 6 ____</span>
+<span class="co">#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}</span>
+<span class="co">#&gt; Warning only 5 components could thus be extracted</span>
 <span class="co">#&gt; ****________________________________________________****</span></code></pre></div>
 <p>We sum up the results in a single table using the summary.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res.cv.modpls&lt;-<span class="kw"><a href="reference/cvtable.html">cvtable</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(cv.modpls))

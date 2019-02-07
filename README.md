@@ -23,7 +23,7 @@ The package was first developped for the article, written in French, Nicolas Mey
 <http://journal-sfds.fr/article/view/47>.
 
 
-The package was presented at the [User2014!](http://user2014.r-project.org/) conference. Frédéric Bertrand, Jérémy Magnanensi, Nicolas Meyer and Myriam Bertrand (2014). "plsRglm, PLS generalized linear models for R", *book of abstracts*, User2014!, Los Angeles, page 150,
+The package was presented at the [User2014!](http://user2014.r-project.org/) conference. Frédéric Bertrand, Jérémy Magnanensi, Nicolas Meyer and Myriam Bertrand (2014). "plsRglm, PLS generalized linear models for R", *book of abstracts*, User2014!, Los Angeles, page 172,
 <http://user2014.r-project.org/abstracts/posters/172_Bertrand.pdf>.
 
 
@@ -115,8 +115,7 @@ cv.modpls<-cv.plsR(Y~.,data=Cornell,nt=6,K=6)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
-#> Warning only 5 components could thus be extracted
+#> ____Component____ 6 ____
 #> ****________________________________________________****
 #> 
 #> 4 
@@ -138,7 +137,8 @@ cv.modpls<-cv.plsR(Y~.,data=Cornell,nt=6,K=6)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> ____Component____ 6 ____
+#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
+#> Warning only 5 components could thus be extracted
 #> ****________________________________________________****
 #> 
 #> 6 
@@ -177,8 +177,8 @@ res.cv.modpls<-cvtable(summary(cv.modpls))
 #> 0 1 
 #> 
 #> CV Press criterion:
-#> 1 2 3 4 5 
-#> 0 0 0 0 1
+#> 1 2 3 4 
+#> 0 0 0 1
 ```
 
 You can perform leave one out cross validation similar to the one that existed in previous versions of SIMCA by setting TypeVC="standard". Two other options, TypeVC="missing" or TypeVC="standard", exists to handle incomplete datasets. Indeed, of cross validation is required is that case, one needs to selects the way of predicting the response for left out observations. For complete rows, without any missing value, there are two different ways of computing these predictions. As a consequence, for mixed datasets, with complete and incomplete rows, there are two ways of computing prediction : either predicts any row as if there were missing values in it (missingdata) or selects the prediction method accordingly to the completeness of the row (adaptative).
