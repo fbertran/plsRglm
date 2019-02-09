@@ -46,6 +46,7 @@ The plsRglm package contains some interesting datasets including:
  
 The package was also applied to the Phenyl and Hyptis datasets from the [chemometrics](https://CRAN.R-project.org/package=chemometrics) and the colonCA dataset from the [colonCA](http://bioconductor.org/packages/release/bioc/html/colonCA.html) package.
 
+This website and these examples were created by F. Bertrand and M. Maumy-Bertrand.
 
 Support for parallel computation and GPU is being developped.
 
@@ -93,7 +94,8 @@ cv.modpls<-cv.plsR(Y~.,data=Cornell,nt=6,K=6)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> ____Component____ 6 ____
+#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
+#> Warning only 5 components could thus be extracted
 #> ****________________________________________________****
 #> 
 #> 2 
@@ -137,8 +139,7 @@ cv.modpls<-cv.plsR(Y~.,data=Cornell,nt=6,K=6)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
-#> Warning only 5 components could thus be extracted
+#> ____Component____ 6 ____
 #> ****________________________________________________****
 #> 
 #> 6 

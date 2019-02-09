@@ -94,6 +94,7 @@
 <li>a Bordeaux wines quality study, M. Tenenhaus. “La régression logistique PLS”. In J.-J. Droesbeke, M. Lejeune, and G. Saporta, editors, <em>Modèles statistiques pour donnéees qualitatives</em>, Éditions Technip, Paris, 2005.</li>
 </ul>
 <p>The package was also applied to the Phenyl and Hyptis datasets from the <a href="https://CRAN.R-project.org/package=chemometrics">chemometrics</a> and the colonCA dataset from the <a href="http://bioconductor.org/packages/release/bioc/html/colonCA.html">colonCA</a> package.</p>
+<p>This website and these examples were created by F. Bertrand and M. Maumy-Bertrand.</p>
 <p>Support for parallel computation and GPU is being developped.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -135,7 +136,8 @@
 <span class="co">#&gt; ____Component____ 3 ____</span>
 <span class="co">#&gt; ____Component____ 4 ____</span>
 <span class="co">#&gt; ____Component____ 5 ____</span>
-<span class="co">#&gt; ____Component____ 6 ____</span>
+<span class="co">#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}</span>
+<span class="co">#&gt; Warning only 5 components could thus be extracted</span>
 <span class="co">#&gt; ****________________________________________________****</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; 3 </span>
@@ -179,8 +181,7 @@
 <span class="co">#&gt; ____Component____ 3 ____</span>
 <span class="co">#&gt; ____Component____ 4 ____</span>
 <span class="co">#&gt; ____Component____ 5 ____</span>
-<span class="co">#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}</span>
-<span class="co">#&gt; Warning only 5 components could thus be extracted</span>
+<span class="co">#&gt; ____Component____ 6 ____</span>
 <span class="co">#&gt; ****________________________________________________****</span></code></pre></div>
 <p>We sum up the results in a single table using the summary.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res.cv.modpls&lt;-<span class="kw"><a href="reference/cvtable.html">cvtable</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(cv.modpls))

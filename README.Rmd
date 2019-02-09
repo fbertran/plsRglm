@@ -55,6 +55,7 @@ The plsRglm package contains some interesting datasets including:
  
 The package was also applied to the Phenyl and Hyptis datasets from the [chemometrics](https://CRAN.R-project.org/package=chemometrics) and the colonCA dataset from the [colonCA](http://bioconductor.org/packages/release/bioc/html/colonCA.html) package.
 
+This website and these examples were created by F. Bertrand and M. Maumy-Bertrand.
 
 Support for parallel computation and GPU is being developped.
 
