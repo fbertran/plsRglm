@@ -27,7 +27,7 @@ if (is.null(modele) & !is.null(family)) {modele<-"pls-glm-family"}
 if (!(modele %in% c("pls","pls-glm-logistic","pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-poisson","pls-glm-polr"))) {print(modele);stop("'modele' not recognized")}
 if (!(modele %in% "pls-glm-family") & !is.null(family)) {stop("Set 'modele=pls-glm-family' to use the family option")}
 if (modele=="pls") {family<-NULL}
-if (modele=="pls-glm-Gamma") {family<-gamma(link = "inverse")}
+if (modele=="pls-glm-Gamma") {family<-Gamma(link = "inverse")}
 if (modele=="pls-glm-gaussian") {family<-gaussian(link = "identity")}
 if (modele=="pls-glm-inverse.gaussian") {family<-inverse.gaussian(link = "1/mu^2")}
 if (modele=="pls-glm-logistic") {family<-binomial(link = "logit")}
@@ -111,6 +111,8 @@ res$residYChapeau=rep(mean(RepY),nrow(ExpliX))}
 
 
 
+
+
 ################################################
 ################################################
 ##                                            ##
@@ -154,16 +156,14 @@ tempww <- rep(0,res$nc)
 ##############################################
 ######                PLS               ######
 ##############################################
-
 if (modele %in% "pls") {
 if(NoWeights){
-tempww <- t(XXwotNA)%*%YwotNA/(t(XXNA)%*%YwotNA^2)      ## here YwotNA is an N*1 matrix(vector)###
+tempww <- t(XXwotNA)%*%YwotNA/(t(XXNA)%*%YwotNA^2)
 }
 if(!NoWeights){
 tempww <- t(XXwotNA*weights)%*%YwotNA/(t(XXNA*weights)%*%YwotNA^2)
 }
 }
-
 
 ##############################################
 ######              PLS-GLM             ######
@@ -190,13 +190,14 @@ rm(jj)}
 if (modele %in% c("pls-glm-polr")) {
 YwotNA <- as.factor(YwotNA)
 XXwotNA[!XXNA] <- NA
-library(MASS)
+requireNamespace("MASS")
 tts <- res$tt
 for (jj in 1:(res$nc)) {
     tempww[jj] <- -1*MASS::polr(YwotNA~cbind(tts,XXwotNA[,jj]),na.action=na.exclude,method=method)$coef[kk]
 }
 XXwotNA[!XXNA] <- 0
 rm(jj,tts)}
+
 
 
 
@@ -387,7 +388,7 @@ if (modele %in% c("pls-glm-polr")) {
 if (kk==1) {
 tempconstpolr <- MASS::polr(YwotNA~1,na.action=na.exclude,Hess=TRUE,method=method)
 res$Coeffsmodel_vals <- rbind(summary(tempconstpolr)$coefficients,matrix(rep(NA,3*nt),ncol=3))
-rm(tempconstpolr)
+suppressWarnings(rm(tempconstpolr))
 tts <- res$tt
 tempregpolr <- MASS::polr(YwotNA~tts,na.action=na.exclude,Hess=TRUE,method=method)
 rm(tts)
@@ -443,6 +444,8 @@ rownames(res$Std.Coeffs) <- c(names(tempregpolr$zeta),colnames(ExpliX))
 
 
 
+
+
 if (!(na.miss.X | na.miss.Y)) {
 
 ##############################################
@@ -477,8 +480,6 @@ res$YChapeau <- attr(res$RepY,"scaled:center")+attr(res$RepY,"scaled:scale")*gpu
 
 res$Yresidus <- dataY-res$YChapeau
 }
-
-
 ##############################################
 
 
