@@ -1,3 +1,5 @@
+1000x10000 Benchmarks for CPU vs GPU (with gputools) computations
+10000x1000 Benchmarks for CPU vs GPU (with gputools) computations 
 pls	Examples of use of plsR with complete or incomplete datasets with applications of cross-validation and bootstrap techniques.
 pls_formula	Examples of use of plsR and plsRglm with formula specification of the model.
 pls_glm_logistic	Examples of use of generalized plsR with a binomial family and a logit link with applications of cross-validation and bootstrap techniques.
