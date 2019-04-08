@@ -8,7 +8,7 @@ Light version of \code{PLS_glm} for cross validation purposes either on complete
 PLS_glm_wvc(dataY, dataX, nt = 2, dataPredictY = dataX, modele = "pls", 
 family = NULL, scaleX = TRUE, scaleY = NULL, keepcoeffs = FALSE, 
 keepstd.coeffs=FALSE, tol_Xi = 10^(-12), weights, method = "logistic", 
-verbose = TRUE)
+verbose = TRUE, usegpu=FALSE)
 }
 \arguments{
   \item{dataY}{response (training) dataset}
@@ -25,6 +25,7 @@ verbose = TRUE)
   \item{weights}{an optional vector of 'prior weights' to be used in the fitting process. Should be \code{NULL} or a numeric vector.}
   \item{method}{logistic, probit, complementary log-log or cauchit (corresponding to a Cauchy latent variable).}
   \item{verbose}{should info messages be displayed ?}
+  \item{usegpu}{use gpu for matrix computations}                                                        
 }
 \details{
 This function is called by \code{\link{PLS_glm_kfoldcv_formula}} in order to perform cross-validation either on complete or incomplete datasets.
