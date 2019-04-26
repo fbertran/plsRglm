@@ -2,3 +2,6 @@
 .Rproj.user/*
 .Rhistory
 .RData
+.DS_Store
+*.pper
+.Rproj.user/AF86C25B/pcs/windowlayoutstate.pper

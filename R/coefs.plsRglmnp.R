@@ -1,4 +1,4 @@
-coefs.plsRglmnp <- function(dataRepYtt, ind, nt, modele, family = NULL, maxcoefvalues,wwetoile, ifbootfail) 
+coefs.plsRglmnp <- function(dataRepYtt, ind, nt, modele, family = NULL, maxcoefvalues, wwetoile, ifbootfail) 
 {
 dataRepYb=dataRepYtt[ind,1]
 Tb=dataRepYtt[ind,-1]
