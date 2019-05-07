@@ -616,9 +616,9 @@ PLS_glmPar <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = d
 
         # Initialisation du tableau contenant les p
         temppp <- rep(0, res$nc)
-        temppp =  foreach(jj=1:(res$nc), .combine=c) %dopar% {
+        for(jj in 1:res$nc)
         {
-            crossprod(temptt, XXwotNA[, jj])/drop(crossprod(XXNA[,
+            temppp[jj] <-crossprod(temptt, XXwotNA[, jj])/drop(crossprod(XXNA[,
                 jj], temptt^2))
         }
         res$residXX <- XXwotNA - temptt %*% temppp
@@ -755,7 +755,7 @@ PLS_glmPar <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = d
             {
             if (kk == 1)
             {
-                tempconstglm <- glm(YwotNA ~ 1, family = family)
+                tempconstglm <- glm(YwotNA~1, family = family)
                 res$AIC <- AIC(tempconstglm)
                 res$BIC <- AIC(tempconstglm, k = log(res$nr))
                 res$Coeffsmodel_vals <- rbind(summary(tempconstglm)$coefficients,

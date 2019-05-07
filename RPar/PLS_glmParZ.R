@@ -474,7 +474,7 @@ PLS_glmParZ <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = 
         if (modele %in% c("pls-glm-family", "pls-glm-Gamma", "pls-glm-gaussian",
             "pls-glm-inverse.gaussian", "pls-glm-logistic", "pls-glm-poisson"))
             {
-              XXwotNA[!XXNA] <- NA
+              #XXwotNA[!XXNA] <- NA
             if (!pvals.expli)
             {
               registerDoParallel(detectCores()-1)
@@ -490,9 +490,9 @@ PLS_glmParZ <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = 
                 registerDoParallel(detectCores())
                 #XXwotNA[!XXNA] <- 0
                 tmpList <- foreach(jj=1:(res$nc), .combine='cbind',.multicombine=TRUE) %dopar% {
-                  tmww <- summary(glm(YwotNA ~ cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk + 1, ]
+                  #tmww <- summary(glm(YwotNA ~ cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk + 1, ]
 
-                  #tmww <- summary(fastglm(y=YwotNA, x=cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk,]
+                  tmww <- summary(fastglm(y=YwotNA, x=cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk,]
                   print(tmww)
                   c(tmww[1],tmww[4],(tmww[4]<alpha.pvals.expli))
                 }
