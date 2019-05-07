@@ -13,6 +13,8 @@ Unit: milliseconds
 
 ## Test des performances pour différents jeux de données(GLM logistic)
 
+Taille d'Aze : 104*34 variables
+
 ```R
 microbenchmark(
 +   single = plsRglm(yaze, Xaze,nt=10,modele="pls-glm-logistic",pvals.expli=T,verbose=F),
@@ -41,3 +43,37 @@ Unit: seconds
 |  multi| 19.62857| 20.11816| 20.83233| 20.65258| 21.12395| 24.51206|    20|
 
 ![](glm_logistic_single_vs_multicore_100Aze.png)
+
+
+## Fastglm vs glm (Aze GLM logistic)
+
+### taill = 1 aze
+Unit: seconds
+
+|      expr|      min|       lq|     mean|   median|       uq|      max| neval|
+|----------|---------|---------|---------|---------|---------|---------|------|
+|     multi| 1.144857| 1.274948| 1.325466| 1.307239| 1.363580| 1.560378|    50|
+| multiFast| 1.109311| 1.205085| 1.253552| 1.250260| 1.311317| 1.426883|    50|
+
+![](fastGLMvsGLM_1Aze_Logistic.png)
+
+### taille = 100 Aze
+
+Unit: seconds
+
+|      expr|      min|       lq|     mean|   median|       uq|      max| neval|
+|----------|---------|---------|---------|---------|---------|---------|------|
+|     multi| 17.99874| 18.59391| 19.03703| 19.09620| 19.41044| 20.27305|    20|
+| multiFast| 15.71824| 16.04761| 16.87588| 16.56986| 17.30928| 20.36159|    20|
+
+![](fastGLMvsGLM_100Aze_Logistic.png)
+
+### taill = 1 aze
+Unit: seconds
+
+|      expr|      min|       lq|     mean|   median|       uq|      max| neval|
+|----------|---------|---------|---------|---------|---------|---------|------|
+|     multi| 1.144857| 1.274948| 1.325466| 1.307239| 1.363580| 1.560378|    50|
+| multiFast| 1.109311| 1.205085| 1.253552| 1.250260| 1.311317| 1.426883|    50|
+
+![](fastGLMvsGLM_1Aze_Logistic.png)

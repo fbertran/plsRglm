@@ -1,4 +1,4 @@
-PLS_glmPar <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = dataX,
+PLS_glmParZ <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = dataX,
     modele = "pls", family = NULL, typeVC = "none", EstimXNA = FALSE, scaleX = TRUE,
     scaleY = NULL, pvals.expli = FALSE, alpha.pvals.expli = 0.05, MClassed = FALSE,
     tol_Xi = 10^(-12), weights, method, sparse = FALSE, sparseStop = FALSE,
@@ -474,7 +474,7 @@ PLS_glmPar <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = d
         if (modele %in% c("pls-glm-family", "pls-glm-Gamma", "pls-glm-gaussian",
             "pls-glm-inverse.gaussian", "pls-glm-logistic", "pls-glm-poisson"))
             {
-              #XXwotNA[!XXNA] <- NA
+              XXwotNA[!XXNA] <- NA
             if (!pvals.expli)
             {
               registerDoParallel(detectCores()-1)
@@ -490,9 +490,9 @@ PLS_glmPar <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = d
                 registerDoParallel(detectCores())
                 #XXwotNA[!XXNA] <- 0
                 tmpList <- foreach(jj=1:(res$nc), .combine='cbind',.multicombine=TRUE) %dopar% {
-                  #tmww <- summary(glm(YwotNA ~ cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk + 1, ]
+                  tmww <- summary(glm(YwotNA ~ cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk + 1, ]
 
-                  tmww <- summary(fastglm(y=YwotNA, x=cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk,]
+                  #tmww <- summary(fastglm(y=YwotNA, x=cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk,]
                   print(tmww)
                   c(tmww[1],tmww[4],(tmww[4]<alpha.pvals.expli))
                 }
@@ -616,9 +616,9 @@ PLS_glmPar <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = d
 
         # Initialisation du tableau contenant les p
         temppp <- rep(0, res$nc)
-        temppp =  foreach(jj=1:(res$nc), .combine=c) %dopar% {
+        for (jj in 1:(res$nc))
         {
-            crossprod(temptt, XXwotNA[, jj])/drop(crossprod(XXNA[,
+            temppp[jj] <- crossprod(temptt, XXwotNA[, jj])/drop(crossprod(XXNA[,
                 jj], temptt^2))
         }
         res$residXX <- XXwotNA - temptt %*% temppp
