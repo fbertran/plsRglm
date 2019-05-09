@@ -68,12 +68,26 @@ Unit: seconds
 
 ![](fastGLMvsGLM_100Aze_Logistic.png)
 
-### taill = 1 aze
+
+## foreach sur ttPredictY
+
+### taille = 1 aze
+
 Unit: seconds
 
-|      expr|      min|       lq|     mean|   median|       uq|      max| neval|
-|----------|---------|---------|---------|---------|---------|---------|------|
-|     multi| 1.144857| 1.274948| 1.325466| 1.307239| 1.363580| 1.560378|    50|
-| multiFast| 1.109311| 1.205085| 1.253552| 1.250260| 1.311317| 1.426883|    50|
+|       expr|      min|       lq|     mean|   median|       uq|      max| neval|
+|-----------|---------|---------|---------|---------|---------|---------|------|
+| multiFast2| 1.165617| 1.313193| 1.387126| 1.361401| 1.444236| 2.050066|    50|
+|  multiFast| 1.125387| 1.203078| 1.274719| 1.241205| 1.322504| 1.707173|    50|
 
-![](fastGLMvsGLM_1Aze_Logistic.png)
+![](fastGLM2vsfastGLM_1Aze_Logistic.png)
+
+### taille = 100 aze
+Unit: seconds
+
+|       expr|      min|       lq|     mean|   median|       uq|     max| neval|
+|-----------|---------|---------|---------|---------|---------|--------|------|
+| multiFast2| 13.81966| 13.92595| 14.18017| 14.19904| 14.39000| 14.5635|    20|
+|  multiFast| 15.46839| 15.74820| 15.90470| 15.85190| 16.10824| 16.3625|    20|
+
+![](fastGLM2vsfastGLM_100Aze_Logistic.png)

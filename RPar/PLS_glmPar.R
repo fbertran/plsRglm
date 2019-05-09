@@ -477,9 +477,9 @@ PLS_glmPar <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = d
               #XXwotNA[!XXNA] <- NA
             if (!pvals.expli)
             {
-              registerDoParallel(detectCores()-1)
-              tempww =  foreach(jj=1:(res$nc), .combine=c) %dopar% {
-                  coef(fastglm(y=YwotNA, x=cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk + 1, ]
+              registerDoParallel(detectCores())
+              tempww <-  foreach(jj=1:(res$nc), .combine=c) %dopar% {
+                  coef(fastglm(y=YwotNA, x=cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk, ]
                 }
                 XXwotNA[!XXNA] <- 0
 
@@ -493,12 +493,12 @@ PLS_glmPar <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = d
                   #tmww <- summary(glm(YwotNA ~ cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk + 1, ]
 
                   tmww <- summary(fastglm(y=YwotNA, x=cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk,]
-                  print(tmww)
                   c(tmww[1],tmww[4],(tmww[4]<alpha.pvals.expli))
                 }
                 tempww<-as.vector(tmpList[1,])
                 tempvalpvalstep<-as.vector(tmpList[2,])
                 temppvalstep<-as.vector(tmpList[3,])
+                rm(tmpList)
 
                 if (sparse)
                 {
@@ -627,6 +627,7 @@ PLS_glmPar <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = d
         {
             if (sparse == FALSE)
             {
+
                 for (ii in 1:res$nr)
                 {
 
@@ -716,6 +717,7 @@ PLS_glmPar <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = d
         {
             if (kk == 1)
             {
+
                 tempCoeffC <- solve(t(res$tt[YNA]) %*% res$tt[YNA]) %*%
                   t(res$tt[YNA]) %*% YwotNA[YNA]
                 res$CoeffCFull <- matrix(c(tempCoeffC, rep(NA, nt - kk)),
@@ -769,7 +771,9 @@ PLS_glmPar <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = d
                 # }
                 rm(tempconstglm)
                 tttrain <- data.frame(YwotNA = YwotNA, tt = res$tt)
-                tempregglm <- glm(YwotNA ~ ., data = tttrain, family = family)
+
+                #tempregglm <- fastglm(y=YwotNA,x=res$tt, family = family)
+                tempregglm <- glm(YwotNA~.,data=tttrain, family = family)
                 rm(tttrain)
                 res$AIC <- cbind(res$AIC, AIC(tempregglm))
                 res$BIC <- cbind(res$BIC, AIC(tempregglm, k = log(res$nr)))
@@ -1420,13 +1424,12 @@ PLS_glmPar <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = d
             {
                 cat("____Predicting X with NA in X and not in Y____\n")
             }
-            for (ii in 1:nrow(PredictYwotNA))
+            res$ttPredictY <- foreach(ii = (1:nrow(PredictYwotNA)), .combine=rbind) %dopar%
             {
-                res$ttPredictY <- rbind(res$ttPredictY, t(solve(t(res$pp[PredictYNA[ii,
-                  ], , drop = FALSE]) %*% res$pp[PredictYNA[ii, ], , drop = FALSE]) %*%
-                  t(res$pp[PredictYNA[ii, ], , drop = FALSE]) %*% (PredictYwotNA[ii,
-                  ])[PredictYNA[ii, ]]))
+                t(solve(t(res$pp[PredictYNA[ii, ], , drop = FALSE]) %*% res$pp[PredictYNA[ii, ], , drop = FALSE]) %*%
+                  t(res$pp[PredictYNA[ii, ], , drop = FALSE]) %*% (PredictYwotNA[ii,])[PredictYNA[ii, ]])
             }
+
             colnames(res$ttPredictY) <- NULL
         } else
         {

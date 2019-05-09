@@ -93,7 +93,7 @@ if (modele %in% "pls-glm-polr") {
 dataY <- as.factor(dataY)
 YwotNA <- as.factor(YwotNA)}
 
-res <- list(nr=nrow(ExpliX),nc=ncol(ExpliX),ww=NULL,wwnorm=NULL,wwetoile=NULL,tt=NULL,pp=NULL,CoeffC=NULL,uscores=NULL,YChapeau=NULL,residYChapeau=NULL,RepY=RepY,na.miss.Y=na.miss.Y,YNA=YNA,residY=RepY,ExpliX=ExpliX,na.miss.X=na.miss.X,XXNA=XXNA,residXX=ExpliX,PredictY=PredictYwotNA,RSS=rep(NA,nt),RSSresidY=rep(NA,nt),R2=rep(NA,nt),R2residY=rep(NA,nt),press.ind=NULL,press.tot=NULL,Q2cum=rep(NA, nt),family=family,ttPredictY = NULL,typeVC="none",listValsPredictY=NULL) 
+res <- list(nr=nrow(ExpliX),nc=ncol(ExpliX),ww=NULL,wwnorm=NULL,wwetoile=NULL,tt=NULL,pp=NULL,CoeffC=NULL,uscores=NULL,YChapeau=NULL,residYChapeau=NULL,RepY=RepY,na.miss.Y=na.miss.Y,YNA=YNA,residY=RepY,ExpliX=ExpliX,na.miss.X=na.miss.X,XXNA=XXNA,residXX=ExpliX,PredictY=PredictYwotNA,RSS=rep(NA,nt),RSSresidY=rep(NA,nt),R2=rep(NA,nt),R2residY=rep(NA,nt),press.ind=NULL,press.tot=NULL,Q2cum=rep(NA, nt),family=family,ttPredictY = NULL,typeVC="none",listValsPredictY=NULL)
 if(NoWeights){res$weights<-rep(1L,res$nr)} else {res$weights<-weights}
 res$temppred <- NULL
 
@@ -168,12 +168,11 @@ tempww <- t(XXwotNA*weights)%*%YwotNA/(t(XXNA*weights)%*%YwotNA^2)
 ######              PLS-GLM             ######
 ##############################################
 if (modele %in% c("pls-glm-logistic","pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-poisson")) {
-XXwotNA[!XXNA] <- NA
-for (jj in 1:(res$nc)) {
-    tempww[jj] <- coef(glm(YwotNA~cbind(res$tt,XXwotNA[,jj]),family=family))[kk+1]
+
+tempww =  foreach(jj=1:(res$nc), .combine=c) %dopar% {
+    coef(fastglm(y=YwotNA, x=cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk,]
 }
-XXwotNA[!XXNA] <- 0
-rm(jj)}
+}
 
 
 ##############################################
@@ -235,14 +234,14 @@ break
 rm(ii)
 if(break_nt) {break}
 }
-}  
+}
 
 
 
 res$ww <- cbind(res$ww,tempww)
 res$wwnorm <- cbind(res$wwnorm,tempwwnorm)
-res$tt <- cbind(res$tt,temptt)      
-res$pp <- cbind(res$pp,temppp)   
+res$tt <- cbind(res$tt,temptt)
+res$pp <- cbind(res$pp,temppp)
 
 
 
@@ -264,13 +263,13 @@ res$CoeffCFull <- matrix(c(tempCoeffC,rep(NA,nt-kk)),ncol=1)
 tempCoeffConstante <- 0
 } else {
 if (!(na.miss.X | na.miss.Y)) {
-tempCoeffC <- c(rep(0,kk-1),solve(t(res$tt[YNA,kk])%*%res$tt[YNA,kk])%*%t(res$tt[YNA,kk])%*%YwotNA[YNA])  
+tempCoeffC <- c(rep(0,kk-1),solve(t(res$tt[YNA,kk])%*%res$tt[YNA,kk])%*%t(res$tt[YNA,kk])%*%YwotNA[YNA])
 tempCoeffConstante <- 0
 res$CoeffCFull <- cbind(res$CoeffCFull,c(tempCoeffC,rep(NA,nt-kk)))
 }
 else
 {
-tempCoeffC <- c(rep(0,kk-1),solve(t(res$tt[YNA,kk])%*%res$tt[YNA,kk])%*%t(res$tt[YNA,kk])%*%YwotNA[YNA])  
+tempCoeffC <- c(rep(0,kk-1),solve(t(res$tt[YNA,kk])%*%res$tt[YNA,kk])%*%t(res$tt[YNA,kk])%*%YwotNA[YNA])
 tempCoeffConstante <- 0
 res$CoeffCFull <- cbind(res$CoeffCFull,c(tempCoeffC,rep(NA,nt-kk)))
 }
@@ -307,7 +306,7 @@ tt<-res$tt
 tempregglm <- glm(YwotNA~tt,family=family)
 rm(tt)
 res$Coeffsmodel_vals <- cbind(res$Coeffsmodel_vals,rbind(summary(tempregglm)$coefficients,matrix(rep(NA,4*(nt-kk)),ncol=4)))
-tempCoeffC <- as.vector(coef(tempregglm))  
+tempCoeffC <- as.vector(coef(tempregglm))
 res$CoeffCFull <- cbind(res$CoeffCFull,c(tempCoeffC,rep(NA,nt-kk)))
 tempCoeffConstante <- tempCoeffC[1]
 res$CoeffConstante <- cbind(res$CoeffConstante,tempCoeffConstante)
@@ -319,7 +318,7 @@ tt<-res$tt
 tempregglm <- glm(YwotNA~tt,family=family)
 rm(tt)
 res$Coeffsmodel_vals <- cbind(res$Coeffsmodel_vals,rbind(summary(tempregglm)$coefficients,matrix(rep(NA,4*(nt-kk)),ncol=4)))
-tempCoeffC <- as.vector(coef(tempregglm))  
+tempCoeffC <- as.vector(coef(tempregglm))
 res$CoeffCFull <- cbind(res$CoeffCFull,c(tempCoeffC,rep(NA,nt-kk)))
 tempCoeffConstante <- tempCoeffC[1]
 res$CoeffConstante <- cbind(res$CoeffConstante,tempCoeffConstante)
@@ -357,7 +356,7 @@ tts <- res$tt
 tempregpolr <- MASS::polr(YwotNA~tts,na.action=na.exclude,Hess=TRUE,method=method)
 rm(tts)
 res$Coeffsmodel_vals <- cbind(res$Coeffsmodel_vals,rbind(summary(tempregpolr)$coefficients,matrix(rep(NA,3*(nt-kk)),ncol=3)))
-tempCoeffC <- -1*as.vector(tempregpolr$coef)  
+tempCoeffC <- -1*as.vector(tempregpolr$coef)
 tempCoeffConstante <- as.vector(tempregpolr$zeta)
 res$CoeffCFull <- cbind(res$CoeffCFull,c(tempCoeffConstante,tempCoeffC,rep(NA,nt-kk)))
 res$CoeffConstante <- cbind(res$CoeffConstante,tempCoeffConstante)
@@ -368,7 +367,7 @@ tts <- res$tt
 tempregpolr <- MASS::polr(YwotNA~tts,na.action=na.exclude,Hess=TRUE,method=method)
 rm(tts)
 res$Coeffsmodel_vals <- cbind(res$Coeffsmodel_vals,rbind(summary(tempregpolr)$coefficients,matrix(rep(NA,3*(nt-kk)),ncol=3)))
-tempCoeffC <- -1*as.vector(tempregpolr$coef)  
+tempCoeffC <- -1*as.vector(tempregpolr$coef)
 tempCoeffConstante <- as.vector(tempregpolr$zeta)
 res$CoeffCFull <- cbind(res$CoeffCFull,c(tempCoeffConstante,tempCoeffC,rep(NA,nt-kk)))
 res$CoeffConstante <- cbind(res$CoeffConstante,tempCoeffConstante)
@@ -416,7 +415,7 @@ tempCoeffs <- res$wwetoile%*%res$CoeffC*attr(res$RepY,"scaled:scale")/attr(res$E
 tempConstante <- attr(res$RepY,"scaled:center")-sum(tempCoeffs*attr(res$ExpliX,"scaled:center"))
 res$Coeffs <- rbind(tempConstante,tempCoeffs)
 
-res$YChapeau <- attr(res$RepY,"scaled:center")+attr(res$RepY,"scaled:scale")*res$tt%*%res$CoeffC             
+res$YChapeau <- attr(res$RepY,"scaled:center")+attr(res$RepY,"scaled:scale")*res$tt%*%res$CoeffC
 res$Yresidus <- dataY-res$YChapeau
 }
 ##############################################
@@ -433,7 +432,7 @@ tempCoeffs <- res$wwetoile%*%res$CoeffC*attr(res$RepY,"scaled:scale")/attr(res$E
 tempConstante <- attr(res$RepY,"scaled:center")-sum(tempCoeffs*attr(res$ExpliX,"scaled:center"))+attr(res$RepY,"scaled:scale")*res$Std.Coeffs[1]
 res$Coeffs <- rbind(tempConstante,tempCoeffs)
 
-res$YChapeau <- tempregglm$fitted.values          
+res$YChapeau <- tempregglm$fitted.values
 res$Yresidus <- dataY-res$YChapeau
 }
 
@@ -477,7 +476,7 @@ tempCoeffs <- res$wwetoile%*%res$CoeffC*attr(res$RepY,"scaled:scale")/attr(res$E
 tempConstante <- attr(res$RepY,"scaled:center")-sum(tempCoeffs*attr(res$ExpliX,"scaled:center"))
 res$Coeffs <- rbind(tempConstante,tempCoeffs)
 
-res$YChapeau <- attr(res$RepY,"scaled:center")+attr(res$RepY,"scaled:scale")*res$tt%*%res$CoeffC            
+res$YChapeau <- attr(res$RepY,"scaled:center")+attr(res$RepY,"scaled:scale")*res$tt%*%res$CoeffC
 res$Yresidus <- dataY-res$YChapeau
 }
 ##############################################
@@ -495,7 +494,7 @@ tempCoeffs <- res$wwetoile%*%res$CoeffC*attr(res$RepY,"scaled:scale")/attr(res$E
 tempConstante <- attr(res$RepY,"scaled:center")-sum(tempCoeffs*attr(res$ExpliX,"scaled:center"))
 res$Coeffs <- rbind(tempConstante,tempCoeffs)
 
-res$YChapeau <- tempregglm$fitted.values                      
+res$YChapeau <- tempregglm$fitted.values
 res$Yresidus <- dataY-res$YChapeau
 }
 
@@ -533,7 +532,7 @@ if (kk==1) {
 ##############################################
 if (modele == "pls") {
 res$uscores <- cbind(res$uscores,res$residY/res$CoeffC[kk])
-res$residY <- res$residY - res$tt%*%tempCoeffC 
+res$residY <- res$residY - res$tt%*%tempCoeffC
 res$residusY <- cbind(res$residusY,res$residY)
 
 rm(tempww)
@@ -549,7 +548,7 @@ rm(tempConstante)
 ######              PLS-GLM             ######
 ##############################################
 if (modele %in% c("pls-glm-logistic","pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-poisson")) {
-res$residY <- res$residY 
+res$residY <- res$residY
 res$residusY <- cbind(res$residusY,res$residY)
 
 rm(tempww)
@@ -565,7 +564,7 @@ rm(tempConstante)
 ######           PLS-GLM-POLR           ######
 ##############################################
 if (modele %in% c("pls-glm-polr")) {
-res$residY <- res$residY 
+res$residY <- res$residY
 res$residusY <- cbind(res$residusY,res$residY)
 
 rm(tempww)
@@ -590,7 +589,7 @@ if (!(na.miss.PredictY | na.miss.Y)) {
 if(kk==1){
   if(verbose){cat("____Predicting X without NA neither in X nor in Y____\n")}
 }
-res$ttPredictY <- PredictYwotNA%*%res$wwetoile 
+res$ttPredictY <- PredictYwotNA%*%res$wwetoile
 colnames(res$ttPredictY) <- paste("tt",1:kk,sep="")
 }
 else {
@@ -600,7 +599,7 @@ if(kk==1){
 }
 res$ttPredictY <- NULL
 
-for (ii in 1:nrow(PredictYwotNA)) {  
+for (ii in 1:nrow(PredictYwotNA)) {
       res$ttPredictY <- rbind(res$ttPredictY,t(solve(t(res$pp[PredictYNA[ii,],,drop=FALSE])%*%res$pp[PredictYNA[ii,],,drop=FALSE])%*%t(res$pp[PredictYNA[ii,],,drop=FALSE])%*%(PredictYwotNA[ii,])[PredictYNA[ii,]]))
 }
 
@@ -671,9 +670,9 @@ res$listValsPredictY <- cbind(res$listValsPredictY,predict(object=tempregglm,new
 if (modele %in% c("pls-glm-polr")) {
 tts <- res$ttPredictY
 if(kk==1){
-res$listValsPredictY <- list(predict(tempregpolr,predict(tempregpolr, data.frame(tts=I(tts))),type="probs")) 
+res$listValsPredictY <- list(predict(tempregpolr,predict(tempregpolr, data.frame(tts=I(tts))),type="probs"))
 } else {
-res$listValsPredictY <- c(res$listValsPredictY,list(predict(tempregpolr,predict(tempregpolr, data.frame(tts=I(tts))),type="probs"))) 
+res$listValsPredictY <- c(res$listValsPredictY,list(predict(tempregpolr,predict(tempregpolr, data.frame(tts=I(tts))),type="probs")))
 }
 attr(res$listValsPredictY,"numberlevels") <- nlevels(dataY)
 attr(res$listValsPredictY,"modele") <- modele

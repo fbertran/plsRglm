@@ -479,7 +479,7 @@ PLS_glmParZ <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = 
             {
               registerDoParallel(detectCores()-1)
               tempww =  foreach(jj=1:(res$nc), .combine=c) %dopar% {
-                  coef(fastglm(y=YwotNA, x=cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk + 1, ]
+                  coef(fastglm(y=YwotNA, x=cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk, ]
                 }
                 XXwotNA[!XXNA] <- 0
 
@@ -493,12 +493,12 @@ PLS_glmParZ <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = 
                   #tmww <- summary(glm(YwotNA ~ cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk + 1, ]
 
                   tmww <- summary(fastglm(y=YwotNA, x=cbind(res$tt, XXwotNA[,jj]), family = family))$coefficients[kk,]
-                  print(tmww)
                   c(tmww[1],tmww[4],(tmww[4]<alpha.pvals.expli))
                 }
                 tempww<-as.vector(tmpList[1,])
                 tempvalpvalstep<-as.vector(tmpList[2,])
                 temppvalstep<-as.vector(tmpList[3,])
+                rm(tmpList)
 
                 if (sparse)
                 {
@@ -616,9 +616,9 @@ PLS_glmParZ <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = 
 
         # Initialisation du tableau contenant les p
         temppp <- rep(0, res$nc)
-        for (jj in 1:(res$nc))
+        for(jj in 1:res$nc)
         {
-            temppp[jj] <- crossprod(temptt, XXwotNA[, jj])/drop(crossprod(XXNA[,
+            temppp[jj] <-crossprod(temptt, XXwotNA[, jj])/drop(crossprod(XXNA[,
                 jj], temptt^2))
         }
         res$residXX <- XXwotNA - temptt %*% temppp
@@ -716,6 +716,7 @@ PLS_glmParZ <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = 
         {
             if (kk == 1)
             {
+
                 tempCoeffC <- solve(t(res$tt[YNA]) %*% res$tt[YNA]) %*%
                   t(res$tt[YNA]) %*% YwotNA[YNA]
                 res$CoeffCFull <- matrix(c(tempCoeffC, rep(NA, nt - kk)),
@@ -755,7 +756,7 @@ PLS_glmParZ <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = 
             {
             if (kk == 1)
             {
-                tempconstglm <- glm(YwotNA ~ 1, family = family)
+                tempconstglm <- glm(YwotNA~1, family = family)
                 res$AIC <- AIC(tempconstglm)
                 res$BIC <- AIC(tempconstglm, k = log(res$nr))
                 res$Coeffsmodel_vals <- rbind(summary(tempconstglm)$coefficients,
@@ -769,7 +770,9 @@ PLS_glmParZ <- function(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = 
                 # }
                 rm(tempconstglm)
                 tttrain <- data.frame(YwotNA = YwotNA, tt = res$tt)
-                tempregglm <- glm(YwotNA ~ ., data = tttrain, family = family)
+
+                #tempregglm <- fastglm(y=YwotNA,x=res$tt, family = family)
+                tempregglm <- glm(YwotNA~.,data=tttrain, family = family)
                 rm(tttrain)
                 res$AIC <- cbind(res$AIC, AIC(tempregglm))
                 res$BIC <- cbind(res$BIC, AIC(tempregglm, k = log(res$nr)))
