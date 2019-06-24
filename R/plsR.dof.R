@@ -11,13 +11,15 @@ if(!naive){
 temp.object$TT <- sweep(modplsR$tt,MARGIN=2,FUN="/",sqrt(diag(crossprod(modplsR$tt))))
 
 requireNamespace("plsdof")
-pls.doftemp <- function (pls.object, n, y, K, m, DoF.max) 
+pls.doftemp <- function (pls.object, n, y, K, m, DoF.max)
 {
     TT <- pls.object$TT
     Yhat <- pls.object$Yhat[, 2:(m + 1), drop=FALSE]
     TK = matrix(, m, m)
     KY <- plsdof::krylov(K, K %*% y, m)
-    lambda <- eigen(K)$values
+    print(nrow(K))
+
+    lambda <- RSpectra::eigs_sym(K, ncol(K)%/%20, opts=list(retvec = FALSE))$values
     tr.K <- vector(length = m)
     for (i in 1:m) {
         tr.K[i] <- sum(lambda^i)
@@ -45,7 +47,7 @@ pls.doftemp <- function (pls.object, n, y, K, m, DoF.max)
         for (j in 1:i) {
             KjTj = KjT[j, , ]
             if(is.null(dim(KjTj))){KjTj <- matrix(KjTj,ncol=1)}
-            tkt[i] <- tkt[i] + ci[j] * plsdof::tr(t(TT[, 1:i, drop = FALSE]) %*% 
+            tkt[i] <- tkt[i] + ci[j] * plsdof::tr(t(TT[, 1:i, drop = FALSE]) %*%
                 KjTj[, 1:i, drop = FALSE])
             ri <- K %*% ri
             ykv[i] <- ykv[i] + sum(ri * Vi[, j])

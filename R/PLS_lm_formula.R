@@ -1,55 +1,33 @@
-PLS_lm_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,subset,contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE,verbose=TRUE) {
+PLS_lm <- function(dataY,dataX,nt=2,limQ2set=.0975,dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,sparse=FALSE,sparseStop=FALSE,naive=FALSE,verbose=TRUE) {
 
 ##################################################
 #                                                #
 #    Initialization and formatting the inputs    #
 #                                                #
 ##################################################
+library(doParallel)
+registerDoParallel(cores=detectCores())
 
 if(verbose){cat("____************************************************____\n")}
-if(sparse){sparseStop=TRUE}
-if(sparseStop){pvals.expli=TRUE}
-
-if (missing(data)) {data <- environment(formula)}
-mf <- match.call(expand.dots = FALSE)
-m <- match(c("formula", "data", "subset", "weights"), names(mf), 0L)
-mf <- mf[c(1L, m)]
-mf$drop.unused.levels <- TRUE
-mf$na.action <- na.pass    
-mf[[1L]] <- as.name("model.frame")
-mf <- eval(mf, parent.frame())
-#if (identical(method, "model.frame")) return(mf)
-mt <- attr(mf, "terms")
-attr(mt,"intercept")<-0L
-dataY <- model.response(mf, "any")
-if(missing(weights)){NoWeights=TRUE} else {if(all(weights==rep(1,length(dataY)))){NoWeights=TRUE} else {NoWeights=FALSE}}
-if(!NoWeights){naive=TRUE; if(verbose){cat(paste("Only naive DoF can be used with weighted PLS\n",sep=""))}} else {NoWeights=TRUE}
-if (length(dim(dataY)) == 1L) {
-    nm <- rownames(dataY)
-    dim(dataY) <- NULL
-    if (!is.null(nm)) names(dataY) <- nm
-    }
-dataX <- if (!is.empty.model(mt)) model.matrix(mt, mf, contrasts)
-    else matrix(, NROW(dataY), 0L)
-weights <- as.vector(model.weights(mf))
-if (!is.null(weights) && !is.numeric(weights)) stop("'weights' must be a numeric vector")
-if (!is.null(weights) && any(weights < 0)) stop("negative weights not allowed")
-
-if(any(apply(is.na(dataX),MARGIN=2,"all"))){return(vector("list",0)); cat("One of the columns of dataX is completely filled with missing data"); stop()}
-if(any(apply(is.na(dataX),MARGIN=1,"all"))){return(vector("list",0)); cat("One of the rows of dataX is completely filled with missing data"); stop()}
+if(any(apply(is.na(dataX),MARGIN=2,"all"))){return(vector("list",0)); cat("One of the columns of dataX is completely filled with missing data\n"); stop()}
+if(any(apply(is.na(dataX),MARGIN=1,"all"))){return(vector("list",0)); cat("One of the rows of dataX is completely filled with missing data\n"); stop()}
 if(identical(dataPredictY,dataX)){PredYisdataX <- TRUE} else {PredYisdataX <- FALSE}
 if(!PredYisdataX){
-#if(any(apply(is.na(dataPredictY),MARGIN=2,"all"))){return(vector("list",0)); cat("One of the columns of dataPredictY is completely filled with missing data"); stop()}
-if(any(apply(is.na(dataPredictY),MARGIN=1,"all"))){return(vector("list",0)); cat("One of the rows of dataPredictY is completely filled with missing data"); stop()}
+#if(any(apply(is.na(dataPredictY),MARGIN=2,"all"))){return(vector("list",0)); cat("One of the columns of dataPredictY is completely filled with missing data\n"); stop()}
+if(any(apply(is.na(dataPredictY),MARGIN=1,"all"))){return(vector("list",0)); cat("One of the rows of dataPredictY is completely filled with missing data\n"); stop()}
 }
+if(missing(weights)){NoWeights=TRUE} else {if(all(weights==rep(1,length(dataY)))){NoWeights=TRUE} else {NoWeights=FALSE}}
 
 if(any(is.na(dataX))) {na.miss.X <- TRUE} else na.miss.X <- FALSE
 if(any(is.na(dataY))) {na.miss.Y <- TRUE} else na.miss.Y <- FALSE
 if(any(is.na(dataPredictY))) {na.miss.PredictY <- TRUE} else {na.miss.PredictY <- FALSE}
 if(na.miss.X|na.miss.Y){naive=TRUE; if(verbose){cat(paste("Only naive DoF can be used with missing data\n",sep=""))}; if(!NoWeights){if(verbose){cat(paste("Weights cannot be used with missing data\n",sep=""))}};  if(sparse){if(verbose){cat(paste("sparse option cannot be used with missing data\n",sep=""))}; sparse=FALSE}}
+if(!NoWeights){naive=TRUE; if(verbose){cat(paste("Only naive DoF can be used with weighted PLS\n",sep=""))}}
+if(sparse){sparseStop=TRUE}
+if(sparseStop){pvals.expli=TRUE}
 
 if (!is.data.frame(dataX)) {dataX <- data.frame(dataX)}
-if (!(modele %in% c("pls"))) {simpleError("model must be set to pls")}
+if (!(modele %in% c("pls"))) {print(modele);stop("'modele' not recognized. For plsRglm models use plsRglm")}
 scaleY <- NULL
 if (is.null(scaleY)) {
 if (!(modele %in% c("pls"))) {scaleY <- FALSE} else {scaleY <- TRUE}
@@ -89,7 +67,6 @@ YwotNA <- as.matrix(RepY)
 YwotNA[!YNA] <- 0
 
 dataYwotNA <- as.matrix(dataY)
-
 dataYwotNA[!YNA] <- 0
 
 if(PredYisdataX){PredictYwotNA <- XXwotNA} else {
@@ -171,7 +148,7 @@ if(!NoWeights){
 tempww <- t(XXwotNA*weights)%*%YwotNA/(t(XXNA*weights)%*%YwotNA^2)
 }
 if (pvals.expli) {
-tempvalpvalstep <- 2 * pnorm(-abs(tempww)) 
+tempvalpvalstep <- 2 * pnorm(-abs(tempww))
 temppvalstep <- (tempvalpvalstep < alpha.pvals.expli)
 if(sparse){if(sum(temppvalstep)>1L){tempww[!temppvalstep] <- 0}}
 if(sparseStop){if(sum(temppvalstep)==0L){break_nt_sparse <- TRUE}}
@@ -186,12 +163,12 @@ res$pvalstep <- cbind(res$pvalstep,temppvalstep)
 # Computation of the components (model free) #
 #                                            #
 ##############################################
-if((break_nt_sparse)&(kk==1L)){
+if((break_nt_sparse==TRUE)&(kk==1L)){
   if(verbose){cat(paste("No significant predictors (<",alpha.pvals.expli,") found\n",sep=""))}
   if(verbose){cat(paste("Warning only one standard component (without sparse option) was thus extracted\n",sep=""))}
 break_nt_sparse1 <- TRUE
 }
-if((break_nt_sparse)&!(kk==1L)){
+if((break_nt_sparse==TRUE)&!(kk==1L)){
 res$computed_nt <- kk-1
 if(!(break_nt_sparse1)){
   if(verbose){cat(paste("No more significant predictors (<",alpha.pvals.expli,") found\n",sep=""))}
@@ -204,14 +181,14 @@ tempwwnorm <- tempww/sqrt(drop(crossprod(tempww)))
 temptt <- XXwotNA%*%tempwwnorm/(XXNA%*%(tempwwnorm^2))
 
 temppp <- rep(0,res$nc)
-for (jj in 1:(res$nc)) {
-     temppp[jj] <- crossprod(temptt,XXwotNA[,jj])/drop(crossprod(XXNA[,jj],temptt^2))
+temppp<-foreach(jj = 1:(res$nc),.combine=c) %dopar% {
+     crossprod(temptt,XXwotNA[,jj])/drop(crossprod(XXNA[,jj],temptt^2))
 }
 res$residXX <- XXwotNA-temptt%*%temppp
 
 if (na.miss.X & !na.miss.Y) {
   if(sparse==FALSE){
-for (ii in 1:res$nr) {
+  for (ii in 1:res$nr) {
 if(rcond(t(cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])<tol_Xi) {
 break_nt <- TRUE; res$computed_nt <- kk-1
 if(verbose){cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE] < 10^{-12}\n",sep=""))}
@@ -220,13 +197,13 @@ break
 }
 }
 rm(ii)
-if(break_nt==TRUE) {res$computed_nt <- kk-1;break}
+if(break_nt==TRUE) {break}
 }
 }
 
 if(!PredYisdataX){
   if(sparse==FALSE){
-    if (na.miss.PredictY & !na.miss.Y) {
+if (na.miss.PredictY & !na.miss.Y) {
 for (ii in 1:nrow(PredictYwotNA)) {
 if(rcond(t(cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])<tol_Xi) {
 break_nt <- TRUE; res$computed_nt <- kk-1
@@ -236,7 +213,7 @@ break
 }
 }
 rm(ii)
-if(break_nt==TRUE) {res$computed_nt <- kk-1;break}
+if(break_nt==TRUE) {break}
 }
 }
 }
@@ -244,8 +221,8 @@ if(break_nt==TRUE) {res$computed_nt <- kk-1;break}
 
 res$ww <- cbind(res$ww,tempww)
 res$wwnorm <- cbind(res$wwnorm,tempwwnorm)
-res$tt <- cbind(res$tt,temptt)       
-res$pp <- cbind(res$pp,temppp)   
+res$pp <- cbind(res$pp,temppp)
+res$tt <- cbind(res$tt,temptt)
 
 
 
@@ -267,13 +244,13 @@ res$CoeffCFull <- matrix(c(tempCoeffC,rep(NA,nt-kk)),ncol=1)
 tempCoeffConstante <- 0
 } else {
 if (!(na.miss.X | na.miss.Y)) {
-tempCoeffC <- c(rep(0,kk-1),solve(t(res$tt[YNA,kk])%*%res$tt[YNA,kk])%*%t(res$tt[YNA,kk])%*%YwotNA[YNA])  
+tempCoeffC <- c(rep(0,kk-1),solve(t(res$tt[YNA,kk])%*%res$tt[YNA,kk])%*%t(res$tt[YNA,kk])%*%YwotNA[YNA])
 tempCoeffConstante <- 0
 res$CoeffCFull <- cbind(res$CoeffCFull,c(tempCoeffC,rep(NA,nt-kk)))
 }
 else
 {
-tempCoeffC <- c(rep(0,kk-1),solve(t(res$tt[YNA,kk])%*%res$tt[YNA,kk])%*%t(res$tt[YNA,kk])%*%YwotNA[YNA])  
+tempCoeffC <- c(rep(0,kk-1),solve(t(res$tt[YNA,kk])%*%res$tt[YNA,kk])%*%t(res$tt[YNA,kk])%*%YwotNA[YNA])
 tempCoeffConstante <- 0
 res$CoeffCFull <- cbind(res$CoeffCFull,c(tempCoeffC,rep(NA,nt-kk)))
 }
@@ -319,29 +296,28 @@ if (kk==1) {
   if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
 temppred <- rep(0, res$nr)
-for (i in 1:(res$nr)) {     
+temppred<-foreach (i = 1:(res$nr),.combine=c) %dopar% {
                 tempww.cv <- t(XXwotNA[-i, ])%*%YwotNA[-i]/(t(XXNA[-i, ])%*%YwotNA[-i]^2)
                 tempwwnorm.cv <- tempww.cv/sqrt(drop(crossprod(tempww.cv)))
                 temptt.cv <- XXwotNA[-i, ]%*%tempwwnorm.cv/(XXNA[-i, ]%*%(tempwwnorm.cv^2))
                 tempc.cv <- solve(t(temptt.cv)%*%temptt.cv)%*%t(temptt.cv)%*%(YwotNA[-i])
                 tempc.cv <- as.vector(tempc.cv)
-                temppred[i] <- tempc.cv * XXwotNA[i, ] %*% tempwwnorm.cv
+                tempc.cv * XXwotNA[i, ] %*% tempwwnorm.cv
 }
-rm(i)
-res$press.ind <- cbind(res$press.ind,(YwotNA-temppred)^2) 
+res$press.ind <- cbind(res$press.ind,(YwotNA-temppred)^2)
 res$press.ind2 <- cbind(res$press.ind2,(dataYwotNA-res$YChapeau-attr(res$RepY,"scaled:scale")*temppred)^2)
 }
 if (typeVC == "missingdata") {
 if (kk==1) {
   if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
-temppp.cv <- res$pp  
+temppp.cv <- res$pp
 temppred <- rep(0, res$nr)
-for (i in 1:(res$nr)) {     
+for (i in 1:(res$nr)) {
                 tempww.cv <- t(XXwotNA[-i, ])%*%YwotNA[-i]/(t(XXNA[-i, ])%*%YwotNA[-i]^2)
                 tempwwnorm.cv <- tempww.cv/sqrt(drop(crossprod(tempww.cv)))
                 temptt.cv <- XXwotNA[-i, ]%*%tempwwnorm.cv/(XXNA[-i, ]%*%(tempwwnorm.cv^2))
-                tempc.cv <- solve(t(temptt.cv)%*%temptt.cv)%*%t(temptt.cv)%*%(YwotNA[-i])    
+                tempc.cv <- solve(t(temptt.cv)%*%temptt.cv)%*%t(temptt.cv)%*%(YwotNA[-i])
                 for (jj in 1:(res$nc)) {
                      temppp.cv[jj,kk] <- crossprod(temptt.cv,(XXwotNA[-i,])[,jj])/drop(crossprod((XXNA[-i, ])[,jj],temptt.cv^2))
                 }
@@ -352,7 +328,7 @@ for (i in 1:(res$nr)) {
                 break
                 }
                 ttPredictY.cv <- (solve(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])%*%t(temppp.cv[XXNA[i,],,drop=FALSE])%*%(ExpliXwotNA[i,])[XXNA[i,]])[kk]
-                temppred[i] <- tempc.cv*ttPredictY.cv   
+                temppred[i] <- tempc.cv*ttPredictY.cv
 }
 rm(i)
 res$press.ind <- cbind(res$press.ind,(YwotNA-temppred)^2)
@@ -365,29 +341,28 @@ if (kk==1) {
   if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
 temppred <- rep(0, res$nr)
-for (i in 1:(res$nr)) {     
+temppred<-foreach(i = 1:(res$nr),.combine=c) %dopar% {
                 tempww.cv <- t(XXwotNA[-i, ]*weights[-i])%*%YwotNA[-i, ]/(t(XXNA[-i, ]*weights[-i])%*%YwotNA[-i, ]^2)
                 tempwwnorm.cv <- tempww.cv/sqrt(drop(crossprod(tempww.cv)))
                 temptt.cv <- XXwotNA[-i, ]%*%tempwwnorm.cv/(XXNA[-i, ]%*%(tempwwnorm.cv^2))
                 tempc.cv <- solve(t(temptt.cv)%*%temptt.cv)%*%t(temptt.cv)%*%(YwotNA[-i])
                 tempc.cv <- as.vector(tempc.cv)
-                temppred[i] <- tempc.cv * XXwotNA[i, ] %*% tempwwnorm.cv
+                tempc.cv * XXwotNA[i, ] %*% tempwwnorm.cv
 }
-rm(i)
-res$press.ind <- cbind(res$press.ind,weights*(YwotNA-temppred)^2) 
+res$press.ind <- cbind(res$press.ind,weights*(YwotNA-temppred)^2)
 res$press.ind2 <- cbind(res$press.ind2,weights*(dataYwotNA-res$YChapeau-attr(res$RepY,"scaled:scale")*temppred)^2)
 }
 if (typeVC == "missingdata") {
 if (kk==1) {
   if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
-temppp.cv <- res$pp  
+temppp.cv <- res$pp
 temppred <- rep(0, res$nr)
-for (i in 1:(res$nr)) {     
+for (i in 1:(res$nr)) {
                 tempww.cv <- t(XXwotNA[-i, ]*weights[-i])%*%YwotNA[-i, ]/(t(XXNA[-i, ]*weights[-i])%*%YwotNA[-i, ]^2)
                 tempwwnorm.cv <- tempww.cv/sqrt(drop(crossprod(tempww.cv)))
                 temptt.cv <- XXwotNA[-i, ]%*%tempwwnorm.cv/(XXNA[-i, ]%*%(tempwwnorm.cv^2))
-                tempc.cv <- solve(t(temptt.cv)%*%temptt.cv)%*%t(temptt.cv)%*%(YwotNA[-i])    
+                tempc.cv <- solve(t(temptt.cv)%*%temptt.cv)%*%t(temptt.cv)%*%(YwotNA[-i])
                 for (jj in 1:(res$nc)) {
                      temppp.cv[jj,kk] <- crossprod(temptt.cv,(XXwotNA[-i,])[,jj])/drop(crossprod((XXNA[-i, ])[,jj],temptt.cv^2))
                 }
@@ -398,7 +373,7 @@ for (i in 1:(res$nr)) {
                 break
                 }
                 ttPredictY.cv <- (solve(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])%*%t(temppp.cv[XXNA[i,],,drop=FALSE])%*%(ExpliXwotNA[i,])[XXNA[i,]])[kk]
-                temppred[i] <- tempc.cv*ttPredictY.cv   
+                temppred[i] <- tempc.cv*ttPredictY.cv
 }
 rm(i)
 res$press.ind <- cbind(res$press.ind,weights*(YwotNA-temppred)^2)
@@ -431,7 +406,7 @@ tempCoeffs <- res$wwetoile%*%res$CoeffC*attr(res$RepY,"scaled:scale")/attr(res$E
 tempConstante <- attr(res$RepY,"scaled:center")-sum(tempCoeffs*attr(res$ExpliX,"scaled:center"))
 res$Coeffs <- rbind(tempConstante,tempCoeffs)
 
-res$YChapeau <- attr(res$RepY,"scaled:center")+attr(res$RepY,"scaled:scale")*res$tt%*%res$CoeffC             
+res$YChapeau <- attr(res$RepY,"scaled:center")+attr(res$RepY,"scaled:scale")*res$tt%*%res$CoeffC
 res$Yresidus <- dataY-res$YChapeau
 
 if (kk==1) {
@@ -477,13 +452,13 @@ if (typeVC %in% c("standard","missingdata")) {
 if (kk==1) {
   if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
-temppp.cv <- res$pp  
+temppp.cv <- res$pp
 temppred <- rep(0, res$nr)
-for (i in 1:(res$nr)) {     
+for (i in 1:(res$nr)) {
                 tempww.cv <- t(XXwotNA[-i, ])%*%YwotNA[-i]/(t(XXNA[-i, ])%*%YwotNA[-i]^2)
                 tempwwnorm.cv <- tempww.cv/sqrt(drop(crossprod(tempww.cv)))
                 temptt.cv <- XXwotNA[-i, ]%*%tempwwnorm.cv/(XXNA[-i, ]%*%(tempwwnorm.cv^2))
-                tempc.cv <- solve(t(temptt.cv)%*%temptt.cv)%*%t(temptt.cv)%*%(YwotNA[-i])    
+                tempc.cv <- solve(t(temptt.cv)%*%temptt.cv)%*%t(temptt.cv)%*%(YwotNA[-i])
                 for (jj in 1:(res$nc)) {
                      temppp.cv[jj,kk] <- crossprod(temptt.cv,(XXwotNA[-i,])[,jj])/drop(crossprod((XXNA[-i, ])[,jj],temptt.cv^2))
                 }
@@ -494,7 +469,7 @@ for (i in 1:(res$nr)) {
                 break
                 }
                 ttPredictY.cv <- (solve(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])%*%t(temppp.cv[XXNA[i,],,drop=FALSE])%*%(XXwotNA[i,])[XXNA[i,]])[kk]
-                temppred[i] <- tempc.cv*ttPredictY.cv   
+                temppred[i] <- tempc.cv*ttPredictY.cv
 }
 res$press.ind <- cbind(res$press.ind,(YwotNA-temppred)^2)
 res$press.ind2 <- cbind(res$press.ind2,(dataYwotNA-res$YChapeau-attr(res$RepY,"scaled:scale")*temppred)^2)
@@ -503,9 +478,9 @@ if (typeVC == "adaptative") {
 if (kk==1) {
   if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
-temppp.cv <- res$pp  
+temppp.cv <- res$pp
 temppred <- rep(0, res$nr)
-for (i in 1:(res$nr)) {     
+for (i in 1:(res$nr)) {
 if (all(XXNA[i,])) {
                 tempww.cv <- t(XXwotNA[-i, ])%*%YwotNA[-i]/(t(XXNA[-i, ])%*%YwotNA[-i]^2)
                 tempwwnorm.cv <- tempww.cv/sqrt(drop(crossprod(tempww.cv)))
@@ -518,7 +493,7 @@ else {
                 tempww.cv <- t(XXwotNA[-i, ])%*%YwotNA[-i]/(t(XXNA[-i, ])%*%YwotNA[-i]^2)
                 tempwwnorm.cv <- tempww.cv/sqrt(drop(crossprod(tempww.cv)))
                 temptt.cv <- XXwotNA[-i, ]%*%tempwwnorm.cv/(XXNA[-i, ]%*%(tempwwnorm.cv^2))
-                tempc.cv <- solve(t(temptt.cv)%*%temptt.cv)%*%t(temptt.cv)%*%(YwotNA[-i])    
+                tempc.cv <- solve(t(temptt.cv)%*%temptt.cv)%*%t(temptt.cv)%*%(YwotNA[-i])
                 for (jj in 1:(res$nc)) {
                      temppp.cv[jj,kk] <- crossprod(temptt.cv,(XXwotNA[-i,])[,jj])/drop(crossprod((XXNA[-i, ])[,jj],temptt.cv^2))
                 }
@@ -529,13 +504,13 @@ else {
                 break
                 }
                 ttPredictY.cv <- (solve(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])%*%t(temppp.cv[XXNA[i,],,drop=FALSE])%*%(XXwotNA[i,])[XXNA[i,]])[kk]
-                temppred[i] <- tempc.cv*ttPredictY.cv   
+                temppred[i] <- tempc.cv*ttPredictY.cv
                 }
 }
 res$press.ind <- cbind(res$press.ind,(YwotNA-temppred)^2)
 res$press.ind2 <- cbind(res$press.ind2,(dataYwotNA-res$YChapeau-attr(res$RepY,"scaled:scale")*temppred)^2)
 }
-if (typeVC %in% c("standard","missingdata","adaptative")) {
+if (!(typeVC %in% c("standard","missingdata","adaptative"))) {
 if (kk==1) {
   if(verbose){cat(paste("____TypeVC____",typeVC,"____unknown____\n"))}
 }
@@ -546,13 +521,13 @@ if (typeVC %in% c("standard","missingdata")) {
 if (kk==1) {
   if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
-temppp.cv <- res$pp  
+temppp.cv <- res$pp
 temppred <- rep(0, res$nr)
-for (i in 1:(res$nr)) {     
+for (i in 1:(res$nr)) {
                 tempww.cv <- t(XXwotNA[-i, ]*weights[-i])%*%YwotNA[-i, ]/(t(XXNA[-i, ]*weights[-i])%*%YwotNA[-i, ]^2)
                 tempwwnorm.cv <- tempww.cv/sqrt(drop(crossprod(tempww.cv)))
                 temptt.cv <- XXwotNA[-i, ]%*%tempwwnorm.cv/(XXNA[-i, ]%*%(tempwwnorm.cv^2))
-                tempc.cv <- solve(t(temptt.cv)%*%temptt.cv)%*%t(temptt.cv)%*%(YwotNA[-i])    
+                tempc.cv <- solve(t(temptt.cv)%*%temptt.cv)%*%t(temptt.cv)%*%(YwotNA[-i])
                 for (jj in 1:(res$nc)) {
                      temppp.cv[jj,kk] <- crossprod(temptt.cv,(XXwotNA[-i,])[,jj])/drop(crossprod((XXNA[-i, ])[,jj],temptt.cv^2))
                 }
@@ -563,7 +538,7 @@ for (i in 1:(res$nr)) {
                 break
                 }
                 ttPredictY.cv <- (solve(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])%*%t(temppp.cv[XXNA[i,],,drop=FALSE])%*%(XXwotNA[i,])[XXNA[i,]])[kk]
-                temppred[i] <- tempc.cv*ttPredictY.cv   
+                temppred[i] <- tempc.cv*ttPredictY.cv
 }
 res$press.ind <- cbind(res$press.ind,weights*(YwotNA-temppred)^2)
 res$press.ind2 <- cbind(res$press.ind2,weights*(dataYwotNA-res$YChapeau-attr(res$RepY,"scaled:scale")*temppred)^2)
@@ -572,9 +547,9 @@ if (typeVC == "adaptative") {
 if (kk==1) {
   if(verbose){cat(paste("____TypeVC____",typeVC,"____\n"))}
 }
-temppp.cv <- res$pp  
+temppp.cv <- res$pp
 temppred <- rep(0, res$nr)
-for (i in 1:(res$nr)) {     
+for (i in 1:(res$nr)) {
 if (all(XXNA[i,])) {
                 tempww.cv <- t(XXwotNA[-i, ]*weights[-i])%*%YwotNA[-i, ]/(t(XXNA[-i, ]*weights[-i])%*%YwotNA[-i, ]^2)
                 tempwwnorm.cv <- tempww.cv/sqrt(drop(crossprod(tempww.cv)))
@@ -587,7 +562,7 @@ else {
                 tempww.cv <- t(XXwotNA[-i, ]*weights[-i])%*%YwotNA[-i, ]/(t(XXNA[-i, ]*weights[-i])%*%YwotNA[-i, ]^2)
                 tempwwnorm.cv <- tempww.cv/sqrt(drop(crossprod(tempww.cv)))
                 temptt.cv <- XXwotNA[-i, ]%*%tempwwnorm.cv/(XXNA[-i, ]%*%(tempwwnorm.cv^2))
-                tempc.cv <- solve(t(temptt.cv)%*%temptt.cv)%*%t(temptt.cv)%*%(YwotNA[-i])    
+                tempc.cv <- solve(t(temptt.cv)%*%temptt.cv)%*%t(temptt.cv)%*%(YwotNA[-i])
                 for (jj in 1:(res$nc)) {
                      temppp.cv[jj,kk] <- crossprod(temptt.cv,(XXwotNA[-i,])[,jj])/drop(crossprod((XXNA[-i, ])[,jj],temptt.cv^2))
                 }
@@ -598,7 +573,7 @@ else {
                 break
                 }
                 ttPredictY.cv <- (solve(t(temppp.cv[XXNA[i,],,drop=FALSE])%*%temppp.cv[XXNA[i,],,drop=FALSE])%*%t(temppp.cv[XXNA[i,],,drop=FALSE])%*%(XXwotNA[i,])[XXNA[i,]])[kk]
-                temppred[i] <- tempc.cv*ttPredictY.cv   
+                temppred[i] <- tempc.cv*ttPredictY.cv
                 }
 }
 res$press.ind <- cbind(res$press.ind,weights*(YwotNA-temppred)^2)
@@ -633,7 +608,7 @@ tempCoeffs <- res$wwetoile%*%res$CoeffC*attr(res$RepY,"scaled:scale")/attr(res$E
 tempConstante <- attr(res$RepY,"scaled:center")-sum(tempCoeffs*attr(res$ExpliX,"scaled:center"))
 res$Coeffs <- rbind(tempConstante,tempCoeffs)
 
-res$YChapeau <- attr(res$RepY,"scaled:center")+attr(res$RepY,"scaled:scale")*res$tt%*%res$CoeffC            
+res$YChapeau <- attr(res$RepY,"scaled:center")+attr(res$RepY,"scaled:scale")*res$tt%*%res$CoeffC
 res$Yresidus <- dataY-res$YChapeau
 
 
@@ -675,7 +650,7 @@ if (kk==1) {
 ##############################################
 if (modele == "pls") {
 res$uscores <- cbind(res$uscores,res$residY/res$CoeffC[kk])
-res$residY <- res$residY - res$tt%*%tempCoeffC 
+res$residY <- res$residY - res$tt%*%tempCoeffC
 res$residusY <- cbind(res$residusY,res$residY)
 
 if (kk==1) {
@@ -720,7 +695,6 @@ if(break_nt_vc==TRUE) {break}
 }
 
 
-
 ##############################################
 ##############################################
 ##                                          ##
@@ -733,23 +707,25 @@ if(res$computed_nt==0){
   cat("No component could be extracted please check the data for NA only lines or columns\n"); stop()
 }
 
-
 ##############################################
 #                                            #
 #           Predicting components            #
 #                                            #
 ##############################################
 
+
+
 if (!(na.miss.PredictY | na.miss.Y)) {
   if(verbose){cat("____Predicting X without NA neither in X nor in Y____\n")}
-res$ttPredictY <- PredictYwotNA%*%res$wwetoile 
+res$ttPredictY <- PredictYwotNA%*%res$wwetoile
 colnames(res$ttPredictY) <- paste("Comp_",1:res$computed_nt,sep="")
 }
 else {
 if (na.miss.PredictY & !na.miss.Y) {
   if(verbose){cat("____Predicting X with NA in X and not in Y____\n")}
-for (ii in 1:nrow(PredictYwotNA)) {  
-      res$ttPredictY <- rbind(res$ttPredictY,t(solve(t(res$pp[PredictYNA[ii,],,drop=FALSE])%*%res$pp[PredictYNA[ii,],,drop=FALSE])%*%t(res$pp[PredictYNA[ii,],,drop=FALSE])%*%(PredictYwotNA[ii,])[PredictYNA[ii,]]))
+
+res$ttpredictY<-foreach (ii = 1:nrow(PredictYwotNA),.combine=rbind) %dopar% {
+      t(solve(t(res$pp[PredictYNA[ii,],,drop=FALSE])%*%res$pp[PredictYNA[ii,],,drop=FALSE])%*%t(res$pp[PredictYNA[ii,],,drop=FALSE])%*%(PredictYwotNA[ii,])[PredictYNA[ii,]])
 }
 colnames(res$ttPredictY) <- paste("Comp_",1:res$computed_nt,sep="")
 }
@@ -772,8 +748,8 @@ else {
 if (modele == "pls") {
 
 res$R2residY <- 1-res$RSSresidY[2:(res$computed_nt+1)]/res$RSSresidY[1]
-res$R2 <- 1-res$RSS[2:(res$computed_nt+1)]/res$RSS[1]
 
+res$R2 <- 1-res$RSS[2:(res$computed_nt+1)]/res$RSS[1]
 if (typeVC %in% c("standard","missingdata","adaptative")) {
 if(NoWeights){
 res$press.tot <- colSums(res$press.ind)
@@ -827,7 +803,7 @@ res$InfCrit <- cbind(res$InfCrit,res$ic.dof)
 ######               PLS                ######
 ##############################################
 if (modele == "pls") {
-res$YChapeau <- attr(res$RepY,"scaled:center")+attr(res$RepY,"scaled:scale")*res$tt%*%res$CoeffC            
+res$YChapeau <- attr(res$RepY,"scaled:center")+attr(res$RepY,"scaled:scale")*res$tt%*%res$CoeffC
 rownames(res$YChapeau) <- rownames(ExpliX)
 
 res$Std.ValsPredictY <- res$ttPredictY%*%res$CoeffC
