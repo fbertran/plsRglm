@@ -1,3 +1,12 @@
+genlogo.R
+.gitignore
+^codecov\.yml$
+^revdep$
+^_pkgdown\.yml$
+^figure$
+^pkgdown$
+^Meta$
+^doc$
 #All packages
 ^.*\.Rproj$
 ^\.Rproj\.user$
@@ -15,3 +24,4 @@
 #Specific
 ^fullrespdf*$
 ^inst/animation*$
+^\.github$

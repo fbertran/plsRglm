@@ -1,3 +1,53 @@
+#' Extracts and computes information criteria and fits statistics for k-fold
+#' cross validated partial least squares models
+#' 
+#' This function extracts and computes information criteria and fits statistics
+#' for k-fold cross validated partial least squares models for both formula or
+#' classic specifications of the model.
+#' 
+#' The Mclassed option should only set to \code{TRUE} if the response is
+#' binary.
+#' 
+#' @param pls_kfolds an object computed using \code{\link{PLS_lm_kfoldcv}}
+#' @param MClassed should number of miss classed be computed
+#' @param verbose should infos be displayed ?
+#' @return \item{list}{table of fit statistics for first group partition}
+#' \item{list()}{\dots{}} \item{list}{table of fit statistics for last group
+#' partition}
+#' @note Use \code{\link{summary}} and \code{\link{cv.plsR}} instead.
+#' @author Frédéric Bertrand\cr
+#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \url{https://fbertran.github.io/homepage/}
+#' @seealso \code{\link{kfolds2coeff}}, \code{\link{kfolds2Pressind}},
+#' \code{\link{kfolds2Press}}, \code{\link{kfolds2Mclassedind}} and
+#' \code{\link{kfolds2Mclassed}} to extract and transforms results from k-fold
+#' cross-validation.
+#' @references Nicolas Meyer, Myriam Maumy-Bertrand et
+#' Frédéric Bertrand (2010). Comparing the linear and the
+#' logistic PLS regression with qualitative predictors: application to
+#' allelotyping data. \emph{Journal de la Societe Francaise de Statistique},
+#' 151(2), pages 1-18.
+#' \url{http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47}
+#' @keywords models regression
+#' @examples
+#' \donttest{
+#' data(Cornell)
+#' summary(cv.plsR(Y~.,data=Cornell,nt=10,K=6,verbose=FALSE))
+#' 
+#' 
+#' data(pine)
+#' summary(cv.plsR(x11~.,data=pine,nt=10,NK=3,verbose=FALSE),verbose=FALSE)
+#' data(pineNAX21)
+#' summary(cv.plsR(x11~.,data=pineNAX21,nt=10,NK=3,
+#' verbose=FALSE),verbose=FALSE)
+#' 
+#' 
+#' data(aze_compl)
+#' summary(cv.plsR(y~.,data=aze_compl,nt=10,K=8,NK=3,
+#' verbose=FALSE),MClassed=TRUE,verbose=FALSE)
+#' }
+#' 
+#' @export kfolds2CVinfos_lm
 kfolds2CVinfos_lm <- function(pls_kfolds,MClassed=FALSE,verbose=TRUE) {
 if(!(match("dataY",names(pls_kfolds$call), 0L)==0L)){
 (mf <- pls_kfolds$call)

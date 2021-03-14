@@ -1,12 +1,3 @@
----
-title: "Partial Least Squares Regression for Generalized Linear Models"
-author: "Frédéric Bertrand and Myriam Maumy-Bertrand"
-output: github_document
----
-
-[![CRAN status](https://www.r-pkg.org/badges/version/plsRglm)](https://cran.r-project.org/package=plsRglm)
-[![DOI](https://zenodo.org/badge/18454150.svg)](https://zenodo.org/badge/latestdoi/18454150)
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r setup, include = FALSE}
@@ -19,9 +10,26 @@ knitr::opts_chunk$set(
   fig.keep="all"
 )
 ```
-# plsRglm
 
-The goal of plsRglm [<arXiv:1810.0100>](https://arxiv.org/abs/1810.01005) is to provide (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.
+# plsRglm <img src="man/figures/logo.png" align="right" width="200"/>
+
+# Partial Least Squares Regression for Generalized Linear Models
+## Frédéric Bertrand and Myriam Maumy-Bertrand
+
+<!-- badges: start -->
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![R-CMD-check](https://github.com/fbertran/plsRglm/workflows/R-CMD-check/badge.svg)](https://github.com/fbertran/plsRglm/actions)
+[![Codecov test coverage](https://codecov.io/gh/fbertran/plsRglm/branch/master/graph/badge.svg)](https://codecov.io/gh/fbertran/plsRglm?branch=master)
+[![CRAN status](https://www.r-pkg.org/badges/version/plsRglm)](https://cran.r-project.org/package=plsRglm)
+[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/plsRglm)](https://cran.r-project.org/package=plsRglm)
+[![GitHub Repo stars](https://img.shields.io/github/stars/fbertran/plsRglm?style=social)](https://github.com/github/fbertran/plsRglm)
+[![DOI](https://zenodo.org/badge/18454150.svg)](https://zenodo.org/badge/latestdoi/18454150)
+<!-- badges: end -->
+
+
+
+The goal of plsRglm [<arXiv:1810.01005>](https://arxiv.org/abs/1810.01005) is to provide (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.
 
 
 Partial least squares Regression for generalized linear models were introduced in 
@@ -40,7 +48,7 @@ The package was presented at the [User2014!](http://user2014.r-project.org/) con
 For more involved number of component selection techniques, see "A new universal resample-stable bootstrap-based stopping criterion for PLS component construction"", Jérémy Magnanensi, Frédéric Bertrand, Myriam Maumy-Bertrand and Nicolas Meyer, *Statistics and Computing* (2017) **27**:757–774, <https://doi.org/10.1007/s11222-016-9651-4>. The new methods presented in that article will be packaged soon.
 
 
-A short paper that sums up some of features of the package is available on [arxiv](https://arxiv.org/), Frédéric Bertrand and Myriam Maumy-Bertrand (2018), "plsRglm: Partial least squares linear and generalized linear regression for processing incomplete datasets by cross-validation and bootstrap techniques with R", *arxiv*, [<arXiv:1810.0100>](https://arxiv.org/abs/1810.01005).
+A short paper that sums up some of features of the package is available on [arxiv](https://arxiv.org/), Frédéric Bertrand and Myriam Maumy-Bertrand (2018), "plsRglm: Partial least squares linear and generalized linear regression for processing incomplete datasets by cross-validation and bootstrap techniques with R", *arxiv*, [<arXiv:1810.01005>](https://arxiv.org/abs/1810.01005).
 
 
 A [vignette](https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf) is available for the package "plsRglm: Algorithmic insights and applications".

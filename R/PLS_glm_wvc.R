@@ -1,3 +1,176 @@
+#' Light version of PLS\_glm for cross validation purposes
+#' 
+#' Light version of \code{PLS_glm} for cross validation purposes either on
+#' complete or incomplete datasets.
+#' 
+#' This function is called by \code{\link{PLS_glm_kfoldcv_formula}} in order to
+#' perform cross-validation either on complete or incomplete datasets.
+#' 
+#' There are seven different predefined models with predefined link functions
+#' available : \describe{ \item{list("\"pls\"")}{ordinary pls models}
+#' \item{list("\"pls-glm-Gamma\"")}{glm gaussian with inverse link pls models}
+#' \item{list("\"pls-glm-gaussian\"")}{glm gaussian with identity link pls
+#' models} \item{list("\"pls-glm-inverse-gamma\"")}{glm binomial with square
+#' inverse link pls models} \item{list("\"pls-glm-logistic\"")}{glm binomial
+#' with logit link pls models} \item{list("\"pls-glm-poisson\"")}{glm poisson
+#' with log link pls models} \item{list("\"pls-glm-polr\"")}{glm polr with
+#' logit link pls models} } Using the \code{"family="} option and setting
+#' \code{"modele=pls-glm-family"} allows changing the family and link function
+#' the same way as for the \code{\link[stats]{glm}} function. As a consequence
+#' user-specified families can also be used.  \describe{ \item{The }{accepts
+#' the links (as names) \code{identity}, \code{log} and
+#' \code{inverse}.}\item{list("gaussian")}{accepts the links (as names)
+#' \code{identity}, \code{log} and \code{inverse}.}\item{ family}{accepts the
+#' links (as names) \code{identity}, \code{log} and \code{inverse}.} \item{The
+#' }{accepts the links \code{logit}, \code{probit}, \code{cauchit},
+#' (corresponding to logistic, normal and Cauchy CDFs respectively) \code{log}
+#' and \code{cloglog} (complementary log-log).}\item{list("binomial")}{accepts
+#' the links \code{logit}, \code{probit}, \code{cauchit}, (corresponding to
+#' logistic, normal and Cauchy CDFs respectively) \code{log} and \code{cloglog}
+#' (complementary log-log).}\item{ family}{accepts the links \code{logit},
+#' \code{probit}, \code{cauchit}, (corresponding to logistic, normal and Cauchy
+#' CDFs respectively) \code{log} and \code{cloglog} (complementary log-log).}
+#' \item{The }{accepts the links \code{inverse}, \code{identity} and
+#' \code{log}.}\item{list("Gamma")}{accepts the links \code{inverse},
+#' \code{identity} and \code{log}.}\item{ family}{accepts the links
+#' \code{inverse}, \code{identity} and \code{log}.} \item{The }{accepts the
+#' links \code{log}, \code{identity}, and
+#' \code{sqrt}.}\item{list("poisson")}{accepts the links \code{log},
+#' \code{identity}, and \code{sqrt}.}\item{ family}{accepts the links
+#' \code{log}, \code{identity}, and \code{sqrt}.} \item{The }{accepts the links
+#' \code{1/mu^2}, \code{inverse}, \code{identity} and
+#' \code{log}.}\item{list("inverse.gaussian")}{accepts the links \code{1/mu^2},
+#' \code{inverse}, \code{identity} and \code{log}.}\item{ family}{accepts the
+#' links \code{1/mu^2}, \code{inverse}, \code{identity} and \code{log}.}
+#' \item{The }{accepts the links \code{logit}, \code{probit}, \code{cloglog},
+#' \code{identity}, \code{inverse}, \code{log}, \code{1/mu^2} and
+#' \code{sqrt}.}\item{list("quasi")}{accepts the links \code{logit},
+#' \code{probit}, \code{cloglog}, \code{identity}, \code{inverse}, \code{log},
+#' \code{1/mu^2} and \code{sqrt}.}\item{ family}{accepts the links
+#' \code{logit}, \code{probit}, \code{cloglog}, \code{identity},
+#' \code{inverse}, \code{log}, \code{1/mu^2} and \code{sqrt}.} \item{The
+#' function }{can be used to create a power link
+#' function.}\item{list("power")}{can be used to create a power link function.}
+#' }
+#' 
+#' Non-NULL weights can be used to indicate that different observations have
+#' different dispersions (with the values in weights being inversely
+#' proportional to the dispersions); or equivalently, when the elements of
+#' weights are positive integers w_i, that each response y_i is the mean of w_i
+#' unit-weight observations.
+#' 
+#' @param dataY response (training) dataset
+#' @param dataX predictor(s) (training) dataset
+#' @param nt number of components to be extracted
+#' @param dataPredictY predictor(s) (testing) dataset
+#' @param modele name of the PLS glm model to be fitted (\code{"pls"},
+#' \code{"pls-glm-Gamma"}, \code{"pls-glm-gaussian"},
+#' \code{"pls-glm-inverse.gaussian"}, \code{"pls-glm-logistic"},
+#' \code{"pls-glm-poisson"}, \code{"pls-glm-polr"}). Use
+#' \code{"modele=pls-glm-family"} to enable the \code{family} option.
+#' @param family a description of the error distribution and link function to
+#' be used in the model. This can be a character string naming a family
+#' function, a family function or the result of a call to a family function.
+#' (See \code{\link[stats]{family}} for details of family functions.) To use
+#' the family option, please set \code{modele="pls-glm-family"}. User defined
+#' families can also be defined. See details.
+#' @param scaleX scale the predictor(s) : must be set to TRUE for
+#' \code{modele="pls"} and should be for glms pls.
+#' @param scaleY scale the response : Yes/No. Ignored since non always possible
+#' for glm responses.
+#' @param keepcoeffs whether the coefficients of the linear fit on link scale
+#' of unstandardized eXplanatory variables should be returned or not.
+#' @param keepstd.coeffs whether the coefficients of the linear fit on link
+#' scale of standardized eXplanatory variables should be returned or not.
+#' @param tol_Xi minimal value for Norm2(Xi) and \eqn{\mathrm{det}(pp' \times
+#' pp)}{det(pp'*pp)} if there is any missing value in the \code{dataX}. It
+#' defaults to \eqn{10^{-12}}{10^{-12}}
+#' @param weights an optional vector of 'prior weights' to be used in the
+#' fitting process. Should be \code{NULL} or a numeric vector.
+#' @param method logistic, probit, complementary log-log or cauchit
+#' (corresponding to a Cauchy latent variable).
+#' @param verbose should info messages be displayed ?
+#' @return \item{valsPredict}{\code{nrow(dataPredictY) * nt} matrix of the
+#' predicted values} \item{list("coeffs")}{ If the coefficients of the
+#' eXplanatory variables were requested:\cr i.e. \code{keepcoeffs=TRUE}.\cr
+#' \code{ncol(dataX) * 1} matrix of the coefficients of the the eXplanatory
+#' variables}
+#' @author Frédéric Bertrand\cr
+#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \url{https://fbertran.github.io/homepage/}
+#' @seealso \code{\link{PLS_glm}} for more detailed results,
+#' \code{\link{PLS_glm_kfoldcv}} for cross-validating models and
+#' \code{\link{PLS_lm_wvc}} for the same function dedicated to plsR models
+#' @references Nicolas Meyer, Myriam Maumy-Bertrand et
+#' Frédéric Bertrand (2010). Comparing the linear and the
+#' logistic PLS regression with qualitative predictors: application to
+#' allelotyping data. \emph{Journal de la Societe Francaise de Statistique},
+#' 151(2), pages 1-18.
+#' \url{http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47}
+#' @keywords models regression
+#' @examples
+#' 
+#' data(Cornell)
+#' XCornell<-Cornell[,1:7]
+#' yCornell<-Cornell[,8]
+#' PLS_glm_wvc(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-gaussian",
+#' dataPredictY=XCornell[1,])
+#' PLS_glm_wvc(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-family",
+#' family=gaussian(),dataPredictY=XCornell[1,], verbose=FALSE)
+#' PLS_glm_wvc(dataY=yCornell[-1],dataX=XCornell[-1,],nt=3,modele="pls-glm-gaussian",
+#' dataPredictY=XCornell[1,], verbose=FALSE)
+#' PLS_glm_wvc(dataY=yCornell[-1],dataX=XCornell[-1,],nt=3,modele="pls-glm-family",
+#' family=gaussian(),dataPredictY=XCornell[1,], verbose=FALSE)
+#' rm("XCornell","yCornell")
+#' 
+#' \donttest{
+#' ## With an incomplete dataset (X[1,2] is NA)
+#' data(pine)
+#' ypine <- pine[,11]
+#' data(XpineNAX21)
+#' PLS_glm_wvc(dataY=ypine,dataX=XpineNAX21,nt=10,modele="pls-glm-gaussian")
+#' rm("XpineNAX21","ypine")
+#' 
+#' data(pine)
+#' Xpine<-pine[,1:10]
+#' ypine<-pine[,11]
+#' PLS_glm_wvc(ypine,Xpine,10,modele="pls", verbose=FALSE)
+#' PLS_glm_wvc(ypine,Xpine,10,modele="pls-glm-Gamma", verbose=FALSE)
+#' PLS_glm_wvc(ypine,Xpine,10,modele="pls-glm-family",family=Gamma(), verbose=FALSE)
+#' PLS_glm_wvc(ypine,Xpine,10,modele="pls-glm-gaussian", verbose=FALSE)
+#' PLS_glm_wvc(ypine,Xpine,10,modele="pls-glm-family",family=gaussian(log), verbose=FALSE)
+#' PLS_glm_wvc(round(ypine),Xpine,10,modele="pls-glm-poisson", verbose=FALSE)
+#' PLS_glm_wvc(round(ypine),Xpine,10,modele="pls-glm-family",family=poisson(log), verbose=FALSE)
+#' rm(list=c("pine","ypine","Xpine"))
+#' 
+#' 
+#' data(Cornell)
+#' XCornell<-Cornell[,1:7]
+#' yCornell<-Cornell[,8]
+#' PLS_glm_wvc(yCornell,XCornell,10,modele="pls-glm-inverse.gaussian", verbose=FALSE)
+#' PLS_glm_wvc(yCornell,XCornell,10,modele="pls-glm-family",
+#' family=inverse.gaussian(), verbose=FALSE)
+#' rm(list=c("XCornell","yCornell"))
+#' 
+#' 
+#' data(Cornell)
+#' XCornell<-Cornell[,1:7]
+#' yCornell<-Cornell[,8]
+#' PLS_glm_wvc(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-gaussian",
+#' dataPredictY=XCornell[1,], verbose=FALSE)
+#' PLS_glm_wvc(dataY=yCornell[-1],dataX=XCornell[-1,],nt=3,modele="pls-glm-gaussian",
+#' dataPredictY=XCornell[1,], verbose=FALSE)
+#' rm("XCornell","yCornell")
+#' 
+#' data(aze_compl)
+#' Xaze_compl<-aze_compl[,2:34]
+#' yaze_compl<-aze_compl$y
+#' PLS_glm(yaze_compl,Xaze_compl,10,modele="pls-glm-logistic",typeVC="none", verbose=FALSE)$InfCrit
+#' PLS_glm_wvc(yaze_compl,Xaze_compl,10,modele="pls-glm-logistic", keepcoeffs=TRUE, verbose=FALSE)
+#' rm("Xaze_compl","yaze_compl")
+#' }
+#' 
+#' @export PLS_glm_wvc
 PLS_glm_wvc <- function(dataY,dataX,nt=2,dataPredictY=dataX,modele="pls",family=NULL,scaleX=TRUE,scaleY=NULL,keepcoeffs=FALSE,keepstd.coeffs=FALSE,tol_Xi=10^(-12),weights,method="logistic",verbose=TRUE) {
 
 ##################################################

@@ -1,18 +1,26 @@
----
-title: "Partial Least Squares Regression for Generalized Linear Models"
-author: "Frédéric Bertrand and Myriam Maumy-Bertrand"
-output: github_document
----
-
-[![CRAN status](https://www.r-pkg.org/badges/version/plsRglm)](https://cran.r-project.org/package=plsRglm)
-[![DOI](https://zenodo.org/badge/18454150.svg)](https://zenodo.org/badge/latestdoi/18454150)
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 
-# plsRglm
 
-The goal of plsRglm [<arXiv:1810.0100>](https://arxiv.org/abs/1810.01005) is to provide (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.
+# plsRglm <img src="man/figures/logo.png" align="right" width="200"/>
+
+# Partial Least Squares Regression for Generalized Linear Models
+## Frédéric Bertrand and Myriam Maumy-Bertrand
+
+<!-- badges: start -->
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![R-CMD-check](https://github.com/fbertran/plsRglm/workflows/R-CMD-check/badge.svg)](https://github.com/fbertran/plsRglm/actions)
+[![Codecov test coverage](https://codecov.io/gh/fbertran/plsRglm/branch/master/graph/badge.svg)](https://codecov.io/gh/fbertran/plsRglm?branch=master)
+[![CRAN status](https://www.r-pkg.org/badges/version/plsRglm)](https://cran.r-project.org/package=plsRglm)
+[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/plsRglm)](https://cran.r-project.org/package=plsRglm)
+[![GitHub Repo stars](https://img.shields.io/github/stars/fbertran/plsRglm?style=social)](https://github.com/github/fbertran/plsRglm)
+[![DOI](https://zenodo.org/badge/18454150.svg)](https://zenodo.org/badge/latestdoi/18454150)
+<!-- badges: end -->
+
+
+
+The goal of plsRglm [<arXiv:1810.01005>](https://arxiv.org/abs/1810.01005) is to provide (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.
 
 
 Partial least squares Regression for generalized linear models were introduced in 
@@ -31,7 +39,7 @@ The package was presented at the [User2014!](http://user2014.r-project.org/) con
 For more involved number of component selection techniques, see "A new universal resample-stable bootstrap-based stopping criterion for PLS component construction"", Jérémy Magnanensi, Frédéric Bertrand, Myriam Maumy-Bertrand and Nicolas Meyer, *Statistics and Computing* (2017) **27**:757–774, <https://doi.org/10.1007/s11222-016-9651-4>. The new methods presented in that article will be packaged soon.
 
 
-A short paper that sums up some of features of the package is available on [arxiv](https://arxiv.org/), Frédéric Bertrand and Myriam Maumy-Bertrand (2018), "plsRglm: Partial least squares linear and generalized linear regression for processing incomplete datasets by cross-validation and bootstrap techniques with R", *arxiv*, [<arXiv:1810.0100>](https://arxiv.org/abs/1810.01005).
+A short paper that sums up some of features of the package is available on [arxiv](https://arxiv.org/), Frédéric Bertrand and Myriam Maumy-Bertrand (2018), "plsRglm: Partial least squares linear and generalized linear regression for processing incomplete datasets by cross-validation and bootstrap techniques with R", *arxiv*, [<arXiv:1810.01005>](https://arxiv.org/abs/1810.01005).
 
 
 A [vignette](https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf) is available for the package "plsRglm: Algorithmic insights and applications".
@@ -95,8 +103,7 @@ cv.modpls<-cv.plsR(Y~.,data=Cornell,nt=6,K=6)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
-#> Warning only 5 components could thus be extracted
+#> ____Component____ 6 ____
 #> ****________________________________________________****
 #> 
 #> 2 
@@ -151,7 +158,8 @@ cv.modpls<-cv.plsR(Y~.,data=Cornell,nt=6,K=6)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> ____Component____ 6 ____
+#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
+#> Warning only 5 components could thus be extracted
 #> ****________________________________________________****
 ```
 
@@ -209,46 +217,30 @@ colSums(res6$pvalstep)
 
 ```r
 res6$InfCrit
-#>                AIC   Q2cum_Y LimQ2_Y        Q2_Y   PRESS_Y      RSS_Y
-#> Nb_Comp_0 82.01205        NA      NA          NA        NA 467.796667
-#> Nb_Comp_1 53.15173 0.8966556  0.0975  0.89665563 48.344150  35.742486
-#> Nb_Comp_2 41.08283 0.9175426  0.0975  0.20210989 28.518576  11.066606
-#> Nb_Comp_3 32.06411 0.9399676  0.0975  0.27195907  8.056942   4.418081
-#> Nb_Comp_4 33.76477 0.9197009  0.0975 -0.33759604  5.909608   4.309235
-#> Nb_Comp_5 33.34373 0.9281373  0.0975  0.10506161  3.856500   3.521924
-#> Nb_Comp_6 35.25533 0.9232562  0.0975 -0.06792167  3.761138   3.496074
-#>                R2_Y R2_residY  RSS_residY PRESS_residY   Q2_residY  LimQ2
-#> Nb_Comp_0        NA        NA 11.00000000           NA          NA     NA
-#> Nb_Comp_1 0.9235940 0.9235940  0.84046633   1.13678803  0.89665563 0.0975
-#> Nb_Comp_2 0.9763431 0.9763431  0.26022559   0.67059977  0.20210989 0.0975
-#> Nb_Comp_3 0.9905556 0.9905556  0.10388893   0.18945488  0.27195907 0.0975
-#> Nb_Comp_4 0.9907882 0.9907882  0.10132947   0.13896142 -0.33759604 0.0975
-#> Nb_Comp_5 0.9924713 0.9924713  0.08281624   0.09068364  0.10506161 0.0975
-#> Nb_Comp_6 0.9925265 0.9925265  0.08220840   0.08844125 -0.06792167 0.0975
-#>           Q2cum_residY    AIC.std  DoF.dof sigmahat.dof    AIC.dof
-#> Nb_Comp_0           NA  37.010388 1.000000    6.5212706 46.0708838
-#> Nb_Comp_1    0.8966556   8.150064 2.740749    1.8665281  4.5699686
-#> Nb_Comp_2    0.9175426  -3.918831 5.085967    1.1825195  2.1075461
-#> Nb_Comp_3    0.9399676 -12.937550 5.121086    0.7488308  0.8467795
-#> Nb_Comp_4    0.9197009 -11.236891 5.103312    0.7387162  0.8232505
-#> Nb_Comp_5    0.9281373 -11.657929 6.006316    0.7096382  0.7976101
-#> Nb_Comp_6    0.9232562  -9.746328 7.000002    0.7633343  0.9711322
-#>              BIC.dof GMDL.dof DoF.naive sigmahat.naive  AIC.naive
-#> Nb_Comp_0 47.7893514 27.59461         1      6.5212706 46.0708838
-#> Nb_Comp_1  4.9558156 21.34020         2      1.8905683  4.1699567
-#> Nb_Comp_2  2.3949331 27.40202         3      1.1088836  1.5370286
-#> Nb_Comp_3  0.9628191 24.40842         4      0.7431421  0.7363469
-#> Nb_Comp_4  0.9357846 24.23105         5      0.7846050  0.8721072
-#> Nb_Comp_5  0.9198348 28.21184         6      0.7661509  0.8804809
-#> Nb_Comp_6  1.1359501 33.18348         7      0.8361907  1.1070902
-#>            BIC.naive GMDL.naive
-#> Nb_Comp_0 47.7893514   27.59461
-#> Nb_Comp_1  4.4588195   18.37545
-#> Nb_Comp_2  1.6860917   17.71117
-#> Nb_Comp_3  0.8256118   19.01033
-#> Nb_Comp_4  0.9964867   24.16510
-#> Nb_Comp_5  1.0227979   28.64206
-#> Nb_Comp_6  1.3048716   33.63927
+#>                AIC   Q2cum_Y LimQ2_Y        Q2_Y   PRESS_Y      RSS_Y      R2_Y R2_residY  RSS_residY
+#> Nb_Comp_0 82.01205        NA      NA          NA        NA 467.796667        NA        NA 11.00000000
+#> Nb_Comp_1 53.15173 0.8966556  0.0975  0.89665563 48.344150  35.742486 0.9235940 0.9235940  0.84046633
+#> Nb_Comp_2 41.08283 0.9175426  0.0975  0.20210989 28.518576  11.066606 0.9763431 0.9763431  0.26022559
+#> Nb_Comp_3 32.06411 0.9399676  0.0975  0.27195907  8.056942   4.418081 0.9905556 0.9905556  0.10388893
+#> Nb_Comp_4 33.76477 0.9197009  0.0975 -0.33759604  5.909608   4.309235 0.9907882 0.9907882  0.10132947
+#> Nb_Comp_5 33.34373 0.9281373  0.0975  0.10506161  3.856500   3.521924 0.9924713 0.9924713  0.08281624
+#> Nb_Comp_6 35.25533 0.9232562  0.0975 -0.06792167  3.761138   3.496074 0.9925265 0.9925265  0.08220840
+#>           PRESS_residY   Q2_residY  LimQ2 Q2cum_residY    AIC.std  DoF.dof sigmahat.dof    AIC.dof
+#> Nb_Comp_0           NA          NA     NA           NA  37.010388 1.000000    6.5212706 46.0708838
+#> Nb_Comp_1   1.13678803  0.89665563 0.0975    0.8966556   8.150064 2.740749    1.8665281  4.5699686
+#> Nb_Comp_2   0.67059977  0.20210989 0.0975    0.9175426  -3.918831 5.085967    1.1825195  2.1075461
+#> Nb_Comp_3   0.18945488  0.27195907 0.0975    0.9399676 -12.937550 5.121086    0.7488308  0.8467795
+#> Nb_Comp_4   0.13896142 -0.33759604 0.0975    0.9197009 -11.236891 5.103312    0.7387162  0.8232505
+#> Nb_Comp_5   0.09068364  0.10506161 0.0975    0.9281373 -11.657929 6.006316    0.7096382  0.7976101
+#> Nb_Comp_6   0.08844125 -0.06792167 0.0975    0.9232562  -9.746328 7.000002    0.7633343  0.9711322
+#>              BIC.dof GMDL.dof DoF.naive sigmahat.naive  AIC.naive  BIC.naive GMDL.naive
+#> Nb_Comp_0 47.7893514 27.59461         1      6.5212706 46.0708838 47.7893514   27.59461
+#> Nb_Comp_1  4.9558156 21.34020         2      1.8905683  4.1699567  4.4588195   18.37545
+#> Nb_Comp_2  2.3949331 27.40202         3      1.1088836  1.5370286  1.6860917   17.71117
+#> Nb_Comp_3  0.9628191 24.40842         4      0.7431421  0.7363469  0.8256118   19.01033
+#> Nb_Comp_4  0.9357846 24.23105         5      0.7846050  0.8721072  0.9964867   24.16510
+#> Nb_Comp_5  0.9198348 28.21184         6      0.7661509  0.8804809  1.0227979   28.64206
+#> Nb_Comp_6  1.1359501 33.18348         7      0.8361907  1.1070902  1.3048716   33.63927
 ```
 
 The number of significant predictors per components, which is a criteria of significance for [Bastien et al. (2005)](http://www.sciencedirect.com/science/article/pii/S0167947304000271), can be obtained via the following code:
@@ -355,15 +347,12 @@ res
 #> X6          5.5177190
 #> X7        -44.9000310
 #> Information criteria and Fit statistics:
-#>                AIC     RSS_Y     R2_Y R2_residY RSS_residY   AIC.std
-#> Nb_Comp_0 82.01205 467.79667       NA        NA 11.0000000 37.010388
-#> Nb_Comp_1 53.15173  35.74249 0.923594  0.923594  0.8404663  8.150064
-#>            DoF.dof sigmahat.dof   AIC.dof   BIC.dof GMDL.dof DoF.naive
-#> Nb_Comp_0 1.000000     6.521271 46.070884 47.789351 27.59461         1
-#> Nb_Comp_1 2.740749     1.866528  4.569969  4.955816 21.34020         2
-#>           sigmahat.naive AIC.naive BIC.naive GMDL.naive
-#> Nb_Comp_0       6.521271 46.070884  47.78935   27.59461
-#> Nb_Comp_1       1.890568  4.169957   4.45882   18.37545
+#>                AIC     RSS_Y     R2_Y R2_residY RSS_residY   AIC.std  DoF.dof sigmahat.dof   AIC.dof
+#> Nb_Comp_0 82.01205 467.79667       NA        NA 11.0000000 37.010388 1.000000     6.521271 46.070884
+#> Nb_Comp_1 53.15173  35.74249 0.923594  0.923594  0.8404663  8.150064 2.740749     1.866528  4.569969
+#>             BIC.dof GMDL.dof DoF.naive sigmahat.naive AIC.naive BIC.naive GMDL.naive
+#> Nb_Comp_0 47.789351 27.59461         1       6.521271 46.070884  47.78935   27.59461
+#> Nb_Comp_1  4.955816 21.34020         2       1.890568  4.169957   4.45882   18.37545
 ```
 
 It is also possible to obtain the matrix W∗ with the following command line:
@@ -889,20 +878,13 @@ Stratified balanced bootstrap: CIs for each of the predictors distribution.
 
 ```r
 confints.bootpls(bordeaux.bootYX1strata)
-#>                                                                          
-#> 1|2         -5.0756955 1.662371 -3.013661 1.3833903 -5.9138164 -1.5167647
-#> 2|3         -1.3644320 4.894569 -1.947510 3.2048479  1.3930192  6.5453770
-#> Temperature -0.7844386 3.148180 -1.792702 2.0688905  0.9913942  4.8529866
-#> Sunshine    -0.6013299 3.342430 -1.006882 2.3281779  1.0657179  4.4007776
-#> Heat        -0.7778586 2.436085 -1.522452 1.5825691  0.5966313  3.7016526
-#> Rain        -1.9902616 0.464011 -1.362595 0.4550396 -2.2745073 -0.4568724
-#>                                  
-#> 1|2         -4.4904734 -1.3879169
-#> 2|3          1.3057075  5.0230108
-#> Temperature  0.9624249  3.4213728
-#> Sunshine     0.9905217  3.1831774
-#> Heat         0.5535782  2.9644850
-#> Rain        -2.2598723 -0.4509125
+#>                                                                                                
+#> 1|2         -5.0756955 1.662371 -3.013661 1.3833903 -5.9138164 -1.5167647 -4.4904734 -1.3879169
+#> 2|3         -1.3644320 4.894569 -1.947510 3.2048479  1.3930192  6.5453770  1.3057075  5.0230108
+#> Temperature -0.7844386 3.148180 -1.792702 2.0688905  0.9913942  4.8529866  0.9624249  3.4213728
+#> Sunshine    -0.6013299 3.342430 -1.006882 2.3281779  1.0657179  4.4007776  0.9905217  3.1831774
+#> Heat        -0.7778586 2.436085 -1.522452 1.5825691  0.5966313  3.7016526  0.5535782  2.9644850
+#> Rain        -1.9902616 0.464011 -1.362595 0.4550396 -2.2745073 -0.4568724 -2.2598723 -0.4509125
 #> attr(,"typeBCa")
 #> [1] TRUE
 ```

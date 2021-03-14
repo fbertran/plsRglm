@@ -1,3 +1,84 @@
+#' Extracts and computes information criteria and fits statistics for k-fold
+#' cross validated partial least squares glm models
+#' 
+#' This function extracts and computes information criteria and fits statistics
+#' for k-fold cross validated partial least squares glm models for both formula
+#' or classic specifications of the model.
+#' 
+#' The Mclassed option should only set to \code{TRUE} if the response is
+#' binary.
+#' 
+#' @param pls_kfolds an object computed using \code{\link{cv.plsRglm}}
+#' @param MClassed should number of miss classed be computed ?
+#' @param verbose should infos be displayed ?
+#' @return \item{list}{table of fit statistics for first group partition}
+#' \item{list()}{\dots{}} \item{list}{table of fit statistics for last group
+#' partition}
+#' @note Use \code{\link{summary}} and \code{\link{cv.plsRglm}} instead.
+#' @author Frédéric Bertrand\cr
+#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \url{https://fbertran.github.io/homepage/}
+#' @seealso \code{\link{kfolds2coeff}}, \code{\link{kfolds2Pressind}},
+#' \code{\link{kfolds2Press}}, \code{\link{kfolds2Mclassedind}} and
+#' \code{\link{kfolds2Mclassed}} to extract and transforms results from k-fold
+#' cross-validation.
+#' @references Nicolas Meyer, Myriam Maumy-Bertrand et
+#' Frédéric Bertrand (2010). Comparing the linear and the
+#' logistic PLS regression with qualitative predictors: application to
+#' allelotyping data. \emph{Journal de la Societe Francaise de Statistique},
+#' 151(2), pages 1-18.
+#' \url{http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47}
+#' @keywords models regression
+#' @examples
+#' 
+#' \donttest{
+#' data(Cornell)
+#' summary(cv.plsRglm(Y~.,data=Cornell,
+#' nt=6,K=12,NK=1,keepfolds=FALSE,keepdataY=TRUE,modele="pls",verbose=FALSE),MClassed=TRUE)
+#' 
+#' 
+#' data(aze_compl)
+#' summary(cv.plsR(y~.,data=aze_compl,nt=10,K=8,modele="pls",verbose=FALSE),
+#' MClassed=TRUE,verbose=FALSE)
+#' summary(cv.plsRglm(y~.,data=aze_compl,nt=10,K=8,modele="pls",verbose=FALSE),
+#' MClassed=TRUE,verbose=FALSE)
+#' summary(cv.plsRglm(y~.,data=aze_compl,nt=10,K=8,
+#' modele="pls-glm-family",
+#' family=gaussian(),verbose=FALSE),
+#' MClassed=TRUE,verbose=FALSE)
+#' summary(cv.plsRglm(y~.,data=aze_compl,nt=10,K=8,
+#' modele="pls-glm-logistic",
+#' verbose=FALSE),MClassed=TRUE,verbose=FALSE)
+#' summary(cv.plsRglm(y~.,data=aze_compl,nt=10,K=8,
+#' modele="pls-glm-family",
+#' family=binomial(),verbose=FALSE),
+#' MClassed=TRUE,verbose=FALSE)
+#' 
+#' 
+#' if(require(chemometrics)){
+#' data(hyptis)
+#' hyptis
+#' yhyptis <- factor(hyptis$Group,ordered=TRUE)
+#' Xhyptis <- as.data.frame(hyptis[,c(1:6)])
+#' options(contrasts = c("contr.treatment", "contr.poly"))
+#' modpls2 <- plsRglm(yhyptis,Xhyptis,6,modele="pls-glm-polr")
+#' modpls2$Coeffsmodel_vals
+#' modpls2$InfCrit
+#' modpls2$Coeffs
+#' modpls2$std.coeffs
+#' 
+#' table(yhyptis,predict(modpls2$FinalModel,type="class"))
+#' 
+#' modpls3 <- PLS_glm(yhyptis[-c(1,2,3)],Xhyptis[-c(1,2,3),],3,modele="pls-glm-polr",
+#' dataPredictY=Xhyptis[c(1,2,3),],verbose=FALSE)
+#' 
+#' summary(cv.plsRglm(factor(Group,ordered=TRUE)~.,data=hyptis[,-c(7,8)],nt=4,K=10,
+#' random=TRUE,modele="pls-glm-polr",keepcoeffs=TRUE,verbose=FALSE),
+#' MClassed=TRUE,verbose=FALSE)
+#' }
+#' }
+#' 
+#' @export kfolds2CVinfos_glm
 kfolds2CVinfos_glm <- function(pls_kfolds,MClassed=FALSE,verbose=TRUE) {
 if(!(match("dataY",names(pls_kfolds$call), 0L)==0L)){
 (mf <- pls_kfolds$call)

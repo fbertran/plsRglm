@@ -1,3 +1,6 @@
+#' @rdname plsR
+#' @export
+
 plsRmodel.formula <- function(formula,data,nt=2,limQ2set=.0975,dataPredictY,modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12), weights,subset,contrasts=NULL,sparse=FALSE,sparseStop=TRUE,naive=FALSE,verbose=TRUE)
 {
   if(missing(modele)){modele="pls"}
