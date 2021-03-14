@@ -1,5 +1,5 @@
-#' @rdname cv.plsRmodel
-#' @aliases cv.plsRmodel
+#' @rdname cv.plsR
+#' @aliases cv.plsR
 #' @export PLS_lm_kfoldcv
 
 PLS_lm_kfoldcv <- function(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights, verbose=TRUE) {

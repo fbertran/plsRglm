@@ -35,6 +35,7 @@
 #' \emph{Journal of the American Statistical Association}, 106(494), 697-705,
 #' 2011.
 #' 
+#' @name plsR
 #' @aliases plsR plsRmodel.default plsRmodel.formula PLS_lm PLS_lm_formula
 #' @param x a formula or a response (training) dataset
 #' @param dataY response (training) dataset

@@ -126,11 +126,11 @@
 #' cvtable(sum3)
 #' rm(list=c("XCornell","yCornell","bbb","bbb2","bbb3","bbb4"))
 #' 
-#' @export cv.plsRmodel
-cv.plsRmodel <- function (x, ...) {UseMethod("cv.plsRmodel")}
-
-#' @rdname cv.plsRmodel
-#' @aliases cv.plsRmodel
 #' @export cv.plsR
-cv.plsR <- cv.plsRmodel
+cv.plsR <- function (x, ...) {UseMethod("cv.plsRmodel")}
+
+#' @rdname cv.plsR
+#' @aliases cv.plsR
+#' @export cv.plsRmodel
+cv.plsRmodel <- cv.plsR
 

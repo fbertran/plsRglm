@@ -592,10 +592,10 @@
 #' modele="pls-glm-polr",method="cauchit",verbose=FALSE)))
 #' }
 #' 
-#' @export cv.plsRglmmodel
-cv.plsRglmmodel <- function (x, ...) {UseMethod("cv.plsRglmmodel")}
-
-#' @rdname cv.plsRglmmodel
-#' @aliases cv.plsRglmmodel
 #' @export cv.plsRglm
-cv.plsRglm <- cv.plsRglmmodel
+cv.plsRglm <- function (x, ...) {UseMethod("cv.plsRglmmodel")}
+
+#' @rdname cv.plsRglm
+#' @aliases cv.plsRglm
+#' @export cv.plsRglmmodel
+cv.plsRglmmodel <- cv.plsRglm

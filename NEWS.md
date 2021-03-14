@@ -1,3 +1,7 @@
+# plsRglm 1.3.0
+
+* Github actions and Roxygen most of the package.
+
 # plsRglm 1.2.5
 
 * Rewrote examples to cope with pkgdown requirements.
