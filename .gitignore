@@ -14,8 +14,7 @@
 # RStudio files
 .Rproj.user/
 .Rproj.user/*
-.Rhistory
 
 .DS_Store
-doc
+#doc
 Meta
