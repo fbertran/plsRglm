@@ -6,23 +6,39 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Computes individual PRESS for k-fold cross validated partial least squares regression models. — kfolds2Pressind • plsRglm</title>
+<title>Computes individual PRESS for k-fold cross validated partial least squares
+regression models. — kfolds2Pressind • plsRglm</title>
+
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +46,13 @@
 
 
 
-<meta property="og:title" content="Computes individual PRESS for k-fold cross validated partial least squares regression models. — kfolds2Pressind" />
 
-<meta property="og:description" content="This function computes individual PRESS for k-fold cross validated partial least squares regression models." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Computes individual PRESS for k-fold cross validated partial least squares
+regression models. — kfolds2Pressind" />
+<meta property="og:description" content="This function computes individual PRESS for k-fold cross validated partial
+least squares regression models." />
+<meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -47,12 +66,13 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -63,7 +83,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -71,9 +91,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -82,11 +105,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fbertran/plsRglm">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -97,61 +119,74 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Computes individual PRESS for k-fold cross validated partial least squares regression models.</h1>
-    
+    <h1>Computes individual PRESS for k-fold cross validated partial least squares
+regression models.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fbertran/plsRglm/blob/master/R/kfolds2Pressind.R'><code>R/kfolds2Pressind.R</code></a></small>
     <div class="hidden name"><code>kfolds2Pressind.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-    <p>This function computes individual PRESS for k-fold cross validated partial least squares regression models.</p>
-    
+    <p>This function computes individual PRESS for k-fold cross validated partial
+least squares regression models.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>kfolds2Pressind</span>(<span class='no'>pls_kfolds</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>kfolds2Pressind</span><span class='op'>(</span><span class='va'>pls_kfolds</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>pls_kfolds</th>
-      <td><p>a k-fold cross validated partial least squares regression model</p></td>
+      <td><p>a k-fold cross validated partial least squares regression
+model</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p></p>
-<dt>list</dt><dd><p>Individual Press vs number of components for the first group partition</p></dd>
-  <dt>&#8230;</dt><dd><p>&#8230;</p></dd>
-  <dt>list</dt><dd><p>Individual Press vs number of components for the last group partition</p></dd>
-
     
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Nicolas Meyer, Myriam Maumy-Bertrand et Frederic Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>, 151(2), pages 1-18.
-<a href='http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47'>http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47</a></p>
-    
+<dt>list</dt><dd><p>Individual Press vs number of components for the first
+group partition</p></dd> <dt>list()</dt><dd><p>...</p></dd> <dt>list</dt><dd><p>Individual Press vs
+number of components for the last group partition</p></dd>
+
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Use <code><a href='cv.plsR.html'>cv.plsR</a></code> to create k-fold cross validated partial least squares regression models.</p>
-    
+    <p>Use <code><a href='cv.plsR.html'>cv.plsR</a></code> to create k-fold cross validated partial
+least squares regression models.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Nicolas Meyer, Myriam Maumy-Bertrand et
+Frédéric Bertrand (2010). Comparing the linear and the
+logistic PLS regression with qualitative predictors: application to
+allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>,
+151(2), pages 1-18.
+<a href='http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47'>http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='kfolds2coeff.html'>kfolds2coeff</a></code>, <code><a href='kfolds2Press.html'>kfolds2Press</a></code>, <code><a href='kfolds2Mclassedind.html'>kfolds2Mclassedind</a></code> and <code><a href='kfolds2Mclassed.html'>kfolds2Mclassed</a></code> to extract and transforms results from k-fold cross validation.</p></div>
-    
+    <div class='dont-index'><p><code><a href='kfolds2coeff.html'>kfolds2coeff</a></code>, <code><a href='kfolds2Press.html'>kfolds2Press</a></code>,
+<code><a href='kfolds2Mclassedind.html'>kfolds2Mclassedind</a></code> and <code><a href='kfolds2Mclassed.html'>kfolds2Mclassed</a></code> to
+extract and transforms results from k-fold cross validation.</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Frédéric Bertrand<br />
+<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
+<a href='https://fbertran.github.io/homepage/'>https://fbertran.github.io/homepage/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>Cornell</span>)
-<span class='no'>XCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>1</span>:<span class='fl'>7</span>]
-<span class='no'>yCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>8</span>]
-<span class='fu'>kfolds2Pressind</span>(<span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yCornell</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/scale'>scale</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>as.matrix</a></span>(<span class='no'>XCornell</span>))[,]),
-<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>12</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>1</span>))</div><div class='output co'>#&gt; NK: 1 
+    <pre class="examples"><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>
+<span class='va'>XCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>]</span>
+<span class='va'>yCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>8</span><span class='op'>]</span>
+<span class='fu'>kfolds2Pressind</span><span class='op'>(</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yCornell</span>,dataX<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>XCornell</span><span class='op'>)</span><span class='op'>)</span><span class='op'>[</span>,<span class='op'>]</span><span class='op'>)</span>,
+nt<span class='op'>=</span><span class='fl'>6</span>,K<span class='op'>=</span><span class='fl'>12</span>,NK<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; NK: 1 
 #&gt; Leave One Out
 #&gt; Number of groups : 12 
 #&gt; 1 
@@ -335,8 +370,9 @@
 #&gt;          [,1]     [,2]     [,3]     [,4]     [,5]    [,6]
 #&gt; 12 0.03180524 3.374303 2.349701 5.013846 5.458814 8.13772
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'>kfolds2Pressind</span>(<span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yCornell</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/scale'>scale</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>as.matrix</a></span>(<span class='no'>XCornell</span>))[,]),
-<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>1</span>))</div><div class='output co'>#&gt; NK: 1 
+#&gt; </div><div class='input'><span class='fu'>kfolds2Pressind</span><span class='op'>(</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yCornell</span>,dataX<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>XCornell</span><span class='op'>)</span><span class='op'>)</span><span class='op'>[</span>,<span class='op'>]</span><span class='op'>)</span>,
+nt<span class='op'>=</span><span class='fl'>6</span>,K<span class='op'>=</span><span class='fl'>6</span>,NK<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; NK: 1 
 #&gt; Number of groups : 6 
 #&gt; 1 
 #&gt; ____************************************************____
@@ -346,8 +382,7 @@
 #&gt; ____Component____ 3 ____
 #&gt; ____Component____ 4 ____
 #&gt; ____Component____ 5 ____
-#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}
-#&gt; Warning only 5 components could thus be extracted
+#&gt; ____Component____ 6 ____
 #&gt; ****________________________________________________****
 #&gt; 
 #&gt; 2 
@@ -369,7 +404,8 @@
 #&gt; ____Component____ 3 ____
 #&gt; ____Component____ 4 ____
 #&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
+#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}
+#&gt; Warning only 5 components could thus be extracted
 #&gt; ****________________________________________________****
 #&gt; 
 #&gt; 4 
@@ -406,181 +442,176 @@
 #&gt; ****________________________________________________****
 #&gt; </div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt; [1] 0.882114006 0.001484329 0.914517981 1.016580217 0.146304708
+#&gt; [1] 24.451307 18.523423  9.180100  6.193589  6.229356  6.282449
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt; [1] 7.111137 7.668673 4.541319 2.662954 1.596324 2.289553
+#&gt; [1]  1.985502  1.086092  1.251931  2.691045  2.145680 11.668350
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt; [1] 31.564554 19.452709  6.403846  5.518035  5.920875  5.616452
+#&gt; [1] 5.447630 8.686841 4.958866 7.695888 9.073500
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt; [1] 4.464202 9.455269 2.973374 4.220288 9.280723 9.513030
-#&gt; 
-#&gt; [[1]][[5]]
-#&gt; [1] 12.3290316  0.4061359  0.2343948  0.3601167  0.0596658  0.0477965
-#&gt; 
-#&gt; [[1]][[6]]
 #&gt; [1]  4.597799  5.142740  4.371768  6.750691  5.412892 11.637487
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"XCornell"</span>,<span class='st'>"yCornell"</span>))</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>pine</span>)
-<span class='no'>Xpine</span><span class='kw'>&lt;-</span><span class='no'>pine</span>[,<span class='fl'>1</span>:<span class='fl'>10</span>]
-<span class='no'>ypine</span><span class='kw'>&lt;-</span><span class='no'>pine</span>[,<span class='fl'>11</span>]
-<span class='fu'>kfolds2Pressind</span>(<span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>ypine</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>Xpine</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>1</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; [[1]]
+#&gt; [[1]][[5]]
+#&gt; [1] 12.7082450  1.0186833  0.2740066  0.4714313  0.2948841  0.2824644
+#&gt; 
+#&gt; [[1]][[6]]
+#&gt; [1] 7.7218433 4.8379862 2.2036361 1.9488054 0.9726818 1.9711785
+#&gt; 
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"XCornell"</span>,<span class='st'>"yCornell"</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>pine</span><span class='op'>)</span>
+<span class='va'>Xpine</span><span class='op'>&lt;-</span><span class='va'>pine</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>
+<span class='va'>ypine</span><span class='op'>&lt;-</span><span class='va'>pine</span><span class='op'>[</span>,<span class='fl'>11</span><span class='op'>]</span>
+<span class='fu'>kfolds2Pressind</span><span class='op'>(</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>ypine</span>,dataX<span class='op'>=</span><span class='va'>Xpine</span>,nt<span class='op'>=</span><span class='fl'>10</span>,NK<span class='op'>=</span><span class='fl'>1</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt;  [1] 4.805816 4.690943 4.993705 4.011261 3.951879 3.916437 3.986039 3.990145
-#&gt;  [9] 3.950266 4.045699
+#&gt;  [1] 0.8883961 4.8591387 4.9988689 5.1918102 4.8617199 4.7855573 4.4809842
+#&gt;  [8] 5.0117341 5.4889825 5.6206026
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt;  [1] 1.8084439 1.9412554 1.2111849 1.0489093 1.0260334 1.0071353 0.9781246
-#&gt;  [8] 0.9124108 1.0014601 1.0628614
+#&gt;  [1] 2.365995 2.347366 1.650375 1.353222 1.617524 1.745726 1.911746 1.984874
+#&gt;  [9] 2.016569 2.008852
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt;  [1] 2.493163 2.858602 3.223785 3.416047 4.435912 4.798739 5.417191 5.254533
-#&gt;  [9] 5.497323 5.595991
+#&gt;  [1]  6.820733  9.108225 10.823430 10.358195  8.314969  8.076445  8.113869
+#&gt;  [8]  7.942539  7.745235  7.745303
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt;  [1] 3.596135 3.905395 3.005953 3.346551 4.001416 4.133644 3.870351 4.039486
-#&gt;  [9] 4.033945 4.202232
+#&gt;  [1] 3.754125 3.430876 4.033878 4.524629 4.967467 5.014482 5.481731 7.513506
+#&gt;  [9] 7.552379 7.525122
 #&gt; 
 #&gt; [[1]][[5]]
-#&gt;  [1] 1.6467807 1.7542957 1.1455846 0.6079961 0.7111074 0.7697873 0.8437279
-#&gt;  [8] 0.8476967 0.8284894 0.8130661
+#&gt;  [1] 1.8350435 2.2161201 2.4919795 1.1405288 0.8246359 0.7909550 0.6955416
+#&gt;  [8] 0.9916653 1.0886978 1.1385369
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'>kfolds2Pressind</span>(<span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>ypine</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>Xpine</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>2</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='fu'>kfolds2Pressind</span><span class='op'>(</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>ypine</span>,dataX<span class='op'>=</span><span class='va'>Xpine</span>,nt<span class='op'>=</span><span class='fl'>10</span>,NK<span class='op'>=</span><span class='fl'>2</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt;  [1] 0.9811567 2.3159980 2.9733802 2.6344193 2.6608810 2.5898501 2.6993531
-#&gt;  [8] 2.6738005 2.7752440 2.7677219
+#&gt;  [1] 1.788244 1.332780 1.098828 1.186483 1.160098 1.343736 1.246863 1.275641
+#&gt;  [9] 1.292925 1.300878
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt;  [1] 5.066121 4.125184 3.700941 4.245749 4.159462 3.987031 4.133685 4.403150
-#&gt;  [9] 4.306571 4.468146
+#&gt;  [1] 3.131351 3.894390 3.950035 4.208874 3.943091 3.739850 4.186724 4.365240
+#&gt;  [9] 4.445756 4.441714
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt;  [1] 1.658590 2.501918 2.703593 1.729325 1.280784 1.260604 1.133493 1.179030
-#&gt;  [9] 1.169278 1.258264
+#&gt;  [1] 4.112767 3.327255 4.115770 3.455209 3.065263 3.090385 2.963401 2.821507
+#&gt;  [9] 2.771189 2.837435
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt;  [1] 2.055124 4.071144 5.817431 5.566881 5.020133 5.005039 4.979671 4.800009
-#&gt;  [9] 4.788242 4.775184
+#&gt;  [1] 1.4680092 1.9132824 1.5556197 0.9806226 0.8331973 0.7394623 0.6705268
+#&gt;  [8] 0.6757110 0.7041166 0.7180339
 #&gt; 
 #&gt; [[1]][[5]]
-#&gt;  [1] 2.513996 2.241073 1.875390 1.400466 1.166504 1.390077 1.552621 1.541425
-#&gt;  [9] 1.713488 1.777663
+#&gt;  [1] 2.785427 2.610470 1.721480 4.292415 6.060435 6.606396 6.232753 6.685529
+#&gt;  [9] 6.653602 6.539093
 #&gt; 
 #&gt; 
 #&gt; [[2]]
 #&gt; [[2]][[1]]
-#&gt;  [1] 4.727509 4.466977 4.027641 3.541287 3.800219 3.618500 3.584943 3.505449
-#&gt;  [9] 3.506168 3.505443
+#&gt;  [1] 5.059471 4.715052 4.119547 4.647800 4.305667 4.209123 4.227596 4.496081
+#&gt;  [9] 4.478542 4.479241
 #&gt; 
 #&gt; [[2]][[2]]
-#&gt;  [1] 5.978367 3.561949 3.634328 2.797638 2.781064 2.626177 2.524380 2.510415
-#&gt;  [9] 2.498540 2.517815
+#&gt;  [1] 0.9359804 3.2277898 3.7710491 3.1979426 3.4698565 3.5108730 3.3465489
+#&gt;  [8] 3.5111109 3.8270929 3.9603972
 #&gt; 
 #&gt; [[2]][[3]]
-#&gt;  [1] 1.440365 2.191388 2.221539 1.867491 1.419634 1.339136 1.321539 1.266315
-#&gt;  [9] 1.252382 1.300260
+#&gt;  [1] 1.733402 1.580033 1.611175 1.890218 2.024283 2.060701 4.230665 6.502740
+#&gt;  [9] 6.538242 8.695176
 #&gt; 
 #&gt; [[2]][[4]]
-#&gt;  [1] 2.618379 2.119877 1.959013 4.517709 5.880311 6.012706 6.513663 6.213229
-#&gt;  [9] 6.149792 6.145210
+#&gt;  [1] 3.651936 2.412445 2.849109 2.479367 2.183804 1.922960 2.269423 2.249847
+#&gt;  [9] 2.178460 2.174420
 #&gt; 
 #&gt; [[2]][[5]]
-#&gt;  [1] 0.9237837 1.8486418 1.7231464 1.9553428 1.9208527 1.9601307 2.0398647
-#&gt;  [8] 2.0341859 1.9540770 2.0274995
+#&gt;  [1] 2.479865 2.426439 2.745278 2.746920 2.237868 2.125045 2.090085 2.029537
+#&gt;  [9] 1.989560 2.010448
 #&gt; 
 #&gt; </div><div class='input'>
-<span class='no'>XpineNAX21</span> <span class='kw'>&lt;-</span> <span class='no'>Xpine</span>
-<span class='no'>XpineNAX21</span>[<span class='fl'>1</span>,<span class='fl'>2</span>] <span class='kw'>&lt;-</span> <span class='fl'>NA</span>
-<span class='fu'>kfolds2Pressind</span>(<span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>ypine</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XpineNAX21</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>1</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; [[1]]
+<span class='va'>XpineNAX21</span> <span class='op'>&lt;-</span> <span class='va'>Xpine</span>
+<span class='va'>XpineNAX21</span><span class='op'>[</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='cn'>NA</span>
+<span class='fu'>kfolds2Pressind</span><span class='op'>(</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>ypine</span>,dataX<span class='op'>=</span><span class='va'>XpineNAX21</span>,nt<span class='op'>=</span><span class='fl'>10</span>,NK<span class='op'>=</span><span class='fl'>1</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt; [1] 1.825409 2.183560 1.813888 1.858482 1.682541 1.721630 1.936074 1.909898
-#&gt; [9] 1.937642
+#&gt; [1] 4.265068 4.132190 3.481657 2.681060 2.891796 3.069272 3.075046 3.073725
+#&gt; [9] 3.322228
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt; [1] 5.238317 5.720575 4.365564 3.929038 4.079202 4.162020 4.087464 4.160192
-#&gt; [9] 5.843943
+#&gt; [1] 5.541811 4.582825 4.246572 3.464987 3.687461 3.276194 3.449367 6.283283
+#&gt; [9] 8.771922
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt; [1] 3.830618 3.161029 3.008763 3.412751 2.776611 2.569760 3.025062 3.089974
-#&gt; [9] 4.492908
+#&gt; [1] 2.042533 2.801822 3.008664 3.176387 3.590430 3.942503 3.623385 3.530426
+#&gt; [9] 3.585195
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt; [1] 1.492786 1.255128 1.980452 1.721162 1.376743 1.206704 1.184542 1.164871
-#&gt; [9] 1.028909
+#&gt; [1] 3.391693 3.374958 3.869096 3.116810 2.687136 2.673019 2.671724 2.843307
+#&gt; [9] 2.540961
 #&gt; 
 #&gt; [[1]][[5]]
-#&gt; [1]  2.142286  2.309175  3.241802  1.639115  2.992033  5.559584  6.087083
-#&gt; [8] 11.394478 11.345456
+#&gt; [1]  2.462699  1.417479  3.483799  2.222543 49.820372  1.650904  2.766453
+#&gt; [8]  1.093433  2.597486
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'>kfolds2Pressind</span>(<span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>ypine</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XpineNAX21</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>2</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='fu'>kfolds2Pressind</span><span class='op'>(</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>ypine</span>,dataX<span class='op'>=</span><span class='va'>XpineNAX21</span>,nt<span class='op'>=</span><span class='fl'>10</span>,NK<span class='op'>=</span><span class='fl'>2</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt; [1] 1.6450105 1.9474777 1.6710299 1.1816905 0.7976980 0.6669618 0.8316049
-#&gt; [8] 1.4862295 6.1417577
+#&gt; [1] 2.984719 2.439020 2.463254 5.041728 6.950408 6.919561 7.586048 7.251818
+#&gt; [9] 7.239121
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt; [1] 3.993344 3.879889 3.797228 3.241105 3.383010 3.447232 4.091492 4.419485
-#&gt; [9] 4.483931
+#&gt; [1] 1.325304 3.242733 4.699757 4.492495 3.344519 3.233189 3.188770 3.630489
+#&gt; [9] 5.184970
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt; [1]  4.112515  4.992535  5.158821  2.873014  3.487017  9.488345  9.561490
-#&gt; [8]  7.489757 14.433294
+#&gt; [1] 1.181561 2.298805 2.069457 2.334230 2.462473 2.353147 2.312817 2.486078
+#&gt; [9] 2.828056
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt; [1] 0.693896 4.151322 3.767016 4.087873 4.487252 4.366913 4.553327 5.056588
-#&gt; [9] 4.971096
+#&gt; [1]  5.656907  4.773517  4.371704  4.711435  4.631337  5.195068 10.307834
+#&gt; [8]  8.043123 83.859646
 #&gt; 
 #&gt; [[1]][[5]]
-#&gt; [1] 2.2653722 2.4945902 1.8992621 0.9052759 0.8748049 0.9798295 0.7800984
-#&gt; [8] 0.8085901 0.7018205
+#&gt; [1] 1.872654 1.793273 1.485903 1.433583 1.714767 2.197102 2.547036 2.526357
+#&gt; [9] 2.917841
 #&gt; 
 #&gt; 
 #&gt; [[2]]
 #&gt; [[2]][[1]]
-#&gt; [1]  2.9716696  3.2779408  2.7714934  4.5684210  1.0175520  5.0862274  0.8564276
-#&gt; [8]  1.5783679 30.6224601
+#&gt; [1] 0.9625401 2.9556566 4.6782982 4.8384801 4.5644209 3.9823354 3.5711189
+#&gt; [8] 4.5653789 4.8712847
 #&gt; 
 #&gt; [[2]][[2]]
-#&gt; [1] 2.131316 1.841545 1.259944 1.685330 1.575113 1.677672 1.947676 1.876553
-#&gt; [9] 2.231767
+#&gt; [1] 2.489185 2.819143 2.938148 3.594480 4.727433 4.921556 5.712592 5.491418
+#&gt; [9] 3.949971
 #&gt; 
 #&gt; [[2]][[3]]
-#&gt; [1] 0.3947604 0.9360777 1.0832259 0.8888252 0.4922144 0.3847514 0.3219615
-#&gt; [8] 0.7465462 0.7449231
+#&gt; [1] 1.794697 2.129860 1.503509 1.389300 1.338485 1.231822 1.126318 1.093476
+#&gt; [9] 1.077735
 #&gt; 
 #&gt; [[2]][[4]]
-#&gt; [1] 4.838824 4.370849 4.201728 3.610481 3.745642 4.006851 3.976486 4.046207
-#&gt; [9] 4.457591
+#&gt; [1]  4.589280  3.917830  3.564259  2.275041  5.377915  2.867677  4.752001
+#&gt; [8] 66.091534  2.517110
 #&gt; 
 #&gt; [[2]][[5]]
-#&gt; [1] 4.039507 4.562471 4.124907 3.461058 3.934664 4.053847 4.442942 4.288277
-#&gt; [9] 4.429484
+#&gt; [1] 5.738700 5.360488 4.475283 4.605362 4.553123 5.010755 4.886292 4.927584
+#&gt; [9] 4.583930
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Xpine"</span>,<span class='st'>"XpineNAX21"</span>,<span class='st'>"ypine"</span>))</div></pre>
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Xpine"</span>,<span class='st'>"XpineNAX21"</span>,<span class='st'>"ypine"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='co'># }</span>
+
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#references">References</a></li>
-
-      <li><a href="#note">Note</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Frederic Bertrand<br />
-<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
-<a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -588,13 +619,16 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

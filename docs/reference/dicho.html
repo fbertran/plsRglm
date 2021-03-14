@@ -8,21 +8,36 @@
 
 <title>Dichotomization — dicho • plsRglm</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +45,12 @@
 
 
 
-<meta property="og:title" content="Dichotomization — dicho" />
 
-<meta property="og:description" content="This function takes a real value and converts it to 1 if it is positive and else to 0." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Dichotomization — dicho" />
+<meta property="og:description" content="This function takes a real value and converts it to 1 if it is positive and
+else to 0." />
+<meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -47,12 +64,13 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -63,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -71,9 +89,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -82,11 +103,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fbertran/plsRglm">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -97,24 +117,24 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Dichotomization</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/fbertran/plsRglm/blob/master/R/dicho.R'><code>R/dicho.R</code></a></small>
     <div class="hidden name"><code>dicho.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-    <p>This function takes a real value and converts it to 1 if it is positive and else to 0.</p>
-    
+    <p>This function takes a real value and converts it to 1 if it is positive and
+else to 0.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dicho</span>(<span class='no'>val</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>dicho</span><span class='op'>(</span><span class='va'>val</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -123,72 +143,69 @@
       <td><p>A real value</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>0 or 1.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/base/topics/ifelse'>ifelse</a></code></p></div>
-    
+    <div class='dont-index'><p><code><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></code></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>dimX</span> <span class='kw'>&lt;-</span> <span class='fl'>6</span>
-<span class='no'>Astar</span> <span class='kw'>&lt;-</span> <span class='fl'>4</span>
-(<span class='no'>dataAstar4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/t'>t</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>replicate</a></span>(<span class='fl'>10</span>,<span class='fu'><a href='simul_data_YX.html'>simul_data_YX</a></span>(<span class='no'>dimX</span>,<span class='no'>Astar</span>))))</div><div class='output co'>#&gt;              Y 1        Y 2         Y 3         Y 4         X1          X2
-#&gt;  [1,] -1.9211177   3.202569  -0.3538446  -0.2798981  0.8867423   1.8501102
-#&gt;  [2,] 11.4083052  -0.646125  -4.9197093  10.9085160 -2.0174397 -10.2794014
-#&gt;  [3,] -1.4982785 -16.758466  17.2115614  -8.7742898  3.5664300   2.2364121
-#&gt;  [4,]  9.5059378  11.488317  -0.6166539   3.0205148  1.9917268   1.5318761
-#&gt;  [5,]  0.9799193   6.084272   6.6831154   6.0058032  7.8224866   1.0102053
-#&gt;  [6,] -2.1214391 -17.415799  -8.9219237   7.0310345 -7.6854294 -14.0361139
-#&gt;  [7,]  3.5767425  10.972855   4.3904762   0.6013901  5.3774094   5.2608904
-#&gt;  [8,]  0.3706355   6.605531 -12.4146626   0.1562454 -6.1279494  -0.5706908
-#&gt;  [9,] -1.9735893  11.616689 -13.1739916  -8.3025526 -7.5222881   7.0675699
-#&gt; [10,]  3.6990374  -6.313521  32.5396345 -15.8564987 12.6059058  14.1338612
-#&gt;                X3         X4         X5          X6
-#&gt;  [1,]   2.6331656  -1.427803 -0.4674438   0.3178286
-#&gt;  [2,]   0.2840705   7.393057 -0.8504910   9.7115702
-#&gt;  [3,] -16.5488945   4.866487  3.5651724 -15.2508115
-#&gt;  [4,]   6.6910885   5.727181  5.2948918  10.4561648
-#&gt;  [5,]   4.0034974   5.735150 -1.0950309   1.9143873
-#&gt;  [6,]  -8.2905046  -2.797894 -9.1553239  -3.3952876
-#&gt;  [7,]   6.3946364   4.097037  3.9795453   5.1171656
-#&gt;  [8,]   6.9647834  -5.960799 -0.3885479   7.1578338
-#&gt;  [9,]   9.5351163 -10.495917  4.0669811   6.5622637
-#&gt; [10,] -14.9294115  12.401210 13.9431017 -15.1324790</div><div class='input'>
-<span class='fu'>dicho</span>(<span class='no'>dataAstar4</span>)</div><div class='output co'>#&gt;       Y 1 Y 2 Y 3 Y 4 X1 X2 X3 X4 X5 X6
-#&gt;  [1,]   0   1   0   0  1  1  1  0  0  1
-#&gt;  [2,]   1   0   0   1  0  0  1  1  0  1
-#&gt;  [3,]   0   0   1   0  1  1  0  1  1  0
-#&gt;  [4,]   1   1   0   1  1  1  1  1  1  1
-#&gt;  [5,]   1   1   1   1  1  1  1  1  0  1
-#&gt;  [6,]   0   0   0   1  0  0  0  0  0  0
-#&gt;  [7,]   1   1   1   1  1  1  1  1  1  1
-#&gt;  [8,]   1   1   0   1  0  0  1  0  0  1
-#&gt;  [9,]   0   1   0   0  0  1  1  0  1  1
-#&gt; [10,]   1   0   1   0  1  1  0  1  1  0</div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"dimX"</span>,<span class='st'>"Astar"</span>))</div></pre>
-  </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
     <p>Frédéric Bertrand<br />
 <a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
-<a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
+<a href='https://fbertran.github.io/homepage/'>https://fbertran.github.io/homepage/</a></p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='va'>dimX</span> <span class='op'>&lt;-</span> <span class='fl'>6</span>
+<span class='va'>Astar</span> <span class='op'>&lt;-</span> <span class='fl'>4</span>
+<span class='op'>(</span><span class='va'>dataAstar4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span><span class='op'>(</span><span class='fl'>10</span>,<span class='fu'><a href='simul_data_YX.html'>simul_data_YX</a></span><span class='op'>(</span><span class='va'>dimX</span>,<span class='va'>Astar</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;              Y 1        Y 2        Y 3         Y 4         X1         X2
+#&gt;  [1,]  5.3419555   4.180275   4.879056   4.7772359   4.577979 -0.7305749
+#&gt;  [2,]  9.7633669  14.414315   4.988913   2.4139010   6.128001  4.7532461
+#&gt;  [3,] -5.7833518   2.446599   3.873182   3.2301265   5.379399  1.5331008
+#&gt;  [4,] -4.9963030  -3.402539  -7.490346  -3.3716915  -5.735446 -0.4505463
+#&gt;  [5,] -7.7250172 -18.180852   2.800905   0.9371337  -1.491120 -6.7152298
+#&gt;  [6,] -8.9903305  -9.478774  -9.498890  -2.1783763  -7.932759 -4.2194323
+#&gt;  [7,] -0.3724814  -5.666992   6.001864  -9.8526091  -1.117630  4.6739968
+#&gt;  [8,]  2.9824349  -8.428449  14.219899 -21.5612906  -1.505533 11.4655131
+#&gt;  [9,] -3.7388123   6.349168 -17.060522 -11.5718352 -12.557058  5.5129233
+#&gt; [10,] -1.1463014 -19.327701  -2.319765  -7.2042570  -9.093328 -5.1550080
+#&gt;                X3          X4          X5         X6
+#&gt;  [1,]   1.8026469   6.5879934  1.26130300   3.796816
+#&gt;  [2,]   7.4792162   8.2983052  6.92598750   9.662158
+#&gt;  [3,]   2.8578107  -0.2653401 -4.09774978  -2.759580
+#&gt;  [4,]  -0.7818604  -7.3326774 -2.04557329  -2.360285
+#&gt;  [5,] -11.3704455  -2.2650184 -7.47481290 -12.143825
+#&gt;  [6,]  -3.5907371 -10.3785938 -6.65893071  -6.033806
+#&gt;  [7,]  -7.0513093  -0.6036242  5.18569796  -6.549327
+#&gt;  [8,] -13.6876277   1.1452475 14.12845203 -11.036526
+#&gt;  [9,]   5.8019789 -14.7394994  3.32891140   3.644716
+#&gt; [10,] -14.1146075  -3.8813864  0.05939959  -8.891192</div><div class='input'>
+<span class='fu'>dicho</span><span class='op'>(</span><span class='va'>dataAstar4</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;       Y 1 Y 2 Y 3 Y 4 X1 X2 X3 X4 X5 X6
+#&gt;  [1,]   1   1   1   1  1  0  1  1  1  1
+#&gt;  [2,]   1   1   1   1  1  1  1  1  1  1
+#&gt;  [3,]   0   1   1   1  1  1  1  0  0  0
+#&gt;  [4,]   0   0   0   0  0  0  0  0  0  0
+#&gt;  [5,]   0   0   1   1  0  0  0  0  0  0
+#&gt;  [6,]   0   0   0   0  0  0  0  0  0  0
+#&gt;  [7,]   0   0   1   0  0  1  0  0  1  0
+#&gt;  [8,]   1   0   1   0  0  1  0  1  1  0
+#&gt;  [9,]   0   1   0   0  0  1  1  0  1  1
+#&gt; [10,]   0   0   0   0  0  0  0  0  1  0</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"dimX"</span>,<span class='st'>"Astar"</span><span class='op'>)</span><span class='op'>)</span>
+
+</div></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -196,13 +213,16 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

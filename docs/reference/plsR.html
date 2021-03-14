@@ -8,21 +8,36 @@
 
 <title>Partial least squares Regression models with leave one out cross validation — plsR • plsRglm</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +45,11 @@
 
 
 
-<meta property="og:title" content="Partial least squares Regression models with leave one out cross validation — plsR" />
 
+<meta property="og:title" content="Partial least squares Regression models with leave one out cross validation — plsR" />
 <meta property="og:description" content="This function implements Partial least squares Regression models with leave one out cross validation for complete or incomplete datasets." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -47,12 +63,13 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -63,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -71,9 +88,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -82,11 +102,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fbertran/plsRglm">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -97,6 +116,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -108,36 +128,34 @@
     </div>
 
     <div class="ref-description">
-    
     <p>This function implements Partial least squares Regression models with leave one out cross validation for complete or incomplete datasets.</p>
-    
     </div>
 
-    <pre class="usage">plsR(x, &#8230;)
-# S3 method for default
-plsRmodel(dataY, dataX, nt = 2, limQ2set = 0.0975, 
-dataPredictY = dataX, modele = "pls", family = NULL, typeVC = "none", 
-EstimXNA = FALSE, scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
-alpha.pvals.expli = 0.05, MClassed = FALSE, tol_Xi = 10^(-12), weights,
-sparse = FALSE, sparseStop = TRUE, naive = FALSE,verbose=TRUE)
-# S3 method for formula
-plsRmodel(formula, data, nt = 2, limQ2set = 0.0975,
-dataPredictY, modele = "pls", family = NULL, typeVC = "none",
-EstimXNA = FALSE, scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
-alpha.pvals.expli = 0.05, MClassed = FALSE, tol_Xi = 10^(-12), weights,
-subset, contrasts = NULL, sparse = FALSE, sparseStop = TRUE, naive = FALSE,
-verbose=TRUE)
-PLS_lm(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = dataX, 
-modele = "pls", family = NULL, typeVC = "none", EstimXNA = FALSE, 
-scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
-alpha.pvals.expli = 0.05, MClassed = FALSE, tol_Xi = 10^(-12),
-weights,sparse=FALSE,sparseStop=FALSE,naive=FALSE,verbose=TRUE)
-PLS_lm_formula(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,
-modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,
-scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,
-tol_Xi=10^(-12),weights,subset,contrasts=NULL,sparse=FALSE,
-sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
-    
+    <pre class="usage"><span class='fu'>plsR</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='co'># S3 method for default</span>
+<span class='fu'>plsRmodel</span><span class='op'>(</span><span class='va'>dataY</span>, <span class='va'>dataX</span>, nt <span class='op'>=</span> <span class='fl'>2</span>, limQ2set <span class='op'>=</span> <span class='fl'>0.0975</span>, 
+dataPredictY <span class='op'>=</span> <span class='va'>dataX</span>, modele <span class='op'>=</span> <span class='st'>"pls"</span>, family <span class='op'>=</span> <span class='cn'>NULL</span>, typeVC <span class='op'>=</span> <span class='st'>"none"</span>, 
+EstimXNA <span class='op'>=</span> <span class='cn'>FALSE</span>, scaleX <span class='op'>=</span> <span class='cn'>TRUE</span>, scaleY <span class='op'>=</span> <span class='cn'>NULL</span>, pvals.expli <span class='op'>=</span> <span class='cn'>FALSE</span>, 
+alpha.pvals.expli <span class='op'>=</span> <span class='fl'>0.05</span>, MClassed <span class='op'>=</span> <span class='cn'>FALSE</span>, tol_Xi <span class='op'>=</span> <span class='fl'>10</span><span class='op'>^</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>12</span><span class='op'>)</span>, <span class='va'>weights</span>,
+sparse <span class='op'>=</span> <span class='cn'>FALSE</span>, sparseStop <span class='op'>=</span> <span class='cn'>TRUE</span>, naive <span class='op'>=</span> <span class='cn'>FALSE</span>,verbose<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='co'># S3 method for formula</span>
+<span class='fu'>plsRmodel</span><span class='op'>(</span><span class='va'>formula</span>, <span class='va'>data</span>, nt <span class='op'>=</span> <span class='fl'>2</span>, limQ2set <span class='op'>=</span> <span class='fl'>0.0975</span>,
+<span class='va'>dataPredictY</span>, modele <span class='op'>=</span> <span class='st'>"pls"</span>, family <span class='op'>=</span> <span class='cn'>NULL</span>, typeVC <span class='op'>=</span> <span class='st'>"none"</span>,
+EstimXNA <span class='op'>=</span> <span class='cn'>FALSE</span>, scaleX <span class='op'>=</span> <span class='cn'>TRUE</span>, scaleY <span class='op'>=</span> <span class='cn'>NULL</span>, pvals.expli <span class='op'>=</span> <span class='cn'>FALSE</span>, 
+alpha.pvals.expli <span class='op'>=</span> <span class='fl'>0.05</span>, MClassed <span class='op'>=</span> <span class='cn'>FALSE</span>, tol_Xi <span class='op'>=</span> <span class='fl'>10</span><span class='op'>^</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>12</span><span class='op'>)</span>, <span class='va'>weights</span>,
+<span class='va'>subset</span>, contrasts <span class='op'>=</span> <span class='cn'>NULL</span>, sparse <span class='op'>=</span> <span class='cn'>FALSE</span>, sparseStop <span class='op'>=</span> <span class='cn'>TRUE</span>, naive <span class='op'>=</span> <span class='cn'>FALSE</span>,
+verbose<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'>PLS_lm</span><span class='op'>(</span><span class='va'>dataY</span>, <span class='va'>dataX</span>, nt <span class='op'>=</span> <span class='fl'>2</span>, limQ2set <span class='op'>=</span> <span class='fl'>0.0975</span>, dataPredictY <span class='op'>=</span> <span class='va'>dataX</span>, 
+modele <span class='op'>=</span> <span class='st'>"pls"</span>, family <span class='op'>=</span> <span class='cn'>NULL</span>, typeVC <span class='op'>=</span> <span class='st'>"none"</span>, EstimXNA <span class='op'>=</span> <span class='cn'>FALSE</span>, 
+scaleX <span class='op'>=</span> <span class='cn'>TRUE</span>, scaleY <span class='op'>=</span> <span class='cn'>NULL</span>, pvals.expli <span class='op'>=</span> <span class='cn'>FALSE</span>, 
+alpha.pvals.expli <span class='op'>=</span> <span class='fl'>0.05</span>, MClassed <span class='op'>=</span> <span class='cn'>FALSE</span>, tol_Xi <span class='op'>=</span> <span class='fl'>10</span><span class='op'>^</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>12</span><span class='op'>)</span>,
+<span class='va'>weights</span>,sparse<span class='op'>=</span><span class='cn'>FALSE</span>,sparseStop<span class='op'>=</span><span class='cn'>FALSE</span>,naive<span class='op'>=</span><span class='cn'>FALSE</span>,verbose<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'>PLS_lm_formula</span><span class='op'>(</span><span class='va'>formula</span>,data<span class='op'>=</span><span class='cn'>NULL</span>,nt<span class='op'>=</span><span class='fl'>2</span>,limQ2set<span class='op'>=</span><span class='fl'>.0975</span>,dataPredictY<span class='op'>=</span><span class='va'>dataX</span>,
+modele<span class='op'>=</span><span class='st'>"pls"</span>,family<span class='op'>=</span><span class='cn'>NULL</span>,typeVC<span class='op'>=</span><span class='st'>"none"</span>,EstimXNA<span class='op'>=</span><span class='cn'>FALSE</span>,scaleX<span class='op'>=</span><span class='cn'>TRUE</span>,
+scaleY<span class='op'>=</span><span class='cn'>NULL</span>,pvals.expli<span class='op'>=</span><span class='cn'>FALSE</span>,alpha.pvals.expli<span class='op'>=</span><span class='fl'>.05</span>,MClassed<span class='op'>=</span><span class='cn'>FALSE</span>,
+tol_Xi<span class='op'>=</span><span class='fl'>10</span><span class='op'>^</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>12</span><span class='op'>)</span>,<span class='va'>weights</span>,<span class='va'>subset</span>,contrasts<span class='op'>=</span><span class='cn'>NULL</span>,sparse<span class='op'>=</span><span class='cn'>FALSE</span>,
+sparseStop<span class='op'>=</span><span class='cn'>FALSE</span>,naive<span class='op'>=</span><span class='cn'>FALSE</span>,verbose<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -155,11 +173,11 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
     </tr>
     <tr>
       <th>formula</th>
-      <td><p>an object of class "<code><a href='https://www.rdocumentation.org/packages/stats/topics/formula'>formula</a></code>" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.</p></td>
+      <td><p>an object of class "<code><a href='https://rdrr.io/r/stats/formula.html'>formula</a></code>" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.</p></td>
     </tr>
     <tr>
       <th>data</th>
-      <td><p>an optional data frame, list or environment (or object coercible by <code><a href='https://www.rdocumentation.org/packages/base/topics/as.data.frame'>as.data.frame</a></code> to a data frame) containing the variables in the model. If not found in <code>data</code>, the variables are taken from <code><a href='https://www.rdocumentation.org/packages/base/topics/environment'>environment(formula)</a></code>, typically the environment from which <code>plsR</code> is called.</p></td>
+      <td><p>an optional data frame, list or environment (or object coercible by <code><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></code> to a data frame) containing the variables in the model. If not found in <code>data</code>, the variables are taken from <code><a href='https://rdrr.io/r/base/environment.html'>environment(formula)</a></code>, typically the environment from which <code>plsR</code> is called.</p></td>
     </tr>
     <tr>
       <th>nt</th>
@@ -183,12 +201,13 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
     </tr>
     <tr>
       <th>typeVC</th>
-      <td><p>type of leave one out cross validation. Several procedures are available. If cross validation is required, one needs to selects the way of predicting the response for left out observations. For complete rows, without any missing value, there are two different ways of computing these predictions. As a consequence, for mixed datasets, with complete and incomplete rows, there are two ways of computing prediction : either predicts any row as if there were missing values in it (<code>missingdata</code>) or selects the prediction method accordingly to the completeness of the row (<code>adaptative</code>).</p><dl class='dl-horizontal'>
+      <td><p>type of leave one out cross validation. Several procedures are available. If cross validation is required, one needs to selects the way of predicting the response for left out observations. For complete rows, without any missing value, there are two different ways of computing these predictions. As a consequence, for mixed datasets, with complete and incomplete rows, there are two ways of computing prediction : either predicts any row as if there were missing values in it (<code>missingdata</code>) or selects the prediction method accordingly to the completeness of the row (<code>adaptative</code>).</p><dl>
       <dt><code>none</code></dt><dd><p>no cross validation</p></dd>
       <dt><code>standard</code></dt><dd><p>as in SIMCA for datasets without any missing value. For datasets with any missing value, it is the as using <code>missingdata</code></p></dd>
       <dt><code>missingdata</code></dt><dd><p>all values predicted as those with missing values for datasets with any missing values</p></dd>
       <dt><code>adaptative</code></dt><dd><p>predict a response value for an x with any missing value as those with missing values and for an x without any missing value as those without missing values.</p></dd>
-      </dl><p></p></td>
+      
+</dl><p></p></td>
     </tr>
     <tr>
       <th>EstimXNA</th>
@@ -247,11 +266,11 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
       <td><p>should info messages be displayed ?</p></td>
     </tr>
     <tr>
-      <th>&#8230;</th>
+      <th>...</th>
       <td><p>arguments to pass to <code>plsRmodel.default</code> or to <code>plsRmodel.formula</code></p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>There are several ways to deal with missing values that leads to different computations of leave one out cross validation criteria.</p>
@@ -260,7 +279,6 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
 <p>The terms in the formula will be re-ordered so that main effects come first, followed by the interactions, all second-order, all third-order and so on: to avoid this pass a terms object as the formula.</p>
 <p>Non-NULL weights can be used to indicate that different observations have different dispersions (with the values in weights being inversely proportional to the dispersions); or equivalently, when the elements of weights are positive integers w_i, that each response y_i is the mean of w_i unit-weight observations.</p>
 <p>The default estimator for Degrees of Freedom is the Kramer and Sugiyama's one. Information criteria are computed accordingly to these estimations. Naive Degrees of Freedom and Information Criteria are also provided for comparison purposes. For more details, see N. Kraemer and M. Sugiyama. (2011). The Degrees of Freedom of Partial Least Squares Regression. <em>Journal of the American Statistical Association</em>, 106(494), 697-705, 2011.</p>
-    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p></p>
@@ -306,15 +324,14 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
   <dt>AIC</dt><dd><p>AIC vs number of components</p></dd>
   <dt>optional</dt><dd><p>If the response is assumed to be binary:<br />
         i.e. <code>MClassed=TRUE</code>.    
-  <dl class='dl-horizontal'>
+  <dl>
   <dt><code>MissClassed</code></dt><dd><p>Number of miss classed results</p></dd>
   <dt><code>Probs</code></dt><dd><p>"Probability" predicted by the model. These are not true probabilities since they may lay outside of [0,1]</p></dd>
-  <dt><code>Probs.trc</code></dt><dd><p>Probability predicted by the model and constrained to belong to [0,1]</p></dd>
-  </dl></p></dd>
+  <dt><code>Probs.trc</code></dt><dd><p>Probability predicted by the model and constrained to belong to [0,1]</p></dd></dl></p></dd>
   <dt>ttPredictFittedMissingY</dt><dd><p>Description of 'comp2'</p></dd>
   <dt>optional</dt><dd><p>If cross validation was requested:<br />
         i.e. <code>typeVC="standard"</code>, <code>typeVC="missingdata"</code> or <code>typeVC="adaptative"</code>.
-  <dl class='dl-horizontal'>
+  <dl>
   <dt><code>R2residY</code></dt><dd><p>R2 coefficient value on the standardized scale</p></dd>
   <dt><code>R2</code></dt><dd><p>R2 coefficient value on the original scale</p></dd>
   <dt><code>press.tot2</code></dt><dd><p>total PRESS value for all observations (original scale)</p></dd>
@@ -322,37 +339,38 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
   <dt><code>limQ2</code></dt><dd><p>limit of the Q2 value</p></dd>
   <dt><code>Q2_2</code></dt><dd><p>Q2 value (original scale)</p></dd>
   <dt><code>Q2cum</code></dt><dd><p>cumulated Q2 (standardized scale)</p></dd>
-  <dt><code>Q2cum_2</code></dt><dd><p>cumulated Q2 (original scale)</p></dd>
-  </dl></p></dd>
+  <dt><code>Q2cum_2</code></dt><dd><p>cumulated Q2 (original scale)</p></dd></dl></p></dd>
   <dt>InfCrit</dt><dd><p>table of Information Criteria</p></dd>
   <dt>Std.ValsPredictY</dt><dd><p>predicted response values for supplementary dataset (standardized scale)</p></dd>
   <dt>ValsPredictY</dt><dd><p>predicted response values for supplementary dataset (original scale)</p></dd>
   <dt>Std.XChapeau</dt><dd><p>estimated values for missing values in the predictor matrix (standardized scale)</p></dd>
   <dt>XXwotNA</dt><dd><p>predictor matrix with missing values replaced with 0</p></dd>
 
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Nicolas Meyer, Myriam Maumy-Bertrand et Frederic Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>, 151(2), pages 1-18.
 <a href='http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47'>http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47</a></p>
-    
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Frederic Bertrand<br />
+<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
+<a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Use <code><a href='cv.plsR.html'>cv.plsR</a></code> to cross-validate the plsRglm models and <code><a href='bootpls.html'>bootpls</a></code> to bootstrap them.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>See also <code><a href='plsRglm.html'>plsRglm</a></code> to fit PLSGLR models.</p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>Cornell</span>)
-<span class='no'>XCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>1</span>:<span class='fl'>7</span>]
-<span class='no'>yCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>8</span>]
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>
+<span class='va'>XCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>]</span>
+<span class='va'>yCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>8</span><span class='op'>]</span>
 
 <span class='co'>#maximum 6 components could be extracted from this dataset</span>
 <span class='co'>#trying 10 to trigger automatic stopping criterion</span>
-<span class='no'>modpls10</span><span class='kw'>&lt;-</span><span class='fu'>plsR</span>(<span class='no'>yCornell</span>,<span class='no'>XCornell</span>,<span class='fl'>10</span>)</div><div class='output co'>#&gt; ____************************************************____
+<span class='va'>modpls10</span><span class='op'>&lt;-</span><span class='fu'>plsR</span><span class='op'>(</span><span class='va'>yCornell</span>,<span class='va'>XCornell</span>,<span class='fl'>10</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; ____Component____ 1 ____
 #&gt; ____Component____ 2 ____
 #&gt; ____Component____ 3 ____
@@ -363,7 +381,8 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
 #&gt; Warning only 6 components could thus be extracted
 #&gt; ____Predicting X without NA neither in X nor in Y____
 #&gt; ****________________________________________________****
-#&gt; </div><div class='input'><span class='no'>modpls10</span></div><div class='output co'>#&gt; Number of required components:
+#&gt; </div><div class='input'><span class='va'>modpls10</span>
+</div><div class='output co'>#&gt; Number of required components:
 #&gt; [1] 10
 #&gt; Number of successfully computed components:
 #&gt; [1] 6
@@ -403,7 +422,8 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
 #&gt; Nb_Comp_5      0.7661509  0.8804809  1.0227979   28.64206
 #&gt; Nb_Comp_6      0.8361907  1.1070902  1.3048716   33.63927</div><div class='input'>
 <span class='co'>#With iterated leave one out CV PRESS</span>
-<span class='no'>modpls6cv</span><span class='kw'>&lt;-</span><span class='fu'>plsR</span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Cornell</span>,<span class='fl'>6</span>,<span class='kw'>typeVC</span><span class='kw'>=</span><span class='st'>"standard"</span>)</div><div class='output co'>#&gt; ____************************************************____
+<span class='va'>modpls6cv</span><span class='op'>&lt;-</span><span class='fu'>plsR</span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>Cornell</span>,<span class='fl'>6</span>,typeVC<span class='op'>=</span><span class='st'>"standard"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; ____TypeVC____ standard ____
 #&gt; ____Component____ 1 ____
 #&gt; ____Component____ 2 ____
@@ -413,7 +433,8 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
 #&gt; ____Component____ 6 ____
 #&gt; ____Predicting X without NA neither in X nor in Y____
 #&gt; ****________________________________________________****
-#&gt; </div><div class='input'><span class='no'>modpls6cv</span></div><div class='output co'>#&gt; Number of required components:
+#&gt; </div><div class='input'><span class='va'>modpls6cv</span>
+</div><div class='output co'>#&gt; Number of required components:
 #&gt; [1] 6
 #&gt; Number of successfully computed components:
 #&gt; [1] 6
@@ -459,8 +480,9 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
 #&gt; Nb_Comp_3         4      0.7431421  0.7363469  0.8256118   19.01033
 #&gt; Nb_Comp_4         5      0.7846050  0.8721072  0.9964867   24.16510
 #&gt; Nb_Comp_5         6      0.7661509  0.8804809  1.0227979   28.64206
-#&gt; Nb_Comp_6         7      0.8361907  1.1070902  1.3048716   33.63927</div><div class='input'><span class='no'>cv.modpls</span><span class='kw'>&lt;-</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Cornell</span>,<span class='fl'>6</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>100</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='no'>res.cv.modpls</span><span class='kw'>&lt;-</span><span class='fu'><a href='cvtable.html'>cvtable</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>cv.modpls</span>))</div><div class='output co'>#&gt; ____************************************************____
+#&gt; Nb_Comp_6         7      0.8361907  1.1070902  1.3048716   33.63927</div><div class='input'><span class='va'>cv.modpls</span><span class='op'>&lt;-</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>Cornell</span>,<span class='fl'>6</span>,NK<span class='op'>=</span><span class='fl'>100</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>res.cv.modpls</span><span class='op'>&lt;-</span><span class='fu'><a href='cvtable.html'>cvtable</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>cv.modpls</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; ____Component____ 1 ____
 #&gt; ____Component____ 2 ____
 #&gt; ____Component____ 3 ____
@@ -484,16 +506,21 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
 #&gt; 
 #&gt; CV Q2 criterion:
 #&gt;  0  1  2 
-#&gt;  0 88 12 
+#&gt;  0 86 14 
 #&gt; 
 #&gt; CV Press criterion:
 #&gt;  1  2  3  4  5 
-#&gt;  0  1 33 46 20 </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>res.cv.modpls</span>)</div><div class='img'><img src='plsR-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"XCornell"</span>,<span class='st'>"yCornell"</span>,<span class='st'>"modpls10"</span>,<span class='st'>"modpls6cv"</span>))</div><div class='input'><span class='co'>#A binary response example</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>aze_compl</span>)
-<span class='no'>Xaze_compl</span><span class='kw'>&lt;-</span><span class='no'>aze_compl</span>[,<span class='fl'>2</span>:<span class='fl'>34</span>]
-<span class='no'>yaze_compl</span><span class='kw'>&lt;-</span><span class='no'>aze_compl</span>$<span class='no'>y</span>
-<span class='no'>modpls.aze</span> <span class='kw'>&lt;-</span> <span class='fu'>plsR</span>(<span class='no'>yaze_compl</span>,<span class='no'>Xaze_compl</span>,<span class='fl'>10</span>,<span class='kw'>MClassed</span><span class='kw'>=</span><span class='fl'>TRUE</span>,<span class='kw'>typeVC</span><span class='kw'>=</span><span class='st'>"standard"</span>)</div><div class='output co'>#&gt; ____************************************************____
+#&gt;  0  1 31 52 16 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>res.cv.modpls</span><span class='op'>)</span>
+</div><div class='img'><img src='plsR-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"XCornell"</span>,<span class='st'>"yCornell"</span>,<span class='st'>"modpls10"</span>,<span class='st'>"modpls6cv"</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># \donttest{</span>
+<span class='co'>#A binary response example</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>aze_compl</span><span class='op'>)</span>
+<span class='va'>Xaze_compl</span><span class='op'>&lt;-</span><span class='va'>aze_compl</span><span class='op'>[</span>,<span class='fl'>2</span><span class='op'>:</span><span class='fl'>34</span><span class='op'>]</span>
+<span class='va'>yaze_compl</span><span class='op'>&lt;-</span><span class='va'>aze_compl</span><span class='op'>$</span><span class='va'>y</span>
+<span class='va'>modpls.aze</span> <span class='op'>&lt;-</span> <span class='fu'>plsR</span><span class='op'>(</span><span class='va'>yaze_compl</span>,<span class='va'>Xaze_compl</span>,<span class='fl'>10</span>,MClassed<span class='op'>=</span><span class='cn'>TRUE</span>,typeVC<span class='op'>=</span><span class='st'>"standard"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; ____TypeVC____ standard ____
 #&gt; ____Component____ 1 ____
 #&gt; ____Component____ 2 ____
@@ -507,7 +534,8 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
 #&gt; ____Component____ 10 ____
 #&gt; ____Predicting X without NA neither in X nor in Y____
 #&gt; ****________________________________________________****
-#&gt; </div><div class='input'><span class='no'>modpls.aze</span></div><div class='output co'>#&gt; Number of required components:
+#&gt; </div><div class='input'><span class='va'>modpls.aze</span>
+</div><div class='output co'>#&gt; Number of required components:
 #&gt; [1] 10
 #&gt; Number of successfully computed components:
 #&gt; [1] 10
@@ -609,16 +637,20 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
 #&gt; Nb_Comp_9   -75.80069
 #&gt; Nb_Comp_10  -74.33325</div><div class='input'>
 <span class='co'>#Direct access to not cross-validated values</span>
-<span class='no'>modpls.aze</span>$<span class='no'>AIC</span></div><div class='output co'>#&gt;          [,1]     [,2]     [,3]     [,4]     [,5]     [,6]    [,7]     [,8]
+<span class='va'>modpls.aze</span><span class='op'>$</span><span class='va'>AIC</span>
+</div><div class='output co'>#&gt;          [,1]     [,2]     [,3]     [,4]     [,5]     [,6]    [,7]     [,8]
 #&gt; [1,] 154.6179 126.4083 119.3375 114.2313 112.3463 113.2362 114.762 116.5264
 #&gt;          [,9]    [,10]    [,11]
-#&gt; [1,] 118.4601 120.4452 122.4395</div><div class='input'><span class='no'>modpls.aze</span>$<span class='no'>AIC.std</span></div><div class='output co'>#&gt;          [,1]     [,2]    [,3]     [,4]     [,5]     [,6]     [,7]     [,8]
+#&gt; [1,] 118.4601 120.4452 122.4395</div><div class='input'><span class='va'>modpls.aze</span><span class='op'>$</span><span class='va'>AIC.std</span>
+</div><div class='output co'>#&gt;          [,1]     [,2]    [,3]     [,4]     [,5]     [,6]     [,7]     [,8]
 #&gt; [1,] 298.1344 269.9248 262.854 257.7478 255.8628 256.7527 258.2785 260.0429
 #&gt;          [,9]    [,10]   [,11]
-#&gt; [1,] 261.9766 263.9617 265.956</div><div class='input'><span class='no'>modpls.aze</span>$<span class='no'>MissClassed</span></div><div class='output co'>#&gt;      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11]
+#&gt; [1,] 261.9766 263.9617 265.956</div><div class='input'><span class='va'>modpls.aze</span><span class='op'>$</span><span class='va'>MissClassed</span>
+</div><div class='output co'>#&gt;      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11]
 #&gt; [1,]   49   27   25   27   23   22   21   20   20    19    19</div><div class='input'>
 <span class='co'>#Raw predicted values (not really probabily since not constrained in [0,1]</span>
-<span class='no'>modpls.aze</span>$<span class='no'>Probs</span></div><div class='output co'>#&gt;          [,1]        [,2]        [,3]        [,4]        [,5]        [,6]
+<span class='va'>modpls.aze</span><span class='op'>$</span><span class='va'>Probs</span>
+</div><div class='output co'>#&gt;          [,1]        [,2]        [,3]        [,4]        [,5]        [,6]
 #&gt; 1   0.4711538  0.46105744  0.63458141  0.67961627  0.69452246  0.64534767
 #&gt; 2   0.4711538  0.26911816  0.26581497  0.16989268  0.11760783  0.18096700
 #&gt; 3   0.4711538 -0.09080494 -0.05104846 -0.17166916 -0.21455242 -0.21725391
@@ -828,7 +860,8 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
 #&gt; 102  0.77647730  0.755860583  0.764875857  0.76840548  0.77181270
 #&gt; 103  0.50588630  0.488855008  0.495423757  0.50188675  0.50526664
 #&gt; 104  0.81071639  0.804180721  0.825464815  0.81861016  0.81635531</div><div class='input'><span class='co'>#Truncated to [0;1] predicted values (true probabilities)</span>
-<span class='no'>modpls.aze</span>$<span class='no'>Probs.trc</span></div><div class='output co'>#&gt;          [,1]       [,2]       [,3]       [,4]       [,5]       [,6]       [,7]
+<span class='va'>modpls.aze</span><span class='op'>$</span><span class='va'>Probs.trc</span>
+</div><div class='output co'>#&gt;          [,1]       [,2]       [,3]       [,4]       [,5]       [,6]       [,7]
 #&gt; 1   0.4711538 0.46105744 0.63458141 0.67961627 0.69452246 0.64534767 0.64037279
 #&gt; 2   0.4711538 0.26911816 0.26581497 0.16989268 0.11760783 0.18096700 0.21304385
 #&gt; 3   0.4711538 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
@@ -1037,7 +1070,8 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
 #&gt; 101 0.77862492 0.77776152 0.78102072 0.77766043
 #&gt; 102 0.75586058 0.76487586 0.76840548 0.77181270
 #&gt; 103 0.48885501 0.49542376 0.50188675 0.50526664
-#&gt; 104 0.80418072 0.82546481 0.81861016 0.81635531</div><div class='input'><span class='no'>modpls.aze</span>$<span class='no'>Probs</span>-<span class='no'>modpls.aze</span>$<span class='no'>Probs.trc</span></div><div class='output co'>#&gt;     [,1]        [,2]        [,3]         [,4]        [,5]        [,6]
+#&gt; 104 0.80418072 0.82546481 0.81861016 0.81635531</div><div class='input'><span class='va'>modpls.aze</span><span class='op'>$</span><span class='va'>Probs</span><span class='op'>-</span><span class='va'>modpls.aze</span><span class='op'>$</span><span class='va'>Probs.trc</span>
+</div><div class='output co'>#&gt;     [,1]        [,2]        [,3]         [,4]        [,5]        [,6]
 #&gt; 1      0  0.00000000  0.00000000  0.000000000  0.00000000  0.00000000
 #&gt; 2      0  0.00000000  0.00000000  0.000000000  0.00000000  0.00000000
 #&gt; 3      0 -0.09080494 -0.05104846 -0.171669164 -0.21455242 -0.21725391
@@ -1248,8 +1282,9 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
 #&gt; 103  0.000000000  0.000000000  0.000000000  0.00000000  0.000000000
 #&gt; 104  0.000000000  0.000000000  0.000000000  0.00000000  0.000000000</div><div class='input'>
 <span class='co'>#Repeated cross validation of the model (NK=100 times)</span>
-<span class='no'>cv.modpls.aze</span><span class='kw'>&lt;-</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='no'>y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>aze_compl</span>,<span class='fl'>10</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>100</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='no'>res.cv.modpls.aze</span><span class='kw'>&lt;-</span><span class='fu'><a href='cvtable.html'>cvtable</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>cv.modpls.aze</span>,<span class='kw'>MClassed</span><span class='kw'>=</span><span class='fl'>TRUE</span>))</div><div class='output co'>#&gt; ____************************************************____
+<span class='va'>cv.modpls.aze</span><span class='op'>&lt;-</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>aze_compl</span>,<span class='fl'>10</span>,NK<span class='op'>=</span><span class='fl'>100</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>res.cv.modpls.aze</span><span class='op'>&lt;-</span><span class='fu'><a href='cvtable.html'>cvtable</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>cv.modpls.aze</span>,MClassed<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; ____Component____ 1 ____
 #&gt; ____Component____ 2 ____
 #&gt; ____Component____ 3 ____
@@ -1277,7 +1312,7 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
 #&gt; 
 #&gt; CV MissClassed criterion:
 #&gt;  1  2  3  4  5  6  7  8  9 10 
-#&gt; 23 17 23  7  3  4  5  8  7  3 
+#&gt; 24 10 25 11  5  5  7  8  2  3 
 #&gt; 
 #&gt; CV Q2 criterion:
 #&gt;   0 
@@ -1285,24 +1320,27 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
 #&gt; 
 #&gt; CV Press criterion:
 #&gt;  1  2 
-#&gt; 72 28 </div><div class='input'><span class='co'>#High discrepancy in the number of component choice using repeated cross validation</span>
+#&gt; 81 19 </div><div class='input'><span class='co'>#High discrepancy in the number of component choice using repeated cross validation</span>
 <span class='co'>#and missclassed criterion</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>res.cv.modpls.aze</span>)</div><div class='img'><img src='plsR-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Xaze_compl"</span>,<span class='st'>"yaze_compl"</span>,<span class='st'>"modpls.aze"</span>,<span class='st'>"cv.modpls.aze"</span>,<span class='st'>"res.cv.modpls.aze"</span>))
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>res.cv.modpls.aze</span><span class='op'>)</span>
+</div><div class='img'><img src='plsR-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Xaze_compl"</span>,<span class='st'>"yaze_compl"</span>,<span class='st'>"modpls.aze"</span>,<span class='st'>"cv.modpls.aze"</span>,<span class='st'>"res.cv.modpls.aze"</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'>#24 predictors</span>
-<span class='no'>dimX</span> <span class='kw'>&lt;-</span> <span class='fl'>24</span>
+<span class='va'>dimX</span> <span class='op'>&lt;-</span> <span class='fl'>24</span>
 <span class='co'>#2 components</span>
-<span class='no'>Astar</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span>
-<span class='fu'><a href='simul_data_UniYX.html'>simul_data_UniYX</a></span>(<span class='no'>dimX</span>,<span class='no'>Astar</span>)</div><div class='output co'>#&gt;         Y        X1        X2        X3        X4        X5        X6        X7 
-#&gt; -2.665073  3.747882  3.741115 -2.115917  3.723508  3.725596 -2.126918  3.741964 
-#&gt;        X8        X9       X10       X11       X12       X13       X14       X15 
-#&gt;  3.754633 -2.137155  3.747715  3.737510 -2.130237  3.746253  3.749130 -2.111449 
-#&gt;       X16       X17       X18       X19       X20       X21       X22       X23 
-#&gt;  3.759967  3.738491 -2.139593  3.746738  3.727426 -2.104919  3.741160  3.747769 
-#&gt;       X24 
-#&gt; -2.123828 </div><div class='input'><span class='no'>dataAstar2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/t'>t</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>replicate</a></span>(<span class='fl'>250</span>,<span class='fu'><a href='simul_data_UniYX.html'>simul_data_UniYX</a></span>(<span class='no'>dimX</span>,<span class='no'>Astar</span>))))
-<span class='no'>modpls.A2</span><span class='kw'>&lt;-</span> <span class='fu'>plsR</span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dataAstar2</span>,<span class='fl'>10</span>,<span class='kw'>typeVC</span><span class='kw'>=</span><span class='st'>"standard"</span>)</div><div class='output co'>#&gt; ____************************************************____
+<span class='va'>Astar</span> <span class='op'>&lt;-</span> <span class='fl'>2</span>
+<span class='fu'><a href='simul_data_UniYX.html'>simul_data_UniYX</a></span><span class='op'>(</span><span class='va'>dimX</span>,<span class='va'>Astar</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;          Y         X1         X2         X3         X4         X5         X6 
+#&gt; 11.6445768  0.6175008  0.6056228  5.1301635  0.6107449  0.6138664  5.1302654 
+#&gt;         X7         X8         X9        X10        X11        X12        X13 
+#&gt;  0.6402793  0.6103912  5.1466522  0.6048168  0.6205430  5.1257361  0.6101874 
+#&gt;        X14        X15        X16        X17        X18        X19        X20 
+#&gt;  0.6103582  5.1152508  0.6286553  0.6139872  5.1205242  0.6145876  0.6165494 
+#&gt;        X21        X22        X23        X24 
+#&gt;  5.1176202  0.6228756  0.6110989  5.1274519 </div><div class='input'><span class='va'>dataAstar2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span><span class='op'>(</span><span class='fl'>250</span>,<span class='fu'><a href='simul_data_UniYX.html'>simul_data_UniYX</a></span><span class='op'>(</span><span class='va'>dimX</span>,<span class='va'>Astar</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>modpls.A2</span><span class='op'>&lt;-</span> <span class='fu'>plsR</span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>dataAstar2</span>,<span class='fl'>10</span>,typeVC<span class='op'>=</span><span class='st'>"standard"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; ____TypeVC____ standard ____
 #&gt; ____Component____ 1 ____
 #&gt; ____Component____ 2 ____
@@ -1316,742 +1354,1271 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
 #&gt; ____Component____ 10 ____
 #&gt; ____Predicting X without NA neither in X nor in Y____
 #&gt; ****________________________________________________****
-#&gt; </div><div class='input'><span class='no'>modpls.A2</span></div><div class='output co'>#&gt; Number of required components:
+#&gt; </div><div class='input'><span class='va'>modpls.A2</span>
+</div><div class='output co'>#&gt; Number of required components:
 #&gt; [1] 10
 #&gt; Number of successfully computed components:
 #&gt; [1] 10
 #&gt; Coefficients:
 #&gt;                   [,1]
-#&gt; Intercept -0.009376336
-#&gt; X1         0.942865629
-#&gt; X2         0.130398990
-#&gt; X3        -2.216699746
-#&gt; X4         0.366847337
-#&gt; X5        -1.382907277
-#&gt; X6         0.654903912
-#&gt; X7        -0.721599870
-#&gt; X8        -0.198181944
-#&gt; X9         1.251097429
-#&gt; X10       -0.618295207
-#&gt; X11        1.779644236
-#&gt; X12       -0.454442233
-#&gt; X13       -1.204981990
-#&gt; X14       -0.436332869
-#&gt; X15        0.264117846
-#&gt; X16        0.014174332
-#&gt; X17       -1.088608626
-#&gt; X18        0.187329349
-#&gt; X19       -0.361584831
-#&gt; X20        2.125887411
-#&gt; X21        2.721248217
-#&gt; X22        1.435109025
-#&gt; X23       -0.229628372
-#&gt; X24       -0.123457788
+#&gt; Intercept -0.009308745
+#&gt; X1        -1.252039537
+#&gt; X2         0.251769360
+#&gt; X3         1.069303144
+#&gt; X4        -1.523206574
+#&gt; X5         0.429339251
+#&gt; X6        -0.103727035
+#&gt; X7         0.514838746
+#&gt; X8        -0.008132813
+#&gt; X9        -1.109769998
+#&gt; X10        0.697707208
+#&gt; X11        0.110179634
+#&gt; X12        0.263432702
+#&gt; X13        0.048981023
+#&gt; X14        1.102957195
+#&gt; X15        2.998639072
+#&gt; X16       -1.030175931
+#&gt; X17        0.005090035
+#&gt; X18       -0.108388491
+#&gt; X19        1.071595090
+#&gt; X20        0.619985470
+#&gt; X21       -0.996526239
+#&gt; X22       -0.639107098
+#&gt; X23        0.152756799
+#&gt; X24        0.266087715
 #&gt; Leave one out cross validated PRESS, Information criteria and Fit statistics:
 #&gt;                  AIC   Q2cum_Y LimQ2_Y        Q2_Y     PRESS_Y        RSS_Y
-#&gt; Nb_Comp_0  1747.6689        NA      NA          NA          NA 15650.519945
-#&gt; Nb_Comp_1  1308.8763 0.8236784  0.0975  0.82367844 2759.524169  2684.068353
-#&gt; Nb_Comp_2  -176.2741 0.9995367  0.0975  0.99737246    7.052507     7.004041
-#&gt; Nb_Comp_3  -201.3225 0.9995149  0.0975 -0.04715082    7.334287     6.285803
-#&gt; Nb_Comp_4  -201.8328 0.9994290  0.0975 -0.17707799    7.398881     6.223004
-#&gt; Nb_Comp_5  -200.0709 0.9993406  0.0975 -0.15479032    7.186264     6.217079
-#&gt; Nb_Comp_6  -198.1231 0.9992382  0.0975 -0.15529089    7.182535     6.215783
-#&gt; Nb_Comp_7  -196.1281 0.9991314  0.0975 -0.14008626    7.086528     6.215657
-#&gt; Nb_Comp_8  -194.1286 0.9990136  0.0975 -0.13564421    7.058775     6.215645
-#&gt; Nb_Comp_9  -192.1287 0.9988854  0.0975 -0.12998545    7.023589     6.215643
-#&gt; Nb_Comp_10 -190.1287 0.9987501  0.0975 -0.12143466    6.970438     6.215643
-#&gt;                 R2_Y R2_residY   RSS_residY PRESS_residY   Q2_residY  LimQ2
-#&gt; Nb_Comp_0         NA        NA 249.00000000           NA          NA     NA
-#&gt; Nb_Comp_1  0.8284997 0.8284997  42.70356654   43.9040697  0.82367844 0.0975
-#&gt; Nb_Comp_2  0.9995525 0.9995525   0.11143440    0.1122055  0.99737246 0.0975
-#&gt; Nb_Comp_3  0.9995984 0.9995984   0.10000722    0.1166886 -0.04715082 0.0975
-#&gt; Nb_Comp_4  0.9996024 0.9996024   0.09900808    0.1177163 -0.17707799 0.0975
-#&gt; Nb_Comp_5  0.9996028 0.9996028   0.09891383    0.1143336 -0.15479032 0.0975
-#&gt; Nb_Comp_6  0.9996028 0.9996028   0.09889319    0.1142742 -0.15529089 0.0975
-#&gt; Nb_Comp_7  0.9996028 0.9996028   0.09889120    0.1127468 -0.14008626 0.0975
-#&gt; Nb_Comp_8  0.9996028 0.9996028   0.09889100    0.1123052 -0.13564421 0.0975
-#&gt; Nb_Comp_9  0.9996028 0.9996028   0.09889097    0.1117454 -0.12998545 0.0975
-#&gt; Nb_Comp_10 0.9996028 0.9996028   0.09889097    0.1108998 -0.12143466 0.0975
+#&gt; Nb_Comp_0  1707.6611        NA      NA          NA          NA 13336.080111
+#&gt; Nb_Comp_1  1268.8401 0.8246912  0.0975  0.82469120 2337.932230  2286.881298
+#&gt; Nb_Comp_2  -202.5201 0.9995127  0.0975  0.99722014    6.357207     6.306012
+#&gt; Nb_Comp_3  -219.4997 0.9994751  0.0975 -0.07700506    6.791607     5.844991
+#&gt; Nb_Comp_4  -219.7889 0.9993831  0.0975 -0.17536483    6.869997     5.791713
+#&gt; Nb_Comp_5  -218.0111 0.9992724  0.0975 -0.17939626    6.830725     5.786567
+#&gt; Nb_Comp_6  -216.0264 0.9991613  0.0975 -0.15268975    6.670117     5.786214
+#&gt; Nb_Comp_7  -214.0278 0.9990390  0.0975 -0.14581108    6.629908     5.786181
+#&gt; Nb_Comp_8  -212.0280 0.9989079  0.0975 -0.13650388    6.576018     5.786178
+#&gt; Nb_Comp_9  -210.0280 0.9987662  0.0975 -0.12969385    6.536609     5.786177
+#&gt; Nb_Comp_10 -208.0280 0.9986200  0.0975 -0.11849061    6.471785     5.786177
+#&gt;                 R2_Y R2_residY  RSS_residY PRESS_residY   Q2_residY  LimQ2
+#&gt; Nb_Comp_0         NA        NA 249.0000000           NA          NA     NA
+#&gt; Nb_Comp_1  0.8285192 0.8285192  42.6987119   43.6518917  0.82469120 0.0975
+#&gt; Nb_Comp_2  0.9995271 0.9995271   0.1177405    0.1186964  0.99722014 0.0975
+#&gt; Nb_Comp_3  0.9995617 0.9995617   0.1091327    0.1268071 -0.07700506 0.0975
+#&gt; Nb_Comp_4  0.9995657 0.9995657   0.1081380    0.1282708 -0.17536483 0.0975
+#&gt; Nb_Comp_5  0.9995661 0.9995661   0.1080419    0.1275375 -0.17939626 0.0975
+#&gt; Nb_Comp_6  0.9995661 0.9995661   0.1080353    0.1245388 -0.15268975 0.0975
+#&gt; Nb_Comp_7  0.9995661 0.9995661   0.1080347    0.1237880 -0.14581108 0.0975
+#&gt; Nb_Comp_8  0.9995661 0.9995661   0.1080346    0.1227818 -0.13650388 0.0975
+#&gt; Nb_Comp_9  0.9995661 0.9995661   0.1080346    0.1220460 -0.12969385 0.0975
+#&gt; Nb_Comp_10 0.9995661 0.9995661   0.1080346    0.1208357 -0.11849061 0.0975
 #&gt;            Q2cum_residY    AIC.std   DoF.dof sigmahat.dof     AIC.dof
-#&gt; Nb_Comp_0            NA   712.4673  1.000000    7.9280195 63.10490773
-#&gt; Nb_Comp_1     0.8236784   273.6746  2.576507    3.2870057 10.95897448
-#&gt; Nb_Comp_2     0.9995367 -1211.4758  3.000065    0.1680539  0.02869399
-#&gt; Nb_Comp_3     0.9995149 -1236.5242 23.015490    0.1660457  0.03021973
-#&gt; Nb_Comp_4     0.9994290 -1237.0344 23.079249    0.1652373  0.02993314
-#&gt; Nb_Comp_5     0.9993406 -1235.2725 22.902626    0.1650947  0.02986224
-#&gt; Nb_Comp_6     0.9992382 -1233.3247 22.974506    0.1651035  0.02987326
-#&gt; Nb_Comp_7     0.9991314 -1231.3297 22.705529    0.1650045  0.02980816
-#&gt; Nb_Comp_8     0.9990136 -1229.3302 22.752831    0.1650215  0.02981944
-#&gt; Nb_Comp_9     0.9988854 -1227.3303 22.821076    0.1650461  0.02983578
-#&gt; Nb_Comp_10    0.9987501 -1225.3303 22.684659    0.1649968  0.02980310
+#&gt; Nb_Comp_0            NA   712.4673  1.000000    7.3183710 53.77278888
+#&gt; Nb_Comp_1     0.8246912   273.6462  2.555426    3.0339405  9.33570257
+#&gt; Nb_Comp_2     0.9995127 -1197.7140  3.000068    0.1594599  0.02583432
+#&gt; Nb_Comp_3     0.9994751 -1214.6936 22.575219    0.1599633  0.02800125
+#&gt; Nb_Comp_4     0.9993831 -1214.9828 24.267880    0.1598258  0.02812610
+#&gt; Nb_Comp_5     0.9992724 -1213.2050 23.899177    0.1596251  0.02801791
+#&gt; Nb_Comp_6     0.9991613 -1211.2203 23.710185    0.1595538  0.02797366
+#&gt; Nb_Comp_7     0.9990390 -1209.2217 23.765548    0.1595728  0.02798596
+#&gt; Nb_Comp_8     0.9989079 -1207.2219 23.745431    0.1595657  0.02798141
+#&gt; Nb_Comp_9     0.9987662 -1205.2219 23.870698    0.1596097  0.02800961
+#&gt; Nb_Comp_10    0.9986200 -1203.2219 24.019892    0.1596621  0.02804323
 #&gt;                BIC.dof  GMDL.dof DoF.naive sigmahat.naive   AIC.naive
-#&gt; Nb_Comp_0  63.99025222  519.8325         1      7.9280195 63.10490773
-#&gt; Nb_Comp_1  11.35109102  308.1718         2      3.2898110 10.90943911
-#&gt; Nb_Comp_2   0.02988746 -424.9153         3      0.1683937  0.02869672
-#&gt; Nb_Comp_3   0.03915810 -329.7222         4      0.1598501  0.02596088
-#&gt; Nb_Comp_4   0.03880921 -330.5391         5      0.1593738  0.02590802
-#&gt; Nb_Comp_5   0.03865518 -331.5411         6      0.1596240  0.02609135
-#&gt; Nb_Comp_6   0.03869474 -331.2009         7      0.1599355  0.02629557
-#&gt; Nb_Comp_7   0.03851592 -332.5654         8      0.1602640  0.02650644
-#&gt; Nb_Comp_8   0.03854712 -332.3260         9      0.1605959  0.02671954
-#&gt; Nb_Comp_9   0.03859226 -331.9803        10      0.1609301  0.02693445
-#&gt; Nb_Comp_10  0.03850203 -332.6715        11      0.1612665  0.02715118
+#&gt; Nb_Comp_0  54.52720631  499.7901         1      7.3183710 53.77278888
+#&gt; Nb_Comp_1   9.66703221  288.0890         2      3.0366586  9.29506592
+#&gt; Nb_Comp_2   0.02690885 -438.1210         3      0.1597824  0.02583678
+#&gt; Nb_Comp_3   0.03613808 -342.0258         4      0.1541432  0.02414029
+#&gt; Nb_Comp_4   0.03685800 -334.5933         5      0.1537519  0.02411244
+#&gt; Nb_Comp_5   0.03659556 -336.5338         6      0.1539982  0.02428461
+#&gt; Nb_Comp_6   0.03647588 -337.4853         7      0.1543100  0.02447830
+#&gt; Nb_Comp_7   0.03651006 -337.2091         8      0.1546281  0.02467496
+#&gt; Nb_Comp_8   0.03649754 -337.3097         9      0.1549485  0.02487336
+#&gt; Nb_Comp_9   0.03657538 -336.6837        10      0.1552710  0.02507344
+#&gt; Nb_Comp_10  0.03666821 -335.9386        11      0.1555955  0.02527518
 #&gt;              BIC.naive GMDL.naive
-#&gt; Nb_Comp_0  63.99025222   519.8325
-#&gt; Nb_Comp_1  11.21433723   306.8653
-#&gt; Nb_Comp_2   0.02989499  -424.4167
-#&gt; Nb_Comp_3   0.02740057  -431.7390
-#&gt; Nb_Comp_4   0.02769692  -427.0579
-#&gt; Nb_Comp_5   0.02824478  -421.3607
-#&gt; Nb_Comp_6   0.02881772  -415.6579
-#&gt; Nb_Comp_7   0.02940075  -410.0058
-#&gt; Nb_Comp_8   0.02998914  -404.4163
-#&gt; Nb_Comp_9   0.03058248  -398.8843
-#&gt; Nb_Comp_10  0.03118079  -393.4044</div><div class='input'><span class='no'>cv.modpls.A2</span><span class='kw'>&lt;-</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dataAstar2</span>,<span class='fl'>10</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>100</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='no'>res.cv.modpls.A2</span><span class='kw'>&lt;-</span><span class='fu'><a href='cvtable.html'>cvtable</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>cv.modpls.A2</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; <span class='error'>Error in is.data.frame(data): object 'dataAstar2' not found</span></div><div class='input'><span class='co'>#Perfect choice for the Q2 criterion in PLSR</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>res.cv.modpls.A2</span>)</div><div class='output co'>#&gt; <span class='error'>Error in plot(res.cv.modpls.A2): object 'res.cv.modpls.A2' not found</span></div><div class='input'>
+#&gt; Nb_Comp_0  54.52720631   499.7901
+#&gt; Nb_Comp_1   9.55484538   286.8472
+#&gt; Nb_Comp_2   0.02691563  -437.6224
+#&gt; Nb_Comp_3   0.02547901  -441.0025
+#&gt; Nb_Comp_4   0.02577736  -436.2568
+#&gt; Nb_Comp_5   0.02628892  -430.5960
+#&gt; Nb_Comp_6   0.02682615  -424.9195
+#&gt; Nb_Comp_7   0.02736928  -419.3100
+#&gt; Nb_Comp_8   0.02791705  -413.7646
+#&gt; Nb_Comp_9   0.02846940  -408.2768
+#&gt; Nb_Comp_10  0.02902638  -402.8412</div><div class='input'><span class='va'>cv.modpls.A2</span><span class='op'>&lt;-</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>dataAstar2</span>,<span class='fl'>10</span>,NK<span class='op'>=</span><span class='fl'>100</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>res.cv.modpls.A2</span><span class='op'>&lt;-</span><span class='fu'><a href='cvtable.html'>cvtable</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>cv.modpls.A2</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in is.data.frame(data): objet 'dataAstar2' introuvable</span></div><div class='input'><span class='co'>#Perfect choice for the Q2 criterion in PLSR</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>res.cv.modpls.A2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in plot(res.cv.modpls.A2): objet 'res.cv.modpls.A2' introuvable</span></div><div class='input'>
 <span class='co'>#Binarized data.frame</span>
-<span class='no'>simbin1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='fu'><a href='dicho.html'>dicho</a></span>(<span class='no'>dataAstar2</span>))
-<span class='no'>modpls.B2</span> <span class='kw'>&lt;-</span> <span class='fu'>plsR</span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>simbin1</span>,<span class='fl'>10</span>,<span class='kw'>typeVC</span><span class='kw'>=</span><span class='st'>"standard"</span>,<span class='kw'>MClassed</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='no'>modpls.B2</span></div><div class='output co'>#&gt; Number of required components:
+<span class='va'>simbin1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='dicho.html'>dicho</a></span><span class='op'>(</span><span class='va'>dataAstar2</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>modpls.B2</span> <span class='op'>&lt;-</span> <span class='fu'>plsR</span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>simbin1</span>,<span class='fl'>10</span>,typeVC<span class='op'>=</span><span class='st'>"standard"</span>,MClassed<span class='op'>=</span><span class='cn'>TRUE</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>modpls.B2</span>
+</div><div class='output co'>#&gt; Number of required components:
 #&gt; [1] 10
 #&gt; Number of successfully computed components:
-#&gt; [1] 4
+#&gt; [1] 8
 #&gt; Coefficients:
-#&gt;                   [,1]
-#&gt; Intercept -0.009409474
-#&gt; X1         0.006945571
-#&gt; X2         0.006945571
-#&gt; X3        -0.296290288
-#&gt; X4         0.006945571
-#&gt; X5         0.006945571
-#&gt; X6        -0.296290288
-#&gt; X7         0.006945571
-#&gt; X8         0.006945571
-#&gt; X9         0.449140169
-#&gt; X10        0.006945571
-#&gt; X11        0.006945571
-#&gt; X12        0.293153796
-#&gt; X13        0.006945571
-#&gt; X14        0.006945571
-#&gt; X15        0.293153796
-#&gt; X16        0.006945571
-#&gt; X17        0.006945571
-#&gt; X18        0.449140169
-#&gt; X19        0.006945571
-#&gt; X20        0.006945571
-#&gt; X21       -0.296290288
-#&gt; X22        0.006945571
-#&gt; X23        0.006945571
-#&gt; X24        0.293153796
+#&gt;                    [,1]
+#&gt; Intercept -2.232996e-02
+#&gt; X1        -2.564600e-04
+#&gt; X2         1.827582e-02
+#&gt; X3         3.200076e-01
+#&gt; X4         1.827582e-02
+#&gt; X5         8.548667e-05
+#&gt; X6        -7.441941e-02
+#&gt; X7         1.827582e-02
+#&gt; X8         8.548667e-05
+#&gt; X9         1.600038e-01
+#&gt; X10       -6.653264e-03
+#&gt; X11        1.794648e-02
+#&gt; X12        5.540587e-01
+#&gt; X13        1.794648e-02
+#&gt; X14       -6.307629e-03
+#&gt; X15       -7.441941e-02
+#&gt; X16        1.827582e-02
+#&gt; X17        1.827582e-02
+#&gt; X18       -7.441941e-02
+#&gt; X19       -1.961416e-02
+#&gt; X20       -6.653264e-03
+#&gt; X21       -7.441941e-02
+#&gt; X22        8.548667e-05
+#&gt; X23        1.827582e-02
+#&gt; X24        1.600038e-01
 #&gt; Leave one out cross validated PRESS, Information criteria and Fit statistics:
 #&gt;                 AIC   Q2cum_Y LimQ2_Y          Q2_Y   PRESS_Y     RSS_Y
-#&gt; Nb_Comp_0 366.11044        NA      NA            NA        NA 62.304000
-#&gt; Nb_Comp_1  54.47132 0.7080322  0.0975  7.080322e-01 18.190760 17.769245
-#&gt; Nb_Comp_2 -74.76132 0.8239349  0.0975  3.969708e-01 10.715373 10.512222
-#&gt; Nb_Comp_3 -91.09971 0.8108124  0.0975 -7.453191e-02 11.295718  9.768716
-#&gt; Nb_Comp_4 -89.11368 0.8108105  0.0975 -1.036324e-05  9.768817  9.768170
+#&gt; Nb_Comp_0 366.87968        NA      NA            NA        NA 62.496000
+#&gt; Nb_Comp_1  26.83779 0.7381855  0.0975  0.7381855034 16.362359 15.909796
+#&gt; Nb_Comp_2 -76.52049 0.8252118  0.0975  0.3323966613 10.621433 10.438510
+#&gt; Nb_Comp_3 -91.51975 0.8283713  0.0975  0.0180764406 10.249819  9.752317
+#&gt; Nb_Comp_4 -89.75294 0.8284216  0.0975  0.0002930630  9.749459  9.743224
+#&gt; Nb_Comp_5 -87.81866 0.8284417  0.0975  0.0001171978  9.742083  9.740663
+#&gt; Nb_Comp_6 -85.82121 0.8284216  0.0975 -0.0001170090  9.741803  9.740564
+#&gt; Nb_Comp_7 -83.82127 0.8283970  0.0975 -0.0001436374  9.741963  9.740562
+#&gt; Nb_Comp_8 -81.82127 0.8283740  0.0975 -0.0001343106  9.741870  9.740562
 #&gt;                R2_Y MissClassed R2_residY RSS_residY PRESS_residY     Q2_residY
-#&gt; Nb_Comp_0        NA         118        NA  249.00000           NA            NA
-#&gt; Nb_Comp_1 0.7147977          11 0.7147977   71.01538     72.69998  7.080322e-01
-#&gt; Nb_Comp_2 0.8312753          13 0.8312753   42.01244     42.82434  3.969708e-01
-#&gt; Nb_Comp_3 0.8432089          11 0.8432089   39.04100     45.14371 -7.453191e-02
-#&gt; Nb_Comp_4 0.8432176          11 0.8432176   39.03882     39.04140 -1.036324e-05
-#&gt;            LimQ2 Q2cum_residY  AIC.std  DoF.dof sigmahat.dof    AIC.dof
-#&gt; Nb_Comp_0     NA           NA 712.4673 1.000000    0.5002168 0.25121773
-#&gt; Nb_Comp_1 0.0975    0.7080322 400.8281 2.854478    0.2675970 0.07271221
-#&gt; Nb_Comp_2 0.0975    0.8239349 271.5955 3.010461    0.2058878 0.04306979
-#&gt; Nb_Comp_3 0.0975    0.8108124 255.2571 6.677195    0.1999571 0.04121065
-#&gt; Nb_Comp_4 0.0975    0.8108105 257.2431 5.000000    0.1992687 0.04066100
+#&gt; Nb_Comp_0        NA         124        NA  249.00000           NA            NA
+#&gt; Nb_Comp_1 0.7454270          11 0.7454270   63.38868     65.19181  0.7381855034
+#&gt; Nb_Comp_2 0.8329731          13 0.8329731   41.58969     42.31850  0.3323966613
+#&gt; Nb_Comp_3 0.8439529          11 0.8439529   38.85572     40.83789  0.0180764406
+#&gt; Nb_Comp_4 0.8440984          11 0.8440984   38.81949     38.84433  0.0002930630
+#&gt; Nb_Comp_5 0.8441394          11 0.8441394   38.80929     38.81494  0.0001171978
+#&gt; Nb_Comp_6 0.8441410          11 0.8441410   38.80889     38.81383 -0.0001170090
+#&gt; Nb_Comp_7 0.8441410          11 0.8441410   38.80888     38.81447 -0.0001436374
+#&gt; Nb_Comp_8 0.8441410          11 0.8441410   38.80888     38.81409 -0.0001343106
+#&gt;            LimQ2 Q2cum_residY  AIC.std   DoF.dof sigmahat.dof    AIC.dof
+#&gt; Nb_Comp_0     NA           NA 712.4673  1.000000    0.5009870 0.25199190
+#&gt; Nb_Comp_1 0.0975    0.7381855 372.4254  3.112471    0.2533407 0.06523729
+#&gt; Nb_Comp_2 0.0975    0.8252118 269.0671  3.041696    0.2051776 0.04277843
+#&gt; Nb_Comp_3 0.0975    0.8283713 254.0678 10.053091    0.2011839 0.04226445
+#&gt; Nb_Comp_4 0.0975    0.8284216 255.8346  8.294626    0.2003603 0.04163675
+#&gt; Nb_Comp_5 0.0975    0.8284417 257.7689  8.533335    0.2004325 0.04170515
+#&gt; Nb_Comp_6 0.0975    0.8284216 259.7664  8.830099    0.2005543 0.04180357
+#&gt; Nb_Comp_7 0.0975    0.8283970 261.7663  8.985473    0.2006186 0.04185541
+#&gt; Nb_Comp_8 0.0975    0.8283740 263.7663  8.999852    0.2006246 0.04186022
 #&gt;              BIC.dof  GMDL.dof DoF.naive sigmahat.naive  AIC.naive  BIC.naive
-#&gt; Nb_Comp_0 0.25474225 -167.7150         1      0.5002168 0.25121773 0.25474225
-#&gt; Nb_Comp_1 0.07559141 -317.9656         2      0.2676755 0.07222338 0.07424189
-#&gt; Nb_Comp_2 0.04486732 -382.2058         3      0.2062998 0.04307032 0.04486878
-#&gt; Nb_Comp_3 0.04497119 -379.6046         4      0.1992742 0.04034559 0.04258300
-#&gt; Nb_Comp_4 0.04345760 -384.7620         5      0.1996749 0.04066748 0.04347550
+#&gt; Nb_Comp_0 0.25552728 -167.2823         1      0.5009870 0.25199190 0.25552728
+#&gt; Nb_Comp_1 0.06805112 -330.7000         2      0.2532832 0.06466562 0.06647290
+#&gt; Nb_Comp_2 0.04458211 -382.8861         3      0.2055752 0.04276831 0.04455416
+#&gt; Nb_Comp_3 0.04799596 -369.7858         4      0.1991069 0.04027786 0.04251151
+#&gt; Nb_Comp_4 0.04632708 -374.9363         5      0.1994198 0.04056363 0.04336448
+#&gt; Nb_Comp_5 0.04653393 -374.2734         6      0.1998018 0.04087885 0.04425275
+#&gt; Nb_Comp_6 0.04680636 -373.4159         7      0.2002115 0.04120700 0.04515938
+#&gt; Nb_Comp_7 0.04694950 -372.9684         8      0.2006247 0.04153826 0.04607393
+#&gt; Nb_Comp_8 0.04696276 -372.9271         9      0.2010405 0.04187229 0.04699609
 #&gt;           GMDL.naive
-#&gt; Nb_Comp_0  -167.7150
-#&gt; Nb_Comp_1  -320.1839
-#&gt; Nb_Comp_2  -381.7421
-#&gt; Nb_Comp_3  -387.4593
-#&gt; Nb_Comp_4  -384.2630</div><div class='input'><span class='no'>modpls.B2</span>$<span class='no'>Probs</span></div><div class='output co'>#&gt;      [,1]        [,2]        [,3]         [,4]          [,5]
-#&gt; 1   0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 2   0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 3   0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 4   0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 5   0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 6   0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 7   0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 8   0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 9   0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 10  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 11  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 12  0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 13  0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 14  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 15  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 16  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 17  0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 18  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 19  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 20  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 21  0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 22  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 23  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 24  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 25  0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 26  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 27  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 28  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 29  0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 30  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 31  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 32  0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 33  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 34  0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 35  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 36  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 37  0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 38  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 39  0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 40  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 41  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 42  0.472  0.34675721  0.53862249 -0.017703354 -1.887379e-15
-#&gt; 43  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 44  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 45  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 46  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 47  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 48  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 49  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 50  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 51  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 52  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 53  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 54  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 55  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 56  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 57  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 58  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 59  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 60  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 61  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 62  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 63  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 64  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 65  0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 66  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 67  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 68  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 69  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 70  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 71  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 72  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 73  0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 74  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 75  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 76  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 77  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 78  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 79  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 80  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 81  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 82  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 83  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 84  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 85  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 86  0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 87  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 88  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 89  0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 90  0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 91  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 92  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 93  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 94  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 95  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 96  0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 97  0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 98  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 99  0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 100 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 101 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 102 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 103 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 104 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 105 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 106 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 107 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 108 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 109 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 110 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 111 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 112 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 113 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 114 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 115 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 116 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 117 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 118 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 119 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 120 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 121 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 122 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 123 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 124 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 125 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 126 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 127 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 128 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 129 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 130 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 131 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 132 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 133 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 134 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 135 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 136 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 137 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 138 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 139 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 140 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 141 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 142 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 143 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 144 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 145 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 146 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 147 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 148 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 149 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 150 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 151 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 152 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 153 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 154 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 155 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 156 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 157 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 158 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 159 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 160 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 161 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 162 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 163 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 164 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 165 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 166 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 167 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 168 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 169 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 170 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 171 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 172 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 173 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 174 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 175 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 176 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 177 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 178 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 179 0.472  0.52663889  0.33213206  0.984903754  1.000000e+00
-#&gt; 180 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 181 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 182 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 183 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 184 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 185 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 186 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 187 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 188 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 189 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 190 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 191 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 192 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 193 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 194 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 195 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 196 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 197 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 198 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 199 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 200 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 201 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 202 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 203 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 204 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 205 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 206 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 207 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 208 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 209 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 210 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 211 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 212 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 213 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 214 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 215 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 216 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 217 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 218 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 219 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 220 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 221 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 222 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 223 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 224 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 225 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 226 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 227 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 228 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 229 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 230 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 231 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 232 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 233 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 234 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 235 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 236 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 237 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 238 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 239 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 240 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 241 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 242 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 243 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 244 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 245 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 246 0.472 -0.06229068 -0.01178995 -0.009257117 -9.409474e-03
-#&gt; 247 0.472  0.36216421  0.11016783  0.101839214  1.017197e-01
-#&gt; 248 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01
-#&gt; 249 0.472  0.59360387  0.87124939  0.879607642  8.794614e-01
-#&gt; 250 0.472  1.01805876  0.99320716  0.990703974  9.905905e-01</div><div class='input'><span class='no'>modpls.B2</span>$<span class='no'>Probs.trc</span></div><div class='output co'>#&gt;      [,1]      [,2]      [,3]      [,4]      [,5]
-#&gt; 1   0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 2   0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 3   0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 4   0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 5   0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 6   0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 7   0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 8   0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 9   0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 10  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 11  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 12  0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 13  0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 14  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 15  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 16  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 17  0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 18  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 19  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 20  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 21  0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 22  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 23  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 24  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 25  0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 26  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 27  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 28  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 29  0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 30  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 31  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 32  0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 33  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 34  0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 35  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 36  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 37  0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 38  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 39  0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 40  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 41  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 42  0.472 0.3467572 0.5386225 0.0000000 0.0000000
-#&gt; 43  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 44  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 45  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 46  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 47  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 48  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 49  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 50  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 51  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 52  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 53  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 54  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 55  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 56  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 57  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 58  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 59  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 60  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 61  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 62  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 63  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 64  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 65  0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 66  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 67  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 68  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 69  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 70  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 71  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 72  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 73  0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 74  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 75  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 76  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 77  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 78  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 79  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 80  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 81  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 82  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 83  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 84  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 85  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 86  0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 87  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 88  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 89  0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 90  0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 91  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 92  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 93  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 94  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 95  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 96  0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 97  0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 98  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 99  0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 100 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 101 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 102 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 103 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 104 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 105 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 106 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 107 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 108 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 109 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 110 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 111 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 112 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 113 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 114 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 115 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 116 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 117 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 118 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 119 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 120 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 121 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 122 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 123 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 124 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 125 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 126 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 127 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 128 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 129 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 130 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 131 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 132 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 133 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 134 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 135 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 136 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 137 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 138 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 139 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 140 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 141 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 142 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 143 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 144 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 145 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 146 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 147 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 148 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 149 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 150 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 151 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 152 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 153 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 154 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 155 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 156 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 157 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 158 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 159 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 160 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 161 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 162 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 163 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 164 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 165 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 166 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 167 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 168 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 169 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 170 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 171 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 172 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 173 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 174 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 175 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 176 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 177 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 178 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 179 0.472 0.5266389 0.3321321 0.9849038 1.0000000
-#&gt; 180 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 181 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 182 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 183 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 184 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 185 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 186 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 187 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 188 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 189 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 190 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 191 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 192 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 193 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 194 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 195 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 196 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 197 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 198 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 199 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 200 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 201 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 202 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 203 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 204 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 205 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 206 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 207 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 208 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 209 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 210 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 211 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 212 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 213 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 214 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 215 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 216 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 217 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 218 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 219 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 220 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 221 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 222 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 223 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 224 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 225 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 226 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 227 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 228 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 229 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 230 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 231 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 232 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 233 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 234 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 235 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 236 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 237 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 238 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 239 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 240 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 241 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 242 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 243 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 244 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 245 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 246 0.472 0.0000000 0.0000000 0.0000000 0.0000000
-#&gt; 247 0.472 0.3621642 0.1101678 0.1018392 0.1017197
-#&gt; 248 0.472 1.0000000 0.9932072 0.9907040 0.9905905
-#&gt; 249 0.472 0.5936039 0.8712494 0.8796076 0.8794614
-#&gt; 250 0.472 1.0000000 0.9932072 0.9907040 0.9905905</div><div class='input'><span class='no'>modpls.B2</span>$<span class='no'>MissClassed</span></div><div class='output co'>#&gt;      [,1] [,2] [,3] [,4] [,5]
-#&gt; [1,]  118   11   13   11   11</div><div class='input'><span class='fu'>plsR</span>(<span class='no'>simbin1</span>$<span class='no'>Y</span>,<span class='no'>dataAstar2</span>[,-<span class='fl'>1</span>],<span class='fl'>10</span>,<span class='kw'>typeVC</span><span class='kw'>=</span><span class='st'>"standard"</span>,<span class='kw'>MClassed</span><span class='kw'>=</span><span class='fl'>TRUE</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)$<span class='no'>InfCrit</span></div><div class='output co'>#&gt;                 AIC     Q2cum_Y LimQ2_Y        Q2_Y  PRESS_Y    RSS_Y      R2_Y
-#&gt; Nb_Comp_0  366.1104          NA      NA          NA       NA 62.30400        NA
-#&gt; Nb_Comp_1  189.5912  0.50491535  0.0975  0.50491535 30.84575 30.50677 0.5103561
-#&gt; Nb_Comp_2  131.5243  0.60796629  0.0975  0.20814812 24.15684 23.99105 0.6149356
-#&gt; Nb_Comp_3  113.8665  0.58395266  0.0975 -0.06125399 25.46060 22.17687 0.6440539
-#&gt; Nb_Comp_4  111.8644  0.51506070  0.0975 -0.16558684 25.84907 21.82468 0.6497066
-#&gt; Nb_Comp_5  113.0416  0.43928533  0.0975 -0.15625743 25.23494 21.75297 0.6508576
-#&gt; Nb_Comp_6  114.9588  0.35571640  0.0975 -0.14904004 24.99503 21.74577 0.6509731
-#&gt; Nb_Comp_7  116.9405  0.26307104  0.0975 -0.14379593 24.87272 21.74418 0.6509987
-#&gt; Nb_Comp_8  118.9392  0.16490940  0.0975 -0.13320366 24.64058 21.74406 0.6510005
-#&gt; Nb_Comp_9  120.9391  0.05975865  0.0975 -0.12591538 24.48197 21.74405 0.6510007
-#&gt; Nb_Comp_10 122.9391 -0.05217258  0.0975 -0.11904521 24.33258 21.74405 0.6510007
-#&gt;            MissClassed R2_residY RSS_residY PRESS_residY   Q2_residY  LimQ2
-#&gt; Nb_Comp_0          118        NA  249.00000           NA          NA     NA
-#&gt; Nb_Comp_1           34 0.5103561  121.92132    123.27608  0.50491535 0.0975
-#&gt; Nb_Comp_2            2 0.6149356   95.88103     96.54363  0.20814812 0.0975
-#&gt; Nb_Comp_3            7 0.6440539   88.63059    101.75413 -0.06125399 0.0975
-#&gt; Nb_Comp_4            8 0.6497066   87.22304    103.30665 -0.16558684 0.0975
-#&gt; Nb_Comp_5           10 0.6508576   86.93645    100.85229 -0.15625743 0.0975
-#&gt; Nb_Comp_6           10 0.6509731   86.90769     99.89346 -0.14904004 0.0975
-#&gt; Nb_Comp_7           10 0.6509987   86.90132     99.40466 -0.14379593 0.0975
-#&gt; Nb_Comp_8           10 0.6510005   86.90086     98.47690 -0.13320366 0.0975
-#&gt; Nb_Comp_9           10 0.6510007   86.90083     97.84302 -0.12591538 0.0975
-#&gt; Nb_Comp_10          10 0.6510007   86.90082     97.24596 -0.11904521 0.0975
-#&gt;            Q2cum_residY  AIC.std   DoF.dof sigmahat.dof    AIC.dof   BIC.dof
-#&gt; Nb_Comp_0            NA 712.4673  1.000000    0.5002168 0.25121773 0.2547423
-#&gt; Nb_Comp_1    0.50491535 535.9480  2.567927    0.3504244 0.12454976 0.1289915
-#&gt; Nb_Comp_2    0.60796629 477.8811  3.000065    0.3110275 0.09828597 0.1023740
-#&gt; Nb_Comp_3    0.58395266 460.2233 20.983510    0.3105065 0.10489235 0.1333896
-#&gt; Nb_Comp_4    0.51506070 458.2212 22.334323    0.3089395 0.10435205 0.1343784
-#&gt; Nb_Comp_5    0.43928533 459.3984 22.839929    0.3087731 0.10443249 0.1351055
-#&gt; Nb_Comp_6    0.35571640 461.3157 22.843260    0.3087242 0.10440073 0.1350685
-#&gt; Nb_Comp_7    0.26307104 463.2973 22.965960    0.3087960 0.10449605 0.1353429
-#&gt; Nb_Comp_8    0.16490940 465.2960 22.943206    0.3087798 0.10447640 0.1352894
-#&gt; Nb_Comp_9    0.05975865 467.2959 22.997499    0.3088165 0.10452195 0.1354152
-#&gt; Nb_Comp_10  -0.05217258 469.2959 23.233596    0.3089765 0.10472044 0.1359633
-#&gt;             GMDL.dof DoF.naive sigmahat.naive  AIC.naive  BIC.naive GMDL.naive
-#&gt; Nb_Comp_0  -167.7150         1      0.5002168 0.25121773 0.25474225  -167.7150
-#&gt; Nb_Comp_1  -252.1687         2      0.3507295 0.12399526 0.12746070  -253.3004
-#&gt; Nb_Comp_2  -280.5368         3      0.3116565 0.09829532 0.10239978  -280.0380
-#&gt; Nb_Comp_3  -249.1511         4      0.3002497 0.09159227 0.09667162  -286.8595
-#&gt; Nb_Comp_4  -248.3530         5      0.2984633 0.09086192 0.09713578  -286.0790
-#&gt; Nb_Comp_5  -247.7596         6      0.2985825 0.09129114 0.09882578  -283.8388
-#&gt; Nb_Comp_6  -247.7900         7      0.2991467 0.09199445 0.10081812  -281.3230
-#&gt; Nb_Comp_7  -247.5661         8      0.2997532 0.09272723 0.10285236  -278.8496
-#&gt; Nb_Comp_8  -247.6097         9      0.3003736 0.09347240 0.10491037  -276.4327
-#&gt; Nb_Comp_9  -247.5072        10      0.3009987 0.09422423 0.10698604  -274.0730
-#&gt; Nb_Comp_10 -247.0619        11      0.3016277 0.09498239 0.10907911  -271.7654</div><div class='input'><span class='no'>cv.modpls.B2</span><span class='kw'>&lt;-</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>simbin1</span>,<span class='fl'>2</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>100</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='no'>res.cv.modpls.B2</span><span class='kw'>&lt;-</span><span class='fu'><a href='cvtable.html'>cvtable</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>cv.modpls.B2</span>,<span class='kw'>MClassed</span><span class='kw'>=</span><span class='fl'>TRUE</span>))</div><div class='output co'>#&gt; ____************************************************____</div><div class='output co'>#&gt; <span class='error'>Error in is.data.frame(data): object 'simbin1' not found</span></div><div class='input'><span class='co'>#Only one component found by repeated CV missclassed criterion</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>res.cv.modpls.B2</span>)</div><div class='output co'>#&gt; <span class='error'>Error in plot(res.cv.modpls.B2): object 'res.cv.modpls.B2' not found</span></div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"dimX"</span>,<span class='st'>"Astar"</span>,<span class='st'>"dataAstar2"</span>,<span class='st'>"modpls.A2"</span>,<span class='st'>"cv.modpls.A2"</span>,
-<span class='st'>"res.cv.modpls.A2"</span>,<span class='st'>"simbin1"</span>,<span class='st'>"modpls.B2"</span>,<span class='st'>"cv.modpls.B2"</span>,<span class='st'>"res.cv.modpls.B2"</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: object 'res.cv.modpls.A2' not found</span></div><div class='output co'>#&gt; <span class='warning'>Warning: object 'res.cv.modpls.B2' not found</span></div></pre>
+#&gt; Nb_Comp_0  -167.2823
+#&gt; Nb_Comp_1  -333.8147
+#&gt; Nb_Comp_2  -382.5286
+#&gt; Nb_Comp_3  -387.5578
+#&gt; Nb_Comp_4  -384.4408
+#&gt; Nb_Comp_5  -381.3439
+#&gt; Nb_Comp_6  -378.3019
+#&gt; Nb_Comp_7  -375.3325
+#&gt; Nb_Comp_8  -372.4277</div><div class='input'><span class='va'>modpls.B2</span><span class='op'>$</span><span class='va'>Probs</span>
+</div><div class='output co'>#&gt;      [,1]        [,2]         [,3]          [,4]        [,5]         [,6]
+#&gt; 1   0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 2   0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 3   0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 4   0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 5   0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 6   0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 7   0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 8   0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 9   0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 10  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 11  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 12  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 13  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 14  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 15  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 16  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 17  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 18  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 19  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 20  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 21  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 22  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 23  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 24  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 25  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 26  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 27  0.496  0.03606045  0.002955833  0.0001432602 -0.01599899  0.007925162
+#&gt; 28  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 29  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 30  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 31  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 32  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 33  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 34  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 35  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 36  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 37  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 38  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 39  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 40  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 41  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 42  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 43  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 44  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 45  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 46  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 47  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 48  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 49  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 50  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 51  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 52  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 53  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 54  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 55  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 56  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 57  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 58  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 59  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 60  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 61  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 62  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 63  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 64  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 65  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 66  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 67  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 68  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 69  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 70  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 71  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 72  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 73  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 74  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 75  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 76  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 77  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 78  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 79  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 80  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 81  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 82  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 83  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 84  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 85  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 86  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 87  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 88  0.496  1.00500492  0.973254333  1.0029362526  0.99021061  0.997293320
+#&gt; 89  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 90  0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 91  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 92  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 93  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 94  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 95  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 96  0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 97  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 98  0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 99  0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 100 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 101 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 102 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 103 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 104 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 105 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 106 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 107 0.496  0.90947840  0.945577585  1.0369797504  0.97619695  0.995322751
+#&gt; 108 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 109 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 110 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 111 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 112 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 113 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 114 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 115 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 116 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 117 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 118 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 119 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 120 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 121 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 122 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 123 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 124 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 125 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 126 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 127 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 128 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 129 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 130 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 131 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 132 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 133 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 134 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 135 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 136 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 137 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 138 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 139 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 140 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 141 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 142 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 143 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 144 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 145 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 146 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 147 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 148 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 149 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 150 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 151 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 152 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 153 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 154 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 155 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 156 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 157 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 158 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 159 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 160 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 161 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 162 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 163 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 164 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 165 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 166 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 167 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 168 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 169 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 170 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 171 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 172 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 173 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 174 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 175 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 176 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 177 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 178 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 179 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 180 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 181 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 182 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 183 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 184 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 185 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 186 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 187 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 188 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 189 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 190 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 191 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 192 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 193 0.496  0.45907245  0.636656724  0.0755600483  0.02597481  0.001514519
+#&gt; 194 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 195 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 196 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 197 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 198 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 199 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 200 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 201 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 202 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 203 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 204 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 205 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 206 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 207 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 208 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 209 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 210 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 211 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 212 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 213 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 214 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 215 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 216 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 217 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 218 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 219 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 220 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 221 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 222 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 223 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 224 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 225 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 226 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 227 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 228 0.496  0.95759591  0.959727077  0.9862193637  1.01721602  0.999177807
+#&gt; 229 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 230 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 231 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 232 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 233 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 234 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 235 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 236 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 237 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 238 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 239 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 240 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 241 0.496  0.36839434  0.524751547 -0.0668244029 -0.02771783 -0.002376501
+#&gt; 242 0.496  0.64117170  0.862240206  0.8736969788  0.87418616  0.874112455
+#&gt; 243 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 244 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt; 245 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 246 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 247 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 248 0.496  0.30502486  0.086944139  0.0840816281  0.08415168  0.083947110
+#&gt; 249 0.496  1.02826346  0.979507152  0.9800896768  0.98049332  0.980469640
+#&gt; 250 0.496 -0.08206690 -0.030322806 -0.0223110698 -0.02215549 -0.022410075
+#&gt;              [,7]          [,8]          [,9]
+#&gt; 1    8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 2    9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 3    9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 4    8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 5    9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 6    9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 7    8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 8   -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 9   -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 10   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 11  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 12   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 13  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 14   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 15  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 16   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 17   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 18  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 19   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 20   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 21   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 22   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 23   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 24  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 25   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 26   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 27   1.814101e-04 -9.424424e-05  5.551115e-16
+#&gt; 28   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 29   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 30  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 31   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 32   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 33   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 34  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 35   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 36   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 37   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 38  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 39  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 40  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 41   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 42   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 43   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 44   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 45   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 46  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 47   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 48   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 49   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 50   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 51   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 52  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 53   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 54   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 55   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 56   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 57   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 58   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 59  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 60   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 61   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 62   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 63  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 64  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 65   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 66   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 67   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 68  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 69   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 70  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 71   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 72   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 73  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 74   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 75  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 76   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 77   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 78   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 79   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 80   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 81   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 82   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 83   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 84   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 85   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 86   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 87   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 88   9.986012e-01  9.998504e-01  1.000000e+00
+#&gt; 89   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 90   8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 91   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 92  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 93  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 94  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 95   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 96   8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 97  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 98  -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 99   9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 100  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 101  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 102  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 103  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 104 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 105  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 106 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 107  1.000509e+00  9.999525e-01  1.000000e+00
+#&gt; 108  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 109  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 110 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 111  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 112  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 113  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 114  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 115  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 116  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 117  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 118 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 119  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 120  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 121 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 122  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 123 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 124  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 125  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 126  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 127  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 128  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 129  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 130  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 131  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 132  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 133  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 134  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 135  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 136  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 137  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 138  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 139  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 140 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 141 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 142 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 143  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 144  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 145  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 146  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 147  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 148  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 149 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 150  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 151 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 152 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 153 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 154  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 155  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 156  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 157 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 158  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 159 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 160 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 161  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 162 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 163 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 164  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 165  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 166  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 167 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 168  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 169  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 170  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 171  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 172  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 173  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 174  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 175  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 176 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 177  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 178  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 179 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 180 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 181  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 182  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 183  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 184  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 185 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 186  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 187  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 188  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 189  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 190 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 191  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 192 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 193 -4.099320e-05 -1.534115e-05  2.775558e-16
+#&gt; 194  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 195  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 196  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 197  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 198  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 199  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 200 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 201  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 202  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 203  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 204  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 205  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 206 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 207  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 208  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 209 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 210  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 211  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 212 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 213  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 214  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 215  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 216  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 217  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 218  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 219 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 220  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 221 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 222  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 223  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 224 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 225  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 226  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 227 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 228  1.000372e+00  9.997744e-01  1.000000e+00
+#&gt; 229  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 230  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 231 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 232  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 233 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 234  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 235 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 236 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 237  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 238  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 239  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 240  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 241  5.931236e-05 -7.182277e-06  6.661338e-16
+#&gt; 242  8.740665e-01  8.740690e-01  8.740663e-01
+#&gt; 243  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 244 -2.233453e-02 -2.232974e-02 -2.232996e-02
+#&gt; 245  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 246  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 247  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 248  8.399153e-02  8.399119e-02  8.398958e-02
+#&gt; 249  9.803926e-01  9.803899e-01  9.803858e-01
+#&gt; 250 -2.233453e-02 -2.232974e-02 -2.232996e-02</div><div class='input'><span class='va'>modpls.B2</span><span class='op'>$</span><span class='va'>Probs.trc</span>
+</div><div class='output co'>#&gt;      [,1]       [,2]        [,3]         [,4]       [,5]        [,6]
+#&gt; 1   0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 2   0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 3   0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 4   0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 5   0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 6   0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 7   0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 8   0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 9   0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 10  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 11  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 12  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 13  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 14  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 15  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 16  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 17  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 18  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 19  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 20  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 21  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 22  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 23  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 24  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 25  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 26  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 27  0.496 0.03606045 0.002955833 0.0001432602 0.00000000 0.007925162
+#&gt; 28  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 29  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 30  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 31  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 32  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 33  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 34  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 35  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 36  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 37  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 38  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 39  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 40  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 41  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 42  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 43  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 44  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 45  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 46  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 47  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 48  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 49  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 50  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 51  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 52  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 53  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 54  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 55  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 56  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 57  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 58  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 59  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 60  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 61  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 62  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 63  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 64  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 65  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 66  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 67  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 68  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 69  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 70  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 71  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 72  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 73  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 74  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 75  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 76  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 77  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 78  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 79  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 80  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 81  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 82  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 83  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 84  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 85  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 86  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 87  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 88  0.496 1.00000000 0.973254333 1.0000000000 0.99021061 0.997293320
+#&gt; 89  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 90  0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 91  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 92  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 93  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 94  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 95  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 96  0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 97  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 98  0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 99  0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 100 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 101 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 102 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 103 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 104 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 105 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 106 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 107 0.496 0.90947840 0.945577585 1.0000000000 0.97619695 0.995322751
+#&gt; 108 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 109 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 110 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 111 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 112 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 113 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 114 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 115 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 116 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 117 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 118 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 119 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 120 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 121 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 122 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 123 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 124 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 125 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 126 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 127 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 128 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 129 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 130 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 131 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 132 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 133 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 134 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 135 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 136 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 137 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 138 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 139 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 140 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 141 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 142 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 143 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 144 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 145 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 146 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 147 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 148 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 149 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 150 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 151 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 152 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 153 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 154 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 155 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 156 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 157 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 158 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 159 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 160 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 161 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 162 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 163 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 164 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 165 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 166 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 167 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 168 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 169 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 170 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 171 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 172 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 173 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 174 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 175 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 176 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 177 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 178 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 179 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 180 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 181 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 182 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 183 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 184 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 185 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 186 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 187 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 188 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 189 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 190 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 191 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 192 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 193 0.496 0.45907245 0.636656724 0.0755600483 0.02597481 0.001514519
+#&gt; 194 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 195 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 196 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 197 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 198 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 199 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 200 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 201 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 202 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 203 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 204 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 205 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 206 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 207 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 208 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 209 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 210 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 211 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 212 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 213 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 214 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 215 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 216 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 217 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 218 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 219 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 220 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 221 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 222 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 223 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 224 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 225 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 226 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 227 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 228 0.496 0.95759591 0.959727077 0.9862193637 1.00000000 0.999177807
+#&gt; 229 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 230 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 231 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 232 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 233 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 234 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 235 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 236 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 237 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 238 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 239 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 240 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 241 0.496 0.36839434 0.524751547 0.0000000000 0.00000000 0.000000000
+#&gt; 242 0.496 0.64117170 0.862240206 0.8736969788 0.87418616 0.874112455
+#&gt; 243 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 244 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt; 245 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 246 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 247 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 248 0.496 0.30502486 0.086944139 0.0840816281 0.08415168 0.083947110
+#&gt; 249 0.496 1.00000000 0.979507152 0.9800896768 0.98049332 0.980469640
+#&gt; 250 0.496 0.00000000 0.000000000 0.0000000000 0.00000000 0.000000000
+#&gt;             [,7]       [,8]         [,9]
+#&gt; 1   8.740665e-01 0.87406897 8.740663e-01
+#&gt; 2   9.803926e-01 0.98038990 9.803858e-01
+#&gt; 3   9.803926e-01 0.98038990 9.803858e-01
+#&gt; 4   8.740665e-01 0.87406897 8.740663e-01
+#&gt; 5   9.803926e-01 0.98038990 9.803858e-01
+#&gt; 6   9.803926e-01 0.98038990 9.803858e-01
+#&gt; 7   8.740665e-01 0.87406897 8.740663e-01
+#&gt; 8   0.000000e+00 0.00000000 0.000000e+00
+#&gt; 9   0.000000e+00 0.00000000 0.000000e+00
+#&gt; 10  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 11  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 12  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 13  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 14  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 15  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 16  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 17  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 18  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 19  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 20  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 21  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 22  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 23  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 24  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 25  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 26  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 27  1.814101e-04 0.00000000 5.551115e-16
+#&gt; 28  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 29  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 30  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 31  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 32  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 33  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 34  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 35  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 36  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 37  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 38  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 39  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 40  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 41  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 42  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 43  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 44  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 45  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 46  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 47  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 48  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 49  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 50  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 51  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 52  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 53  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 54  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 55  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 56  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 57  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 58  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 59  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 60  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 61  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 62  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 63  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 64  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 65  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 66  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 67  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 68  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 69  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 70  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 71  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 72  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 73  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 74  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 75  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 76  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 77  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 78  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 79  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 80  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 81  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 82  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 83  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 84  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 85  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 86  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 87  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 88  9.986012e-01 0.99985040 1.000000e+00
+#&gt; 89  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 90  8.740665e-01 0.87406897 8.740663e-01
+#&gt; 91  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 92  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 93  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 94  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 95  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 96  8.399153e-02 0.08399119 8.398958e-02
+#&gt; 97  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 98  0.000000e+00 0.00000000 0.000000e+00
+#&gt; 99  9.803926e-01 0.98038990 9.803858e-01
+#&gt; 100 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 101 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 102 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 103 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 104 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 105 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 106 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 107 1.000000e+00 0.99995246 1.000000e+00
+#&gt; 108 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 109 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 110 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 111 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 112 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 113 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 114 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 115 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 116 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 117 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 118 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 119 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 120 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 121 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 122 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 123 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 124 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 125 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 126 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 127 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 128 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 129 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 130 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 131 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 132 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 133 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 134 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 135 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 136 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 137 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 138 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 139 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 140 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 141 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 142 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 143 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 144 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 145 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 146 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 147 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 148 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 149 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 150 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 151 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 152 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 153 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 154 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 155 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 156 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 157 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 158 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 159 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 160 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 161 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 162 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 163 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 164 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 165 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 166 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 167 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 168 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 169 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 170 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 171 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 172 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 173 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 174 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 175 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 176 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 177 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 178 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 179 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 180 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 181 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 182 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 183 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 184 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 185 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 186 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 187 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 188 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 189 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 190 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 191 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 192 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 193 0.000000e+00 0.00000000 2.775558e-16
+#&gt; 194 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 195 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 196 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 197 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 198 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 199 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 200 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 201 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 202 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 203 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 204 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 205 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 206 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 207 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 208 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 209 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 210 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 211 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 212 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 213 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 214 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 215 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 216 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 217 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 218 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 219 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 220 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 221 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 222 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 223 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 224 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 225 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 226 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 227 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 228 1.000000e+00 0.99977443 1.000000e+00
+#&gt; 229 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 230 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 231 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 232 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 233 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 234 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 235 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 236 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 237 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 238 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 239 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 240 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 241 5.931236e-05 0.00000000 6.661338e-16
+#&gt; 242 8.740665e-01 0.87406897 8.740663e-01
+#&gt; 243 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 244 0.000000e+00 0.00000000 0.000000e+00
+#&gt; 245 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 246 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 247 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 248 8.399153e-02 0.08399119 8.398958e-02
+#&gt; 249 9.803926e-01 0.98038990 9.803858e-01
+#&gt; 250 0.000000e+00 0.00000000 0.000000e+00</div><div class='input'><span class='va'>modpls.B2</span><span class='op'>$</span><span class='va'>MissClassed</span>
+</div><div class='output co'>#&gt;      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
+#&gt; [1,]  124   11   13   11   11   11   11   11   11</div><div class='input'><span class='fu'>plsR</span><span class='op'>(</span><span class='va'>simbin1</span><span class='op'>$</span><span class='va'>Y</span>,<span class='va'>dataAstar2</span><span class='op'>[</span>,<span class='op'>-</span><span class='fl'>1</span><span class='op'>]</span>,<span class='fl'>10</span>,typeVC<span class='op'>=</span><span class='st'>"standard"</span>,MClassed<span class='op'>=</span><span class='cn'>TRUE</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>$</span><span class='va'>InfCrit</span>
+</div><div class='output co'>#&gt;                  AIC     Q2cum_Y LimQ2_Y        Q2_Y  PRESS_Y    RSS_Y
+#&gt; Nb_Comp_0  366.87968          NA      NA          NA       NA 62.49600
+#&gt; Nb_Comp_1  179.27607  0.52469907  0.0975  0.52469907 29.70441 29.27366
+#&gt; Nb_Comp_2  111.50920  0.63784869  0.0975  0.23805890 22.30480 22.14520
+#&gt; Nb_Comp_3   92.19471  0.61461931  0.0975 -0.06414274 23.56565 20.33539
+#&gt; Nb_Comp_4   92.80958  0.54850120  0.0975 -0.17156571 23.82425 20.22303
+#&gt; Nb_Comp_5   94.61150  0.46505988  0.0975 -0.18480962 23.96044 20.20702
+#&gt; Nb_Comp_6   96.58935  0.37811037  0.0975 -0.16254065 23.49148 20.20523
+#&gt; Nb_Comp_7   98.58715  0.28547861  0.0975 -0.14895208 23.21484 20.20505
+#&gt; Nb_Comp_8  100.58707  0.18505584  0.0975 -0.14054551 23.04478 20.20504
+#&gt; Nb_Comp_9  102.58707  0.07664463  0.0975 -0.13302900 22.89290 20.20504
+#&gt; Nb_Comp_10 104.58707 -0.03839400  0.0975 -0.12458760 22.72234 20.20504
+#&gt;                 R2_Y MissClassed R2_residY RSS_residY PRESS_residY   Q2_residY
+#&gt; Nb_Comp_0         NA         124        NA  249.00000           NA          NA
+#&gt; Nb_Comp_1  0.5315915          30 0.5315915  116.63372    118.34993  0.52469907
+#&gt; Nb_Comp_2  0.6456542           6 0.6456542   88.23211     88.86803  0.23805890
+#&gt; Nb_Comp_3  0.6746129           8 0.6746129   81.02138     93.89156 -0.06414274
+#&gt; Nb_Comp_4  0.6764108          11 0.6764108   80.57372     94.92187 -0.17156571
+#&gt; Nb_Comp_5  0.6766671          10 0.6766671   80.50990     95.46452 -0.18480962
+#&gt; Nb_Comp_6  0.6766957          10 0.6766957   80.50277     93.59604 -0.16254065
+#&gt; Nb_Comp_7  0.6766985          10 0.6766985   80.50206     92.49383 -0.14895208
+#&gt; Nb_Comp_8  0.6766986          10 0.6766986   80.50204     91.81627 -0.14054551
+#&gt; Nb_Comp_9  0.6766987          10 0.6766987   80.50203     91.21114 -0.13302900
+#&gt; Nb_Comp_10 0.6766987          10 0.6766987   80.50203     90.53159 -0.12458760
+#&gt;             LimQ2 Q2cum_residY  AIC.std   DoF.dof sigmahat.dof    AIC.dof
+#&gt; Nb_Comp_0      NA           NA 712.4673  1.000000    0.5009870 0.25199190
+#&gt; Nb_Comp_1  0.0975   0.52469907 524.8637  2.621153    0.3433059 0.11956605
+#&gt; Nb_Comp_2  0.0975   0.63784869 457.0968  3.000068    0.2988230 0.09072392
+#&gt; Nb_Comp_3  0.0975   0.61461931 437.7823 21.497037    0.2976680 0.09657973
+#&gt; Nb_Comp_4  0.0975   0.54850120 438.3972 25.000000    0.2991362 0.09878862
+#&gt; Nb_Comp_5  0.0975   0.46505988 440.1991 25.000000    0.2990177 0.09871038
+#&gt; Nb_Comp_6  0.0975   0.37811037 442.1769 25.000000    0.2990044 0.09870163
+#&gt; Nb_Comp_7  0.0975   0.28547861 444.1747 25.000000    0.2990031 0.09870076
+#&gt; Nb_Comp_8  0.0975   0.18505584 446.1747 25.000000    0.2990031 0.09870073
+#&gt; Nb_Comp_9  0.0975   0.07664463 448.1747 25.000000    0.2990031 0.09870073
+#&gt; Nb_Comp_10 0.0975  -0.03839400 450.1747 25.000000    0.2990031 0.09870073
+#&gt;              BIC.dof  GMDL.dof DoF.naive sigmahat.naive  AIC.naive  BIC.naive
+#&gt; Nb_Comp_0  0.2555273 -167.2823         1      0.5009870 0.25199190 0.25552728
+#&gt; Nb_Comp_1  0.1239175 -257.0188         2      0.3435680 0.11898326 0.12230862
+#&gt; Nb_Comp_2  0.0944974 -290.3040         3      0.2994272 0.09073255 0.09452122
+#&gt; Nb_Comp_3  0.1234100 -257.2238         4      0.2875138 0.08398681 0.08864439
+#&gt; Nb_Comp_4  0.1302995 -250.9899         5      0.2873030 0.08419385 0.09000729
+#&gt; Nb_Comp_5  0.1301963 -251.0771         6      0.2877771 0.08480321 0.09180238
+#&gt; Nb_Comp_6  0.1301848 -251.0868         7      0.2883558 0.08547725 0.09367583
+#&gt; Nb_Comp_7  0.1301836 -251.0878         8      0.2889497 0.08616367 0.09557211
+#&gt; Nb_Comp_8  0.1301836 -251.0878         9      0.2895485 0.08685653 0.09748493
+#&gt; Nb_Comp_9  0.1301836 -251.0878        10      0.2901511 0.08755518 0.09941372
+#&gt; Nb_Comp_10 0.1301836 -251.0878        11      0.2907575 0.08825968 0.10135865
+#&gt;            GMDL.naive
+#&gt; Nb_Comp_0   -167.2823
+#&gt; Nb_Comp_1   -258.3373
+#&gt; Nb_Comp_2   -289.8052
+#&gt; Nb_Comp_3   -297.3647
+#&gt; Nb_Comp_4   -295.2257
+#&gt; Nb_Comp_5   -292.6062
+#&gt; Nb_Comp_6   -289.9866
+#&gt; Nb_Comp_7   -287.4310
+#&gt; Nb_Comp_8   -284.9391
+#&gt; Nb_Comp_9   -282.5049
+#&gt; Nb_Comp_10  -280.1229</div><div class='input'><span class='va'>cv.modpls.B2</span><span class='op'>&lt;-</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>simbin1</span>,<span class='fl'>2</span>,NK<span class='op'>=</span><span class='fl'>100</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>res.cv.modpls.B2</span><span class='op'>&lt;-</span><span class='fu'><a href='cvtable.html'>cvtable</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>cv.modpls.B2</span>,MClassed<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____</div><div class='output co'>#&gt; <span class='error'>Error in is.data.frame(data): objet 'simbin1' introuvable</span></div><div class='input'><span class='co'>#Only one component found by repeated CV missclassed criterion</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>res.cv.modpls.B2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in plot(res.cv.modpls.B2): objet 'res.cv.modpls.B2' introuvable</span></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"dimX"</span>,<span class='st'>"Astar"</span>,<span class='st'>"dataAstar2"</span>,<span class='st'>"modpls.A2"</span>,<span class='st'>"cv.modpls.A2"</span>,
+<span class='st'>"res.cv.modpls.A2"</span>,<span class='st'>"simbin1"</span>,<span class='st'>"modpls.B2"</span>,<span class='st'>"cv.modpls.B2"</span>,<span class='st'>"res.cv.modpls.B2"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: objet 'res.cv.modpls.A2' introuvable</span></div><div class='output co'>#&gt; <span class='warning'>Warning: objet 'res.cv.modpls.B2' introuvable</span></div><div class='input'><span class='co'># }</span>
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#references">References</a></li>
-
-      <li><a href="#note">Note</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Frederic Bertrand<br />
-<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
-<a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -2059,13 +2626,16 @@ sparseStop=FALSE,naive=FALSE,verbose=TRUE)</pre>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

@@ -8,21 +8,36 @@
 
 <title>Boxplot bootstrap distributions — boxplots.bootpls • plsRglm</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +45,11 @@
 
 
 
-<meta property="og:title" content="Boxplot bootstrap distributions — boxplots.bootpls" />
 
+<meta property="og:title" content="Boxplot bootstrap distributions — boxplots.bootpls" />
 <meta property="og:description" content="Boxplots for bootstrap distributions." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -47,12 +63,13 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -63,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -71,9 +88,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -82,11 +102,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fbertran/plsRglm">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -97,26 +116,34 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Boxplot bootstrap distributions</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/fbertran/plsRglm/blob/master/R/boxplots.bootpls.R'><code>R/boxplots.bootpls.R</code></a></small>
     <div class="hidden name"><code>boxplots.bootpls.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
     <p>Boxplots for bootstrap distributions.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>boxplots.bootpls</span>(<span class='no'>bootobject</span>, <span class='kw'>indices</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>prednames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-<span class='kw'>articlestyle</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>xaxisticks</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>ranget0</span><span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>las</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/par'>par</a></span>(<span class='st'>"las"</span>),
-<span class='no'>mar</span>, <span class='no'>mgp</span>, <span class='no'>...</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>boxplots.bootpls</span><span class='op'>(</span>
+  <span class='va'>bootobject</span>,
+  indices <span class='op'>=</span> <span class='cn'>NULL</span>,
+  prednames <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  articlestyle <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  xaxisticks <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  ranget0 <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  las <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span><span class='st'>"las"</span><span class='op'>)</span>,
+  <span class='va'>mar</span>,
+  <span class='va'>mgp</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -126,65 +153,85 @@
     </tr>
     <tr>
       <th>indices</th>
-      <td><p>vector of indices of the variables to plot. Defaults to <code>NULL</code>: all the predictors will be used.</p></td>
+      <td><p>vector of indices of the variables to plot. Defaults to
+<code>NULL</code>: all the predictors will be used.</p></td>
     </tr>
     <tr>
       <th>prednames</th>
-      <td><p>do the original names of the predictors shall be plotted ? Defaults to <code>TRUE</code>: the names are plotted.</p></td>
+      <td><p>do the original names of the predictors shall be plotted ?
+Defaults to <code>TRUE</code>: the names are plotted.</p></td>
     </tr>
     <tr>
       <th>articlestyle</th>
-      <td><p>do the extra blank zones of the margin shall be removed from the plot ? Defaults to <code>TRUE</code>: the margins are removed.</p></td>
+      <td><p>do the extra blank zones of the margin shall be removed
+from the plot ? Defaults to <code>TRUE</code>: the margins are removed.</p></td>
     </tr>
     <tr>
       <th>xaxisticks</th>
-      <td><p>do ticks for the x axis shall be plotted ? Defaults to <code>TRUE</code>: the ticks are plotted.</p></td>
+      <td><p>do ticks for the x axis shall be plotted ? Defaults to
+<code>TRUE</code>: the ticks are plotted.</p></td>
     </tr>
     <tr>
       <th>ranget0</th>
-      <td><p>does the vertival range of the plot shall be computed to include the initial estimates of the coefficients ? Defaults to <code>FALSE</code>: the vertical range is calculated only using the bootstrapped values of the statistics. Especially using for permutation bootstrap.</p></td>
+      <td><p>does the vertival range of the plot shall be computed to
+include the initial estimates of the coefficients ? Defaults to
+<code>FALSE</code>: the vertical range is calculated only using the bootstrapped
+values of the statistics. Especially using for permutation bootstrap.</p></td>
     </tr>
     <tr>
       <th>las</th>
-      <td><p>numeric in 0,1,2,3; the style of axis labels. 0: always parallel to the axis [default], 1: always horizontal, 2: always perpendicular to the axis, 3: always vertical.</p></td>
+      <td><p>numeric in 0,1,2,3; the style of axis labels. 0: always parallel
+to the axis [default], 1: always horizontal, 2: always perpendicular to the
+axis, 3: always vertical.</p></td>
     </tr>
     <tr>
       <th>mar</th>
-      <td><p>A numerical vector of the form <code><a href='https://www.rdocumentation.org/packages/base/topics/c'>c(bottom, left, top, right)</a></code> which gives the number of lines of margin to be specified on the four sides of the plot. The default is <code>c(5, 4, 4, 2) + 0.1.</code></p></td>
+      <td><p>A numerical vector of the form <code><a href='https://rdrr.io/r/base/c.html'>c(bottom, left, top, right)</a></code>
+which gives the number of lines of margin to be specified on the four sides
+of the plot. The default is <code>c(5, 4, 4, 2) + 0.1.</code></p></td>
     </tr>
     <tr>
       <th>mgp</th>
-      <td><p>The margin line (in mex units) for the axis title, axis labels and axis line. Note that <code>mgp[1]</code> affects title whereas <code>mgp[2:3]</code> affect axis. The default is <code><a href='https://www.rdocumentation.org/packages/base/topics/c'>c(3, 1, 0)</a></code>.</p></td>
+      <td><p>The margin line (in mex units) for the axis title, axis labels
+and axis line. Note that <code>mgp[1]</code> affects title whereas <code>mgp[2:3]</code>
+affect axis. The default is <code><a href='https://rdrr.io/r/base/c.html'>c(3, 1, 0)</a></code>.</p></td>
     </tr>
     <tr>
-      <th>&#8230;</th>
-      <td><p>further options to pass to the <code><a href='https://www.rdocumentation.org/packages/graphics/topics/boxplot'>boxplot</a></code> function.</p></td>
+      <th>...</th>
+      <td><p>further options to pass to the
+<code><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></code> function.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>NULL</code></p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='bootpls.html'>bootpls</a></code></p></div>
-    
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Frédéric Bertrand<br />
+<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
+<a href='https://fbertran.github.io/homepage/'>https://fbertran.github.io/homepage/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>Cornell</span>)
-<span class='no'>XCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>1</span>:<span class='fl'>7</span>]
-<span class='no'>yCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>8</span>]
+    <pre class="examples"><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>
+<span class='va'>XCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>]</span>
+<span class='va'>yCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>8</span><span class='op'>]</span>
 
 <span class='co'># Lazraq-Cleroux PLS ordinary bootstrap</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Random'>set.seed</a></span>(<span class='fl'>250</span>)
-<span class='no'>modpls</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='plsR.html'>plsR</a></span>(<span class='no'>yCornell</span>,<span class='no'>XCornell</span>,<span class='fl'>3</span>)</div><div class='output co'>#&gt; ____************************************************____
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>250</span><span class='op'>)</span>
+<span class='va'>modpls</span> <span class='op'>&lt;-</span> <span class='fu'><a href='plsR.html'>plsR</a></span><span class='op'>(</span><span class='va'>yCornell</span>,<span class='va'>XCornell</span>,<span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; ____Component____ 1 ____
 #&gt; ____Component____ 2 ____
 #&gt; ____Component____ 3 ____
 #&gt; ____Predicting X without NA neither in X nor in Y____
 #&gt; ****________________________________________________****
-#&gt; </div><div class='input'><span class='no'>Cornell.bootYX</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='bootpls.html'>bootpls</a></span>(<span class='no'>modpls</span>, <span class='kw'>R</span><span class='kw'>=</span><span class='fl'>250</span>)</div><div class='output co'>#&gt; ____************************************************____
+#&gt; </div><div class='input'><span class='va'>Cornell.bootYX</span> <span class='op'>&lt;-</span> <span class='fu'><a href='bootpls.html'>bootpls</a></span><span class='op'>(</span><span class='va'>modpls</span>, R<span class='op'>=</span><span class='fl'>250</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; ____Predicting X without NA neither in X nor in Y____
 #&gt; ____Component____ 1 ____
 #&gt; ____Component____ 2 ____
@@ -1942,9 +1989,12 @@
 #&gt; ****________________________________________________****
 #&gt; </div><div class='input'>
 <span class='co'># Graph similar to the one of Bastien et al. in CSDA 2005</span>
-<span class='fu'>boxplots.bootpls</span>(<span class='no'>Cornell.bootYX</span>,<span class='kw'>indices</span><span class='kw'>=</span><span class='fl'>2</span>:<span class='fl'>8</span>)</div><div class='img'><img src='boxplots.bootpls-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>aze_compl</span>)
-<span class='no'>modplsglm</span><span class='kw'>&lt;-</span><span class='fu'><a href='plsRglm.html'>plsRglm</a></span>(<span class='no'>y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>aze_compl</span>,<span class='fl'>3</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-logistic"</span>)</div><div class='output co'>#&gt; ____************************************************____
+<span class='fu'>boxplots.bootpls</span><span class='op'>(</span><span class='va'>Cornell.bootYX</span>,indices<span class='op'>=</span><span class='fl'>2</span><span class='op'>:</span><span class='fl'>8</span><span class='op'>)</span>
+</div><div class='img'><img src='boxplots.bootpls-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>aze_compl</span><span class='op'>)</span>
+<span class='va'>modplsglm</span><span class='op'>&lt;-</span><span class='fu'><a href='plsRglm.html'>plsRglm</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>aze_compl</span>,<span class='fl'>3</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-logistic"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; 
 #&gt; Family: binomial 
 #&gt; Link function: logit 
@@ -1954,27 +2004,21 @@
 #&gt; ____Component____ 3 ____
 #&gt; ____Predicting X without NA neither in X or Y____
 #&gt; ****________________________________________________****
-#&gt; </div><div class='input'><span class='no'>aze_compl.boot3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='bootplsglm.html'>bootplsglm</a></span>(<span class='no'>modplsglm</span>, <span class='kw'>R</span><span class='kw'>=</span><span class='fl'>250</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='fu'>boxplots.bootpls</span>(<span class='no'>aze_compl.boot3</span>)</div><div class='img'><img src='boxplots.bootpls-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>boxplots.bootpls</span>(<span class='no'>aze_compl.boot3</span>,<span class='kw'>las</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>mar</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>5</span>,<span class='fl'>2</span>,<span class='fl'>1</span>,<span class='fl'>1</span>))</div><div class='img'><img src='boxplots.bootpls-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>boxplots.bootpls</span>(<span class='no'>aze_compl.boot3</span>,<span class='kw'>indices</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>4</span>,<span class='fl'>6</span>),<span class='kw'>prednames</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='img'><img src='boxplots.bootpls-4.png' alt='' width='700' height='433' /></div></pre>
+#&gt; </div><div class='input'><span class='va'>aze_compl.boot3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='bootplsglm.html'>bootplsglm</a></span><span class='op'>(</span><span class='va'>modplsglm</span>, R<span class='op'>=</span><span class='fl'>250</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='fu'>boxplots.bootpls</span><span class='op'>(</span><span class='va'>aze_compl.boot3</span><span class='op'>)</span>
+</div><div class='img'><img src='boxplots.bootpls-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>boxplots.bootpls</span><span class='op'>(</span><span class='va'>aze_compl.boot3</span>,las<span class='op'>=</span><span class='fl'>3</span>,mar<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>,<span class='fl'>2</span>,<span class='fl'>1</span>,<span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='img'><img src='boxplots.bootpls-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>boxplots.bootpls</span><span class='op'>(</span><span class='va'>aze_compl.boot3</span>,indices<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>4</span>,<span class='fl'>6</span><span class='op'>)</span>,prednames<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='img'><img src='boxplots.bootpls-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># }</span>
+
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Frederic Bertrand<br />
-<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
-<a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -1982,13 +2026,16 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

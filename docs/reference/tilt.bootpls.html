@@ -8,21 +8,36 @@
 
 <title>Non-parametric tilted bootstrap for PLS regression models — tilt.bootpls • plsRglm</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +45,18 @@
 
 
 
-<meta property="og:title" content="Non-parametric tilted bootstrap for PLS regression models — tilt.bootpls" />
 
-<meta property="og:description" content="Provides a wrapper for the bootstrap function tilt.boot from the boot R package. Implements non-parametric tilted bootstrap for PLS regression models by case resampling : the tilt.boot function will run an initial bootstrap with equal resampling probabilities (if required) and will use the output of the initial run to find resampling probabilities which put the value of the statistic at required values. It then runs an importance resampling bootstrap using the calculated probabilities as the resampling distribution." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Non-parametric tilted bootstrap for PLS regression models — tilt.bootpls" />
+<meta property="og:description" content="Provides a wrapper for the bootstrap function tilt.boot from the
+boot R package. Implements non-parametric tilted bootstrap for PLS
+regression models by case resampling : the tilt.boot function will
+run an initial bootstrap with equal resampling probabilities (if required)
+and will use the output of the initial run to find resampling probabilities
+which put the value of the statistic at required values. It then runs an
+importance resampling bootstrap using the calculated probabilities as the
+resampling distribution." />
+<meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -47,12 +70,13 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -63,7 +87,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -71,9 +95,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -82,11 +109,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fbertran/plsRglm">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -97,26 +123,41 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Non-parametric tilted bootstrap for PLS regression models</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/fbertran/plsRglm/blob/master/R/tilt.bootpls.R'><code>R/tilt.bootpls.R</code></a></small>
     <div class="hidden name"><code>tilt.bootpls.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-    <p>Provides a wrapper for the bootstrap function <code>tilt.boot</code> from the <code>boot</code> R package.<br /> Implements non-parametric tilted bootstrap for PLS regression models by case resampling : the <code>tilt.boot</code> function will run an initial bootstrap with equal resampling probabilities (if required) and will use the output of the initial run to find resampling probabilities which put the value of the statistic at required values. It then runs an importance resampling bootstrap using the calculated probabilities as the resampling distribution.</p>
-    
+    <p>Provides a wrapper for the bootstrap function <code>tilt.boot</code> from the
+<code>boot</code> R package.<br /> Implements non-parametric tilted bootstrap for PLS
+regression models by case resampling : the <code>tilt.boot</code> function will
+run an initial bootstrap with equal resampling probabilities (if required)
+and will use the output of the initial run to find resampling probabilities
+which put the value of the statistic at required values. It then runs an
+importance resampling bootstrap using the calculated probabilities as the
+resampling distribution.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tilt.bootpls</span>(<span class='no'>object</span>, <span class='kw'>typeboot</span><span class='kw'>=</span><span class='st'>"plsmodel"</span>, <span class='kw'>statistic</span><span class='kw'>=</span><span class='no'>coefs.plsR</span>,
-<span class='kw'>R</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>499</span>, <span class='fl'>250</span>, <span class='fl'>250</span>), <span class='kw'>alpha</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0.025</span>, <span class='fl'>0.975</span>), <span class='kw'>sim</span><span class='kw'>=</span><span class='st'>"ordinary"</span>,
-<span class='kw'>stype</span><span class='kw'>=</span><span class='st'>"i"</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>stabvalue</span><span class='kw'>=</span><span class='fl'>1e6</span>,<span class='no'>...</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>tilt.bootpls</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  typeboot <span class='op'>=</span> <span class='st'>"plsmodel"</span>,
+  statistic <span class='op'>=</span> <span class='va'>coefs.plsR</span>,
+  R <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>499</span>, <span class='fl'>250</span>, <span class='fl'>250</span><span class='op'>)</span>,
+  alpha <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.025</span>, <span class='fl'>0.975</span><span class='op'>)</span>,
+  sim <span class='op'>=</span> <span class='st'>"ordinary"</span>,
+  stype <span class='op'>=</span> <span class='st'>"i"</span>,
+  index <span class='op'>=</span> <span class='fl'>1</span>,
+  stabvalue <span class='op'>=</span> <span class='fl'>1e+06</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -126,87 +167,107 @@
     </tr>
     <tr>
       <th>typeboot</th>
-      <td><p>The type of bootstrap. Either (Y,X) boostrap (<code>typeboot="plsmodel"</code>) or (Y,T) bootstrap (<code>typeboot="fmodel_np"</code>). Defaults to (Y,T) resampling.</p></td>
+      <td><p>The type of bootstrap. Either (Y,X) boostrap
+(<code>typeboot="plsmodel"</code>) or (Y,T) bootstrap
+(<code>typeboot="fmodel_np"</code>). Defaults to (Y,T) resampling.</p></td>
     </tr>
     <tr>
       <th>statistic</th>
-      <td><p>A function which when applied to data returns a vector containing the statistic(s) of interest. <code>statistic</code> must take at least two arguments. The first argument passed will always be the original data. The second will be a vector of indices, frequencies or weights which define the bootstrap sample. Further, if predictions are required, then a third argument is required which would be a vector of the random indices used to generate the bootstrap predictions. Any further arguments can be passed to statistic through the <code>...</code> argument.</p></td>
+      <td><p>A function which when applied to data returns a vector
+containing the statistic(s) of interest. <code>statistic</code> must take at least
+two arguments. The first argument passed will always be the original data.
+The second will be a vector of indices, frequencies or weights which define
+the bootstrap sample. Further, if predictions are required, then a third
+argument is required which would be a vector of the random indices used to
+generate the bootstrap predictions. Any further arguments can be passed to
+statistic through the <code>...</code> argument.</p></td>
     </tr>
     <tr>
       <th>R</th>
-      <td><p>The number of bootstrap replicates. Usually this will be a single positive integer. For importance resampling, some resamples may use one set of weights and others use a different set of weights. In this case <code>R</code> would be a vector of integers where each component gives the number of resamples from each of the rows of weights.</p></td>
+      <td><p>The number of bootstrap replicates. Usually this will be a single
+positive integer. For importance resampling, some resamples may use one set
+of weights and others use a different set of weights. In this case <code>R</code>
+would be a vector of integers where each component gives the number of
+resamples from each of the rows of weights.</p></td>
     </tr>
     <tr>
       <th>alpha</th>
-      <td><p>The alpha level to which tilting is required. This parameter is ignored if <code>R[1]</code> is 0 or if <code>theta</code> is supplied, otherwise it is used to find the values of <code>theta</code> as quantiles of the initial uniform bootstrap. In this case <code>R[1]</code> should be large enough that <code>min(c(alpha, 1-alpha))*R[1] &gt; 5</code>, if this is not the case then a warning is generated to the effect that the <code>theta</code> are extreme values and so the tilted output may be unreliable.</p></td>
+      <td><p>The alpha level to which tilting is required. This parameter is
+ignored if <code>R[1]</code> is 0 or if <code>theta</code> is supplied, otherwise it is
+used to find the values of <code>theta</code> as quantiles of the initial uniform
+bootstrap. In this case <code>R[1]</code> should be large enough that
+<code>min(c(alpha, 1-alpha))*R[1] &gt; 5</code>, if this is not the case then a
+warning is generated to the effect that the <code>theta</code> are extreme values
+and so the tilted output may be unreliable.</p></td>
     </tr>
     <tr>
       <th>sim</th>
-      <td><p>A character string indicating the type of simulation required. Possible values are  <code>"ordinary"</code> (the default), <code>"balanced"</code>, <code>"permutation"</code>, or <code>"antithetic"</code>.</p></td>
+      <td><p>A character string indicating the type of simulation required.
+Possible values are <code>"ordinary"</code> (the default), <code>"balanced"</code>,
+<code>"permutation"</code>, or <code>"antithetic"</code>.</p></td>
     </tr>
     <tr>
       <th>stype</th>
-      <td><p>A character string indicating what the second argument of <code>statistic</code> represents. Possible values of stype are <code>"i"</code> (indices - the default), <code>"f"</code> (frequencies), or <code>"w"</code> (weights).</p></td>
+      <td><p>A character string indicating what the second argument of
+<code>statistic</code> represents. Possible values of stype are <code>"i"</code>
+(indices - the default), <code>"f"</code> (frequencies), or <code>"w"</code> (weights).</p></td>
     </tr>
     <tr>
       <th>index</th>
-      <td><p>The index of the statistic of interest in the output from <code>statistic</code>. By default the first element of the output of <code>statistic</code> is used.</p></td>
+      <td><p>The index of the statistic of interest in the output from
+<code>statistic</code>. By default the first element of the output of
+<code>statistic</code> is used.</p></td>
     </tr>
     <tr>
       <th>stabvalue</th>
       <td><p>Upper bound for the absolute value of the coefficients.</p></td>
     </tr>
     <tr>
-      <th>&#8230;</th>
+      <th>...</th>
       <td><p>ny further arguments can be passed to <code>statistic</code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An object of class "boot".</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/boot/topics/boot'>tilt.boot</a></code></p></div>
-    
+    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/boot/man/boot.html'>tilt.boot</a></code></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Frédéric Bertrand<br />
+<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
+<a href='https://fbertran.github.io/homepage/'>https://fbertran.github.io/homepage/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>Cornell</span>)
-<span class='no'>XCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>1</span>:<span class='fl'>7</span>]
-<span class='no'>yCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>8</span>]
+    <pre class="examples"><div class='input'>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>
+<span class='va'>XCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>]</span>
+<span class='va'>yCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>8</span><span class='op'>]</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Random'>set.seed</a></span>(<span class='fl'>1385</span>)
-<span class='no'>Cornell.tilt.boot</span> <span class='kw'>&lt;-</span> <span class='fu'>tilt.bootpls</span>(<span class='fu'><a href='plsR.html'>plsR</a></span>(<span class='no'>yCornell</span>,<span class='no'>XCornell</span>,<span class='fl'>1</span>), <span class='kw'>statistic</span><span class='kw'>=</span><span class='no'>coefs.plsR</span>,
-<span class='kw'>typeboot</span><span class='kw'>=</span><span class='st'>"fmodel_np"</span>, <span class='kw'>R</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>499</span>, <span class='fl'>100</span>, <span class='fl'>100</span>), <span class='kw'>alpha</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0.025</span>, <span class='fl'>0.975</span>), <span class='kw'>sim</span><span class='kw'>=</span><span class='st'>"ordinary"</span>,
-<span class='kw'>stype</span><span class='kw'>=</span><span class='st'>"i"</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fl'>1</span>)
-<span class='no'>Cornell.tilt.boot</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>Cornell.tilt.boot</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1385</span><span class='op'>)</span>
+<span class='va'>Cornell.tilt.boot</span> <span class='op'>&lt;-</span> <span class='fu'>tilt.bootpls</span><span class='op'>(</span><span class='fu'><a href='plsR.html'>plsR</a></span><span class='op'>(</span><span class='va'>yCornell</span>,<span class='va'>XCornell</span>,<span class='fl'>1</span><span class='op'>)</span>, statistic<span class='op'>=</span><span class='va'>coefs.plsR</span>, 
+typeboot<span class='op'>=</span><span class='st'>"fmodel_np"</span>, R<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>499</span>, <span class='fl'>100</span>, <span class='fl'>100</span><span class='op'>)</span>, alpha<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.025</span>, <span class='fl'>0.975</span><span class='op'>)</span>, sim<span class='op'>=</span><span class='st'>"ordinary"</span>, 
+stype<span class='op'>=</span><span class='st'>"i"</span>, index<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>Cornell.tilt.boot</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>Cornell.tilt.boot</span><span class='op'>)</span>
 
-<span class='fu'><a href='boxplots.bootpls.html'>boxplots.bootpls</a></span>(<span class='no'>Cornell.tilt.boot</span>,<span class='kw'>indices</span><span class='kw'>=</span><span class='fl'>2</span>:<span class='fl'>7</span>)
+<span class='fu'><a href='boxplots.bootpls.html'>boxplots.bootpls</a></span><span class='op'>(</span><span class='va'>Cornell.tilt.boot</span>,indices<span class='op'>=</span><span class='fl'>2</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='no'>Cornell.tilt.boot</span>)
-<span class='co'># }</span></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span><span class='va'>Cornell.tilt.boot</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Frederic Bertrand<br />
-<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
-<a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -214,13 +275,16 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
