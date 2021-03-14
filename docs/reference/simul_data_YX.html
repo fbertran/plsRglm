@@ -8,21 +8,36 @@
 
 <title>Data generating function for multivariate plsR models — simul_data_YX • plsRglm</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +45,14 @@
 
 
 
-<meta property="og:title" content="Data generating function for multivariate plsR models — simul_data_YX" />
 
-<meta property="og:description" content="This function generates a single multivariate response value \(\boldsymbol{Y}\) and a vector of explinatory variables \((X_1,\ldots,X_{totdim})\) drawn from a model with a given number of latent components." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Data generating function for multivariate plsR models — simul_data_YX" />
+<meta property="og:description" content="This function generates a single multivariate response value
+\(\boldsymbol{Y}\) and a vector of explinatory variables
+\((X_1,\ldots,X_{totdim})\) drawn from a model with a given number of
+latent components." />
+<meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -47,12 +66,13 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -63,7 +83,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -71,9 +91,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -82,11 +105,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fbertran/plsRglm">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -97,132 +119,133 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Data generating function for multivariate plsR models</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/fbertran/plsRglm/blob/master/R/simul_data_YX.R'><code>R/simul_data_YX.R</code></a></small>
     <div class="hidden name"><code>simul_data_YX.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-    <p>This function generates a single multivariate response value \(\boldsymbol{Y}\) and a vector of explinatory variables \((X_1,\ldots,X_{totdim})\) drawn from a model with a given number of latent components.</p>
-    
+    <p>This function generates a single multivariate response value
+\(\boldsymbol{Y}\) and a vector of explinatory variables
+\((X_1,\ldots,X_{totdim})\) drawn from a model with a given number of
+latent components.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>simul_data_YX</span>(<span class='no'>totdim</span>, <span class='no'>ncomp</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>simul_data_YX</span><span class='op'>(</span><span class='va'>totdim</span>, <span class='va'>ncomp</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>totdim</th>
-      <td><p>Number of column of the X vector (from <code>ncomp</code> to hardware limits)</p></td>
+      <td><p>Number of column of the X vector (from <code>ncomp</code> to
+hardware limits)</p></td>
     </tr>
     <tr>
       <th>ncomp</th>
       <td><p>Number of latent components in the model (from 2 to 6)</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function should be combined with the replicate function to give rise to a larger dataset. The algorithm used is a <span style="R">R</span> port of the one described in the article of Li which is a multivariate generalization of the algorithm of Naes and Martens.</p>
-    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <dt>vector</dt><dd><p>\((Y_1,\ldots,Y_r,X_1,\ldots,X_{totdim})\)</p></dd>
     
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>T. Naes, H. Martens, Comparison of prediction methods for 
-multicollinear data, Commun. Stat., Simul. 14 (1985) 545-576.<br />
-<!-- %\url{http://dx.doi.org/10.1080/03610918508812458}\cr -->
- Baibing Li, Julian Morris, Elaine B. Martin,
-Model selection for partial least squares regression, 
-Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.<br />
-<a href='http://dx.doi.org/10.1016/S0169-7439(02)00051-5'>http://dx.doi.org/10.1016/S0169-7439(02)00051-5</a></p>
-    
+<dt>vector</dt><dd><p>\((Y_1,\ldots,Y_r,X_1,\ldots,X_{totdim})\)</p></dd>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function should be combined with the replicate function to give rise to
+a larger dataset. The algorithm used is a port of the one described in the
+article of Li which is a multivariate generalization of the algorithm of
+Naes and Martens.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>The value of \(r\) depends on the value of <code>ncomp</code> :</p><table class='table'>
-<tr><td></td><td><code>ncomp</code></td><td></td></tr>
-<tr><td></td><td>\(r\)</td><td></td></tr>
-<tr><td></td><td>2</td><td>3</td></tr>
-<tr><td></td><td>3</td><td>3</td></tr>
-<tr><td></td><td>4</td><td>4</td></tr>
-<tr><td></td><td></td><td><code>ncomp</code></td></tr>
+<tr><td><code>ncomp</code></td><td>\(r\)</td><td>2</td></tr>
+<tr><td>3</td><td>3</td><td>3</td></tr>
+<tr><td>4</td><td>4</td><td></td></tr>
 </table>
-    
+
+
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>T. Naes, H. Martens, Comparison of prediction methods for
+multicollinear data, Commun. Stat., Simul. 14 (1985) 545-576.<br />
+<!-- %\url{http://dx.doi.org/10.1080/03610918508812458}\cr Baibing Li, Julian -->
+Morris, Elaine B. Martin, Model selection for partial least squares
+regression, Chemometrics and Intelligent Laboratory Systems 64 (2002)
+79-89, doi: <a href='https://doi.org/10.1016/S0169-7439(02)00051-5'>10.1016/S0169-7439(02)00051-5</a>
+.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='simul_data_complete.html'>simul_data_complete</a></code> for highlighting the simulations parameters</p></div>
-    
+    <div class='dont-index'><p><code><a href='simul_data_complete.html'>simul_data_complete</a></code> for highlighting the simulations
+parameters</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Frédéric Bertrand<br />
+<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
+<a href='https://fbertran.github.io/homepage/'>https://fbertran.github.io/homepage/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>simul_data_YX</span>(<span class='fl'>20</span>,<span class='fl'>6</span>)</div><div class='output co'>#&gt;         Y 1         Y 2         Y 3         Y 4          X1          X2 
-#&gt;  8.21209590  8.21445036  8.21577281  8.22736726  4.01324727  1.38568594 
-#&gt;          X3          X4          X5          X6          X7          X8 
-#&gt;  0.06505756 -0.46383510  3.33902955  0.42505828 -0.58114336 -1.44627523 
-#&gt;          X9         X10         X11         X12         X13         X14 
-#&gt; -0.64584263  2.07134264  2.63878433 -1.43669864  1.62261735  0.78481810 
-#&gt;         X15         X16         X17         X18         X19         X20 
-#&gt; -0.63016117  2.05820761  2.63747459 -1.46768420  1.61442723  0.78660344 </div><div class='input'>
-</div><div class='input'><span class='kw'>if</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>require</a></span>(<span class='no'>plsdepot</span>)){
-<span class='no'>dimX</span> <span class='kw'>&lt;-</span> <span class='fl'>6</span>
-<span class='no'>Astar</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span>
-(<span class='no'>dataAstar2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/t'>t</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>replicate</a></span>(<span class='fl'>50</span>,<span class='fu'>simul_data_YX</span>(<span class='no'>dimX</span>,<span class='no'>Astar</span>))))
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>plsdepot</span>)
-<span class='no'>resAstar2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/plsdepot/topics/plsreg2'>plsreg2</a></span>(<span class='no'>dataAstar2</span>[,<span class='fl'>4</span>:<span class='fl'>9</span>],<span class='no'>dataAstar2</span>[,<span class='fl'>1</span>:<span class='fl'>3</span>],<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>5</span>)
-<span class='no'>resAstar2</span>$<span class='no'>Q2</span>
-<span class='no'>resAstar2</span>$<span class='no'>Q2</span>[,<span class='fl'>4</span>]<span class='kw'>&gt;</span><span class='fl'>0.0975</span>
+    <pre class="examples"><div class='input'>
+<span class='fu'>simul_data_YX</span><span class='op'>(</span><span class='fl'>20</span>,<span class='fl'>6</span><span class='op'>)</span>                          
+</div><div class='output co'>#&gt;        Y 1        Y 2        Y 3        Y 4         X1         X2         X3 
+#&gt;  1.6521069  1.6767627  1.6346312  1.6132278  0.4990016  4.5452299 -3.2486510 
+#&gt;         X4         X5         X6         X7         X8         X9        X10 
+#&gt;  2.3508245  0.1799964  4.8791825 -3.5780348  2.6919449  1.0616228  4.3819963 
+#&gt;        X11        X12        X13        X14        X15        X16        X17 
+#&gt; -1.1678799  0.6185691  3.2516226 -1.9117334  1.0510836  4.3806368 -1.1590954 
+#&gt;        X18        X19        X20 
+#&gt;  0.6317238  3.2675463 -1.8953118 </div><div class='input'>
+<span class='co'># \donttest{</span>
+<span class='kw'>if</span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='http://www.gastonsanchez.com/plsdepot'>plsdepot</a></span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
+<span class='va'>dimX</span> <span class='op'>&lt;-</span> <span class='fl'>6</span>
+<span class='va'>Astar</span> <span class='op'>&lt;-</span> <span class='fl'>2</span>
+<span class='op'>(</span><span class='va'>dataAstar2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span><span class='op'>(</span><span class='fl'>50</span>,<span class='fu'>simul_data_YX</span><span class='op'>(</span><span class='va'>dimX</span>,<span class='va'>Astar</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.gastonsanchez.com/plsdepot'>plsdepot</a></span><span class='op'>)</span>
+<span class='va'>resAstar2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/plsdepot/man/plsreg2.html'>plsreg2</a></span><span class='op'>(</span><span class='va'>dataAstar2</span><span class='op'>[</span>,<span class='fl'>4</span><span class='op'>:</span><span class='fl'>9</span><span class='op'>]</span>,<span class='va'>dataAstar2</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>,comps<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>
+<span class='va'>resAstar2</span><span class='op'>$</span><span class='va'>Q2</span>
+<span class='va'>resAstar2</span><span class='op'>$</span><span class='va'>Q2</span><span class='op'>[</span>,<span class='fl'>4</span><span class='op'>]</span><span class='op'>&gt;</span><span class='fl'>0.0975</span>
 
-<span class='no'>dimX</span> <span class='kw'>&lt;-</span> <span class='fl'>6</span>
-<span class='no'>Astar</span> <span class='kw'>&lt;-</span> <span class='fl'>3</span>
-(<span class='no'>dataAstar3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/t'>t</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>replicate</a></span>(<span class='fl'>50</span>,<span class='fu'>simul_data_YX</span>(<span class='no'>dimX</span>,<span class='no'>Astar</span>))))
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>plsdepot</span>)
-<span class='no'>resAstar3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/plsdepot/topics/plsreg2'>plsreg2</a></span>(<span class='no'>dataAstar3</span>[,<span class='fl'>4</span>:<span class='fl'>9</span>],<span class='no'>dataAstar3</span>[,<span class='fl'>1</span>:<span class='fl'>3</span>],<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>5</span>)
-<span class='no'>resAstar3</span>$<span class='no'>Q2</span>
-<span class='no'>resAstar3</span>$<span class='no'>Q2</span>[,<span class='fl'>4</span>]<span class='kw'>&gt;</span><span class='fl'>0.0975</span>
+<span class='va'>dimX</span> <span class='op'>&lt;-</span> <span class='fl'>6</span>
+<span class='va'>Astar</span> <span class='op'>&lt;-</span> <span class='fl'>3</span>
+<span class='op'>(</span><span class='va'>dataAstar3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span><span class='op'>(</span><span class='fl'>50</span>,<span class='fu'>simul_data_YX</span><span class='op'>(</span><span class='va'>dimX</span>,<span class='va'>Astar</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.gastonsanchez.com/plsdepot'>plsdepot</a></span><span class='op'>)</span>
+<span class='va'>resAstar3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/plsdepot/man/plsreg2.html'>plsreg2</a></span><span class='op'>(</span><span class='va'>dataAstar3</span><span class='op'>[</span>,<span class='fl'>4</span><span class='op'>:</span><span class='fl'>9</span><span class='op'>]</span>,<span class='va'>dataAstar3</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>,comps<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>
+<span class='va'>resAstar3</span><span class='op'>$</span><span class='va'>Q2</span>
+<span class='va'>resAstar3</span><span class='op'>$</span><span class='va'>Q2</span><span class='op'>[</span>,<span class='fl'>4</span><span class='op'>]</span><span class='op'>&gt;</span><span class='fl'>0.0975</span>
 
-<span class='no'>dimX</span> <span class='kw'>&lt;-</span> <span class='fl'>6</span>
-<span class='no'>Astar</span> <span class='kw'>&lt;-</span> <span class='fl'>4</span>
-(<span class='no'>dataAstar4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/t'>t</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>replicate</a></span>(<span class='fl'>50</span>,<span class='fu'>simul_data_YX</span>(<span class='no'>dimX</span>,<span class='no'>Astar</span>))))
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>plsdepot</span>)
-<span class='no'>resAstar4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/plsdepot/topics/plsreg2'>plsreg2</a></span>(<span class='no'>dataAstar4</span>[,<span class='fl'>5</span>:<span class='fl'>10</span>],<span class='no'>dataAstar4</span>[,<span class='fl'>1</span>:<span class='fl'>4</span>],<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>5</span>)
-<span class='no'>resAstar4</span>$<span class='no'>Q2</span>
-<span class='no'>resAstar4</span>$<span class='no'>Q2</span>[,<span class='fl'>5</span>]<span class='kw'>&gt;</span><span class='fl'>0.0975</span>
+<span class='va'>dimX</span> <span class='op'>&lt;-</span> <span class='fl'>6</span>
+<span class='va'>Astar</span> <span class='op'>&lt;-</span> <span class='fl'>4</span>
+<span class='op'>(</span><span class='va'>dataAstar4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span><span class='op'>(</span><span class='fl'>50</span>,<span class='fu'>simul_data_YX</span><span class='op'>(</span><span class='va'>dimX</span>,<span class='va'>Astar</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.gastonsanchez.com/plsdepot'>plsdepot</a></span><span class='op'>)</span>
+<span class='va'>resAstar4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/plsdepot/man/plsreg2.html'>plsreg2</a></span><span class='op'>(</span><span class='va'>dataAstar4</span><span class='op'>[</span>,<span class='fl'>5</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>,<span class='va'>dataAstar4</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span>,comps<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>
+<span class='va'>resAstar4</span><span class='op'>$</span><span class='va'>Q2</span>
+<span class='va'>resAstar4</span><span class='op'>$</span><span class='va'>Q2</span><span class='op'>[</span>,<span class='fl'>5</span><span class='op'>]</span><span class='op'>&gt;</span><span class='fl'>0.0975</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"dimX"</span>,<span class='st'>"Astar"</span>))
-}</div><div class='output co'>#&gt; <span class='message'>Loading required package: plsdepot</span></div></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"dimX"</span>,<span class='st'>"Astar"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div><div class='output co'>#&gt; <span class='message'>Le chargement a nécessité le package : plsdepot</span></div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attachement du package : ‘plsdepot’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:chemometrics’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    nipals</span></div><div class='input'><span class='co'># }</span>
+
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#references">References</a></li>
-
-      <li><a href="#note">Note</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Frederic Bertrand<br />
-<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
-<a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -230,13 +253,16 @@ Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.<br />
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

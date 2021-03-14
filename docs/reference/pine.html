@@ -8,21 +8,36 @@
 
 <title>Pine dataset — pine • plsRglm</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +45,16 @@
 
 
 
-<meta property="og:title" content="Pine dataset — pine" />
 
-<meta property="og:description" content="The caterpillar dataset was extracted from a 1973 study on pine processionary caterpillars. It assesses the influence of some forest settlement characteristics on the development of caterpillar colonies. The response variable is the logarithmic transform of the average number of nests of caterpillars per tree in an area of 500 square meters (x11). There are k=10 potentially explanatory variables defined on n=33 areas." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Pine dataset — pine" />
+<meta property="og:description" content="The caterpillar dataset was extracted from a 1973 study on pine
+processionary caterpillars. It assesses the influence of some forest
+settlement characteristics on the development of caterpillar colonies. The
+response variable is the logarithmic transform of the average number of
+nests of caterpillars per tree in an area of 500 square meters (x11).
+There are k=10 potentially explanatory variables defined on n=33 areas." />
+<meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -47,12 +68,13 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -63,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -71,9 +93,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -82,11 +107,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fbertran/plsRglm">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -97,57 +121,69 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Pine dataset</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/fbertran/plsRglm/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
     <div class="hidden name"><code>pine.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-    <p>The caterpillar dataset was extracted from a 1973 study on pine processionary caterpillars. It assesses the influence of some forest settlement characteristics on the development of caterpillar colonies. The response variable is the logarithmic transform of the average number of nests of caterpillars per tree in an area of 500 square meters (<code>x11</code>). There are k=10 potentially explanatory variables defined on n=33 areas.</p>
-    
+    <p>The caterpillar dataset was extracted from a 1973 study on pine
+processionary caterpillars. It assesses the influence of some forest
+settlement characteristics on the development of caterpillar colonies. The
+response variable is the logarithmic transform of the average number of
+nests of caterpillars per tree in an area of 500 square meters (<code>x11</code>).
+There are k=10 potentially explanatory variables defined on n=33 areas.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>pine</span>)</pre>
-        
+
+
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 33 observations on the following 11 variables.</p><dl class='dl-horizontal'>
-    <dt><code>x1</code></dt><dd><p>altitude (in meters)</p></dd>
-    <dt><code>x2</code></dt><dd><p>slope (en degrees)</p></dd>
-    <dt><code>x3</code></dt><dd><p>number of pines in the area</p></dd>
-    <dt><code>x4</code></dt><dd><p>height (in meters) of the tree sampled at the center of the area</p></dd>
-    <dt><code>x5</code></dt><dd><p>diameter (in meters) of the tree sampled at the center of the area</p></dd>
-    <dt><code>x6</code></dt><dd><p>index of the settlement density</p></dd>
-    <dt><code>x7</code></dt><dd><p>orientation of the area (from 1 if southbound to 2 otherwise)</p></dd>
-    <dt><code>x8</code></dt><dd><p>height (in meters) of the dominant tree</p></dd>
-    <dt><code>x9</code></dt><dd><p>number of vegetation strata</p></dd>
-    <dt><code>x10</code></dt><dd><p>mix settlement index (from 1 if not mixed to 2 if mixed)</p></dd>
-    <dt><code>x11</code></dt><dd><p>logarithmic transform of the average number of nests of caterpillars per tree</p></dd>
-  </dl>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <p>A data frame with 33 observations on the following 11 variables.</p><dl>
+<dt>x1</dt><dd><p>altitude (in meters)</p></dd> <dt>x2</dt><dd><p>slope
+(en degrees)</p></dd> <dt>x3</dt><dd><p>number of pines in the area</p></dd>
+<dt>x4</dt><dd><p>height (in meters) of the tree sampled at the center of
+the area</p></dd> <dt>x5</dt><dd><p>diameter (in meters) of the tree sampled at the
+center of the area</p></dd> <dt>x6</dt><dd><p>index of the settlement density</p></dd>
+<dt>x7</dt><dd><p>orientation of the area (from 1 if southbound to 2
+otherwise)</p></dd> <dt>x8</dt><dd><p>height (in meters) of the dominant tree</p></dd>
+<dt>x9</dt><dd><p>number of vegetation strata</p></dd> <dt>x10</dt><dd><p>mix
+settlement index (from 1 if not mixed to 2 if mixed)</p></dd>
+<dt>x11</dt><dd><p>logarithmic transform of the average number of nests of
+caterpillars per tree</p></dd> 
+</dl>
 
-    <p>These caterpillars got their names from their habit of moving over the ground in incredibly long head-to-tail processions when leaving their nest to create a new colony.<br /></p>
-<p>The <code>pine_sup</code> dataset can be used as a test set to assess model prediction error of a model trained on the <code>pine</code> dataset.</p>
-    
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p>Tomassone R., Audrain S., Lesquoy-de Turckeim E., Millier C. (1992), &#8220;La regression, nouveaux regards sur une ancienne methode statistique&#8221;, INRA, <em>Actualites Scientifiques et Agronomiques</em>, Masson, Paris.</p>
-    
+    <p>Tomassone R., Audrain S., Lesquoy-de Turckeim E., Millier C. (1992),
+&#8220;La régression, nouveaux regards sur une ancienne
+méthode statistique&#8221;, INRA,
+<em>Actualités Scientifiques et Agronomiques</em>, Masson,
+Paris.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>These caterpillars got their names from their habit of moving over the
+ground in incredibly long head-to-tail processions when leaving their nest
+to create a new colony.<br /></p>
+<p>The <code>pine_sup</code> dataset can be used as a test set to assess model
+prediction error of a model trained on the <code>pine</code> dataset.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>J.-M. Marin, C. Robert. (2007). <em>Bayesian Core: A Practical Approach to Computational Bayesian Statistics</em>. Springer, New-York, pages 48-49.</p>
-    
+    <p>J.-M. Marin, C. Robert. (2007). <em>Bayesian Core: A Practical
+Approach to Computational Bayesian Statistics</em>. Springer, New-York, pages
+48-49.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>pine</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>pine</span>)</div><div class='output co'>#&gt; 'data.frame':	33 obs. of  11 variables:
+    <pre class="examples"><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>pine</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>pine</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 'data.frame':	33 obs. of  11 variables:
 #&gt;  $ x1 : int  1200 1342 1231 1254 1357 1250 1422 1309 1127 1075 ...
 #&gt;  $ x2 : int  22 28 28 28 32 27 37 46 24 34 ...
 #&gt;  $ x3 : int  1 8 5 18 7 1 22 7 2 9 ...
@@ -158,25 +194,16 @@
 #&gt;  $ x8 : num  5.9 6.4 4.3 6.9 6.6 5.8 8.3 7.8 4.9 6.8 ...
 #&gt;  $ x9 : num  1.4 1.7 1.5 2.3 1.8 1.3 2.5 1.8 1.5 2 ...
 #&gt;  $ x10: num  1.4 1.7 1.4 1.6 1.3 1.4 2 1.6 2 2 ...
-#&gt;  $ x11: num  2.37 1.47 1.13 0.85 0.24 1.49 0.3 0.07 3 1.21 ...</div></pre>
+#&gt;  $ x11: num  2.37 1.47 1.13 0.85 0.24 1.49 0.3 0.07 3 1.21 ...</div><div class='input'>
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      
-      <li><a href="#format">Format</a></li>
-
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#source">Source</a></li>
-
-      <li><a href="#references">References</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -184,13 +211,16 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

@@ -8,21 +8,36 @@
 
 <title>Table method for summary of cross validated PLSR and PLSGLR models — cvtable • plsRglm</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +45,13 @@
 
 
 
-<meta property="og:title" content="Table method for summary of cross validated PLSR and PLSGLR models — cvtable" />
 
-<meta property="og:description" content="The function cvtable is wrapper of cvtable.plsR and cvtable.plsRglm that provides a table summary for the classes &quot;summary.cv.plsRmodel&quot; and &quot;summary.cv.plsRglmmodel&quot;" />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Table method for summary of cross validated PLSR and PLSGLR models — cvtable" />
+<meta property="og:description" content="The function cvtable is wrapper of cvtable.plsR and
+cvtable.plsRglm that provides a table summary for the classes
+&quot;summary.cv.plsRmodel&quot; and &quot;summary.cv.plsRglmmodel&quot;" />
+<meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -47,12 +65,13 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -63,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -71,9 +90,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -82,11 +104,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fbertran/plsRglm">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -97,25 +118,25 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Table method for summary of cross validated PLSR and PLSGLR models</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/fbertran/plsRglm/blob/master/R/cvtable.R'><code>R/cvtable.R</code></a></small>
     <div class="hidden name"><code>cvtable.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-    <p>The function <code>cvtable</code> is wrapper of <code>cvtable.plsR</code> and <code>cvtable.plsRglm</code> that provides a table summary for the classes <code>"summary.cv.plsRmodel"</code> and <code>"summary.cv.plsRglmmodel"</code></p>
-    
+    <p>The function <code>cvtable</code> is wrapper of <code>cvtable.plsR</code> and
+<code>cvtable.plsRglm</code> that provides a table summary for the classes
+<code>"summary.cv.plsRmodel"</code> and <code>"summary.cv.plsRglmmodel"</code></p>
     </div>
 
-    <pre class="usage">cvtable.plsR(x,verbose=TRUE, &#8230;)
-cvtable.plsRglm(x,verbose=TRUE, &#8230;)</pre>
-    
+    <pre class="usage"><span class='fu'>cvtable</span><span class='op'>(</span><span class='va'>x</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -128,28 +149,36 @@ cvtable.plsRglm(x,verbose=TRUE, &#8230;)</pre>
       <td><p>should results be displayed ?</p></td>
     </tr>
     <tr>
-      <th>&#8230;</th>
+      <th>...</th>
       <td><p>further arguments to be passed to or from methods.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>list</code>List of Information Criteria computed for each fold.</p>
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Nicolas Meyer, Myriam Maumy-Bertrand et Frederic Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>, 151(2), pages 1-18.
+    <p>Nicolas Meyer, Myriam Maumy-Bertrand et
+Frédéric Bertrand (2010). Comparing the linear and the
+logistic PLS regression with qualitative predictors: application to
+allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>,
+151(2), pages 1-18.
 <a href='http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47'>http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47</a></p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></code></p></div>
-    
+    <div class='dont-index'><p><code><a href='https://rdrr.io/r/base/summary.html'>summary</a></code></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Frédéric Bertrand<br />
+<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
+<a href='https://fbertran.github.io/homepage/'>https://fbertran.github.io/homepage/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>Cornell</span>)
-<span class='no'>cv.modpls</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Cornell</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>5</span>)</div><div class='output co'>#&gt; NK: 1 
+    <pre class="examples"><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>
+<span class='va'>cv.modpls</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>Cornell</span>,nt<span class='op'>=</span><span class='fl'>6</span>,K<span class='op'>=</span><span class='fl'>6</span>,NK<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; NK: 1 
 #&gt; Number of groups : 6 
 #&gt; 1 
 #&gt; ____************************************************____
@@ -203,7 +232,8 @@ cvtable.plsRglm(x,verbose=TRUE, &#8230;)</pre>
 #&gt; ____Component____ 3 ____
 #&gt; ____Component____ 4 ____
 #&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
+#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}
+#&gt; Warning only 5 components could thus be extracted
 #&gt; ****________________________________________________****
 #&gt; 
 #&gt; 6 
@@ -214,8 +244,7 @@ cvtable.plsRglm(x,verbose=TRUE, &#8230;)</pre>
 #&gt; ____Component____ 3 ____
 #&gt; ____Component____ 4 ____
 #&gt; ____Component____ 5 ____
-#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}
-#&gt; Warning only 5 components could thus be extracted
+#&gt; ____Component____ 6 ____
 #&gt; ****________________________________________________****
 #&gt; 
 #&gt; NK: 2 
@@ -308,7 +337,8 @@ cvtable.plsRglm(x,verbose=TRUE, &#8230;)</pre>
 #&gt; ____Component____ 3 ____
 #&gt; ____Component____ 4 ____
 #&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
+#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}
+#&gt; Warning only 5 components could thus be extracted
 #&gt; ****________________________________________________****
 #&gt; 
 #&gt; 3 
@@ -319,8 +349,7 @@ cvtable.plsRglm(x,verbose=TRUE, &#8230;)</pre>
 #&gt; ____Component____ 3 ____
 #&gt; ____Component____ 4 ____
 #&gt; ____Component____ 5 ____
-#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}
-#&gt; Warning only 5 components could thus be extracted
+#&gt; ____Component____ 6 ____
 #&gt; ****________________________________________________****
 #&gt; 
 #&gt; 4 
@@ -366,7 +395,8 @@ cvtable.plsRglm(x,verbose=TRUE, &#8230;)</pre>
 #&gt; ____Component____ 3 ____
 #&gt; ____Component____ 4 ____
 #&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
+#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}
+#&gt; Warning only 5 components could thus be extracted
 #&gt; ****________________________________________________****
 #&gt; 
 #&gt; 2 
@@ -410,8 +440,7 @@ cvtable.plsRglm(x,verbose=TRUE, &#8230;)</pre>
 #&gt; ____Component____ 3 ____
 #&gt; ____Component____ 4 ____
 #&gt; ____Component____ 5 ____
-#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}
-#&gt; Warning only 5 components could thus be extracted
+#&gt; ____Component____ 6 ____
 #&gt; ****________________________________________________****
 #&gt; 
 #&gt; 6 
@@ -457,8 +486,7 @@ cvtable.plsRglm(x,verbose=TRUE, &#8230;)</pre>
 #&gt; ____Component____ 3 ____
 #&gt; ____Component____ 4 ____
 #&gt; ____Component____ 5 ____
-#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}
-#&gt; Warning only 5 components could thus be extracted
+#&gt; ____Component____ 6 ____
 #&gt; ****________________________________________________****
 #&gt; 
 #&gt; 4 
@@ -491,9 +519,11 @@ cvtable.plsRglm(x,verbose=TRUE, &#8230;)</pre>
 #&gt; ____Component____ 3 ____
 #&gt; ____Component____ 4 ____
 #&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
+#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}
+#&gt; Warning only 5 components could thus be extracted
 #&gt; ****________________________________________________****
-#&gt; </div><div class='input'><span class='no'>res.cv.modpls</span> <span class='kw'>&lt;-</span> <span class='fu'>cvtable</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>cv.modpls</span>))</div><div class='output co'>#&gt; ____************************************************____
+#&gt; </div><div class='input'><span class='va'>res.cv.modpls</span> <span class='op'>&lt;-</span> <span class='fu'>cvtable</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>cv.modpls</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; ____Component____ 1 ____
 #&gt; ____Component____ 2 ____
 #&gt; ____Component____ 3 ____
@@ -512,9 +542,14 @@ cvtable.plsRglm(x,verbose=TRUE, &#8230;)</pre>
 #&gt; 
 #&gt; CV Press criterion:
 #&gt; 1 2 3 4 
-#&gt; 0 0 2 3 </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>res.cv.modpls</span>) <span class='co'>#defaults to type="CVQ2"</span></div><div class='img'><img src='cvtable-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"cv.modpls"</span>,<span class='st'>"res.cv.modpls"</span>))</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>Cornell</span>)
-<span class='no'>cv.modpls</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Cornell</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>25</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='no'>res.cv.modpls</span> <span class='kw'>&lt;-</span> <span class='fu'>cvtable</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>cv.modpls</span>))</div><div class='output co'>#&gt; ____************************************************____
+#&gt; 0 0 4 1 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>res.cv.modpls</span><span class='op'>)</span> <span class='co'>#defaults to type="CVQ2"</span>
+</div><div class='img'><img src='cvtable-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"cv.modpls"</span>,<span class='st'>"res.cv.modpls"</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>
+<span class='va'>cv.modpls</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>Cornell</span>,nt<span class='op'>=</span><span class='fl'>6</span>,K<span class='op'>=</span><span class='fl'>6</span>,NK<span class='op'>=</span><span class='fl'>25</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>res.cv.modpls</span> <span class='op'>&lt;-</span> <span class='fu'>cvtable</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>cv.modpls</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; ____Component____ 1 ____
 #&gt; ____Component____ 2 ____
 #&gt; ____Component____ 3 ____
@@ -531,15 +566,17 @@ cvtable.plsRglm(x,verbose=TRUE, &#8230;)</pre>
 #&gt; 
 #&gt; CV Q2 criterion:
 #&gt;  0  1  2 
-#&gt;  0 19  6 
+#&gt;  0 23  2 
 #&gt; 
 #&gt; CV Press criterion:
 #&gt;  1  2  3  4  5 
-#&gt;  0  0  8 16  1 </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>res.cv.modpls</span>) <span class='co'>#defaults to type="CVQ2"</span></div><div class='img'><img src='cvtable-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"cv.modpls"</span>,<span class='st'>"res.cv.modpls"</span>))
-
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>Cornell</span>)
-<span class='no'>cv.modpls</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Cornell</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>100</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='no'>res.cv.modpls</span> <span class='kw'>&lt;-</span> <span class='fu'>cvtable</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>cv.modpls</span>))</div><div class='output co'>#&gt; ____************************************************____
+#&gt;  0  0  7 14  4 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>res.cv.modpls</span><span class='op'>)</span> <span class='co'>#defaults to type="CVQ2"</span>
+</div><div class='img'><img src='cvtable-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"cv.modpls"</span>,<span class='st'>"res.cv.modpls"</span><span class='op'>)</span><span class='op'>)</span>
+  
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>
+<span class='va'>cv.modpls</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>Cornell</span>,nt<span class='op'>=</span><span class='fl'>6</span>,K<span class='op'>=</span><span class='fl'>6</span>,NK<span class='op'>=</span><span class='fl'>100</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>res.cv.modpls</span> <span class='op'>&lt;-</span> <span class='fu'>cvtable</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>cv.modpls</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; ____Component____ 1 ____
 #&gt; ____Component____ 2 ____
 #&gt; ____Component____ 3 ____
@@ -563,16 +600,18 @@ cvtable.plsRglm(x,verbose=TRUE, &#8230;)</pre>
 #&gt; 
 #&gt; CV Q2 criterion:
 #&gt;  0  1  2 
-#&gt;  0 84 16 
+#&gt;  0 87 13 
 #&gt; 
 #&gt; CV Press criterion:
 #&gt;  1  2  3  4  5 
-#&gt;  0  0 41 44 15 </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>res.cv.modpls</span>) <span class='co'>#defaults to type="CVQ2"</span></div><div class='img'><img src='cvtable-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"cv.modpls"</span>,<span class='st'>"res.cv.modpls"</span>))
+#&gt;  0  0 40 52  8 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>res.cv.modpls</span><span class='op'>)</span> <span class='co'>#defaults to type="CVQ2"</span>
+</div><div class='img'><img src='cvtable-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"cv.modpls"</span>,<span class='st'>"res.cv.modpls"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>Cornell</span>)
-<span class='no'>cv.modplsglm</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Cornell</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>6</span>,
-<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-gaussian"</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>100</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='no'>res.cv.modplsglm</span> <span class='kw'>&lt;-</span> <span class='fu'>cvtable</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>cv.modplsglm</span>))</div><div class='output co'>#&gt; ____************************************************____
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>
+<span class='va'>cv.modplsglm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>Cornell</span>,nt<span class='op'>=</span><span class='fl'>6</span>,K<span class='op'>=</span><span class='fl'>6</span>,
+modele<span class='op'>=</span><span class='st'>"pls-glm-gaussian"</span>,NK<span class='op'>=</span><span class='fl'>100</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>res.cv.modplsglm</span> <span class='op'>&lt;-</span> <span class='fu'>cvtable</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>cv.modplsglm</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; 
 #&gt; Family: gaussian 
 #&gt; Link function: identity 
@@ -600,32 +639,23 @@ cvtable.plsRglm(x,verbose=TRUE, &#8230;)</pre>
 #&gt; 
 #&gt; CV Q2Chi2 criterion:
 #&gt;  0  1  2 
-#&gt;  0 24 76 
+#&gt;  0 26 74 
 #&gt; 
 #&gt; CV PreChi2 criterion:
 #&gt;  1  2  3  4  5 
-#&gt;  0 23 55 21  1 </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>res.cv.modplsglm</span>) <span class='co'>#defaults to type="CVQ2Chi2"</span></div><div class='img'><img src='cvtable-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"res.cv.modplsglm"</span>))</div></pre>
+#&gt;  0 16 64 19  1 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>res.cv.modplsglm</span><span class='op'>)</span> <span class='co'>#defaults to type="CVQ2Chi2"</span>
+</div><div class='img'><img src='cvtable-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"res.cv.modplsglm"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='co'># }</span>
+
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#references">References</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Frederic Bertrand<br />
-<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
-<a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -633,13 +663,16 @@ cvtable.plsRglm(x,verbose=TRUE, &#8230;)</pre>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

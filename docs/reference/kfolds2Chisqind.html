@@ -6,23 +6,39 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Computes individual Predicted Chisquare for k-fold cross validated partial least squares regression models. — kfolds2Chisqind • plsRglm</title>
+<title>Computes individual Predicted Chisquare for k-fold cross validated partial
+least squares regression models. — kfolds2Chisqind • plsRglm</title>
+
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +46,13 @@
 
 
 
-<meta property="og:title" content="Computes individual Predicted Chisquare for k-fold cross validated partial least squares regression models. — kfolds2Chisqind" />
 
-<meta property="og:description" content="This function computes individual Predicted Chisquare for k-fold cross validated partial least squares regression models." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Computes individual Predicted Chisquare for k-fold cross validated partial
+least squares regression models. — kfolds2Chisqind" />
+<meta property="og:description" content="This function computes individual Predicted Chisquare for k-fold cross
+validated partial least squares regression models." />
+<meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -47,12 +66,13 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -63,7 +83,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -71,9 +91,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -82,11 +105,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fbertran/plsRglm">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -97,62 +119,76 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Computes individual Predicted Chisquare for k-fold cross validated partial least squares regression models.</h1>
-    
+    <h1>Computes individual Predicted Chisquare for k-fold cross validated partial
+least squares regression models.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fbertran/plsRglm/blob/master/R/kfolds2Chisqind.R'><code>R/kfolds2Chisqind.R</code></a></small>
     <div class="hidden name"><code>kfolds2Chisqind.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-    <p>This function computes individual Predicted Chisquare for k-fold cross validated partial least squares regression models.</p>
-    
+    <p>This function computes individual Predicted Chisquare for k-fold cross
+validated partial least squares regression models.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>kfolds2Chisqind</span>(<span class='no'>pls_kfolds</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>kfolds2Chisqind</span><span class='op'>(</span><span class='va'>pls_kfolds</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>pls_kfolds</th>
-      <td><p>a k-fold cross validated partial least squares regression glm model</p></td>
+      <td><p>a k-fold cross validated partial least squares regression
+glm model</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p></p>
-<dt>list</dt><dd><p>Individual PChisq vs number of components for the first group partition</p></dd>
-  <dt>&#8230;</dt><dd><p>&#8230;</p></dd>
-  <dt>list</dt><dd><p>Individual PChisq vs number of components for the last group partition</p></dd>
-
     
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Nicolas Meyer, Myriam Maumy-Bertrand et Frederic Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>, 151(2), pages 1-18.
-<a href='http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47'>http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47</a></p>
-    
+<dt>list</dt><dd><p>Individual PChisq vs number of components for the first
+group partition</p></dd> <dt>list()</dt><dd><p>...</p></dd> <dt>list</dt><dd><p>Individual PChisq vs
+number of components for the last group partition</p></dd>
+
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Use <code><a href='cv.plsRglm.html'>cv.plsRglm</a></code> to create k-fold cross validated partial least squares regression glm models.</p>
-    
+    <p>Use <code><a href='cv.plsRglm.html'>cv.plsRglm</a></code> to create k-fold cross validated partial
+least squares regression glm models.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Nicolas Meyer, Myriam Maumy-Bertrand et
+Frédéric Bertrand (2010). Comparing the linear and the
+logistic PLS regression with qualitative predictors: application to
+allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>,
+151(2), pages 1-18.
+<a href='http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47'>http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='kfolds2coeff.html'>kfolds2coeff</a></code>, <code><a href='kfolds2Press.html'>kfolds2Press</a></code>, <code><a href='kfolds2Pressind.html'>kfolds2Pressind</a></code>, <code><a href='kfolds2Chisq.html'>kfolds2Chisq</a></code>, <code><a href='kfolds2Mclassedind.html'>kfolds2Mclassedind</a></code> and <code><a href='kfolds2Mclassed.html'>kfolds2Mclassed</a></code> to extract and transforms results from k-fold cross-validation.</p></div>
-    
+    <div class='dont-index'><p><code><a href='kfolds2coeff.html'>kfolds2coeff</a></code>, <code><a href='kfolds2Press.html'>kfolds2Press</a></code>,
+<code><a href='kfolds2Pressind.html'>kfolds2Pressind</a></code>, <code><a href='kfolds2Chisq.html'>kfolds2Chisq</a></code>,
+<code><a href='kfolds2Mclassedind.html'>kfolds2Mclassedind</a></code> and <code><a href='kfolds2Mclassed.html'>kfolds2Mclassed</a></code> to
+extract and transforms results from k-fold cross-validation.</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Frédéric Bertrand<br />
+<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
+<a href='https://fbertran.github.io/homepage/'>https://fbertran.github.io/homepage/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>Cornell</span>)
-<span class='no'>XCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>1</span>:<span class='fl'>7</span>]
-<span class='no'>yCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>8</span>]
-<span class='no'>bbb</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yCornell</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XCornell</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-gaussian"</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>16</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='no'>bbb2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yCornell</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XCornell</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-gaussian"</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>5</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='fu'>kfolds2Chisqind</span>(<span class='no'>bbb</span>)</div><div class='output co'>#&gt; [[1]]
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>
+<span class='va'>XCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>]</span>
+<span class='va'>yCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>8</span><span class='op'>]</span>
+<span class='va'>bbb</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yCornell</span>,dataX<span class='op'>=</span><span class='va'>XCornell</span>,nt<span class='op'>=</span><span class='fl'>3</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-gaussian"</span>,K<span class='op'>=</span><span class='fl'>16</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>bbb2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yCornell</span>,dataX<span class='op'>=</span><span class='va'>XCornell</span>,nt<span class='op'>=</span><span class='fl'>3</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-gaussian"</span>,K<span class='op'>=</span><span class='fl'>5</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='fu'>kfolds2Chisqind</span><span class='op'>(</span><span class='va'>bbb</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
 #&gt;       [,1]    [,2]     [,3]
 #&gt; 1 24.52456 11.3923 6.837075
@@ -201,381 +237,380 @@
 #&gt;          [,1]         [,2]     [,3]
 #&gt; 12 0.03180524 1.455262e-05 4.794104
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'>kfolds2Chisqind</span>(<span class='no'>bbb2</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='fu'>kfolds2Chisqind</span><span class='op'>(</span><span class='va'>bbb2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt; [1] 22.067161 10.440654  9.138804
+#&gt; [1] 25.402740  5.820043  6.644776
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt; [1] 16.115776  1.264465 12.766493
+#&gt; [1] 17.1925045  0.9356285  2.2803489
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt; [1] 12.3290316  1.1463315  0.2526569
+#&gt; [1] 5.447630 3.918006 7.854290
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt; [1] 1.36983347 0.12981845 0.09180623
+#&gt; [1] 0.21442751 0.02857876 4.61573978
 #&gt; 
 #&gt; [[1]][[5]]
-#&gt; [1] 24.934791 10.816612  6.402283
+#&gt; [1] 2.5664845 0.2299003 0.2902721
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"XCornell"</span>,<span class='st'>"yCornell"</span>,<span class='st'>"bbb"</span>,<span class='st'>"bbb2"</span>))
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"XCornell"</span>,<span class='st'>"yCornell"</span>,<span class='st'>"bbb"</span>,<span class='st'>"bbb2"</span><span class='op'>)</span><span class='op'>)</span>
 
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>pine</span>)
-<span class='no'>Xpine</span><span class='kw'>&lt;-</span><span class='no'>pine</span>[,<span class='fl'>1</span>:<span class='fl'>10</span>]
-<span class='no'>ypine</span><span class='kw'>&lt;-</span><span class='no'>pine</span>[,<span class='fl'>11</span>]
-<span class='no'>bbb</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>ypine</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>Xpine</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>4</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-gaussian"</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='no'>bbb2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>ypine</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>Xpine</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-gaussian"</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='fu'>kfolds2Chisqind</span>(<span class='no'>bbb</span>)</div><div class='output co'>#&gt; [[1]]
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>pine</span><span class='op'>)</span>
+<span class='va'>Xpine</span><span class='op'>&lt;-</span><span class='va'>pine</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>
+<span class='va'>ypine</span><span class='op'>&lt;-</span><span class='va'>pine</span><span class='op'>[</span>,<span class='fl'>11</span><span class='op'>]</span>
+<span class='va'>bbb</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>ypine</span>,dataX<span class='op'>=</span><span class='va'>Xpine</span>,nt<span class='op'>=</span><span class='fl'>4</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-gaussian"</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>bbb2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>ypine</span>,dataX<span class='op'>=</span><span class='va'>Xpine</span>,nt<span class='op'>=</span><span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-gaussian"</span>,K<span class='op'>=</span><span class='fl'>10</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='fu'>kfolds2Chisqind</span><span class='op'>(</span><span class='va'>bbb</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt; [1] 3.725803 4.641892 3.727099 3.833408
+#&gt; [1] 9.076566 7.246153 6.714280 6.591296
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt; [1] 1.780774 1.208238 1.088441 1.618209
+#&gt; [1] 1.776915 2.961976 1.911164 1.965448
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt; [1] 2.194861 2.021653 1.424912 1.452488
+#&gt; [1] 1.008445 1.311562 1.368349 1.412529
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt; [1] 4.025689 2.601652 1.846375 1.850026
+#&gt; [1] 1.712765 2.017014 5.474255 5.793125
 #&gt; 
 #&gt; [[1]][[5]]
-#&gt; [1] 1.048989 2.307589 2.449096 2.985206
+#&gt; [1] 4.636246 2.763710 2.735360 2.499107
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'>kfolds2Chisqind</span>(<span class='no'>bbb2</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='fu'>kfolds2Chisqind</span><span class='op'>(</span><span class='va'>bbb2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt;  [1] 0.3419143 1.2871525 0.9803600 0.7506202 0.7905536 0.8309758 0.8356678
-#&gt;  [8] 0.6086570 0.6055412 0.5949694
+#&gt;  [1] 4.645345 4.201920 3.816200 3.709182 3.541944 3.597604 3.664854 3.731275
+#&gt;  [9] 3.741750 3.742149
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt;  [1] 0.662799 1.484359 1.332373 1.414554 1.331225 1.588503 1.612451 1.550377
-#&gt;  [9] 1.631001 1.632272
+#&gt;  [1] 1.2565105 0.7710923 0.4896430 0.6556930 0.6454540 0.9444134 0.9728650
+#&gt;  [8] 0.9642343 0.9723018 0.9695092
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt;  [1] 1.221701 1.251410 1.178048 1.630324 1.734206 1.846905 1.970479 2.023093
-#&gt;  [9] 2.049284 2.049541
+#&gt;  [1] 0.8904213 1.1285529 1.1088820 1.0149235 1.0876787 1.0985064 1.1282128
+#&gt;  [8] 1.1514029 1.1814023 1.1813702
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt;  [1] 1.1759274 1.0864142 0.7793264 0.8984418 0.8348334 0.8560066 0.9165210
-#&gt;  [8] 0.9249125 0.8886741 0.8794710
+#&gt;  [1] 1.267388 1.575034 1.329759 1.306605 1.406189 1.495547 1.421957 1.462479
+#&gt;  [9] 1.479878 1.483052
 #&gt; 
 #&gt; [[1]][[5]]
-#&gt;  [1] 1.4915206 0.8736928 0.5645673 0.4914656 0.3833316 0.4498878 0.5654009
-#&gt;  [8] 0.6819146 0.8342383 0.7914959
+#&gt;  [1] 1.355488 1.295406 1.156780 1.606341 1.736037 1.724438 1.904159 1.936650
+#&gt;  [9] 1.943547 1.943207
 #&gt; 
 #&gt; [[1]][[6]]
-#&gt;  [1] 3.071831 3.438070 3.192888 2.994723 3.053770 3.146367 3.069776 3.011280
-#&gt;  [9] 3.009318 3.005890
+#&gt;  [1] 1.0612597 1.0382611 1.1029085 1.0634485 1.0580194 1.1175511 1.0523920
+#&gt;  [8] 0.9463867 0.9270626 0.9301250
 #&gt; 
 #&gt; [[1]][[7]]
-#&gt;  [1] 2.642612 2.022987 1.584486 1.818472 1.918153 2.203889 2.271137 2.211318
-#&gt;  [9] 2.191416 2.189715
+#&gt;  [1] 0.54280592 0.25754355 0.06860201 0.05940245 0.31971926 0.32324978
+#&gt;  [7] 0.26009635 0.27489032 0.27287222 0.27135352
 #&gt; 
 #&gt; [[1]][[8]]
-#&gt;  [1] 1.677329 1.604957 1.219848 1.281519 1.168038 1.191113 1.090612 1.129559
-#&gt;  [9] 1.124897 1.143311
+#&gt;  [1] 0.6469443 0.5445691 0.3817880 0.4267373 0.4517251 0.5006288 0.3946705
+#&gt;  [8] 0.4114368 0.3860094 0.3860218
 #&gt; 
 #&gt; [[1]][[9]]
-#&gt;  [1] 0.28665167 0.18409591 0.21870328 0.11196187 0.12788922 0.08672610
-#&gt;  [7] 0.09312459 0.09746886 0.10491397 0.10561476
+#&gt;  [1] 0.3773657 1.6797105 0.7778450 0.7129019 0.8835625 0.7723416 0.6181708
+#&gt;  [8] 0.6120069 0.5225405 0.6042908
 #&gt; 
 #&gt; [[1]][[10]]
-#&gt;  [1] 0.9185294 0.5650289 1.3828531 1.1540607 1.2611508 1.6456344 1.5793486
-#&gt;  [8] 1.6113090 1.6027154 1.6018576
+#&gt;  [1] 1.1400873 0.5782617 0.4790428 0.5246598 0.4502027 0.9944149 1.2949425
+#&gt;  [8] 1.3074861 1.2859273 1.2832650
 #&gt; 
-#&gt; </div><div class='input'>
-<span class='no'>XpineNAX21</span> <span class='kw'>&lt;-</span> <span class='no'>Xpine</span>
-<span class='no'>XpineNAX21</span>[<span class='fl'>1</span>,<span class='fl'>2</span>] <span class='kw'>&lt;-</span> <span class='fl'>NA</span>
-<span class='no'>bbbNA</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>ypine</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XpineNAX21</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls"</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='fu'><a href='kfolds2Pressind.html'>kfolds2Pressind</a></span>(<span class='no'>bbbNA</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'>                  
+<span class='va'>XpineNAX21</span> <span class='op'>&lt;-</span> <span class='va'>Xpine</span>
+<span class='va'>XpineNAX21</span><span class='op'>[</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='cn'>NA</span>
+<span class='va'>bbbNA</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>ypine</span>,dataX<span class='op'>=</span><span class='va'>XpineNAX21</span>,nt<span class='op'>=</span><span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls"</span>,K<span class='op'>=</span><span class='fl'>10</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='fu'><a href='kfolds2Pressind.html'>kfolds2Pressind</a></span><span class='op'>(</span><span class='va'>bbbNA</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt; [1] 1.9877352 1.2400202 0.7051718 0.8867770 0.8441230 1.0924820 1.1256926
-#&gt; [8] 1.1410708 1.1322459
+#&gt; [1] 1.1797769 0.5858419 0.7146959 0.2823875 0.2113418 0.2462732 0.2128635
+#&gt; [8] 0.2237419 0.2245836
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt; [1] 1.4479585 1.4689772 0.7610111 0.4986794 0.6937640 0.5985580 0.6577486
-#&gt; [8] 0.6619129 0.5192713
+#&gt; [1] 1.7714765 1.1916695 1.2908022 0.9277364 0.7952702 5.1897070 9.2858480
+#&gt; [8] 2.9019373 0.6866543
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt; [1] 1.3262781 1.4559167 1.6820091 0.9222805 1.0030430 1.0409797 1.0500127
-#&gt; [8] 1.0599875 1.0809069
+#&gt; [1] 1.2615115 1.5098867 1.3821292 0.7498655 0.7123033 0.6912226 0.6248337
+#&gt; [8] 0.8118411 2.3275452
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt; [1] 2.660431 2.073841 2.281311 1.616194 1.534777 1.573232 1.488643 1.506703
-#&gt; [9] 1.567544
+#&gt; [1] 4.250364 3.703461 3.660875 3.344024 3.400661 3.210164 3.411373 3.371408
+#&gt; [9] 3.607807
 #&gt; 
 #&gt; [[1]][[5]]
-#&gt; [1] 0.4061746 0.1552108 0.5365588 0.4410263 0.3840123 0.4203356 1.1238525
-#&gt; [8] 1.1402924 1.6239737
+#&gt; [1] 0.3982423 0.7944822 0.6634077 0.7371331 0.7285453 0.7173490 0.7310973
+#&gt; [8] 0.7071575 0.7143203
 #&gt; 
 #&gt; [[1]][[6]]
-#&gt; [1] 3.910643 3.922573 3.907449 3.793423 3.654508 3.386096 3.725462 3.994194
-#&gt; [9] 3.979033
+#&gt; [1] 0.51284570 0.51287606 0.12125609 0.10928749 0.08975948 0.10882349 0.14498431
+#&gt; [8] 0.08883830 0.10995633
 #&gt; 
 #&gt; [[1]][[7]]
-#&gt; [1] 0.2632494 0.6960174 0.8235719 0.9461809 0.8853331 0.9396041 0.9063967
-#&gt; [8] 0.8457616 1.0364687
+#&gt; [1] 1.5613272 0.9164189 0.9277530 1.1503787 1.2133997 1.0775861 1.3403639
+#&gt; [8] 1.2964642 1.3117802
 #&gt; 
 #&gt; [[1]][[8]]
-#&gt; [1] 0.07199681 1.18109274 1.04199664 0.73820125 0.59595048 0.54074035 0.52536412
-#&gt; [8] 0.40869899 0.46172085
+#&gt; [1] 0.4820281 1.8779051 1.9209835 1.7895404 2.0025308 1.9319570 1.9114104
+#&gt; [8] 2.0338892 2.1002124
 #&gt; 
 #&gt; [[1]][[9]]
-#&gt; [1] 0.4712493 1.2890847 1.1220104 1.5396032 1.9899198 1.9565588 1.9248824
-#&gt; [8] 1.9056878 1.9416277
+#&gt; [1] 0.2629415 0.5453534 0.6879429 0.7995751 0.7201941 0.8201471 1.0512128
+#&gt; [8] 1.1159823 1.1847008
 #&gt; 
 #&gt; [[1]][[10]]
-#&gt; [1] 2.9406589 2.2171850 2.7499497 0.6436153 0.9737924 2.4309491 2.8802695
-#&gt; [8] 5.2223547 4.1539794
+#&gt; [1] 1.1153310 1.0859986 1.1172589 1.0155093 1.0257271 0.9239704 1.0288646
+#&gt; [8] 1.0395270 1.2891789
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'>kfolds2Chisqind</span>(<span class='no'>bbbNA</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='fu'>kfolds2Chisqind</span><span class='op'>(</span><span class='va'>bbbNA</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt; [1] 1.9877352 1.2400202 0.7051718 0.8867770 0.8441230 1.0924820 1.1256926
-#&gt; [8] 1.1410708 1.1322459
+#&gt; [1] 1.1797769 0.5858419 0.7146959 0.2823875 0.2113418 0.2462732 0.2128635
+#&gt; [8] 0.2237419 0.2245836
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt; [1] 1.4479585 1.4689772 0.7610111 0.4986794 0.6937640 0.5985580 0.6577486
-#&gt; [8] 0.6619129 0.5192713
+#&gt; [1] 1.7714765 1.1916695 1.2908022 0.9277364 0.7952702 5.1897070 9.2858480
+#&gt; [8] 2.9019373 0.6866543
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt; [1] 1.3262781 1.4559167 1.6820091 0.9222805 1.0030430 1.0409797 1.0500127
-#&gt; [8] 1.0599875 1.0809069
+#&gt; [1] 1.2615115 1.5098867 1.3821292 0.7498655 0.7123033 0.6912226 0.6248337
+#&gt; [8] 0.8118411 2.3275452
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt; [1] 2.660431 2.073841 2.281311 1.616194 1.534777 1.573232 1.488643 1.506703
-#&gt; [9] 1.567544
+#&gt; [1] 4.250364 3.703461 3.660875 3.344024 3.400661 3.210164 3.411373 3.371408
+#&gt; [9] 3.607807
 #&gt; 
 #&gt; [[1]][[5]]
-#&gt; [1] 0.4061746 0.1552108 0.5365588 0.4410263 0.3840123 0.4203356 1.1238525
-#&gt; [8] 1.1402924 1.6239737
+#&gt; [1] 0.3982423 0.7944822 0.6634077 0.7371331 0.7285453 0.7173490 0.7310973
+#&gt; [8] 0.7071575 0.7143203
 #&gt; 
 #&gt; [[1]][[6]]
-#&gt; [1] 3.910643 3.922573 3.907449 3.793423 3.654508 3.386096 3.725462 3.994194
-#&gt; [9] 3.979033
+#&gt; [1] 0.51284570 0.51287606 0.12125609 0.10928749 0.08975948 0.10882349 0.14498431
+#&gt; [8] 0.08883830 0.10995633
 #&gt; 
 #&gt; [[1]][[7]]
-#&gt; [1] 0.2632494 0.6960174 0.8235719 0.9461809 0.8853331 0.9396041 0.9063967
-#&gt; [8] 0.8457616 1.0364687
+#&gt; [1] 1.5613272 0.9164189 0.9277530 1.1503787 1.2133997 1.0775861 1.3403639
+#&gt; [8] 1.2964642 1.3117802
 #&gt; 
 #&gt; [[1]][[8]]
-#&gt; [1] 0.07199681 1.18109274 1.04199664 0.73820125 0.59595048 0.54074035 0.52536412
-#&gt; [8] 0.40869899 0.46172085
+#&gt; [1] 0.4820281 1.8779051 1.9209835 1.7895404 2.0025308 1.9319570 1.9114104
+#&gt; [8] 2.0338892 2.1002124
 #&gt; 
 #&gt; [[1]][[9]]
-#&gt; [1] 0.4712493 1.2890847 1.1220104 1.5396032 1.9899198 1.9565588 1.9248824
-#&gt; [8] 1.9056878 1.9416277
+#&gt; [1] 0.2629415 0.5453534 0.6879429 0.7995751 0.7201941 0.8201471 1.0512128
+#&gt; [8] 1.1159823 1.1847008
 #&gt; 
 #&gt; [[1]][[10]]
-#&gt; [1] 2.9406589 2.2171850 2.7499497 0.6436153 0.9737924 2.4309491 2.8802695
-#&gt; [8] 5.2223547 4.1539794
+#&gt; [1] 1.1153310 1.0859986 1.1172589 1.0155093 1.0257271 0.9239704 1.0288646
+#&gt; [8] 1.0395270 1.2891789
 #&gt; 
-#&gt; </div><div class='input'><span class='no'>bbbNA2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>ypine</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XpineNAX21</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>4</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-gaussian"</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='no'>bbbNA3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>ypine</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XpineNAX21</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-gaussian"</span>,
-<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='fu'>kfolds2Chisqind</span>(<span class='no'>bbbNA2</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='va'>bbbNA2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>ypine</span>,dataX<span class='op'>=</span><span class='va'>XpineNAX21</span>,nt<span class='op'>=</span><span class='fl'>4</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-gaussian"</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>bbbNA3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>ypine</span>,dataX<span class='op'>=</span><span class='va'>XpineNAX21</span>,nt<span class='op'>=</span><span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-gaussian"</span>,
+K<span class='op'>=</span><span class='fl'>10</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='fu'>kfolds2Chisqind</span><span class='op'>(</span><span class='va'>bbbNA2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt; [1] 1.604104 1.305470 1.490864 1.603281
+#&gt; [1] 2.037958 1.723634 1.346364 1.365178
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt; [1] 2.821231 2.891760 2.367716 2.638871
+#&gt; [1] 3.862256 5.530433 4.822656 4.067779
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt; [1] 1.8473845 2.2130315 0.6013368 1.0218579
+#&gt; [1] 4.265301 2.863907 2.704673 2.538554
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt; [1] 1.3615135 0.8546937 1.4215356 1.6234697
+#&gt; [1] 3.496627 4.761206 4.794644 4.773269
 #&gt; 
 #&gt; [[1]][[5]]
-#&gt; [1] 4.906348 4.622124 4.068846 4.048347
+#&gt; [1] 0.7557832 0.4917096 0.5170601 0.3566428
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'>kfolds2Chisqind</span>(<span class='no'>bbbNA3</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='fu'>kfolds2Chisqind</span><span class='op'>(</span><span class='va'>bbbNA3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt; [1] 0.7106165 1.5732375 1.2593267 1.4657069 1.1089610 0.9435593 0.8352889
-#&gt; [8] 0.7899435 0.8036632
+#&gt; [1] 2.636308 2.353663 2.214089 2.169882 1.915847 1.957653 2.034536 2.105969
+#&gt; [9] 6.877071
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt; [1]  2.1807850  0.5655184  0.4423157  0.5164543  1.9422958  4.5314055  7.8685753
-#&gt; [8]  7.8032168 13.8306226
+#&gt; [1] 2.0281540 1.9176917 0.5571222 0.4958649 0.3789524 0.4262533 0.4049143
+#&gt; [8] 0.5024596 0.9286938
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt; [1] 3.225404 3.930058 3.655811 3.522632 3.632707 3.623796 3.698964 3.900180
-#&gt; [9] 3.890371
+#&gt; [1] 3.010927 3.563619 4.087904 3.674775 3.472211 4.141086 3.939035 3.845466
+#&gt; [9] 8.649060
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt; [1] 2.0698698 1.9545453 0.9748627 0.7793856 0.7250085 0.8368241 0.8803358
-#&gt; [8] 0.8858411 0.9103985
+#&gt; [1] 0.5273587 0.2465437 0.3209524 0.3115761 0.4711832 0.4749724 0.4749858
+#&gt; [8] 0.4831043 0.5562632
 #&gt; 
 #&gt; [[1]][[5]]
-#&gt; [1] 0.7891970 0.3511947 0.4190787 0.7638380 0.7307571 0.8912552 0.8046593
-#&gt; [8] 1.0567351 4.1251038
+#&gt; [1] 0.3710171 0.3728147 0.2859800 0.2427988 0.2297118 0.2567593 0.3977688
+#&gt; [8] 0.2630301 0.5135947
 #&gt; 
 #&gt; [[1]][[6]]
-#&gt; [1] 0.8862628 0.8078544 0.2244958 0.1368507 0.1489448 0.1069866 0.1678020
-#&gt; [8] 0.1438793 0.2780674
+#&gt; [1] 0.4282734 0.5078277 0.5753935 0.5360069 0.7438233 1.1578475 1.1723711
+#&gt; [8] 0.8572551 0.9247138
 #&gt; 
 #&gt; [[1]][[7]]
-#&gt; [1] 0.3009420 1.2239979 0.7422919 0.6427654 0.4981736 0.6986124 0.5457891
-#&gt; [8] 1.0292046 0.6573797
+#&gt; [1] 0.6695759 1.3841260 1.5775366 2.2501972 2.4848670 2.3460409 2.4245118
+#&gt; [8] 2.3664219 2.3933889
 #&gt; 
 #&gt; [[1]][[8]]
-#&gt; [1] 2.772124 2.644073 2.549261 2.800353 2.604072 2.690133 2.282196 2.661910
-#&gt; [9] 7.247917
+#&gt; [1] 1.937844 1.908356 1.482378 1.425287 1.245614 1.377930 1.308169 1.192801
+#&gt; [9] 1.045180
 #&gt; 
 #&gt; [[1]][[9]]
-#&gt; [1] 0.4379035 1.1482476 1.1421259 1.5923654 1.7423105 1.7075681 1.9254434
-#&gt; [8] 1.8774651 2.0897768
+#&gt; [1] 0.2766676 0.7283884 0.4910580 0.2809118 0.2326252 0.1993401 0.1947887
+#&gt; [8] 0.2143691 0.1759972
 #&gt; 
 #&gt; [[1]][[10]]
-#&gt; [1] 1.1619103 0.3863560 0.1956144 0.4075736 0.9364455 0.8268879 0.8156700
-#&gt; [8] 0.7841018 0.6122844
+#&gt; [1]  1.882691  3.839022 10.947253 11.729232  6.059289  4.263496  5.206835
+#&gt; [8]  5.000930  4.833011
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Xpine"</span>,<span class='st'>"XpineNAX21"</span>,<span class='st'>"ypine"</span>,<span class='st'>"bbb"</span>,<span class='st'>"bbb2"</span>,<span class='st'>"bbbNA"</span>,<span class='st'>"bbbNA2"</span>,<span class='st'>"bbbNA3"</span>))
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Xpine"</span>,<span class='st'>"XpineNAX21"</span>,<span class='st'>"ypine"</span>,<span class='st'>"bbb"</span>,<span class='st'>"bbb2"</span>,<span class='st'>"bbbNA"</span>,<span class='st'>"bbbNA2"</span>,<span class='st'>"bbbNA3"</span><span class='op'>)</span><span class='op'>)</span>
 
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>aze_compl</span>)
-<span class='no'>Xaze_compl</span><span class='kw'>&lt;-</span><span class='no'>aze_compl</span>[,<span class='fl'>2</span>:<span class='fl'>34</span>]
-<span class='no'>yaze_compl</span><span class='kw'>&lt;-</span><span class='no'>aze_compl</span>$<span class='no'>y</span>
-<span class='fu'>kfolds2Chisqind</span>(<span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yaze_compl</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>Xaze_compl</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>4</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-family"</span>,
-<span class='kw'>family</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/family'>binomial</a></span>(),<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; [[1]]
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>aze_compl</span><span class='op'>)</span>
+<span class='va'>Xaze_compl</span><span class='op'>&lt;-</span><span class='va'>aze_compl</span><span class='op'>[</span>,<span class='fl'>2</span><span class='op'>:</span><span class='fl'>34</span><span class='op'>]</span>
+<span class='va'>yaze_compl</span><span class='op'>&lt;-</span><span class='va'>aze_compl</span><span class='op'>$</span><span class='va'>y</span>
+<span class='fu'>kfolds2Chisqind</span><span class='op'>(</span><span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yaze_compl</span>,dataX<span class='op'>=</span><span class='va'>Xaze_compl</span>,nt<span class='op'>=</span><span class='fl'>4</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-family"</span>,
+family<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>binomial</a></span><span class='op'>(</span><span class='op'>)</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt; [1]  25.71637  38.63916  74.63584 374.27350
+#&gt; [1]    85.87972   415.61815  9552.73771 50146.28867
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt; [1] 20.65464 19.69346 27.66413 41.22474
+#&gt; [1]  30.43847  58.93485 135.11505 697.47163
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt; [1]   44.71689   94.22743  594.56748 2384.88970
+#&gt; [1]  84.70229  85.19330 167.77184 407.30071
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt; [1]  63.73964 118.00707 282.93099 458.26215
+#&gt; [1]     76.08916    320.26726  10845.67028 194032.60797
 #&gt; 
 #&gt; [[1]][[5]]
-#&gt; [1]  33.56827  44.77075  54.57548 298.04498
+#&gt; [1] 32.42490 33.98568 32.16911 71.47877
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'>kfolds2Chisqind</span>(<span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yaze_compl</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>Xaze_compl</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>4</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-logistic"</span>,
-<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='fu'>kfolds2Chisqind</span><span class='op'>(</span><span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yaze_compl</span>,dataX<span class='op'>=</span><span class='va'>Xaze_compl</span>,nt<span class='op'>=</span><span class='fl'>4</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-logistic"</span>,
+verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt; [1]  57.10107  61.29625 164.01760 511.84712
+#&gt; [1]  29.90166  35.35482  61.71210 254.29400
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt; [1]     182.8760     858.1587   32478.3224 1069891.1202
+#&gt; [1]    38.73265    98.94456  2791.98078 48233.47095
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt; [1]   38.18775  124.71319 1466.22715 3102.84293
+#&gt; [1] 15.89236 13.82798 15.16932 17.65274
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt; [1]  22.80330  30.50470  88.29049 316.20268
+#&gt; [1] 1.069566e+02 1.561990e+04 2.397108e+06 3.591359e+09
 #&gt; 
 #&gt; [[1]][[5]]
-#&gt; [1]  36.85715  59.15028 111.00632 476.49618
+#&gt; [1] 25.76820 26.19004 48.08101 55.80449
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'>kfolds2Chisqind</span>(<span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yaze_compl</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>Xaze_compl</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-family"</span>,
-<span class='kw'>family</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/family'>binomial</a></span>(),<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='fu'>kfolds2Chisqind</span><span class='op'>(</span><span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yaze_compl</span>,dataX<span class='op'>=</span><span class='va'>Xaze_compl</span>,nt<span class='op'>=</span><span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-family"</span>,
+family<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>binomial</a></span><span class='op'>(</span><span class='op'>)</span>,K<span class='op'>=</span><span class='fl'>10</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt;  [1]  25.03881  61.15117 116.96963 326.32259 403.44765 538.39049 645.64491
-#&gt;  [8] 575.70117 549.17718 514.68384
+#&gt;  [1] 21.28649 26.78417 28.73733 26.83481 23.90075 21.68535 19.90691 18.78040
+#&gt;  [9] 18.29077 19.23925
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt;  [1]  17.65843  23.67390  36.81069  90.98192  93.10981 128.47980 200.60186
-#&gt;  [8] 252.74403 308.06547 319.82667
+#&gt;  [1]  9.996457  9.927373 12.801550 15.388611 19.344144 23.470476 34.211336
+#&gt;  [8] 44.979514 58.584141 71.313792
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt;  [1]  8.526926  8.076974 11.106051 15.860676 15.004941 17.290974 19.757907
-#&gt;  [8] 18.251522 19.879533 20.435341
+#&gt;  [1]  21.51415  33.41371 145.58429 361.10028 532.26056 726.73285 783.16952
+#&gt;  [8] 785.51028 768.23774 788.03680
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt;  [1]  11.78145  14.06469  19.05486  43.10176  45.58889  90.98788  98.04530
-#&gt;  [8] 140.01973 141.30290 125.97587
+#&gt;  [1] 13.674041  8.917831 11.978234 12.957416 14.704546 18.606187 18.244042
+#&gt;  [8] 18.495280 20.292461 21.225835
 #&gt; 
 #&gt; [[1]][[5]]
-#&gt;  [1] 3.639156e+01 8.736942e+01 7.270198e+02 4.700947e+03 1.192978e+04
-#&gt;  [6] 1.894180e+05 1.015788e+06 3.511915e+06 8.845400e+06 2.010484e+07
+#&gt;  [1] 14.02352 17.38584 17.81248 27.78589 33.11865 31.49402 42.89125 41.49750
+#&gt;  [9] 41.73666 42.64957
 #&gt; 
 #&gt; [[1]][[6]]
-#&gt;  [1]   42.56071  120.19779  484.16973 1598.17187 2348.21872 2944.96148
-#&gt;  [7] 3904.13470 5212.63956 5477.85020 5711.21293
+#&gt;  [1]     41.24855    123.54772   1751.34162   4691.79878   9126.89319
+#&gt;  [6]  24564.08017  50530.16650  89644.79558 155678.27450 170044.42087
 #&gt; 
 #&gt; [[1]][[7]]
-#&gt;  [1] 11.80989 11.77089 14.79555 24.43992 34.59222 50.31828 59.87192 70.03518
-#&gt;  [9] 76.06148 76.06860
+#&gt;  [1]  8.443823  9.349425 10.125910 10.906037 10.935151 12.187017 11.610283
+#&gt;  [8] 11.842116 12.348539 12.479056
 #&gt; 
 #&gt; [[1]][[8]]
-#&gt;  [1]  9.254977 12.326114 18.237317 20.176162 26.492609 27.169289 25.801275
-#&gt;  [8] 24.927435 23.869865 23.539210
+#&gt;  [1] 3.025017e+01 8.784145e+01 2.580545e+03 1.680360e+04 3.518843e+04
+#&gt;  [6] 7.356849e+04 9.710369e+05 1.235870e+07 4.741217e+07 2.571523e+08
 #&gt; 
 #&gt; [[1]][[9]]
-#&gt;  [1]  11.10385  13.49195  12.63281  33.81317  44.92917  80.57929 116.02671
-#&gt;  [8] 154.45650 252.50944 359.22135
+#&gt;  [1] 21.70293 30.28251 38.46878 59.90450 37.31227 31.69412 29.88543 27.72571
+#&gt;  [9] 27.40573 28.16437
 #&gt; 
 #&gt; [[1]][[10]]
-#&gt;  [1]  19.60646  19.94476  56.81703 198.90182 213.40298 338.58119 310.21947
-#&gt;  [8] 272.40363 247.20657 257.02387
+#&gt;  [1]  16.37463  29.21695  23.21907  40.23902  47.94648  63.44231 142.12963
+#&gt;  [8] 227.62636 265.24474 289.74260
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'>kfolds2Chisqind</span>(<span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yaze_compl</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>Xaze_compl</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>10</span>,
-<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-logistic"</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; [[1]]
+#&gt; </div><div class='input'><span class='fu'>kfolds2Chisqind</span><span class='op'>(</span><span class='fu'><a href='cv.plsRglm.html'>cv.plsRglm</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yaze_compl</span>,dataX<span class='op'>=</span><span class='va'>Xaze_compl</span>,nt<span class='op'>=</span><span class='fl'>10</span>,
+modele<span class='op'>=</span><span class='st'>"pls-glm-logistic"</span>,K<span class='op'>=</span><span class='fl'>10</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [[1]][[1]]
-#&gt;  [1]  15.82372  23.76066  39.21934 129.83669 177.56668 239.38790 327.49421
-#&gt;  [8] 409.21113 422.35622 441.76642
+#&gt;  [1]  15.80978  44.05306  82.36316 151.17129 265.18977 297.38013 396.12726
+#&gt;  [8] 421.15538 444.57173 479.31396
 #&gt; 
 #&gt; [[1]][[2]]
-#&gt;  [1]  13.60109  26.32456  27.38987 127.96344 208.07980 367.54309 399.44914
-#&gt;  [8] 363.71844 365.64184 357.50253
+#&gt;  [1]  26.72293  33.98994  39.78568  71.41097 103.56428 203.20043 422.83932
+#&gt;  [8] 502.50340 420.96670 366.37898
 #&gt; 
 #&gt; [[1]][[3]]
-#&gt;  [1]   17.36662   53.73285  294.32163  624.36132  670.57948 1119.79705
-#&gt;  [7] 2055.26603 2107.49226 1655.56018 1638.30953
+#&gt;  [1] 15.77152 22.72072 14.26971 14.47100 15.25765 18.33798 20.82254 22.50139
+#&gt;  [9] 23.86808 23.29184
 #&gt; 
 #&gt; [[1]][[4]]
-#&gt;  [1]     36.7037    193.7240  25107.1037 123808.8461 269037.8828 524035.3492
-#&gt;  [7] 546111.3374 558621.3681 679124.0093 545228.8818
+#&gt;  [1] 30.99683 35.90686 58.37319 66.24709 46.23476 74.42932 95.70309 94.14539
+#&gt;  [9] 91.88929 87.30195
 #&gt; 
 #&gt; [[1]][[5]]
-#&gt;  [1] 12.118411  9.434291  8.658750 14.359197 12.542803 11.332804 12.060522
-#&gt;  [8] 11.717814 12.135901 12.243959
+#&gt;  [1]  10.32360  19.91479  66.90954  65.77721 112.34611 113.68440  86.81271
+#&gt;  [8]  75.54479  75.90657  74.58275
 #&gt; 
 #&gt; [[1]][[6]]
-#&gt;  [1] 19.792164 20.321925 19.158528 16.505363 13.657078 12.277128 10.519013
-#&gt;  [8]  9.460846  9.820052  9.652815
+#&gt;  [1]  9.508019  8.632920 14.858834 20.681227 20.345860 37.478821 40.425672
+#&gt;  [8] 50.455355 58.890467 58.900185
 #&gt; 
 #&gt; [[1]][[7]]
-#&gt;  [1]  9.003066 12.173491 15.098615 15.194809 20.440263 28.854874 45.714044
-#&gt;  [8] 51.764982 49.676690 42.869772
+#&gt;  [1] 13.56636 13.03348 15.50174 22.37470 32.34973 42.18472 50.69748 61.11245
+#&gt;  [9] 60.64369 59.41205
 #&gt; 
 #&gt; [[1]][[8]]
-#&gt;  [1]    26.21149    62.12644   292.17163  1679.66283  2722.80302  4462.55212
-#&gt;  [7]  6022.93573 10821.82879 11251.05271  9985.56587
+#&gt;  [1]   43.57178   93.66793 1047.10021 2391.81588 3269.51445 2844.76774
+#&gt;  [7] 2775.94551 3477.23768 4685.45692 4949.90941
 #&gt; 
 #&gt; [[1]][[9]]
-#&gt;  [1]  45.73993  59.62235  48.49922  72.23083  83.21256 136.73702 164.57404
-#&gt;  [8] 189.73442 197.52295 202.01123
+#&gt;  [1]  9.407435 10.370350 11.100518 10.720953 11.055086  6.628029  5.362692
+#&gt;  [8]  5.634016  5.047590  4.744585
 #&gt; 
 #&gt; [[1]][[10]]
-#&gt;  [1]  7.448592  7.562965 18.342046 24.859778 30.400829 34.927138 41.911143
-#&gt;  [8] 45.994860 49.679275 50.390185
+#&gt;  [1]     53.72128    179.93889   3018.80492  16979.48469  38974.65165
+#&gt;  [6]  89023.50572 173627.23970 288675.34724 351847.54392 398071.50416
 #&gt; 
-#&gt; </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Xaze_compl"</span>,<span class='st'>"yaze_compl"</span>))</div></pre>
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Xaze_compl"</span>,<span class='st'>"yaze_compl"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='co'># }</span>
+
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#references">References</a></li>
-
-      <li><a href="#note">Note</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Frederic Bertrand<br />
-<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
-<a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -583,13 +618,16 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

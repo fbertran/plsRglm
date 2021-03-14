@@ -8,21 +8,36 @@
 
 <title>loglikelihood function for plsR models — loglikpls • plsRglm</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +45,12 @@
 
 
 
-<meta property="og:title" content="loglikelihood function for plsR models — loglikpls" />
 
-<meta property="og:description" content="This function provides loglikelihood computation for an univariate plsR model." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="loglikelihood function for plsR models — loglikpls" />
+<meta property="og:description" content="This function provides loglikelihood computation for an univariate plsR
+model." />
+<meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -47,12 +64,13 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -63,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -71,9 +89,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -82,11 +103,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fbertran/plsRglm">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -97,24 +117,24 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>loglikelihood function for plsR models</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/fbertran/plsRglm/blob/master/R/loglikpls.R'><code>R/loglikpls.R</code></a></small>
     <div class="hidden name"><code>loglikpls.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-    <p>This function provides loglikelihood computation for an univariate plsR model.</p>
-    
+    <p>This function provides loglikelihood computation for an univariate plsR
+model.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>loglikpls</span>(<span class='no'>residpls</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep.int</a></span>(<span class='fl'>1</span>,<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>residpls</span>)))</pre>
-    
+    <pre class="usage"><span class='fu'>loglikpls</span><span class='op'>(</span><span class='va'>residpls</span>, weights <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep.int</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>residpls</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -127,34 +147,39 @@
       <td><p>Weights of observations</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
     
+
+<dt>real</dt><dd><p>Loglikelihood value</p></dd>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Loglikelihood functions for plsR models with univariate response.</p>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p></p>
-<dt>real</dt><dd><p>Loglikelihood value</p></dd>
-
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Baibing Li, Julian Morris, Elaine B. Martin,
-Model selection for partial least squares regression, 
-Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.
-<a href='http://dx.doi.org/10.1016/S0169-7439(02)00051-5'>http://dx.doi.org/10.1016/S0169-7439(02)00051-5</a></p>
-    
+    <p>Baibing Li, Julian Morris, Elaine B. Martin, Model selection for
+partial least squares regression, Chemometrics and Intelligent Laboratory
+Systems 64 (2002) 79-89, doi: <a href='https://doi.org/10.1016/S0169-7439(02)00051-5'>10.1016/S0169-7439(02)00051-5</a>
+.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='AICpls.html'>AICpls</a></code> for AIC computation and <code><a href='https://www.rdocumentation.org/packages/stats/topics/logLik'>logLik</a></code> for loglikelihood computations for linear models</p></div>
-    
+    <div class='dont-index'><p><code><a href='AICpls.html'>AICpls</a></code> for AIC computation and <code><a href='https://rdrr.io/r/stats/logLik.html'>logLik</a></code>
+for loglikelihood computations for linear models</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Frédéric Bertrand<br />
+<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
+<a href='https://fbertran.github.io/homepage/'>https://fbertran.github.io/homepage/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>pine</span>)
-<span class='no'>ypine</span> <span class='kw'>&lt;-</span> <span class='no'>pine</span>[,<span class='fl'>11</span>]
-<span class='no'>Xpine</span> <span class='kw'>&lt;-</span> <span class='no'>pine</span>[,<span class='fl'>1</span>:<span class='fl'>10</span>]
-(<span class='no'>Pinscaled</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.data.frame'>as.data.frame</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>cbind</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/scale'>scale</a></span>(<span class='no'>ypine</span>),<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/scale'>scale</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>as.matrix</a></span>(<span class='no'>Xpine</span>)))))</div><div class='output co'>#&gt;             V1           x1           x2          x3          x4          x5
+    <pre class="examples"><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>pine</span><span class='op'>)</span>
+<span class='va'>ypine</span> <span class='op'>&lt;-</span> <span class='va'>pine</span><span class='op'>[</span>,<span class='fl'>11</span><span class='op'>]</span>
+<span class='va'>Xpine</span> <span class='op'>&lt;-</span> <span class='va'>pine</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>
+<span class='op'>(</span><span class='va'>Pinscaled</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>ypine</span><span class='op'>)</span>,<span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>Xpine</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;             V1           x1           x2          x3          x4          x5
 #&gt; 1   1.93343137 -0.893800639 -0.962578437 -1.09627645 -0.43382827 -0.10494125
 #&gt; 2   0.81712282  0.206659107 -0.141067529 -0.36224787 -0.04949719  0.63880345
 #&gt; 3   0.39540626 -0.653559427 -0.141067529 -0.67683154 -1.97115262 -1.73188279
@@ -221,9 +246,10 @@ Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.
 #&gt; 30  0.2914737 -0.3076721 -0.05926984  1.44430467  0.9694261
 #&gt; 31 -0.6843294  0.2267058 -0.22934850 -0.85053497  0.5792912
 #&gt; 32 -0.1267277  0.7610837  1.04624148  0.56167404  0.9694261
-#&gt; 33  0.7096750  1.2954616  1.17380047  1.09125241  0.9694261</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>Pinscaled</span>)[<span class='fl'>1</span>] <span class='kw'>&lt;-</span> <span class='st'>"yy"</span>
+#&gt; 33  0.7096750  1.2954616  1.17380047  1.09125241  0.9694261</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>Pinscaled</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='st'>"yy"</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>yy</span>~<span class='no'>x1</span>+<span class='no'>x2</span>+<span class='no'>x3</span>+<span class='no'>x4</span>+<span class='no'>x5</span>+<span class='no'>x6</span>+<span class='no'>x7</span>+<span class='no'>x8</span>+<span class='no'>x9</span>+<span class='no'>x10</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Pinscaled</span>)</div><div class='output co'>#&gt; 
+<span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>yy</span><span class='op'>~</span><span class='va'>x1</span><span class='op'>+</span><span class='va'>x2</span><span class='op'>+</span><span class='va'>x3</span><span class='op'>+</span><span class='va'>x4</span><span class='op'>+</span><span class='va'>x5</span><span class='op'>+</span><span class='va'>x6</span><span class='op'>+</span><span class='va'>x7</span><span class='op'>+</span><span class='va'>x8</span><span class='op'>+</span><span class='va'>x9</span><span class='op'>+</span><span class='va'>x10</span>,data<span class='op'>=</span><span class='va'>Pinscaled</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 
 #&gt; Call:
 #&gt; lm(formula = yy ~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 + 
 #&gt;     x10, data = Pinscaled)
@@ -234,7 +260,8 @@ Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.
 #&gt;          x6           x7           x8           x9          x10  
 #&gt;   6.720e-02   -6.054e-02    6.865e-02   -6.231e-01   -1.058e-01  
 #&gt; </div><div class='input'>
-<span class='no'>modpls</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='plsR.html'>plsR</a></span>(<span class='no'>ypine</span>,<span class='no'>Xpine</span>,<span class='fl'>10</span>)</div><div class='output co'>#&gt; ____************************************************____
+<span class='va'>modpls</span> <span class='op'>&lt;-</span> <span class='fu'><a href='plsR.html'>plsR</a></span><span class='op'>(</span><span class='va'>ypine</span>,<span class='va'>Xpine</span>,<span class='fl'>10</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; ____Component____ 1 ____
 #&gt; ____Component____ 2 ____
 #&gt; ____Component____ 3 ____
@@ -247,7 +274,8 @@ Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.
 #&gt; ____Component____ 10 ____
 #&gt; ____Predicting X without NA neither in X nor in Y____
 #&gt; ****________________________________________________****
-#&gt; </div><div class='input'><span class='no'>modpls</span>$<span class='no'>Std.Coeffs</span></div><div class='output co'>#&gt;                  [,1]
+#&gt; </div><div class='input'><span class='va'>modpls</span><span class='op'>$</span><span class='va'>Std.Coeffs</span>
+</div><div class='output co'>#&gt;                  [,1]
 #&gt; Intercept  0.00000000
 #&gt; x1        -0.46014550
 #&gt; x2        -0.31750091
@@ -258,7 +286,8 @@ Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.
 #&gt; x7        -0.06054179
 #&gt; x8         0.06864663
 #&gt; x9        -0.62312421
-#&gt; x10       -0.10578863</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>yy</span>~<span class='no'>x1</span>+<span class='no'>x2</span>+<span class='no'>x3</span>+<span class='no'>x4</span>+<span class='no'>x5</span>+<span class='no'>x6</span>+<span class='no'>x7</span>+<span class='no'>x8</span>+<span class='no'>x9</span>+<span class='no'>x10</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Pinscaled</span>)</div><div class='output co'>#&gt; 
+#&gt; x10       -0.10578863</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>yy</span><span class='op'>~</span><span class='va'>x1</span><span class='op'>+</span><span class='va'>x2</span><span class='op'>+</span><span class='va'>x3</span><span class='op'>+</span><span class='va'>x4</span><span class='op'>+</span><span class='va'>x5</span><span class='op'>+</span><span class='va'>x6</span><span class='op'>+</span><span class='va'>x7</span><span class='op'>+</span><span class='va'>x8</span><span class='op'>+</span><span class='va'>x9</span><span class='op'>+</span><span class='va'>x10</span>,data<span class='op'>=</span><span class='va'>Pinscaled</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 
 #&gt; Call:
 #&gt; lm(formula = yy ~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 + 
 #&gt;     x10, data = Pinscaled)
@@ -269,32 +298,26 @@ Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.
 #&gt;          x6           x7           x8           x9          x10  
 #&gt;   6.720e-02   -6.054e-02    6.865e-02   -6.231e-01   -1.058e-01  
 #&gt; </div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/AIC'>AIC</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>yy</span>~<span class='no'>x1</span>+<span class='no'>x2</span>+<span class='no'>x3</span>+<span class='no'>x4</span>+<span class='no'>x5</span>+<span class='no'>x6</span>+<span class='no'>x7</span>+<span class='no'>x8</span>+<span class='no'>x9</span>+<span class='no'>x10</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Pinscaled</span>))</div><div class='output co'>#&gt; [1] 79.37542</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/logLik'>logLik</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>yy</span>~<span class='no'>x1</span>+<span class='no'>x2</span>+<span class='no'>x3</span>+<span class='no'>x4</span>+<span class='no'>x5</span>+<span class='no'>x6</span>+<span class='no'>x7</span>+<span class='no'>x8</span>+<span class='no'>x9</span>+<span class='no'>x10</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Pinscaled</span>)))</div><div class='output co'>#&gt; 'log Lik.' -27.68771 (df=12)</div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sum'>sum</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Normal'>dnorm</a></span>(<span class='no'>modpls</span>$<span class='no'>RepY</span>, <span class='no'>modpls</span>$<span class='no'>Std.ValsPredictY</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/MathFun'>sqrt</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/mean'>mean</a></span>(<span class='no'>modpls</span>$<span class='no'>residY</span>^<span class='fl'>2</span>)), <span class='kw'>log</span><span class='kw'>=</span><span class='fl'>TRUE</span>))</div><div class='output co'>#&gt; [1] -27.68771</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sum'>sum</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Normal'>dnorm</a></span>(<span class='no'>Pinscaled</span>$<span class='no'>yy</span>,<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/fitted.values'>fitted</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>yy</span>~<span class='no'>x1</span>+<span class='no'>x2</span>+<span class='no'>x3</span>+<span class='no'>x4</span>+<span class='no'>x5</span>+<span class='no'>x6</span>+<span class='no'>x7</span>+<span class='no'>x8</span>+<span class='no'>x9</span>+<span class='no'>x10</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Pinscaled</span>)),
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/MathFun'>sqrt</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/mean'>mean</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/residuals'>residuals</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>yy</span>~<span class='no'>x1</span>+<span class='no'>x2</span>+<span class='no'>x3</span>+<span class='no'>x4</span>+<span class='no'>x5</span>+<span class='no'>x6</span>+<span class='no'>x7</span>+<span class='no'>x8</span>+<span class='no'>x9</span>+<span class='no'>x10</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Pinscaled</span>))^<span class='fl'>2</span>)), <span class='kw'>log</span><span class='kw'>=</span><span class='fl'>TRUE</span>))</div><div class='output co'>#&gt; [1] -27.68771</div><div class='input'><span class='fu'>loglikpls</span>(<span class='no'>modpls</span>$<span class='no'>residY</span>)</div><div class='output co'>#&gt; [1] -27.68771</div><div class='input'><span class='fu'>loglikpls</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/residuals'>residuals</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>yy</span>~<span class='no'>x1</span>+<span class='no'>x2</span>+<span class='no'>x3</span>+<span class='no'>x4</span>+<span class='no'>x5</span>+<span class='no'>x6</span>+<span class='no'>x7</span>+<span class='no'>x8</span>+<span class='no'>x9</span>+<span class='no'>x10</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Pinscaled</span>)))</div><div class='output co'>#&gt; [1] -27.68771</div><div class='input'><span class='fu'><a href='AICpls.html'>AICpls</a></span>(<span class='fl'>10</span>,<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/residuals'>residuals</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>yy</span>~<span class='no'>x1</span>+<span class='no'>x2</span>+<span class='no'>x3</span>+<span class='no'>x4</span>+<span class='no'>x5</span>+<span class='no'>x6</span>+<span class='no'>x7</span>+<span class='no'>x8</span>+<span class='no'>x9</span>+<span class='no'>x10</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Pinscaled</span>)))</div><div class='output co'>#&gt; [1] 79.37542</div><div class='input'><span class='fu'><a href='AICpls.html'>AICpls</a></span>(<span class='fl'>10</span>,<span class='no'>modpls</span>$<span class='no'>residY</span>)</div><div class='output co'>#&gt; [1] 79.37542</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/stats/AIC.html'>AIC</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>yy</span><span class='op'>~</span><span class='va'>x1</span><span class='op'>+</span><span class='va'>x2</span><span class='op'>+</span><span class='va'>x3</span><span class='op'>+</span><span class='va'>x4</span><span class='op'>+</span><span class='va'>x5</span><span class='op'>+</span><span class='va'>x6</span><span class='op'>+</span><span class='va'>x7</span><span class='op'>+</span><span class='va'>x8</span><span class='op'>+</span><span class='va'>x9</span><span class='op'>+</span><span class='va'>x10</span>,data<span class='op'>=</span><span class='va'>Pinscaled</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 79.37542</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/logLik.html'>logLik</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>yy</span><span class='op'>~</span><span class='va'>x1</span><span class='op'>+</span><span class='va'>x2</span><span class='op'>+</span><span class='va'>x3</span><span class='op'>+</span><span class='va'>x4</span><span class='op'>+</span><span class='va'>x5</span><span class='op'>+</span><span class='va'>x6</span><span class='op'>+</span><span class='va'>x7</span><span class='op'>+</span><span class='va'>x8</span><span class='op'>+</span><span class='va'>x9</span><span class='op'>+</span><span class='va'>x10</span>,data<span class='op'>=</span><span class='va'>Pinscaled</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 'log Lik.' -27.68771 (df=12)</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='va'>modpls</span><span class='op'>$</span><span class='va'>RepY</span>, <span class='va'>modpls</span><span class='op'>$</span><span class='va'>Std.ValsPredictY</span>, <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>modpls</span><span class='op'>$</span><span class='va'>residY</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>, log<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] -27.68771</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='va'>Pinscaled</span><span class='op'>$</span><span class='va'>yy</span>,<span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>yy</span><span class='op'>~</span><span class='va'>x1</span><span class='op'>+</span><span class='va'>x2</span><span class='op'>+</span><span class='va'>x3</span><span class='op'>+</span><span class='va'>x4</span><span class='op'>+</span><span class='va'>x5</span><span class='op'>+</span><span class='va'>x6</span><span class='op'>+</span><span class='va'>x7</span><span class='op'>+</span><span class='va'>x8</span><span class='op'>+</span><span class='va'>x9</span><span class='op'>+</span><span class='va'>x10</span>,data<span class='op'>=</span><span class='va'>Pinscaled</span><span class='op'>)</span><span class='op'>)</span>,
+<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>yy</span><span class='op'>~</span><span class='va'>x1</span><span class='op'>+</span><span class='va'>x2</span><span class='op'>+</span><span class='va'>x3</span><span class='op'>+</span><span class='va'>x4</span><span class='op'>+</span><span class='va'>x5</span><span class='op'>+</span><span class='va'>x6</span><span class='op'>+</span><span class='va'>x7</span><span class='op'>+</span><span class='va'>x8</span><span class='op'>+</span><span class='va'>x9</span><span class='op'>+</span><span class='va'>x10</span>,data<span class='op'>=</span><span class='va'>Pinscaled</span><span class='op'>)</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>, log<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] -27.68771</div><div class='input'><span class='fu'>loglikpls</span><span class='op'>(</span><span class='va'>modpls</span><span class='op'>$</span><span class='va'>residY</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] -27.68771</div><div class='input'><span class='fu'>loglikpls</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>yy</span><span class='op'>~</span><span class='va'>x1</span><span class='op'>+</span><span class='va'>x2</span><span class='op'>+</span><span class='va'>x3</span><span class='op'>+</span><span class='va'>x4</span><span class='op'>+</span><span class='va'>x5</span><span class='op'>+</span><span class='va'>x6</span><span class='op'>+</span><span class='va'>x7</span><span class='op'>+</span><span class='va'>x8</span><span class='op'>+</span><span class='va'>x9</span><span class='op'>+</span><span class='va'>x10</span>,data<span class='op'>=</span><span class='va'>Pinscaled</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] -27.68771</div><div class='input'><span class='fu'><a href='AICpls.html'>AICpls</a></span><span class='op'>(</span><span class='fl'>10</span>,<span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>yy</span><span class='op'>~</span><span class='va'>x1</span><span class='op'>+</span><span class='va'>x2</span><span class='op'>+</span><span class='va'>x3</span><span class='op'>+</span><span class='va'>x4</span><span class='op'>+</span><span class='va'>x5</span><span class='op'>+</span><span class='va'>x6</span><span class='op'>+</span><span class='va'>x7</span><span class='op'>+</span><span class='va'>x8</span><span class='op'>+</span><span class='va'>x9</span><span class='op'>+</span><span class='va'>x10</span>,data<span class='op'>=</span><span class='va'>Pinscaled</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 79.37542</div><div class='input'><span class='fu'><a href='AICpls.html'>AICpls</a></span><span class='op'>(</span><span class='fl'>10</span>,<span class='va'>modpls</span><span class='op'>$</span><span class='va'>residY</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 79.37542</div><div class='input'>
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#references">References</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Frederic Bertrand<br />
-<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
-<a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -302,13 +325,16 @@ Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

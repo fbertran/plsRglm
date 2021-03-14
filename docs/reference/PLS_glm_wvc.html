@@ -8,21 +8,36 @@
 
 <title>Light version of PLS\_glm for cross validation purposes — PLS_glm_wvc • plsRglm</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +45,12 @@
 
 
 
-<meta property="og:title" content="Light version of PLS\_glm for cross validation purposes — PLS_glm_wvc" />
 
-<meta property="og:description" content="Light version of PLS_glm for cross validation purposes either on complete or incomplete datasets." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Light version of PLS\_glm for cross validation purposes — PLS_glm_wvc" />
+<meta property="og:description" content="Light version of PLS_glm for cross validation purposes either on
+complete or incomplete datasets." />
+<meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -47,12 +64,13 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -63,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -71,9 +89,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -82,11 +103,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fbertran/plsRglm">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -97,27 +117,39 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Light version of PLS\_glm for cross validation purposes</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/fbertran/plsRglm/blob/master/R/PLS_glm_wvc.R'><code>R/PLS_glm_wvc.R</code></a></small>
     <div class="hidden name"><code>PLS_glm_wvc.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-    <p>Light version of <code>PLS_glm</code> for cross validation purposes either on complete or incomplete datasets.</p>
-    
+    <p>Light version of <code>PLS_glm</code> for cross validation purposes either on
+complete or incomplete datasets.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>PLS_glm_wvc</span>(<span class='no'>dataY</span>, <span class='no'>dataX</span>, <span class='kw'>nt</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>dataPredictY</span> <span class='kw'>=</span> <span class='no'>dataX</span>, <span class='kw'>modele</span> <span class='kw'>=</span> <span class='st'>"pls"</span>,
-<span class='kw'>family</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scaleX</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>scaleY</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>keepcoeffs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-<span class='kw'>keepstd.coeffs</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>tol_Xi</span> <span class='kw'>=</span> <span class='fl'>10</span>^(-<span class='fl'>12</span>), <span class='no'>weights</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"logistic"</span>,
-<span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>PLS_glm_wvc</span><span class='op'>(</span>
+  <span class='va'>dataY</span>,
+  <span class='va'>dataX</span>,
+  nt <span class='op'>=</span> <span class='fl'>2</span>,
+  dataPredictY <span class='op'>=</span> <span class='va'>dataX</span>,
+  modele <span class='op'>=</span> <span class='st'>"pls"</span>,
+  family <span class='op'>=</span> <span class='cn'>NULL</span>,
+  scaleX <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  scaleY <span class='op'>=</span> <span class='cn'>NULL</span>,
+  keepcoeffs <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  keepstd.coeffs <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  tol_Xi <span class='op'>=</span> <span class='fl'>10</span><span class='op'>^</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>12</span><span class='op'>)</span>,
+  <span class='va'>weights</span>,
+  method <span class='op'>=</span> <span class='st'>"logistic"</span>,
+  verbose <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -139,93 +171,160 @@
     </tr>
     <tr>
       <th>modele</th>
-      <td><p>name of the PLS glm model to be fitted (<code>"pls"</code>, <code>"pls-glm-Gamma"</code>, <code>"pls-glm-gaussian"</code>, <code>"pls-glm-inverse.gaussian"</code>, <code>"pls-glm-logistic"</code>, <code>"pls-glm-poisson"</code>, <code>"pls-glm-polr"</code>). Use <code>"modele=pls-glm-family"</code> to enable the <code>family</code> option.</p></td>
+      <td><p>name of the PLS glm model to be fitted (<code>"pls"</code>,
+<code>"pls-glm-Gamma"</code>, <code>"pls-glm-gaussian"</code>,
+<code>"pls-glm-inverse.gaussian"</code>, <code>"pls-glm-logistic"</code>,
+<code>"pls-glm-poisson"</code>, <code>"pls-glm-polr"</code>). Use
+<code>"modele=pls-glm-family"</code> to enable the <code>family</code> option.</p></td>
     </tr>
     <tr>
       <th>family</th>
-      <td><p>a description of the error distribution and link function to be used in the model. This can be a character string naming a family function, a family function or the result of a call to a family function. (See <code><a href='https://www.rdocumentation.org/packages/stats/topics/family'>family</a></code> for details of family functions.) To use the family option, please set <code>modele="pls-glm-family"</code>. User defined families can also be defined. See details.</p></td>
+      <td><p>a description of the error distribution and link function to
+be used in the model. This can be a character string naming a family
+function, a family function or the result of a call to a family function.
+(See <code><a href='https://rdrr.io/r/stats/family.html'>family</a></code> for details of family functions.) To use
+the family option, please set <code>modele="pls-glm-family"</code>. User defined
+families can also be defined. See details.</p></td>
     </tr>
     <tr>
       <th>scaleX</th>
-      <td><p>scale the predictor(s) : must be set to TRUE for <code>modele="pls"</code> and should be for glms pls.</p></td>
+      <td><p>scale the predictor(s) : must be set to TRUE for
+<code>modele="pls"</code> and should be for glms pls.</p></td>
     </tr>
     <tr>
       <th>scaleY</th>
-      <td><p>scale the response : Yes/No. Ignored since non always possible for glm responses.</p></td>
+      <td><p>scale the response : Yes/No. Ignored since non always possible
+for glm responses.</p></td>
     </tr>
     <tr>
       <th>keepcoeffs</th>
-      <td><p>whether the coefficients of the linear fit on link scale of unstandardized eXplanatory variables should be returned or not.</p></td>
+      <td><p>whether the coefficients of the linear fit on link scale
+of unstandardized eXplanatory variables should be returned or not.</p></td>
     </tr>
     <tr>
       <th>keepstd.coeffs</th>
-      <td><p>whether the coefficients of the linear fit on link scale of standardized eXplanatory variables should be returned or not.</p></td>
+      <td><p>whether the coefficients of the linear fit on link
+scale of standardized eXplanatory variables should be returned or not.</p></td>
     </tr>
     <tr>
       <th>tol_Xi</th>
-      <td><p>minimal value for Norm2(Xi) and \(\mathrm{det}(pp' \times pp)\) if there is any missing value in the <code>dataX</code>. It defaults to \(10^{-12}\)</p></td>
+      <td><p>minimal value for Norm2(Xi) and \(\mathrm{det}(pp' \times
+pp)\) if there is any missing value in the <code>dataX</code>. It
+defaults to \(10^{-12}\)</p></td>
     </tr>
     <tr>
       <th>weights</th>
-      <td><p>an optional vector of 'prior weights' to be used in the fitting process. Should be <code>NULL</code> or a numeric vector.</p></td>
+      <td><p>an optional vector of 'prior weights' to be used in the
+fitting process. Should be <code>NULL</code> or a numeric vector.</p></td>
     </tr>
     <tr>
       <th>method</th>
-      <td><p>logistic, probit, complementary log-log or cauchit (corresponding to a Cauchy latent variable).</p></td>
+      <td><p>logistic, probit, complementary log-log or cauchit
+(corresponding to a Cauchy latent variable).</p></td>
     </tr>
     <tr>
       <th>verbose</th>
       <td><p>should info messages be displayed ?</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function is called by <code><a href='cv.plsRglm.html'>PLS_glm_kfoldcv_formula</a></code> in order to perform cross-validation either on complete or incomplete datasets.</p>
-<p>There are seven different predefined models with predefined link functions available :</p><dl class='dl-horizontal'>
-<dt><code>"pls"</code></dt><dd><p>ordinary pls models</p></dd>
-<dt><code>"pls-glm-Gamma"</code></dt><dd><p>glm gaussian with inverse link pls models</p></dd>
-<dt><code>"pls-glm-gaussian"</code></dt><dd><p>glm gaussian with identity link pls models</p></dd>
-<dt><code>"pls-glm-inverse-gamma"</code></dt><dd><p>glm binomial with square inverse link pls models</p></dd>
-<dt><code>"pls-glm-logistic"</code></dt><dd><p>glm binomial with logit link pls models</p></dd>
-<dt><code>"pls-glm-poisson"</code></dt><dd><p>glm poisson with log link pls models</p></dd>
-<dt><code>"pls-glm-polr"</code></dt><dd><p>glm polr with logit link pls models</p></dd>
-</dl><p>Using the <code>"family="</code> option and setting <code>"modele=pls-glm-family"</code> allows changing the family and link function the same way as for the <code><a href='https://www.rdocumentation.org/packages/stats/topics/glm'>glm</a></code> function. As a consequence user-specified families can also be used.</p><dl class='dl-horizontal'>
-<dt>The <code>gaussian</code> family</dt><dd><p>accepts the links (as names) <code>identity</code>, <code>log</code> and <code>inverse</code>.</p></dd>
-<dt>The <code>binomial</code> family</dt><dd><p>accepts the links <code>logit</code>, <code>probit</code>, <code>cauchit</code>, (corresponding to logistic, normal and Cauchy CDFs respectively) <code>log</code> and <code>cloglog</code> (complementary log-log).</p></dd> 
-<dt>The <code>Gamma</code> family</dt><dd><p>accepts the links <code>inverse</code>, <code>identity</code> and <code>log</code>.</p></dd>
-<dt>The <code>poisson</code> family</dt><dd><p>accepts the links <code>log</code>, <code>identity</code>, and <code>sqrt</code>.</p></dd>
-<dt>The <code>inverse.gaussian</code> family</dt><dd><p>accepts the links <code>1/mu^2</code>, <code>inverse</code>, <code>identity</code> and <code>log</code>.</p></dd>
-<dt>The <code>quasi</code> family</dt><dd><p>accepts the links <code>logit</code>, <code>probit</code>, <code>cloglog</code>, <code>identity</code>, <code>inverse</code>, <code>log</code>, <code>1/mu^2</code> and <code>sqrt</code>.</p></dd>
-<dt>The function <code>power</code></dt><dd><p>can be used to create a power link function.</p></dd> 
-</dl>
-    <p>Non-NULL weights can be used to indicate that different observations have different dispersions (with the values in weights being inversely proportional to the dispersions); or equivalently, when the elements of weights are positive integers w_i, that each response y_i is the mean of w_i unit-weight observations.</p>
-    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p></p>
-<dt>valsPredict</dt><dd><p><code>nrow(dataPredictY) * nt</code> matrix of the predicted values</p></dd>
-  <dt><code>coeffs</code></dt><dd><p>If the coefficients of the eXplanatory variables were requested:<br />
-        i.e. <code>keepcoeffs=TRUE</code>.<br />
-        <code>ncol(dataX) * 1</code> matrix of the coefficients of the the eXplanatory variables</p></dd>
-
     
+
+<dt>valsPredict</dt><dd><p><code>nrow(dataPredictY) * nt</code> matrix of the
+predicted values</p></dd> <dt>list("coeffs")</dt><dd><p>If the coefficients of the
+eXplanatory variables were requested:<br /> i.e. <code>keepcoeffs=TRUE</code>.<br />
+<code>ncol(dataX) * 1</code> matrix of the coefficients of the the eXplanatory
+variables</p></dd>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function is called by <code><a href='cv.plsRglm.html'>PLS_glm_kfoldcv_formula</a></code> in order to
+perform cross-validation either on complete or incomplete datasets.</p>
+<p>There are seven different predefined models with predefined link functions
+available :</p><dl>
+<dt>list("\"pls\"")</dt><dd><p>ordinary pls models</p></dd>
+<dt>list("\"pls-glm-Gamma\"")</dt><dd><p>glm gaussian with inverse link pls models</p></dd>
+<dt>list("\"pls-glm-gaussian\"")</dt><dd><p>glm gaussian with identity link pls
+models</p></dd> <dt>list("\"pls-glm-inverse-gamma\"")</dt><dd><p>glm binomial with square
+inverse link pls models</p></dd> <dt>list("\"pls-glm-logistic\"")</dt><dd><p>glm binomial
+with logit link pls models</p></dd> <dt>list("\"pls-glm-poisson\"")</dt><dd><p>glm poisson
+with log link pls models</p></dd> <dt>list("\"pls-glm-polr\"")</dt><dd><p>glm polr with
+logit link pls models</p></dd> 
+</dl><p>Using the <code>"family="</code> option and setting
+<code>"modele=pls-glm-family"</code> allows changing the family and link function
+the same way as for the <code><a href='https://rdrr.io/r/stats/glm.html'>glm</a></code> function. As a consequence
+user-specified families can also be used.</p><dl>
+<dt>The </dt><dd><p>accepts
+the links (as names) <code>identity</code>, <code>log</code> and
+<code>inverse</code>.</p></dd><dt>list("gaussian")</dt><dd><p>accepts the links (as names)
+<code>identity</code>, <code>log</code> and <code>inverse</code>.</p></dd><dt> family</dt><dd><p>accepts the
+links (as names) <code>identity</code>, <code>log</code> and <code>inverse</code>.</p></dd> <dt>The
+</dt><dd><p>accepts the links <code>logit</code>, <code>probit</code>, <code>cauchit</code>,
+(corresponding to logistic, normal and Cauchy CDFs respectively) <code>log</code>
+and <code>cloglog</code> (complementary log-log).</p></dd><dt>list("binomial")</dt><dd><p>accepts
+the links <code>logit</code>, <code>probit</code>, <code>cauchit</code>, (corresponding to
+logistic, normal and Cauchy CDFs respectively) <code>log</code> and <code>cloglog</code>
+(complementary log-log).</p></dd><dt> family</dt><dd><p>accepts the links <code>logit</code>,
+<code>probit</code>, <code>cauchit</code>, (corresponding to logistic, normal and Cauchy
+CDFs respectively) <code>log</code> and <code>cloglog</code> (complementary log-log).</p></dd>
+<dt>The </dt><dd><p>accepts the links <code>inverse</code>, <code>identity</code> and
+<code>log</code>.</p></dd><dt>list("Gamma")</dt><dd><p>accepts the links <code>inverse</code>,
+<code>identity</code> and <code>log</code>.</p></dd><dt> family</dt><dd><p>accepts the links
+<code>inverse</code>, <code>identity</code> and <code>log</code>.</p></dd> <dt>The </dt><dd><p>accepts the
+links <code>log</code>, <code>identity</code>, and
+<code>sqrt</code>.</p></dd><dt>list("poisson")</dt><dd><p>accepts the links <code>log</code>,
+<code>identity</code>, and <code>sqrt</code>.</p></dd><dt> family</dt><dd><p>accepts the links
+<code>log</code>, <code>identity</code>, and <code>sqrt</code>.</p></dd> <dt>The </dt><dd><p>accepts the links
+<code>1/mu^2</code>, <code>inverse</code>, <code>identity</code> and
+<code>log</code>.</p></dd><dt>list("inverse.gaussian")</dt><dd><p>accepts the links <code>1/mu^2</code>,
+<code>inverse</code>, <code>identity</code> and <code>log</code>.</p></dd><dt> family</dt><dd><p>accepts the
+links <code>1/mu^2</code>, <code>inverse</code>, <code>identity</code> and <code>log</code>.</p></dd>
+<dt>The </dt><dd><p>accepts the links <code>logit</code>, <code>probit</code>, <code>cloglog</code>,
+<code>identity</code>, <code>inverse</code>, <code>log</code>, <code>1/mu^2</code> and
+<code>sqrt</code>.</p></dd><dt>list("quasi")</dt><dd><p>accepts the links <code>logit</code>,
+<code>probit</code>, <code>cloglog</code>, <code>identity</code>, <code>inverse</code>, <code>log</code>,
+<code>1/mu^2</code> and <code>sqrt</code>.</p></dd><dt> family</dt><dd><p>accepts the links
+<code>logit</code>, <code>probit</code>, <code>cloglog</code>, <code>identity</code>,
+<code>inverse</code>, <code>log</code>, <code>1/mu^2</code> and <code>sqrt</code>.</p></dd> <dt>The
+function </dt><dd><p>can be used to create a power link
+function.</p></dd><dt>list("power")</dt><dd><p>can be used to create a power link function.</p></dd>
+
+</dl>
+
+<p>Non-NULL weights can be used to indicate that different observations have
+different dispersions (with the values in weights being inversely
+proportional to the dispersions); or equivalently, when the elements of
+weights are positive integers w_i, that each response y_i is the mean of w_i
+unit-weight observations.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Nicolas Meyer, Myriam Maumy-Bertrand et Frederic Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>, 151(2), pages 1-18.
+    <p>Nicolas Meyer, Myriam Maumy-Bertrand et
+Frédéric Bertrand (2010). Comparing the linear and the
+logistic PLS regression with qualitative predictors: application to
+allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>,
+151(2), pages 1-18.
 <a href='http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47'>http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47</a></p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='plsRglm.html'>PLS_glm</a></code> for more detailed results, <code><a href='cv.plsRglm.html'>PLS_glm_kfoldcv</a></code> for cross-validating models and <code><a href='PLS_lm_wvc.html'>PLS_lm_wvc</a></code> for the same function dedicated to plsR models</p></div>
-    
+    <div class='dont-index'><p><code><a href='plsRglm.html'>PLS_glm</a></code> for more detailed results,
+<code><a href='cv.plsRglm.html'>PLS_glm_kfoldcv</a></code> for cross-validating models and
+<code><a href='PLS_lm_wvc.html'>PLS_lm_wvc</a></code> for the same function dedicated to plsR models</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Frédéric Bertrand<br />
+<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
+<a href='https://fbertran.github.io/homepage/'>https://fbertran.github.io/homepage/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>Cornell</span>)
-<span class='no'>XCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>1</span>:<span class='fl'>7</span>]
-<span class='no'>yCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>8</span>]
-<span class='fu'>PLS_glm_wvc</span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yCornell</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XCornell</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-gaussian"</span>,
-<span class='kw'>dataPredictY</span><span class='kw'>=</span><span class='no'>XCornell</span>[<span class='fl'>1</span>,])</div><div class='output co'>#&gt; ____************************************************____
+    <pre class="examples"><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>
+<span class='va'>XCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>]</span>
+<span class='va'>yCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>8</span><span class='op'>]</span>
+<span class='fu'>PLS_glm_wvc</span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yCornell</span>,dataX<span class='op'>=</span><span class='va'>XCornell</span>,nt<span class='op'>=</span><span class='fl'>3</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-gaussian"</span>,
+dataPredictY<span class='op'>=</span><span class='va'>XCornell</span><span class='op'>[</span><span class='fl'>1</span>,<span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; 
 #&gt; Family: gaussian 
 #&gt; Link function: identity 
@@ -238,23 +337,30 @@
 #&gt; </div><div class='output co'>#&gt; $valsPredict
 #&gt;       [,1]     [,2]    [,3]
 #&gt; 1 95.03164 97.08409 97.4436
-#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yCornell</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XCornell</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-family"</span>,
-<span class='kw'>family</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/family'>gaussian</a></span>(),<span class='kw'>dataPredictY</span><span class='kw'>=</span><span class='no'>XCornell</span>[<span class='fl'>1</span>,], <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $valsPredict
+#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yCornell</span>,dataX<span class='op'>=</span><span class='va'>XCornell</span>,nt<span class='op'>=</span><span class='fl'>3</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-family"</span>,
+family<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>gaussian</a></span><span class='op'>(</span><span class='op'>)</span>,dataPredictY<span class='op'>=</span><span class='va'>XCornell</span><span class='op'>[</span><span class='fl'>1</span>,<span class='op'>]</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $valsPredict
 #&gt;       [,1]     [,2]    [,3]
 #&gt; 1 95.03164 97.08409 97.4436
-#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yCornell</span>[-<span class='fl'>1</span>],<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XCornell</span>[-<span class='fl'>1</span>,],<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-gaussian"</span>,
-<span class='kw'>dataPredictY</span><span class='kw'>=</span><span class='no'>XCornell</span>[<span class='fl'>1</span>,], <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $valsPredict
+#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yCornell</span><span class='op'>[</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>]</span>,dataX<span class='op'>=</span><span class='va'>XCornell</span><span class='op'>[</span><span class='op'>-</span><span class='fl'>1</span>,<span class='op'>]</span>,nt<span class='op'>=</span><span class='fl'>3</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-gaussian"</span>,
+dataPredictY<span class='op'>=</span><span class='va'>XCornell</span><span class='op'>[</span><span class='fl'>1</span>,<span class='op'>]</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $valsPredict
 #&gt;       [,1]     [,2]     [,3]
 #&gt; 1 93.74777 95.32475 96.08522
-#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yCornell</span>[-<span class='fl'>1</span>],<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XCornell</span>[-<span class='fl'>1</span>,],<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-family"</span>,
-<span class='kw'>family</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/family'>gaussian</a></span>(),<span class='kw'>dataPredictY</span><span class='kw'>=</span><span class='no'>XCornell</span>[<span class='fl'>1</span>,], <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $valsPredict
+#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yCornell</span><span class='op'>[</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>]</span>,dataX<span class='op'>=</span><span class='va'>XCornell</span><span class='op'>[</span><span class='op'>-</span><span class='fl'>1</span>,<span class='op'>]</span>,nt<span class='op'>=</span><span class='fl'>3</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-family"</span>,
+family<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>gaussian</a></span><span class='op'>(</span><span class='op'>)</span>,dataPredictY<span class='op'>=</span><span class='va'>XCornell</span><span class='op'>[</span><span class='fl'>1</span>,<span class='op'>]</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $valsPredict
 #&gt;       [,1]     [,2]     [,3]
 #&gt; 1 93.74777 95.32475 96.08522
-#&gt; </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='st'>"XCornell"</span>,<span class='st'>"yCornell"</span>)</div><div class='input'><span class='co'>## With an incomplete dataset (X[1,2] is NA)</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>pine</span>)
-<span class='no'>ypine</span> <span class='kw'>&lt;-</span> <span class='no'>pine</span>[,<span class='fl'>11</span>]
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>XpineNAX21</span>)
-<span class='fu'>PLS_glm_wvc</span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>ypine</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XpineNAX21</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-gaussian"</span>)</div><div class='output co'>#&gt; ____************************************************____
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span><span class='st'>"XCornell"</span>,<span class='st'>"yCornell"</span><span class='op'>)</span>
+
+<span class='co'># \donttest{</span>
+<span class='co'>## With an incomplete dataset (X[1,2] is NA)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>pine</span><span class='op'>)</span>
+<span class='va'>ypine</span> <span class='op'>&lt;-</span> <span class='va'>pine</span><span class='op'>[</span>,<span class='fl'>11</span><span class='op'>]</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>XpineNAX21</span><span class='op'>)</span>
+<span class='fu'>PLS_glm_wvc</span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>ypine</span>,dataX<span class='op'>=</span><span class='va'>XpineNAX21</span>,nt<span class='op'>=</span><span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-gaussian"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; Only naive DoF can be used with missing data
 #&gt; 
 #&gt; Family: gaussian 
@@ -343,11 +449,13 @@
 #&gt; 31  1.46531670  1.50285087  1.51032980
 #&gt; 32  0.87652870  1.16647296  1.16995441
 #&gt; 33  0.28101723  0.47212049  0.52841275
-#&gt; </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='st'>"XpineNAX21"</span>,<span class='st'>"ypine"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: object 'XpineNAX21' not found</span></div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>pine</span>)
-<span class='no'>Xpine</span><span class='kw'>&lt;-</span><span class='no'>pine</span>[,<span class='fl'>1</span>:<span class='fl'>10</span>]
-<span class='no'>ypine</span><span class='kw'>&lt;-</span><span class='no'>pine</span>[,<span class='fl'>11</span>]
-<span class='fu'>PLS_glm_wvc</span>(<span class='no'>ypine</span>,<span class='no'>Xpine</span>,<span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls"</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $valsPredict
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span><span class='st'>"XpineNAX21"</span>,<span class='st'>"ypine"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: objet 'XpineNAX21' introuvable</span></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>pine</span><span class='op'>)</span>
+<span class='va'>Xpine</span><span class='op'>&lt;-</span><span class='va'>pine</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>
+<span class='va'>ypine</span><span class='op'>&lt;-</span><span class='va'>pine</span><span class='op'>[</span>,<span class='fl'>11</span><span class='op'>]</span>
+<span class='fu'>PLS_glm_wvc</span><span class='op'>(</span><span class='va'>ypine</span>,<span class='va'>Xpine</span>,<span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls"</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $valsPredict
 #&gt;           [,1]        [,2]        [,3]        [,4]         [,5]        [,6]
 #&gt; 1   1.57673729  2.00433040  2.00216849  2.01939633  1.937245401  1.88550891
 #&gt; 2   1.01203030  1.15199511  1.11571861  1.24570213  1.235802532  1.20179188
@@ -416,7 +524,8 @@
 #&gt; 31  1.37872533  1.385981563  1.39371317  1.39564352
 #&gt; 32  0.49904917  0.493233383  0.48196396  0.49873722
 #&gt; 33  0.04746533  0.049219132  0.06349274  0.06165365
-#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span>(<span class='no'>ypine</span>,<span class='no'>Xpine</span>,<span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-Gamma"</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $valsPredict
+#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span><span class='op'>(</span><span class='va'>ypine</span>,<span class='va'>Xpine</span>,<span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-Gamma"</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $valsPredict
 #&gt;         [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
 #&gt; 1  1.7021625 3.3482083 2.7139565 2.4058093 3.2467830 2.2037424 2.5521714
 #&gt; 2  0.6639038 0.6387631 0.6121317 0.7600887 0.9482646 0.9294531 0.8653260
@@ -485,7 +594,8 @@
 #&gt; 31 1.3702410 1.3900717 1.3901525
 #&gt; 32 0.3220191 0.3261020 0.3260694
 #&gt; 33 0.3243259 0.3203266 0.3203212
-#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span>(<span class='no'>ypine</span>,<span class='no'>Xpine</span>,<span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-family"</span>,<span class='kw'>family</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/family'>Gamma</a></span>(), <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $valsPredict
+#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span><span class='op'>(</span><span class='va'>ypine</span>,<span class='va'>Xpine</span>,<span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-family"</span>,family<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>Gamma</a></span><span class='op'>(</span><span class='op'>)</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $valsPredict
 #&gt;         [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
 #&gt; 1  1.7021625 3.3482083 2.7139565 2.4058093 3.2467830 2.2037424 2.5521714
 #&gt; 2  0.6639038 0.6387631 0.6121317 0.7600887 0.9482646 0.9294531 0.8653260
@@ -554,7 +664,8 @@
 #&gt; 31 1.3702410 1.3900717 1.3901525
 #&gt; 32 0.3220191 0.3261020 0.3260694
 #&gt; 33 0.3243259 0.3203266 0.3203212
-#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span>(<span class='no'>ypine</span>,<span class='no'>Xpine</span>,<span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-gaussian"</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $valsPredict
+#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span><span class='op'>(</span><span class='va'>ypine</span>,<span class='va'>Xpine</span>,<span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-gaussian"</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $valsPredict
 #&gt;           [,1]         [,2]        [,3]         [,4]        [,5]          [,6]
 #&gt; 1   1.57673729  2.112703071  2.04925275  2.025720690  1.99988877  1.9833376732
 #&gt; 2   1.01203030  1.097055838  1.16768196  1.188171412  1.15718087  1.2424038010
@@ -623,7 +734,8 @@
 #&gt; 31  1.40075691  1.39407660  1.39778420  1.39564352
 #&gt; 32  0.49263192  0.51865275  0.50530217  0.49873722
 #&gt; 33  0.05468043  0.06268582  0.06658628  0.06165365
-#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span>(<span class='no'>ypine</span>,<span class='no'>Xpine</span>,<span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-family"</span>,<span class='kw'>family</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/family'>gaussian</a></span>(<span class='no'>log</span>), <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: algorithm did not converge</span></div><div class='output co'>#&gt; $valsPredict
+#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span><span class='op'>(</span><span class='va'>ypine</span>,<span class='va'>Xpine</span>,<span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-family"</span>,family<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>gaussian</a></span><span class='op'>(</span><span class='va'>log</span><span class='op'>)</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: algorithm did not converge</span></div><div class='output co'>#&gt; $valsPredict
 #&gt;          [,1]       [,2]       [,3]       [,4]       [,5]       [,6]       [,7]
 #&gt; 1  1.94034398 2.71462895 2.43467867 2.34032266 2.49387242 2.52177239 2.36881223
 #&gt; 2  0.75808067 0.69121040 0.65620818 0.70721651 1.04029001 0.98040711 0.93783784
@@ -692,7 +804,8 @@
 #&gt; 31 1.30383078 1.34676942 1.34563447
 #&gt; 32 0.40329953 0.46335753 0.48230863
 #&gt; 33 0.24694643 0.23442405 0.22839915
-#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Round'>round</a></span>(<span class='no'>ypine</span>),<span class='no'>Xpine</span>,<span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-poisson"</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $valsPredict
+#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>ypine</span><span class='op'>)</span>,<span class='va'>Xpine</span>,<span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-poisson"</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $valsPredict
 #&gt;         [,1]       [,2]       [,3]       [,4]       [,5]       [,6]       [,7]
 #&gt; 1  1.6399850 2.60506445 2.11819574 2.41837386 2.53667962 2.20251218 2.06903053
 #&gt; 2  0.7290121 0.69629584 0.86286774 0.91041443 1.03494013 1.08047292 1.04940245
@@ -761,7 +874,8 @@
 #&gt; 31 1.42270195 1.41766315 1.42184343
 #&gt; 32 0.24013435 0.24834876 0.24777468
 #&gt; 33 0.14754717 0.14199043 0.14158704
-#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Round'>round</a></span>(<span class='no'>ypine</span>),<span class='no'>Xpine</span>,<span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-family"</span>,<span class='kw'>family</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/family'>poisson</a></span>(<span class='no'>log</span>), <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $valsPredict
+#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>ypine</span><span class='op'>)</span>,<span class='va'>Xpine</span>,<span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-family"</span>,family<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>poisson</a></span><span class='op'>(</span><span class='va'>log</span><span class='op'>)</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $valsPredict
 #&gt;         [,1]       [,2]       [,3]       [,4]       [,5]       [,6]       [,7]
 #&gt; 1  1.6399850 2.60506445 2.11819574 2.41837386 2.53667962 2.20251218 2.06903053
 #&gt; 2  0.7290121 0.69629584 0.86286774 0.91041443 1.03494013 1.08047292 1.04940245
@@ -830,12 +944,14 @@
 #&gt; 31 1.42270195 1.41766315 1.42184343
 #&gt; 32 0.24013435 0.24834876 0.24777468
 #&gt; 33 0.14754717 0.14199043 0.14158704
-#&gt; </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"pine"</span>,<span class='st'>"ypine"</span>,<span class='st'>"Xpine"</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: object 'pine' not found</span></div><div class='input'>
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"pine"</span>,<span class='st'>"ypine"</span>,<span class='st'>"Xpine"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: objet 'pine' introuvable</span></div><div class='input'>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>Cornell</span>)
-<span class='no'>XCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>1</span>:<span class='fl'>7</span>]
-<span class='no'>yCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>8</span>]
-<span class='fu'>PLS_glm_wvc</span>(<span class='no'>yCornell</span>,<span class='no'>XCornell</span>,<span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-inverse.gaussian"</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $valsPredict
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>
+<span class='va'>XCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>]</span>
+<span class='va'>yCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>8</span><span class='op'>]</span>
+<span class='fu'>PLS_glm_wvc</span><span class='op'>(</span><span class='va'>yCornell</span>,<span class='va'>XCornell</span>,<span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-inverse.gaussian"</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $valsPredict
 #&gt;        [,1]     [,2]     [,3]     [,4]     [,5]     [,6]
 #&gt; 1  95.04599 96.84573 97.43211 97.72960 97.67692 97.66926
 #&gt; 2  96.68764 98.13364 98.03691 97.94523 98.18530 98.04886
@@ -849,8 +965,9 @@
 #&gt; 10 82.58963 83.07833 83.11779 83.00651 83.01600 83.12446
 #&gt; 11 82.15442 81.74862 82.05216 81.73070 81.63852 81.40000
 #&gt; 12 87.59686 88.64130 88.29910 88.84247 88.76913 88.66730
-#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span>(<span class='no'>yCornell</span>,<span class='no'>XCornell</span>,<span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-family"</span>,
-<span class='kw'>family</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/family'>inverse.gaussian</a></span>(), <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $valsPredict
+#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span><span class='op'>(</span><span class='va'>yCornell</span>,<span class='va'>XCornell</span>,<span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-family"</span>,
+family<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>inverse.gaussian</a></span><span class='op'>(</span><span class='op'>)</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $valsPredict
 #&gt;        [,1]     [,2]     [,3]     [,4]     [,5]     [,6]
 #&gt; 1  95.04599 96.84573 97.43211 97.72960 97.67692 97.66926
 #&gt; 2  96.68764 98.13364 98.03691 97.94523 98.18530 98.04886
@@ -864,26 +981,29 @@
 #&gt; 10 82.58963 83.07833 83.11779 83.00651 83.01600 83.12446
 #&gt; 11 82.15442 81.74862 82.05216 81.73070 81.63852 81.40000
 #&gt; 12 87.59686 88.64130 88.29910 88.84247 88.76913 88.66730
-#&gt; </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"XCornell"</span>,<span class='st'>"yCornell"</span>))
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"XCornell"</span>,<span class='st'>"yCornell"</span><span class='op'>)</span><span class='op'>)</span>
 
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>Cornell</span>)
-<span class='no'>XCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>1</span>:<span class='fl'>7</span>]
-<span class='no'>yCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>8</span>]
-<span class='fu'>PLS_glm_wvc</span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yCornell</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XCornell</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-gaussian"</span>,
-<span class='kw'>dataPredictY</span><span class='kw'>=</span><span class='no'>XCornell</span>[<span class='fl'>1</span>,], <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $valsPredict
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>
+<span class='va'>XCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>]</span>
+<span class='va'>yCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>8</span><span class='op'>]</span>
+<span class='fu'>PLS_glm_wvc</span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yCornell</span>,dataX<span class='op'>=</span><span class='va'>XCornell</span>,nt<span class='op'>=</span><span class='fl'>3</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-gaussian"</span>,
+dataPredictY<span class='op'>=</span><span class='va'>XCornell</span><span class='op'>[</span><span class='fl'>1</span>,<span class='op'>]</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $valsPredict
 #&gt;       [,1]     [,2]    [,3]
 #&gt; 1 95.03164 97.08409 97.4436
-#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yCornell</span>[-<span class='fl'>1</span>],<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XCornell</span>[-<span class='fl'>1</span>,],<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-gaussian"</span>,
-<span class='kw'>dataPredictY</span><span class='kw'>=</span><span class='no'>XCornell</span>[<span class='fl'>1</span>,], <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $valsPredict
+#&gt; </div><div class='input'><span class='fu'>PLS_glm_wvc</span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yCornell</span><span class='op'>[</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>]</span>,dataX<span class='op'>=</span><span class='va'>XCornell</span><span class='op'>[</span><span class='op'>-</span><span class='fl'>1</span>,<span class='op'>]</span>,nt<span class='op'>=</span><span class='fl'>3</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-gaussian"</span>,
+dataPredictY<span class='op'>=</span><span class='va'>XCornell</span><span class='op'>[</span><span class='fl'>1</span>,<span class='op'>]</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $valsPredict
 #&gt;       [,1]     [,2]     [,3]
 #&gt; 1 93.74777 95.32475 96.08522
-#&gt; </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='st'>"XCornell"</span>,<span class='st'>"yCornell"</span>)
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span><span class='st'>"XCornell"</span>,<span class='st'>"yCornell"</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>aze_compl</span>)
-<span class='no'>Xaze_compl</span><span class='kw'>&lt;-</span><span class='no'>aze_compl</span>[,<span class='fl'>2</span>:<span class='fl'>34</span>]
-<span class='no'>yaze_compl</span><span class='kw'>&lt;-</span><span class='no'>aze_compl</span>$<span class='no'>y</span>
-<span class='fu'><a href='plsRglm.html'>PLS_glm</a></span>(<span class='no'>yaze_compl</span>,<span class='no'>Xaze_compl</span>,<span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-logistic"</span>,<span class='kw'>typeVC</span><span class='kw'>=</span><span class='st'>"none"</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)$<span class='no'>InfCrit</span></div><div class='output co'>#&gt;                 AIC      BIC Missclassed Chi2_Pearson_Y    RSS_Y      R2_Y
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>aze_compl</span><span class='op'>)</span>
+<span class='va'>Xaze_compl</span><span class='op'>&lt;-</span><span class='va'>aze_compl</span><span class='op'>[</span>,<span class='fl'>2</span><span class='op'>:</span><span class='fl'>34</span><span class='op'>]</span>
+<span class='va'>yaze_compl</span><span class='op'>&lt;-</span><span class='va'>aze_compl</span><span class='op'>$</span><span class='va'>y</span>
+<span class='fu'><a href='plsRglm.html'>PLS_glm</a></span><span class='op'>(</span><span class='va'>yaze_compl</span>,<span class='va'>Xaze_compl</span>,<span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-logistic"</span>,typeVC<span class='op'>=</span><span class='st'>"none"</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>$</span><span class='va'>InfCrit</span>
+</div><div class='output co'>#&gt;                 AIC      BIC Missclassed Chi2_Pearson_Y    RSS_Y      R2_Y
 #&gt; Nb_Comp_0  145.8283 148.4727          49      104.00000 25.91346        NA
 #&gt; Nb_Comp_1  118.1398 123.4285          28      100.53823 19.32272 0.2543365
 #&gt; Nb_Comp_2  109.9553 117.8885          26       99.17955 17.33735 0.3309519
@@ -906,7 +1026,8 @@
 #&gt; Nb_Comp_7  -16.908851  464.08033
 #&gt; Nb_Comp_8  -17.555867  480.84675
 #&gt; Nb_Comp_9  -17.834439  488.06552
-#&gt; Nb_Comp_10 -17.999267  492.33678</div><div class='input'><span class='fu'>PLS_glm_wvc</span>(<span class='no'>yaze_compl</span>,<span class='no'>Xaze_compl</span>,<span class='fl'>10</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls-glm-logistic"</span>, <span class='kw'>keepcoeffs</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $valsPredict
+#&gt; Nb_Comp_10 -17.999267  492.33678</div><div class='input'><span class='fu'>PLS_glm_wvc</span><span class='op'>(</span><span class='va'>yaze_compl</span>,<span class='va'>Xaze_compl</span>,<span class='fl'>10</span>,modele<span class='op'>=</span><span class='st'>"pls-glm-logistic"</span>, keepcoeffs<span class='op'>=</span><span class='cn'>TRUE</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $valsPredict
 #&gt;           [,1]        [,2]        [,3]        [,4]        [,5]        [,6]
 #&gt; 1   0.43119151 0.702047114 0.631858261 0.673867317 0.633105720 0.643502088
 #&gt; 2   0.21927519 0.208200622 0.166440274 0.108288423 0.122814698 0.163115357
@@ -1154,30 +1275,18 @@
 #&gt;               -0.222933455
 #&gt;               -2.822712745
 #&gt;                0.026369914
-#&gt; </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='st'>"Xaze_compl"</span>,<span class='st'>"yaze_compl"</span>)</div></pre>
+#&gt; </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span><span class='st'>"Xaze_compl"</span>,<span class='st'>"yaze_compl"</span><span class='op'>)</span>
+<span class='co'># }</span>
+
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#references">References</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Frederic Bertrand<br />
-<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
-<a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -1185,13 +1294,16 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

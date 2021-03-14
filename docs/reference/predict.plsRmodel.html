@@ -8,21 +8,36 @@
 
 <title>Print method for plsR models — predict.plsRmodel • plsRglm</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +45,11 @@
 
 
 
-<meta property="og:title" content="Print method for plsR models — predict.plsRmodel" />
 
+<meta property="og:title" content="Print method for plsR models — predict.plsRmodel" />
 <meta property="og:description" content="This function provides a predict method for the class &quot;plsRmodel&quot;" />
-<meta name="twitter:card" content="summary" />
+<meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -47,12 +63,13 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -63,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -71,9 +88,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -82,11 +102,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fbertran/plsRglm">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -97,26 +116,33 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Print method for plsR models</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/fbertran/plsRglm/blob/master/R/predict.plsRmodel.R'><code>R/predict.plsRmodel.R</code></a></small>
     <div class="hidden name"><code>predict.plsRmodel.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
     <p>This function provides a predict method for the class <code>"plsRmodel"</code></p>
-    
     </div>
 
     <pre class="usage"><span class='co'># S3 method for plsRmodel</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>object</span>,<span class='no'>newdata</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='no'>object</span>$<span class='no'>computed_nt</span>,
-<span class='kw'>type</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"response"</span>,<span class='st'>"scores"</span>),<span class='no'>weights</span>,<span class='kw'>methodNA</span><span class='kw'>=</span><span class='st'>"adaptative"</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>TRUE</span>,<span class='no'>...</span>)</pre>
-    
+<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  <span class='va'>newdata</span>,
+  comps <span class='op'>=</span> <span class='va'>object</span><span class='op'>$</span><span class='va'>computed_nt</span>,
+  type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"response"</span>, <span class='st'>"scores"</span><span class='op'>)</span>,
+  <span class='va'>weights</span>,
+  methodNA <span class='op'>=</span> <span class='st'>"adaptative"</span>,
+  verbose <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -126,7 +152,8 @@
     </tr>
     <tr>
       <th>newdata</th>
-      <td><p>An optional data frame in which to look for variables with which to predict. If omitted, the fitted values are used.</p></td>
+      <td><p>An optional data frame in which to look for variables with
+which to predict. If omitted, the fitted values are used.</p></td>
     </tr>
     <tr>
       <th>comps</th>
@@ -134,53 +161,73 @@
     </tr>
     <tr>
       <th>type</th>
-      <td><p>Type of predicted value. Available choices are the response values ("<code>response</code>") or the scores ("<code>scores</code>").</p></td>
+      <td><p>Type of predicted value. Available choices are the response
+values ("<code>response</code>") or the scores ("<code>scores</code>").</p></td>
     </tr>
     <tr>
       <th>weights</th>
-      <td><p>Vector of case weights. If <code>weights</code> is a vector of integers, then the estimated coefficients are equivalent to estimating the model from data with the individual <code>cases</code> replicated as many times as indicated by <code>weights</code>.</p></td>
+      <td><p>Vector of case weights. If <code>weights</code> is a vector of
+integers, then the estimated coefficients are equivalent to estimating the
+model from data with the individual <code>cases</code> replicated as many times as
+indicated by <code>weights</code>.</p></td>
     </tr>
     <tr>
       <th>methodNA</th>
-      <td><p>Selects the way of predicting the response or the scores of the new data. For complete rows, without any missing value, there are two different ways of computing the prediction. As a consequence, for mixed datasets, with complete and incomplete rows, there are two ways of computing prediction : either predicts any row as if there were missing values in it (<code>missingdata</code>) or selects the prediction method accordingly to the completeness of the row (<code>adaptative</code>).</p></td>
+      <td><p>Selects the way of predicting the response or the scores of
+the new data. For complete rows, without any missing value, there are two
+different ways of computing the prediction. As a consequence, for mixed
+datasets, with complete and incomplete rows, there are two ways of computing
+prediction : either predicts any row as if there were missing values in it
+(<code>missingdata</code>) or selects the prediction method accordingly to the
+completeness of the row (<code>adaptative</code>).</p></td>
     </tr>
     <tr>
       <th>verbose</th>
       <td><p>should info messages be displayed ?</p></td>
     </tr>
     <tr>
-      <th>&#8230;</th>
+      <th>...</th>
       <td><p>Arguments to be passed on to <code><a href='plsR.html'>plsRglm::plsR</a></code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>When type is "<code>response</code>", a matrix of predicted response values is returned.<br />
-When type is "<code>scores</code>", a score matrix is returned.</p>
-    
+    <p>When type is "<code>response</code>", a matrix of predicted response
+values is returned.<br /> When type is "<code>scores</code>", a score matrix is
+returned.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Nicolas Meyer, Myriam Maumy-Bertrand et Frederic Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>, 151(2), pages 1-18.
+    <p>Nicolas Meyer, Myriam Maumy-Bertrand et
+Frédéric Bertrand (2010). Comparing the linear and the
+logistic PLS regression with qualitative predictors: application to
+allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>,
+151(2), pages 1-18.
 <a href='http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47'>http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47</a></p>
-    
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Frédéric Bertrand<br />
+<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
+<a href='https://fbertran.github.io/homepage/'>https://fbertran.github.io/homepage/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>pine</span>)
-<span class='no'>Xpine</span><span class='kw'>&lt;-</span><span class='no'>pine</span>[,<span class='fl'>1</span>:<span class='fl'>10</span>]
-<span class='no'>ypine</span><span class='kw'>&lt;-</span><span class='no'>pine</span>[,<span class='fl'>11</span>]
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>pine_sup</span>)
-<span class='no'>Xpine_sup</span><span class='kw'>&lt;-</span><span class='no'>pine_sup</span>[,<span class='fl'>1</span>:<span class='fl'>10</span>]
-<span class='no'>Xpine_supNA</span><span class='kw'>&lt;-</span><span class='no'>Xpine_sup</span>
-<span class='no'>Xpine_supNA</span>[<span class='fl'>1</span>,<span class='fl'>1</span>]<span class='kw'>&lt;-</span><span class='fl'>NA</span>
+    <pre class="examples"><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>pine</span><span class='op'>)</span>
+<span class='va'>Xpine</span><span class='op'>&lt;-</span><span class='va'>pine</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>
+<span class='va'>ypine</span><span class='op'>&lt;-</span><span class='va'>pine</span><span class='op'>[</span>,<span class='fl'>11</span><span class='op'>]</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>pine_sup</span><span class='op'>)</span>
+<span class='va'>Xpine_sup</span><span class='op'>&lt;-</span><span class='va'>pine_sup</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span>
+<span class='va'>Xpine_supNA</span><span class='op'>&lt;-</span><span class='va'>Xpine_sup</span>
+<span class='va'>Xpine_supNA</span><span class='op'>[</span><span class='fl'>1</span>,<span class='fl'>1</span><span class='op'>]</span><span class='op'>&lt;-</span><span class='cn'>NA</span>
 
-<span class='no'>modpls</span><span class='kw'>=</span><span class='fu'><a href='plsR.html'>plsR</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>ypine</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>Xpine</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls"</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='no'>modplsform</span><span class='kw'>=</span><span class='fu'><a href='plsR.html'>plsR</a></span>(<span class='no'>x11</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>pine</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls"</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='no'>modpls2</span><span class='kw'>=</span><span class='fu'><a href='plsR.html'>plsR</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>ypine</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>Xpine</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls"</span>,<span class='kw'>dataPredictY</span><span class='kw'>=</span><span class='no'>Xpine_sup</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-<span class='no'>modpls2NA</span><span class='kw'>=</span><span class='fu'><a href='plsR.html'>plsR</a></span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>ypine</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>Xpine</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>modele</span><span class='kw'>=</span><span class='st'>"pls"</span>,<span class='kw'>dataPredictY</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
+<span class='va'>modpls</span><span class='op'>=</span><span class='fu'><a href='plsR.html'>plsR</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>ypine</span>,dataX<span class='op'>=</span><span class='va'>Xpine</span>,nt<span class='op'>=</span><span class='fl'>6</span>,modele<span class='op'>=</span><span class='st'>"pls"</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>modplsform</span><span class='op'>=</span><span class='fu'><a href='plsR.html'>plsR</a></span><span class='op'>(</span><span class='va'>x11</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>pine</span>,nt<span class='op'>=</span><span class='fl'>6</span>,modele<span class='op'>=</span><span class='st'>"pls"</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>modpls2</span><span class='op'>=</span><span class='fu'><a href='plsR.html'>plsR</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>ypine</span>,dataX<span class='op'>=</span><span class='va'>Xpine</span>,nt<span class='op'>=</span><span class='fl'>6</span>,modele<span class='op'>=</span><span class='st'>"pls"</span>,dataPredictY<span class='op'>=</span><span class='va'>Xpine_sup</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>modpls2NA</span><span class='op'>=</span><span class='fu'><a href='plsR.html'>plsR</a></span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>ypine</span>,dataX<span class='op'>=</span><span class='va'>Xpine</span>,nt<span class='op'>=</span><span class='fl'>6</span>,modele<span class='op'>=</span><span class='st'>"pls"</span>,dataPredictY<span class='op'>=</span><span class='va'>Xpine_supNA</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='co'>#Identical to predict(modpls,type="response") or modpls$ValsPredictY</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>cbind</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>),<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modplsform</span>))</div><div class='output co'>#&gt;           [,1]        [,2]
+<span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span><span class='op'>)</span>,<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modplsform</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;           [,1]        [,2]
 #&gt; 1   1.88550891  1.88550891
 #&gt; 2   1.20179188  1.20179188
 #&gt; 3   1.51671911  1.51671911
@@ -215,7 +262,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; 32  0.55048739  0.55048739
 #&gt; 33  0.04161271  0.04161271</div><div class='input'>
 <span class='co'>#Identical to modpls$ttPredictY</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"scores"</span>)</div><div class='output co'>#&gt;        Comp_1      Comp_2       Comp_3       Comp_4      Comp_5       Comp_6
+<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,type<span class='op'>=</span><span class='st'>"scores"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;        Comp_1      Comp_2       Comp_3       Comp_4      Comp_5       Comp_6
 #&gt; 1   2.9096976  1.64928263 -0.009483345  0.057956125 -1.46934378 -0.489598560
 #&gt; 2   0.7632932  0.53986261 -0.159129490  0.437277302 -0.17706329 -0.321853358
 #&gt; 3   2.5797729 -0.95827084  0.555733674  0.564062003 -0.87910500  0.284035643
@@ -248,7 +296,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; 30 -0.3039968 -0.25883732  0.796456033 -1.182848400 -0.21148979 -0.558234302
 #&gt; 31  0.6490525  1.01235432 -0.442700445  0.584228984  1.60266786 -0.069695249
 #&gt; 32 -0.5424034  1.07847208 -0.113667400 -1.404961066  0.47606589  0.182674243
-#&gt; 33 -2.2552401 -0.43256657 -0.275321019 -0.417755460  1.30690250  0.470942265</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modplsform</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"scores"</span>)</div><div class='output co'>#&gt;        Comp_1      Comp_2       Comp_3       Comp_4      Comp_5       Comp_6
+#&gt; 33 -2.2552401 -0.43256657 -0.275321019 -0.417755460  1.30690250  0.470942265</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modplsform</span>,type<span class='op'>=</span><span class='st'>"scores"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;        Comp_1      Comp_2       Comp_3       Comp_4      Comp_5       Comp_6
 #&gt; 1   2.9096976  1.64928263 -0.009483345  0.057956125 -1.46934378 -0.489598560
 #&gt; 2   0.7632932  0.53986261 -0.159129490  0.437277302 -0.17706329 -0.321853358
 #&gt; 3   2.5797729 -0.95827084  0.555733674  0.564062003 -0.87910500  0.284035643
@@ -282,9 +331,11 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; 31  0.6490525  1.01235432 -0.442700445  0.584228984  1.60266786 -0.069695249
 #&gt; 32 -0.5424034  1.07847208 -0.113667400 -1.404961066  0.47606589  0.182674243
 #&gt; 33 -2.2552401 -0.43256657 -0.275321019 -0.417755460  1.30690250  0.470942265</div><div class='input'>
-</div><div class='input'><span class='co'>#Identical to modpls2$ValsPredictY</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>cbind</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_sup</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"response"</span>),
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modplsform</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_sup</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"response"</span>))</div><div class='output co'>#&gt;            [,1]      [,2]
+<span class='co'># \donttest{</span>
+<span class='co'>#Identical to modpls2$ValsPredictY</span>
+<span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_sup</span>,type<span class='op'>=</span><span class='st'>"response"</span><span class='op'>)</span>,
+<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modplsform</span>,newdata<span class='op'>=</span><span class='va'>Xpine_sup</span>,type<span class='op'>=</span><span class='st'>"response"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: non-list contrasts argument ignored</span></div><div class='output co'>#&gt;            [,1]      [,2]
 #&gt;  [1,] 1.3129638 1.3129638
 #&gt;  [2,] 1.7388475 1.7388475
 #&gt;  [3,] 1.6763518 1.6763518
@@ -311,7 +362,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [24,] 0.4951827 0.4951827
 #&gt; [25,] 0.5538154 0.5538154</div><div class='input'>
 <span class='co'>#Select the number of components to use to derive the prediction</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_sup</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"response"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>1</span>)</div><div class='output co'>#&gt;            [,1]
+<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_sup</span>,type<span class='op'>=</span><span class='st'>"response"</span>,comps<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt;            [,1]
 #&gt;  [1,] 0.4529386
 #&gt;  [2,] 1.5275250
 #&gt;  [3,] 0.8653393
@@ -336,7 +388,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [22,] 0.4734407
 #&gt; [23,] 1.0680659
 #&gt; [24,] 0.1914079
-#&gt; [25,] 0.6558292</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_sup</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"response"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>3</span>)</div><div class='output co'>#&gt;            [,1]
+#&gt; [25,] 0.6558292</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_sup</span>,type<span class='op'>=</span><span class='st'>"response"</span>,comps<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt;            [,1]
 #&gt;  [1,] 1.3964152
 #&gt;  [2,] 1.3235411
 #&gt;  [3,] 1.1864009
@@ -361,7 +414,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [22,] 0.3475253
 #&gt; [23,] 1.4135977
 #&gt; [24,] 0.1426153
-#&gt; [25,] 0.3905439</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_sup</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"response"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>6</span>)</div><div class='output co'>#&gt;            [,1]
+#&gt; [25,] 0.3905439</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_sup</span>,type<span class='op'>=</span><span class='st'>"response"</span>,comps<span class='op'>=</span><span class='fl'>6</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt;            [,1]
 #&gt;  [1,] 1.3129638
 #&gt;  [2,] 1.7388475
 #&gt;  [3,] 1.6763518
@@ -386,10 +440,12 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [22,] 0.3957882
 #&gt; [23,] 1.2468234
 #&gt; [24,] 0.4951827
-#&gt; [25,] 0.5538154</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/try'>try</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_sup</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"response"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>8</span>))
-
+#&gt; [25,] 0.5538154</div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_sup</span>,type<span class='op'>=</span><span class='st'>"response"</span>,comps<span class='op'>=</span><span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Error in predict.plsRmodel(modpls, newdata = Xpine_sup, type = "response",  : 
+#&gt;   Cannot predict using more components than extracted.</div><div class='input'>
 <span class='co'>#Identical to modpls2$ttValsPredictY</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_sup</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"scores"</span>)</div><div class='output co'>#&gt;           Comp_1       Comp_2      Comp_3       Comp_4      Comp_5       Comp_6
+<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_sup</span>,type<span class='op'>=</span><span class='st'>"scores"</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt;           Comp_1       Comp_2      Comp_3       Comp_4      Comp_5       Comp_6
 #&gt;  [1,] -1.3617679  2.993459769  0.73427739  0.452953573 -1.11579015 -1.473542293
 #&gt;  [2,]  2.7226457 -1.448207417  0.75220272  1.097297569  0.53631331  0.559682133
 #&gt;  [3,]  0.2057330 -0.065699548  1.48307730  1.608813107  0.19908226  0.005584384
@@ -416,7 +472,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [24,] -2.3558246 -1.146802277  1.09018353  0.784478257  1.20560305  0.491817441
 #&gt; [25,] -0.5905978 -0.284407470 -0.84024689  0.182976076  1.35912630  0.311267458</div><div class='input'>
 <span class='co'>#Select the number of components in the scores matrix</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_sup</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"scores"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>1</span>)</div><div class='output co'>#&gt;           Comp_1
+<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_sup</span>,type<span class='op'>=</span><span class='st'>"scores"</span>,comps<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt;           Comp_1
 #&gt;  [1,] -1.3617679
 #&gt;  [2,]  2.7226457
 #&gt;  [3,]  0.2057330
@@ -441,7 +498,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [22,] -1.2838413
 #&gt; [23,]  0.9762797
 #&gt; [24,] -2.3558246
-#&gt; [25,] -0.5905978</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_sup</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"scores"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>3</span>)</div><div class='output co'>#&gt;           Comp_1       Comp_2      Comp_3
+#&gt; [25,] -0.5905978</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_sup</span>,type<span class='op'>=</span><span class='st'>"scores"</span>,comps<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt;           Comp_1       Comp_2      Comp_3
 #&gt;  [1,] -1.3617679  2.993459769  0.73427739
 #&gt;  [2,]  2.7226457 -1.448207417  0.75220272
 #&gt;  [3,]  0.2057330 -0.065699548  1.48307730
@@ -466,7 +524,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [22,] -1.2838413  0.228232572 -0.81189728
 #&gt; [23,]  0.9762797  0.792728055  0.61416007
 #&gt; [24,] -2.3558246 -1.146802277  1.09018353
-#&gt; [25,] -0.5905978 -0.284407470 -0.84024689</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_sup</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"scores"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>6</span>)</div><div class='output co'>#&gt;           Comp_1       Comp_2      Comp_3       Comp_4      Comp_5       Comp_6
+#&gt; [25,] -0.5905978 -0.284407470 -0.84024689</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_sup</span>,type<span class='op'>=</span><span class='st'>"scores"</span>,comps<span class='op'>=</span><span class='fl'>6</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt;           Comp_1       Comp_2      Comp_3       Comp_4      Comp_5       Comp_6
 #&gt;  [1,] -1.3617679  2.993459769  0.73427739  0.452953573 -1.11579015 -1.473542293
 #&gt;  [2,]  2.7226457 -1.448207417  0.75220272  1.097297569  0.53631331  0.559682133
 #&gt;  [3,]  0.2057330 -0.065699548  1.48307730  1.608813107  0.19908226  0.005584384
@@ -491,10 +550,12 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [22,] -1.2838413  0.228232572 -0.81189728  0.112113284  1.24971859 -0.519868578
 #&gt; [23,]  0.9762797  0.792728055  0.61416007 -0.026280577 -1.58598821 -0.665173114
 #&gt; [24,] -2.3558246 -1.146802277  1.09018353  0.784478257  1.20560305  0.491817441
-#&gt; [25,] -0.5905978 -0.284407470 -0.84024689  0.182976076  1.35912630  0.311267458</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/try'>try</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_sup</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"scores"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>8</span>))
-
+#&gt; [25,] -0.5905978 -0.284407470 -0.84024689  0.182976076  1.35912630  0.311267458</div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_sup</span>,type<span class='op'>=</span><span class='st'>"scores"</span>,comps<span class='op'>=</span><span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Error in predict.plsRmodel(modpls, newdata = Xpine_sup, type = "scores",  : 
+#&gt;   Cannot predict using more components than extracted.</div><div class='input'>
 <span class='co'>#Identical to modpls2NA$ValsPredictY</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"response"</span>,<span class='kw'>methodNA</span><span class='kw'>=</span><span class='st'>"missingdata"</span>)</div><div class='output co'>#&gt; Prediction as if missing values in every row.</div><div class='output co'>#&gt;             [,1]
+<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_supNA</span>,type<span class='op'>=</span><span class='st'>"response"</span>,methodNA<span class='op'>=</span><span class='st'>"missingdata"</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt; Prediction as if missing values in every row.</div><div class='output co'>#&gt;             [,1]
 #&gt;  [1,] -0.4380246
 #&gt;  [2,]  1.7274179
 #&gt;  [3,]  1.7531622
@@ -520,9 +581,9 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [23,]  1.2252369
 #&gt; [24,]  0.5737034
 #&gt; [25,]  0.6736099</div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>cbind</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"response"</span>),
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modplsform</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"response"</span>))</div><div class='output co'>#&gt; Missing value in row  1 .
-#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;             [,1]       [,2]
+<span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_supNA</span>,type<span class='op'>=</span><span class='st'>"response"</span><span class='op'>)</span>,
+<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modplsform</span>,newdata<span class='op'>=</span><span class='va'>Xpine_supNA</span>,type<span class='op'>=</span><span class='st'>"response"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt; <span class='warning'>Warning: non-list contrasts argument ignored</span></div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;             [,1]       [,2]
 #&gt;  [1,] -0.4380246 -0.4380246
 #&gt;  [2,]  1.7388475  1.7388475
 #&gt;  [3,]  1.6763518  1.6763518
@@ -548,7 +609,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [23,]  1.2468234  1.2468234
 #&gt; [24,]  0.4951827  0.4951827
 #&gt; [25,]  0.5538154  0.5538154</div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"response"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>1</span>)</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;             [,1]
+<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_supNA</span>,type<span class='op'>=</span><span class='st'>"response"</span>,comps<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;             [,1]
 #&gt;  [1,] 0.01262359
 #&gt;  [2,] 1.52752498
 #&gt;  [3,] 0.86533931
@@ -573,7 +635,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [22,] 0.47344065
 #&gt; [23,] 1.06806585
 #&gt; [24,] 0.19140786
-#&gt; [25,] 0.65582915</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"response"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>3</span>)</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;                [,1]
+#&gt; [25,] 0.65582915</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_supNA</span>,type<span class='op'>=</span><span class='st'>"response"</span>,comps<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;                [,1]
 #&gt;  [1,] -0.0001503207
 #&gt;  [2,]  1.3235411249
 #&gt;  [3,]  1.1864008651
@@ -598,7 +661,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [22,]  0.3475252821
 #&gt; [23,]  1.4135976883
 #&gt; [24,]  0.1426152740
-#&gt; [25,]  0.3905438807</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"response"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>6</span>)</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;             [,1]
+#&gt; [25,]  0.3905438807</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_supNA</span>,type<span class='op'>=</span><span class='st'>"response"</span>,comps<span class='op'>=</span><span class='fl'>6</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;             [,1]
 #&gt;  [1,] -0.4380246
 #&gt;  [2,]  1.7388475
 #&gt;  [3,]  1.6763518
@@ -623,10 +687,12 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [22,]  0.3957882
 #&gt; [23,]  1.2468234
 #&gt; [24,]  0.4951827
-#&gt; [25,]  0.5538154</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/try'>try</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"response"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>8</span>))
-
+#&gt; [25,]  0.5538154</div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_supNA</span>,type<span class='op'>=</span><span class='st'>"response"</span>,comps<span class='op'>=</span><span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Error in predict.plsRmodel(modpls, newdata = Xpine_supNA, type = "response",  : 
+#&gt;   Cannot predict using more components than extracted.</div><div class='input'>
 <span class='co'>#Identical to modpls2NA$ttPredictY</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"scores"</span>,<span class='kw'>methodNA</span><span class='kw'>=</span><span class='st'>"missingdata"</span>)</div><div class='output co'>#&gt; Prediction as if missing values in every row.</div><div class='output co'>#&gt;           Comp_1       Comp_2       Comp_3      Comp_4      Comp_5     Comp_6
+<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_supNA</span>,type<span class='op'>=</span><span class='st'>"scores"</span>,methodNA<span class='op'>=</span><span class='st'>"missingdata"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Prediction as if missing values in every row.</div><div class='output co'>#&gt;           Comp_1       Comp_2       Comp_3      Comp_4      Comp_5     Comp_6
 #&gt;  [1,] -3.0353687  0.987755634 -1.179371542 -0.19743715 -3.30898182 -1.8375844
 #&gt;  [2,]  2.7220756 -1.450870839  0.745991000  1.08616889  0.51576986  0.5150498
 #&gt;  [3,]  0.2095646 -0.047800552  1.524821925  1.68360118  0.33714044  0.3055271
@@ -651,7 +717,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [22,] -1.2853359  0.221250834 -0.828180315  0.08294122  1.19586719 -0.6368651
 #&gt; [23,]  0.9752029  0.787697790  0.602428320 -0.04729873 -1.62478755 -0.7494679
 #&gt; [24,] -2.3519076 -1.128504742  1.132857643  0.86093156  1.34673523  0.7984386
-#&gt; [25,] -0.5846219 -0.256491971 -0.775141451  0.29961649  1.57444357  0.7790618</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modplsform</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"scores"</span>,<span class='kw'>methodNA</span><span class='kw'>=</span><span class='st'>"missingdata"</span>)</div><div class='output co'>#&gt; Prediction as if missing values in every row.</div><div class='output co'>#&gt;           Comp_1       Comp_2       Comp_3      Comp_4      Comp_5     Comp_6
+#&gt; [25,] -0.5846219 -0.256491971 -0.775141451  0.29961649  1.57444357  0.7790618</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modplsform</span>,newdata<span class='op'>=</span><span class='va'>Xpine_supNA</span>,type<span class='op'>=</span><span class='st'>"scores"</span>,methodNA<span class='op'>=</span><span class='st'>"missingdata"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: non-list contrasts argument ignored</span></div><div class='output co'>#&gt; Prediction as if missing values in every row.</div><div class='output co'>#&gt;           Comp_1       Comp_2       Comp_3      Comp_4      Comp_5     Comp_6
 #&gt;  [1,] -3.0353687  0.987755634 -1.179371542 -0.19743715 -3.30898182 -1.8375844
 #&gt;  [2,]  2.7220756 -1.450870839  0.745991000  1.08616889  0.51576986  0.5150498
 #&gt;  [3,]  0.2095646 -0.047800552  1.524821925  1.68360118  0.33714044  0.3055271
@@ -677,7 +744,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [23,]  0.9752029  0.787697790  0.602428320 -0.04729873 -1.62478755 -0.7494679
 #&gt; [24,] -2.3519076 -1.128504742  1.132857643  0.86093156  1.34673523  0.7984386
 #&gt; [25,] -0.5846219 -0.256491971 -0.775141451  0.29961649  1.57444357  0.7790618</div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"scores"</span>)</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;           Comp_1       Comp_2      Comp_3       Comp_4      Comp_5       Comp_6
+<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_supNA</span>,type<span class='op'>=</span><span class='st'>"scores"</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;           Comp_1       Comp_2      Comp_3       Comp_4      Comp_5       Comp_6
 #&gt;  [1,] -3.0353687  0.987755634 -1.17937154 -0.197437151 -3.30898182 -1.837584434
 #&gt;  [2,]  2.7226457 -1.448207417  0.75220272  1.097297569  0.53631331  0.559682133
 #&gt;  [3,]  0.2057330 -0.065699548  1.48307730  1.608813107  0.19908226  0.005584384
@@ -702,7 +770,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [22,] -1.2838413  0.228232572 -0.81189728  0.112113284  1.24971859 -0.519868578
 #&gt; [23,]  0.9762797  0.792728055  0.61416007 -0.026280577 -1.58598821 -0.665173114
 #&gt; [24,] -2.3558246 -1.146802277  1.09018353  0.784478257  1.20560305  0.491817441
-#&gt; [25,] -0.5905978 -0.284407470 -0.84024689  0.182976076  1.35912630  0.311267458</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modplsform</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"scores"</span>)</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;           Comp_1       Comp_2      Comp_3       Comp_4      Comp_5       Comp_6
+#&gt; [25,] -0.5905978 -0.284407470 -0.84024689  0.182976076  1.35912630  0.311267458</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modplsform</span>,newdata<span class='op'>=</span><span class='va'>Xpine_supNA</span>,type<span class='op'>=</span><span class='st'>"scores"</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt; <span class='warning'>Warning: non-list contrasts argument ignored</span></div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;           Comp_1       Comp_2      Comp_3       Comp_4      Comp_5       Comp_6
 #&gt;  [1,] -3.0353687  0.987755634 -1.17937154 -0.197437151 -3.30898182 -1.837584434
 #&gt;  [2,]  2.7226457 -1.448207417  0.75220272  1.097297569  0.53631331  0.559682133
 #&gt;  [3,]  0.2057330 -0.065699548  1.48307730  1.608813107  0.19908226  0.005584384
@@ -727,7 +796,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [22,] -1.2838413  0.228232572 -0.81189728  0.112113284  1.24971859 -0.519868578
 #&gt; [23,]  0.9762797  0.792728055  0.61416007 -0.026280577 -1.58598821 -0.665173114
 #&gt; [24,] -2.3558246 -1.146802277  1.09018353  0.784478257  1.20560305  0.491817441
-#&gt; [25,] -0.5905978 -0.284407470 -0.84024689  0.182976076  1.35912630  0.311267458</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"scores"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>1</span>)</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;           Comp_1
+#&gt; [25,] -0.5905978 -0.284407470 -0.84024689  0.182976076  1.35912630  0.311267458</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_supNA</span>,type<span class='op'>=</span><span class='st'>"scores"</span>,comps<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;           Comp_1
 #&gt;  [1,] -3.0353687
 #&gt;  [2,]  2.7226457
 #&gt;  [3,]  0.2057330
@@ -752,7 +822,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [22,] -1.2838413
 #&gt; [23,]  0.9762797
 #&gt; [24,] -2.3558246
-#&gt; [25,] -0.5905978</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"scores"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>3</span>)</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;           Comp_1       Comp_2      Comp_3
+#&gt; [25,] -0.5905978</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_supNA</span>,type<span class='op'>=</span><span class='st'>"scores"</span>,comps<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;           Comp_1       Comp_2      Comp_3
 #&gt;  [1,] -3.0353687  0.987755634 -1.17937154
 #&gt;  [2,]  2.7226457 -1.448207417  0.75220272
 #&gt;  [3,]  0.2057330 -0.065699548  1.48307730
@@ -777,7 +848,8 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [22,] -1.2838413  0.228232572 -0.81189728
 #&gt; [23,]  0.9762797  0.792728055  0.61416007
 #&gt; [24,] -2.3558246 -1.146802277  1.09018353
-#&gt; [25,] -0.5905978 -0.284407470 -0.84024689</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"scores"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>6</span>)</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;           Comp_1       Comp_2      Comp_3       Comp_4      Comp_5       Comp_6
+#&gt; [25,] -0.5905978 -0.284407470 -0.84024689</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_supNA</span>,type<span class='op'>=</span><span class='st'>"scores"</span>,comps<span class='op'>=</span><span class='fl'>6</span><span class='op'>)</span>    
+</div><div class='output co'>#&gt; Missing value in row  1 .</div><div class='output co'>#&gt;           Comp_1       Comp_2      Comp_3       Comp_4      Comp_5       Comp_6
 #&gt;  [1,] -3.0353687  0.987755634 -1.17937154 -0.197437151 -3.30898182 -1.837584434
 #&gt;  [2,]  2.7226457 -1.448207417  0.75220272  1.097297569  0.53631331  0.559682133
 #&gt;  [3,]  0.2057330 -0.065699548  1.48307730  1.608813107  0.19908226  0.005584384
@@ -802,26 +874,19 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 #&gt; [22,] -1.2838413  0.228232572 -0.81189728  0.112113284  1.24971859 -0.519868578
 #&gt; [23,]  0.9762797  0.792728055  0.61416007 -0.026280577 -1.58598821 -0.665173114
 #&gt; [24,] -2.3558246 -1.146802277  1.09018353  0.784478257  1.20560305  0.491817441
-#&gt; [25,] -0.5905978 -0.284407470 -0.84024689  0.182976076  1.35912630  0.311267458</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/try'>try</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/predict'>predict</a></span>(<span class='no'>modpls</span>,<span class='kw'>newdata</span><span class='kw'>=</span><span class='no'>Xpine_supNA</span>,<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"scores"</span>,<span class='kw'>comps</span><span class='kw'>=</span><span class='fl'>8</span>))</div></pre>
+#&gt; [25,] -0.5905978 -0.284407470 -0.84024689  0.182976076  1.35912630  0.311267458</div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>modpls</span>,newdata<span class='op'>=</span><span class='va'>Xpine_supNA</span>,type<span class='op'>=</span><span class='st'>"scores"</span>,comps<span class='op'>=</span><span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Error in predict.plsRmodel(modpls, newdata = Xpine_supNA, type = "scores",  : 
+#&gt;   Cannot predict using more components than extracted.</div><div class='input'><span class='co'># }    </span>
+
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#references">References</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Frederic Bertrand<br />
-<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
-<a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -829,13 +894,16 @@ When type is "<code>scores</code>", a score matrix is returned.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

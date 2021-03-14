@@ -8,21 +8,36 @@
 
 <title>Data generating function for univariate plsR models — simul_data_UniYX • plsRglm</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +45,13 @@
 
 
 
-<meta property="og:title" content="Data generating function for univariate plsR models — simul_data_UniYX" />
 
-<meta property="og:description" content="This function generates a single univariate response value \(Y\) and a vector of explanatory variables \((X_1,\ldots,X_{totdim})\) drawn from a model with a given number of latent components." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Data generating function for univariate plsR models — simul_data_UniYX" />
+<meta property="og:description" content="This function generates a single univariate response value \(Y\) and a
+vector of explanatory variables \((X_1,\ldots,X_{totdim})\) drawn from a
+model with a given number of latent components." />
+<meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -47,12 +65,13 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -63,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -71,9 +90,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -82,11 +104,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fbertran/plsRglm">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -97,410 +118,416 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Data generating function for univariate plsR models</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/fbertran/plsRglm/blob/master/R/simul_data_UniYX.R'><code>R/simul_data_UniYX.R</code></a></small>
     <div class="hidden name"><code>simul_data_UniYX.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-    <p>This function generates a single univariate response value \(Y\) and a vector of explanatory variables \((X_1,\ldots,X_{totdim})\) drawn from a model with a given number of latent components.</p>
-    
+    <p>This function generates a single univariate response value \(Y\) and a
+vector of explanatory variables \((X_1,\ldots,X_{totdim})\) drawn from a
+model with a given number of latent components.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>simul_data_UniYX</span>(<span class='no'>totdim</span>, <span class='no'>ncomp</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>simul_data_UniYX</span><span class='op'>(</span><span class='va'>totdim</span>, <span class='va'>ncomp</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>totdim</th>
-      <td><p>Number of columns of the X vector (from <code>ncomp</code> to hardware limits)</p></td>
+      <td><p>Number of columns of the X vector (from <code>ncomp</code> to
+hardware limits)</p></td>
     </tr>
     <tr>
       <th>ncomp</th>
       <td><p>Number of latent components in the model (from 2 to 6)</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function should be combined with the replicate function to give rise to a larger dataset. The algorithm used is a <span style="R">R</span> port of the one described in the article of Li which is a multivariate generalization of the algorithm of Naes and Martens.</p>
-    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p></p>
+    
+
 <dt>vector</dt><dd><p>\((Y,X_1,\ldots,X_{totdim})\)</p></dd>
 
-    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function should be combined with the replicate function to give rise to
+a larger dataset. The algorithm used is a port of the one described in the
+article of Li which is a multivariate generalization of the algorithm of
+Naes and Martens.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>T. Naes, H. Martens, Comparison of prediction methods for 
+    <p>T. Naes, H. Martens, Comparison of prediction methods for
 multicollinear data, Commun. Stat., Simul. 14 (1985) 545-576.<br />
-<!-- %\url{http://dx.doi.org/10.1080/03610918508812458}\cr -->
-Baibing Li, Julian Morris, Elaine B. Martin,
-Model selection for partial least squares regression, 
-Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.<br />
-<a href='http://dx.doi.org/10.1016/S0169-7439(02)00051-5'>http://dx.doi.org/10.1016/S0169-7439(02)00051-5</a></p>
-    
+<!-- %\url{http://dx.doi.org/10.1080/03610918508812458}\cr Baibing Li, Julian -->
+Morris, Elaine B. Martin, Model selection for partial least squares
+regression, Chemometrics and Intelligent Laboratory Systems 64 (2002)
+79-89, doi: <a href='https://doi.org/10.1016/S0169-7439(02)00051-5'>10.1016/S0169-7439(02)00051-5</a>
+.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='simul_data_YX.html'>simul_data_YX</a></code> and <code><a href='simul_data_complete.html'>simul_data_complete</a></code> for generating multivariate data</p></div>
-    
+    <div class='dont-index'><p><code><a href='simul_data_YX.html'>simul_data_YX</a></code> and <code><a href='simul_data_complete.html'>simul_data_complete</a></code>
+for generating multivariate data</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Frédéric Bertrand<br />
+<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
+<a href='https://fbertran.github.io/homepage/'>https://fbertran.github.io/homepage/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>simul_data_UniYX</span>(<span class='fl'>20</span>,<span class='fl'>6</span>)</div><div class='output co'>#&gt;          Y         X1         X2         X3         X4         X5         X6 
-#&gt; -4.9621927 -2.3329311 -2.8124086  2.8179302 -3.1531052 -0.4919760 -1.9678874 
+    <pre class="examples"><div class='input'>
+<span class='fu'>simul_data_UniYX</span><span class='op'>(</span><span class='fl'>20</span>,<span class='fl'>6</span><span class='op'>)</span>                          
+</div><div class='output co'>#&gt;          Y         X1         X2         X3         X4         X5         X6 
+#&gt; -5.0845940 -2.0283323 -6.7362672 -3.3100088 -5.1476176 -0.6794538 -5.6005351 
 #&gt;         X7         X8         X9        X10        X11        X12        X13 
-#&gt;  4.6752300 -2.3025227 -1.2038769 -4.1418744 -0.8984016  0.3910133 -1.5313235 
+#&gt; -1.9725262 -3.9952421 -3.3466745 -3.6213504 -1.9200845 -5.5309980 -5.5844386 
 #&gt;        X14        X15        X16        X17        X18        X19        X20 
-#&gt;  3.2070599 -1.2004015 -4.1392078 -0.8764455  0.3822851 -1.5373799  3.2230673 </div><div class='input'>
-</div><div class='input'><span class='no'>dimX</span> <span class='kw'>&lt;-</span> <span class='fl'>6</span>
-<span class='no'>Astar</span> <span class='kw'>&lt;-</span> <span class='fl'>2</span>
-<span class='fu'>simul_data_UniYX</span>(<span class='no'>dimX</span>,<span class='no'>Astar</span>)</div><div class='output co'>#&gt;          Y         X1         X2         X3         X4         X5         X6 
-#&gt; -12.088176  -8.960577  -8.979948  -8.361891  -8.977458  -8.976908  -8.376012 </div><div class='input'>(<span class='no'>dataAstar2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/t'>t</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>replicate</a></span>(<span class='fl'>50</span>,<span class='fu'>simul_data_UniYX</span>(<span class='no'>dimX</span>,<span class='no'>Astar</span>)))))</div><div class='output co'>#&gt;              Y         X1         X2           X3         X4         X5
-#&gt; 1    9.7051381  3.0744448  3.0823647   7.71682447  3.0876750  3.0897737
-#&gt; 2   -3.3539600  0.5234967  0.5219664  -3.07347402  0.5491451  0.5231788
-#&gt; 3  -10.2237913 -2.7205506 -2.7176771  -8.10366616 -2.7346575 -2.7416298
-#&gt; 4   -1.4571866  2.3170977  2.3428754  -1.95924597  2.3067684  2.3346929
-#&gt; 5   -3.7208297  1.8898771  1.9021424  -3.83587119  1.9070902  1.9041304
-#&gt; 6    8.5235788  1.1845944  1.1945158   7.06844366  1.2168181  1.2055997
-#&gt; 7   -5.8399385  4.0561791  4.0499628  -6.09281865  4.0542860  4.0574137
-#&gt; 8   10.2178225 -1.5764643 -1.5748160   9.42223908 -1.5775424 -1.5889152
-#&gt; 9   -9.3905301 -1.9246655 -1.9104927  -7.76417846 -1.9133505 -1.9309751
-#&gt; 10  15.8334110  9.2700784  9.2517779  11.59897804  9.2559991  9.2595424
-#&gt; 11  -0.9299327 -3.1372805 -3.1305553  -0.15894433 -3.1382926 -3.1439896
-#&gt; 12   5.7335136  4.1408458  4.1195731   4.23713946  4.1382392  4.1346998
-#&gt; 13   8.4010984  2.3447257  2.3562921   6.96826162  2.3453956  2.3435881
-#&gt; 14   9.3594655 -4.0441230 -4.0731723   9.12109678 -4.0670187 -4.0468874
-#&gt; 15   6.0439890 -2.0390072 -2.0202547   5.81924504 -2.0223381 -2.0487484
-#&gt; 16  -4.7766122 -6.5909710 -6.6001560  -2.47086189 -6.5864802 -6.6057301
-#&gt; 17   8.1333877  4.3975598  4.3980298   6.27263004  4.4069417  4.3996800
-#&gt; 18  12.9631260 -1.7955666 -1.7711113  12.01118378 -1.7718280 -1.7685012
-#&gt; 19   3.0500987 -0.1377115 -0.1351427   2.60540294 -0.1314509 -0.1295387
-#&gt; 20   9.9100545 -6.1463928 -6.1345467  10.12158604 -6.1280719 -6.1395008
-#&gt; 21 -11.4632761  1.1670180  1.1507101 -10.34631734  1.1599721  1.1743924
-#&gt; 22 -12.7611154 -2.6712727 -2.6765390 -10.32129483 -2.6951728 -2.6924172
-#&gt; 23   2.2570450  6.7194472  6.7167541   0.09787755  6.7112326  6.7262618
-#&gt; 24 -14.9528520  0.1604965  0.1718592 -13.21602524  0.1469414  0.1618849
-#&gt; 25   0.2086731 -1.7862281 -1.7706744   0.67927861 -1.7741933 -1.7701187
-#&gt; 26  -9.3111643 -2.5921944 -2.5950622  -7.48682362 -2.5878596 -2.5912413
-#&gt; 27  -3.7035994 -3.2980956 -3.3005212  -2.63175103 -3.2878482 -3.2912878
-#&gt; 28   5.6858865 -2.6047891 -2.6018232   5.66213783 -2.5838411 -2.6031045
-#&gt; 29 -17.0800437 -5.1886612 -5.1870338 -13.89327416 -5.1914030 -5.1969199
-#&gt; 30  -1.0395227  1.7895019  1.7711890  -1.40393388  1.7643551  1.7726942
-#&gt; 31   5.4575060  7.2681505  7.2712727   3.15399249  7.2839536  7.2651630
-#&gt; 32  -4.7049402 -3.2628058 -3.2379026  -3.59502409 -3.2680513 -3.2479541
-#&gt; 33  -8.7892965 -0.8337623 -0.8495717  -7.44000180 -0.8254203 -0.8158928
-#&gt; 34  -2.1591178 -0.8481164 -0.8434961  -1.80265646 -0.8207269 -0.8308481
-#&gt; 35   9.2966703  3.0183710  3.0299480   7.45682359  3.0305849  3.0205319
-#&gt; 36  10.5207046 -3.0282407 -3.0302081   9.96658949 -3.0095733 -3.0168071
-#&gt; 37   0.6451022  1.0352329  1.0558159   0.26730883  1.0041943  1.0438538
-#&gt; 38   1.1579346  2.5365267  2.5059079   0.37732536  2.5226571  2.5100652
-#&gt; 39  -3.3992341  9.7051131  9.7042880  -5.37331789  9.7237207  9.7139544
-#&gt; 40  -7.8383363 -3.3779091 -3.3829224  -5.94229862 -3.3659934 -3.3777016
-#&gt; 41   0.4191362 -0.1637186 -0.1594651   0.34701916 -0.1824409 -0.1573322
-#&gt; 42  -1.4898387  6.1247564  6.1166666  -2.90415682  6.1195073  6.1122943
-#&gt; 43   4.0672766  6.8022399  6.8096388   1.79069462  6.7891900  6.8035978
-#&gt; 44  -5.9318495 -5.2762514 -5.2820730  -3.93749774 -5.2646544 -5.2669288
-#&gt; 45   9.6804485 -3.2149632 -3.2137196   9.18282119 -3.2083586 -3.2106410
-#&gt; 46   1.1672461 -3.5046078 -3.4920273   1.84278077 -3.4948853 -3.5018542
-#&gt; 47  -3.3920787  5.2510265  5.2362713  -4.11521282  5.2608203  5.2779395
-#&gt; 48 -10.0334279 -0.2731161 -0.2787071  -8.75362808 -0.2847004 -0.2638168
-#&gt; 49  -2.0019224 -6.4093444 -6.4192146  -0.24279803 -6.4249104 -6.4021046
-#&gt; 50   9.5877734  0.3986771  0.4057520   8.34748121  0.4076436  0.3814497
-#&gt;              X6
-#&gt; 1    7.69184197
-#&gt; 2   -3.05457299
-#&gt; 3   -8.11665746
-#&gt; 4   -1.94095460
-#&gt; 5   -3.84606481
-#&gt; 6    7.07163918
-#&gt; 7   -6.11090074
-#&gt; 8    9.42871207
-#&gt; 9   -7.74364899
-#&gt; 10  11.59737361
-#&gt; 11  -0.17232575
-#&gt; 12   4.23501313
-#&gt; 13   6.95630485
-#&gt; 14   9.13668879
-#&gt; 15   5.82190599
-#&gt; 16  -2.47617381
-#&gt; 17   6.28597735
-#&gt; 18  11.97891199
-#&gt; 19   2.61375046
-#&gt; 20  10.10901086
-#&gt; 21 -10.34377351
-#&gt; 22 -10.31720288
-#&gt; 23   0.06794467
-#&gt; 24 -13.23041017
-#&gt; 25   0.66801002
-#&gt; 26  -7.48936784
-#&gt; 27  -2.64078254
-#&gt; 28   5.66002484
-#&gt; 29 -13.87689041
-#&gt; 30  -1.42375030
-#&gt; 31   3.15641036
-#&gt; 32  -3.58542765
-#&gt; 33  -7.41152667
-#&gt; 34  -1.80187281
-#&gt; 35   7.46617413
-#&gt; 36   9.96199656
-#&gt; 37   0.27107014
-#&gt; 38   0.37332456
-#&gt; 39  -5.36959906
-#&gt; 40  -5.95801110
-#&gt; 41   0.35476240
-#&gt; 42  -2.88385793
-#&gt; 43   1.79124457
-#&gt; 44  -3.93164118
-#&gt; 45   9.14356466
-#&gt; 46   1.83626167
-#&gt; 47  -4.10011162
-#&gt; 48  -8.73300529
-#&gt; 49  -0.26519363
-#&gt; 50   8.36836764</div><div class='input'><span class='fu'><a href='cvtable.html'>cvtable</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dataAstar2</span>,<span class='fl'>5</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>100</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)))</div><div class='output co'>#&gt; ____************************************************____</div><div class='output co'>#&gt; <span class='error'>Error in is.data.frame(data): object 'dataAstar2' not found</span></div><div class='input'>
-<span class='no'>dimX</span> <span class='kw'>&lt;-</span> <span class='fl'>6</span>
-<span class='no'>Astar</span> <span class='kw'>&lt;-</span> <span class='fl'>3</span>
-<span class='fu'>simul_data_UniYX</span>(<span class='no'>dimX</span>,<span class='no'>Astar</span>)</div><div class='output co'>#&gt;            Y           X1           X2           X3           X4           X5 
-#&gt; -10.77810061  -1.51920347   0.05240594  -9.94226364  -1.51366148   0.06004913 
-#&gt;           X6 
-#&gt;  -9.91911328 </div><div class='input'>(<span class='no'>dataAstar3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/t'>t</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>replicate</a></span>(<span class='fl'>50</span>,<span class='fu'>simul_data_UniYX</span>(<span class='no'>dimX</span>,<span class='no'>Astar</span>)))))</div><div class='output co'>#&gt;             Y          X1          X2          X3          X4          X5
-#&gt; 1  13.5624009  -3.4032160   5.4319923   7.0686717  -3.4006451   5.4237726
-#&gt; 2  -3.9058453  -0.6777562  -3.3491685  -1.5629716  -0.6561557  -3.3519911
-#&gt; 3  -1.7737095  -5.2559980  -6.6798238   0.5266034  -5.2527070  -6.6875592
-#&gt; 4  -1.8578467  -7.4350761  -2.5954319  -2.8359573  -7.4260181  -2.5801070
-#&gt; 5  -6.1558908  -3.7712913  -7.3205670  -2.1656845  -3.7727895  -7.3020670
-#&gt; 6  -9.7256489   5.5600727  -5.7306476  -3.0755835   5.5538143  -5.7540670
-#&gt; 7   3.2171523   0.8031348   1.0019977   2.2451047   0.7861168   1.0142705
-#&gt; 8  -0.1470448   6.5340719  -1.2605345   3.1571212   6.5105560  -1.2438242
-#&gt; 9  -5.8165654  -3.6330842  -0.7654251  -6.1938357  -3.6571109  -0.7387401
-#&gt; 10  0.7889181  -7.0354064   1.9980639  -3.0557540  -7.0414552   1.9926039
-#&gt; 11 -3.0999240  -7.7332770  -8.9302148  -0.2266418  -7.7346143  -8.9136322
-#&gt; 12 -2.6527575  -6.9999202  -2.1092626  -3.4991308  -6.9922302  -2.1131293
-#&gt; 13 -0.2273686   0.8991743   0.5853912  -0.2098982   0.9091902   0.5842820
-#&gt; 14  2.5003005   4.7226682   8.1955769  -0.9983622   4.7293561   8.2123281
-#&gt; 15 -4.1776649  -6.2278873  -5.4065216  -2.6658220  -6.2162342  -5.4200793
-#&gt; 16 -3.1504660  -2.6172075  -2.3796848  -2.3603750  -2.5954842  -2.4014755
-#&gt; 17 -6.9219474   2.7840320  -3.9512438  -2.4911974   2.7832919  -3.9337724
-#&gt; 18  5.2449185 -10.7309856  -2.9816801   2.3531400 -10.7101971  -2.9767484
-#&gt; 19  3.2664646   1.5764947   1.8093088   2.5083556   1.5760452   1.8168125
-#&gt; 20 -9.1080604  14.8310629  11.9355554  -9.7552874  14.8445733  11.9092841
-#&gt; 21  1.1250806  -3.9780479   0.6645192  -0.9279217  -3.9946076   0.6662758
-#&gt; 22 -2.6191707   2.4059436  -8.8370167   4.1547020   2.4006100  -8.8208405
-#&gt; 23 -4.8177175   4.2554185   0.1007634  -2.9107540   4.2624944   0.1116745
-#&gt; 24 -3.1692248   5.5278763  -1.4890608   0.3393101   5.5254609  -1.4962202
-#&gt; 25 -5.1199083  -2.3649326  -5.1731804  -2.0911590  -2.3719328  -5.1722637
-#&gt; 26 -2.8018117   4.8647596  -6.7465951   3.6582067   4.8590820  -6.7447793
-#&gt; 27 11.7607774  -4.5876939   1.7725027   7.4743901  -4.5754621   1.7608623
-#&gt; 28 -4.6112595  -1.1108051 -10.2341794   1.8970719  -1.0906935 -10.2306188
-#&gt; 29  5.4659816   5.8941502   7.4095104   2.3601630   5.8899130   7.4181778
-#&gt; 30 -6.5031636   5.5056802   5.1682288  -7.0176510   5.5099042   5.1724530
-#&gt; 31  5.8116119   4.2349245  10.6119065   0.3240308   4.2367188  10.5996275
-#&gt; 32  9.9460676  -9.0601973   3.4597340   3.2252262  -9.0647765   3.4540188
-#&gt; 33  8.6697083  -1.1842448   0.6650803   6.7977492  -1.1947321   0.6502210
-#&gt; 34 -1.7486882   2.0401189  -2.3587462   0.6509778   2.0515882  -2.3630276
-#&gt; 35  5.1437345  -0.5191375   2.3512528   3.2441842  -0.5039723   2.3494899
-#&gt; 36 17.7893663  -3.5321520  12.8270367   6.0347113  -3.5405553  12.8042306
-#&gt; 37  1.6098197  -5.0569358  -7.8196608   4.3150615  -5.0557004  -7.8343312
-#&gt; 38 -4.6134799   7.5912666   3.0175635  -3.1564042   7.6135055   3.0198611
-#&gt; 39 -9.5283588   0.1803370   3.9418348 -10.5797144   0.2221012   3.9507698
-#&gt; 40 -5.5145172  -1.5209476  -5.9055671  -1.9033426  -1.5154657  -5.8952534
-#&gt; 41 -2.5293787   4.0394267   7.9618795  -5.6078215   4.0462038   7.9566530
-#&gt; 42  3.3190079  -1.9812218   4.7472114  -1.0886730  -1.9700341   4.7629379
-#&gt; 43 -2.4465910  -5.0259850   5.4260163  -7.6370223  -5.0379558   5.4082411
-#&gt; 44  0.6281354   1.1270520   3.9879378  -1.5402667   1.1259538   3.9998097
-#&gt; 45  1.0510882   5.0286650   2.1481979   1.4019631   5.0171404   2.1242041
-#&gt; 46  6.8767027   0.9569209   7.0548605   1.9075775   0.9540479   7.0319538
-#&gt; 47  4.8272469  -0.2588829   3.8730948   1.4073039  -0.2770279   3.8589375
-#&gt; 48 -8.5724562  -2.2345447  -2.8232356  -6.7144273  -2.2230256  -2.8119039
-#&gt; 49 -2.9475943  -4.8926370  -6.1909277  -0.7781096  -4.9061285  -6.1902049
-#&gt; 50 -2.4620743   7.8370564   2.0828816  -0.2931437   7.8401758   2.0667762
+#&gt; -2.0899928 -3.3650301 -3.6175759 -1.9002841 -5.5163292 -5.5791753 -2.0879278 </div><div class='input'>
+<span class='co'># \donttest{</span>
+<span class='va'>dimX</span> <span class='op'>&lt;-</span> <span class='fl'>6</span>
+<span class='va'>Astar</span> <span class='op'>&lt;-</span> <span class='fl'>2</span>
+<span class='fu'>simul_data_UniYX</span><span class='op'>(</span><span class='va'>dimX</span>,<span class='va'>Astar</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;         Y        X1        X2        X3        X4        X5        X6 
+#&gt;  3.405154 -9.219318 -9.206206  5.151362 -9.223586 -9.222478  5.171035 </div><div class='input'><span class='op'>(</span><span class='va'>dataAstar2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span><span class='op'>(</span><span class='fl'>50</span>,<span class='fu'>simul_data_UniYX</span><span class='op'>(</span><span class='va'>dimX</span>,<span class='va'>Astar</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;              Y         X1         X2          X3         X4         X5
+#&gt; 1   -5.4667852 -4.6368328 -4.6633727  -3.8169525 -4.6492866 -4.6343097
+#&gt; 2    2.5611245  4.4882903  4.4834136   0.7940228  4.4865642  4.4646325
+#&gt; 3    5.8534434  2.1600274  2.1642386   4.4565923  2.1785280  2.1725729
+#&gt; 4   -7.2685172 -2.9284924 -2.9155321  -5.7429226 -2.9388173 -2.8998562
+#&gt; 5   15.7429002  8.4686086  8.4947916  11.9159934  8.4771044  8.4726148
+#&gt; 6    3.7344067 -2.7395944 -2.7146311   3.9311366 -2.7377429 -2.7428695
+#&gt; 7    8.3220039 -3.5079464 -3.4918852   8.1026183 -3.4977322 -3.4983252
+#&gt; 8    0.9494198 -4.2032146 -4.1983074   1.6417675 -4.1764409 -4.2048811
+#&gt; 9  -14.9267216 -2.8222037 -2.8181578 -12.5035209 -2.7979519 -2.8153492
+#&gt; 10  12.7602184 10.4981129 10.4741489   8.9435314 10.5008709 10.4958755
+#&gt; 11  -7.1831458 -7.2682429 -7.2616761  -4.4726100 -7.2711886 -7.2758669
+#&gt; 12  -6.8634182  4.9443571  4.9398128  -6.9835797  4.9373878  4.9593859
+#&gt; 13   3.6898544 -6.7960138 -6.8062212   4.8938195 -6.8159262 -6.8215547
+#&gt; 14   1.0245038 -0.8001555 -0.8217277   1.1709703 -0.8181114 -0.8103901
+#&gt; 15  -1.9356491 -2.4355237 -2.4491487  -1.2550267 -2.4562047 -2.4410910
+#&gt; 16   9.5511311  2.4434726  2.4601161   7.8979152  2.4509083  2.4600142
+#&gt; 17   2.3699577  3.9373881  3.9325800   1.2903720  3.9270690  3.9198469
+#&gt; 18   3.0787230  1.7702339  1.7590052   2.3511337  1.7740213  1.7685472
+#&gt; 19  -5.9158249 -4.8695095 -4.8551184  -4.0128074 -4.8757767 -4.8818083
+#&gt; 20  -4.2512179  2.2564203  2.2304770  -4.3865768  2.2263642  2.2372684
+#&gt; 21   2.9481516  0.7101294  0.7239348   2.4468113  0.7359318  0.7222038
+#&gt; 22   6.9365803  4.8017027  4.8047261   5.0208553  4.7972377  4.7974923
+#&gt; 23   0.6756597 -0.6555612 -0.6596367   0.8949284 -0.6303841 -0.6422226
+#&gt; 24 -13.1447165 -5.9889274 -6.0008032 -10.1544315 -5.9949115 -6.0037904
+#&gt; 25  -1.8552695  2.2777843  2.3059150  -2.1900221  2.2958622  2.2914878
+#&gt; 26   5.2401381  3.2957539  3.3189881   3.5224658  3.3185833  3.3045925
+#&gt; 27   2.2010546 -1.9017223 -1.9024361   2.1356018 -1.9068453 -1.8923967
+#&gt; 28  13.0510899  3.6415330  3.6356619  10.6251511  3.6282661  3.6231769
+#&gt; 29  -2.4193309 -0.4165742 -0.4239745  -1.7547497 -0.4103461 -0.4345485
+#&gt; 30   6.4620509 -8.4380830 -8.4237091   7.8145126 -8.4264293 -8.4455333
+#&gt; 31  -5.7784618 -0.9027898 -0.9080020  -4.8233568 -0.9074618 -0.9041069
+#&gt; 32   1.4509866  2.0958031  2.0749671   0.9419409  2.1068536  2.0964665
+#&gt; 33   7.9214112  9.8516726  9.8565220   4.7489091  9.8680162  9.8801174
+#&gt; 34  -3.3029994  1.6935832  1.6725352  -3.2169203  1.6810599  1.6941970
+#&gt; 35   6.0773737  2.4787094  2.4617545   4.9182408  2.4543583  2.4586245
+#&gt; 36 -10.6780025 -1.5617825 -1.5663286  -9.1746997 -1.5711859 -1.5613791
+#&gt; 37   9.0285613 -1.4414365 -1.4255375   8.2122272 -1.4459823 -1.4371005
+#&gt; 38  -6.4695242 -2.9467627 -2.9357047  -5.0402549 -2.9297071 -2.9397697
+#&gt; 39   1.4662987 -1.3090126 -1.3083322   1.6270797 -1.3020824 -1.3165576
+#&gt; 40  -3.3371261 -2.5063990 -2.4953270  -2.4546657 -2.5039430 -2.4770483
+#&gt; 41  -1.4539051 -5.2468572 -5.2650928  -0.2295093 -5.2591658 -5.2512687
+#&gt; 42   6.3184639 -5.4198403 -5.4601561   6.7624950 -5.4054132 -5.4264303
+#&gt; 43   2.8317073  1.7682700  1.7577297   2.3103366  1.7716436  1.7854530
+#&gt; 44  10.6902298  5.4850914  5.4955988   8.0465319  5.5062763  5.4957139
+#&gt; 45  -0.6419986 -3.1803137 -3.1653965   0.1487841 -3.1717620 -3.1859978
+#&gt; 46   2.8169097 -7.9217699 -7.9159526   4.3848788 -7.9391640 -7.9150733
+#&gt; 47  11.1281255  3.9571348  3.9691447   9.0758530  3.9628487  3.9511548
+#&gt; 48   4.5841800  1.0845161  1.0807621   3.7481882  1.0838256  1.0968055
+#&gt; 49  -5.8178230 -5.1147009 -5.0984231  -3.9547834 -5.1007076 -5.1156178
+#&gt; 50   2.7833737 -2.0400129 -2.0192960   2.9955890 -2.0100177 -2.0300712
 #&gt;             X6
-#&gt; 1    7.0556158
-#&gt; 2   -1.5977286
-#&gt; 3    0.5295466
-#&gt; 4   -2.8198460
-#&gt; 5   -2.1823580
-#&gt; 6   -3.0560219
-#&gt; 7    2.2534308
-#&gt; 8    3.1780129
-#&gt; 9   -6.1801532
-#&gt; 10  -3.0607988
-#&gt; 11  -0.2452582
-#&gt; 12  -3.4949962
-#&gt; 13  -0.1904027
-#&gt; 14  -0.9912375
-#&gt; 15  -2.6760536
-#&gt; 16  -2.3615335
-#&gt; 17  -2.5019638
-#&gt; 18   2.3567144
-#&gt; 19   2.4964999
-#&gt; 20  -9.7527388
-#&gt; 21  -0.9421372
-#&gt; 22   4.1482887
-#&gt; 23  -2.9089414
-#&gt; 24   0.3596660
-#&gt; 25  -2.1101153
-#&gt; 26   3.6570708
-#&gt; 27   7.4652494
-#&gt; 28   1.8781354
-#&gt; 29   2.3655071
-#&gt; 30  -7.0117873
-#&gt; 31   0.3255542
-#&gt; 32   3.2161454
-#&gt; 33   6.7819415
-#&gt; 34   0.6365060
-#&gt; 35   3.2288021
-#&gt; 36   6.0423344
-#&gt; 37   4.3072639
-#&gt; 38  -3.1337472
-#&gt; 39 -10.5897780
-#&gt; 40  -1.9041799
-#&gt; 41  -5.5859728
-#&gt; 42  -1.0826979
-#&gt; 43  -7.6284155
-#&gt; 44  -1.5553101
-#&gt; 45   1.4026965
-#&gt; 46   1.9071408
-#&gt; 47   1.4128462
-#&gt; 48  -6.7199935
-#&gt; 49  -0.7446489
-#&gt; 50  -0.2942979</div><div class='input'><span class='fu'><a href='cvtable.html'>cvtable</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dataAstar3</span>,<span class='fl'>5</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>100</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)))</div><div class='output co'>#&gt; ____************************************************____</div><div class='output co'>#&gt; <span class='error'>Error in is.data.frame(data): object 'dataAstar3' not found</span></div><div class='input'>
-<span class='no'>dimX</span> <span class='kw'>&lt;-</span> <span class='fl'>6</span>
-<span class='no'>Astar</span> <span class='kw'>&lt;-</span> <span class='fl'>4</span>
-<span class='fu'>simul_data_UniYX</span>(<span class='no'>dimX</span>,<span class='no'>Astar</span>)</div><div class='output co'>#&gt;         Y        X1        X2        X3        X4        X5        X6 
-#&gt; -9.070558 -2.536314 -8.040252 -4.857946  3.801125 -1.696731  1.467276 </div><div class='input'>(<span class='no'>dataAstar4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/t'>t</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>replicate</a></span>(<span class='fl'>50</span>,<span class='fu'>simul_data_UniYX</span>(<span class='no'>dimX</span>,<span class='no'>Astar</span>)))))</div><div class='output co'>#&gt;              Y           X1          X2          X3           X4            X5
-#&gt; 1   -2.4565783  -1.20650869  -3.9718487  -0.3640601  -1.50677699  -4.230686216
-#&gt; 2   -2.3613044   6.56756460   9.9946235  -6.4738863   6.54991468   9.960202708
-#&gt; 3    9.5557571   5.73624449  -3.1796840  13.7028174   0.73720024  -8.167294366
-#&gt; 4   -1.6937627   8.46092919   0.4898175   1.2596673  12.64112387   4.693392678
-#&gt; 5    0.7694968   5.23991932   2.1456532   1.4979151   7.85371994   4.801421329
-#&gt; 6    0.5209114   1.70298995  -0.7364991   1.3157237  -4.64266001  -7.095291568
-#&gt; 7    0.2775724 -10.95683197  -1.6541087  -2.8792530 -10.27117232  -0.985837650
-#&gt; 8  -11.1090119   4.78085796  -5.5864841  -5.6312041   6.54459173  -3.791696644
-#&gt; 9   -4.7592285  -7.73241851  -8.1735708  -2.8872960  -0.86591567  -1.296814518
-#&gt; 10  11.0218170 -10.52643569   4.6707163   4.1456769 -10.71549148   4.503018858
-#&gt; 11   7.8326177  -3.83084922  -4.6302412   9.2294478  -4.17876046  -4.948503553
-#&gt; 12  -2.2145302   0.49011812   0.2806683  -2.3522424   2.84404629   2.648778808
-#&gt; 13   6.4637226   6.21760998   5.7702597   5.2122211  -0.02506007  -0.462858992
-#&gt; 14  -9.5743378  -1.53908766  -1.5162603  -9.4381296  -1.38958065  -1.368555530
-#&gt; 15  -2.6169403   0.43454604  -1.1628363  -1.6852919  -3.09273576  -4.698695469
-#&gt; 16 -14.8127371   8.08955620   7.7300699 -16.7735613  11.08564177  10.746420764
-#&gt; 17   4.5725028  -8.04864363  -1.2919497   2.5469716  -9.25318261  -2.480055058
-#&gt; 18   5.5443317   6.27425571   9.1430312   2.3469449   8.84572290  11.742066569
-#&gt; 19   0.4064244   0.77935156   5.6283527  -2.8238844   1.89175947   6.713794826
-#&gt; 20   3.8564088  -1.29443315  -1.1091808   3.8418468  -3.58088554  -3.405293646
-#&gt; 21  -0.2538374  -3.61159839  -7.7100003   3.2550211  -5.53557237  -9.612343840
-#&gt; 22  -0.6317777  -1.90439402  -1.6000073  -0.1286038  -2.22760179  -1.934162130
-#&gt; 23   3.2062936  -3.78224432   4.9920949  -1.4539928  -6.58613857   2.192703053
-#&gt; 24   8.5328160  -2.84472549   2.2057062   6.0633600  -4.83099359   0.201337603
-#&gt; 25  -1.2781508  -8.25804295   1.1216402  -5.1364501  -9.34208104   0.044642841
-#&gt; 26  15.6537831   5.08009475   8.4802640  12.5562517   1.38406761   4.803896519
-#&gt; 27  -4.0952604   5.54592603  -4.0198613   0.1265071   9.55436901   0.007104527
-#&gt; 28  -3.6910529   0.71233137  -5.7248216   0.1718035   2.56391113  -3.922212895
-#&gt; 29  -6.4111423  -4.23316228  -7.0543324  -3.4820191   4.15916746   1.331234734
-#&gt; 30  -0.8481313  -1.42448618  -1.6672377  -0.2928312   0.22242112  -0.045415618
-#&gt; 31  12.7558696  -0.69186906   6.1847710   8.4511132  -4.25821614   2.646709994
-#&gt; 32   8.7057923   8.61918792  10.8612097   5.2167651   8.29218857  10.538699809
-#&gt; 33   0.8088476  -1.40264064   0.9039005  -0.4756979  -4.61571213  -2.300538210
-#&gt; 34  -4.0369714  -4.71853598  -0.2779843  -5.9569947  -3.62930425   0.813181773
-#&gt; 35   4.4729387   1.71827345   9.1130064  -0.5192941  -4.83767900   2.547594780
-#&gt; 36   0.1553155  -2.89814012 -12.9304916   6.9749988  -3.15787557 -13.187899553
-#&gt; 37 -17.1389523  -2.84808555 -13.8232629  -9.9679297   0.02112013 -10.924398791
-#&gt; 38  -1.5836340   8.87892679   3.2062493  -0.1991505   9.33000565   3.676466086
-#&gt; 39   6.7073010   3.06692143   5.1974466   4.7153279  -2.11625169   0.019791999
-#&gt; 40   7.4020140  -3.26282732  -3.8622895   8.6293526  -2.61416937  -3.214909788
-#&gt; 41  -3.1183632  -9.02343147 -13.2570871   1.5013350 -10.89357696 -15.073031357
-#&gt; 42  -2.5986712  -4.04161617  -6.0157633  -0.2305151  -6.16290467  -8.153974485
-#&gt; 43  -3.4656031 -20.15996560 -13.0729753  -3.3984204 -17.72058003 -10.622248008
-#&gt; 44  -2.5234593   0.84612213   1.5296099  -3.0895013  -0.58414627   0.119785059
-#&gt; 45 -10.0661633  -0.99255992 -11.3024341  -3.4470199   2.47946682  -7.792226940
-#&gt; 46   5.0534928  -6.97786009  -2.0019856   3.8041474  -6.30809510  -1.294972972
-#&gt; 47   2.2721017   0.05725126   1.8153012   1.3026439  -2.05133226  -0.276708572
-#&gt; 48  -4.0903371  -6.67522471  -5.6870103  -3.0711909  -7.05585696  -6.053843608
-#&gt; 49 -11.3182926   2.34276845  -3.0862643  -8.5541829   3.63070098  -1.771767240
-#&gt; 50   7.5832686  -6.94978370  -0.3238126   5.1145066  -1.67226098   4.930192686
+#&gt; 1   -3.8203893
+#&gt; 2    0.7856648
+#&gt; 3    4.4714926
+#&gt; 4   -5.7694441
+#&gt; 5   11.9243584
+#&gt; 6    3.9193597
+#&gt; 7    8.1102868
+#&gt; 8    1.6474534
+#&gt; 9  -12.5035281
+#&gt; 10   8.9555033
+#&gt; 11  -4.5048317
+#&gt; 12  -7.0006527
+#&gt; 13   4.8932628
+#&gt; 14   1.1970988
+#&gt; 15  -1.2538425
+#&gt; 16   7.9037518
+#&gt; 17   1.2928187
+#&gt; 18   2.3677084
+#&gt; 19  -4.0024864
+#&gt; 20  -4.3827118
+#&gt; 21   2.4544227
+#&gt; 22   5.0210339
+#&gt; 23   0.8928215
+#&gt; 24 -10.1946654
+#&gt; 25  -2.1779188
+#&gt; 26   3.5185891
+#&gt; 27   2.1512452
+#&gt; 28  10.6244721
+#&gt; 29  -1.7780853
+#&gt; 30   7.8340958
+#&gt; 31  -4.8215752
+#&gt; 32   0.9283044
+#&gt; 33   4.7265777
+#&gt; 34  -3.2171668
+#&gt; 35   4.9220532
+#&gt; 36  -9.1730249
+#&gt; 37   8.1929077
+#&gt; 38  -5.0085114
+#&gt; 39   1.6473875
+#&gt; 40  -2.4636988
+#&gt; 41  -0.2537657
+#&gt; 42   6.7611795
+#&gt; 43   2.3123757
+#&gt; 44   8.0443681
+#&gt; 45   0.1289411
+#&gt; 46   4.4004104
+#&gt; 47   9.0678227
+#&gt; 48   3.7400793
+#&gt; 49  -3.9620494
+#&gt; 50   2.9866173</div><div class='input'><span class='fu'><a href='cvtable.html'>cvtable</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>dataAstar2</span>,<span class='fl'>5</span>,NK<span class='op'>=</span><span class='fl'>100</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____</div><div class='output co'>#&gt; <span class='error'>Error in is.data.frame(data): objet 'dataAstar2' introuvable</span></div><div class='input'>
+<span class='va'>dimX</span> <span class='op'>&lt;-</span> <span class='fl'>6</span>
+<span class='va'>Astar</span> <span class='op'>&lt;-</span> <span class='fl'>3</span>
+<span class='fu'>simul_data_UniYX</span><span class='op'>(</span><span class='va'>dimX</span>,<span class='va'>Astar</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;        Y       X1       X2       X3       X4       X5       X6 
+#&gt; 6.053029 3.689110 5.648481 3.172013 3.670531 5.644560 3.157390 </div><div class='input'><span class='op'>(</span><span class='va'>dataAstar3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span><span class='op'>(</span><span class='fl'>50</span>,<span class='fu'>simul_data_UniYX</span><span class='op'>(</span><span class='va'>dimX</span>,<span class='va'>Astar</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;              Y           X1           X2           X3          X4           X5
+#&gt; 1   -1.2631029   8.62015665   6.04550745  -1.49610045   8.6160142   6.05222905
+#&gt; 2  -12.3698859  -0.48149600  -4.65999133  -8.29663001  -0.4840979  -4.65283898
+#&gt; 3  -13.3752100  -6.97607422  -2.68919756 -12.85550026  -6.9666058  -2.69496482
+#&gt; 4   14.2908966  -3.62743325   1.43095860  10.48074941  -3.6419478   1.42740649
+#&gt; 5    2.4915184  -0.59570169   3.04622831   0.03618188  -0.5690905   3.05831672
+#&gt; 6   -5.4694637  -2.77612155  -1.43404561  -4.99781690  -2.7602286  -1.43484884
+#&gt; 7    1.7861353   2.16944238   4.04352277  -0.02322489   2.1749004   4.05232934
+#&gt; 8    2.3985486   6.26214976   5.96461765   0.65653362   6.2437259   5.95757890
+#&gt; 9   -6.0663365  -4.39230852 -15.66552289   2.88280042  -4.4049851 -15.65584589
+#&gt; 10 -15.6835317   0.19271747  -4.10346903 -11.22824331   0.1826909  -4.09846771
+#&gt; 11  -0.4386717  -5.33677744  -5.26431305   1.17388905  -5.3167378  -5.24378213
+#&gt; 12   4.3304125   6.35930562   5.89927537   2.64391214   6.3656704   5.90267001
+#&gt; 13   0.1274229  -0.10746146   1.07272349  -0.80201933  -0.1117411   1.06870638
+#&gt; 14   2.4091915  -2.63053475  -5.41727258   4.45902327  -2.6294751  -5.39713624
+#&gt; 15 -10.7028579  -4.33248793  -2.37373200  -9.50593652  -4.3263525  -2.37293718
+#&gt; 16   6.1543136   0.66106856   1.45416854   4.82886012   0.6601333   1.43686959
+#&gt; 17  10.4264607  -2.96023385  10.55086507   1.32669810  -2.9635919  10.56579664
+#&gt; 18  16.0744100   7.86199101   7.13609641  12.56368148   7.8605900   7.12647545
+#&gt; 19  -3.6138262  -0.02355808  -2.47788102  -1.50647583  -0.0203125  -2.47837657
+#&gt; 20   9.3973883   4.50813781   8.22232139   4.83660938   4.5237641   8.19718909
+#&gt; 21  18.2721088   0.89258367   5.49504693  13.06479204   0.8844241   5.48651201
+#&gt; 22  -3.2215266   6.41564713   0.14303933  -0.59247563   6.3904457   0.12424621
+#&gt; 23  -3.9488421  -7.27075522  -0.14128497  -6.06273021  -7.2647811  -0.14521253
+#&gt; 24  -4.7866183  -5.78671556  -0.32164800  -6.17099344  -5.7999207  -0.31957270
+#&gt; 25  -7.0728021  -0.90612814 -14.92094368   2.88273912  -0.9096703 -14.94422828
+#&gt; 26   5.6918581   4.81284500  -0.08035738   6.88998112   4.8037946  -0.07958272
+#&gt; 27  -1.2880336 -15.13225525  -9.14634162  -1.13436363 -15.1413876  -9.14017794
+#&gt; 28   3.6608278  -4.91671305  -4.70634163   4.16494827  -4.9210192  -4.73362385
+#&gt; 29  -3.6655422   2.66036687   1.76746287  -3.35407991   2.6724442   1.77644851
+#&gt; 30   3.6261631   0.13638598  -3.53965032   5.61811174   0.1329447  -3.53582833
+#&gt; 31  -4.5235299  -1.34526120  -4.49217504  -1.68546591  -1.3631599  -4.46227885
+#&gt; 32   0.5336358  -4.80599611  -2.89209085   0.20148673  -4.8028437  -2.91002282
+#&gt; 33   2.7720865  -1.31651928  -1.63071326   2.95885467  -1.3167790  -1.63173290
+#&gt; 34  -1.3689187   5.01480278  -0.87924751   1.14393219   4.9787169  -0.88435741
+#&gt; 35   1.1236208  -1.97113906  -3.67058364   2.53246112  -1.9808060  -3.66871834
+#&gt; 36  -8.0788317  -6.85527676  -8.90216766  -4.04987639  -6.8605611  -8.92140282
+#&gt; 37  10.8330856   6.73874440   6.31953696   7.94135761   6.7247610   6.31102728
+#&gt; 38  -6.7092777   4.54326509   3.68547090  -6.44612867   4.5694655   3.67870490
+#&gt; 39  17.8047903  -3.64214154   6.75758963  10.26631932  -3.6456385   6.75897518
+#&gt; 40   1.7188822  -0.66164125  -2.12005974   2.72266937  -0.6751113  -2.13097620
+#&gt; 41   2.0740758   8.64534352   7.75893962   0.09814661   8.6705006   7.75768112
+#&gt; 42   2.1918392  10.12305454   7.81187451   0.81836595  10.1390035   7.79293651
+#&gt; 43  -8.9227240   4.28635751  -2.57562809  -4.76351301   4.2976642  -2.59746949
+#&gt; 44 -11.2815228   3.50930834  -2.77125713  -6.95490126   3.5206084  -2.77651025
+#&gt; 45   6.8816529   0.63782974   8.82733953   0.84597403   0.6535855   8.84792883
+#&gt; 46  16.1412754 -10.99838112  -0.79792407  10.22086356 -11.0001737  -0.78112049
+#&gt; 47  -1.2611036   0.72047062  -5.29236306   2.26971048   0.7138796  -5.28629422
+#&gt; 48   2.8611984   3.81337089   5.61122467   0.22487215   3.8227395   5.62362256
+#&gt; 49 -10.0928842  -5.97677779 -16.09687820  -1.02309093  -5.9752951 -16.10369720
+#&gt; 50  -8.8170314  -6.24581075  -1.37996681  -8.98467137  -6.2564990  -1.35358203
 #&gt;              X6
-#&gt; 1   -0.63812620
-#&gt; 2   -6.50714301
-#&gt; 3    8.72801869
-#&gt; 4    5.46064493
-#&gt; 5    4.13607533
-#&gt; 6   -5.03757118
-#&gt; 7   -2.23825050
-#&gt; 8   -3.84743484
-#&gt; 9    3.98635064
-#&gt; 10   3.93717339
-#&gt; 11   8.89041964
-#&gt; 12  -0.02122645
-#&gt; 13  -1.00931633
-#&gt; 14  -9.28113629
-#&gt; 15  -5.21097097
-#&gt; 16 -13.75465564
-#&gt; 17   1.38119530
-#&gt; 18   4.92899315
-#&gt; 19  -1.72318942
-#&gt; 20   1.56732448
-#&gt; 21   1.36976872
-#&gt; 22  -0.46684173
-#&gt; 23  -4.25413973
-#&gt; 24   4.06374000
-#&gt; 25  -6.23032231
-#&gt; 26   8.89348509
-#&gt; 27   4.14082783
-#&gt; 28   2.00108633
-#&gt; 29   4.91829050
-#&gt; 30   1.33666290
-#&gt; 31   4.92137314
-#&gt; 32   4.90785264
-#&gt; 33  -3.69063202
-#&gt; 34  -4.83322626
-#&gt; 35  -7.09685408
-#&gt; 36   6.70230100
-#&gt; 37  -7.10877437
-#&gt; 38   0.28664645
-#&gt; 39  -0.48577302
-#&gt; 40   9.26032973
-#&gt; 41  -0.33667881
-#&gt; 42  -2.33035246
-#&gt; 43  -0.92667129
-#&gt; 44  -4.54180370
-#&gt; 45   0.07665750
-#&gt; 46   4.45695790
-#&gt; 47  -0.82110948
-#&gt; 48  -3.43430697
-#&gt; 49  -7.24153072
-#&gt; 50  10.37111882</div><div class='input'><span class='fu'><a href='cvtable.html'>cvtable</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dataAstar4</span>,<span class='fl'>5</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>100</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)))</div><div class='output co'>#&gt; ____************************************************____</div><div class='output co'>#&gt; <span class='error'>Error in is.data.frame(data): object 'dataAstar4' not found</span></div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"dimX"</span>,<span class='st'>"Astar"</span>,<span class='st'>"dataAstar2"</span>,<span class='st'>"dataAstar3"</span>,<span class='st'>"dataAstar4"</span>))</div></pre>
+#&gt; 1   -1.48515137
+#&gt; 2   -8.28858160
+#&gt; 3  -12.82380723
+#&gt; 4   10.47335101
+#&gt; 5    0.01861043
+#&gt; 6   -5.03323849
+#&gt; 7   -0.02389704
+#&gt; 8    0.65396427
+#&gt; 9    2.89431774
+#&gt; 10 -11.22803875
+#&gt; 11   1.16691778
+#&gt; 12   2.62803467
+#&gt; 13  -0.78829971
+#&gt; 14   4.45073685
+#&gt; 15  -9.50750556
+#&gt; 16   4.83696488
+#&gt; 17   1.30877531
+#&gt; 18  12.54138664
+#&gt; 19  -1.52207372
+#&gt; 20   4.82644495
+#&gt; 21  13.06699614
+#&gt; 22  -0.57938774
+#&gt; 23  -6.05199059
+#&gt; 24  -6.17072102
+#&gt; 25   2.90496499
+#&gt; 26   6.88111811
+#&gt; 27  -1.14813428
+#&gt; 28   4.17677628
+#&gt; 29  -3.35299545
+#&gt; 30   5.62432629
+#&gt; 31  -1.68738207
+#&gt; 32   0.19618725
+#&gt; 33   2.95462372
+#&gt; 34   1.14520928
+#&gt; 35   2.52270998
+#&gt; 36  -4.06258119
+#&gt; 37   7.89446223
+#&gt; 38  -6.46647250
+#&gt; 39  10.27335078
+#&gt; 40   2.69709957
+#&gt; 41   0.11457280
+#&gt; 42   0.80744420
+#&gt; 43  -4.76265500
+#&gt; 44  -6.95500441
+#&gt; 45   0.83309667
+#&gt; 46  10.22908306
+#&gt; 47   2.25425415
+#&gt; 48   0.22155741
+#&gt; 49  -1.03060202
+#&gt; 50  -8.97960486</div><div class='input'><span class='fu'><a href='cvtable.html'>cvtable</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>dataAstar3</span>,<span class='fl'>5</span>,NK<span class='op'>=</span><span class='fl'>100</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____</div><div class='output co'>#&gt; <span class='error'>Error in is.data.frame(data): objet 'dataAstar3' introuvable</span></div><div class='input'>
+<span class='va'>dimX</span> <span class='op'>&lt;-</span> <span class='fl'>6</span>
+<span class='va'>Astar</span> <span class='op'>&lt;-</span> <span class='fl'>4</span>
+<span class='fu'>simul_data_UniYX</span><span class='op'>(</span><span class='va'>dimX</span>,<span class='va'>Astar</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;          Y         X1         X2         X3         X4         X5         X6 
+#&gt;  0.4059092 -4.0821333 -1.8371446  0.0473401  3.7340274  5.9658261  7.8456856 </div><div class='input'><span class='op'>(</span><span class='va'>dataAstar4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span><span class='op'>(</span><span class='fl'>50</span>,<span class='fu'>simul_data_UniYX</span><span class='op'>(</span><span class='va'>dimX</span>,<span class='va'>Astar</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;              Y          X1           X2          X3          X4           X5
+#&gt; 1    7.0860363   4.0077909   4.06328324   6.3135785   3.3732500   3.41441693
+#&gt; 2    3.2681636   3.8055202   2.88710074   3.1131039   4.8430419   3.90157594
+#&gt; 3   -5.5916689   4.1398696   2.09025553  -5.5012952   5.1036469   3.05082740
+#&gt; 4   -3.4812368   1.0812169  -3.56726928  -0.8844031   2.7101705  -1.91881738
+#&gt; 5    8.6998880   5.3209857  -1.57912545  11.7385645   5.1918862  -1.70338527
+#&gt; 6   -1.8177046   0.5288969   0.09212778  -1.4624162   1.1020394   0.67115647
+#&gt; 7    1.3130510   1.8923981   2.10155047   0.6735591  -1.9498672  -1.74709353
+#&gt; 8   -4.3528103   4.8175512   0.99410090  -3.3312504   8.5083742   4.71271220
+#&gt; 9   -6.6671333   5.4931079  -4.98381888  -1.3392754   7.0428168  -3.42019505
+#&gt; 10 -14.1121061  -4.4194137  -8.54532906 -10.4867272  -0.2922796  -4.41798755
+#&gt; 11   0.7893536  -2.5107756   2.55473097  -1.5876833   1.9294318   6.96547630
+#&gt; 12 -14.6659334 -13.4754624 -14.90632084 -10.6617973  -9.3796285 -10.83554464
+#&gt; 13  -4.8847046  -5.4799913  -7.34615481  -2.4885477 -12.3439363 -14.18168328
+#&gt; 14 -24.8442962  -1.4454725 -10.07022847 -19.5121917   7.4572480  -1.17494720
+#&gt; 15 -12.9907409   8.2072337   0.61655987 -10.5130039   9.4398693   1.83828922
+#&gt; 16  -7.9234206   6.5872042   6.95069928  -9.9410551   7.8117832   8.19090233
+#&gt; 17  -4.2994817   5.2259581   9.09634220  -8.2222844   6.0090566   9.87140088
+#&gt; 18   1.6788246  -3.6292430   5.70844721  -3.5083969  -4.3953353   4.89685271
+#&gt; 19   5.3021566  -7.0752056   2.38187759   1.3895094  -6.9567767   2.49787517
+#&gt; 20  -1.6790057   3.9200279   0.05154530  -0.3589290   3.7403832  -0.11499637
+#&gt; 21 -10.8000504   6.4974959  -0.92296670  -7.7566747   8.4503062   1.02867665
+#&gt; 22  -0.4863779  -4.4441857   2.87496170  -3.9959782  -7.3146995   0.02180724
+#&gt; 23  -3.4001711   1.7879384   8.15605900  -7.9657665   5.5112933  11.88189282
+#&gt; 24  -5.3414180   8.5248892  -0.67177546  -1.7274359  12.6155492   3.41984167
+#&gt; 25  -6.3438209  -2.5733347   0.62345602  -8.0413668  -4.7518035  -1.55507143
+#&gt; 26  -6.4234839  -1.6636694  -1.56350839  -6.2522811  -3.5514117  -3.49728423
+#&gt; 27   3.4144158  -3.5859721  -4.38209947   4.8260256  -6.6334912  -7.43415878
+#&gt; 28  -0.7504636   7.2490796   5.26112976  -1.2329636   0.4842377  -1.53521244
+#&gt; 29   7.4083635  -9.7439560  -1.97081900   4.9855246  -9.7335145  -1.98420476
+#&gt; 30   5.7853092  -1.6532324   3.57872694   2.8154206  -3.2990248   1.97155943
+#&gt; 31  -6.9793358   7.9468889   3.73835668  -5.9855478   3.7810241  -0.43252565
+#&gt; 32   5.2515916   2.6148493   0.12630245   6.2152971   6.6018613   4.12486101
+#&gt; 33   2.9752351   6.4926577   2.09436511   4.4754807   2.6936139  -1.71428669
+#&gt; 34   0.4066783   0.5076861  -5.16077721   3.9753799   0.4040819  -5.25373158
+#&gt; 35 -10.4071769  -5.4812078  -0.19262102 -12.4536746   3.9826979   9.24336478
+#&gt; 36  -9.7794709  -6.4040239  -7.26107489  -7.9502710  -7.2702174  -8.10474474
+#&gt; 37  -2.0201677 -13.2442964  -8.93150993  -1.3866178 -12.6631673  -8.31700198
+#&gt; 38   3.6619746   0.3415699  -2.81462956   5.4965395  -1.2137836  -4.37407399
+#&gt; 39  -6.9419179   2.2302566  -3.13643196  -4.2791230   1.1430958  -4.23543725
+#&gt; 40   2.3037179  -3.2868051   3.38500646  -1.2059138  -5.3003900   1.36300313
+#&gt; 41   3.6031236   6.3998541   4.93581611   2.9612245   6.9695118   5.46054133
+#&gt; 42   5.9014586   1.2349944   9.02842983   0.8490823   7.0163082  14.82390162
+#&gt; 43 -10.5298275   1.9760547  -4.80487417  -7.0049679   2.2800038  -4.53197233
+#&gt; 44  10.1265270   3.2538745   5.90448127   8.0841510   2.1753411   4.75239423
+#&gt; 45  11.7102146   0.1374255   2.16258534  10.7257386  -7.9401930  -5.88978411
+#&gt; 46  -3.2704082  -0.8205507  -4.74192894  -0.7030350   2.2991397  -1.63150303
+#&gt; 47  -6.2444004   8.9693756   3.93758579  -5.2276113   9.1272766   4.09124436
+#&gt; 48  -2.9445481   9.4963015   4.65220369  -2.4615317   6.9488980   2.10959746
+#&gt; 49   6.0849343  -6.2542975  -8.32715839   8.8008016  -7.9973740 -10.08662071
+#&gt; 50   5.2883991   2.0531857   1.49476346   5.4397378  -2.8415246  -3.41788867
+#&gt;             X6
+#&gt; 1    5.6699687
+#&gt; 2    4.1530111
+#&gt; 3   -4.5505915
+#&gt; 4    0.7741691
+#&gt; 5   11.6260502
+#&gt; 6   -0.8787134
+#&gt; 7   -3.1763859
+#&gt; 8    0.3632350
+#&gt; 9    0.2103480
+#&gt; 10  -6.3657143
+#&gt; 11   2.8151935
+#&gt; 12  -6.5670103
+#&gt; 13  -9.3192052
+#&gt; 14 -10.5774788
+#&gt; 15  -9.2731471
+#&gt; 16  -8.7195966
+#&gt; 17  -7.4680694
+#&gt; 18  -4.3051505
+#&gt; 19   1.4770180
+#&gt; 20  -0.5422467
+#&gt; 21  -5.8153162
+#&gt; 22  -6.8549195
+#&gt; 23  -4.2340823
+#&gt; 24   2.3557439
+#&gt; 25 -10.2299941
+#&gt; 26  -8.1407991
+#&gt; 27   1.7575952
+#&gt; 28  -8.0136838
+#&gt; 29   4.9526456
+#&gt; 30   1.2158937
+#&gt; 31 -10.1443635
+#&gt; 32  10.1624363
+#&gt; 33   0.6592251
+#&gt; 34   3.9106523
+#&gt; 35  -2.9754729
+#&gt; 36  -8.8201143
+#&gt; 37  -0.7951902
+#&gt; 38   3.9645935
+#&gt; 39  -5.3811771
+#&gt; 40  -3.2334664
+#&gt; 41   3.5009140
+#&gt; 42   6.6509663
+#&gt; 43  -6.7620323
+#&gt; 44   6.9603385
+#&gt; 45   2.6636970
+#&gt; 46   2.4322911
+#&gt; 47  -5.0789155
+#&gt; 48  -5.0192015
+#&gt; 49   7.0272046
+#&gt; 50   0.5318266</div><div class='input'><span class='fu'><a href='cvtable.html'>cvtable</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>dataAstar4</span>,<span class='fl'>5</span>,NK<span class='op'>=</span><span class='fl'>100</span>, verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____</div><div class='output co'>#&gt; <span class='error'>Error in is.data.frame(data): objet 'dataAstar4' introuvable</span></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"dimX"</span>,<span class='st'>"Astar"</span>,<span class='st'>"dataAstar2"</span>,<span class='st'>"dataAstar3"</span>,<span class='st'>"dataAstar4"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='co'># }</span>
+
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#references">References</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Frederic Bertrand<br />
-<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
-<a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -508,13 +535,16 @@ Chemometrics and Intelligent Laboratory Systems 64 (2002) 79-89.<br />
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

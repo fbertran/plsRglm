@@ -6,23 +6,39 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extracts and computes information criteria and fits statistics for k-fold cross validated partial least squares models — kfolds2CVinfos_lm • plsRglm</title>
+<title>Extracts and computes information criteria and fits statistics for k-fold
+cross validated partial least squares models — kfolds2CVinfos_lm • plsRglm</title>
+
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +46,14 @@
 
 
 
-<meta property="og:title" content="Extracts and computes information criteria and fits statistics for k-fold cross validated partial least squares models — kfolds2CVinfos_lm" />
 
-<meta property="og:description" content="This function extracts and computes information criteria and fits statistics for k-fold cross validated partial least squares models for both formula or classic specifications of the model." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Extracts and computes information criteria and fits statistics for k-fold
+cross validated partial least squares models — kfolds2CVinfos_lm" />
+<meta property="og:description" content="This function extracts and computes information criteria and fits statistics
+for k-fold cross validated partial least squares models for both formula or
+classic specifications of the model." />
+<meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -47,12 +67,13 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -63,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.0</span>
       </span>
     </div>
 
@@ -71,9 +92,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -82,11 +106,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fbertran/plsRglm">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -97,24 +120,26 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Extracts and computes information criteria and fits statistics for k-fold cross validated partial least squares models</h1>
-    
+    <h1>Extracts and computes information criteria and fits statistics for k-fold
+cross validated partial least squares models</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fbertran/plsRglm/blob/master/R/kfolds2CVinfos_lm.R'><code>R/kfolds2CVinfos_lm.R</code></a></small>
     <div class="hidden name"><code>kfolds2CVinfos_lm.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-    <p>This function extracts and computes information criteria and fits statistics for k-fold cross validated partial least squares models for both formula or classic specifications of the model.</p>
-    
+    <p>This function extracts and computes information criteria and fits statistics
+for k-fold cross validated partial least squares models for both formula or
+classic specifications of the model.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>kfolds2CVinfos_lm</span>(<span class='no'>pls_kfolds</span>, <span class='kw'>MClassed</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>kfolds2CVinfos_lm</span><span class='op'>(</span><span class='va'>pls_kfolds</span>, MClassed <span class='op'>=</span> <span class='cn'>FALSE</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -131,36 +156,47 @@
       <td><p>should infos be displayed ?</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The Mclassed option should only set to <code>TRUE</code> if the response is binary.</p>
-    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p></p>
+    
+
 <dt>list</dt><dd><p>table of fit statistics for first group partition</p></dd>
-  <dt>&#8230;</dt><dd><p>&#8230;</p></dd>
-  <dt>list</dt><dd><p>table of fit statistics for last group partition</p></dd>
+<dt>list()</dt><dd><p>...</p></dd> <dt>list</dt><dd><p>table of fit statistics for last group
+partition</p></dd>
 
-    
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Nicolas Meyer, Myriam Maumy-Bertrand et Frederic Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>, 151(2), pages 1-18.
-<a href='http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47'>http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47</a></p>
-    
+    <p>The Mclassed option should only set to <code>TRUE</code> if the response is
+binary.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Use <code><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></code> and <code><a href='cv.plsR.html'>cv.plsR</a></code> instead.</p>
-    
+    <p>Use <code><a href='https://rdrr.io/r/base/summary.html'>summary</a></code> and <code><a href='cv.plsR.html'>cv.plsR</a></code> instead.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Nicolas Meyer, Myriam Maumy-Bertrand et
+Frédéric Bertrand (2010). Comparing the linear and the
+logistic PLS regression with qualitative predictors: application to
+allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>,
+151(2), pages 1-18.
+<a href='http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47'>http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='kfolds2coeff.html'>kfolds2coeff</a></code>, <code><a href='kfolds2Pressind.html'>kfolds2Pressind</a></code>, <code><a href='kfolds2Press.html'>kfolds2Press</a></code>, <code><a href='kfolds2Mclassedind.html'>kfolds2Mclassedind</a></code> and <code><a href='kfolds2Mclassed.html'>kfolds2Mclassed</a></code> to extract and transforms results from k-fold cross-validation.</p></div>
-    
+    <div class='dont-index'><p><code><a href='kfolds2coeff.html'>kfolds2coeff</a></code>, <code><a href='kfolds2Pressind.html'>kfolds2Pressind</a></code>,
+<code><a href='kfolds2Press.html'>kfolds2Press</a></code>, <code><a href='kfolds2Mclassedind.html'>kfolds2Mclassedind</a></code> and
+<code><a href='kfolds2Mclassed.html'>kfolds2Mclassed</a></code> to extract and transforms results from k-fold
+cross-validation.</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Frédéric Bertrand<br />
+<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
+<a href='https://fbertran.github.io/homepage/'>https://fbertran.github.io/homepage/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>Cornell</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Cornell</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; ____************************************************____
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>Cornell</span>,nt<span class='op'>=</span><span class='fl'>10</span>,K<span class='op'>=</span><span class='fl'>6</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; ____************************************************____
 #&gt; ____Component____ 1 ____
 #&gt; ____Component____ 2 ____
 #&gt; ____Component____ 3 ____
@@ -176,11 +212,11 @@
 #&gt; NK: 1</div><div class='output co'>#&gt; [[1]]
 #&gt;                AIC    Q2cum_Y LimQ2_Y        Q2_Y  PRESS_Y      RSS_Y      R2_Y
 #&gt; Nb_Comp_0 82.01205         NA      NA          NA       NA 467.796667        NA
-#&gt; Nb_Comp_1 53.15173  0.8818336  0.0975  0.88183361 55.27784  35.742486 0.9235940
-#&gt; Nb_Comp_2 41.08283  0.8919577  0.0975  0.08567656 32.68019  11.066606 0.9763431
-#&gt; Nb_Comp_3 32.06411  0.7578009  0.0975 -1.24170621 24.80808   4.418081 0.9905556
-#&gt; Nb_Comp_4 33.76477 -0.2596372  0.0975 -4.20083388 22.97771   4.309235 0.9907882
-#&gt; Nb_Comp_5 33.34373 -7.2527267  0.0975 -5.55166934 28.23269   3.521924 0.9924713
+#&gt; Nb_Comp_1 53.15173  0.8931139  0.0975  0.89311387 50.00098  35.742486 0.9235940
+#&gt; Nb_Comp_2 41.08283  0.8827013  0.0975 -0.09741769 39.22444  11.066606 0.9763431
+#&gt; Nb_Comp_3 32.06411  0.7545436  0.0975 -1.09257499 23.15770   4.418081 0.9905556
+#&gt; Nb_Comp_4 33.76477 -0.4218576  0.0975 -4.79270956 25.59266   4.309235 0.9907882
+#&gt; Nb_Comp_5 33.34373 -9.6400064  0.0975 -6.48317314 32.24675   3.521924 0.9924713
 #&gt; Nb_Comp_6 35.25533         NA  0.0975          NA       NA   3.496074 0.9925265
 #&gt;              AIC.std  DoF.dof sigmahat.dof    AIC.dof    BIC.dof GMDL.dof
 #&gt; Nb_Comp_0  37.010388 1.000000    6.5212706 46.0708838 47.7893514 27.59461
@@ -204,20 +240,21 @@
 #&gt; attr(,"class")
 #&gt; [1] "summary.cv.plsRmodel"</div><div class='input'>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>pine</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='no'>x11</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>pine</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>3</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>),<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [[1]]
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>pine</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span><span class='va'>x11</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>pine</span>,nt<span class='op'>=</span><span class='fl'>10</span>,NK<span class='op'>=</span><span class='fl'>3</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt;                 AIC       Q2cum_Y LimQ2_Y       Q2_Y  PRESS_Y     RSS_Y
 #&gt; Nb_Comp_0  82.41888            NA      NA         NA       NA 20.800152
-#&gt; Nb_Comp_1  63.61896     0.3615485  0.0975  0.3615485 13.27989 11.074659
-#&gt; Nb_Comp_2  58.47638     0.1841549  0.0975 -0.2778498 14.15175  8.919303
-#&gt; Nb_Comp_3  56.55421    -0.3160025  0.0975 -0.6130544 14.38732  7.919786
-#&gt; Nb_Comp_4  54.35053    -1.3548061  0.0975 -0.7893630 14.17137  6.972542
-#&gt; Nb_Comp_5  55.99834    -4.4766268  0.0975 -1.3257230 16.21620  6.898523
-#&gt; Nb_Comp_6  57.69592   -12.5243519  0.0975 -1.4694675 17.03568  6.835594
-#&gt; Nb_Comp_7  59.37953   -34.6710608  0.0975 -1.6375431 18.02917  6.770369
-#&gt; Nb_Comp_8  61.21213  -102.6774097  0.0975 -1.9064852 19.67798  6.736112
-#&gt; Nb_Comp_9  63.18426  -403.9544265  0.0975 -2.9059080 26.31063  6.730426
-#&gt; Nb_Comp_10 65.15982 -1566.4076536  0.0975 -2.8705779 26.05064  6.725443
+#&gt; Nb_Comp_1  63.61896     0.2524957  0.0975  0.2524957 15.54820 11.074659
+#&gt; Nb_Comp_2  58.47638    -0.4059117  0.0975 -0.8808077 20.82930  8.919303
+#&gt; Nb_Comp_3  56.55421    -2.3701532  0.0975 -1.3971300 21.38073  7.919786
+#&gt; Nb_Comp_4  54.35053    -7.1380325  0.0975 -1.4147367 19.12420  6.972542
+#&gt; Nb_Comp_5  55.99834   -21.3317065  0.0975 -1.7441162 19.13346  6.898523
+#&gt; Nb_Comp_6  57.69592   -61.8227477  0.0975 -1.8131638 19.40668  6.835594
+#&gt; Nb_Comp_7  59.37953  -195.6320969  0.0975 -2.1299506 21.39507  6.770369
+#&gt; Nb_Comp_8  61.21213  -569.3861000  0.0975 -1.9007782 19.63934  6.736112
+#&gt; Nb_Comp_9  63.18426 -1659.4082959  0.0975 -1.9110252 19.60899  6.730426
+#&gt; Nb_Comp_10 65.15982 -4903.9188404  0.0975 -1.9540438 19.88197  6.725443
 #&gt;                 R2_Y  AIC.std   DoF.dof sigmahat.dof   AIC.dof   BIC.dof
 #&gt; Nb_Comp_0         NA 96.63448  1.000000    0.8062287 0.6697018 0.6991787
 #&gt; Nb_Comp_1  0.4675684 77.83455  3.176360    0.5994089 0.4047616 0.4565153
@@ -246,18 +283,18 @@
 #&gt; [1] 10
 #&gt; 
 #&gt; [[2]]
-#&gt;                 AIC      Q2cum_Y LimQ2_Y       Q2_Y  PRESS_Y     RSS_Y
-#&gt; Nb_Comp_0  82.41888           NA      NA         NA       NA 20.800152
-#&gt; Nb_Comp_1  63.61896    0.3785200  0.0975  0.3785200 12.92688 11.074659
-#&gt; Nb_Comp_2  58.47638    0.1220639  0.0975 -0.4126538 15.64466  8.919303
-#&gt; Nb_Comp_3  56.55421   -0.7206650  0.0975 -0.9598978 17.48092  7.919786
-#&gt; Nb_Comp_4  54.35053   -2.3915322  0.0975 -0.9710589 15.61036  6.972542
-#&gt; Nb_Comp_5  55.99834   -6.1233545  0.0975 -1.1003352 14.64468  6.898523
-#&gt; Nb_Comp_6  57.69592  -14.6877305  0.0975 -1.2022953 15.19259  6.835594
-#&gt; Nb_Comp_7  59.37953  -33.6696044  0.0975 -1.2099821 15.10654  6.770369
-#&gt; Nb_Comp_8  61.21213  -87.1141173  0.0975 -1.5415380 17.20715  6.736112
-#&gt; Nb_Comp_9  63.18426 -238.6745951  0.0975 -1.7200476 18.32255  6.730426
-#&gt; Nb_Comp_10 65.15982 -655.1503006  0.0975 -1.7376715 18.42570  6.725443
+#&gt;                 AIC       Q2cum_Y LimQ2_Y       Q2_Y  PRESS_Y     RSS_Y
+#&gt; Nb_Comp_0  82.41888            NA      NA         NA       NA 20.800152
+#&gt; Nb_Comp_1  63.61896    0.30583260  0.0975  0.3058326 14.43879 11.074659
+#&gt; Nb_Comp_2  58.47638   -0.04771339  0.0975 -0.5093094 16.71509  8.919303
+#&gt; Nb_Comp_3  56.55421   -1.08065939  0.0975 -0.9859051 17.71289  7.919786
+#&gt; Nb_Comp_4  54.35053   -3.45410702  0.0975 -1.1407190 16.95404  6.972542
+#&gt; Nb_Comp_5  55.99834   -9.58877040  0.0975 -1.3773049 16.57586  6.898523
+#&gt; Nb_Comp_6  57.69592  -23.56419460  0.0975 -1.3198345 16.00343  6.835594
+#&gt; Nb_Comp_7  59.37953  -57.04052789  0.0975 -1.3628101 16.15121  6.770369
+#&gt; Nb_Comp_8  61.21213 -145.81509386  0.0975 -1.5295272 17.12583  6.736112
+#&gt; Nb_Comp_9  63.18426 -375.06970076  0.0975 -1.5615193 17.25468  6.730426
+#&gt; Nb_Comp_10 65.15982 -968.97005847  0.0975 -1.5792295 17.35931  6.725443
 #&gt;                 R2_Y  AIC.std   DoF.dof sigmahat.dof   AIC.dof   BIC.dof
 #&gt; Nb_Comp_0         NA 96.63448  1.000000    0.8062287 0.6697018 0.6991787
 #&gt; Nb_Comp_1  0.4675684 77.83455  3.176360    0.5994089 0.4047616 0.4565153
@@ -286,18 +323,18 @@
 #&gt; [1] 10
 #&gt; 
 #&gt; [[3]]
-#&gt;                 AIC       Q2cum_Y LimQ2_Y       Q2_Y  PRESS_Y     RSS_Y
-#&gt; Nb_Comp_0  82.41888            NA      NA         NA       NA 20.800152
-#&gt; Nb_Comp_1  63.61896     0.3334595  0.0975  0.3334595 13.86414 11.074659
-#&gt; Nb_Comp_2  58.47638     0.1741522  0.0975 -0.2390062 13.72157  8.919303
-#&gt; Nb_Comp_3  56.55421    -0.5819818  0.0975 -0.9155852 17.08569  7.919786
-#&gt; Nb_Comp_4  54.35053    -2.4150262  0.0975 -1.1587013 17.09645  6.972542
-#&gt; Nb_Comp_5  55.99834    -7.8669928  0.0975 -1.5964640 18.10395  6.898523
-#&gt; Nb_Comp_6  57.69592   -22.8627880  0.0975 -1.6911929 18.56526  6.835594
-#&gt; Nb_Comp_7  59.37953   -62.4972444  0.0975 -1.6609315 18.18905  6.770369
-#&gt; Nb_Comp_8  61.21213  -173.1156818  0.0975 -1.7420982 18.56502  6.736112
-#&gt; Nb_Comp_9  63.18426  -474.9278497  0.0975 -1.7334003 18.41249  6.730426
-#&gt; Nb_Comp_10 65.15982 -1321.4542586  0.0975 -1.7786864 18.70174  6.725443
+#&gt;                 AIC      Q2cum_Y LimQ2_Y       Q2_Y  PRESS_Y     RSS_Y
+#&gt; Nb_Comp_0  82.41888           NA      NA         NA       NA 20.800152
+#&gt; Nb_Comp_1  63.61896    0.2836758  0.0975  0.2836758 14.89965 11.074659
+#&gt; Nb_Comp_2  58.47638    0.1687602  0.0975 -0.1604241 12.85130  8.919303
+#&gt; Nb_Comp_3  56.55421   -0.1115724  0.0975 -0.3372464 11.92731  7.919786
+#&gt; Nb_Comp_4  54.35053   -0.9543054  0.0975 -0.7581450 13.92413  6.972542
+#&gt; Nb_Comp_5  55.99834   -2.8509953  0.0975 -0.9705187 13.73952  6.898523
+#&gt; Nb_Comp_6  57.69592   -6.5680846  0.0975 -0.9652282 13.55717  6.835594
+#&gt; Nb_Comp_7  59.37953  -14.3119269  0.0975 -1.0232235 13.82993  6.770369
+#&gt; Nb_Comp_8  61.21213  -30.2195942  0.0975 -1.0389069 13.80415  6.736112
+#&gt; Nb_Comp_9  63.18426  -65.5737652  0.0975 -1.1324353 14.36432  6.730426
+#&gt; Nb_Comp_10 65.15982 -145.6150317  0.0975 -1.2022944 14.82238  6.725443
 #&gt;                 R2_Y  AIC.std   DoF.dof sigmahat.dof   AIC.dof   BIC.dof
 #&gt; Nb_Comp_0         NA 96.63448  1.000000    0.8062287 0.6697018 0.6991787
 #&gt; Nb_Comp_1  0.4675684 77.83455  3.176360    0.5994089 0.4047616 0.4565153
@@ -326,57 +363,58 @@
 #&gt; [1] 10
 #&gt; 
 #&gt; attr(,"class")
-#&gt; [1] "summary.cv.plsRmodel"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>pineNAX21</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='no'>x11</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>pineNAX21</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>3</span>,
-<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>),<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [[1]]
-#&gt;                AIC      Q2cum_Y LimQ2_Y       Q2_Y  PRESS_Y     RSS_Y      R2_Y
-#&gt; Nb_Comp_0 82.41888           NA      NA         NA       NA 20.800152        NA
-#&gt; Nb_Comp_1 63.69250    0.3683553  0.0975  0.3683553 13.13830 11.099368 0.4663804
-#&gt; Nb_Comp_2 58.35228    0.1079989  0.0975 -0.4121882 15.67440  8.885823 0.5728001
-#&gt; Nb_Comp_3 56.36553   -0.6527359  0.0975 -0.8528406 16.46401  7.874634 0.6214146
-#&gt; Nb_Comp_4 54.02416   -2.1772273  0.0975 -0.9224047 15.13823  6.903925 0.6680830
-#&gt; Nb_Comp_5 55.80450   -6.9077142  0.0975 -1.4888727 17.18299  6.858120 0.6702851
-#&gt; Nb_Comp_6 57.45753  -16.9266752  0.0975 -1.2669857 15.54726  6.786392 0.6737336
-#&gt; Nb_Comp_7 58.73951  -37.1511506  0.0975 -1.1281777 14.44265  6.640327 0.6807558
-#&gt; Nb_Comp_8 60.61227  -94.8860766  0.0975 -1.5133207 16.68927  6.614773 0.6819844
-#&gt; Nb_Comp_9 62.25948 -277.1402136  0.0975 -1.9007362 19.18771  6.544432 0.6853661
-#&gt;            AIC.std DoF.dof sigmahat.dof AIC.dof BIC.dof GMDL.dof DoF.naive
-#&gt; Nb_Comp_0 96.63448      NA           NA      NA      NA       NA         1
-#&gt; Nb_Comp_1 77.90810      NA           NA      NA      NA       NA         2
-#&gt; Nb_Comp_2 72.56787      NA           NA      NA      NA       NA         3
-#&gt; Nb_Comp_3 70.58113      NA           NA      NA      NA       NA         4
-#&gt; Nb_Comp_4 68.23976      NA           NA      NA      NA       NA         5
-#&gt; Nb_Comp_5 70.02009      NA           NA      NA      NA       NA         6
-#&gt; Nb_Comp_6 71.67313      NA           NA      NA      NA       NA         7
-#&gt; Nb_Comp_7 72.95511      NA           NA      NA      NA       NA         8
-#&gt; Nb_Comp_8 74.82787      NA           NA      NA      NA       NA         9
-#&gt; Nb_Comp_9 76.47507      NA           NA      NA      NA       NA        10
-#&gt;           sigmahat.naive AIC.naive BIC.naive GMDL.naive
-#&gt; Nb_Comp_0      0.8062287 0.6697018 0.6991787  -3.605128
-#&gt; Nb_Comp_1      0.5983679 0.3797438 0.4122175 -11.413749
-#&gt; Nb_Comp_2      0.5442372 0.3231208 0.3634169 -12.847656
-#&gt; Nb_Comp_3      0.5210941 0.3044529 0.3537087 -12.776843
-#&gt; Nb_Comp_4      0.4965569 0.2839276 0.3398355 -12.891035
-#&gt; Nb_Comp_5      0.5039885 0.3001871 0.3692997 -11.349498
-#&gt; Nb_Comp_6      0.5108963 0.3163819 0.3992388  -9.922119
-#&gt; Nb_Comp_7      0.5153766 0.3300041 0.4263658  -8.696873
-#&gt; Nb_Comp_8      0.5249910 0.3507834 0.4632727  -7.337679
-#&gt; Nb_Comp_9      0.5334234 0.3707649 0.4998004  -6.033403
+#&gt; [1] "summary.cv.plsRmodel"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>pineNAX21</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span><span class='va'>x11</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>pineNAX21</span>,nt<span class='op'>=</span><span class='fl'>10</span>,NK<span class='op'>=</span><span class='fl'>3</span>,
+verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
+#&gt;                AIC       Q2cum_Y LimQ2_Y       Q2_Y  PRESS_Y     RSS_Y
+#&gt; Nb_Comp_0 82.41888            NA      NA         NA       NA 20.800152
+#&gt; Nb_Comp_1 63.69250    0.34379557  0.0975  0.3437956 13.64915 11.099368
+#&gt; Nb_Comp_2 58.35228    0.24147514  0.0975 -0.1559277 12.83007  8.885823
+#&gt; Nb_Comp_3 56.36553   -0.07844383  0.0975 -0.4217647 12.63355  7.874634
+#&gt; Nb_Comp_4 54.02416   -0.81709069  0.0975 -0.6849192 13.26812  6.903925
+#&gt; Nb_Comp_5 55.80450   -3.84079157  0.0975 -1.6640341 18.39229  6.858120
+#&gt; Nb_Comp_6 57.45753  -12.56989896  0.0975 -1.8032397 19.22495  6.786392
+#&gt; Nb_Comp_7 58.73951  -54.58483571  0.0975 -3.0961864 27.79832  6.640327
+#&gt; Nb_Comp_8 60.61227 -130.32236880  0.0975 -1.3625575 15.68815  6.614773
+#&gt; Nb_Comp_9 62.25948 -462.81358782  0.0975 -2.5318704 23.36252  6.544432
+#&gt;                R2_Y  AIC.std DoF.dof sigmahat.dof AIC.dof BIC.dof GMDL.dof
+#&gt; Nb_Comp_0        NA 96.63448      NA           NA      NA      NA       NA
+#&gt; Nb_Comp_1 0.4663804 77.90810      NA           NA      NA      NA       NA
+#&gt; Nb_Comp_2 0.5728001 72.56787      NA           NA      NA      NA       NA
+#&gt; Nb_Comp_3 0.6214146 70.58113      NA           NA      NA      NA       NA
+#&gt; Nb_Comp_4 0.6680830 68.23976      NA           NA      NA      NA       NA
+#&gt; Nb_Comp_5 0.6702851 70.02009      NA           NA      NA      NA       NA
+#&gt; Nb_Comp_6 0.6737336 71.67313      NA           NA      NA      NA       NA
+#&gt; Nb_Comp_7 0.6807558 72.95511      NA           NA      NA      NA       NA
+#&gt; Nb_Comp_8 0.6819844 74.82787      NA           NA      NA      NA       NA
+#&gt; Nb_Comp_9 0.6853661 76.47507      NA           NA      NA      NA       NA
+#&gt;           DoF.naive sigmahat.naive AIC.naive BIC.naive GMDL.naive
+#&gt; Nb_Comp_0         1      0.8062287 0.6697018 0.6991787  -3.605128
+#&gt; Nb_Comp_1         2      0.5983679 0.3797438 0.4122175 -11.413749
+#&gt; Nb_Comp_2         3      0.5442372 0.3231208 0.3634169 -12.847656
+#&gt; Nb_Comp_3         4      0.5210941 0.3044529 0.3537087 -12.776843
+#&gt; Nb_Comp_4         5      0.4965569 0.2839276 0.3398355 -12.891035
+#&gt; Nb_Comp_5         6      0.5039885 0.3001871 0.3692997 -11.349498
+#&gt; Nb_Comp_6         7      0.5108963 0.3163819 0.3992388  -9.922119
+#&gt; Nb_Comp_7         8      0.5153766 0.3300041 0.4263658  -8.696873
+#&gt; Nb_Comp_8         9      0.5249910 0.3507834 0.4632727  -7.337679
+#&gt; Nb_Comp_9        10      0.5334234 0.3707649 0.4998004  -6.033403
 #&gt; attr(,"computed_nt")
 #&gt; [1] 9
 #&gt; 
 #&gt; [[2]]
-#&gt;                AIC       Q2cum_Y LimQ2_Y       Q2_Y  PRESS_Y     RSS_Y
-#&gt; Nb_Comp_0 82.41888            NA      NA         NA       NA 20.800152
-#&gt; Nb_Comp_1 63.69250  3.220016e-01  0.0975  0.3220016 14.10247 11.099368
-#&gt; Nb_Comp_2 58.35228  6.405947e-02  0.0975 -0.3804465 15.32208  8.885823
-#&gt; Nb_Comp_3 56.36553 -1.113752e+00  0.0975 -1.2584252 20.06797  7.874634
-#&gt; Nb_Comp_4 54.02416 -3.457788e+00  0.0975 -1.1089460 16.60718  6.903925
-#&gt; Nb_Comp_5 55.80450 -1.068425e+01  0.0975 -1.6210875 18.09579  6.858120
-#&gt; Nb_Comp_6 57.45753 -3.734563e+01  0.0975 -2.2818210 22.50712  6.786392
-#&gt; Nb_Comp_7 58.73951 -1.275108e+02  0.0975 -2.3513818 22.74379  6.640327
-#&gt; Nb_Comp_8 60.61227 -4.912283e+02  0.0975 -2.8302473 25.43409  6.614773
-#&gt; Nb_Comp_9 62.25948 -2.206764e+03  0.0975 -3.4852436 29.66887  6.544432
+#&gt;                AIC       Q2cum_Y LimQ2_Y         Q2_Y   PRESS_Y     RSS_Y
+#&gt; Nb_Comp_0 82.41888            NA      NA           NA        NA 20.800152
+#&gt; Nb_Comp_1 63.69250  3.463809e-01  0.0975    0.3463809  13.59538 11.099368
+#&gt; Nb_Comp_2 58.35228  8.500069e-02  0.0975   -0.3998968  15.53797  8.885823
+#&gt; Nb_Comp_3 56.36553 -9.976388e-01  0.0975   -1.1832134  19.39965  7.874634
+#&gt; Nb_Comp_4 54.02416 -1.848667e+00  0.0975   -0.4260169  11.22936  6.903925
+#&gt; Nb_Comp_5 55.80450 -4.105698e+00  0.0975   -0.7923116  12.37398  6.858120
+#&gt; Nb_Comp_6 57.45753 -8.243631e+00  0.0975   -0.8104539  12.41631  6.786392
+#&gt; Nb_Comp_7 58.73951 -3.229306e+01  0.0975   -2.6017292  24.44274  6.640327
+#&gt; Nb_Comp_8 60.61227 -3.483847e+03  0.0975 -103.6718915 695.05559  6.614773
+#&gt; Nb_Comp_9 62.25948 -3.673683e+05  0.0975 -104.4190450 697.32303  6.544432
 #&gt;                R2_Y  AIC.std DoF.dof sigmahat.dof AIC.dof BIC.dof GMDL.dof
 #&gt; Nb_Comp_0        NA 96.63448      NA           NA      NA      NA       NA
 #&gt; Nb_Comp_1 0.4663804 77.90810      NA           NA      NA      NA       NA
@@ -405,15 +443,15 @@
 #&gt; [[3]]
 #&gt;                AIC       Q2cum_Y LimQ2_Y       Q2_Y  PRESS_Y     RSS_Y
 #&gt; Nb_Comp_0 82.41888            NA      NA         NA       NA 20.800152
-#&gt; Nb_Comp_1 63.69250  2.884891e-01  0.0975  0.2884891 14.79953 11.099368
-#&gt; Nb_Comp_2 58.35228  4.236248e-03  0.0975 -0.3995061 15.53363  8.885823
-#&gt; Nb_Comp_3 56.36553 -8.954496e-01  0.0975 -0.9035134 16.91428  7.874634
-#&gt; Nb_Comp_4 54.02416 -3.284001e+00  0.0975 -1.2601503 17.79786  6.903925
-#&gt; Nb_Comp_5 55.80450 -1.061425e+01  0.0975 -1.7110748 18.71706  6.858120
-#&gt; Nb_Comp_6 57.45753 -3.227259e+01  0.0975 -1.8648080 19.64720  6.786392
-#&gt; Nb_Comp_7 58.73951 -8.475017e+01  0.0975 -1.5772018 17.48990  6.640327
-#&gt; Nb_Comp_8 60.61227 -2.180818e+02  0.0975 -1.5548843 16.96527  6.614773
-#&gt; Nb_Comp_9 62.25948 -5.832137e+02  0.0975 -1.6666468 17.63926  6.544432
+#&gt; Nb_Comp_1 63.69250  3.837847e-01  0.0975  0.3837847 12.81737 11.099368
+#&gt; Nb_Comp_2 58.35228  7.359297e-02  0.0975 -0.5033821 16.68659  8.885823
+#&gt; Nb_Comp_3 56.36553 -8.262912e-01  0.0975 -0.9713702 17.51725  7.874634
+#&gt; Nb_Comp_4 54.02416 -2.952771e+00  0.0975 -1.1643705 17.04362  6.903925
+#&gt; Nb_Comp_5 55.80450 -1.333758e+01  0.0975 -2.6272237 25.04208  6.858120
+#&gt; Nb_Comp_6 57.45753 -7.056600e+01  0.0975 -3.9914969 34.23229  6.786392
+#&gt; Nb_Comp_7 58.73951 -1.662936e+02  0.0975 -1.3376134 15.86396  6.640327
+#&gt; Nb_Comp_8 60.61227 -3.809729e+02  0.0975 -1.2832479 15.16151  6.614773
+#&gt; Nb_Comp_9 62.25948 -1.038634e+03  0.0975 -1.7217480 18.00374  6.544432
 #&gt;                R2_Y  AIC.std DoF.dof sigmahat.dof AIC.dof BIC.dof GMDL.dof
 #&gt; Nb_Comp_0        NA 96.63448      NA           NA      NA      NA       NA
 #&gt; Nb_Comp_1 0.4663804 77.90810      NA           NA      NA      NA       NA
@@ -442,85 +480,34 @@
 #&gt; attr(,"class")
 #&gt; [1] "summary.cv.plsRmodel"</div><div class='input'>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>aze_compl</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span>(<span class='no'>y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>aze_compl</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>10</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>8</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>3</span>,
-<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>),<span class='kw'>MClassed</span><span class='kw'>=</span><span class='fl'>TRUE</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [[1]]
-#&gt;                 AIC MissClassed CV_MissClassed      Q2cum_Y LimQ2_Y       Q2_Y
-#&gt; Nb_Comp_0  154.6179          49             NA           NA      NA         NA
-#&gt; Nb_Comp_1  126.4083          27             45   -0.1285235  0.0975 -0.1285235
-#&gt; Nb_Comp_2  119.3375          25             44   -0.7308226  0.0975 -0.5337053
-#&gt; Nb_Comp_3  114.2313          27             41   -2.0779348  0.0975 -0.7783075
-#&gt; Nb_Comp_4  112.3463          23             46   -5.2967753  0.0975 -1.0457793
-#&gt; Nb_Comp_5  113.2362          22             45  -12.5021849  0.0975 -1.1443015
-#&gt; Nb_Comp_6  114.7620          21             45  -28.7556843  0.0975 -1.2037681
-#&gt; Nb_Comp_7  116.5264          20             44  -64.8964771  0.0975 -1.2145845
-#&gt; Nb_Comp_8  118.4601          20             45 -146.4878939  0.0975 -1.2381757
-#&gt; Nb_Comp_9  120.4452          19             45 -331.2780670  0.0975 -1.2529176
-#&gt; Nb_Comp_10 122.4395          19             46 -751.6321438  0.0975 -1.2650672
-#&gt;             PRESS_Y    RSS_Y      R2_Y  AIC.std  DoF.dof sigmahat.dof   AIC.dof
-#&gt; Nb_Comp_0        NA 25.91346        NA 298.1344  1.00000    0.5015845 0.2540061
-#&gt; Nb_Comp_1  29.24395 19.38086 0.2520929 269.9248 22.55372    0.4848429 0.2883114
-#&gt; Nb_Comp_2  29.72453 17.76209 0.3145613 262.8540 27.31542    0.4781670 0.2908950
-#&gt; Nb_Comp_3  31.58646 16.58896 0.3598323 257.7478 30.52370    0.4719550 0.2902572
-#&gt; Nb_Comp_4  33.93735 15.98071 0.3833049 255.8628 34.00000    0.4744263 0.3008285
-#&gt; Nb_Comp_5  34.26745 15.81104 0.3898523 256.7527 34.00000    0.4719012 0.2976347
-#&gt; Nb_Comp_6  34.84387 15.73910 0.3926285 258.2785 34.00000    0.4708264 0.2962804
-#&gt; Nb_Comp_7  34.85557 15.70350 0.3940024 260.0429 33.71066    0.4693382 0.2937976
-#&gt; Nb_Comp_8  35.14718 15.69348 0.3943888 261.9766 34.00000    0.4701436 0.2954217
-#&gt; Nb_Comp_9  35.35612 15.69123 0.3944758 263.9617 33.87284    0.4696894 0.2945815
-#&gt; Nb_Comp_10 35.54169 15.69037 0.3945088 265.9560 34.00000    0.4700970 0.2953632
-#&gt;              BIC.dof  GMDL.dof DoF.naive sigmahat.naive AIC.naive BIC.naive
-#&gt; Nb_Comp_0  0.2604032 -67.17645         1      0.5015845 0.2540061 0.2604032
-#&gt; Nb_Comp_1  0.4231184 -53.56607         2      0.4358996 0.1936625 0.2033251
-#&gt; Nb_Comp_2  0.4496983 -52.42272         3      0.4193593 0.1809352 0.1943501
-#&gt; Nb_Comp_3  0.4631316 -51.93343         4      0.4072955 0.1722700 0.1891422
-#&gt; Nb_Comp_4  0.4954133 -50.37079         5      0.4017727 0.1691819 0.1897041
-#&gt; Nb_Comp_5  0.4901536 -50.65724         6      0.4016679 0.1706451 0.1952588
-#&gt; Nb_Comp_6  0.4879234 -50.78005         7      0.4028135 0.1731800 0.2020601
-#&gt; Nb_Comp_7  0.4826103 -51.05525         8      0.4044479 0.1761610 0.2094352
-#&gt; Nb_Comp_8  0.4865092 -50.85833         9      0.4064413 0.1794902 0.2172936
-#&gt; Nb_Comp_9  0.4845867 -50.95616        10      0.4085682 0.1829787 0.2254232
-#&gt; Nb_Comp_10 0.4864128 -50.86368        11      0.4107477 0.1865584 0.2337468
-#&gt;            GMDL.naive
-#&gt; Nb_Comp_0   -67.17645
-#&gt; Nb_Comp_1   -79.67755
-#&gt; Nb_Comp_2   -81.93501
-#&gt; Nb_Comp_3   -83.31503
-#&gt; Nb_Comp_4   -83.23369
-#&gt; Nb_Comp_5   -81.93513
-#&gt; Nb_Comp_6   -80.42345
-#&gt; Nb_Comp_7   -78.87607
-#&gt; Nb_Comp_8   -77.31942
-#&gt; Nb_Comp_9   -75.80069
-#&gt; Nb_Comp_10  -74.33325
-#&gt; attr(,"computed_nt")
-#&gt; [1] 10
-#&gt; 
-#&gt; [[2]]
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>aze_compl</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='cv.plsR.html'>cv.plsR</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>aze_compl</span>,nt<span class='op'>=</span><span class='fl'>10</span>,K<span class='op'>=</span><span class='fl'>8</span>,NK<span class='op'>=</span><span class='fl'>3</span>,
+verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>,MClassed<span class='op'>=</span><span class='cn'>TRUE</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt;                 AIC MissClassed CV_MissClassed       Q2cum_Y LimQ2_Y
 #&gt; Nb_Comp_0  154.6179          49             NA            NA      NA
-#&gt; Nb_Comp_1  126.4083          27             44   -0.08103491  0.0975
-#&gt; Nb_Comp_2  119.3375          25             42   -0.54455526  0.0975
-#&gt; Nb_Comp_3  114.2313          27             43   -1.62495695  0.0975
-#&gt; Nb_Comp_4  112.3463          23             45   -4.19366808  0.0975
-#&gt; Nb_Comp_5  113.2362          22             45   -9.89561807  0.0975
-#&gt; Nb_Comp_6  114.7620          21             45  -22.31431378  0.0975
-#&gt; Nb_Comp_7  116.5264          20             47  -49.46336691  0.0975
-#&gt; Nb_Comp_8  118.4601          20             48 -109.38592158  0.0975
-#&gt; Nb_Comp_9  120.4452          19             47 -240.91286847  0.0975
-#&gt; Nb_Comp_10 122.4395          19             47 -529.51122639  0.0975
+#&gt; Nb_Comp_1  126.4083          27             45   -0.09807511  0.0975
+#&gt; Nb_Comp_2  119.3375          25             53   -0.69629366  0.0975
+#&gt; Nb_Comp_3  114.2313          27             46   -2.15584036  0.0975
+#&gt; Nb_Comp_4  112.3463          23             43   -5.66282796  0.0975
+#&gt; Nb_Comp_5  113.2362          22             41  -13.76390693  0.0975
+#&gt; Nb_Comp_6  114.7620          21             39  -32.24434771  0.0975
+#&gt; Nb_Comp_7  116.5264          20             39  -74.36539708  0.0975
+#&gt; Nb_Comp_8  118.4601          20             41 -170.43829999  0.0975
+#&gt; Nb_Comp_9  120.4452          19             41 -388.61593231  0.0975
+#&gt; Nb_Comp_10 122.4395          19             41 -884.58342556  0.0975
 #&gt;                   Q2_Y  PRESS_Y    RSS_Y      R2_Y  AIC.std  DoF.dof
 #&gt; Nb_Comp_0           NA       NA 25.91346        NA 298.1344  1.00000
-#&gt; Nb_Comp_1  -0.08103491 28.01336 19.38086 0.2520929 269.9248 22.55372
-#&gt; Nb_Comp_2  -0.42877463 27.69088 17.76209 0.3145613 262.8540 27.31542
-#&gt; Nb_Comp_3  -0.69949048 30.18650 16.58896 0.3598323 257.7478 30.52370
-#&gt; Nb_Comp_4  -0.97857267 32.82247 15.98071 0.3833049 255.8628 34.00000
-#&gt; Nb_Comp_5  -1.09786569 33.52537 15.81104 0.3898523 256.7527 34.00000
-#&gt; Nb_Comp_6  -1.13978809 33.83227 15.73910 0.3926285 258.2785 34.00000
-#&gt; Nb_Comp_7  -1.16448004 34.06697 15.70350 0.3940024 260.0429 33.71066
-#&gt; Nb_Comp_8  -1.18744662 34.35056 15.69348 0.3943888 261.9766 34.00000
-#&gt; Nb_Comp_9  -1.19151922 34.39257 15.69123 0.3944758 263.9617 33.87284
-#&gt; Nb_Comp_10 -1.19298473 34.41063 15.69037 0.3945088 265.9560 34.00000
+#&gt; Nb_Comp_1  -0.09807511 28.45493 19.38086 0.2520929 269.9248 22.55372
+#&gt; Nb_Comp_2  -0.54478837 29.93933 17.76209 0.3145613 262.8540 27.31542
+#&gt; Nb_Comp_3  -0.86043280 33.04517 16.58896 0.3598323 257.7478 30.52370
+#&gt; Nb_Comp_4  -1.11126901 35.02376 15.98071 0.3833049 255.8628 34.00000
+#&gt; Nb_Comp_5  -1.21586194 35.41104 15.81104 0.3898523 256.7527 34.00000
+#&gt; Nb_Comp_6  -1.25173105 35.60221 15.73910 0.3926285 258.2785 34.00000
+#&gt; Nb_Comp_7  -1.26701386 35.68076 15.70350 0.3940024 260.0429 33.71066
+#&gt; Nb_Comp_8  -1.27476145 35.72171 15.69348 0.3943888 261.9766 34.00000
+#&gt; Nb_Comp_9  -1.27263063 35.66549 15.69123 0.3944758 263.9617 33.87284
+#&gt; Nb_Comp_10 -1.27296512 35.66562 15.69037 0.3945088 265.9560 34.00000
 #&gt;            sigmahat.dof   AIC.dof   BIC.dof  GMDL.dof DoF.naive sigmahat.naive
 #&gt; Nb_Comp_0     0.5015845 0.2540061 0.2604032 -67.17645         1      0.5015845
 #&gt; Nb_Comp_1     0.4848429 0.2883114 0.4231184 -53.56607         2      0.4358996
@@ -548,31 +535,83 @@
 #&gt; attr(,"computed_nt")
 #&gt; [1] 10
 #&gt; 
+#&gt; [[2]]
+#&gt;                 AIC MissClassed CV_MissClassed       Q2cum_Y LimQ2_Y       Q2_Y
+#&gt; Nb_Comp_0  154.6179          49             NA            NA      NA         NA
+#&gt; Nb_Comp_1  126.4083          27             46    -0.1665311  0.0975 -0.1665311
+#&gt; Nb_Comp_2  119.3375          25             53    -0.8447623  0.0975 -0.5814085
+#&gt; Nb_Comp_3  114.2313          27             46    -2.4669664  0.0975 -0.8793567
+#&gt; Nb_Comp_4  112.3463          23             48    -6.7118845  0.0975 -1.2243898
+#&gt; Nb_Comp_5  113.2362          22             47   -16.9681124  0.0975 -1.3299250
+#&gt; Nb_Comp_6  114.7620          21             46   -42.2260383  0.0975 -1.4057084
+#&gt; Nb_Comp_7  116.5264          20             46  -104.7676681  0.0975 -1.4468508
+#&gt; Nb_Comp_8  118.4601          20             48  -259.3463269  0.0975 -1.4614925
+#&gt; Nb_Comp_9  120.4452          19             49  -641.1264847  0.0975 -1.4664319
+#&gt; Nb_Comp_10 122.4395          19             49 -1580.3337088  0.0975 -1.4626514
+#&gt;             PRESS_Y    RSS_Y      R2_Y  AIC.std  DoF.dof sigmahat.dof   AIC.dof
+#&gt; Nb_Comp_0        NA 25.91346        NA 298.1344  1.00000    0.5015845 0.2540061
+#&gt; Nb_Comp_1  30.22886 19.38086 0.2520929 269.9248 22.55372    0.4848429 0.2883114
+#&gt; Nb_Comp_2  30.64906 17.76209 0.3145613 262.8540 27.31542    0.4781670 0.2908950
+#&gt; Nb_Comp_3  33.38130 16.58896 0.3598323 257.7478 30.52370    0.4719550 0.2902572
+#&gt; Nb_Comp_4  36.90032 15.98071 0.3833049 255.8628 34.00000    0.4744263 0.3008285
+#&gt; Nb_Comp_5  37.23384 15.81104 0.3898523 256.7527 34.00000    0.4719012 0.2976347
+#&gt; Nb_Comp_6  38.03675 15.73910 0.3926285 258.2785 34.00000    0.4708264 0.2962804
+#&gt; Nb_Comp_7  38.51123 15.70350 0.3940024 260.0429 33.71066    0.4693382 0.2937976
+#&gt; Nb_Comp_8  38.65404 15.69348 0.3943888 261.9766 34.00000    0.4701436 0.2954217
+#&gt; Nb_Comp_9  38.70690 15.69123 0.3944758 263.9617 33.87284    0.4696894 0.2945815
+#&gt; Nb_Comp_10 38.64203 15.69037 0.3945088 265.9560 34.00000    0.4700970 0.2953632
+#&gt;              BIC.dof  GMDL.dof DoF.naive sigmahat.naive AIC.naive BIC.naive
+#&gt; Nb_Comp_0  0.2604032 -67.17645         1      0.5015845 0.2540061 0.2604032
+#&gt; Nb_Comp_1  0.4231184 -53.56607         2      0.4358996 0.1936625 0.2033251
+#&gt; Nb_Comp_2  0.4496983 -52.42272         3      0.4193593 0.1809352 0.1943501
+#&gt; Nb_Comp_3  0.4631316 -51.93343         4      0.4072955 0.1722700 0.1891422
+#&gt; Nb_Comp_4  0.4954133 -50.37079         5      0.4017727 0.1691819 0.1897041
+#&gt; Nb_Comp_5  0.4901536 -50.65724         6      0.4016679 0.1706451 0.1952588
+#&gt; Nb_Comp_6  0.4879234 -50.78005         7      0.4028135 0.1731800 0.2020601
+#&gt; Nb_Comp_7  0.4826103 -51.05525         8      0.4044479 0.1761610 0.2094352
+#&gt; Nb_Comp_8  0.4865092 -50.85833         9      0.4064413 0.1794902 0.2172936
+#&gt; Nb_Comp_9  0.4845867 -50.95616        10      0.4085682 0.1829787 0.2254232
+#&gt; Nb_Comp_10 0.4864128 -50.86368        11      0.4107477 0.1865584 0.2337468
+#&gt;            GMDL.naive
+#&gt; Nb_Comp_0   -67.17645
+#&gt; Nb_Comp_1   -79.67755
+#&gt; Nb_Comp_2   -81.93501
+#&gt; Nb_Comp_3   -83.31503
+#&gt; Nb_Comp_4   -83.23369
+#&gt; Nb_Comp_5   -81.93513
+#&gt; Nb_Comp_6   -80.42345
+#&gt; Nb_Comp_7   -78.87607
+#&gt; Nb_Comp_8   -77.31942
+#&gt; Nb_Comp_9   -75.80069
+#&gt; Nb_Comp_10  -74.33325
+#&gt; attr(,"computed_nt")
+#&gt; [1] 10
+#&gt; 
 #&gt; [[3]]
 #&gt;                 AIC MissClassed CV_MissClassed       Q2cum_Y LimQ2_Y       Q2_Y
 #&gt; Nb_Comp_0  154.6179          49             NA            NA      NA         NA
-#&gt; Nb_Comp_1  126.4083          27             42    -0.1441651  0.0975 -0.1441651
-#&gt; Nb_Comp_2  119.3375          25             43    -0.7334836  0.0975 -0.5150642
-#&gt; Nb_Comp_3  114.2313          27             47    -2.1922101  0.0975 -0.8415000
-#&gt; Nb_Comp_4  112.3463          23             49    -5.8233499  0.0975 -1.1375002
-#&gt; Nb_Comp_5  113.2362          22             48   -14.7739883  0.0975 -1.3117660
-#&gt; Nb_Comp_6  114.7620          21             50   -37.2667116  0.0975 -1.4259376
-#&gt; Nb_Comp_7  116.5264          20             48   -92.7653510  0.0975 -1.4503112
-#&gt; Nb_Comp_8  118.4601          20             49  -230.0101804  0.0975 -1.4637052
-#&gt; Nb_Comp_9  120.4452          19             49  -569.9483592  0.0975 -1.4715290
-#&gt; Nb_Comp_10 122.4395          19             49 -1410.4961895  0.0975 -1.4721959
+#&gt; Nb_Comp_1  126.4083          27             51    -0.1958246  0.0975 -0.1958246
+#&gt; Nb_Comp_2  119.3375          25             51    -0.8933818  0.0975 -0.5833274
+#&gt; Nb_Comp_3  114.2313          27             48    -2.7197247  0.0975 -0.9645930
+#&gt; Nb_Comp_4  112.3463          23             49    -7.6463722  0.0975 -1.3244657
+#&gt; Nb_Comp_5  113.2362          22             48   -20.8559807  0.0975 -1.5277631
+#&gt; Nb_Comp_6  114.7620          21             50   -55.7688361  0.0975 -1.5974051
+#&gt; Nb_Comp_7  116.5264          20             49  -147.3906228  0.0975 -1.6139451
+#&gt; Nb_Comp_8  118.4601          20             51  -390.2551359  0.0975 -1.6366567
+#&gt; Nb_Comp_9  120.4452          19             51 -1033.0680149  0.0975 -1.6429506
+#&gt; Nb_Comp_10 122.4395          19             51 -2736.1990844  0.0975 -1.6470204
 #&gt;             PRESS_Y    RSS_Y      R2_Y  AIC.std  DoF.dof sigmahat.dof   AIC.dof
 #&gt; Nb_Comp_0        NA 25.91346        NA 298.1344  1.00000    0.5015845 0.2540061
-#&gt; Nb_Comp_1  29.64928 19.38086 0.2520929 269.9248 22.55372    0.4848429 0.2883114
-#&gt; Nb_Comp_2  29.36325 17.76209 0.3145613 262.8540 27.31542    0.4781670 0.2908950
-#&gt; Nb_Comp_3  32.70889 16.58896 0.3598323 257.7478 30.52370    0.4719550 0.2902572
-#&gt; Nb_Comp_4  35.45891 15.98071 0.3833049 255.8628 34.00000    0.4744263 0.3008285
-#&gt; Nb_Comp_5  36.94365 15.81104 0.3898523 256.7527 34.00000    0.4719012 0.2976347
-#&gt; Nb_Comp_6  38.35660 15.73910 0.3926285 258.2785 34.00000    0.4708264 0.2962804
-#&gt; Nb_Comp_7  38.56569 15.70350 0.3940024 260.0429 33.71066    0.4693382 0.2937976
-#&gt; Nb_Comp_8  38.68878 15.69348 0.3943888 261.9766 34.00000    0.4701436 0.2954217
-#&gt; Nb_Comp_9  38.78690 15.69123 0.3944758 263.9617 33.87284    0.4696894 0.2945815
-#&gt; Nb_Comp_10 38.79179 15.69037 0.3945088 265.9560 34.00000    0.4700970 0.2953632
+#&gt; Nb_Comp_1  30.98795 19.38086 0.2520929 269.9248 22.55372    0.4848429 0.2883114
+#&gt; Nb_Comp_2  30.68625 17.76209 0.3145613 262.8540 27.31542    0.4781670 0.2908950
+#&gt; Nb_Comp_3  34.89527 16.58896 0.3598323 257.7478 30.52370    0.4719550 0.2902572
+#&gt; Nb_Comp_4  38.56047 15.98071 0.3833049 255.8628 34.00000    0.4744263 0.3008285
+#&gt; Nb_Comp_5  40.39544 15.81104 0.3898523 256.7527 34.00000    0.4719012 0.2976347
+#&gt; Nb_Comp_6  41.06768 15.73910 0.3926285 258.2785 34.00000    0.4708264 0.2962804
+#&gt; Nb_Comp_7  41.14114 15.70350 0.3940024 260.0429 33.71066    0.4693382 0.2937976
+#&gt; Nb_Comp_8  41.40473 15.69348 0.3943888 261.9766 34.00000    0.4701436 0.2954217
+#&gt; Nb_Comp_9  41.47710 15.69123 0.3944758 263.9617 33.87284    0.4696894 0.2945815
+#&gt; Nb_Comp_10 41.53500 15.69037 0.3945088 265.9560 34.00000    0.4700970 0.2953632
 #&gt;              BIC.dof  GMDL.dof DoF.naive sigmahat.naive AIC.naive BIC.naive
 #&gt; Nb_Comp_0  0.2604032 -67.17645         1      0.5015845 0.2540061 0.2604032
 #&gt; Nb_Comp_1  0.4231184 -53.56607         2      0.4358996 0.1936625 0.2033251
@@ -601,32 +640,17 @@
 #&gt; [1] 10
 #&gt; 
 #&gt; attr(,"class")
-#&gt; [1] "summary.cv.plsRmodel"</div></pre>
+#&gt; [1] "summary.cv.plsRmodel"</div><div class='input'><span class='co'># }</span>
+
+</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#references">References</a></li>
-
-      <li><a href="#note">Note</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Frederic Bertrand<br />
-<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
-<a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -634,13 +658,16 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
