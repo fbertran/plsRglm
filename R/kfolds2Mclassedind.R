@@ -1,3 +1,44 @@
+#' Number of missclassified individuals per group for k-fold cross validated
+#' partial least squares regression models.
+#' 
+#' This function indicates the number of missclassified individuals per group
+#' for k-fold cross validated partial least squares regression models.
+#' 
+#' 
+#' @param pls_kfolds a k-fold cross validated partial least squares regression
+#' model used on binary data
+#' @return \item{list}{Number of missclassified individuals per group vs number
+#' of components for the first group partition} \item{list()}{\dots{}}
+#' \item{list}{Number of missclassified individuals per group vs number of
+#' components for the last group partition}
+#' @note Use \code{\link{cv.plsR}} or \code{\link{cv.plsRglm}} to create k-fold
+#' cross validated partial least squares regression models or generalized
+#' linear ones.
+#' @author Frédéric Bertrand\cr
+#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \url{https://fbertran.github.io/homepage/}
+#' @seealso \code{\link{kfolds2coeff}}, \code{\link{kfolds2Press}},
+#' \code{\link{kfolds2Pressind}} and \code{\link{kfolds2Mclassed}} to extract
+#' and transforms results from k-fold cross-validation.
+#' @references Nicolas Meyer, Myriam Maumy-Bertrand et
+#' Frédéric Bertrand (2010). Comparing the linear and the
+#' logistic PLS regression with qualitative predictors: application to
+#' allelotyping data. \emph{Journal de la Societe Francaise de Statistique},
+#' 151(2), pages 1-18.
+#' \url{http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47}
+#' @keywords models regression
+#' @examples
+#' 
+#' \donttest{
+#' data(aze_compl)
+#' Xaze_compl<-aze_compl[,2:34]
+#' yaze_compl<-aze_compl$y
+#' kfolds2Mclassedind(cv.plsR(dataY=yaze_compl,dataX=Xaze_compl,nt=10,K=8,NK=1,verbose=FALSE))
+#' kfolds2Mclassedind(cv.plsR(dataY=yaze_compl,dataX=Xaze_compl,nt=10,K=8,NK=2,verbose=FALSE))
+#' rm(list=c("Xaze_compl","yaze_compl"))
+#' }
+#' 
+#' @export kfolds2Mclassedind
 kfolds2Mclassedind <- function(pls_kfolds) {
   if(is.null(pls_kfolds$call$modele)){pls_kfolds$call$modele<-"pls"}
 

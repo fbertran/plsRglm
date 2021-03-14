@@ -1,3 +1,5 @@
+#' @rdname cv.plsRglm
+#' @export
 cv.plsRglmmodel.default <- function(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights, method, verbose=TRUE)
   {
   mf <- match.call(expand.dots = FALSE)

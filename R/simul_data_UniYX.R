@@ -1,3 +1,57 @@
+#' Data generating function for univariate plsR models
+#' 
+#' This function generates a single univariate response value \eqn{Y} and a
+#' vector of explanatory variables \eqn{(X_1,\ldots,X_{totdim})} drawn from a
+#' model with a given number of latent components.
+#' 
+#' This function should be combined with the replicate function to give rise to
+#' a larger dataset. The algorithm used is a port of the one described in the
+#' article of Li which is a multivariate generalization of the algorithm of
+#' Naes and Martens.
+#' 
+#' @param totdim Number of columns of the X vector (from \code{ncomp} to
+#' hardware limits)
+#' @param ncomp Number of latent components in the model (from 2 to 6)
+#' @return \item{vector}{\eqn{(Y,X_1,\ldots,X_{totdim})}}
+#' @author Frédéric Bertrand\cr
+#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \url{https://fbertran.github.io/homepage/}
+#' @seealso \code{\link{simul_data_YX}} and \code{\link{simul_data_complete}}
+#' for generating multivariate data
+#' @references T. Naes, H. Martens, Comparison of prediction methods for
+#' multicollinear data, Commun. Stat., Simul. 14 (1985) 545-576.\cr
+#' %\url{http://dx.doi.org/10.1080/03610918508812458}\cr Baibing Li, Julian
+#' Morris, Elaine B. Martin, Model selection for partial least squares
+#' regression, Chemometrics and Intelligent Laboratory Systems 64 (2002)
+#' 79-89, \doi{10.1016/S0169-7439(02)00051-5}.
+#' @keywords datagen utilities
+#' @examples
+#' 
+#' simul_data_UniYX(20,6)                          
+#' 
+#' \donttest{
+#' dimX <- 6
+#' Astar <- 2
+#' simul_data_UniYX(dimX,Astar)
+#' (dataAstar2 <- data.frame(t(replicate(50,simul_data_UniYX(dimX,Astar)))))
+#' cvtable(summary(cv.plsR(Y~.,data=dataAstar2,5,NK=100, verbose=FALSE)))
+#' 
+#' dimX <- 6
+#' Astar <- 3
+#' simul_data_UniYX(dimX,Astar)
+#' (dataAstar3 <- data.frame(t(replicate(50,simul_data_UniYX(dimX,Astar)))))
+#' cvtable(summary(cv.plsR(Y~.,data=dataAstar3,5,NK=100, verbose=FALSE)))
+#' 
+#' dimX <- 6
+#' Astar <- 4
+#' simul_data_UniYX(dimX,Astar)
+#' (dataAstar4 <- data.frame(t(replicate(50,simul_data_UniYX(dimX,Astar)))))
+#' cvtable(summary(cv.plsR(Y~.,data=dataAstar4,5,NK=100, verbose=FALSE)))
+#' 
+#' rm(list=c("dimX","Astar","dataAstar2","dataAstar3","dataAstar4"))
+#' }
+#' 
+#' @export simul_data_UniYX
 simul_data_UniYX <- function(totdim,ncomp) {
 dimok <- FALSE
 varsR <- c(10,8,6,4,2,1/2) 

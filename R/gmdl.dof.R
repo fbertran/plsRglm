@@ -1,3 +1,6 @@
+#' @rdname aic.dof
+#' @aliases gmdl.dof
+#' @export gmdl.dof
 gmdl.dof <- function (sigmahat, n, DoF, yhat) 
 {
     SS <- sigmahat^2

@@ -1,3 +1,80 @@
+#' Light version of PLS\_lm for cross validation purposes
+#' 
+#' Light version of \code{PLS_lm} for cross validation purposes either on
+#' complete or incomplete datasets.
+#' 
+#' This function is called by \code{\link{PLS_lm_kfoldcv}} in order to perform
+#' cross-validation either on complete or incomplete datasets.
+#' 
+#' Non-NULL weights can be used to indicate that different observations have
+#' different dispersions (with the values in weights being inversely
+#' proportional to the dispersions); or equivalently, when the elements of
+#' weights are positive integers w_i, that each response y_i is the mean of w_i
+#' unit-weight observations.
+#' 
+#' @param dataY response (training) dataset
+#' @param dataX predictor(s) (training) dataset
+#' @param nt number of components to be extracted
+#' @param dataPredictY predictor(s) (testing) dataset
+#' @param modele name of the PLS model to be fitted, only (\code{"pls"}
+#' available for this fonction.
+#' @param scaleX scale the predictor(s) : must be set to TRUE for
+#' \code{modele="pls"} and should be for glms pls.
+#' @param scaleY scale the response : Yes/No. Ignored since non always possible
+#' for glm responses.
+#' @param keepcoeffs whether the coefficients of unstandardized eXplanatory
+#' variables should be returned or not.
+#' @param keepstd.coeffs whether the coefficients of standardized eXplanatory
+#' variables should be returned or not.
+#' @param tol_Xi minimal value for Norm2(Xi) and \eqn{\mathrm{det}(pp' \times
+#' pp)}{det(pp'*pp)} if there is any missing value in the \code{dataX}. It
+#' defaults to \eqn{10^{-12}}{10^{-12}}
+#' @param weights an optional vector of 'prior weights' to be used in the
+#' fitting process. Should be \code{NULL} or a numeric vector.
+#' @param verbose should info messages be displayed ?
+#' @return \item{valsPredict}{\code{nrow(dataPredictY) * nt} matrix of the
+#' predicted values} \item{list("coeffs")}{ If the coefficients of the
+#' eXplanatory variables were requested:\cr i.e. \code{keepcoeffs=TRUE}.\cr
+#' \code{ncol(dataX) * 1} matrix of the coefficients of the the eXplanatory
+#' variables}
+#' @note Use \code{\link{PLS_lm_kfoldcv}} for a wrapper in view of
+#' cross-validation.
+#' @author Frédéric Bertrand\cr
+#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \url{https://fbertran.github.io/homepage/}
+#' @seealso \code{\link{PLS_lm}} for more detailed results,
+#' \code{\link{PLS_lm_kfoldcv}} for cross-validating models and
+#' \code{\link{PLS_glm_wvc}} for the same function dedicated to plsRglm models
+#' @references Nicolas Meyer, Myriam Maumy-Bertrand et
+#' Frédéric Bertrand (2010). Comparing the linear and the
+#' logistic PLS regression with qualitative predictors: application to
+#' allelotyping data. \emph{Journal de la Societe Francaise de Statistique},
+#' 151(2), pages 1-18.
+#' \url{http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47}
+#' @keywords models regression
+#' @examples
+#' 
+#' data(Cornell)
+#' XCornell<-Cornell[,1:7]
+#' yCornell<-Cornell[,8]
+#' PLS_lm_wvc(dataY=yCornell,dataX=XCornell,nt=3,dataPredictY=XCornell[1,])
+#' PLS_lm_wvc(dataY=yCornell[-c(1,2)],dataX=XCornell[-c(1,2),],nt=3,dataPredictY=XCornell[c(1,2),],
+#' verbose=FALSE)
+#' PLS_lm_wvc(dataY=yCornell[-c(1,2)],dataX=XCornell[-c(1,2),],nt=3,dataPredictY=XCornell[c(1,2),],
+#' keepcoeffs=TRUE, verbose=FALSE)
+#' rm("XCornell","yCornell")
+#' 
+#' ## With an incomplete dataset (X[1,2] is NA)
+#' data(pine)
+#' ypine <- pine[,11]
+#' data(XpineNAX21)
+#' PLS_lm_wvc(dataY=ypine[-1],dataX=XpineNAX21[-1,],nt=3, verbose=FALSE)
+#' PLS_lm_wvc(dataY=ypine[-1],dataX=XpineNAX21[-1,],nt=3,dataPredictY=XpineNAX21[1,], verbose=FALSE)
+#' PLS_lm_wvc(dataY=ypine[-2],dataX=XpineNAX21[-2,],nt=3,dataPredictY=XpineNAX21[2,], verbose=FALSE)
+#' PLS_lm_wvc(dataY=ypine,dataX=XpineNAX21,nt=3, verbose=FALSE)
+#' rm("ypine")
+#' 
+#' @export PLS_lm_wvc
 PLS_lm_wvc <- function(dataY,dataX,nt=2,dataPredictY=dataX,modele="pls",scaleX=TRUE,scaleY=NULL,keepcoeffs=FALSE,keepstd.coeffs=FALSE,tol_Xi=10^(-12),weights,verbose=TRUE) {
 
 

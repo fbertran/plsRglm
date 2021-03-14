@@ -1,7 +1,21 @@
-.Rproj.user
+# History files
+.Rhistory
+.Rapp.history
+# Session Data files
+.RData
+# User-specific files
+.Ruserdata
+# Example code in package build process
+*-Ex.R
+# Output files from R CMD build
+/*.tar.gz
+# Output files from R CMD check
+/*.Rcheck/
+# RStudio files
+.Rproj.user/
 .Rproj.user/*
 .Rhistory
-.RData
+
 .DS_Store
-*.pper
-.Rproj.user/AF86C25B/pcs/windowlayoutstate.pper
+doc
+Meta

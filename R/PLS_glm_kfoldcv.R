@@ -1,3 +1,7 @@
+#' @rdname cv.plsRglm
+#' @aliases cv.plsRglm
+#' @export PLS_glm_kfoldcv
+
 PLS_glm_kfoldcv <- function(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights, method, verbose=TRUE) {
 
     if(missing(weights)){NoWeights=TRUE} else {if(all(weights==rep(1,length(dataY)))){NoWeights=TRUE} else {NoWeights=FALSE}}
