@@ -8,7 +8,7 @@ bootplsglm(
   object,
   typeboot = "fmodel_np",
   R = 250,
-  statistic = coefs.plsRglmnp,
+  statistic = NULL,
   sim = "ordinary",
   stype = "i",
   stabvalue = 1e+06,
@@ -88,6 +88,20 @@ confints.bootpls(aze_compl.bootYT)
 plots.confints.bootpls(confints.bootpls(aze_compl.bootYT))
 
 \donttest{
+# (Y,X) PLS bootstrap
+aze_compl.bootYX <- bootplsglm(modplsglm, R=250, verbose=FALSE, 
+typeboot = "plsmodel")
+boxplots.bootpls(aze_compl.bootYX)
+confints.bootpls(aze_compl.bootYX)
+plots.confints.bootpls(confints.bootpls(aze_compl.bootYX))
+
+# (Y,X) PLS bootstrap raw coefficients
+aze_compl.bootYX.raw <- bootplsglm(modplsglm, R=250, verbose=FALSE, 
+typeboot = "plsmodel", statistic=coefs.plsRglm.raw)
+boxplots.bootpls(aze_compl.bootYX.raw)
+confints.bootpls(aze_compl.bootYX.raw)
+plots.confints.bootpls(confints.bootpls(aze_compl.bootYX.raw))
+
 plot(aze_compl.bootYT,index=2)
 jack.after.boot(aze_compl.bootYT, index=2, useJ=TRUE, nt=3)
 plot(aze_compl.bootYT, index=2,jack=TRUE)

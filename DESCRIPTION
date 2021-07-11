@@ -1,6 +1,6 @@
 Package: plsRglm
-Version: 1.3.0
-Date: 2021-03-14
+Version: 1.4.0
+Date: 2021-07-11
 Depends: R (>= 2.10)
 Imports: mvtnorm, boot, bipartite, car, MASS
 Enhances: pls

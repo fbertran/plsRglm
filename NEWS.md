@@ -1,3 +1,7 @@
+# plsRglm 1.4.0
+
+* Added functions for raw bootstrap. Added feature to support custom bootstrap function. 
+
 # plsRglm 1.3.0
 
 * Github actions and Roxygen most of the package.

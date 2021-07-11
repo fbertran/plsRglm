@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Incomplete dataset from the pine caterpillars example — pineNAX21 • plsRglm</title>
+<title>Raw coefficients for bootstrap computations of PLSGLR models — coefs.plsRglm.raw • plsRglm</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,13 +46,8 @@
 
 
 
-<meta property="og:title" content="Incomplete dataset from the pine caterpillars example — pineNAX21" />
-<meta property="og:description" content="The caterpillar dataset was extracted from a 1973 study on pine
-processionary caterpillars. It assesses the influence of some forest
-settlement characteristics on the development of caterpillar colonies. There
-are k=10 potentially explanatory variables defined on n=33 areas. The
-value of x2 for the first observation was removed from the matrix of
-predictors on purpose." />
+<meta property="og:title" content="Raw coefficients for bootstrap computations of PLSGLR models — coefs.plsRglm.raw" />
+<meta property="og:description" content="A function passed to boot to perform bootstrap." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -127,69 +122,88 @@ predictors on purpose." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Incomplete dataset from the pine caterpillars example</h1>
-    <small class="dont-index">Source: <a href='https://github.com/fbertran/plsRglm/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
-    <div class="hidden name"><code>pineNAX21.Rd</code></div>
+    <h1>Raw coefficients for bootstrap computations of PLSGLR models</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fbertran/plsRglm/blob/master/R/coefs.plsRglm.raw.R'><code>R/coefs.plsRglm.raw.R</code></a></small>
+    <div class="hidden name"><code>coefs.plsRglm.raw.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The caterpillar dataset was extracted from a 1973 study on pine
-processionary caterpillars. It assesses the influence of some forest
-settlement characteristics on the development of caterpillar colonies. There
-are k=10 potentially explanatory variables defined on n=33 areas.<br /> The
-value of x2 for the first observation was removed from the matrix of
-predictors on purpose.</p>
+    <p>A function passed to <code>boot</code> to perform bootstrap.</p>
     </div>
 
+    <pre class="usage"><span class='fu'>coefs.plsRglm.raw</span><span class='op'>(</span>
+  <span class='va'>dataset</span>,
+  <span class='va'>ind</span>,
+  <span class='va'>nt</span>,
+  <span class='va'>modele</span>,
+  family <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>maxcoefvalues</span>,
+  <span class='va'>ifbootfail</span>,
+  <span class='va'>verbose</span>
+<span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>dataset</th>
+      <td><p>dataset to resample</p></td>
+    </tr>
+    <tr>
+      <th>ind</th>
+      <td><p>indices for resampling</p></td>
+    </tr>
+    <tr>
+      <th>nt</th>
+      <td><p>number of components to use</p></td>
+    </tr>
+    <tr>
+      <th>modele</th>
+      <td><p>type of modele to use, see <a href='plsRglm.html'>plsRglm</a></p></td>
+    </tr>
+    <tr>
+      <th>family</th>
+      <td><p>glm family to use, see <a href='plsRglm.html'>plsRglm</a></p></td>
+    </tr>
+    <tr>
+      <th>maxcoefvalues</th>
+      <td><p>maximum values allowed for the estimates of the
+coefficients to discard those coming from singular bootstrap samples</p></td>
+    </tr>
+    <tr>
+      <th>ifbootfail</th>
+      <td><p>value to return if the estimation fails on a bootstrap
+sample</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>should info messages be displayed ?</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame with 33 observations on the following 11 variables and
-one missing value.</p><dl>
-<dt>x1</dt><dd><p>altitude (in meters)</p></dd>
-<dt>x2</dt><dd><p>slope (en degrees)</p></dd> <dt>x3</dt><dd><p>number of pines in
-the area</p></dd> <dt>x4</dt><dd><p>height (in meters) of the tree sampled at the
-center of the area</p></dd> <dt>x5</dt><dd><p>diameter (in meters) of the tree
-sampled at the center of the area</p></dd> <dt>x6</dt><dd><p>index of the settlement
-density</p></dd> <dt>x7</dt><dd><p>orientation of the area (from 1 if southbound to
-2 otherwise)</p></dd> <dt>x8</dt><dd><p>height (in meters) of the dominant tree</p></dd>
-<dt>x9</dt><dd><p>number of vegetation strata</p></dd> <dt>x10</dt><dd><p>mix
-settlement index (from 1 if not mixed to 2 if mixed)</p></dd>
-<dt>x11</dt><dd><p>logarithmic transform of the average number of nests of
-caterpillars per tree</p></dd> 
-</dl>
+    <p>estimates on a bootstrap sample or <code>ifbootfail</code> value if the
+bootstrap computation fails.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+    <div class='dont-index'><p>See also <code><a href='bootplsglm.html'>bootplsglm</a></code>.</p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>Tomassone R., Audrain S., Lesquoy-de Turckeim E., Millier C. (1992).
-&#8220;La régression, nouveaux regards sur une ancienne
-méthode statistique&#8221;, INRA,
-<em>Actualités Scientifiques et Agronomiques</em>, Masson,
-Paris.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>These caterpillars got their names from their habit of moving over the
-ground in incredibly long head-to-tail processions when leaving their nest
-to create a new colony.<br /> The <code>pineNAX21</code> is a dataset with a missing
-value for testing purpose.</p>
+    <p>Frédéric Bertrand<br />
+<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
+<a href='https://fbertran.github.io/homepage/'>https://fbertran.github.io/homepage/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>pineNAX21</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>pineNAX21</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 'data.frame':	33 obs. of  11 variables:
-#&gt;  $ x1 : int  1200 1342 1231 1254 1357 1250 1422 1309 1127 1075 ...
-#&gt;  $ x2 : int  NA 28 28 28 32 27 37 46 24 34 ...
-#&gt;  $ x3 : int  1 8 5 18 7 1 22 7 2 9 ...
-#&gt;  $ x4 : num  4 4.4 2.4 3 3.7 4.4 3 5.7 3.5 4.3 ...
-#&gt;  $ x5 : num  14.8 18 7.8 9.2 10.7 14.8 8.1 19.6 12.6 12 ...
-#&gt;  $ x6 : num  1 1.5 1.3 2.3 1.4 1 2.7 1.5 1 1.6 ...
-#&gt;  $ x7 : num  1.1 1.5 1.6 1.7 1.7 1.7 1.9 1.3 1.7 1.8 ...
-#&gt;  $ x8 : num  5.9 6.4 4.3 6.9 6.6 5.8 8.3 7.8 4.9 6.8 ...
-#&gt;  $ x9 : num  1.4 1.7 1.5 2.3 1.8 1.3 2.5 1.8 1.5 2 ...
-#&gt;  $ x10: num  1.4 1.7 1.4 1.6 1.3 1.4 2 1.6 2 2 ...
-#&gt;  $ x11: num  2.37 1.47 1.13 0.85 0.24 1.49 0.3 0.07 3 1.21 ...</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>
+
+<span class='co'># (Y,X) bootstrap of a PLSGLR model</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>250</span><span class='op'>)</span>
+<span class='va'>modplsglm</span> <span class='op'>&lt;-</span> <span class='fu'>coefs.plsRglm.raw</span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='op'>-</span><span class='fl'>8</span><span class='op'>]</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>,nt<span class='op'>=</span><span class='fl'>3</span>,
+modele<span class='op'>=</span><span class='st'>"pls-glm-family"</span>,family<span class='op'>=</span><span class='va'>gaussian</span>,maxcoefvalues<span class='op'>=</span><span class='fl'>1e5</span>,
+ifbootfail<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>3</span><span class='op'>)</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

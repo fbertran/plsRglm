@@ -70,6 +70,20 @@
 #' plots.confints.bootpls(confints.bootpls(aze_compl.bootYT))
 #' 
 #' \donttest{
+#' # (Y,X) PLS bootstrap
+#' aze_compl.bootYX <- bootplsglm(modplsglm, R=250, verbose=FALSE, 
+#' typeboot = "plsmodel")
+#' boxplots.bootpls(aze_compl.bootYX)
+#' confints.bootpls(aze_compl.bootYX)
+#' plots.confints.bootpls(confints.bootpls(aze_compl.bootYX))
+#' 
+#' # (Y,X) PLS bootstrap raw coefficients
+#' aze_compl.bootYX.raw <- bootplsglm(modplsglm, R=250, verbose=FALSE, 
+#' typeboot = "plsmodel", statistic=coefs.plsRglm.raw)
+#' boxplots.bootpls(aze_compl.bootYX.raw)
+#' confints.bootpls(aze_compl.bootYX.raw)
+#' plots.confints.bootpls(confints.bootpls(aze_compl.bootYX.raw))
+#' 
 #' plot(aze_compl.bootYT,index=2)
 #' jack.after.boot(aze_compl.bootYT, index=2, useJ=TRUE, nt=3)
 #' plot(aze_compl.bootYT, index=2,jack=TRUE)
@@ -147,7 +161,7 @@
 #' }
 #' 
 #' @export bootplsglm
-bootplsglm <- function(object, typeboot="fmodel_np", R=250, statistic=coefs.plsRglmnp, sim="ordinary", stype="i", stabvalue=1e6,verbose=TRUE,...){
+bootplsglm <- function(object, typeboot="fmodel_np", R=250, statistic=NULL, sim="ordinary", stype="i", stabvalue=1e6,verbose=TRUE,...){
 callplsRglm <- object$call
 maxcoefvalues <- stabvalue*abs(object$Coeffs)
 dataset <- cbind(y = object$dataY,object$dataX)
@@ -158,8 +172,8 @@ if(!is.null(callplsRglm$modele)){modele <- eval(callplsRglm$modele)} else {model
 if(!is.null(callplsRglm$family)){family <- eval(callplsRglm$family)} else {family <- NULL}
 
 if(typeboot=="plsmodel"){
-temp.bootplsRglm <- if(!(sim=="permutation")){boot(data=dataset, statistic=coefs.plsRglm, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose,...)} else {
-boot(data=dataset, statistic=permcoefs.plsRglm, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose)}
+temp.bootplsRglm <- if(!(sim=="permutation")){if(is.null(statistic)){statistic=coefs.plsRglm};boot(data=dataset, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose,...)} else {
+  if(is.null(statistic)){statistic=permcoefs.plsRglm};boot(data=dataset, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose)}
 indices.temp.bootplsRglm <- !is.na(temp.bootplsRglm$t[,1])
 temp.bootplsRglm$t=temp.bootplsRglm$t[indices.temp.bootplsRglm,]
 temp.bootplsRglm$R=sum(indices.temp.bootplsRglm)
@@ -170,8 +184,8 @@ return(temp.bootplsRglm)
 if(typeboot=="fmodel_np"){
 dataRepYtt <- cbind(y = object$RepY,object$tt)
 wwetoile <- object$wwetoile
-temp.bootplsRglm <- if(!(sim=="permutation")){boot(data=dataRepYtt, statistic=coefs.plsRglmnp, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues[-(1:(length(object$Coeffs)-ncol(object$dataX)))], wwetoile = wwetoile, ifbootfail=ifbootfail, ...)} else {
-boot(data=dataRepYtt, statistic=permcoefs.plsRglmnp, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues[-(1:(length(object$Coeffs)-ncol(object$dataX)))], wwetoile = wwetoile, ifbootfail=ifbootfail)}
+temp.bootplsRglm <- if(!(sim=="permutation")){if(is.null(statistic)){statistic=coefs.plsRglmnp};boot(data=dataRepYtt, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues[-(1:(length(object$Coeffs)-ncol(object$dataX)))], wwetoile = wwetoile, ifbootfail=ifbootfail, ...)} else {
+  if(is.null(statistic)){statistic=permcoefs.plsRglmnp};boot(data=dataRepYtt, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues[-(1:(length(object$Coeffs)-ncol(object$dataX)))], wwetoile = wwetoile, ifbootfail=ifbootfail)}
 indices.temp.bootplsRglm <- !is.na(temp.bootplsRglm$t[,1])
 temp.bootplsRglm$t=temp.bootplsRglm$t[indices.temp.bootplsRglm,]
 temp.bootplsRglm$R=sum(indices.temp.bootplsRglm)
@@ -180,8 +194,8 @@ return(temp.bootplsRglm)
 }
 
 if(typeboot=="fmodel_par"){
-temp.bootplsRglm <- if(!(sim=="permutation")){boot(data=dataset, statistic=coefs.plsRglm, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose,...)} else {
-boot(data=dataset, statistic=permcoefs.plsRglm, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose)}
+temp.bootplsRglm <- if(!(sim=="permutation")){if(is.null(statistic)){statistic=coefs.plsRglm};boot(data=dataset, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose,...)} else {
+  if(is.null(statistic)){statistic=permcoefs.plsRglm};boot(data=dataset, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose)}
 indices.temp.bootplsRglm <- !is.na(temp.bootplsRglm$t[,1])
 temp.bootplsRglm$t=temp.bootplsRglm$t[indices.temp.bootplsRglm,]
 temp.bootplsRglm$R=sum(indices.temp.bootplsRglm)
