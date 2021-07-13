@@ -152,8 +152,7 @@ ifbootfail <- as.matrix(as.numeric(rep(NA, ncol(dataset))))
 
 if(typeboot=="plsmodel"){
 temp.bootplsR <- if(!(sim=="permutation")){if(is.null(statistic)){statistic=coefs.plsR};boot(data=dataset, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, maxcoefvalues = maxcoefvalues, ifbootfail = ifbootfail, verbose=verbose, ...)} else {
-  if(is.null(statistic)){statistic=permcoefs.plsR};boot(data=dataset, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose)}
-boot(data=dataset, statistic=permcoefs.plsR, sim=sim, stype=stype, R=R, nt=nt, maxcoefvalues = maxcoefvalues, ifbootfail = ifbootfail, verbose=verbose)}
+  if(is.null(statistic)){statistic=permcoefs.plsR};boot(data=dataset, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, maxcoefvalues = maxcoefvalues, ifbootfail = ifbootfail, verbose=verbose)}
 indices.temp.bootplsR <- !is.na(temp.bootplsR$t[,1])
 temp.bootplsR$t=temp.bootplsR$t[indices.temp.bootplsR,]
 temp.bootplsR$R=sum(indices.temp.bootplsR)
