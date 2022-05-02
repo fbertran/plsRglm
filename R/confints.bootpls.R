@@ -15,7 +15,7 @@
 #' in that order: Normal Lower then Upper Limit, Basic Lower then Upper Limit,
 #' Percentile Lower then Upper Limit, BCa Lower then Upper Limit.
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso See also \code{\link{bootpls}} and \code{\link{bootplsglm}}.
 #' @keywords regression models

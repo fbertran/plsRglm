@@ -19,7 +19,7 @@
 #' same as the length of \code{sigmahat}.
 #' @return \item{vector}{numerical values of the requested AIC, BIC or GMDL.}
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{plsR.dof}} for degrees of freedom computation and
 #' \code{\link{infcrit.dof}} for computing information criteria directly from a

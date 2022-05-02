@@ -40,7 +40,7 @@
 #' @note Use \code{\link{PLS_lm_kfoldcv}} for a wrapper in view of
 #' cross-validation.
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{PLS_lm}} for more detailed results,
 #' \code{\link{PLS_lm_kfoldcv}} for cross-validating models and

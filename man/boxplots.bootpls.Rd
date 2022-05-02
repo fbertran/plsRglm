@@ -87,7 +87,7 @@ boxplots.bootpls(aze_compl.boot3,indices=c(2,4,6),prednames=FALSE)
 }
 \author{
 Frédéric Bertrand\cr
-\email{frederic.bertrand@math.unistra.fr}\cr
+\email{frederic.bertrand@utt.fr}\cr
 \url{https://fbertran.github.io/homepage/}
 }
 \keyword{models}

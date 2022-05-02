@@ -14,7 +14,7 @@
 #' function.} \item{Coeffs}{Coefficients of the untransformed predictors (on
 #' their original scale).}
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{coef}}
 #' @keywords methods coef

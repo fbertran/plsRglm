@@ -42,7 +42,7 @@ de Statistique}, 151(2), pages 1-18.
 }
 \author{
 Frédéric Bertrand\cr
-\email{frederic.bertrand@math.unistra.fr}\cr
+\email{frederic.bertrand@utt.fr}\cr
 \url{https://fbertran.github.io/homepage/}
 }
 \keyword{methods}

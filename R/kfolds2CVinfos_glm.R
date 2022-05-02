@@ -16,7 +16,7 @@
 #' partition}
 #' @note Use \code{\link{summary}} and \code{\link{cv.plsRglm}} instead.
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{kfolds2coeff}}, \code{\link{kfolds2Pressind}},
 #' \code{\link{kfolds2Press}}, \code{\link{kfolds2Mclassedind}} and

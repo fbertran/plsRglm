@@ -12,7 +12,7 @@
 #' @param naive A boolean.
 #' @return \item{matrix}{AIC, BIC and gmdl values or \code{NULL}.}
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{plsR.dof}} for degrees of freedom computation and
 #' \code{\link{infcrit.dof}} for computing information criteria directly from a

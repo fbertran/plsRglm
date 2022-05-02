@@ -26,7 +26,7 @@
 #' values is returned.\cr When type is "\code{scores}", a score matrix is
 #' returned.
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @references Nicolas Meyer, Myriam Maumy-Bertrand et
 #' Frédéric Bertrand (2010). Comparing the linear and the

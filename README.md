@@ -103,7 +103,8 @@ cv.modpls<-cv.plsR(Y~.,data=Cornell,nt=6,K=6)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> ____Component____ 6 ____
+#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
+#> Warning only 5 components could thus be extracted
 #> ****________________________________________________****
 #> 
 #> 2 
@@ -114,8 +115,7 @@ cv.modpls<-cv.plsR(Y~.,data=Cornell,nt=6,K=6)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
-#> Warning only 5 components could thus be extracted
+#> ____Component____ 6 ____
 #> ****________________________________________________****
 #> 
 #> 3 
@@ -176,7 +176,6 @@ res.cv.modpls<-cvtable(summary(cv.modpls))
 #> ____Component____ 5 ____
 #> ____Component____ 6 ____
 #> ____Predicting X without NA neither in X nor in Y____
-#> Loading required namespace: plsdof
 #> ****________________________________________________****
 #> 
 #> 
@@ -363,18 +362,15 @@ res
 #> X6          5.5177190
 #> X7        -44.9000310
 #> Information criteria and Fit statistics:
-#>                AIC     RSS_Y     R2_Y R2_residY RSS_residY
-#> Nb_Comp_0 82.01205 467.79667       NA        NA 11.0000000
-#> Nb_Comp_1 53.15173  35.74249 0.923594  0.923594  0.8404663
-#>             AIC.std  DoF.dof sigmahat.dof   AIC.dof   BIC.dof
-#> Nb_Comp_0 37.010388 1.000000     6.521271 46.070884 47.789351
-#> Nb_Comp_1  8.150064 2.740749     1.866528  4.569969  4.955816
-#>           GMDL.dof DoF.naive sigmahat.naive AIC.naive BIC.naive
-#> Nb_Comp_0 27.59461         1       6.521271 46.070884  47.78935
-#> Nb_Comp_1 21.34020         2       1.890568  4.169957   4.45882
-#>           GMDL.naive
-#> Nb_Comp_0   27.59461
-#> Nb_Comp_1   18.37545
+#>                AIC     RSS_Y     R2_Y R2_residY RSS_residY   AIC.std
+#> Nb_Comp_0 82.01205 467.79667       NA        NA 11.0000000 37.010388
+#> Nb_Comp_1 53.15173  35.74249 0.923594  0.923594  0.8404663  8.150064
+#>            DoF.dof sigmahat.dof   AIC.dof   BIC.dof GMDL.dof
+#> Nb_Comp_0 1.000000     6.521271 46.070884 47.789351 27.59461
+#> Nb_Comp_1 2.740749     1.866528  4.569969  4.955816 21.34020
+#>           DoF.naive sigmahat.naive AIC.naive BIC.naive GMDL.naive
+#> Nb_Comp_0         1       6.521271 46.070884  47.78935   27.59461
+#> Nb_Comp_1         2       1.890568  4.169957   4.45882   18.37545
 ```
 
 It is also possible to obtain the matrix W∗ with the following command line:

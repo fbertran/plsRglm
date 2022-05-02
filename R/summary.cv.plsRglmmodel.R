@@ -10,7 +10,7 @@
 #' missing or \code{model="pls"}. Otherwise an object of class
 #' \code{"summary.cv.plsRglmmodel"}.
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{summary}}
 #' @references Nicolas Meyer, Myriam Maumy-Bertrand et

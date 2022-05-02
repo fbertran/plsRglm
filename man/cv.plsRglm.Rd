@@ -103,22 +103,22 @@ Non-NULL weights can be used to indicate that different observations have differ
 \value{An object of class \code{"cv.plsRglmmodel"}.\cr 
   \item{results_kfolds}{list of \code{NK}. Each element of the list sums up the results for a group division:
   \describe{
-    \item{}{list of \code{K} matrices of size about \code{nrow(dataX)/K * nt} with the predicted values for a growing number of components}
+    \item{list}{ of \code{K} matrices of size about \code{nrow(dataX)/K * nt} with the predicted values for a growing number of components}
     \item{\dots}{\dots}
-    \item{}{list of \code{K} matrices of size about \code{nrow(dataX)/K * nt} with the predicted values for a growing number of components}
+    \item{list}{ of \code{K} matrices of size about \code{nrow(dataX)/K * nt} with the predicted values for a growing number of components}
     }}
   \item{folds}{list of \code{NK}. Each element of the list sums up the informations for a group division:
   \describe{
-    \item{}{list of \code{K} vectors of length about \code{nrow(dataX)} with the numbers of the rows of \code{dataX} that were used as a training set}
+    \item{list}{ of \code{K} vectors of length about \code{nrow(dataX)} with the numbers of the rows of \code{dataX} that were used as a training set}
     \item{\dots}{\dots}
-    \item{}{list of \code{K} vectors of length about \code{nrow(dataX)} with the numbers of the rows of \code{dataX} that were used as a training set}
+    \item{list}{ of \code{K} vectors of length about \code{nrow(dataX)} with the numbers of the rows of \code{dataX} that were used as a training set}
     }
   }
   \item{dataY_kfolds}{list of \code{NK}. Each element of the list sums up the results for a group division:
   \describe{
-    \item{}{list of \code{K} matrices of size about \code{nrow(dataX)/K * 1} with the observed values of the response}
+    \item{list}{ of \code{K} matrices of size about \code{nrow(dataX)/K * 1} with the observed values of the response}
     \item{\dots}{\dots}
-    \item{}{list of \code{K} matrices of size about \code{nrow(dataX)/K * 1} with the observed values of the response}
+    \item{list}{ of \code{K} matrices of size about \code{nrow(dataX)/K * 1} with the observed values of the response}
     }
   }
   \item{call}{the call of the function}
@@ -127,8 +127,8 @@ Non-NULL weights can be used to indicate that different observations have differ
 Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. \emph{Journal de la Societe Francaise de Statistique}, 151(2), pages 1-18.
 }
 \author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
-\email{frederic.bertrand@math.unistra.fr}\cr
-\url{http://www-irma.u-strasbg.fr/~fbertran/}
+\email{frederic.bertrand@utt.fr}\cr
+\url{https://fbertran.github.io/homepage/}
 }
 \note{Work for complete and incomplete datasets.}
 \seealso{Summary method \code{summary.cv.plsRglmmodel}. \code{\link{kfolds2coeff}}, \code{\link{kfolds2Pressind}}, \code{\link{kfolds2Press}}, \code{\link{kfolds2Mclassedind}}, \code{\link{kfolds2Mclassed}} and \code{\link{summary}} to extract and transform results from k-fold cross validation.}

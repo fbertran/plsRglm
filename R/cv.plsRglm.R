@@ -214,26 +214,26 @@
 #' \code{cv.plsRglmmodel.formula}
 #' @return An object of class \code{"cv.plsRglmmodel"}.\cr
 #' \item{results_kfolds}{list of \code{NK}. Each element of the list sums up
-#' the results for a group division: \describe{ \item{}{list of \code{K}
+#' the results for a group division: \describe{ \item{list}{ of \code{K}
 #' matrices of size about \code{nrow(dataX)/K * nt} with the predicted values
-#' for a growing number of components} \item{list()}{\dots{}} \item{}{list of
+#' for a growing number of components} \item{list()}{\dots{}} \item{list}{ of
 #' \code{K} matrices of size about \code{nrow(dataX)/K * nt} with the predicted
 #' values for a growing number of components} }} \item{folds}{list of
 #' \code{NK}. Each element of the list sums up the informations for a group
-#' division: \describe{ \item{}{list of \code{K} vectors of length about
+#' division: \describe{ \item{list}{ of \code{K} vectors of length about
 #' \code{nrow(dataX)} with the numbers of the rows of \code{dataX} that were
-#' used as a training set} \item{list()}{\dots{}} \item{}{list of \code{K}
+#' used as a training set} \item{list()}{\dots{}} \item{list}{ of \code{K}
 #' vectors of length about \code{nrow(dataX)} with the numbers of the rows of
 #' \code{dataX} that were used as a training set} } } \item{dataY_kfolds}{list
 #' of \code{NK}. Each element of the list sums up the results for a group
-#' division: \describe{ \item{}{list of \code{K} matrices of size about
+#' division: \describe{ \item{list}{ of \code{K} matrices of size about
 #' \code{nrow(dataX)/K * 1} with the observed values of the response}
-#' \item{list()}{\dots{}} \item{}{list of \code{K} matrices of size about
+#' \item{list()}{\dots{}} \item{list}{ of \code{K} matrices of size about
 #' \code{nrow(dataX)/K * 1} with the observed values of the response} } }
 #' \item{call}{the call of the function}
 #' @note Work for complete and incomplete datasets.
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso Summary method \code{summary.cv.plsRglmmodel}.
 #' \code{\link{kfolds2coeff}}, \code{\link{kfolds2Pressind}},

@@ -154,8 +154,8 @@ Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2
 \url{http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47}
 }
 \author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
-\email{frederic.bertrand@math.unistra.fr}\cr
-\url{http://www-irma.u-strasbg.fr/~fbertran/}
+\email{frederic.bertrand@utt.fr}\cr
+\url{https://fbertran.github.io/homepage/}
 }
 \note{Use \code{\link{cv.plsR}} to cross-validate the plsRglm models and \code{\link{bootpls}} to bootstrap them.}
 \seealso{See also \code{\link{plsRglm}} to fit PLSGLR models.}

@@ -8,21 +8,36 @@
 
 <title>Partial least squares regression models with k-fold cross-validation — cv.plsR • plsRglm</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +45,11 @@
 
 
 
-<meta property="og:title" content="Partial least squares regression models with k-fold cross-validation — cv.plsR" />
 
+<meta property="og:title" content="Partial least squares regression models with k-fold cross-validation — cv.plsR" />
 <meta property="og:description" content="This function implements k-fold cross-validation on complete or incomplete datasets for partial least squares regression models" />
-<meta name="twitter:card" content="summary" />
+<meta property="og:image" content="/logo.png" />
+
 
 
 
@@ -47,12 +63,13 @@
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -63,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5.0</span>
       </span>
     </div>
 
@@ -71,9 +88,12 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fa fa-home"></span>
      
   </a>
+</li>
+<li>
+  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -82,11 +102,10 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/fbertran/plsRglm">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
@@ -97,6 +116,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -108,31 +128,29 @@
     </div>
 
     <div class="ref-description">
-    
     <p>This function implements k-fold cross-validation on complete or incomplete datasets for partial least squares regression models</p>
-    
     </div>
 
-    <pre class="usage">cv.plsR(x, &#8230;)
-# S3 method for default
-cv.plsRmodel(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", 
-K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, 
-scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, 
-keepMclassed=FALSE, tol_Xi=10^(-12), weights, verbose=TRUE)
-# S3 method for formula
-cv.plsRmodel(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls", 
-K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, 
-scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, 
-keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL, verbose=TRUE)
-PLS_lm_kfoldcv(dataY, dataX, nt = 2, limQ2set = 0.0975, modele = "pls", 
-K = 5, NK = 1, grouplist = NULL, random = TRUE, scaleX = TRUE, 
-scaleY = NULL, keepcoeffs = FALSE, keepfolds = FALSE, keepdataY = TRUE, 
-keepMclassed=FALSE, tol_Xi = 10^(-12), weights, verbose=TRUE)
-PLS_lm_kfoldcv_formula(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls", 
-K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, 
-scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, 
-keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL,verbose=TRUE)</pre>
-    
+    <pre class="usage"><span class='fu'>cv.plsR</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+<span class='co'># S3 method for default</span>
+<span class='fu'>cv.plsRmodel</span><span class='op'>(</span><span class='va'>dataY</span>,<span class='va'>dataX</span>,nt<span class='op'>=</span><span class='fl'>2</span>,limQ2set<span class='op'>=</span><span class='fl'>.0975</span>,modele<span class='op'>=</span><span class='st'>"pls"</span>, 
+K<span class='op'>=</span><span class='fl'>5</span>, NK<span class='op'>=</span><span class='fl'>1</span>, grouplist<span class='op'>=</span><span class='cn'>NULL</span>, random<span class='op'>=</span><span class='cn'>TRUE</span>, scaleX<span class='op'>=</span><span class='cn'>TRUE</span>, 
+scaleY<span class='op'>=</span><span class='cn'>NULL</span>, keepcoeffs<span class='op'>=</span><span class='cn'>FALSE</span>, keepfolds<span class='op'>=</span><span class='cn'>FALSE</span>, keepdataY<span class='op'>=</span><span class='cn'>TRUE</span>, 
+keepMclassed<span class='op'>=</span><span class='cn'>FALSE</span>, tol_Xi<span class='op'>=</span><span class='fl'>10</span><span class='op'>^</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>12</span><span class='op'>)</span>, <span class='va'>weights</span>, verbose<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='co'># S3 method for formula</span>
+<span class='fu'>cv.plsRmodel</span><span class='op'>(</span><span class='va'>formula</span>,data<span class='op'>=</span><span class='cn'>NULL</span>,nt<span class='op'>=</span><span class='fl'>2</span>,limQ2set<span class='op'>=</span><span class='fl'>.0975</span>,modele<span class='op'>=</span><span class='st'>"pls"</span>, 
+K<span class='op'>=</span><span class='fl'>5</span>, NK<span class='op'>=</span><span class='fl'>1</span>, grouplist<span class='op'>=</span><span class='cn'>NULL</span>, random<span class='op'>=</span><span class='cn'>TRUE</span>, scaleX<span class='op'>=</span><span class='cn'>TRUE</span>, 
+scaleY<span class='op'>=</span><span class='cn'>NULL</span>, keepcoeffs<span class='op'>=</span><span class='cn'>FALSE</span>, keepfolds<span class='op'>=</span><span class='cn'>FALSE</span>, keepdataY<span class='op'>=</span><span class='cn'>TRUE</span>, 
+keepMclassed<span class='op'>=</span><span class='cn'>FALSE</span>, tol_Xi<span class='op'>=</span><span class='fl'>10</span><span class='op'>^</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>12</span><span class='op'>)</span>, <span class='va'>weights</span>,<span class='va'>subset</span>,contrasts<span class='op'>=</span><span class='cn'>NULL</span>, verbose<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'>PLS_lm_kfoldcv</span><span class='op'>(</span><span class='va'>dataY</span>, <span class='va'>dataX</span>, nt <span class='op'>=</span> <span class='fl'>2</span>, limQ2set <span class='op'>=</span> <span class='fl'>0.0975</span>, modele <span class='op'>=</span> <span class='st'>"pls"</span>, 
+K <span class='op'>=</span> <span class='fl'>5</span>, NK <span class='op'>=</span> <span class='fl'>1</span>, grouplist <span class='op'>=</span> <span class='cn'>NULL</span>, random <span class='op'>=</span> <span class='cn'>TRUE</span>, scaleX <span class='op'>=</span> <span class='cn'>TRUE</span>, 
+scaleY <span class='op'>=</span> <span class='cn'>NULL</span>, keepcoeffs <span class='op'>=</span> <span class='cn'>FALSE</span>, keepfolds <span class='op'>=</span> <span class='cn'>FALSE</span>, keepdataY <span class='op'>=</span> <span class='cn'>TRUE</span>, 
+keepMclassed<span class='op'>=</span><span class='cn'>FALSE</span>, tol_Xi <span class='op'>=</span> <span class='fl'>10</span><span class='op'>^</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>12</span><span class='op'>)</span>, <span class='va'>weights</span>, verbose<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'>PLS_lm_kfoldcv_formula</span><span class='op'>(</span><span class='va'>formula</span>,data<span class='op'>=</span><span class='cn'>NULL</span>,nt<span class='op'>=</span><span class='fl'>2</span>,limQ2set<span class='op'>=</span><span class='fl'>.0975</span>,modele<span class='op'>=</span><span class='st'>"pls"</span>, 
+K<span class='op'>=</span><span class='fl'>5</span>, NK<span class='op'>=</span><span class='fl'>1</span>, grouplist<span class='op'>=</span><span class='cn'>NULL</span>, random<span class='op'>=</span><span class='cn'>TRUE</span>, scaleX<span class='op'>=</span><span class='cn'>TRUE</span>, 
+scaleY<span class='op'>=</span><span class='cn'>NULL</span>, keepcoeffs<span class='op'>=</span><span class='cn'>FALSE</span>, keepfolds<span class='op'>=</span><span class='cn'>FALSE</span>, keepdataY<span class='op'>=</span><span class='cn'>TRUE</span>, 
+keepMclassed<span class='op'>=</span><span class='cn'>FALSE</span>, tol_Xi<span class='op'>=</span><span class='fl'>10</span><span class='op'>^</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>12</span><span class='op'>)</span>, <span class='va'>weights</span>,<span class='va'>subset</span>,contrasts<span class='op'>=</span><span class='cn'>NULL</span>,verbose<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -150,11 +168,11 @@ keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL,verbose=TRUE)
     </tr>
     <tr>
       <th>formula</th>
-      <td><p>an object of class "<code><a href='https://www.rdocumentation.org/packages/stats/topics/formula'>formula</a></code>" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.</p></td>
+      <td><p>an object of class "<code><a href='https://rdrr.io/r/stats/formula.html'>formula</a></code>" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.</p></td>
     </tr>
     <tr>
       <th>data</th>
-      <td><p>an optional data frame, list or environment (or object coercible by <code><a href='https://www.rdocumentation.org/packages/base/topics/as.data.frame'>as.data.frame</a></code> to a data frame) containing the variables in the model. If not found in <code>data</code>, the variables are taken from <code><a href='https://www.rdocumentation.org/packages/base/topics/environment'>environment(formula)</a></code>, typically the environment from which <code>plsRglm</code> is called.</p></td>
+      <td><p>an optional data frame, list or environment (or object coercible by <code><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></code> to a data frame) containing the variables in the model. If not found in <code>data</code>, the variables are taken from <code><a href='https://rdrr.io/r/base/environment.html'>environment(formula)</a></code>, typically the environment from which <code>plsRglm</code> is called.</p></td>
     </tr>
     <tr>
       <th>nt</th>
@@ -229,11 +247,11 @@ keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL,verbose=TRUE)
       <td><p>should info messages be displayed ?</p></td>
     </tr>
     <tr>
-      <th>&#8230;</th>
+      <th>...</th>
       <td><p>arguments to pass to <code>cv.plsRmodel.default</code> or to <code>cv.plsRmodel.formula</code></p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Predicts 1 group with the <code>K-1</code> other groups. Leave one out cross validation is thus obtained for <code>K==nrow(dataX)</code>.</p>
@@ -241,477 +259,70 @@ keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL,verbose=TRUE)
 <p>A specification of the form first:second indicates the the set of terms obtained by taking the interactions of all terms in first with all terms in second. The specification first*second indicates the cross of first and second. This is the same as first + second + first:second.</p>
 <p>The terms in the formula will be re-ordered so that main effects come first, followed by the interactions, all second-order, all third-order and so on: to avoid this pass a terms object as the formula.</p>
 <p>Non-NULL weights can be used to indicate that different observations have different dispersions (with the values in weights being inversely proportional to the dispersions); or equivalently, when the elements of weights are positive integers w_i, that each response y_i is the mean of w_i unit-weight observations.</p>
-    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An object of class <code>"cv.plsRmodel"</code>.<br /></p>
 <dt>results_kfolds</dt><dd><p>list of <code>NK</code>. Each element of the list sums up the results for a group division:
-  <dl class='dl-horizontal'>
-    <dt></dt><dd><p>list of <code>K</code> matrices of size about <code>nrow(dataX)/K * nt</code> with the predicted values for a growing number of components</p></dd>
-    <dt>&#8230;</dt><dd><p>&#8230;</p></dd>
-    <dt></dt><dd><p>list of <code>K</code> matrices of size about <code>nrow(dataX)/K * nt</code> with the predicted values for a growing number of components</p></dd>
-    </dl></p></dd>
+  <dl>
+    <dt>list</dt><dd><p>of <code>K</code> matrices of size about <code>nrow(dataX)/K * nt</code> with the predicted values for a growing number of components</p></dd>
+    <dt>...</dt><dd><p>...</p></dd>
+    <dt>list</dt><dd><p>of <code>K</code> matrices of size about <code>nrow(dataX)/K * nt</code> with the predicted values for a growing number of components</p></dd></dl></p></dd>
   <dt>folds</dt><dd><p>list of <code>NK</code>. Each element of the list sums up the results for a group division:
-  <dl class='dl-horizontal'>
-    <dt></dt><dd><p>list of <code>K</code> vectors of length about <code><a href='https://www.rdocumentation.org/packages/base/topics/nrow'>nrow(dataX)</a></code> with the numbers of the rows of <code>dataX</code> that were used as a training set</p></dd>
-    <dt>&#8230;</dt><dd><p>&#8230;</p></dd>
-    <dt></dt><dd><p>list of <code>K</code> vectors of length about <code><a href='https://www.rdocumentation.org/packages/base/topics/nrow'>nrow(dataX)</a></code> with the numbers of the rows of <code>dataX</code> that were used as a training set</p></dd>
-    </dl></p></dd>
+  <dl>
+    <dt>list</dt><dd><p>of <code>K</code> vectors of length about <code><a href='https://rdrr.io/r/base/nrow.html'>nrow(dataX)</a></code> with the numbers of the rows of <code>dataX</code> that were used as a training set</p></dd>
+    <dt>...</dt><dd><p>...</p></dd>
+    <dt>list</dt><dd><p>of <code>K</code> vectors of length about <code><a href='https://rdrr.io/r/base/nrow.html'>nrow(dataX)</a></code> with the numbers of the rows of <code>dataX</code> that were used as a training set</p></dd></dl></p></dd>
   <dt>dataY_kfolds</dt><dd><p>list of <code>NK</code>. Each element of the list sums up the results for a group division:
-  <dl class='dl-horizontal'>
-    <dt></dt><dd><p>list of <code>K</code> matrices of size about <code>nrow(dataX)/K * 1</code> with the observed values of the response</p></dd>
-    <dt>&#8230;</dt><dd><p>&#8230;</p></dd>
-    <dt></dt><dd><p>list of <code>K</code> matrices of size about <code>nrow(dataX)/K * 1</code> with the observed values of the response</p></dd>
-    </dl></p></dd>
+  <dl>
+    <dt>list</dt><dd><p>of <code>K</code> matrices of size about <code>nrow(dataX)/K * 1</code> with the observed values of the response</p></dd>
+    <dt>...</dt><dd><p>...</p></dd>
+    <dt>list</dt><dd><p>of <code>K</code> matrices of size about <code>nrow(dataX)/K * 1</code> with the observed values of the response</p></dd></dl></p></dd>
   <dt>call</dt><dd><p>the call of the function</p></dd>
 
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Nicolas Meyer, Myriam Maumy-Bertrand et Frederic Bertrand (2010). Comparing the linear and the logistic PLS regression with qualitative predictors: application to allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>, 151(2), pages 1-18.
 <a href='http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47'>http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47</a></p>
-    
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Frederic Bertrand<br />
+<a href='mailto:frederic.bertrand@utt.fr'>frederic.bertrand@utt.fr</a><br />
+<a href='https://fbertran.github.io/homepage/'>https://fbertran.github.io/homepage/</a></p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Work for complete and incomplete datasets.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Summary method <code>summary.cv.plsRmodel</code>. <code><a href='kfolds2coeff.html'>kfolds2coeff</a></code>, <code><a href='kfolds2Pressind.html'>kfolds2Pressind</a></code>, <code><a href='kfolds2Press.html'>kfolds2Press</a></code>, <code><a href='kfolds2Mclassedind.html'>kfolds2Mclassedind</a></code>, <code><a href='kfolds2Mclassed.html'>kfolds2Mclassed</a></code> and <code><a href='kfolds2CVinfos_lm.html'>kfolds2CVinfos_lm</a></code> to extract and transform results from k-fold cross-validation.</p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>Cornell</span>)
-<span class='no'>XCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>1</span>:<span class='fl'>7</span>]
-<span class='no'>yCornell</span><span class='kw'>&lt;-</span><span class='no'>Cornell</span>[,<span class='fl'>8</span>]
+    <pre class="examples"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>
+<span class='va'>XCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>7</span><span class='op'>]</span>
+<span class='va'>yCornell</span><span class='op'>&lt;-</span><span class='va'>Cornell</span><span class='op'>[</span>,<span class='fl'>8</span><span class='op'>]</span>
 
 <span class='co'>#Leave one out CV (K=nrow(Cornell)) one time (NK=1)</span>
-<span class='no'>bbb</span> <span class='kw'>&lt;-</span> <span class='fu'>cv.plsR</span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yCornell</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XCornell</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/nrow'>nrow</a></span>(<span class='no'>Cornell</span>),<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>1</span>)</div><div class='output co'>#&gt; NK: 1 
-#&gt; Leave One Out
-#&gt; Number of groups : 12 
-#&gt; 1 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 2 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 3 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 4 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 5 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 6 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 7 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 8 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 9 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 10 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 11 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}
-#&gt; Warning only 5 components could thus be extracted
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 12 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; </div><div class='input'><span class='no'>bbb2</span> <span class='kw'>&lt;-</span> <span class='fu'>cv.plsR</span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Cornell</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>12</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>1</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-(<span class='no'>sum1</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>bbb2</span>))</div><div class='output co'>#&gt; ____************************************************____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 
-#&gt; NK: 1</div><div class='output co'>#&gt; [[1]]
-#&gt;                AIC    Q2cum_Y LimQ2_Y       Q2_Y  PRESS_Y      RSS_Y      R2_Y
-#&gt; Nb_Comp_0 82.01205         NA      NA         NA       NA 467.796667        NA
-#&gt; Nb_Comp_1 53.15173  0.8809146  0.0975  0.8809146 55.70774  35.742486 0.9235940
-#&gt; Nb_Comp_2 41.08283  0.8619560  0.0975 -0.1592015 41.43274  11.066606 0.9763431
-#&gt; Nb_Comp_3 32.06411  0.7471041  0.0975 -0.8319956 20.27397   4.418081 0.9905556
-#&gt; Nb_Comp_4 33.76477 -0.2159389  0.0975 -3.8080607 21.24240   4.309235 0.9907882
-#&gt; Nb_Comp_5 33.34373 -5.9182568  0.0975 -4.6896417 24.51801   3.521924 0.9924713
-#&gt; Nb_Comp_6 35.25533         NA  0.0975         NA       NA   3.496074 0.9925265
-#&gt;              AIC.std  DoF.dof sigmahat.dof    AIC.dof    BIC.dof GMDL.dof
-#&gt; Nb_Comp_0  37.010388 1.000000    6.5212706 46.0708838 47.7893514 27.59461
-#&gt; Nb_Comp_1   8.150064 2.740749    1.8665281  4.5699686  4.9558156 21.34020
-#&gt; Nb_Comp_2  -3.918831 5.085967    1.1825195  2.1075461  2.3949331 27.40202
-#&gt; Nb_Comp_3 -12.937550 5.121086    0.7488308  0.8467795  0.9628191 24.40842
-#&gt; Nb_Comp_4 -11.236891 5.103312    0.7387162  0.8232505  0.9357846 24.23105
-#&gt; Nb_Comp_5 -11.657929 6.006316    0.7096382  0.7976101  0.9198348 28.21184
-#&gt; Nb_Comp_6  -9.746328 7.000002    0.7633343  0.9711322  1.1359501 33.18348
-#&gt;           DoF.naive sigmahat.naive  AIC.naive  BIC.naive GMDL.naive
-#&gt; Nb_Comp_0         1      6.5212706 46.0708838 47.7893514   27.59461
-#&gt; Nb_Comp_1         2      1.8905683  4.1699567  4.4588195   18.37545
-#&gt; Nb_Comp_2         3      1.1088836  1.5370286  1.6860917   17.71117
-#&gt; Nb_Comp_3         4      0.7431421  0.7363469  0.8256118   19.01033
-#&gt; Nb_Comp_4         5      0.7846050  0.8721072  0.9964867   24.16510
-#&gt; Nb_Comp_5         6      0.7661509  0.8804809  1.0227979   28.64206
-#&gt; Nb_Comp_6         7      0.8361907  1.1070902  1.3048716   33.63927
-#&gt; attr(,"computed_nt")
-#&gt; [1] 6
-#&gt; 
-#&gt; attr(,"class")
-#&gt; [1] "summary.cv.plsRmodel"</div><div class='input'>
+<span class='va'>bbb</span> <span class='op'>&lt;-</span> <span class='fu'>cv.plsR</span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yCornell</span>,dataX<span class='op'>=</span><span class='va'>XCornell</span>,nt<span class='op'>=</span><span class='fl'>6</span>,K<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>Cornell</span><span class='op'>)</span>,NK<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>bbb2</span> <span class='op'>&lt;-</span> <span class='fu'>cv.plsR</span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>Cornell</span>,nt<span class='op'>=</span><span class='fl'>6</span>,K<span class='op'>=</span><span class='fl'>12</span>,NK<span class='op'>=</span><span class='fl'>1</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='op'>(</span><span class='va'>sum1</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>bbb2</span><span class='op'>)</span><span class='op'>)</span>
+
 <span class='co'>#6-fold CV (K=6) two times (NK=2)</span>
 <span class='co'>#use random=TRUE to randomly create folds for repeated CV</span>
-<span class='no'>bbb3</span> <span class='kw'>&lt;-</span> <span class='fu'>cv.plsR</span>(<span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>yCornell</span>,<span class='kw'>dataX</span><span class='kw'>=</span><span class='no'>XCornell</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>2</span>)</div><div class='output co'>#&gt; NK: 1 
-#&gt; Number of groups : 6 
-#&gt; 1 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 2 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 3 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 4 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 5 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 6 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}
-#&gt; Warning only 5 components could thus be extracted
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; NK: 2 
-#&gt; Number of groups : 6 
-#&gt; 1 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 2 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}
-#&gt; Warning only 5 components could thus be extracted
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 3 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 4 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 5 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 6 
-#&gt; ____************************************************____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ****________________________________________________****
-#&gt; </div><div class='input'><span class='no'>bbb4</span> <span class='kw'>&lt;-</span> <span class='fu'>cv.plsR</span>(<span class='no'>Y</span>~<span class='no'>.</span>,<span class='kw'>data</span><span class='kw'>=</span><span class='no'>Cornell</span>,<span class='kw'>nt</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>K</span><span class='kw'>=</span><span class='fl'>6</span>,<span class='kw'>NK</span><span class='kw'>=</span><span class='fl'>2</span>,<span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
-(<span class='no'>sum3</span><span class='kw'>&lt;-</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>bbb4</span>))</div><div class='output co'>#&gt; ____************************************************____
-#&gt; ____Component____ 1 ____
-#&gt; ____Component____ 2 ____
-#&gt; ____Component____ 3 ____
-#&gt; ____Component____ 4 ____
-#&gt; ____Component____ 5 ____
-#&gt; ____Component____ 6 ____
-#&gt; ____Predicting X without NA neither in X nor in Y____
-#&gt; ****________________________________________________****
-#&gt; 
-#&gt; 
-#&gt; NK: 1,  2</div><div class='output co'>#&gt; [[1]]
-#&gt;                AIC    Q2cum_Y LimQ2_Y        Q2_Y  PRESS_Y      RSS_Y      R2_Y
-#&gt; Nb_Comp_0 82.01205         NA      NA          NA       NA 467.796667        NA
-#&gt; Nb_Comp_1 53.15173  0.8802928  0.0975  0.88029281 55.99863  35.742486 0.9235940
-#&gt; Nb_Comp_2 41.08283  0.8722414  0.0975 -0.06725934 38.14650  11.066606 0.9763431
-#&gt; Nb_Comp_3 32.06411  0.7383012  0.0975 -1.04838442 22.66866   4.418081 0.9905556
-#&gt; Nb_Comp_4 33.76477 -0.2421134  0.0975 -3.74634785 20.96975   4.309235 0.9907882
-#&gt; Nb_Comp_5 33.34373 -6.1367512  0.0975 -4.74565192 24.75937   3.521924 0.9924713
-#&gt; Nb_Comp_6 35.25533         NA  0.0975          NA       NA   3.496074 0.9925265
-#&gt;              AIC.std  DoF.dof sigmahat.dof    AIC.dof    BIC.dof GMDL.dof
-#&gt; Nb_Comp_0  37.010388 1.000000    6.5212706 46.0708838 47.7893514 27.59461
-#&gt; Nb_Comp_1   8.150064 2.740749    1.8665281  4.5699686  4.9558156 21.34020
-#&gt; Nb_Comp_2  -3.918831 5.085967    1.1825195  2.1075461  2.3949331 27.40202
-#&gt; Nb_Comp_3 -12.937550 5.121086    0.7488308  0.8467795  0.9628191 24.40842
-#&gt; Nb_Comp_4 -11.236891 5.103312    0.7387162  0.8232505  0.9357846 24.23105
-#&gt; Nb_Comp_5 -11.657929 6.006316    0.7096382  0.7976101  0.9198348 28.21184
-#&gt; Nb_Comp_6  -9.746328 7.000002    0.7633343  0.9711322  1.1359501 33.18348
-#&gt;           DoF.naive sigmahat.naive  AIC.naive  BIC.naive GMDL.naive
-#&gt; Nb_Comp_0         1      6.5212706 46.0708838 47.7893514   27.59461
-#&gt; Nb_Comp_1         2      1.8905683  4.1699567  4.4588195   18.37545
-#&gt; Nb_Comp_2         3      1.1088836  1.5370286  1.6860917   17.71117
-#&gt; Nb_Comp_3         4      0.7431421  0.7363469  0.8256118   19.01033
-#&gt; Nb_Comp_4         5      0.7846050  0.8721072  0.9964867   24.16510
-#&gt; Nb_Comp_5         6      0.7661509  0.8804809  1.0227979   28.64206
-#&gt; Nb_Comp_6         7      0.8361907  1.1070902  1.3048716   33.63927
-#&gt; attr(,"computed_nt")
-#&gt; [1] 6
-#&gt; 
-#&gt; [[2]]
-#&gt;                AIC    Q2cum_Y LimQ2_Y       Q2_Y  PRESS_Y      RSS_Y      R2_Y
-#&gt; Nb_Comp_0 82.01205         NA      NA         NA       NA 467.796667        NA
-#&gt; Nb_Comp_1 53.15173  0.8857296  0.0975  0.8857296 53.45529  35.742486 0.9235940
-#&gt; Nb_Comp_2 41.08283  0.8564632  0.0975 -0.2561158 44.89670  11.066606 0.9763431
-#&gt; Nb_Comp_3 32.06411  0.6920508  0.0975 -1.1454376 23.74271   4.418081 0.9905556
-#&gt; Nb_Comp_4 33.76477 -0.5283210  0.0975 -3.9628995 21.92649   4.309235 0.9907882
-#&gt; Nb_Comp_5 33.34373 -7.9591816  0.0975 -4.8621071 25.26120   3.521924 0.9924713
-#&gt; Nb_Comp_6 35.25533         NA  0.0975         NA       NA   3.496074 0.9925265
-#&gt;              AIC.std  DoF.dof sigmahat.dof    AIC.dof    BIC.dof GMDL.dof
-#&gt; Nb_Comp_0  37.010388 1.000000    6.5212706 46.0708838 47.7893514 27.59461
-#&gt; Nb_Comp_1   8.150064 2.740749    1.8665281  4.5699686  4.9558156 21.34020
-#&gt; Nb_Comp_2  -3.918831 5.085967    1.1825195  2.1075461  2.3949331 27.40202
-#&gt; Nb_Comp_3 -12.937550 5.121086    0.7488308  0.8467795  0.9628191 24.40842
-#&gt; Nb_Comp_4 -11.236891 5.103312    0.7387162  0.8232505  0.9357846 24.23105
-#&gt; Nb_Comp_5 -11.657929 6.006316    0.7096382  0.7976101  0.9198348 28.21184
-#&gt; Nb_Comp_6  -9.746328 7.000002    0.7633343  0.9711322  1.1359501 33.18348
-#&gt;           DoF.naive sigmahat.naive  AIC.naive  BIC.naive GMDL.naive
-#&gt; Nb_Comp_0         1      6.5212706 46.0708838 47.7893514   27.59461
-#&gt; Nb_Comp_1         2      1.8905683  4.1699567  4.4588195   18.37545
-#&gt; Nb_Comp_2         3      1.1088836  1.5370286  1.6860917   17.71117
-#&gt; Nb_Comp_3         4      0.7431421  0.7363469  0.8256118   19.01033
-#&gt; Nb_Comp_4         5      0.7846050  0.8721072  0.9964867   24.16510
-#&gt; Nb_Comp_5         6      0.7661509  0.8804809  1.0227979   28.64206
-#&gt; Nb_Comp_6         7      0.8361907  1.1070902  1.3048716   33.63927
-#&gt; attr(,"computed_nt")
-#&gt; [1] 6
-#&gt; 
-#&gt; attr(,"class")
-#&gt; [1] "summary.cv.plsRmodel"</div><div class='input'>
-<span class='fu'><a href='cvtable.html'>cvtable</a></span>(<span class='no'>sum1</span>)</div><div class='output co'>#&gt; 
-#&gt; CV Q2 criterion:
-#&gt; 0 1 
-#&gt; 0 1 
-#&gt; 
-#&gt; CV Press criterion:
-#&gt; 1 2 3 
-#&gt; 0 0 1 </div><div class='input'><span class='fu'><a href='cvtable.html'>cvtable</a></span>(<span class='no'>sum3</span>)</div><div class='output co'>#&gt; 
-#&gt; CV Q2 criterion:
-#&gt; 0 1 
-#&gt; 0 2 
-#&gt; 
-#&gt; CV Press criterion:
-#&gt; 1 2 3 4 
-#&gt; 0 0 0 2 </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rm'>rm</a></span>(<span class='kw'>list</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"XCornell"</span>,<span class='st'>"yCornell"</span>,<span class='st'>"bbb"</span>,<span class='st'>"bbb2"</span>,<span class='st'>"bbb3"</span>,<span class='st'>"bbb4"</span>))</div></pre>
+<span class='va'>bbb3</span> <span class='op'>&lt;-</span> <span class='fu'>cv.plsR</span><span class='op'>(</span>dataY<span class='op'>=</span><span class='va'>yCornell</span>,dataX<span class='op'>=</span><span class='va'>XCornell</span>,nt<span class='op'>=</span><span class='fl'>6</span>,K<span class='op'>=</span><span class='fl'>6</span>,NK<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>bbb4</span> <span class='op'>&lt;-</span> <span class='fu'>cv.plsR</span><span class='op'>(</span><span class='va'>Y</span><span class='op'>~</span><span class='va'>.</span>,data<span class='op'>=</span><span class='va'>Cornell</span>,nt<span class='op'>=</span><span class='fl'>6</span>,K<span class='op'>=</span><span class='fl'>6</span>,NK<span class='op'>=</span><span class='fl'>2</span>,verbose<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='op'>(</span><span class='va'>sum3</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>bbb4</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='fu'><a href='cvtable.html'>cvtable</a></span><span class='op'>(</span><span class='va'>sum1</span><span class='op'>)</span>
+<span class='fu'><a href='cvtable.html'>cvtable</a></span><span class='op'>(</span><span class='va'>sum3</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span>list<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"XCornell"</span>,<span class='st'>"yCornell"</span>,<span class='st'>"bbb"</span>,<span class='st'>"bbb2"</span>,<span class='st'>"bbb3"</span>,<span class='st'>"bbb4"</span><span class='op'>)</span><span class='op'>)</span>
+</pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#references">References</a></li>
-
-      <li><a href="#note">Note</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Frederic Bertrand<br />
-<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
-<a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -719,13 +330,16 @@ keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL,verbose=TRUE)
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

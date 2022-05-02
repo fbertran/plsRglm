@@ -34,7 +34,7 @@
 #' \code{\link[graphics:plot]{plot}} function.
 #' @return \code{NULL}
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{confints.bootpls}}
 #' @keywords regression models

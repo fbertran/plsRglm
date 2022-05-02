@@ -69,7 +69,7 @@ Systems 64 (2002) 79-89, \doi{10.1016/S0169-7439(02)00051-5}.
 }
 \author{
 Frédéric Bertrand\cr
-\email{frederic.bertrand@math.unistra.fr}\cr
+\email{frederic.bertrand@utt.fr}\cr
 \url{https://fbertran.github.io/homepage/}
 }
 \keyword{datagen}

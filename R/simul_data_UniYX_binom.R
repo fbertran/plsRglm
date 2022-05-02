@@ -19,7 +19,7 @@
 #' @param offset Offset on the linear scale
 #' @return \item{vector}{\eqn{(Y,X_1,\ldots,X_{totdim})}}
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link[plsRglm]{simul_data_UniYX}}
 #' @references T. Naes, H. Martens, Comparison of prediction methods for

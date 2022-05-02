@@ -58,7 +58,7 @@ See also \code{\link{bootplsglm}}.
 }
 \author{
 Frédéric Bertrand\cr
-\email{frederic.bertrand@math.unistra.fr}\cr
+\email{frederic.bertrand@utt.fr}\cr
 \url{https://fbertran.github.io/homepage/}
 }
 \keyword{models}

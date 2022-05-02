@@ -98,7 +98,7 @@ regression, Chemometrics and Intelligent Laboratory Systems 64 (2002),
 }
 \author{
 Frédéric Bertrand\cr
-\email{frederic.bertrand@math.unistra.fr}\cr
+\email{frederic.bertrand@utt.fr}\cr
 \url{https://fbertran.github.io/homepage/}
 }
 \keyword{datagen}

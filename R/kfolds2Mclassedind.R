@@ -15,7 +15,7 @@
 #' cross validated partial least squares regression models or generalized
 #' linear ones.
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{kfolds2coeff}}, \code{\link{kfolds2Press}},
 #' \code{\link{kfolds2Pressind}} and \code{\link{kfolds2Mclassed}} to extract

@@ -47,7 +47,7 @@
 #' @param \dots ny further arguments can be passed to \code{statistic}.
 #' @return An object of class "boot".
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link[boot:boot]{tilt.boot}}
 #' @keywords models

@@ -8,7 +8,7 @@ bootpls(
   object,
   typeboot = "plsmodel",
   R = 250,
-  statistic = coefs.plsR,
+  statistic = NULL,
   sim = "ordinary",
   stype = "i",
   stabvalue = 1e+06,
@@ -175,7 +175,7 @@ Applications}. Cambridge University Press, Cambridge.
 }
 \author{
 Frédéric Bertrand\cr
-\email{frederic.bertrand@math.unistra.fr}\cr
+\email{frederic.bertrand@utt.fr}\cr
 \url{https://fbertran.github.io/homepage/}
 }
 \keyword{models}

@@ -15,7 +15,7 @@
 #' @return A plot window.
 #' @author Bernd Gruber with minor modifications from
 #' Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso See Also \code{\link{visweb}}
 #' @references Vazquez, P.D., Chacoff, N.,P. and Cagnolo, L. (2009) Evaluating

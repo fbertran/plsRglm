@@ -8,7 +8,7 @@
 #' @param \dots not used
 #' @return \item{language}{call of the model}
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{print}} and \code{\link{summary}}
 #' @references Nicolas Meyer, Myriam Maumy-Bertrand et

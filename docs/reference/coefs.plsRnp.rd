@@ -186,7 +186,7 @@
 
     <h2>Author</h2>
     <p>Frederic Bertrand<br />
-<a href='mailto:frederic.bertrand@math.unistra.fr'>frederic.bertrand@math.unistra.fr</a><br />
+<a href='mailto:frederic.bertrand@utt.fr'>frederic.bertrand@utt.fr</a><br />
 <a href='http://www-irma.u-strasbg.fr/~fbertran/'>http://www-irma.u-strasbg.fr/~fbertran/</a></p>
   </div>
 </div>

@@ -158,7 +158,7 @@
 #' @note Use \code{\link{cv.plsR}} to cross-validate the plsRglm models and
 #' \code{\link{bootpls}} to bootstrap them.
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso See also \code{\link{plsRglm}} to fit PLSGLR models.
 #' @references Nicolas Meyer, Myriam Maumy-Bertrand et

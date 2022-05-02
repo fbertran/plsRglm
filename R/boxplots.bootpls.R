@@ -29,7 +29,7 @@
 #' \code{\link[graphics:boxplot]{boxplot}} function.
 #' @return \code{NULL}
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{bootpls}}
 #' @keywords regression models

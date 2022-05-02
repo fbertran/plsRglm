@@ -11,7 +11,7 @@
 #' @param \dots further arguments to be passed to or from methods.
 #' @return \code{list}List of Information Criteria computed for each fold.
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{summary}}
 #' @references Nicolas Meyer, Myriam Maumy-Bertrand et
@@ -53,9 +53,10 @@
 #' @export cvtable
 cvtable <- function(x,verbose=TRUE,...)
 {
-  if(class(x) %in% c("summary.cv.plsRmodel","summary.cv.plsRglmmodel")){
-  if(class(x)=="summary.cv.plsRmodel"){return(cvtable.plsR(x,verbose=verbose))} 
-  if(class(x)=="summary.cv.plsRglmmodel"){return(cvtable.plsRglm(x,verbose=verbose))}} else {
+  if(inherits(x, c("summary.cv.plsRmodel","summary.cv.plsRglmmodel"))){
+    
+  if(inherits(x, "summary.cv.plsRmodel")){return(cvtable.plsR(x,verbose=verbose))} 
+  if(inherits(x, "summary.cv.plsRglmmodel")){return(cvtable.plsRglm(x,verbose=verbose))}} else {
   stop("cvtable must be applied to a summary.cv.plsRmodel or summary.cv.plsRglmmodel object")
   }
 }

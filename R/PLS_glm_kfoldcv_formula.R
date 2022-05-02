@@ -194,7 +194,7 @@ if (modele %in% c("pls-glm-polr")) {
 if(match("method",names(call), 0L)==0L){mf2$method<-"logistic"} else {if(!(call$method %in% c("logistic", "probit", "cloglog", "cauchit"))) {mf2$method<-"logistic"}}
 }
                 temptemp <- try(eval(mf2, parent.frame()),silent=TRUE)
-                if(class(temptemp)=="try-error"){restartnnkk=TRUE;break}
+                if(inherits(temptemp, "try-error")){restartnnkk=TRUE;break}
                 respls_kfolds[[nnkk]][[ii]] <- temptemp$valsPredict
                 if(!NoWeights) {attr(respls_kfolds[[nnkk]],"XWeights")=weights; attr(respls_kfolds[[nnkk]],"YWeights")=NULL}
                 if (keepcoeffs) {coeffskfolds[[nnkk]][[ii]] = temptemp$coeffs}
@@ -212,7 +212,7 @@ if(match("method",names(call), 0L)==0L){mf2$method<-"logistic"} else {if(!(call$
                   mf2$dataX <- dataX[-nofolds,]
                   mf2$dataPredictY <- dataX[nofolds,]
                   temptemp <- try(eval(mf2, parent.frame()),silent=TRUE)
-                  if(class(temptemp)=="try-error"){restartnnkk=TRUE;break}
+                  if(inherits(temptemp, "try-error")){restartnnkk=TRUE;break}
                   respls_kfolds[[nnkk]][[ii]] <- temptemp$valsPredict
                   if(!NoWeights) {attr(respls_kfolds[[nnkk]][[ii]],"XWeights")=weights[-nofolds]; attr(respls_kfolds[[nnkk]][[ii]],"YWeights")=weights[nofolds]}
                   if (keepcoeffs) {coeffs_kfolds[[nnkk]][[ii]] = temptemp$coeffs}

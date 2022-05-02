@@ -19,7 +19,7 @@
 #' of the predicted values} \item{RSS}{Residual Sums of Squares}
 #' @author Nicole Kraemer, Mikio L. Braun with improvements from
 #' Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{aic.dof}} and \code{\link{infcrit.dof}} for computing
 #' information criteria directly from a previously fitted plsR model.

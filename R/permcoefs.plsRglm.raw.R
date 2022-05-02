@@ -16,7 +16,7 @@
 #' @return estimates on a bootstrap sample or \code{ifbootfail} value if the
 #' bootstrap computation fails.
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso See also \code{\link{bootplsglm}}.
 #' @keywords models

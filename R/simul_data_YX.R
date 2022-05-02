@@ -18,7 +18,7 @@
 #' \tabular{ccc}{ \code{ncomp} \tab \eqn{r} \cr 2 \tab 3 \cr 3 \tab 3 \cr 4
 #' \tab 4 \cr }
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{simul_data_complete}} for highlighting the simulations
 #' parameters

@@ -49,7 +49,7 @@ See Also \code{\link{visweb}}
 \author{
 Bernd Gruber with minor modifications from
 Frédéric Bertrand\cr
-\email{frederic.bertrand@math.unistra.fr}\cr
+\email{frederic.bertrand@utt.fr}\cr
 \url{https://fbertran.github.io/homepage/}
 }
 \keyword{hplot}

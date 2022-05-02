@@ -7,7 +7,7 @@
 #' @param \dots further arguments to be passed to or from methods.
 #' @return \item{call }{function call of plsRglmmodel}
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{summary}}
 #' @references Nicolas Meyer, Myriam Maumy-Bertrand et

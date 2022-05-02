@@ -7,7 +7,7 @@
 #' @param val A real value
 #' @return 0 or 1.
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@math.unistra.fr}\cr
+#' \email{frederic.bertrand@@utt.fr}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{ifelse}}
 #' @keywords utilities
