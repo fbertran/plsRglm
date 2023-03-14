@@ -29,9 +29,9 @@ least squares regression models.
 data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
-kfolds2Pressind(cv.plsR(dataY=yCornell,dataX=data.frame(scale(as.matrix(XCornell))[,]),
+kfolds2Pressind(cv.plsR(object=yCornell,dataX=data.frame(scale(as.matrix(XCornell))[,]),
 nt=6,K=12,NK=1))
-kfolds2Pressind(cv.plsR(dataY=yCornell,dataX=data.frame(scale(as.matrix(XCornell))[,]),
+kfolds2Pressind(cv.plsR(object=yCornell,dataX=data.frame(scale(as.matrix(XCornell))[,]),
 nt=6,K=6,NK=1))
 rm(list=c("XCornell","yCornell"))
 
@@ -39,13 +39,13 @@ rm(list=c("XCornell","yCornell"))
 data(pine)
 Xpine<-pine[,1:10]
 ypine<-pine[,11]
-kfolds2Pressind(cv.plsR(dataY=ypine,dataX=Xpine,nt=10,NK=1,verbose=FALSE))
-kfolds2Pressind(cv.plsR(dataY=ypine,dataX=Xpine,nt=10,NK=2,verbose=FALSE))
+kfolds2Pressind(cv.plsR(object=ypine,dataX=Xpine,nt=10,NK=1,verbose=FALSE))
+kfolds2Pressind(cv.plsR(object=ypine,dataX=Xpine,nt=10,NK=2,verbose=FALSE))
 
 XpineNAX21 <- Xpine
 XpineNAX21[1,2] <- NA
-kfolds2Pressind(cv.plsR(dataY=ypine,dataX=XpineNAX21,nt=10,NK=1,verbose=FALSE))
-kfolds2Pressind(cv.plsR(dataY=ypine,dataX=XpineNAX21,nt=10,NK=2,verbose=FALSE))
+kfolds2Pressind(cv.plsR(object=ypine,dataX=XpineNAX21,nt=10,NK=1,verbose=FALSE))
+kfolds2Pressind(cv.plsR(object=ypine,dataX=XpineNAX21,nt=10,NK=2,verbose=FALSE))
 rm(list=c("Xpine","XpineNAX21","ypine"))
 }
 

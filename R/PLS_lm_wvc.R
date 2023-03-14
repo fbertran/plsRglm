@@ -1,4 +1,4 @@
-#' Light version of PLS\_lm for cross validation purposes
+#' Light version of PLS_lm for cross validation purposes
 #' 
 #' Light version of \code{PLS_lm} for cross validation purposes either on
 #' complete or incomplete datasets.

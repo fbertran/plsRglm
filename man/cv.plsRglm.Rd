@@ -9,18 +9,18 @@
 This function implements k-fold cross-validation on complete or incomplete datasets for partial least squares regression generalized linear models
 }
 \usage{
-cv.plsRglm(x, \dots)
-\method{cv.plsRglmmodel}{default}(dataY,dataX,nt=2,limQ2set=.0975,
+cv.plsRglm(object, \dots)
+\method{cv.plsRglmmodel}{default}(object,dataX,nt=2,limQ2set=.0975,
 modele="pls", family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, 
 scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, 
 keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights, method,
-verbose=TRUE)
-\method{cv.plsRglmmodel}{formula}(formula,data=NULL,nt=2,limQ2set=.0975,
+verbose=TRUE,\dots)
+\method{cv.plsRglmmodel}{formula}(object,data=NULL,nt=2,limQ2set=.0975,
 modele="pls", family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, 
 scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, 
 keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12),weights,subset,
 start=NULL,etastart,mustart,offset,method,control= list(),contrasts=NULL,
-verbose=TRUE)
+verbose=TRUE,\dots)
 PLS_glm_kfoldcv(dataY, dataX, nt = 2, limQ2set = 0.0975, modele = "pls", 
 family = NULL, K = 5, NK = 1, grouplist = NULL, random = TRUE, 
 scaleX = TRUE, scaleY = NULL, keepcoeffs = FALSE, keepfolds = FALSE, 
@@ -33,7 +33,7 @@ keepMclassed=FALSE, tol_Xi=10^(-12),weights,subset,start=NULL,etastart,
 mustart,offset,method,control= list(),contrasts=NULL, verbose=TRUE)
 }
 \arguments{
-  \item{x}{a formula or a response (training) dataset}
+  \item{object}{response (training) dataset or an object of class "\code{\link{formula}}" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.}
   \item{dataY}{response (training) dataset}
   \item{dataX}{predictor(s) (training) dataset}
   \item{formula}{an object of class "\code{\link{formula}}" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.}
@@ -250,16 +250,16 @@ yCornell<-Cornell[,8]
 bbb <- cv.plsRglm(Y~.,data=Cornell,nt=10,NK=1,modele="pls",verbose=FALSE)
 summary(bbb)
 
-cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-inverse.gaussian",K=12,verbose=FALSE)
-cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-family",
+cv.plsRglm(object=yCornell,dataX=XCornell,nt=3,modele="pls-glm-inverse.gaussian",K=12,verbose=FALSE)
+cv.plsRglm(object=yCornell,dataX=XCornell,nt=3,modele="pls-glm-family",
 family=inverse.gaussian,K=12,verbose=FALSE)
-cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-inverse.gaussian",K=6,
+cv.plsRglm(object=yCornell,dataX=XCornell,nt=3,modele="pls-glm-inverse.gaussian",K=6,
 NK=2,verbose=FALSE)$results_kfolds
-cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-family",family=inverse.gaussian(),
+cv.plsRglm(object=yCornell,dataX=XCornell,nt=3,modele="pls-glm-family",family=inverse.gaussian(),
 K=6,NK=2,verbose=FALSE)$results_kfolds
-cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-inverse.gaussian",K=6,
+cv.plsRglm(object=yCornell,dataX=XCornell,nt=3,modele="pls-glm-inverse.gaussian",K=6,
 NK=2,verbose=FALSE)$results_kfolds
-cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-family",
+cv.plsRglm(object=yCornell,dataX=XCornell,nt=3,modele="pls-glm-family",
 family=inverse.gaussian(link = "1/mu^2"),K=6,NK=2,verbose=FALSE)$results_kfolds
 
 bbb2 <- cv.plsRglm(Y~.,data=Cornell,nt=10,

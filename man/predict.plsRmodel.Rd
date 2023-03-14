@@ -61,10 +61,10 @@ Xpine_sup<-pine_sup[,1:10]
 Xpine_supNA<-Xpine_sup
 Xpine_supNA[1,1]<-NA
 
-modpls=plsR(dataY=ypine,dataX=Xpine,nt=6,modele="pls", verbose=FALSE)
+modpls=plsR(object=ypine,dataX=Xpine,nt=6,modele="pls", verbose=FALSE)
 modplsform=plsR(x11~.,data=pine,nt=6,modele="pls", verbose=FALSE)
-modpls2=plsR(dataY=ypine,dataX=Xpine,nt=6,modele="pls",dataPredictY=Xpine_sup, verbose=FALSE)
-modpls2NA=plsR(dataY=ypine,dataX=Xpine,nt=6,modele="pls",dataPredictY=Xpine_supNA, verbose=FALSE)
+modpls2=plsR(object=ypine,dataX=Xpine,nt=6,modele="pls",dataPredictY=Xpine_sup, verbose=FALSE)
+modpls2NA=plsR(object=ypine,dataX=Xpine,nt=6,modele="pls",dataPredictY=Xpine_supNA, verbose=FALSE)
 
 #Identical to predict(modpls,type="response") or modpls$ValsPredictY
 cbind(predict(modpls),predict(modplsform))

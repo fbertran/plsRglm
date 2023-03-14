@@ -29,12 +29,11 @@
 #' 
 #' @aliases cv.plsR cv.plsRmodel.default cv.plsRmodel.formula PLS_lm_kfoldcv
 #' PLS_lm_kfoldcv_formula
-#' @param x a formula or a response (training) dataset
-#' @param dataY response (training) dataset
-#' @param dataX predictor(s) (training) dataset
-#' @param formula an object of class "\code{\link{formula}}" (or one that can
+#' @param object a response (training) dataset or an object of class 
+#' "\code{\link{formula}}" (or one that can
 #' be coerced to that class): a symbolic description of the model to be fitted.
 #' The details of model specification are given under 'Details'.
+#' @param dataX predictor(s) (training) dataset
 #' @param data an optional data frame, list or environment (or object coercible
 #' by \code{\link{as.data.frame}} to a data frame) containing the variables in
 #' the model. If not found in \code{data}, the variables are taken from
@@ -112,13 +111,13 @@
 #' yCornell<-Cornell[,8]
 #' 
 #' #Leave one out CV (K=nrow(Cornell)) one time (NK=1)
-#' bbb <- cv.plsR(dataY=yCornell,dataX=XCornell,nt=6,K=nrow(Cornell),NK=1)
+#' bbb <- cv.plsR(object=yCornell,dataX=XCornell,nt=6,K=nrow(Cornell),NK=1)
 #' bbb2 <- cv.plsR(Y~.,data=Cornell,nt=6,K=12,NK=1,verbose=FALSE)
 #' (sum1<-summary(bbb2))
 #' 
 #' #6-fold CV (K=6) two times (NK=2)
 #' #use random=TRUE to randomly create folds for repeated CV
-#' bbb3 <- cv.plsR(dataY=yCornell,dataX=XCornell,nt=6,K=6,NK=2)
+#' bbb3 <- cv.plsR(object=yCornell,dataX=XCornell,nt=6,K=6,NK=2)
 #' bbb4 <- cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=2,verbose=FALSE)
 #' (sum3<-summary(bbb4))
 #' 
@@ -127,7 +126,7 @@
 #' rm(list=c("XCornell","yCornell","bbb","bbb2","bbb3","bbb4"))
 #' 
 #' @export cv.plsR
-cv.plsR <- function (x, ...) {UseMethod("cv.plsRmodel")}
+cv.plsR <- function (object, ...) {UseMethod("cv.plsRmodel")}
 
 #' @rdname cv.plsR
 #' @aliases cv.plsR

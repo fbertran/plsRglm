@@ -29,8 +29,8 @@ least squares regression glm models.
 data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
-bbb <- cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-gaussian",K=16,verbose=FALSE)
-bbb2 <- cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-gaussian",K=5,verbose=FALSE)
+bbb <- cv.plsRglm(object=yCornell,dataX=XCornell,nt=3,modele="pls-glm-gaussian",K=16,verbose=FALSE)
+bbb2 <- cv.plsRglm(object=yCornell,dataX=XCornell,nt=3,modele="pls-glm-gaussian",K=5,verbose=FALSE)
 kfolds2Chisqind(bbb)
 kfolds2Chisqind(bbb2)
 rm(list=c("XCornell","yCornell","bbb","bbb2"))
@@ -39,18 +39,18 @@ rm(list=c("XCornell","yCornell","bbb","bbb2"))
 data(pine)
 Xpine<-pine[,1:10]
 ypine<-pine[,11]
-bbb <- cv.plsRglm(dataY=ypine,dataX=Xpine,nt=4,modele="pls-glm-gaussian",verbose=FALSE)
-bbb2 <- cv.plsRglm(dataY=ypine,dataX=Xpine,nt=10,modele="pls-glm-gaussian",K=10,verbose=FALSE)
+bbb <- cv.plsRglm(object=ypine,dataX=Xpine,nt=4,modele="pls-glm-gaussian",verbose=FALSE)
+bbb2 <- cv.plsRglm(object=ypine,dataX=Xpine,nt=10,modele="pls-glm-gaussian",K=10,verbose=FALSE)
 kfolds2Chisqind(bbb)
 kfolds2Chisqind(bbb2)
                   
 XpineNAX21 <- Xpine
 XpineNAX21[1,2] <- NA
-bbbNA <- cv.plsRglm(dataY=ypine,dataX=XpineNAX21,nt=10,modele="pls",K=10,verbose=FALSE)
+bbbNA <- cv.plsRglm(object=ypine,dataX=XpineNAX21,nt=10,modele="pls",K=10,verbose=FALSE)
 kfolds2Pressind(bbbNA)
 kfolds2Chisqind(bbbNA)
-bbbNA2 <- cv.plsRglm(dataY=ypine,dataX=XpineNAX21,nt=4,modele="pls-glm-gaussian",verbose=FALSE)
-bbbNA3 <- cv.plsRglm(dataY=ypine,dataX=XpineNAX21,nt=10,modele="pls-glm-gaussian",
+bbbNA2 <- cv.plsRglm(object=ypine,dataX=XpineNAX21,nt=4,modele="pls-glm-gaussian",verbose=FALSE)
+bbbNA3 <- cv.plsRglm(object=ypine,dataX=XpineNAX21,nt=10,modele="pls-glm-gaussian",
 K=10,verbose=FALSE)
 kfolds2Chisqind(bbbNA2)
 kfolds2Chisqind(bbbNA3)
@@ -60,13 +60,13 @@ rm(list=c("Xpine","XpineNAX21","ypine","bbb","bbb2","bbbNA","bbbNA2","bbbNA3"))
 data(aze_compl)
 Xaze_compl<-aze_compl[,2:34]
 yaze_compl<-aze_compl$y
-kfolds2Chisqind(cv.plsRglm(dataY=yaze_compl,dataX=Xaze_compl,nt=4,modele="pls-glm-family",
+kfolds2Chisqind(cv.plsRglm(object=yaze_compl,dataX=Xaze_compl,nt=4,modele="pls-glm-family",
 family=binomial(),verbose=FALSE))
-kfolds2Chisqind(cv.plsRglm(dataY=yaze_compl,dataX=Xaze_compl,nt=4,modele="pls-glm-logistic",
+kfolds2Chisqind(cv.plsRglm(object=yaze_compl,dataX=Xaze_compl,nt=4,modele="pls-glm-logistic",
 verbose=FALSE))
-kfolds2Chisqind(cv.plsRglm(dataY=yaze_compl,dataX=Xaze_compl,nt=10,modele="pls-glm-family",
+kfolds2Chisqind(cv.plsRglm(object=yaze_compl,dataX=Xaze_compl,nt=10,modele="pls-glm-family",
 family=binomial(),K=10,verbose=FALSE))
-kfolds2Chisqind(cv.plsRglm(dataY=yaze_compl,dataX=Xaze_compl,nt=10,
+kfolds2Chisqind(cv.plsRglm(object=yaze_compl,dataX=Xaze_compl,nt=10,
 modele="pls-glm-logistic",K=10,verbose=FALSE))
 rm(list=c("Xaze_compl","yaze_compl"))
 }

@@ -5,10 +5,13 @@ year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
 vers <- paste("R package version", meta$Version)
 note <- "book of abstracts, User2014!, Los Angeles, page 172"
 
-citEntry(entry="Manual",
+
+  
+
+
+bibentry(bibtype="Manual",
          title = titl,
-         author = personList(as.person("F. Bertrand"), 
-                             as.person("M. Maumy-Bertrand")),
+         author = c(person(given = "Frederic", family= "Bertrand"), person(given = "Myriam", family= "Maumy")),
 	 publisher = "manual",
          year         = year,
          note         = vers,
@@ -19,10 +22,9 @@ citEntry(entry="Manual",
                )
 )
 
-citEntry(entry="Manual",
+bibentry(bibtype="Manual",
          title = titl,
-         author = personList(as.person("F. Bertrand"), 
-                             as.person("M. Maumy-Bertrand")),
+         author = c(person(given = "Frederic", family= "Bertrand"), person(given = "Myriam", family= "Maumy")),
 	 publisher = "manual",
          year         = 2014,
          note         = note,
@@ -33,16 +35,16 @@ citEntry(entry="Manual",
                )
 )
 
-citEntry(entry="article",
+bibentry(bibtype="article",
          title = "Comparaison de la regression PLS et de la regression logistique
 PLS : application aux donnees d'allelotypage",
-         author = personList(as.person("N. Meyer"), 
-                             as.person("M. Maumy-Bertrand"),
-				     as.person("F. Bertrand")),
+         author = c(person(given = "Nicolas", family= "Meyer"), person(given = "Myriam", family= "Maumy"), person(given = "Frederic", family= "Bertrand")),
 	 journal = "Journal de la Societe Francaise de Statistique",
 	 publisher = "Societe Francaise de Statistique",
          year         = 2010,
-         note         = "adresse",
+         volume = 151,
+         issue = 2,
+         pages="1-18",
          url          = "http://journal-sfds.fr/article/view/47",
          textVersion = 
          paste("Nicolas Meyer, Myriam Maumy-Bertrand et Frederic Bertrand (2010).", 

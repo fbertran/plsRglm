@@ -37,12 +37,10 @@
 #' 
 #' @name plsR
 #' @aliases plsR plsRmodel.default plsRmodel.formula PLS_lm PLS_lm_formula
-#' @param x a formula or a response (training) dataset
-#' @param dataY response (training) dataset
-#' @param dataX predictor(s) (training) dataset
-#' @param formula an object of class "\code{\link{formula}}" (or one that can
+#' @param object a response (training) dataset or an object of class "\code{\link{formula}}" (or one that can
 #' be coerced to that class): a symbolic description of the model to be fitted.
 #' The details of model specification are given under 'Details'.
+#' @param dataX predictor(s) (training) dataset
 #' @param data an optional data frame, list or environment (or object coercible
 #' by \code{\link{as.data.frame}} to a data frame) containing the variables in
 #' the model. If not found in \code{data}, the variables are taken from
@@ -247,7 +245,7 @@
 #' }
 #' 
 #' @export plsR 
-plsR <- function(x, ...) UseMethod("plsRmodel")
+plsR <- function(object, ...) UseMethod("plsRmodel")
 
 #' @rdname plsR
 #' @aliases plsR

@@ -1,6 +1,6 @@
 Package: plsRglm
-Version: 1.5.0
-Date: 2022-05-02
+Version: 1.5.1
+Date: 2023-03-14
 Depends: R (>= 2.10)
 Imports: mvtnorm, boot, bipartite, car, MASS
 Enhances: pls
@@ -18,4 +18,4 @@ URL: https://fbertran.github.io/plsRglm/, https://github.com/fbertran/plsRglm/
 BugReports: https://github.com/fbertran/plsRglm/issues/
 VignetteBuilder: R.rsp
 Classification/MSC: 62J12, 62J99
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1

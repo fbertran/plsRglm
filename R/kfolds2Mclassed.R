@@ -32,8 +32,8 @@
 #' data(aze_compl)
 #' Xaze_compl<-aze_compl[,2:34]
 #' yaze_compl<-aze_compl$y
-#' kfolds2Mclassed(cv.plsR(dataY=yaze_compl,dataX=Xaze_compl,nt=10,K=8,NK=1,verbose=FALSE))
-#' kfolds2Mclassed(cv.plsR(dataY=yaze_compl,dataX=Xaze_compl,nt=10,K=8,NK=2,verbose=FALSE))
+#' kfolds2Mclassed(cv.plsR(object=yaze_compl,dataX=Xaze_compl,nt=10,K=8,NK=1,verbose=FALSE))
+#' kfolds2Mclassed(cv.plsR(object=yaze_compl,dataX=Xaze_compl,nt=10,K=8,NK=2,verbose=FALSE))
 #' rm(list=c("Xaze_compl","yaze_compl"))
 #' }
 #' 

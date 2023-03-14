@@ -9,18 +9,18 @@
 This function implements Partial least squares Regression generalized linear models complete or incomplete datasets.
 }
 \usage{
-plsRglm(x, \dots)
-\method{plsRglmmodel}{default}(dataY,dataX,nt=2,limQ2set=.0975,
+plsRglm(object, \dots)
+\method{plsRglmmodel}{default}(object,dataX,nt=2,limQ2set=.0975,
 dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",
 EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,
 alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,
-sparse=FALSE,sparseStop=TRUE,naive=FALSE,verbose=TRUE)
-\method{plsRglmmodel}{formula}(formula,data=NULL,nt=2,limQ2set=.0975,
+sparse=FALSE,sparseStop=TRUE,naive=FALSE,verbose=TRUE,\dots)
+\method{plsRglmmodel}{formula}(object,data=NULL,nt=2,limQ2set=.0975,
 dataPredictY,modele="pls",family=NULL,typeVC="none",
 EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,
 alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,subset,
 start=NULL,etastart,mustart,offset,method="glm.fit",control= list(),
-contrasts=NULL,sparse=FALSE,sparseStop=TRUE,naive=FALSE,verbose=TRUE)
+contrasts=NULL,sparse=FALSE,sparseStop=TRUE,naive=FALSE,verbose=TRUE,\dots)
 PLS_glm(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = dataX, 
 modele = "pls", family = NULL, typeVC = "none", EstimXNA = FALSE, 
 scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
@@ -33,7 +33,7 @@ tol_Xi=10^(-12),weights,subset,start=NULL,etastart,mustart,offset,method,
 control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE,verbose=TRUE)
 }
 \arguments{
-  \item{x}{a formula or a response (training) dataset}
+  \item{object}{response (training) dataset or an object of class "\code{\link{formula}}" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.}
   \item{dataY}{response (training) dataset}
   \item{dataX}{predictor(s) (training) dataset}
   \item{formula}{an object of class "\code{\link{formula}}" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.}

@@ -40,7 +40,7 @@
 #' data(pine)
 #' Xpine<-pine[,1:10]
 #' ypine<-pine[,11]
-#' bbb2 <- cv.plsR(dataY=ypine,dataX=Xpine,nt=4,K=nrow(Xpine),keepcoeffs=TRUE,verbose=FALSE)
+#' bbb2 <- cv.plsR(object=ypine,dataX=Xpine,nt=4,K=nrow(Xpine),keepcoeffs=TRUE,verbose=FALSE)
 #' kfolds2coeff(bbb2)
 #' boxplot(kfolds2coeff(bbb2)[,1])
 #' rm(list=c("Xpine","ypine","bbb2"))

@@ -2,7 +2,7 @@
 % Please edit documentation in R/PLS_lm_wvc.R
 \name{PLS_lm_wvc}
 \alias{PLS_lm_wvc}
-\title{Light version of PLS\_lm for cross validation purposes}
+\title{Light version of PLS_lm for cross validation purposes}
 \usage{
 PLS_lm_wvc(
   dataY,

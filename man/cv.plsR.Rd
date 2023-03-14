@@ -9,15 +9,15 @@
 This function implements k-fold cross-validation on complete or incomplete datasets for partial least squares regression models
 }
 \usage{
-cv.plsR(x, \dots)
-\method{cv.plsRmodel}{default}(dataY,dataX,nt=2,limQ2set=.0975,modele="pls", 
+cv.plsR(object, \dots)
+\method{cv.plsRmodel}{default}(object,dataX,nt=2,limQ2set=.0975,modele="pls", 
 K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, 
 scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, 
-keepMclassed=FALSE, tol_Xi=10^(-12), weights, verbose=TRUE)
-\method{cv.plsRmodel}{formula}(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls", 
+keepMclassed=FALSE, tol_Xi=10^(-12), weights, verbose=TRUE,\dots)
+\method{cv.plsRmodel}{formula}(object,data=NULL,nt=2,limQ2set=.0975,modele="pls", 
 K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, 
 scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, 
-keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL, verbose=TRUE)
+keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL, verbose=TRUE,\dots)
 PLS_lm_kfoldcv(dataY, dataX, nt = 2, limQ2set = 0.0975, modele = "pls", 
 K = 5, NK = 1, grouplist = NULL, random = TRUE, scaleX = TRUE, 
 scaleY = NULL, keepcoeffs = FALSE, keepfolds = FALSE, keepdataY = TRUE, 
@@ -28,11 +28,11 @@ scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE,
 keepMclassed=FALSE, tol_Xi=10^(-12), weights,subset,contrasts=NULL,verbose=TRUE)
 }
 \arguments{
-  \item{x}{a formula or a response (training) dataset}
+  \item{object}{response (training) dataset or an object of class "\code{\link{formula}}" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.}
   \item{dataY}{response (training) dataset}
   \item{dataX}{predictor(s) (training) dataset}
   \item{formula}{an object of class "\code{\link{formula}}" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.}
-  \item{data}{an optional data frame, list or environment (or object coercible by \code{\link{as.data.frame}} to a data frame) containing the variables in the model. If not found in \code{data}, the variables are taken from \code{environment(formula)}, typically the environment from which \code{plsRglm} is called.}    
+  \item{data}{an optional data frame, list or environment (or object coercible by \code{\link{as.data.frame}} to a data frame) containing the variables in the model. If not found in \code{data}, the variables are taken from \code{environment(formula)}, typically the environment from which \code{plsRglm} is called.}  
   \item{nt}{number of components to be extracted}
   \item{limQ2set}{limit value for the Q2}
   \item{modele}{name of the PLS model to be fitted, only (\code{"pls"} available for this fonction.}
@@ -104,13 +104,13 @@ XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
 
 #Leave one out CV (K=nrow(Cornell)) one time (NK=1)
-bbb <- cv.plsR(dataY=yCornell,dataX=XCornell,nt=6,K=nrow(Cornell),NK=1)
+bbb <- cv.plsR(object=yCornell,dataX=XCornell,nt=6,K=nrow(Cornell),NK=1)
 bbb2 <- cv.plsR(Y~.,data=Cornell,nt=6,K=12,NK=1,verbose=FALSE)
 (sum1<-summary(bbb2))
 
 #6-fold CV (K=6) two times (NK=2)
 #use random=TRUE to randomly create folds for repeated CV
-bbb3 <- cv.plsR(dataY=yCornell,dataX=XCornell,nt=6,K=6,NK=2)
+bbb3 <- cv.plsR(object=yCornell,dataX=XCornell,nt=6,K=6,NK=2)
 bbb4 <- cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=2,verbose=FALSE)
 (sum3<-summary(bbb4))
 

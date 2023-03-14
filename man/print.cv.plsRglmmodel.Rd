@@ -22,7 +22,7 @@ This function provides a print method for the class \code{"cv.plsRglmmodel"}
 data(Cornell)
 XCornell<-Cornell[,1:7]
 yCornell<-Cornell[,8]
-print(cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=10,NK=1,
+print(cv.plsRglm(object=yCornell,dataX=XCornell,nt=10,NK=1,
 modele="pls-glm-family",family=gaussian(), verbose=FALSE))
 rm(list=c("XCornell","yCornell","bbb"))
 

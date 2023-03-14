@@ -365,16 +365,16 @@
 #' bbb <- cv.plsRglm(Y~.,data=Cornell,nt=10,NK=1,modele="pls",verbose=FALSE)
 #' summary(bbb)
 #' 
-#' cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-inverse.gaussian",K=12,verbose=FALSE)
-#' cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-family",
+#' cv.plsRglm(object=yCornell,dataX=XCornell,nt=3,modele="pls-glm-inverse.gaussian",K=12,verbose=FALSE)
+#' cv.plsRglm(object=yCornell,dataX=XCornell,nt=3,modele="pls-glm-family",
 #' family=inverse.gaussian,K=12,verbose=FALSE)
-#' cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-inverse.gaussian",K=6,
+#' cv.plsRglm(object=yCornell,dataX=XCornell,nt=3,modele="pls-glm-inverse.gaussian",K=6,
 #' NK=2,verbose=FALSE)$results_kfolds
-#' cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-family",family=inverse.gaussian(),
+#' cv.plsRglm(object=yCornell,dataX=XCornell,nt=3,modele="pls-glm-family",family=inverse.gaussian(),
 #' K=6,NK=2,verbose=FALSE)$results_kfolds
-#' cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-inverse.gaussian",K=6,
+#' cv.plsRglm(object=yCornell,dataX=XCornell,nt=3,modele="pls-glm-inverse.gaussian",K=6,
 #' NK=2,verbose=FALSE)$results_kfolds
-#' cv.plsRglm(dataY=yCornell,dataX=XCornell,nt=3,modele="pls-glm-family",
+#' cv.plsRglm(object=yCornell,dataX=XCornell,nt=3,modele="pls-glm-family",
 #' family=inverse.gaussian(link = "1/mu^2"),K=6,NK=2,verbose=FALSE)$results_kfolds
 #' 
 #' bbb2 <- cv.plsRglm(Y~.,data=Cornell,nt=10,
@@ -593,7 +593,7 @@
 #' }
 #' 
 #' @export cv.plsRglm
-cv.plsRglm <- function (x, ...) {UseMethod("cv.plsRglmmodel")}
+cv.plsRglm <- function (object, ...) {UseMethod("cv.plsRglmmodel")}
 
 #' @rdname cv.plsRglm
 #' @aliases cv.plsRglm

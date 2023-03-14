@@ -1,7 +1,7 @@
-base
 knitr
 pkgdown
 plsRglm
 boot
 rpart
 chemometrics
+usethis

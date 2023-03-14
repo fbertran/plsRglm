@@ -103,8 +103,7 @@ cv.modpls<-cv.plsR(Y~.,data=Cornell,nt=6,K=6)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
-#> Warning only 5 components could thus be extracted
+#> ____Component____ 6 ____
 #> ****________________________________________________****
 #> 
 #> 2 
@@ -115,7 +114,8 @@ cv.modpls<-cv.plsR(Y~.,data=Cornell,nt=6,K=6)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> ____Component____ 6 ____
+#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
+#> Warning only 5 components could thus be extracted
 #> ****________________________________________________****
 #> 
 #> 3 
@@ -216,46 +216,30 @@ colSums(res6$pvalstep)
 
 ```r
 res6$InfCrit
-#>                AIC   Q2cum_Y LimQ2_Y        Q2_Y   PRESS_Y
-#> Nb_Comp_0 82.01205        NA      NA          NA        NA
-#> Nb_Comp_1 53.15173 0.8966556  0.0975  0.89665563 48.344150
-#> Nb_Comp_2 41.08283 0.9175426  0.0975  0.20210989 28.518576
-#> Nb_Comp_3 32.06411 0.9399676  0.0975  0.27195907  8.056942
-#> Nb_Comp_4 33.76477 0.9197009  0.0975 -0.33759604  5.909608
-#> Nb_Comp_5 33.34373 0.9281373  0.0975  0.10506161  3.856500
-#> Nb_Comp_6 35.25533 0.9232562  0.0975 -0.06792167  3.761138
-#>                RSS_Y      R2_Y R2_residY  RSS_residY PRESS_residY
-#> Nb_Comp_0 467.796667        NA        NA 11.00000000           NA
-#> Nb_Comp_1  35.742486 0.9235940 0.9235940  0.84046633   1.13678803
-#> Nb_Comp_2  11.066606 0.9763431 0.9763431  0.26022559   0.67059977
-#> Nb_Comp_3   4.418081 0.9905556 0.9905556  0.10388893   0.18945488
-#> Nb_Comp_4   4.309235 0.9907882 0.9907882  0.10132947   0.13896142
-#> Nb_Comp_5   3.521924 0.9924713 0.9924713  0.08281624   0.09068364
-#> Nb_Comp_6   3.496074 0.9925265 0.9925265  0.08220840   0.08844125
-#>             Q2_residY  LimQ2 Q2cum_residY    AIC.std  DoF.dof
-#> Nb_Comp_0          NA     NA           NA  37.010388 1.000000
-#> Nb_Comp_1  0.89665563 0.0975    0.8966556   8.150064 2.740749
-#> Nb_Comp_2  0.20210989 0.0975    0.9175426  -3.918831 5.085967
-#> Nb_Comp_3  0.27195907 0.0975    0.9399676 -12.937550 5.121086
-#> Nb_Comp_4 -0.33759604 0.0975    0.9197009 -11.236891 5.103312
-#> Nb_Comp_5  0.10506161 0.0975    0.9281373 -11.657929 6.006316
-#> Nb_Comp_6 -0.06792167 0.0975    0.9232562  -9.746328 7.000002
-#>           sigmahat.dof    AIC.dof    BIC.dof GMDL.dof DoF.naive
-#> Nb_Comp_0    6.5212706 46.0708838 47.7893514 27.59461         1
-#> Nb_Comp_1    1.8665281  4.5699686  4.9558156 21.34020         2
-#> Nb_Comp_2    1.1825195  2.1075461  2.3949331 27.40202         3
-#> Nb_Comp_3    0.7488308  0.8467795  0.9628191 24.40842         4
-#> Nb_Comp_4    0.7387162  0.8232505  0.9357846 24.23105         5
-#> Nb_Comp_5    0.7096382  0.7976101  0.9198348 28.21184         6
-#> Nb_Comp_6    0.7633343  0.9711322  1.1359501 33.18348         7
-#>           sigmahat.naive  AIC.naive  BIC.naive GMDL.naive
-#> Nb_Comp_0      6.5212706 46.0708838 47.7893514   27.59461
-#> Nb_Comp_1      1.8905683  4.1699567  4.4588195   18.37545
-#> Nb_Comp_2      1.1088836  1.5370286  1.6860917   17.71117
-#> Nb_Comp_3      0.7431421  0.7363469  0.8256118   19.01033
-#> Nb_Comp_4      0.7846050  0.8721072  0.9964867   24.16510
-#> Nb_Comp_5      0.7661509  0.8804809  1.0227979   28.64206
-#> Nb_Comp_6      0.8361907  1.1070902  1.3048716   33.63927
+#>                AIC   Q2cum_Y LimQ2_Y        Q2_Y   PRESS_Y      RSS_Y      R2_Y R2_residY  RSS_residY
+#> Nb_Comp_0 82.01205        NA      NA          NA        NA 467.796667        NA        NA 11.00000000
+#> Nb_Comp_1 53.15173 0.8966556  0.0975  0.89665563 48.344150  35.742486 0.9235940 0.9235940  0.84046633
+#> Nb_Comp_2 41.08283 0.9175426  0.0975  0.20210989 28.518576  11.066606 0.9763431 0.9763431  0.26022559
+#> Nb_Comp_3 32.06411 0.9399676  0.0975  0.27195907  8.056942   4.418081 0.9905556 0.9905556  0.10388893
+#> Nb_Comp_4 33.76477 0.9197009  0.0975 -0.33759604  5.909608   4.309235 0.9907882 0.9907882  0.10132947
+#> Nb_Comp_5 33.34373 0.9281373  0.0975  0.10506161  3.856500   3.521924 0.9924713 0.9924713  0.08281624
+#> Nb_Comp_6 35.25533 0.9232562  0.0975 -0.06792167  3.761138   3.496074 0.9925265 0.9925265  0.08220840
+#>           PRESS_residY   Q2_residY  LimQ2 Q2cum_residY    AIC.std  DoF.dof sigmahat.dof    AIC.dof
+#> Nb_Comp_0           NA          NA     NA           NA  37.010388 1.000000    6.5212706 46.0708838
+#> Nb_Comp_1   1.13678803  0.89665563 0.0975    0.8966556   8.150064 2.740749    1.8665281  4.5699686
+#> Nb_Comp_2   0.67059977  0.20210989 0.0975    0.9175426  -3.918831 5.085967    1.1825195  2.1075461
+#> Nb_Comp_3   0.18945488  0.27195907 0.0975    0.9399676 -12.937550 5.121086    0.7488308  0.8467795
+#> Nb_Comp_4   0.13896142 -0.33759604 0.0975    0.9197009 -11.236891 5.103312    0.7387162  0.8232505
+#> Nb_Comp_5   0.09068364  0.10506161 0.0975    0.9281373 -11.657929 6.006316    0.7096382  0.7976101
+#> Nb_Comp_6   0.08844125 -0.06792167 0.0975    0.9232562  -9.746328 7.000002    0.7633343  0.9711322
+#>              BIC.dof GMDL.dof DoF.naive sigmahat.naive  AIC.naive  BIC.naive GMDL.naive
+#> Nb_Comp_0 47.7893514 27.59461         1      6.5212706 46.0708838 47.7893514   27.59461
+#> Nb_Comp_1  4.9558156 21.34020         2      1.8905683  4.1699567  4.4588195   18.37545
+#> Nb_Comp_2  2.3949331 27.40202         3      1.1088836  1.5370286  1.6860917   17.71117
+#> Nb_Comp_3  0.9628191 24.40842         4      0.7431421  0.7363469  0.8256118   19.01033
+#> Nb_Comp_4  0.9357846 24.23105         5      0.7846050  0.8721072  0.9964867   24.16510
+#> Nb_Comp_5  0.9198348 28.21184         6      0.7661509  0.8804809  1.0227979   28.64206
+#> Nb_Comp_6  1.1359501 33.18348         7      0.8361907  1.1070902  1.3048716   33.63927
 ```
 
 The number of significant predictors per components, which is a criteria of significance for [Bastien et al. (2005)](http://www.sciencedirect.com/science/article/pii/S0167947304000271), can be obtained via the following code:
@@ -316,11 +300,11 @@ res.cv.modpls=cvtable(summary(cv.modpls))
 #> 
 #> CV Q2 criterion:
 #>  0  1  2 
-#>  0 89 11 
+#>  0 87 13 
 #> 
 #> CV Press criterion:
 #>  1  2  3  4  5 
-#>  0  0 33 55 12
+#>  0  0 44 45 11
 ```
 
 Plot the results of the cross-validation.
@@ -362,15 +346,12 @@ res
 #> X6          5.5177190
 #> X7        -44.9000310
 #> Information criteria and Fit statistics:
-#>                AIC     RSS_Y     R2_Y R2_residY RSS_residY   AIC.std
-#> Nb_Comp_0 82.01205 467.79667       NA        NA 11.0000000 37.010388
-#> Nb_Comp_1 53.15173  35.74249 0.923594  0.923594  0.8404663  8.150064
-#>            DoF.dof sigmahat.dof   AIC.dof   BIC.dof GMDL.dof
-#> Nb_Comp_0 1.000000     6.521271 46.070884 47.789351 27.59461
-#> Nb_Comp_1 2.740749     1.866528  4.569969  4.955816 21.34020
-#>           DoF.naive sigmahat.naive AIC.naive BIC.naive GMDL.naive
-#> Nb_Comp_0         1       6.521271 46.070884  47.78935   27.59461
-#> Nb_Comp_1         2       1.890568  4.169957   4.45882   18.37545
+#>                AIC     RSS_Y     R2_Y R2_residY RSS_residY   AIC.std  DoF.dof sigmahat.dof   AIC.dof
+#> Nb_Comp_0 82.01205 467.79667       NA        NA 11.0000000 37.010388 1.000000     6.521271 46.070884
+#> Nb_Comp_1 53.15173  35.74249 0.923594  0.923594  0.8404663  8.150064 2.740749     1.866528  4.569969
+#>             BIC.dof GMDL.dof DoF.naive sigmahat.naive AIC.naive BIC.naive GMDL.naive
+#> Nb_Comp_0 47.789351 27.59461         1       6.521271 46.070884  47.78935   27.59461
+#> Nb_Comp_1  4.955816 21.34020         2       1.890568  4.169957   4.45882   18.37545
 ```
 
 It is also possible to obtain the matrix W∗ with the following command line:
@@ -539,7 +520,7 @@ Compute the empirical measures of significance $\pi_e$.
 pi.e=prop.table(res.cv.modpls$CVQ2)[-1]%*%matind
 pi.e
 #>      X1 X2 X3 X4   X5 X6 X7
-#> [1,]  1  1  1  1 0.89  1  1
+#> [1,]  1  1  1  1 0.87  1  1
 ```
 
 The signpred function can be used to plot a summary of the variable selection.
@@ -697,15 +678,15 @@ res.cv.modpls=cvtable(summary(cv.modpls, MClassed = TRUE))
 #> NK: 91,  92,  93,  94,  95,  96,  97,  98,  99,  100
 #> CV MissClassed criterion:
 #>  1  2  3  4 
-#> 84  7  7  2 
+#> 89  7  1  3 
 #> 
 #> CV Q2Chi2 criterion:
-#>  0  1 
-#> 98  2 
+#>   0 
+#> 100 
 #> 
 #> CV PreChi2 criterion:
-#>  1  2  3 
-#> 24 73  3
+#>  1  2  3  4 
+#> 35 59  4  2
 ```
 
 According to the results of the cross validation procedure, we retain a single component, which was also, by chance on this dataset, the BIC and raw cross-validation choices.
@@ -896,20 +877,13 @@ Stratified balanced bootstrap: CIs for each of the predictors distribution.
 
 ```r
 confints.bootpls(bordeaux.bootYX1strata)
-#>                                                               
-#> 1|2         -5.0756955 1.662371 -3.013661 1.3833903 -5.9138164
-#> 2|3         -1.3644320 4.894569 -1.947510 3.2048479  1.3930192
-#> Temperature -0.7844386 3.148180 -1.792702 2.0688905  0.9913942
-#> Sunshine    -0.6013299 3.342430 -1.006882 2.3281779  1.0657179
-#> Heat        -0.7778586 2.436085 -1.522452 1.5825691  0.5966313
-#> Rain        -1.9902616 0.464011 -1.362595 0.4550396 -2.2745073
-#>                                             
-#> 1|2         -1.5167647 -4.4904734 -1.3879169
-#> 2|3          6.5453770  1.3057075  5.0230108
-#> Temperature  4.8529866  0.9624249  3.4213728
-#> Sunshine     4.4007776  0.9905217  3.1831774
-#> Heat         3.7016526  0.5535782  2.9644850
-#> Rain        -0.4568724 -2.2598723 -0.4509125
+#>                                                                                                  
+#> 1|2         -5.2285517 1.8448908 -3.0266055 2.1579125 -6.6883385 -1.5038206 -4.5562748 -1.3483662
+#> 2|3         -1.4216229 4.9525537 -2.3021666 3.1831363  1.4147309  6.9000338  1.2896677  4.7862147
+#> Temperature -0.7320271 3.1003955 -1.6883027 2.0324540  1.0278307  4.7485873  0.9261003  3.2057586
+#> Sunshine    -0.8132215 3.5499277 -0.7684357 2.2776395  1.1162563  4.1623315  1.0299078  3.0499807
+#> Heat        -0.7762493 2.4414119 -1.4124977 1.6043794  0.5748209  3.5916981  0.5437488  2.7944714
+#> Rain        -1.8637554 0.3290778 -1.4058759 0.4748013 -2.2942690 -0.4135918 -1.9548575 -0.3625478
 #> attr(,"typeBCa")
 #> [1] TRUE
 ```
@@ -1024,7 +998,7 @@ The matrix summing up all the results for ordinary balanced bootstrap.
 ```r
 (matind=(rbind(YT1=ind.BCa.bordeauxYT1,YT2=ind.BCa.bordeauxYT2,YT3=ind.BCa.bordeauxYT3,YT4=ind.BCa.bordeauxYT4)))
 #>     Temperature Sunshine  Heat  Rain
-#> YT1       FALSE    FALSE FALSE FALSE
+#> YT1        TRUE     TRUE  TRUE  TRUE
 #> YT2       FALSE    FALSE FALSE FALSE
 #> YT3       FALSE    FALSE FALSE FALSE
 #> YT4       FALSE    FALSE FALSE FALSE
@@ -1041,7 +1015,7 @@ Display the empirical measures of significance $\pi_e$ for ordinary balanced boo
 ```r
 pi.e
 #>      Temperature Sunshine Heat Rain
-#> [1,]           0        0    0    0
+#> [1,]        0.89     0.89 0.89 0.89
 ```
 
 Plot variable selection results and the empirical measures of significance $\pi_e$ for ordinary balanced bootstrap.            
@@ -1077,7 +1051,7 @@ Display the empirical measures of significance $\pi_e$ for stratified balanced b
 ```r
 pi.es
 #>      Temperature Sunshine Heat Rain
-#> [1,]        0.91     0.84 0.84 0.84
+#> [1,]        0.96     0.89 0.89 0.89
 ```
 
 Plot variable selection results and the empirical measures of significance $\pi_e$ for stratified balanced bootstrap.            

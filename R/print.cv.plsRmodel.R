@@ -22,7 +22,7 @@
 #' data(Cornell)
 #' XCornell<-Cornell[,1:7]
 #' yCornell<-Cornell[,8]
-#' print(cv.plsR(dataY=yCornell,dataX=XCornell,nt=10,K=6, verbose=FALSE))
+#' print(cv.plsR(object=yCornell,dataX=XCornell,nt=10,K=6, verbose=FALSE))
 #' rm(list=c("XCornell","yCornell","bbb"))
 #' 
 #' @export

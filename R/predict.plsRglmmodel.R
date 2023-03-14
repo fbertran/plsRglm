@@ -53,12 +53,12 @@
 #' Xpine_supNA<-Xpine_sup
 #' Xpine_supNA[1,1]<-NA
 #' 
-#' modpls=plsRglm(dataY=ypine,dataX=Xpine,nt=6,modele="pls-glm-family",family="gaussian",
+#' modpls=plsRglm(object=ypine,dataX=Xpine,nt=6,modele="pls-glm-family",family="gaussian",
 #' verbose=FALSE)
 #' modplsform=plsRglm(x11~.,data=pine,nt=6,modele="pls-glm-family",family="gaussian", verbose=FALSE)
-#' modpls2=plsRglm(dataY=ypine,dataX=Xpine,nt=6,modele="pls-glm-family",
+#' modpls2=plsRglm(object=ypine,dataX=Xpine,nt=6,modele="pls-glm-family",
 #' dataPredictY=Xpine_sup,family="gaussian", verbose=FALSE)
-#' modpls2NA=plsRglm(dataY=ypine,dataX=Xpine,nt=6,modele="pls-glm-family",
+#' modpls2NA=plsRglm(object=ypine,dataX=Xpine,nt=6,modele="pls-glm-family",
 #' dataPredictY=Xpine_supNA,family="gaussian", verbose=FALSE)
 #' 
 #' #Identical to predict(modpls,type="link") or modpls$Std.ValsPredictY

@@ -1,3 +1,11 @@
+# plsRglm 1.5.1
+
+Fix to methods as requested by CRAN and remove escaped latex characters.
+
+# plsRglm 1.5.0
+
+Fixes requested by CRAN.
+
 # plsRglm 1.4.0
 
 * Added functions for raw bootstrap. Added feature to support custom bootstrap function. 

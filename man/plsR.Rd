@@ -9,18 +9,18 @@
 This function implements Partial least squares Regression models with leave one out cross validation for complete or incomplete datasets.
 }
 \usage{
-plsR(x, \dots)
-\method{plsRmodel}{default}(dataY, dataX, nt = 2, limQ2set = 0.0975, 
+plsR(object, \dots)
+\method{plsRmodel}{default}(object, dataX, nt = 2, limQ2set = 0.0975, 
 dataPredictY = dataX, modele = "pls", family = NULL, typeVC = "none", 
 EstimXNA = FALSE, scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
 alpha.pvals.expli = 0.05, MClassed = FALSE, tol_Xi = 10^(-12), weights,
-sparse = FALSE, sparseStop = TRUE, naive = FALSE,verbose=TRUE)
-\method{plsRmodel}{formula}(formula, data, nt = 2, limQ2set = 0.0975,
+sparse = FALSE, sparseStop = TRUE, naive = FALSE,verbose=TRUE,\dots)
+\method{plsRmodel}{formula}(object, data, nt = 2, limQ2set = 0.0975,
 dataPredictY, modele = "pls", family = NULL, typeVC = "none",
 EstimXNA = FALSE, scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
 alpha.pvals.expli = 0.05, MClassed = FALSE, tol_Xi = 10^(-12), weights,
 subset, contrasts = NULL, sparse = FALSE, sparseStop = TRUE, naive = FALSE,
-verbose=TRUE)
+verbose=TRUE,\dots)
 PLS_lm(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = dataX, 
 modele = "pls", family = NULL, typeVC = "none", EstimXNA = FALSE, 
 scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
@@ -33,7 +33,7 @@ tol_Xi=10^(-12),weights,subset,contrasts=NULL,sparse=FALSE,
 sparseStop=FALSE,naive=FALSE,verbose=TRUE)
 }
 \arguments{
-  \item{x}{a formula or a response (training) dataset}
+  \item{object}{response (training) dataset or an object of class "\code{\link{formula}}" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.}
   \item{dataY}{response (training) dataset}
   \item{dataX}{predictor(s) (training) dataset}
   \item{formula}{an object of class "\code{\link{formula}}" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.}
