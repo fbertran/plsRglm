@@ -1,3 +1,8 @@
+url: https://fbertran.github.io/plsRglm
+
+template:
+  bootstrap: 5
+
 navbar:
   title: "plsRglm"
   type: inverse

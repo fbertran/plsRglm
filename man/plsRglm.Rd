@@ -173,10 +173,10 @@ Depends on the model that was used to fit the model. You can generally at least 
 }
 \references{
 Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{regression}{r\'egression} PLS et de la \enc{regression}{r\'egression} logistique PLS : application aux \enc{donnees}{donn\'ees} \enc{d'allelotypage}{d'all\'elotypage}. \emph{Journal de la Societe Francaise de Statistique}, 151(2), pages 1-18.
-\url{http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47}
+\url{https://www.numdam.org/item/JSFS_2010__151_2_1_0/}
 }
 \author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
-\email{frederic.bertrand@utt.fr}\cr
+\email{frederic.bertrand@lecnam.net}\cr
 \url{https://fbertran.github.io/homepage/}
 }
 \note{Use \code{\link{cv.plsRglm}} to cross-validate the plsRglm models and \code{\link{bootplsglm}} to bootstrap them.}

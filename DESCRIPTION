@@ -1,21 +1,22 @@
 Package: plsRglm
-Version: 1.5.1
-Date: 2023-03-14
+Version: 1.6.0
+Date: 2025-09-11
 Depends: R (>= 2.10)
 Imports: mvtnorm, boot, bipartite, car, MASS
 Enhances: pls
-Suggests: plsdof, R.rsp, chemometrics, plsdepot
+Suggests: chemometrics, plsdof, plsdepot, plspm, plsRcox, R.rsp, testthat (>= 3.0.0)
 Title: Partial Least Squares Regression for Generalized Linear Models
 Authors@R: c(
-	person(given = "Frederic", family= "Bertrand", role = c("cre", "aut"), email = "frederic.bertrand@utt.fr", comment = c(ORCID = "0000-0002-0837-8281")),
-	person(given = "Myriam", family= "Maumy-Bertrand", role = c("aut"), email = "myriam.maumy@utt.fr", comment = c(ORCID = "0000-0002-4615-1512")))
+	person(given = "Frederic", family= "Bertrand", role = c("cre", "aut"), email = "frederic.bertrand@lecnam.net", comment = c(ORCID = "0000-0002-0837-8281")),
+	person(given = "Myriam", family= "Maumy-Bertrand", role = c("aut"), email = "myriam.maumy@ehesp.fr", comment = c(ORCID = "0000-0002-4615-1512")))
 Author: Frederic Bertrand [cre, aut] (<https://orcid.org/0000-0002-0837-8281>), Myriam Maumy-Bertrand [aut] (<https://orcid.org/0000-0002-4615-1512>)
-Maintainer: Frederic Bertrand <frederic.bertrand@utt.fr>
-Description: Provides (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria <arXiv:1810.01005>. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.
+Maintainer: Frederic Bertrand <frederic.bertrand@lecnam.net>
+Description: Provides (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria <doi:10.48550/arXiv.1810.01005>. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.
 License: GPL-3
 Encoding: UTF-8
 URL: https://fbertran.github.io/plsRglm/, https://github.com/fbertran/plsRglm/
 BugReports: https://github.com/fbertran/plsRglm/issues/
 VignetteBuilder: R.rsp
 Classification/MSC: 62J12, 62J99
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.2
+Config/testthat/edition: 3

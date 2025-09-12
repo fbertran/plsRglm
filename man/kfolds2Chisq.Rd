@@ -78,7 +78,7 @@ Frédéric Bertrand (2010). Comparing the linear and the
 logistic PLS regression with qualitative predictors: application to
 allelotyping data. \emph{Journal de la Societe Francaise de Statistique},
 151(2), pages 1-18.
-\url{http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47}
+\url{https://www.numdam.org/item/JSFS_2010__151_2_1_0/}
 }
 \seealso{
 \code{\link{kfolds2coeff}}, \code{\link{kfolds2Press}},
@@ -88,7 +88,7 @@ extract and transforms results from k-fold cross validation.
 }
 \author{
 Frédéric Bertrand\cr
-\email{frederic.bertrand@utt.fr}\cr
+\email{frederic.bertrand@lecnam.net}\cr
 \url{https://fbertran.github.io/homepage/}
 }
 \keyword{models}

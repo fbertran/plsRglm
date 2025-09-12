@@ -96,7 +96,7 @@
 #' \code{ncol(dataX) * 1} matrix of the coefficients of the the eXplanatory
 #' variables}
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@utt.fr}\cr
+#' \email{frederic.bertrand@@lecnam.net}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{PLS_glm}} for more detailed results,
 #' \code{\link{PLS_glm_kfoldcv}} for cross-validating models and
@@ -106,7 +106,7 @@
 #' logistic PLS regression with qualitative predictors: application to
 #' allelotyping data. \emph{Journal de la Societe Francaise de Statistique},
 #' 151(2), pages 1-18.
-#' \url{http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47}
+#' \url{https://www.numdam.org/item/JSFS_2010__151_2_1_0/}
 #' @keywords models regression
 #' @examples
 #' 

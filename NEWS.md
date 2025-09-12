@@ -1,3 +1,9 @@
+# plsRglm 1.6.0
+
+* Maintainer email update.
+* Added unit tests.
+* Fix package to get rid of CRAN check notes
+
 # plsRglm 1.5.1
 
 Fix to methods as requested by CRAN and remove escaped latex characters.

@@ -4,9 +4,8 @@ titl <- meta$Title
 year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
 vers <- paste("R package version", meta$Version)
 note <- "book of abstracts, User2014!, Los Angeles, page 172"
-
-
-  
+doi <- paste0("10.32614/CRAN.package.", meta$Package)
+urldoi <- paste0("https://doi.org/", doi)
 
 
 bibentry(bibtype="Manual",
@@ -16,9 +15,10 @@ bibentry(bibtype="Manual",
          year         = year,
          note         = vers,
          url          = "https://fbertran.github.io/homepage/",
+         doi = doi,
          textVersion = 
          paste("Frederic Bertrand and Myriam Maumy-Bertrand (",year ,"). ", 
-               titl, ", ", vers, ".", sep=""
+               titl, ", ", vers, ". doi:", doi, ".", sep=""
                )
 )
 
@@ -45,7 +45,7 @@ PLS : application aux donnees d'allelotypage",
          volume = 151,
          issue = 2,
          pages="1-18",
-         url          = "http://journal-sfds.fr/article/view/47",
+         url          = "https://www.numdam.org/item/JSFS_2010__151_2_1_0/",
          textVersion = 
          paste("Nicolas Meyer, Myriam Maumy-Bertrand et Frederic Bertrand (2010).", 
                "Comparaison de la regression PLS et de la regression logistique

@@ -55,7 +55,7 @@ information criteria directly from a previously fitted plsR model.
 \author{
 Nicole Kraemer, Mikio L. Braun with improvements from
 Frédéric Bertrand\cr
-\email{frederic.bertrand@utt.fr}\cr
+\email{frederic.bertrand@lecnam.net}\cr
 \url{https://fbertran.github.io/homepage/}
 }
 \keyword{models}

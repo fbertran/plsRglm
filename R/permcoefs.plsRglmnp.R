@@ -17,7 +17,7 @@
 #' bootstrap computation fails.
 #' @note ~~some notes~~
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@utt.fr}\cr
+#' \email{frederic.bertrand@@lecnam.net}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso See also \code{\link{bootplsglm}}
 #' @keywords models

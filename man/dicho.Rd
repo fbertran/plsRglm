@@ -32,7 +32,7 @@ rm(list=c("dimX","Astar"))
 }
 \author{
 Frédéric Bertrand\cr
-\email{frederic.bertrand@utt.fr}\cr
+\email{frederic.bertrand@lecnam.net}\cr
 \url{https://fbertran.github.io/homepage/}
 }
 \keyword{utilities}

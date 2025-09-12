@@ -9,7 +9,7 @@
 #' @param \dots further arguments to be passed to or from methods.
 #' @return \code{NULL}
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@utt.fr}\cr
+#' \email{frederic.bertrand@@lecnam.net}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{summary}}
 #' @references Nicolas Meyer, Myriam Maumy-Bertrand et
@@ -17,7 +17,7 @@
 #' logistic PLS regression with qualitative predictors: application to
 #' allelotyping data. \emph{Journal de la Societe Francaise de Statistique},
 #' 151(2), pages 1-18.
-#' \url{http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47}
+#' \url{https://www.numdam.org/item/JSFS_2010__151_2_1_0/}
 #' @keywords methods print
 #' @examples
 #' 

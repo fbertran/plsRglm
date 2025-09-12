@@ -3,9 +3,11 @@
 \docType{package}
 \name{plsRglm-package}
 \alias{plsRglm-package}
-\title{plsRglm-package}
+\title{plsRglm: Partial Least Squares Regression for Generalized Linear Models}
 \description{
-Provides (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria <arXiv:1810.01005>. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+Provides (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria \doi{10.48550/arXiv.1810.01005}. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.
 }
 \examples{
 set.seed(314)
@@ -18,3 +20,22 @@ res.cv.modpls<-cvtable(summary(cv.modpls))
 \references{
 A short paper that sums up some of features of the package is available on \url{https://arxiv.org/}, Frédéric Bertrand and Myriam Maumy-Bertrand (2018), "plsRglm: Partial least squares linear and generalized linear regression for processing incomplete datasets by cross-validation and bootstrap techniques with R", *arxiv*, \url{https://arxiv.org/abs/1810.01005}, \url{https://github.com/fbertran/plsRglm/} et \url{https://fbertran.github.io/plsRglm/}
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://fbertran.github.io/plsRglm/}
+  \item \url{https://github.com/fbertran/plsRglm/}
+  \item Report bugs at \url{https://github.com/fbertran/plsRglm/issues/}
+}
+
+}
+\author{
+\strong{Maintainer}: Frederic Bertrand \email{frederic.bertrand@lecnam.net} (\href{https://orcid.org/0000-0002-0837-8281}{ORCID})
+
+Authors:
+\itemize{
+  \item Myriam Maumy-Bertrand \email{myriam.maumy@ehesp.fr} (\href{https://orcid.org/0000-0002-4615-1512}{ORCID})
+}
+
+}
+\keyword{internal}

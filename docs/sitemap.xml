@@ -1,252 +1,86 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/AICpls.html</loc>
-  </url>
-  <url>
-    <loc>/reference/CorMat.html</loc>
-  </url>
-  <url>
-    <loc>/reference/Cornell.html</loc>
-  </url>
-  <url>
-    <loc>/reference/PLS_glm_wvc.html</loc>
-  </url>
-  <url>
-    <loc>/reference/PLS_lm_wvc.html</loc>
-  </url>
-  <url>
-    <loc>/reference/XbordeauxNA.html</loc>
-  </url>
-  <url>
-    <loc>/reference/XpineNAX21.html</loc>
-  </url>
-  <url>
-    <loc>/reference/aic.dof.html</loc>
-  </url>
-  <url>
-    <loc>/reference/aze.html</loc>
-  </url>
-  <url>
-    <loc>/reference/aze_compl.html</loc>
-  </url>
-  <url>
-    <loc>/reference/bootpls.html</loc>
-  </url>
-  <url>
-    <loc>/reference/bootplsglm.html</loc>
-  </url>
-  <url>
-    <loc>/reference/bordeaux.html</loc>
-  </url>
-  <url>
-    <loc>/reference/bordeauxNA.html</loc>
-  </url>
-  <url>
-    <loc>/reference/boxplots.bootpls.html</loc>
-  </url>
-  <url>
-    <loc>/reference/coef.plsRglmmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/coef.plsRmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/coefs.plsR.html</loc>
-  </url>
-  <url>
-    <loc>/reference/coefs.plsR.raw.html</loc>
-  </url>
-  <url>
-    <loc>/reference/coefs.plsRglm.html</loc>
-  </url>
-  <url>
-    <loc>/reference/coefs.plsRglm.raw.html</loc>
-  </url>
-  <url>
-    <loc>/reference/coefs.plsRglmnp.html</loc>
-  </url>
-  <url>
-    <loc>/reference/coefs.plsRnp.html</loc>
-  </url>
-  <url>
-    <loc>/reference/confints.bootpls.html</loc>
-  </url>
-  <url>
-    <loc>/reference/cv.plsR.html</loc>
-  </url>
-  <url>
-    <loc>/reference/cv.plsRglm.html</loc>
-  </url>
-  <url>
-    <loc>/reference/cvtable.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dicho.html</loc>
-  </url>
-  <url>
-    <loc>/reference/fowlkes.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/infcrit.dof.html</loc>
-  </url>
-  <url>
-    <loc>/reference/kfolds2CVinfos_glm.html</loc>
-  </url>
-  <url>
-    <loc>/reference/kfolds2CVinfos_lm.html</loc>
-  </url>
-  <url>
-    <loc>/reference/kfolds2Chisq.html</loc>
-  </url>
-  <url>
-    <loc>/reference/kfolds2Chisqind.html</loc>
-  </url>
-  <url>
-    <loc>/reference/kfolds2Mclassed.html</loc>
-  </url>
-  <url>
-    <loc>/reference/kfolds2Mclassedind.html</loc>
-  </url>
-  <url>
-    <loc>/reference/kfolds2Press.html</loc>
-  </url>
-  <url>
-    <loc>/reference/kfolds2Pressind.html</loc>
-  </url>
-  <url>
-    <loc>/reference/kfolds2coeff.html</loc>
-  </url>
-  <url>
-    <loc>/reference/loglikpls.html</loc>
-  </url>
-  <url>
-    <loc>/reference/permcoefs.plsR.html</loc>
-  </url>
-  <url>
-    <loc>/reference/permcoefs.plsR.raw.html</loc>
-  </url>
-  <url>
-    <loc>/reference/permcoefs.plsRglm.html</loc>
-  </url>
-  <url>
-    <loc>/reference/permcoefs.plsRglm.raw.html</loc>
-  </url>
-  <url>
-    <loc>/reference/permcoefs.plsRglmnp.html</loc>
-  </url>
-  <url>
-    <loc>/reference/permcoefs.plsRnp.html</loc>
-  </url>
-  <url>
-    <loc>/reference/pine.html</loc>
-  </url>
-  <url>
-    <loc>/reference/pineNAX21.html</loc>
-  </url>
-  <url>
-    <loc>/reference/pine_full.html</loc>
-  </url>
-  <url>
-    <loc>/reference/pine_sup.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot.table.summary.cv.plsRglmmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plot.table.summary.cv.plsRmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plots.confints.bootpls.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plsR.dof.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plsR.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plsRglm-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/plsRglm.html</loc>
-  </url>
-  <url>
-    <loc>/reference/predict.plsRglmmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/predict.plsRmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/print.coef.plsRglmmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/print.coef.plsRmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/print.cv.plsRglmmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/print.cv.plsRmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/print.plsRglmmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/print.plsRmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/print.summary.plsRglmmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/print.summary.plsRmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/signpred.html</loc>
-  </url>
-  <url>
-    <loc>/reference/simul_data_UniYX.html</loc>
-  </url>
-  <url>
-    <loc>/reference/simul_data_UniYX_binom.html</loc>
-  </url>
-  <url>
-    <loc>/reference/simul_data_YX.html</loc>
-  </url>
-  <url>
-    <loc>/reference/simul_data_complete.html</loc>
-  </url>
-  <url>
-    <loc>/reference/summary.cv.plsRglmmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/summary.cv.plsRmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/summary.plsRglmmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/summary.plsRmodel.html</loc>
-  </url>
-  <url>
-    <loc>/reference/tilt.bootpls.html</loc>
-  </url>
-  <url>
-    <loc>/reference/tilt.bootplsglm.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://fbertran.github.io/plsRglm/404.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/authors.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/index.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/news/index.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/AICpls.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/CorMat.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/Cornell.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/PLS_glm_wvc.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/PLS_lm_wvc.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/XbordeauxNA.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/XpineNAX21.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/aic.dof.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/aze.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/aze_compl.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/bootpls.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/bootplsglm.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/bordeaux.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/bordeauxNA.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/boxplots.bootpls.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/coef.plsRglmmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/coef.plsRmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/coefs.plsR.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/coefs.plsR.raw.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/coefs.plsRglm.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/coefs.plsRglm.raw.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/coefs.plsRglmnp.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/coefs.plsRnp.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/confints.bootpls.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/cv.plsR.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/cv.plsRglm.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/cvtable.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/dicho.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/fowlkes.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/index.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/infcrit.dof.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/kfolds2CVinfos_glm.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/kfolds2CVinfos_lm.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/kfolds2Chisq.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/kfolds2Chisqind.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/kfolds2Mclassed.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/kfolds2Mclassedind.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/kfolds2Press.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/kfolds2Pressind.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/kfolds2coeff.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/loglikpls.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/permcoefs.plsR.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/permcoefs.plsR.raw.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/permcoefs.plsRglm.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/permcoefs.plsRglm.raw.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/permcoefs.plsRglmnp.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/permcoefs.plsRnp.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/pine.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/pineNAX21.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/pine_full.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/pine_sup.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/plot.table.summary.cv.plsRglmmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/plot.table.summary.cv.plsRmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/plots.confints.bootpls.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/plsR.dof.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/plsR.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/plsRglm-package.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/plsRglm.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/predict.plsRglmmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/predict.plsRmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/print.coef.plsRglmmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/print.coef.plsRmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/print.cv.plsRglmmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/print.cv.plsRmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/print.plsRglmmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/print.plsRmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/print.summary.plsRglmmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/print.summary.plsRmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/signpred.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/simul_data_UniYX.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/simul_data_UniYX_binom.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/simul_data_YX.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/simul_data_complete.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/summary.cv.plsRglmmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/summary.cv.plsRmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/summary.plsRglmmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/summary.plsRmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/tilt.bootpls.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/tilt.bootplsglm.html</loc></url>
 </urlset>
+

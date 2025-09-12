@@ -40,7 +40,7 @@
 #' @note Use \code{\link{PLS_lm_kfoldcv}} for a wrapper in view of
 #' cross-validation.
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@utt.fr}\cr
+#' \email{frederic.bertrand@@lecnam.net}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{PLS_lm}} for more detailed results,
 #' \code{\link{PLS_lm_kfoldcv}} for cross-validating models and
@@ -50,7 +50,7 @@
 #' logistic PLS regression with qualitative predictors: application to
 #' allelotyping data. \emph{Journal de la Societe Francaise de Statistique},
 #' 151(2), pages 1-18.
-#' \url{http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47}
+#' \url{https://www.numdam.org/item/JSFS_2010__151_2_1_0/}
 #' @keywords models regression
 #' @examples
 #' 

@@ -4,87 +4,58 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Partial Least Squares Regression for Generalized Linear Models • plsRglm</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Partial Least Squares Regression for Generalized Linear Models">
-<meta property="og:description" content="Provides (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria &lt;arXiv:1810.01005&gt;. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.">
-<meta property="og:image" content="/logo.png">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
+<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Partial Least Squares Regression for Generalized Linear Models">
+<meta name="description" content="Provides (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria &lt;doi:10.48550/arXiv.1810.01005&gt;. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.">
+<meta property="og:description" content="Provides (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria &lt;doi:10.48550/arXiv.1810.01005&gt;. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.">
+<meta property="og:image" content="https://fbertran.github.io/plsRglm/logo.png">
 </head>
-<body data-spy="scroll" data-target="#toc">
-    
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
-    <div class="container template-home">
-      <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">plsRglm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.1</span>
-      </span>
-    </div>
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fa fa-home"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf" class="external-link">Vignette</a>
-</li>
-<li>
-  <a href="reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="news/index.html">Changelog</a>
-</li>
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="inverse" aria-label="Site navigation"><div class="container">
+
+    <a class="navbar-brand me-2" href="index.html">plsRglm</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="active nav-item"><a class="nav-link" href="index.html"><span class="fa fa-home"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a></li>
+<li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/fbertran/plsRglm" class="external-link">
-    <span class="fa fa-github"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/fbertran/plsRglm"><span class="fa fa-github"></span></a></li>
       </ul>
 </div>
-<!--/.nav-collapse -->
+
+
   </div>
-<!--/.container -->
+</nav><div class="container template-home">
+<div class="row">
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="plsrglm-">plsRglm <a class="anchor" aria-label="anchor" href="#plsrglm-"></a>
+</h1>
 </div>
-<!--/.navbar -->
-
-      
-
-      </header><div class="row">
-  <div class="contents col-md-9">
-
-<div class="section level1">
-<div class="page-header"><h1 id="plsrglm-">plsRglm <img src="reference/figures/logo.png" align="right" width="200"><a class="anchor" aria-label="anchor" href="#plsrglm-"></a>
-</h1></div>
 </div>
 <div class="section level1">
 <h1 id="partial-least-squares-regression-for-generalized-linear-models">Partial Least Squares Regression for Generalized Linear Models<a class="anchor" aria-label="anchor" href="#partial-least-squares-regression-for-generalized-linear-models"></a>
@@ -92,6 +63,7 @@
 <div class="section level2">
 <h2 id="frédéric-bertrand-and-myriam-maumy-bertrand">Frédéric Bertrand and Myriam Maumy-Bertrand<a class="anchor" aria-label="anchor" href="#fr%C3%A9d%C3%A9ric-bertrand-and-myriam-maumy-bertrand"></a>
 </h2>
+<p><a href="https://doi.org/10.32614/CRAN.package.plsRglm" class="external-link uri">https://doi.org/10.32614/CRAN.package.plsRglm</a></p>
 <!-- badges: start -->
 
 <p>The goal of plsRglm <a href="https://arxiv.org/abs/1810.01005" class="external-link">&lt;arXiv:1810.01005&gt;</a> is to provide (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.</p>
@@ -130,7 +102,7 @@
 <h3 id="cross-validation">Cross validation<a class="anchor" aria-label="anchor" href="#cross-validation"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fbertran.github.io/plsRglm/" class="external-link">plsRglm</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fbertran.github.io/plsRglm/">plsRglm</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Cornell</span><span class="op">)</span></span></code></pre></div>
 <p>We use k = 6 balanced groups of 2 subjects to perform repeated k-fold cross validation. We set to 10, thanks to the option nt=6, the maximal number of components for the cross-validation function -cv.plsR- since the rank of the design matrix is equal to 6. The grouplist option enables the user to provide custom splits of the datasets on which cross validation will be carried out. As a consequence, one can use the <a href="http://bioconductor.org/packages/release/bioc/html/caret.html" class="external-link">caret</a> (from Max Kuhn et al., 2019) package to find balanced splits of the dataset into folds with respect to the response values.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -214,6 +186,7 @@
 <span><span class="co">#&gt; ____Component____ 5 ____</span></span>
 <span><span class="co">#&gt; ____Component____ 6 ____</span></span>
 <span><span class="co">#&gt; ____Predicting X without NA neither in X nor in Y____</span></span>
+<span><span class="co">#&gt; Loading required namespace: plsdof</span></span>
 <span><span class="co">#&gt; ****________________________________________________****</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; </span></span>
@@ -224,8 +197,8 @@
 <span><span class="co">#&gt; 0 1 </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; CV Press criterion:</span></span>
-<span><span class="co">#&gt; 1 2 3 </span></span>
-<span><span class="co">#&gt; 0 0 1</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 2 3 4 </span></span>
+<span><span class="co">#&gt; 0 0 0 1</span></span></code></pre></div>
 <p>You can perform leave one out cross validation similar to the one that existed in previous versions of SIMCA by setting TypeVC=“standard”. Two other options, TypeVC=“missing” or TypeVC=“standard”, exists to handle incomplete datasets. Indeed, of cross validation is required is that case, one needs to selects the way of predicting the response for left out observations. For complete rows, without any missing value, there are two different ways of computing these predictions. As a consequence, for mixed datasets, with complete and incomplete rows, there are two ways of computing prediction : either predicts any row as if there were missing values in it (missingdata) or selects the prediction method accordingly to the completeness of the row (adaptative).</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res6</span><span class="op">&lt;-</span><span class="fu"><a href="reference/plsR.html">plsR</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">.</span>,data<span class="op">=</span><span class="va">Cornell</span>, nt<span class="op">=</span><span class="fl">6</span>, typeVC<span class="op">=</span><span class="st">"standard"</span>, pvals.expli<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
@@ -244,30 +217,46 @@
 <span><span class="co">#&gt; [1] 0 0 3 0 0 0</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res6</span><span class="op">$</span><span class="va">InfCrit</span></span>
-<span><span class="co">#&gt;                AIC   Q2cum_Y LimQ2_Y        Q2_Y   PRESS_Y      RSS_Y      R2_Y R2_residY  RSS_residY</span></span>
-<span><span class="co">#&gt; Nb_Comp_0 82.01205        NA      NA          NA        NA 467.796667        NA        NA 11.00000000</span></span>
-<span><span class="co">#&gt; Nb_Comp_1 53.15173 0.8966556  0.0975  0.89665563 48.344150  35.742486 0.9235940 0.9235940  0.84046633</span></span>
-<span><span class="co">#&gt; Nb_Comp_2 41.08283 0.9175426  0.0975  0.20210989 28.518576  11.066606 0.9763431 0.9763431  0.26022559</span></span>
-<span><span class="co">#&gt; Nb_Comp_3 32.06411 0.9399676  0.0975  0.27195907  8.056942   4.418081 0.9905556 0.9905556  0.10388893</span></span>
-<span><span class="co">#&gt; Nb_Comp_4 33.76477 0.9197009  0.0975 -0.33759604  5.909608   4.309235 0.9907882 0.9907882  0.10132947</span></span>
-<span><span class="co">#&gt; Nb_Comp_5 33.34373 0.9281373  0.0975  0.10506161  3.856500   3.521924 0.9924713 0.9924713  0.08281624</span></span>
-<span><span class="co">#&gt; Nb_Comp_6 35.25533 0.9232562  0.0975 -0.06792167  3.761138   3.496074 0.9925265 0.9925265  0.08220840</span></span>
-<span><span class="co">#&gt;           PRESS_residY   Q2_residY  LimQ2 Q2cum_residY    AIC.std  DoF.dof sigmahat.dof    AIC.dof</span></span>
-<span><span class="co">#&gt; Nb_Comp_0           NA          NA     NA           NA  37.010388 1.000000    6.5212706 46.0708838</span></span>
-<span><span class="co">#&gt; Nb_Comp_1   1.13678803  0.89665563 0.0975    0.8966556   8.150064 2.740749    1.8665281  4.5699686</span></span>
-<span><span class="co">#&gt; Nb_Comp_2   0.67059977  0.20210989 0.0975    0.9175426  -3.918831 5.085967    1.1825195  2.1075461</span></span>
-<span><span class="co">#&gt; Nb_Comp_3   0.18945488  0.27195907 0.0975    0.9399676 -12.937550 5.121086    0.7488308  0.8467795</span></span>
-<span><span class="co">#&gt; Nb_Comp_4   0.13896142 -0.33759604 0.0975    0.9197009 -11.236891 5.103312    0.7387162  0.8232505</span></span>
-<span><span class="co">#&gt; Nb_Comp_5   0.09068364  0.10506161 0.0975    0.9281373 -11.657929 6.006316    0.7096382  0.7976101</span></span>
-<span><span class="co">#&gt; Nb_Comp_6   0.08844125 -0.06792167 0.0975    0.9232562  -9.746328 7.000002    0.7633343  0.9711322</span></span>
-<span><span class="co">#&gt;              BIC.dof GMDL.dof DoF.naive sigmahat.naive  AIC.naive  BIC.naive GMDL.naive</span></span>
-<span><span class="co">#&gt; Nb_Comp_0 47.7893514 27.59461         1      6.5212706 46.0708838 47.7893514   27.59461</span></span>
-<span><span class="co">#&gt; Nb_Comp_1  4.9558156 21.34020         2      1.8905683  4.1699567  4.4588195   18.37545</span></span>
-<span><span class="co">#&gt; Nb_Comp_2  2.3949331 27.40202         3      1.1088836  1.5370286  1.6860917   17.71117</span></span>
-<span><span class="co">#&gt; Nb_Comp_3  0.9628191 24.40842         4      0.7431421  0.7363469  0.8256118   19.01033</span></span>
-<span><span class="co">#&gt; Nb_Comp_4  0.9357846 24.23105         5      0.7846050  0.8721072  0.9964867   24.16510</span></span>
-<span><span class="co">#&gt; Nb_Comp_5  0.9198348 28.21184         6      0.7661509  0.8804809  1.0227979   28.64206</span></span>
-<span><span class="co">#&gt; Nb_Comp_6  1.1359501 33.18348         7      0.8361907  1.1070902  1.3048716   33.63927</span></span></code></pre></div>
+<span><span class="co">#&gt;                AIC   Q2cum_Y LimQ2_Y        Q2_Y   PRESS_Y      RSS_Y</span></span>
+<span><span class="co">#&gt; Nb_Comp_0 82.01205        NA      NA          NA        NA 467.796667</span></span>
+<span><span class="co">#&gt; Nb_Comp_1 53.15173 0.8966556  0.0975  0.89665563 48.344150  35.742486</span></span>
+<span><span class="co">#&gt; Nb_Comp_2 41.08283 0.9175426  0.0975  0.20210989 28.518576  11.066606</span></span>
+<span><span class="co">#&gt; Nb_Comp_3 32.06411 0.9399676  0.0975  0.27195907  8.056942   4.418081</span></span>
+<span><span class="co">#&gt; Nb_Comp_4 33.76477 0.9197009  0.0975 -0.33759604  5.909608   4.309235</span></span>
+<span><span class="co">#&gt; Nb_Comp_5 33.34373 0.9281373  0.0975  0.10506161  3.856500   3.521924</span></span>
+<span><span class="co">#&gt; Nb_Comp_6 35.25533 0.9232562  0.0975 -0.06792167  3.761138   3.496074</span></span>
+<span><span class="co">#&gt;                R2_Y R2_residY  RSS_residY PRESS_residY   Q2_residY  LimQ2</span></span>
+<span><span class="co">#&gt; Nb_Comp_0        NA        NA 11.00000000           NA          NA     NA</span></span>
+<span><span class="co">#&gt; Nb_Comp_1 0.9235940 0.9235940  0.84046633   1.13678803  0.89665563 0.0975</span></span>
+<span><span class="co">#&gt; Nb_Comp_2 0.9763431 0.9763431  0.26022559   0.67059977  0.20210989 0.0975</span></span>
+<span><span class="co">#&gt; Nb_Comp_3 0.9905556 0.9905556  0.10388893   0.18945488  0.27195907 0.0975</span></span>
+<span><span class="co">#&gt; Nb_Comp_4 0.9907882 0.9907882  0.10132947   0.13896142 -0.33759604 0.0975</span></span>
+<span><span class="co">#&gt; Nb_Comp_5 0.9924713 0.9924713  0.08281624   0.09068364  0.10506161 0.0975</span></span>
+<span><span class="co">#&gt; Nb_Comp_6 0.9925265 0.9925265  0.08220840   0.08844125 -0.06792167 0.0975</span></span>
+<span><span class="co">#&gt;           Q2cum_residY    AIC.std  DoF.dof sigmahat.dof    AIC.dof</span></span>
+<span><span class="co">#&gt; Nb_Comp_0           NA  37.010388 1.000000    6.5212706 46.0708838</span></span>
+<span><span class="co">#&gt; Nb_Comp_1    0.8966556   8.150064 2.740749    1.8665281  4.5699686</span></span>
+<span><span class="co">#&gt; Nb_Comp_2    0.9175426  -3.918831 5.085967    1.1825195  2.1075461</span></span>
+<span><span class="co">#&gt; Nb_Comp_3    0.9399676 -12.937550 5.121086    0.7488308  0.8467795</span></span>
+<span><span class="co">#&gt; Nb_Comp_4    0.9197009 -11.236891 5.103312    0.7387162  0.8232505</span></span>
+<span><span class="co">#&gt; Nb_Comp_5    0.9281373 -11.657929 6.006316    0.7096382  0.7976101</span></span>
+<span><span class="co">#&gt; Nb_Comp_6    0.9232562  -9.746328 7.000002    0.7633343  0.9711322</span></span>
+<span><span class="co">#&gt;              BIC.dof GMDL.dof DoF.naive sigmahat.naive  AIC.naive  BIC.naive</span></span>
+<span><span class="co">#&gt; Nb_Comp_0 47.7893514 27.59461         1      6.5212706 46.0708838 47.7893514</span></span>
+<span><span class="co">#&gt; Nb_Comp_1  4.9558156 21.34020         2      1.8905683  4.1699567  4.4588195</span></span>
+<span><span class="co">#&gt; Nb_Comp_2  2.3949331 27.40202         3      1.1088836  1.5370286  1.6860917</span></span>
+<span><span class="co">#&gt; Nb_Comp_3  0.9628191 24.40842         4      0.7431421  0.7363469  0.8256118</span></span>
+<span><span class="co">#&gt; Nb_Comp_4  0.9357846 24.23105         5      0.7846050  0.8721072  0.9964867</span></span>
+<span><span class="co">#&gt; Nb_Comp_5  0.9198348 28.21184         6      0.7661509  0.8804809  1.0227979</span></span>
+<span><span class="co">#&gt; Nb_Comp_6  1.1359502 33.18348         7      0.8361907  1.1070902  1.3048716</span></span>
+<span><span class="co">#&gt;           GMDL.naive</span></span>
+<span><span class="co">#&gt; Nb_Comp_0   27.59461</span></span>
+<span><span class="co">#&gt; Nb_Comp_1   18.37545</span></span>
+<span><span class="co">#&gt; Nb_Comp_2   17.71117</span></span>
+<span><span class="co">#&gt; Nb_Comp_3   19.01033</span></span>
+<span><span class="co">#&gt; Nb_Comp_4   24.16510</span></span>
+<span><span class="co">#&gt; Nb_Comp_5   28.64206</span></span>
+<span><span class="co">#&gt; Nb_Comp_6   33.63927</span></span></code></pre></div>
 <p>The number of significant predictors per components, which is a criteria of significance for <a href="http://www.sciencedirect.com/science/article/pii/S0167947304000271" class="external-link">Bastien et al. (2005)</a>, can be obtained via the following code:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res6</span><span class="op">&lt;-</span><span class="fu"><a href="reference/plsR.html">plsR</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">.</span>,data<span class="op">=</span><span class="va">Cornell</span>, nt<span class="op">=</span><span class="fl">6</span>, pvals.expli<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
@@ -322,9 +311,13 @@
 <p>Plot the results of the cross-validation.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res.cv.modpls</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk10-1.png" title="plot of chunk chunk10" alt="plot of chunk chunk10" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk10-1.png" alt="plot of chunk chunk10" width="100%"><p class="caption">
+plot of chunk chunk10
+</p>
+</div>
 <p>The results of the cross-validation, using of the Q^2 criterion, confirm those of the first 6-fold CV cross validation: we decide to retain 1 components. Even in the linear case, cross validation should be repeated to select the number of components in a PLSR model.</p>
-<p>Now, we fit the PLSGLR regression with one component to get the <span class="math inline"><em>c</em><sub><em>h</em></sub></span> coefficients and the intercept.</p>
+<p>Now, we fit the PLSGLR regression with one component to get the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mi>h</mi></msub><annotation encoding="application/x-tex">c_h</annotation></semantics></math> coefficients and the intercept.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="reference/plsR.html">plsR</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">.</span>,data<span class="op">=</span><span class="va">Cornell</span>,nt<span class="op">=</span><span class="fl">1</span>,pvals.expli<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ____************************************************____</span></span>
@@ -348,12 +341,15 @@
 <span><span class="co">#&gt; X6          5.5177190</span></span>
 <span><span class="co">#&gt; X7        -44.9000310</span></span>
 <span><span class="co">#&gt; Information criteria and Fit statistics:</span></span>
-<span><span class="co">#&gt;                AIC     RSS_Y     R2_Y R2_residY RSS_residY   AIC.std  DoF.dof sigmahat.dof   AIC.dof</span></span>
-<span><span class="co">#&gt; Nb_Comp_0 82.01205 467.79667       NA        NA 11.0000000 37.010388 1.000000     6.521271 46.070884</span></span>
-<span><span class="co">#&gt; Nb_Comp_1 53.15173  35.74249 0.923594  0.923594  0.8404663  8.150064 2.740749     1.866528  4.569969</span></span>
-<span><span class="co">#&gt;             BIC.dof GMDL.dof DoF.naive sigmahat.naive AIC.naive BIC.naive GMDL.naive</span></span>
-<span><span class="co">#&gt; Nb_Comp_0 47.789351 27.59461         1       6.521271 46.070884  47.78935   27.59461</span></span>
-<span><span class="co">#&gt; Nb_Comp_1  4.955816 21.34020         2       1.890568  4.169957   4.45882   18.37545</span></span></code></pre></div>
+<span><span class="co">#&gt;                AIC     RSS_Y     R2_Y R2_residY RSS_residY   AIC.std</span></span>
+<span><span class="co">#&gt; Nb_Comp_0 82.01205 467.79667       NA        NA 11.0000000 37.010388</span></span>
+<span><span class="co">#&gt; Nb_Comp_1 53.15173  35.74249 0.923594  0.923594  0.8404663  8.150064</span></span>
+<span><span class="co">#&gt;            DoF.dof sigmahat.dof   AIC.dof   BIC.dof GMDL.dof DoF.naive</span></span>
+<span><span class="co">#&gt; Nb_Comp_0 1.000000     6.521271 46.070884 47.789351 27.59461         1</span></span>
+<span><span class="co">#&gt; Nb_Comp_1 2.740749     1.866528  4.569969  4.955816 21.34020         2</span></span>
+<span><span class="co">#&gt;           sigmahat.naive AIC.naive BIC.naive GMDL.naive</span></span>
+<span><span class="co">#&gt; Nb_Comp_0       6.521271 46.070884  47.78935   27.59461</span></span>
+<span><span class="co">#&gt; Nb_Comp_1       1.890568  4.169957   4.45882   18.37545</span></span></code></pre></div>
 <p>It is also possible to obtain the matrix W∗ with the following command line:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span><span class="op">$</span><span class="va">wwetoile</span></span>
@@ -368,7 +364,11 @@
 <p>It is also possible to display the biplot of the observations and the predictors.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/biplot.html" class="external-link">biplot</a></span><span class="op">(</span><span class="va">res6</span><span class="op">$</span><span class="va">tt</span>,<span class="va">res6</span><span class="op">$</span><span class="va">pp</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk15-1.png" title="plot of chunk chunk15" alt="plot of chunk chunk15" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk15-1.png" alt="plot of chunk chunk15" width="100%"><p class="caption">
+plot of chunk chunk15
+</p>
+</div>
 <p>Hard thresholding PLS regression and automatic selection of the number of components (<a href="http://www.sciencedirect.com/science/article/pii/S0167947304000271" class="external-link">Bastien et al. (2005)</a>) is also available:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">modpls2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/plsR.html">plsR</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">.</span>,data<span class="op">=</span><span class="va">Cornell</span>,<span class="fl">6</span>,sparse<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
@@ -397,20 +397,36 @@
 <p>Graphical results of the bootstrap on the (Y,X): distributions of the estimators.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/boxplots.bootpls.html">boxplots.bootpls</a></span><span class="op">(</span><span class="va">Cornell.bootYX1</span>,indice<span class="op">=</span><span class="fl">2</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk19-1.png" title="plot of chunk chunk19" alt="plot of chunk chunk19" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk19-1.png" alt="plot of chunk chunk19" width="100%"><p class="caption">
+plot of chunk chunk19
+</p>
+</div>
 <p>Graphical results of the bootstrap on the (Y,X): confidence intervals</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">temp.ci</span><span class="op">=</span><span class="fu"><a href="reference/confints.bootpls.html">confints.bootpls</a></span><span class="op">(</span><span class="va">Cornell.bootYX1</span>,indice<span class="op">=</span><span class="fl">2</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/plots.confints.bootpls.html">plots.confints.bootpls</a></span><span class="op">(</span><span class="va">temp.ci</span>,typeIC<span class="op">=</span><span class="st">"BCa"</span>,colIC<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"blue"</span>,<span class="st">"blue"</span>,<span class="st">"blue"</span>,<span class="st">"blue"</span><span class="op">)</span>, legendpos <span class="op">=</span><span class="st">"topright"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk20-1.png" title="plot of chunk chunk20" alt="plot of chunk chunk20" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk20-1.png" alt="plot of chunk chunk20" width="100%"><p class="caption">
+plot of chunk chunk20
+</p>
+</div>
 <p>Bootstrap is perfomed using the boot package. It allows the user to apply the functions, including jack.after.boot or plot.boot, of this package to the bootstrapped PLSR or PLSGLR models.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Cornell.bootYX1</span>,index<span class="op">=</span><span class="fl">2</span>,jack<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk21-1.png" title="plot of chunk chunk21" alt="plot of chunk chunk21" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk21-1.png" alt="plot of chunk chunk21" width="100%"><p class="caption">
+plot of chunk chunk21
+</p>
+</div>
 <p>Using the dataEllipse of the car you can plot confidence ellipses for two parameters of the PLSR or PLSGLR models.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Ellipses.html" class="external-link">dataEllipse</a></span><span class="op">(</span><span class="va">Cornell.bootYX1</span><span class="op">$</span><span class="va">t</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>, <span class="va">Cornell.bootYX1</span><span class="op">$</span><span class="va">t</span><span class="op">[</span>,<span class="fl">3</span><span class="op">]</span>, cex<span class="op">=</span><span class="fl">.3</span>, levels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">.95</span>, <span class="fl">.99</span><span class="op">)</span>, robust<span class="op">=</span><span class="cn">T</span>, xlab<span class="op">=</span><span class="st">"X2"</span>, ylab<span class="op">=</span><span class="st">"X3"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk22-1.png" title="plot of chunk chunk22" alt="plot of chunk chunk22" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk22-1.png" alt="plot of chunk chunk22" width="100%"><p class="caption">
+plot of chunk chunk22
+</p>
+</div>
 <p>###Bootstrap (y, T)</p>
 <p>Re-sampling on the couple (Y,T) (<a href="http://www.sciencedirect.com/science/article/pii/S0167947304000271" class="external-link">Bastien et al. (2005)</a>) is more stable and faster than the first one. We set at 1000 the number of re-sampling.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
@@ -419,15 +435,23 @@
 <p>Boxplots for each of the predictors.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/boxplots.bootpls.html">boxplots.bootpls</a></span><span class="op">(</span><span class="va">Cornell.bootYT1</span>,indices<span class="op">=</span><span class="fl">2</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk24-1.png" title="plot of chunk chunk24" alt="plot of chunk chunk24" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk24-1.png" alt="plot of chunk chunk24" width="100%"><p class="caption">
+plot of chunk chunk24
+</p>
+</div>
 <p>We do not bootstrap the intercept since the boostrap is done with the centered and scaled response and predictors. As a consequence we should exclude it from the boxplots using the option indice=2:8 and must exclude it from the CI computations, if we request BCa ones, again with the option indice=2:8.</p>
 <p>CIs for each of the predictors.</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">temp.ci</span><span class="op">=</span><span class="fu"><a href="reference/confints.bootpls.html">confints.bootpls</a></span><span class="op">(</span><span class="va">Cornell.bootYT1</span>,indices<span class="op">=</span><span class="fl">2</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/plots.confints.bootpls.html">plots.confints.bootpls</a></span><span class="op">(</span><span class="va">temp.ci</span>,typeIC<span class="op">=</span><span class="st">"BCa"</span>,colIC<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"blue"</span>,<span class="st">"blue"</span>,<span class="st">"blue"</span>,<span class="st">"blue"</span><span class="op">)</span>, legendpos <span class="op">=</span><span class="st">"topright"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk25-1.png" title="plot of chunk chunk25" alt="plot of chunk chunk25" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk25-1.png" alt="plot of chunk chunk25" width="100%"><p class="caption">
+plot of chunk chunk25
+</p>
+</div>
 <p>Since after cross validation we an empirical distribution of the retained number of components, it makes sense to perform (y,T) bootstrap for any of these numbers of components and compare the resulting significance of the predictors at a 5% level. The signpred function can be used to plot a summary of this selection.</p>
-<p>In addition, one can compute an empirical measure of significance <span class="math inline"><em>π</em><sub><em>e</em></sub></span> by computing the weighted -with respect to the empirical distribution of components- average of the significance indicatrices. In that case, all the predictors are significant for the 1 and 2 components model and hence the empirical mesure of significance is equal to 1 for all of them.</p>
+<p>In addition, one can compute an empirical measure of significance <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>π</mi><mi>e</mi></msub><annotation encoding="application/x-tex">\pi_e</annotation></semantics></math> by computing the weighted -with respect to the empirical distribution of components- average of the significance indicatrices. In that case, all the predictors are significant for the 1 and 2 components model and hence the empirical mesure of significance is equal to 1 for all of them.</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res2</span><span class="op">&lt;-</span><span class="fu"><a href="reference/plsR.html">plsR</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">.</span>,data<span class="op">=</span><span class="va">Cornell</span>,nt<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ____************************************************____</span></span>
@@ -447,7 +471,7 @@
 <span><span class="co">#&gt;       X1   X2   X3   X4    X5   X6   X7</span></span>
 <span><span class="co">#&gt; YT1 TRUE TRUE TRUE TRUE  TRUE TRUE TRUE</span></span>
 <span><span class="co">#&gt; YT2 TRUE TRUE TRUE TRUE FALSE TRUE TRUE</span></span></code></pre></div>
-<p>Compute the empirical measures of significance <span class="math inline"><em>π</em><sub><em>e</em></sub></span>.</p>
+<p>Compute the empirical measures of significance <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>π</mi><mi>e</mi></msub><annotation encoding="application/x-tex">\pi_e</annotation></semantics></math>.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pi.e</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html" class="external-link">prop.table</a></span><span class="op">(</span><span class="va">res.cv.modpls</span><span class="op">$</span><span class="va">CVQ2</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="va">matind</span></span>
 <span><span class="va">pi.e</span></span>
@@ -458,7 +482,11 @@
 <code class="sourceCode R"><span><span class="fu"><a href="reference/signpred.html">signpred</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">matind</span><span class="op">)</span>,labsize<span class="op">=</span><span class="fl">.5</span>, plotsize <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">matind</span><span class="op">)</span><span class="op">)</span><span class="op">-</span><span class="fl">.5</span>,<span class="op">-</span><span class="fl">.5</span>,<span class="va">pi.e</span>,cex<span class="op">=</span><span class="fl">1.4</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/mtext.html" class="external-link">mtext</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="va">pi</span><span class="op">[</span><span class="va">e</span><span class="op">]</span><span class="op">)</span>,side<span class="op">=</span><span class="fl">2</span>,las<span class="op">=</span><span class="fl">1</span>,line<span class="op">=</span><span class="fl">2</span>,at<span class="op">=</span><span class="op">-</span><span class="fl">.5</span>,cex<span class="op">=</span><span class="fl">1.4</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk32-1.png" title="plot of chunk chunk32" alt="plot of chunk chunk32" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk32-1.png" alt="plot of chunk chunk32" width="100%"><p class="caption">
+plot of chunk chunk32
+</p>
+</div>
 </div>
 </div>
 <div class="section level2">
@@ -591,7 +619,11 @@
 <p>According to the results of the cross validation procedure, we retain a single component, which was also, by chance on this dataset, the BIC and raw cross-validation choices.</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res.cv.modpls</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk41-1.png" title="plot of chunk chunk41" alt="plot of chunk chunk41" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk41-1.png" alt="plot of chunk chunk41" width="100%"><p class="caption">
+plot of chunk chunk41
+</p>
+</div>
 <p>Fit the model that was selected according to cross validated missclassed criterion.</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span><span class="op">&lt;-</span><span class="fu"><a href="reference/plsRglm.html">plsRglm</a></span><span class="op">(</span><span class="va">ybordeaux</span>,<span class="va">Xbordeaux</span>,<span class="fl">1</span>,modele<span class="op">=</span><span class="st">"pls-glm-polr"</span><span class="op">)</span></span>
@@ -623,7 +655,11 @@
 <p>It is also possible to display the biplot of the observations and the predictors.</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/biplot.html" class="external-link">biplot</a></span><span class="op">(</span><span class="va">modpls1</span><span class="op">$</span><span class="va">tt</span>,<span class="va">modpls1</span><span class="op">$</span><span class="va">pp</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk44-1.png" title="plot of chunk chunk44" alt="plot of chunk chunk44" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk44-1.png" alt="plot of chunk chunk44" width="100%"><p class="caption">
+plot of chunk chunk44
+</p>
+</div>
 <p>Application of the PLSGLR ordinal regression to an incomplete dataset.</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">XbordeauxNA</span><span class="op">&lt;-</span><span class="va">Xbordeaux</span></span>
@@ -702,14 +738,22 @@
 <p>Ordinary balanced bootstrap: Boxplots for each of the predictors distribution.</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/boxplots.bootpls.html">boxplots.bootpls</a></span><span class="op">(</span><span class="va">bordeaux.bootYX1</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk49-1.png" title="plot of chunk chunk49" alt="plot of chunk chunk49" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk49-1.png" alt="plot of chunk chunk49" width="100%"><p class="caption">
+plot of chunk chunk49
+</p>
+</div>
 <p>Ordinary balanced bootstrap: CIs for each of the predictors distribution.</p>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">temp.ci</span><span class="op">=</span><span class="fu"><a href="reference/confints.bootpls.html">confints.bootpls</a></span><span class="op">(</span><span class="va">bordeaux.bootYX1</span><span class="op">)</span></span></code></pre></div>
 <p>Ordinary balanced bootstrap: plot of the CIs for each of the predictors distribution.</p>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/plots.confints.bootpls.html">plots.confints.bootpls</a></span><span class="op">(</span><span class="va">temp.ci</span>,typeIC<span class="op">=</span><span class="st">"BCa"</span>,colIC<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"blue"</span>,<span class="st">"blue"</span>,<span class="st">"blue"</span>,<span class="st">"blue"</span><span class="op">)</span>,legendpos <span class="op">=</span><span class="st">"topright"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk51-1.png" title="plot of chunk chunk51" alt="plot of chunk chunk51" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk51-1.png" alt="plot of chunk chunk51" width="100%"><p class="caption">
+plot of chunk chunk51
+</p>
+</div>
 <p>The strata option is an integer vector or factor specifying the strata for multi-sample problems. It ensures that, for a nonparametric bootstrap, the resampling are done within each of the specified strata. In our case it improves the results of the bootstrap as can been seen on the plot of the CIs for each of the predictors and on the plots of the boxplots as well.</p>
 <p>We apply a stratified balanced bootstrap technique.</p>
 <div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
@@ -717,23 +761,38 @@
 <p>Stratified balanced bootstrap: Boxplots for each of the predictors distribution.</p>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/boxplots.bootpls.html">boxplots.bootpls</a></span><span class="op">(</span><span class="va">bordeaux.bootYX1strata</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk53-1.png" title="plot of chunk chunk53" alt="plot of chunk chunk53" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk53-1.png" alt="plot of chunk chunk53" width="100%"><p class="caption">
+plot of chunk chunk53
+</p>
+</div>
 <p>Stratified balanced bootstrap: CIs for each of the predictors distribution.</p>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/confints.bootpls.html">confints.bootpls</a></span><span class="op">(</span><span class="va">bordeaux.bootYX1strata</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                                                                                                  </span></span>
-<span><span class="co">#&gt; 1|2         -5.2285517 1.8448908 -3.0266055 2.1579125 -6.6883385 -1.5038206 -4.5562748 -1.3483662</span></span>
-<span><span class="co">#&gt; 2|3         -1.4216229 4.9525537 -2.3021666 3.1831363  1.4147309  6.9000338  1.2896677  4.7862147</span></span>
-<span><span class="co">#&gt; Temperature -0.7320271 3.1003955 -1.6883027 2.0324540  1.0278307  4.7485873  0.9261003  3.2057586</span></span>
-<span><span class="co">#&gt; Sunshine    -0.8132215 3.5499277 -0.7684357 2.2776395  1.1162563  4.1623315  1.0299078  3.0499807</span></span>
-<span><span class="co">#&gt; Heat        -0.7762493 2.4414119 -1.4124977 1.6043794  0.5748209  3.5916981  0.5437488  2.7944714</span></span>
-<span><span class="co">#&gt; Rain        -1.8637554 0.3290778 -1.4058759 0.4748013 -2.2942690 -0.4135918 -1.9548575 -0.3625478</span></span>
+<span><span class="co">#&gt;                                                                            </span></span>
+<span><span class="co">#&gt; 1|2         -5.2285517 1.8448908 -3.0266055 2.1579125 -6.6883385 -1.5038206</span></span>
+<span><span class="co">#&gt; 2|3         -1.4216229 4.9525537 -2.3021666 3.1831363  1.4147309  6.9000338</span></span>
+<span><span class="co">#&gt; Temperature -0.7320271 3.1003955 -1.6883027 2.0324540  1.0278307  4.7485873</span></span>
+<span><span class="co">#&gt; Sunshine    -0.8132215 3.5499277 -0.7684357 2.2776395  1.1162563  4.1623315</span></span>
+<span><span class="co">#&gt; Heat        -0.7762493 2.4414119 -1.4124977 1.6043794  0.5748209  3.5916981</span></span>
+<span><span class="co">#&gt; Rain        -1.8637554 0.3290778 -1.4058759 0.4748013 -2.2942690 -0.4135918</span></span>
+<span><span class="co">#&gt;                                  </span></span>
+<span><span class="co">#&gt; 1|2         -4.5562748 -1.3483662</span></span>
+<span><span class="co">#&gt; 2|3          1.2896677  4.7862147</span></span>
+<span><span class="co">#&gt; Temperature  0.9261003  3.2057586</span></span>
+<span><span class="co">#&gt; Sunshine     1.0299078  3.0499807</span></span>
+<span><span class="co">#&gt; Heat         0.5437488  2.7944714</span></span>
+<span><span class="co">#&gt; Rain        -1.9548575 -0.3625478</span></span>
 <span><span class="co">#&gt; attr(,"typeBCa")</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <p>Stratified balanced bootstrap: plot of the CIs for each of the predictors distribution.</p>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/plots.confints.bootpls.html">plots.confints.bootpls</a></span><span class="op">(</span><span class="va">temp.ci</span>,typeIC<span class="op">=</span><span class="st">"BCa"</span>,colIC<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"blue"</span>,<span class="st">"blue"</span>,<span class="st">"blue"</span>,<span class="st">"blue"</span><span class="op">)</span>,legendpos <span class="op">=</span><span class="st">"topright"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk55-1.png" title="plot of chunk chunk55" alt="plot of chunk chunk55" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk55-1.png" alt="plot of chunk chunk55" width="100%"><p class="caption">
+plot of chunk chunk55
+</p>
+</div>
 </div>
 <div class="section level3">
 <h3 id="bootstrap-yt">Bootstrap (y,T)<a class="anchor" aria-label="anchor" href="#bootstrap-yt"></a>
@@ -744,14 +803,22 @@
 <p>Ordinary balanced bootstrap: Boxplots for each of the predictors distribution.</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/boxplots.bootpls.html">boxplots.bootpls</a></span><span class="op">(</span><span class="va">bordeaux.bootYT1</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk57-1.png" title="plot of chunk chunk57" alt="plot of chunk chunk57" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk57-1.png" alt="plot of chunk chunk57" width="100%"><p class="caption">
+plot of chunk chunk57
+</p>
+</div>
 <p>Ordinary balanced bootstrap: CIs for each of the predictors distribution.</p>
 <div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">temp.ci</span><span class="op">=</span><span class="fu"><a href="reference/confints.bootpls.html">confints.bootpls</a></span><span class="op">(</span><span class="va">bordeaux.bootYT1</span><span class="op">)</span></span></code></pre></div>
 <p>Ordinary balanced bootstrap: plot of the CIs for each of the predictors distribution.</p>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/plots.confints.bootpls.html">plots.confints.bootpls</a></span><span class="op">(</span><span class="va">temp.ci</span>,typeIC<span class="op">=</span><span class="st">"BCa"</span>,colIC<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"blue"</span>,<span class="st">"blue"</span>,<span class="st">"blue"</span>,<span class="st">"blue"</span><span class="op">)</span>,legendpos <span class="op">=</span><span class="st">"topright"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk59-1.png" title="plot of chunk chunk59" alt="plot of chunk chunk59" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk59-1.png" alt="plot of chunk chunk59" width="100%"><p class="caption">
+plot of chunk chunk59
+</p>
+</div>
 <p>Again the strata option will improve the results of the bootstrap as can been seen on the CIs for each of the predictors and boxplots as well.</p>
 <p>We apply a stratified balanced bootstrap technique.</p>
 <div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
@@ -759,14 +826,22 @@
 <p>Stratified balanced bootstrap: Boxplots for each of the predictors distribution.</p>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/boxplots.bootpls.html">boxplots.bootpls</a></span><span class="op">(</span><span class="va">bordeaux.bootYT1strata</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk61-1.png" title="plot of chunk chunk61" alt="plot of chunk chunk61" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk61-1.png" alt="plot of chunk chunk61" width="100%"><p class="caption">
+plot of chunk chunk61
+</p>
+</div>
 <p>Stratified balanced bootstrap: CIs for each of the predictors distribution.</p>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">temp.cis</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/confints.bootpls.html">confints.bootpls</a></span><span class="op">(</span><span class="va">bordeaux.bootYT1strata</span><span class="op">)</span></span></code></pre></div>
 <p>Stratified balanced bootstrap: plot of the CIs for each of the predictors distribution.</p>
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/plots.confints.bootpls.html">plots.confints.bootpls</a></span><span class="op">(</span><span class="va">temp.cis</span>,typeIC<span class="op">=</span><span class="st">"BCa"</span>,colIC<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"blue"</span>,<span class="st">"blue"</span>,<span class="st">"blue"</span>,<span class="st">"blue"</span><span class="op">)</span>,legendpos <span class="op">=</span><span class="st">"topright"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk63-1.png" title="plot of chunk chunk63" alt="plot of chunk chunk63" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk63-1.png" alt="plot of chunk chunk63" width="100%"><p class="caption">
+plot of chunk chunk63
+</p>
+</div>
 <p>It could be interesting to display, for all the models with 1 to 4 components, which of the predictors are significantly different from zero so that we could know if there is a stability of significant predictors or not. A function is available in our package, called signpred, to do this kind of analysis As we can see below, there is a single difference between stratified bootstrap and regular one. Indeed, 1 predictor significant for stratified bootstrap of the 2 component model turn out to be non-significant for regular bootstrap in the 2 components model. During the cross-validation for the miss-classified criterion, 84 percents of results give 1 component and 7 percents give 2 components, representing than 91 percents of the results obtained during the 100 cross-validation made at the beginning. The bootstrap technique used in this study, which is clearly faster and more stable than the other one, but the results between the (y,X) and (y,T) bootstrap techniques are really different and so it could be interesting to confront them with the help of some simulations.</p>
 <p>We first compute all the bootstrap distributions of the coefficients with 1000 resampling. Then we derive the corresponding CIs.</p>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
@@ -803,21 +878,25 @@
 <span><span class="co">#&gt; YT2       FALSE    FALSE FALSE FALSE</span></span>
 <span><span class="co">#&gt; YT3       FALSE    FALSE FALSE FALSE</span></span>
 <span><span class="co">#&gt; YT4       FALSE    FALSE FALSE FALSE</span></span></code></pre></div>
-<p>Compute the empirical measures of significance <span class="math inline"><em>π</em><sub><em>e</em></sub></span> for ordinary balanced bootstrap.</p>
+<p>Compute the empirical measures of significance <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>π</mi><mi>e</mi></msub><annotation encoding="application/x-tex">\pi_e</annotation></semantics></math> for ordinary balanced bootstrap.</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pi.e</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html" class="external-link">prop.table</a></span><span class="op">(</span><span class="va">res.cv.modpls</span><span class="op">$</span><span class="va">CVMC</span><span class="op">)</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="va">matind</span></span></code></pre></div>
-<p>Display the empirical measures of significance <span class="math inline"><em>π</em><sub><em>e</em></sub></span> for ordinary balanced bootstrap.</p>
+<p>Display the empirical measures of significance <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>π</mi><mi>e</mi></msub><annotation encoding="application/x-tex">\pi_e</annotation></semantics></math> for ordinary balanced bootstrap.</p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pi.e</span></span>
 <span><span class="co">#&gt;      Temperature Sunshine Heat Rain</span></span>
 <span><span class="co">#&gt; [1,]        0.89     0.89 0.89 0.89</span></span></code></pre></div>
-<p>Plot variable selection results and the empirical measures of significance <span class="math inline"><em>π</em><sub><em>e</em></sub></span> for ordinary balanced bootstrap.</p>
+<p>Plot variable selection results and the empirical measures of significance <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>π</mi><mi>e</mi></msub><annotation encoding="application/x-tex">\pi_e</annotation></semantics></math> for ordinary balanced bootstrap.</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/signpred.html">signpred</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">matind</span><span class="op">)</span>,labsize<span class="op">=</span><span class="fl">.5</span>, plotsize <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/mtext.html" class="external-link">mtext</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="va">pi</span><span class="op">[</span><span class="va">e</span><span class="op">]</span><span class="op">)</span>,side<span class="op">=</span><span class="fl">2</span>,las<span class="op">=</span><span class="fl">1</span>,line<span class="op">=</span><span class="fl">2</span>,at<span class="op">=</span><span class="op">-</span><span class="fl">.3</span>,cex<span class="op">=</span><span class="fl">1.4</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">matind</span><span class="op">)</span><span class="op">)</span><span class="op">-</span><span class="fl">.5</span>,<span class="op">-</span><span class="fl">.3</span>,<span class="va">pi.e</span>,cex<span class="op">=</span><span class="fl">1.4</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">matind</span><span class="op">)</span><span class="op">)</span><span class="op">-</span><span class="fl">.5</span>,<span class="op">-</span><span class="fl">.75</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Temp"</span>,<span class="st">"Sun"</span>,<span class="st">"Heat"</span>,<span class="st">"Rain"</span><span class="op">)</span>,cex<span class="op">=</span><span class="fl">1.4</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk69-1.png" title="plot of chunk chunk69" alt="plot of chunk chunk69" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk69-1.png" alt="plot of chunk chunk69" width="100%"><p class="caption">
+plot of chunk chunk69
+</p>
+</div>
 <p>The matrix summing up all the results for stratified balanced bootstrap.</p>
 <div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">matinds</span><span class="op">=</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span>YT1<span class="op">=</span><span class="va">ind.BCa.bordeauxYT1s</span>,YT2<span class="op">=</span><span class="va">ind.BCa.bordeauxYT2s</span>,YT3<span class="op">=</span><span class="va">ind.BCa.bordeauxYT3s</span>,YT4<span class="op">=</span><span class="va">ind.BCa.bordeauxYT4s</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -826,30 +905,31 @@
 <span><span class="co">#&gt; YT2        TRUE    FALSE FALSE FALSE</span></span>
 <span><span class="co">#&gt; YT3       FALSE    FALSE FALSE FALSE</span></span>
 <span><span class="co">#&gt; YT4       FALSE    FALSE FALSE FALSE</span></span></code></pre></div>
-<p>Compute the empirical measures of significance <span class="math inline"><em>π</em><sub><em>e</em></sub></span> for stratified balanced bootstrap.</p>
+<p>Compute the empirical measures of significance <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>π</mi><mi>e</mi></msub><annotation encoding="application/x-tex">\pi_e</annotation></semantics></math> for stratified balanced bootstrap.</p>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pi.es</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html" class="external-link">prop.table</a></span><span class="op">(</span><span class="va">res.cv.modpls</span><span class="op">$</span><span class="va">CVMC</span><span class="op">)</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span><span class="va">matinds</span></span></code></pre></div>
-<p>Display the empirical measures of significance <span class="math inline"><em>π</em><sub><em>e</em></sub></span> for stratified balanced bootstrap.</p>
+<p>Display the empirical measures of significance <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>π</mi><mi>e</mi></msub><annotation encoding="application/x-tex">\pi_e</annotation></semantics></math> for stratified balanced bootstrap.</p>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pi.es</span></span>
 <span><span class="co">#&gt;      Temperature Sunshine Heat Rain</span></span>
 <span><span class="co">#&gt; [1,]        0.96     0.89 0.89 0.89</span></span></code></pre></div>
-<p>Plot variable selection results and the empirical measures of significance <span class="math inline"><em>π</em><sub><em>e</em></sub></span> for stratified balanced bootstrap.</p>
+<p>Plot variable selection results and the empirical measures of significance <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>π</mi><mi>e</mi></msub><annotation encoding="application/x-tex">\pi_e</annotation></semantics></math> for stratified balanced bootstrap.</p>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/signpred.html">signpred</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">matinds</span><span class="op">)</span>,pred.lablength<span class="op">=</span><span class="fl">10</span>,labsize<span class="op">=</span><span class="fl">.5</span>, plotsize <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/mtext.html" class="external-link">mtext</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="va">pi</span><span class="op">[</span><span class="va">es</span><span class="op">]</span><span class="op">)</span>,side<span class="op">=</span><span class="fl">2</span>,las<span class="op">=</span><span class="fl">1</span>,line<span class="op">=</span><span class="fl">2</span>,at<span class="op">=</span><span class="op">-</span><span class="fl">.3</span>,cex<span class="op">=</span><span class="fl">1.4</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">matinds</span><span class="op">)</span><span class="op">)</span><span class="op">-</span><span class="fl">.5</span>,<span class="op">-</span><span class="fl">.3</span>,<span class="va">pi.es</span>,cex<span class="op">=</span><span class="fl">1.4</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">matinds</span><span class="op">)</span><span class="op">)</span><span class="op">-</span><span class="fl">.5</span>,<span class="op">-</span><span class="fl">.75</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Temp"</span>,<span class="st">"Sun"</span>,<span class="st">"Heat"</span>,<span class="st">"Rain"</span><span class="op">)</span>,cex<span class="op">=</span><span class="fl">1.4</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk73-1.png" title="plot of chunk chunk73" alt="plot of chunk chunk73" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk73-1.png" alt="plot of chunk chunk73" width="100%"><p class="caption">
+plot of chunk chunk73
+</p>
+</div>
 <p>More examples can be found in the vignette and in the online references. Unfortunately, a very few number of examples is not compatible with an online viewing even if they will work without any problem on your computer.</p>
 </div>
 </div>
 </div>
 
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="links">
+  </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
 <li><a href="https://cloud.r-project.org/package=plsRglm" class="external-link">View on CRAN</a></li>
@@ -876,46 +956,43 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Frederic Bertrand <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0002-0837-8281" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Myriam Maumy-Bertrand <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-4615-1512" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Frederic Bertrand <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0002-0837-8281" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Myriam Maumy-Bertrand <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-4615-1512" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="https://doi.org/10.32614/CRAN.package.ModStatR" class="external-link"><img src="https://img.shields.io/badge/doi-10.32614/CRAN.package.ModStatR-blue.svg"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-green.svg" alt="Lifecycle: stable"></a></li>
 <li><a href="https://www.repostatus.org/#active" class="external-link"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a></li>
-<li><a href="https://github.com/fbertran/plsRglm/actions" class="external-link"><img src="https://github.com/fbertran/plsRglm/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/fbertran/plsRglm/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/fbertran/plsRglm/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://codecov.io/gh/fbertran/plsRglm?branch=master" class="external-link"><img src="https://codecov.io/gh/fbertran/plsRglm/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://cran.r-project.org/package=plsRglm" class="external-link"><img src="https://www.r-pkg.org/badges/version/plsRglm" alt="CRAN status"></a></li>
 <li><a href="https://cran.r-project.org/package=plsRglm" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/plsRglm" alt="CRAN RStudio mirror downloads"></a></li>
 <li><a href="https://github.com/github/fbertran/plsRglm" class="external-link"><img src="https://img.shields.io/github/stars/fbertran/plsRglm?style=social" alt="GitHub Repo stars"></a></li>
-<li><a href="https://zenodo.org/badge/latestdoi/18454150" class="external-link"><img src="https://zenodo.org/badge/18454150.svg" alt="DOI"></a></li>
 </ul>
 </div>
 
-  </div>
+  </aside>
 </div>
 
 
-      <footer><div class="copyright">
-  <p></p>
-<p>Developed by Frederic Bertrand, Myriam Maumy-Bertrand.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p>Developed by Frederic Bertrand, Myriam Maumy-Bertrand.</p>
 </div>
 
-<div class="pkgdown">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<div class="pkgdown-footer-right">
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
-  
 
 
-  
+
 
   </body>
 </html>

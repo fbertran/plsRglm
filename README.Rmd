@@ -16,15 +16,17 @@ knitr::opts_chunk$set(
 # Partial Least Squares Regression for Generalized Linear Models
 ## Frédéric Bertrand and Myriam Maumy-Bertrand
 
+<https://doi.org/10.32614/CRAN.package.plsRglm>
+
 <!-- badges: start -->
+[![](https://img.shields.io/badge/doi-10.32614/CRAN.package.ModStatR-blue.svg)](https://doi.org/10.32614/CRAN.package.ModStatR)
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![R-CMD-check](https://github.com/fbertran/plsRglm/workflows/R-CMD-check/badge.svg)](https://github.com/fbertran/plsRglm/actions)
+[![R-CMD-check](https://github.com/fbertran/plsRglm/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/fbertran/plsRglm/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/fbertran/plsRglm/branch/master/graph/badge.svg)](https://codecov.io/gh/fbertran/plsRglm?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/plsRglm)](https://cran.r-project.org/package=plsRglm)
 [![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/plsRglm)](https://cran.r-project.org/package=plsRglm)
 [![GitHub Repo stars](https://img.shields.io/github/stars/fbertran/plsRglm?style=social)](https://github.com/github/fbertran/plsRglm)
-[![DOI](https://zenodo.org/badge/18454150.svg)](https://zenodo.org/badge/latestdoi/18454150)
 <!-- badges: end -->
 
 
@@ -199,7 +201,7 @@ Graphical results of the bootstrap on the (Y,X): confidence intervals
 ```{r chunk20}
 temp.ci=confints.bootpls(Cornell.bootYX1,indice=2:8)
 plots.confints.bootpls(temp.ci,typeIC="BCa",colIC=c("blue","blue","blue","blue"), legendpos ="topright")
-    ```
+```
                    
 Bootstrap is perfomed using the boot package. It allows the user to apply the functions, including jack.after.boot or plot.boot, of this package to the bootstrapped PLSR or PLSGLR models.
 

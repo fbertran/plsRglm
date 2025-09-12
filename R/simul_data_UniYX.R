@@ -14,7 +14,7 @@
 #' @param ncomp Number of latent components in the model (from 2 to 6)
 #' @return \item{vector}{\eqn{(Y,X_1,\ldots,X_{totdim})}}
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@utt.fr}\cr
+#' \email{frederic.bertrand@@lecnam.net}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{simul_data_YX}} and \code{\link{simul_data_complete}}
 #' for generating multivariate data

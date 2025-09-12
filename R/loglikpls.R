@@ -9,7 +9,7 @@
 #' @param weights Weights of observations
 #' @return \item{real}{Loglikelihood value}
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@utt.fr}\cr
+#' \email{frederic.bertrand@@lecnam.net}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso \code{\link{AICpls}} for AIC computation and \code{\link{logLik}}
 #' for loglikelihood computations for linear models

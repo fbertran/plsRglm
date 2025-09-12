@@ -212,7 +212,7 @@
 #' @note Use \code{\link{cv.plsRglm}} to cross-validate the plsRglm models and
 #' \code{\link{bootplsglm}} to bootstrap them.
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@utt.fr}\cr
+#' \email{frederic.bertrand@@lecnam.net}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso See also \code{\link{plsR}}.
 #' @references Nicolas Meyer, Myriam Maumy-Bertrand et
@@ -221,7 +221,7 @@
 #' logistique PLS : application aux données
 #' d'allélotypage. \emph{Journal de la Societe Francaise
 #' de Statistique}, 151(2), pages 1-18.
-#' \url{http://publications-sfds.math.cnrs.fr/index.php/J-SFdS/article/view/47}
+#' \url{https://www.numdam.org/item/JSFS_2010__151_2_1_0/}
 #' @keywords models regression
 #' @examples
 #' 

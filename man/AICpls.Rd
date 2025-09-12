@@ -59,7 +59,7 @@ models and \code{\link{AIC}} for AIC computation for a linear models
 }
 \author{
 Frédéric Bertrand\cr
-\email{frederic.bertrand@utt.fr}\cr
+\email{frederic.bertrand@lecnam.net}\cr
 \url{https://fbertran.github.io/homepage/}
 }
 \keyword{models}

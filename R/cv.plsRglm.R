@@ -233,7 +233,7 @@
 #' \item{call}{the call of the function}
 #' @note Work for complete and incomplete datasets.
 #' @author Frédéric Bertrand\cr
-#' \email{frederic.bertrand@@utt.fr}\cr
+#' \email{frederic.bertrand@@lecnam.net}\cr
 #' \url{https://fbertran.github.io/homepage/}
 #' @seealso Summary method \code{summary.cv.plsRglmmodel}.
 #' \code{\link{kfolds2coeff}}, \code{\link{kfolds2Pressind}},
