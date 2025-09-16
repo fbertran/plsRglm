@@ -18,5 +18,5 @@ URL: https://fbertran.github.io/plsRglm/, https://github.com/fbertran/plsRglm/
 BugReports: https://github.com/fbertran/plsRglm/issues/
 VignetteBuilder: R.rsp
 Classification/MSC: 62J12, 62J99
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Config/testthat/edition: 3

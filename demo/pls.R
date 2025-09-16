@@ -172,7 +172,7 @@ PLS_lm(log(ypine),XpineNAX21,10,typeVC="missingdata")$InfCrit
 PLS_lm(log(ypine),XpineNAX21,4,EstimXNA=TRUE)$XChapeau
 PLS_lm(log(ypine),XpineNAX21,4,EstimXNA=TRUE)$XChapeauNA
 
-# The results from plspm were uncorrect
+# The results from plspm differ
 if ("plspm" %in%  installed.packages()){
 library(plspm)
 plsreg1(x=XCornell,y=as.vector(yCornell),nc=3)$coeffs
