@@ -1,6 +1,6 @@
 Package: plsRglm
-Version: 1.6.0
-Date: 2025-09-11
+Version: 1.7.0
+Date: 2026-03-26
 Depends: R (>= 2.10)
 Imports: mvtnorm, boot, bipartite, car, MASS
 Enhances: pls
@@ -14,8 +14,8 @@ Maintainer: Frederic Bertrand <frederic.bertrand@lecnam.net>
 Description: Provides (weighted) Partial least squares Regression for generalized linear models and repeated k-fold cross-validation of such models using various criteria <doi:10.48550/arXiv.1810.01005>. It allows for missing data in the explanatory variables. Bootstrap confidence intervals constructions are also available.
 License: GPL-3
 Encoding: UTF-8
-URL: https://fbertran.github.io/plsRglm/, https://github.com/fbertran/plsRglm/
-BugReports: https://github.com/fbertran/plsRglm/issues/
+URL: https://fbertran.github.io/plsRglm/, https://github.com/fbertran/plsRglm
+BugReports: https://github.com/fbertran/plsRglm/issues
 VignetteBuilder: R.rsp
 Classification/MSC: 62J12, 62J99
 RoxygenNote: 7.3.3

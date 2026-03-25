@@ -1,3 +1,7 @@
+# plsRglm 1.7.0
+
+* Package code refactored and aligned
+
 # plsRglm 1.6.0
 
 * Maintainer email update.

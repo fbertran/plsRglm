@@ -29,8 +29,12 @@ Naes and Martens.
 }
 \note{
 The value of \eqn{r} depends on the value of \code{ncomp} :
-\tabular{ccc}{ \code{ncomp} \tab \eqn{r} \cr 2 \tab 3 \cr 3 \tab 3 \cr 4
-\tab 4 \cr }
+\tabular{cc}{ 
+\code{ncomp} \tab \eqn{r} \cr 
+2 \tab 3 \cr 
+3 \tab 3 \cr 
+4 \tab 4 \cr 
+}
 }
 \examples{
 

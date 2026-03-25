@@ -15,8 +15,12 @@
 #' @param ncomp Number of latent components in the model (from 2 to 6)
 #' @return \item{vector}{\eqn{(Y_1,\ldots,Y_r,X_1,\ldots,X_{totdim})}}
 #' @note The value of \eqn{r} depends on the value of \code{ncomp} :
-#' \tabular{ccc}{ \code{ncomp} \tab \eqn{r} \cr 2 \tab 3 \cr 3 \tab 3 \cr 4
-#' \tab 4 \cr }
+#' \tabular{cc}{ 
+#' \code{ncomp} \tab \eqn{r} \cr 
+#' 2 \tab 3 \cr 
+#' 3 \tab 3 \cr 
+#' 4 \tab 4 \cr 
+#' }
 #' @author Frédéric Bertrand\cr
 #' \email{frederic.bertrand@@lecnam.net}\cr
 #' \url{https://fbertran.github.io/homepage/}

@@ -24,8 +24,8 @@ A short paper that sums up some of features of the package is available on \url{
 Useful links:
 \itemize{
   \item \url{https://fbertran.github.io/plsRglm/}
-  \item \url{https://github.com/fbertran/plsRglm/}
-  \item Report bugs at \url{https://github.com/fbertran/plsRglm/issues/}
+  \item \url{https://github.com/fbertran/plsRglm}
+  \item Report bugs at \url{https://github.com/fbertran/plsRglm/issues}
 }
 
 }

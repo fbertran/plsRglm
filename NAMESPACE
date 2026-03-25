@@ -129,4 +129,3 @@ S3method("summary", "plsRmodel")
 S3method("summary", "plsRglmmodel")
 S3method("print", "summary.plsRmodel")
 S3method("print", "summary.plsRglmmodel")
-

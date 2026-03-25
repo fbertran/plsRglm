@@ -1,5 +1,21 @@
 test_that("registered S3 methods are available", {
   library(utils)
+  ns <- asNamespace("plsRglm")
+  s3_table <- get(".__S3MethodsTable__.", envir = ns)
+  lookup_s3_method <- function(gen, cls) {
+    fn <- getS3method(gen, cls, optional = TRUE)
+    if (is.function(fn)) {
+      return(fn)
+    }
+
+    key <- paste(gen, cls, sep = ".")
+    if (exists(key, envir = s3_table, inherits = FALSE)) {
+      get(key, envir = s3_table, inherits = FALSE)
+    } else {
+      NULL
+    }
+  }
+
   pairs <- list(
     c("plsRmodel", "default"),
     c("plsRmodel", "formula"),
@@ -31,7 +47,7 @@ test_that("registered S3 methods are available", {
   for (pc in pairs) {
     gen <- gsub('"', "", pc[1])
     cls <- gsub('"', "", pc[2])
-    fn <- getS3method(gen, cls, optional = TRUE)
+    fn <- lookup_s3_method(gen, cls)
     expect_true(is.function(fn), info = paste(gen, cls, sep = "."))
   }
 })

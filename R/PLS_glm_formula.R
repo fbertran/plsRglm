@@ -12,13 +12,13 @@ PLS_glm_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=d
 ##################################################
 
 if(verbose){cat("____************************************************____\n")}
-if(is.null(modele)){naive=FALSE} else {if(modele=="pls"){naive=FALSE} else {if(!missing(naive)){if(verbose){cat(paste("Only naive DoF can be used with PLS GLM\n",sep=""))}}; naive=TRUE}}
-if(sparse){sparseStop=TRUE}
-if(sparseStop){pvals.expli=TRUE}
+naive_missing <- missing(naive)
+method_missing <- missing(method)
+modele_for_formula <- if (is.null(modele) & !is.null(family)) "pls-glm-family" else modele
 
 if (missing(data)) {data <- environment(formula)}
 mf <- mf2 <- match.call(expand.dots = FALSE)
-if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {
+if (modele_for_formula %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {
 m2 <- match(c("formula","weights","subset","start","etastart","mustart","offset","control","method","contrasts"), names(mf2), 0L)
 mf2 <- mf2[c(1L, m2)]
 mf2$data <- data    
@@ -27,7 +27,7 @@ mf2$model <- FALSE
 mf2[[1L]] <- as.name("glm")
 if(match("method",names(mf2), 0L)==0L){mf2$method<-"glm.fit";method<-"glm.fit"}
 }
-if (modele %in% c("pls-glm-polr")) {
+if (modele_for_formula %in% c("pls-glm-polr")) {
 m2 <- match(c("formula","weights","subset","start","method","contrasts"), names(mf2), 0L)
 mf2 <- mf2[c(1L, m2)]
 mf2$data <- data    
@@ -36,6 +36,7 @@ mf2$model <- FALSE
 mf2$Hess <- FALSE
 mf2[[1L]] <- as.name("polr")
 if(match("method",names(mf2), 0L)==0L){mf2$method<-"logistic"} else {if(!(mf2$method %in% c("logistic", "probit", "cloglog", "cauchit"))) {mf2$method<-"logistic"}}
+method <- mf2$method
 }
 m <- match(c("formula", "data", "subset", "weights", "etastart", "mustart", "offset"), names(mf), 0L)
 mf <- mf[c(1L, m)]
@@ -44,7 +45,7 @@ mf$na.action <- na.pass
 mf[[1L]] <- as.name("model.frame")
 mf <- eval(mf, parent.frame(n=sys.nframe()))
 
-if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {
+if (modele_for_formula %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {
 if (identical(method, "model.frame")) return(mf)
 if (!is.character(method) && !is.function(method)) stop("invalid 'method' argument")
 if (identical(method, "glm.fit")) control <- do.call("glm.control", control)
@@ -52,8 +53,6 @@ if (identical(method, "glm.fit")) control <- do.call("glm.control", control)
 mt <- attr(mf, "terms")
 attr(mt,"intercept")<-0L
 dataY <- model.response(mf, "any")
-if(missing(weights)){NoWeights=TRUE} else {if(all(weights==rep(1,length(dataY)))){NoWeights=TRUE} else {NoWeights=FALSE}}
-if(!NoWeights){naive=TRUE; if(verbose){cat(paste("Only naive DoF can be used with weighted PLS or PLS glms\n",sep=""))}} else {NoWeights=TRUE}
 if (length(dim(dataY)) == 1L) {
     nm <- rownames(dataY)
     dim(dataY) <- NULL
@@ -68,85 +67,74 @@ offset <- as.vector(model.offset(mf))
 if (!is.null(offset)) {
     if (length(offset) != NROW(dataY)) stop(gettextf("number of offsets is %d should equal %d (number of observations)", length(offset), NROW(dataY)), domain = NA)
     }
-
-if(any(apply(is.na(dataX),MARGIN=2,"all"))){return(vector("list",0)); cat("One of the columns of dataX is completely filled with missing data"); stop()}
-if(any(apply(is.na(dataX),MARGIN=1,"all"))){return(vector("list",0)); cat("One of the rows of dataX is completely filled with missing data"); stop()}
-if(identical(dataPredictY,dataX)){PredYisdataX <- TRUE} else {PredYisdataX <- FALSE}
-if(!PredYisdataX){
-#if(any(apply(is.na(dataPredictY),MARGIN=2,"all"))){return(vector("list",0)); cat("One of the columns of dataPredictY is completely filled with missing data"); stop()}
-if(any(apply(is.na(dataPredictY),MARGIN=1,"all"))){return(vector("list",0)); cat("One of the rows of dataPredictY is completely filled with missing data"); stop()}
+method_value <- NULL
+if (modele_for_formula %in% c("pls-glm-polr")) {
+method_value <- mf2$method
+} else if (!method_missing) {
+method_value <- method
+} else if (modele_for_formula %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {
+method_value <- method
 }
 
-if(any(is.na(dataX))) {na.miss.X <- TRUE} else na.miss.X <- FALSE
-if(any(is.na(dataY))) {na.miss.Y <- TRUE} else na.miss.Y <- FALSE
-if(any(is.na(dataPredictY))) {na.miss.PredictY <- TRUE} else {na.miss.PredictY <- FALSE}
-if(na.miss.X|na.miss.Y){naive=TRUE; if(verbose){cat(paste("Only naive DoF can be used with missing data\n",sep=""))}; if(!NoWeights){if(verbose){cat(paste("Weights cannot be used with missing data\n",sep=""))}};  if(sparse){if(verbose){cat(paste("sparse option cannot be used with missing data\n",sep=""))}; sparse=FALSE}}
+validation <- pls_glm_validate_inputs(
+dataY = dataY,
+dataX = dataX,
+dataPredictY = dataPredictY,
+weights = weights,
+weights_missing = is.null(weights),
+method = method_value,
+method_missing = FALSE,
+modele = modele,
+family = family,
+sparse = sparse,
+sparseStop = sparseStop,
+pvals.expli = pvals.expli,
+naive = naive,
+naive_missing = naive_missing,
+verbose = verbose,
+weighted_naive_message = "Only naive DoF can be used with weighted PLS or PLS glms\n",
+eval_env = parent.frame()
+)
 
-if (!is.data.frame(dataX)) {dataX <- data.frame(dataX)}
-if (is.null(modele) & !is.null(family)) {modele<-"pls-glm-family"}
-if (!(modele %in% c("pls","pls-glm-logistic","pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-poisson","pls-glm-polr"))) {print(modele);stop("'modele' not recognized")}
-if (!(modele %in% "pls-glm-family") & !is.null(family)) {stop("Set 'modele=pls-glm-family' to use the family option")}
-if (modele=="pls") {family<-NULL}
-if (modele=="pls-glm-Gamma") {family<-Gamma(link = "inverse")}
-if (modele=="pls-glm-gaussian") {family<-gaussian(link = "identity")}
-if (modele=="pls-glm-inverse.gaussian") {family<-inverse.gaussian(link = "1/mu^2")}
-if (modele=="pls-glm-logistic") {family<-binomial(link = "logit")}
-if (modele=="pls-glm-poisson") {family<-poisson(link = "log")}
-if (modele=="pls-glm-polr") {family<-NULL}
-if (!is.null(family)) {
-    if (is.character(family)) {family <- get(family, mode = "function", envir = parent.frame(n=sys.nframe()))}
-    if (is.function(family)) {family <- family()}
-    if (is.language(family)) {family <- eval(family)}
+PredYisdataX <- validation$PredYisdataX
+NoWeights <- validation$NoWeights
+na.miss.X <- validation$na.miss.X
+na.miss.Y <- validation$na.miss.Y
+na.miss.PredictY <- validation$na.miss.PredictY
+naive <- validation$naive
+sparse <- validation$sparse
+sparseStop <- validation$sparseStop
+pvals.expli <- validation$pvals.expli
+dataX <- validation$dataX
+modele <- validation$modele
+family <- validation$family
+
+if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {
+mf2$family <- family
 }
-if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {mf2$family <- family;if(verbose){print(family)}}
-if (modele %in% c("pls-glm-polr")) {if(verbose){cat("\nModel:", modele, "\n");cat("Method:", mf2$method, "\n\n")}}
-if (modele=="pls") {if(verbose){cat("\nModel:", modele, "\n\n")}}
 
-scaleY <- NULL
-if (is.null(scaleY)) {
-if (!(modele %in% c("pls"))) {scaleY <- FALSE} else {scaleY <- TRUE}
-}
-if (scaleY) {if(NoWeights){RepY <- scale(dataY)} else {meanY <- weighted.mean(dataY,weights); stdevY <- sqrt((length(dataY)-1)/length(dataY)*weighted.mean((dataY-meanY)^2,weights)); RepY <- (dataY-meanY)/stdevY; attr(RepY,"scaled:center") <- meanY ; attr(RepY,"scaled:scale") <- stdevY}}
-else {
-    RepY <- dataY
-    attr(RepY,"scaled:center") <- 0
-    attr(RepY,"scaled:scale") <- 1
-}
-if (scaleX) {if(NoWeights){ExpliX <- scale(dataX)} else {meanX <- apply(dataX,2,weighted.mean,weights); stdevX <- sqrt((length(dataY)-1)/length(dataY)*apply((sweep(dataX,2,meanX))^2,2,weighted.mean,weights)); ExpliX <- sweep(sweep(dataX, 2, meanX), 2 ,stdevX, "/"); attr(ExpliX,"scaled:center") <- meanX ; attr(ExpliX,"scaled:scale") <- stdevX}
-    if(PredYisdataX){PredictY <- ExpliX} else {PredictY <- sweep(sweep(dataPredictY, 2, attr(ExpliX,"scaled:center")), 2 ,attr(ExpliX,"scaled:scale"), "/")}
-}
-else {
-    ExpliX <- dataX
-    attr(ExpliX,"scaled:center") <- rep(0,ncol(dataX))
-    attr(ExpliX,"scaled:scale") <- rep(1,ncol(dataX))
-    PredictY <- (dataPredictY)
-}
-if(is.null(colnames(ExpliX))){colnames(ExpliX)<-paste("X",1:ncol(ExpliX),sep=".")}
-if(is.null(rownames(ExpliX))){rownames(ExpliX)<-1:nrow(ExpliX)}
+preprocessed <- pls_glm_preprocess_inputs(
+dataY = dataY,
+dataX = dataX,
+dataPredictY = dataPredictY,
+scaleX = scaleX,
+scaleY = scaleY,
+weights = weights,
+NoWeights = NoWeights,
+PredYisdataX = PredYisdataX,
+modele = modele
+)
 
-XXNA <- !(is.na(ExpliX))
-YNA <- !(is.na(RepY))
-if(PredYisdataX){PredictYNA <- XXNA} else {PredictYNA <- !is.na(PredictY)}
-
-ExpliXwotNA <- as.matrix(ExpliX)
-ExpliXwotNA[!XXNA] <- 0
-
-XXwotNA <- as.matrix(ExpliX)
-XXwotNA[!XXNA] <- 0
-
-dataXwotNA <- as.matrix(dataX)
-dataXwotNA[!XXNA] <- 0
-
-YwotNA <- as.matrix(RepY)
-YwotNA[!YNA] <- 0
-
-dataYwotNA <- as.matrix(dataY)
-dataYwotNA[!YNA] <- 0
-
-if(PredYisdataX){PredictYwotNA <- XXwotNA} else {
-PredictYwotNA <- as.matrix(PredictY)
-PredictYwotNA [is.na(PredictY)] <- 0
-}
+scaleY <- preprocessed$scaleY
+RepY <- preprocessed$RepY
+ExpliX <- preprocessed$ExpliX
+PredictY <- preprocessed$PredictY
+XXNA <- preprocessed$XXNA
+YNA <- preprocessed$YNA
+PredictYNA <- preprocessed$PredictYNA
+XXwotNA <- preprocessed$XXwotNA
+YwotNA <- preprocessed$YwotNA
+PredictYwotNA <- preprocessed$PredictYwotNA
 
 if (modele == "pls-glm-polr") {
 dataY <- as.factor(dataY)
@@ -225,12 +213,17 @@ if(!NoWeights){
 tempww <- t(XXwotNA*weights)%*%YwotNA/(t(XXNA*weights)%*%YwotNA^2)
 }
 if (pvals.expli) {
-tempvalpvalstep <- 2 * pnorm(-abs(tempww)) 
-temppvalstep <- (tempvalpvalstep < alpha.pvals.expli)
-if(sparse){if(sum(temppvalstep)>1L){tempww[!temppvalstep] <- 0}}
-if(sparseStop){if(sum(temppvalstep)==0L){break_nt_sparse <- TRUE}}
-res$valpvalstep <- cbind(res$valpvalstep,tempvalpvalstep)
-res$pvalstep <- cbind(res$pvalstep,temppvalstep)
+sparse_step <- pls_glm_apply_sparse_filter(
+tempww = tempww,
+tempvalpvalstep = 2 * pnorm(-abs(tempww)),
+alpha.pvals.expli = alpha.pvals.expli,
+sparse = sparse,
+sparseStop = sparseStop
+)
+tempww <- sparse_step$tempww
+break_nt_sparse <- break_nt_sparse | sparse_step$break_nt_sparse
+res$valpvalstep <- cbind(res$valpvalstep,sparse_step$tempvalpvalstep)
+res$pvalstep <- cbind(res$pvalstep,sparse_step$temppvalstep)
 }
 }
 
@@ -250,20 +243,25 @@ rm(jj)}
 else {
 XXwotNA[!XXNA] <- NA
 tempvalpvalstep <- rep(0,res$nc)
-temppvalstep <- rep(0,res$nc)
 for (jj in 1:(res$nc)) {
     mf2[[2]]<-YwotNA~cbind(res$tt,XXwotNA[,jj])
     tmww <- summary(eval(mf2, parent.frame(n=sys.nframe())))$coefficients[kk+1,]
     tempww[jj] <- tmww[1]
     tempvalpvalstep[jj] <- tmww[4]
-    temppvalstep[jj] <- (tmww[4] < alpha.pvals.expli)
 }
-if(sparse){if(sum(temppvalstep)>1L){tempww[!temppvalstep] <- 0}}
-if(sparseStop){if(sum(temppvalstep)==0L){break_nt_sparse <- TRUE}}
+filtered_step <- pls_glm_apply_sparse_filter(
+tempww = tempww,
+tempvalpvalstep = tempvalpvalstep,
+alpha.pvals.expli = alpha.pvals.expli,
+sparse = sparse,
+sparseStop = sparseStop
+)
+tempww <- filtered_step$tempww
+break_nt_sparse <- break_nt_sparse | filtered_step$break_nt_sparse
 XXwotNA[!XXNA] <- 0
 rm(jj)
-res$valpvalstep <- cbind(res$valpvalstep,tempvalpvalstep)
-res$pvalstep <- cbind(res$pvalstep,temppvalstep)
+res$valpvalstep <- cbind(res$valpvalstep,filtered_step$tempvalpvalstep)
+res$pvalstep <- cbind(res$pvalstep,filtered_step$temppvalstep)
 }
 }
 
@@ -289,22 +287,27 @@ requireNamespace("MASS")
 #library(MASS)
 tts <- res$tt
 tempvalpvalstep <- rep(0,res$nc)
-temppvalstep <- rep(0,res$nc)
 mf2$Hess <- TRUE
 for (jj in 1:(res$nc)) {
     mf2[[2]]<-YwotNA~cbind(tts,XXwotNA[,jj])
     tmww <- -1*summary(eval(mf2))$coefficients[kk,] #, parent.frame(n=sys.nframe())
     tempww[jj] <- tmww[1]
     tempvalpvalstep[jj] <- 2 * pnorm(-abs(tmww[3])) 
-    temppvalstep[jj] <- (tempvalpvalstep[jj] < alpha.pvals.expli)
 }
-if(sparse){if(sum(temppvalstep)>1L){tempww[!temppvalstep] <- 0}}
-if(sparseStop){if(sum(temppvalstep)==0L){break_nt_sparse <- TRUE}}
+filtered_step <- pls_glm_apply_sparse_filter(
+tempww = tempww,
+tempvalpvalstep = tempvalpvalstep,
+alpha.pvals.expli = alpha.pvals.expli,
+sparse = sparse,
+sparseStop = sparseStop
+)
+tempww <- filtered_step$tempww
+break_nt_sparse <- break_nt_sparse | filtered_step$break_nt_sparse
 XXwotNA[!XXNA] <- 0
 rm(jj,tts)
 mf2$Hess <- FALSE
-res$valpvalstep <- cbind(res$valpvalstep,tempvalpvalstep)
-res$pvalstep <- cbind(res$pvalstep,temppvalstep)
+res$valpvalstep <- cbind(res$valpvalstep,filtered_step$tempvalpvalstep)
+res$pvalstep <- cbind(res$pvalstep,filtered_step$temppvalstep)
 }
 }
 
@@ -316,66 +319,34 @@ res$pvalstep <- cbind(res$pvalstep,temppvalstep)
 # Computation of the components (model free) #
 #                                            #
 ##############################################
-if((break_nt_sparse)&(kk==1L)){
-  if(verbose){cat(paste("No significant predictors (<",alpha.pvals.expli,") found\n",sep=""))}
-  if(verbose){cat(paste("Warning only one standard component (without sparse option) was thus extracted\n",sep=""))}
-break_nt_sparse1 <- TRUE
-}
-if((break_nt_sparse)&!(kk==1L)){
-res$computed_nt <- kk-1
-if(!(break_nt_sparse1)){
-  if(verbose){cat(paste("No more significant predictors (<",alpha.pvals.expli,") found\n",sep=""))}
-  if(verbose){cat(paste("Warning only ",res$computed_nt," components were thus extracted\n",sep=""))}
-}
-break}
-
-tempwwnorm <- tempww/sqrt(drop(crossprod(tempww)))
-
-temptt <- XXwotNA%*%tempwwnorm/(XXNA%*%(tempwwnorm^2))
-
-temppp <- rep(0,res$nc)
-for (jj in 1:(res$nc)) {
-     temppp[jj] <- crossprod(temptt,XXwotNA[,jj])/drop(crossprod(XXNA[,jj],temptt^2))
-}
-res$residXX <- XXwotNA-temptt%*%temppp
-
-if (na.miss.X & !na.miss.Y) {
-  if(sparse==FALSE){
-    for (ii in 1:res$nr) {
-if(rcond(t(cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])<tol_Xi) {
-break_nt <- TRUE; res$computed_nt <- kk-1
-if(verbose){cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE] < 10^{-12}\n",sep=""))}
-if(verbose){cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))}
+component_step <- pls_glm_extract_component(
+res = res,
+tempww = tempww,
+XXwotNA = XXwotNA,
+XXNA = XXNA,
+PredictYNA = PredictYNA,
+PredictYwotNA = PredictYwotNA,
+PredYisdataX = PredYisdataX,
+na.miss.X = na.miss.X,
+na.miss.Y = na.miss.Y,
+na.miss.PredictY = na.miss.PredictY,
+tol_Xi = tol_Xi,
+kk = kk,
+sparse = sparse,
+break_nt_sparse = break_nt_sparse,
+break_nt_sparse1 = break_nt_sparse1,
+alpha.pvals.expli = alpha.pvals.expli,
+verbose = verbose
+)
+res <- component_step$res
+break_nt <- component_step$break_nt
+break_nt_sparse1 <- component_step$break_nt_sparse1
+if (component_step$should_break) {
 break
 }
-}
-rm(ii)
-if(break_nt==TRUE) {res$computed_nt <- kk-1;break}
-}
-}
-
-if(!PredYisdataX){
-  if(sparse==FALSE){
-if (na.miss.PredictY & !na.miss.Y) {
-for (ii in 1:nrow(PredictYwotNA)) {
-if(rcond(t(cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])<tol_Xi) {
-break_nt <- TRUE; res$computed_nt <- kk-1
-if(verbose){cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],])%*%cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],] < 10^{-12}\n",sep=""))}
-if(verbose){cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))}
-break
-}
-}
-rm(ii)
-if(break_nt==TRUE) {res$computed_nt <- kk-1;break}
-}
-}
-}
-
-
-res$ww <- cbind(res$ww,tempww)
-res$wwnorm <- cbind(res$wwnorm,tempwwnorm)
-res$tt <- cbind(res$tt,temptt)       
-res$pp <- cbind(res$pp,temppp)   
+tempwwnorm <- component_step$tempwwnorm
+temptt <- component_step$temptt
+temppp <- component_step$temppp
 
 
 
