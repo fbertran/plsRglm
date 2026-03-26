@@ -58,8 +58,10 @@ if(is.null(mf$modele)){mf$modele<-"pls"}
 (mf$typeVC <- "none")
 (mf$MClassed <- MClassed)
 (mf[[1]] <- as.name("PLS_lm"))
+(requested_nt <- kfolds_requested_nt(pls_kfolds))
+if(requested_nt > 0L){mf$nt <- requested_nt}
 (tempres <- eval(mf, parent.frame()))
-nt <- as.numeric(as.character(pls_kfolds$call["nt"]))
+nt <- if(requested_nt > 0L){requested_nt} else {tempres$nt}
 computed_nt <- tempres$computed_nt
 press_kfolds <- kfolds2Press(pls_kfolds)
 if (MClassed==TRUE) {
@@ -67,7 +69,7 @@ Mclassed_kfolds <- kfolds2Mclassed(pls_kfolds)
 }
 Q2cum_2=rep(NA, nt)
 CVinfos <- vector("list",length(pls_kfolds[[1]]))
-if(is.numeric(pls_kfolds$call["limQ2set"])){limQ2 <- rep(as.numeric(as.character(pls_kfolds$call["limQ2set"])),computed_nt)} else {limQ2=rep(as.numeric(as.character(0.0975)),computed_nt)}
+if(!is.null(tempres$limQ2)){limQ2 <- tempres$limQ2[1:computed_nt]} else {limQ2=rep(as.numeric(as.character(0.0975)),computed_nt)}
 if (mf$modele == "pls") {
 
     for (nnkk in 1:length(pls_kfolds[[1]])) {
@@ -106,8 +108,10 @@ if(is.null(mf$modele)){mf$modele<-"pls"}
 (mf$typeVC <- "none")
 (mf$MClassed <- MClassed)
 (mf[[1]] <- as.name("PLS_lm_formula"))
+(requested_nt <- kfolds_requested_nt(pls_kfolds))
+if(requested_nt > 0L){mf$nt <- requested_nt}
 (tempres <- eval(mf, parent.frame()))
-nt <- as.numeric(as.character(pls_kfolds$call["nt"]))
+nt <- if(requested_nt > 0L){requested_nt} else {tempres$nt}
 computed_nt <- tempres$computed_nt
 press_kfolds <- kfolds2Press(pls_kfolds)
 if (MClassed==TRUE) {
@@ -115,7 +119,7 @@ Mclassed_kfolds <- kfolds2Mclassed(pls_kfolds)
 }
 Q2cum_2=rep(NA, nt)
 CVinfos <- vector("list",length(pls_kfolds[[1]]))
-if(is.numeric(pls_kfolds$call["limQ2set"])){limQ2 <- rep(as.numeric(as.character(pls_kfolds$call["limQ2set"])),computed_nt)} else {limQ2=rep(as.numeric(as.character(0.0975)),computed_nt)}
+if(!is.null(tempres$limQ2)){limQ2 <- tempres$limQ2[1:computed_nt]} else {limQ2=rep(as.numeric(as.character(0.0975)),computed_nt)}
 if (mf$modele == "pls") {
 
     for (nnkk in 1:length(pls_kfolds[[1]])) {

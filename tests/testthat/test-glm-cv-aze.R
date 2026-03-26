@@ -21,3 +21,21 @@ test_that("cv.plsRglm + helpers on aze run and produce coherent objects", {
   mc <- kfolds2Mclassed(cvfit)
   expect_true(is.list(mc) || is.numeric(mc))
 })
+
+test_that("summary.cv.plsRglmmodel handles symbolic nt values", {
+  skip_on_cran()
+  data(aze, package = "plsRglm")
+
+  nt_val <- 2
+  cvfit <- cv.plsRglm(y ~ ., data = aze, nt = nt_val,
+                      modele = "pls-glm-family",
+                      family = stats::binomial(),
+                      K = 3, NK = 1, random = TRUE, verbose = FALSE)
+  rm(nt_val)
+
+  s <- summary(cvfit)
+
+  expect_s3_class(cvfit, "cv.plsRglmmodel")
+  expect_s3_class(s, "summary.cv.plsRglmmodel")
+  expect_length(s, 1L)
+})
