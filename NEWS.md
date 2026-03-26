@@ -1,6 +1,7 @@
 # plsRglm 1.7.0
 
 * Package code refactored and aligned
+* Added an exported classbiplot() helper that keeps the usual biplot geometry but lets the individual layer be colored by class.  
 
 # plsRglm 1.6.0
 
