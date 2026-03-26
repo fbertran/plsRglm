@@ -4,7 +4,8 @@ Date: 2026-03-26
 Depends: R (>= 2.10)
 Imports: mvtnorm, boot, bipartite, car, MASS
 Enhances: pls
-Suggests: chemometrics, plsdof, plsdepot, plspm, plsRcox, R.rsp, testthat (>= 3.0.0)
+Suggests: chemometrics, plsdof, plsdepot, plspm, 
+    plsRcox, R.rsp, testthat (>= 3.0.0)
 Title: Partial Least Squares Regression for Generalized Linear Models
 Authors@R: c(
 	person(given = "Frederic", family= "Bertrand", role = c("cre", "aut"), email = "frederic.bertrand@lecnam.net", comment = c(ORCID = "0000-0002-0837-8281")),

@@ -126,21 +126,33 @@ predict.plsRglmmodel <- function(object,newdata,comps=object$computed_nt,type=c(
   if (!(type %in% c("link", "response", "terms", "scores", "class", "probs")))
     stop("Invalid type specification")
   if (comps>object$computed_nt){stop("Cannot predict using more components than extracted.")}
+  is_pls <- isTRUE(identical(as.character(object$call$modele), "pls")) ||
+    (is.null(object$FinalModel) && !is.null(object$CoeffC))
+  predict_pls_from_scores <- function(scores_mat, type) {
+    link_pred <- as.matrix(scores_mat) %*% object$CoeffC
+    if (type=="link"){return(link_pred)}
+    if (type=="response"){return(attr(object$RepY,"scaled:center")+attr(object$RepY,"scaled:scale")*link_pred)}
+    return(NULL)
+  }
   if (missing(newdata) || is.null(newdata)) {
     nrtt <- nrow(object$tt)
-    if (type=="link"){ttpredY<-data.frame(cbind(object$tt[,1:comps],matrix(0,nrow=nrtt,ncol=object$computed_nt-comps)));colnames(ttpredY) <- NULL
+    ttpredY<-data.frame(cbind(object$tt[,1:comps],matrix(0,nrow=nrtt,ncol=object$computed_nt-comps)));colnames(ttpredY) <- NULL
+    if (is_pls && (type %in% c("link","response"))) {
+      return(predict_pls_from_scores(ttpredY, type))
+    }
+    if (type=="link"){
                       if("glm" %in% class(object$FinalModel)){ttpred<-data.frame(tt=ttpredY);return(predict(object$FinalModel,newdata=ttpred,type = "link",se.fit=se.fit, dispersion = dispersion,...))}
     }
-    if (type=="response"){ttpredY<-data.frame(cbind(object$tt[,1:comps],matrix(0,nrow=nrtt,ncol=object$computed_nt-comps)));colnames(ttpredY) <- NULL
+    if (type=="response"){
                       if("glm" %in% class(object$FinalModel)){ttpred<-data.frame(tt=ttpredY);return(predict(object$FinalModel,newdata=ttpred,type = "response",se.fit=se.fit, dispersion = dispersion,...))}                      
     }
-    if (type=="terms"){ttpredY<-data.frame(cbind(object$tt[,1:comps],matrix(0,nrow=nrtt,ncol=object$computed_nt-comps)));colnames(ttpredY) <- NULL
+    if (type=="terms"){
                        if("glm" %in% class(object$FinalModel)){ttpred<-data.frame(tt=ttpredY);return(predict(object$FinalModel,newdata=ttpred,type = "terms",se.fit=se.fit, dispersion = dispersion,...))}                       
     }  
-    if (type=="class"){ttpredY<-data.frame(cbind(object$tt[,1:comps],matrix(0,nrow=nrtt,ncol=object$computed_nt-comps)));colnames(ttpredY) <- NULL
+    if (type=="class"){
                        if("polr" %in% class(object$FinalModel)){ttpred<-data.frame(tt=ttpredY);return(predict(object$FinalModel,newdata=ttpred,type = "class",...))}                       
     }  
-    if (type=="probs"){ttpredY<-data.frame(cbind(object$tt[,1:comps],matrix(0,nrow=nrtt,ncol=object$computed_nt-comps)));colnames(ttpredY) <- NULL
+    if (type=="probs"){
                        if("polr" %in% class(object$FinalModel)){ttpred<-data.frame(tt=ttpredY);return(predict(object$FinalModel,newdata=ttpred,type = "probs",...))}                       
     }  
     if (type=="scores"){return(object$tt[,1:comps])}   
@@ -186,6 +198,9 @@ predict.plsRglmmodel <- function(object,newdata,comps=object$computed_nt,type=c(
   }
 colnames(ttpredY) <- NULL
 ttpred<-data.frame(tt=ttpredY)
+  if (is_pls && (type %in% c("link","response"))) {
+    return(predict_pls_from_scores(ttpredY, type))
+  }
   if("glm" %in% class(object$FinalModel)){
   if (type=="link"){return(predict(object$FinalModel,newdata=ttpred,type = "link",se.fit=se.fit,dispersion = dispersion,...))                  
   }
@@ -202,4 +217,3 @@ ttpred<-data.frame(tt=ttpredY)
                       return(ttpredY[,1:comps,drop=FALSE])}
 }
 }
-
