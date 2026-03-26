@@ -1,0 +1,1089 @@
+# plsRglm: Historical Applications and Algorithmic Notes
+
+This vignette preserves the structure of the package’s historical
+applications note while updating the code examples and summaries to the
+current `plsRglm` interfaces. It is the companion to the main
+getting-started vignette and focuses on the longer case studies that
+motivated the package.
+
+By default, the chunks are shown but not executed. To rerun the analyses
+while rendering, set:
+
+``` r
+options(plsRglm.rebuild_vignette = TRUE)
+```
+
+before calling
+[`rmarkdown::render()`](https://pkgs.rstudio.com/rmarkdown/reference/render.html).
+Some sections also require optional packages such as `chemometrics` and
+`xtable`.
+
+> The aim of the `plsRglm` package is to deal with incomplete, as well
+> as complete, data sets through several techniques that had not
+> previously been implemented together in R: bootstrap confidence
+> intervals, repeated k-fold cross-validation, and partial least squares
+> regression for generalized linear models.
+
+## Motivation
+
+The analysis of data sets with many strongly correlated predictors is
+common in medicine, biology, chemometrics, and related fields. Classical
+least-squares regression is often not adequate when predictors are
+highly collinear, when there are more predictors than subjects, or when
+missing values are present. Partial least squares regression (PLSR)
+addresses part of this problem by constructing latent components that
+summarize the predictor space while remaining informative about the
+response.
+
+Existing R software already implemented several variants of PLSR, but
+the original `plsRglm` vignette emphasized several gaps that this
+package set out to fill:
+
+- support for incomplete data in the predictor matrix,
+- generalized linear model extensions of PLSR,
+- repeated cross-validation using multiple criteria,
+- bootstrap confidence intervals and significance assessment on the
+  original predictors,
+- weighted low-level constructors via
+  [`PLS_lm_wvc()`](https://fbertran.github.io/plsRglm/reference/PLS_lm_wvc.md)
+  and
+  [`PLS_glm_wvc()`](https://fbertran.github.io/plsRglm/reference/PLS_glm_wvc.md).
+
+The package was developed around several motivating applications,
+including the Cornell mixture data, pine caterpillar studies,
+allelotyping data with missing values, and Bordeaux wine quality data.
+
+## Theory
+
+### PLS Regression
+
+For more detailed introductions to PLS regression, see Hoskuldsson
+(1988) and Wold et al. (2001). In the classical PLSR setting, let `y` be
+the response variable and `X` the centered and scaled matrix of
+predictors. The method constructs orthogonal components `t_1, ..., t_H`
+as linear combinations of the original predictors. If `T` denotes the
+matrix of retained components, the model can be written as:
+
+``` math
+
+y = T c + \varepsilon,
+```
+
+and, since the components can themselves be expressed from the original
+predictors through a weight matrix $`W^\ast`$,
+
+``` math
+
+y = X W^\ast c + \varepsilon.
+```
+
+Expanding the right-hand side shows how the original predictors
+contribute to the fitted response through the component coefficients.
+
+Scaling is often used, as in PCA, to balance the influence of each
+predictor. In practice, however, centered but unscaled predictors can
+also be used when that is scientifically more appropriate.
+
+### PLS Generalized Linear Regression
+
+One of the main contributions of `plsRglm` is the extension of PLSR to
+generalized linear regression models. In this setting, the response can
+be continuous, binary, ordinal, count-valued, or belong to another GLM
+family. The linear predictor is built from the latent PLS components:
+
+``` math
+
+g(\theta_i) = \sum_{h=1}^H c_h \sum_{j=1}^p w^\ast_{jh} x_{ij},
+```
+
+where $`g`$ is the link function associated with the chosen response
+family.
+
+The key difficulty is that, unlike in ordinary PLSR, residual-based
+updates cannot be obtained from a sequence of ordinary linear
+regressions on the response. The original vignette therefore stressed
+two implementation ideas:
+
+1.  at step $`h`$, fit a GLR of `y` on the existing components and each
+    candidate predictor in turn;
+2.  ensure orthogonality of the next component by computing residualized
+    predictors through ordinary least-squares regressions on the
+    previously constructed components.
+
+The algorithm implemented in the package follows this structure:
+
+1.  Center and scale the predictors.
+2.  Build the first component from the univariate GLR coefficients of
+    `y` on each predictor.
+3.  For the second and subsequent components, regress each predictor on
+    the previously found components, retain the residualized predictors,
+    and compute the next component from the corresponding GLR
+    coefficients.
+4.  Express each component both in terms of the residualized design
+    matrix and in terms of the original predictors.
+
+This construction also works with incomplete predictor matrices, because
+each individual component score can be computed from the available
+coordinates only.
+
+### Stopping Criteria
+
+The package exposes several criteria for choosing the number of
+components:
+
+- AIC and BIC,
+- cross-validated $`Q^2`$-style criteria,
+- miss-classification counts for binary and ordinal responses,
+- the “no more significant predictor” stopping rule described by Bastien
+  et al. (2005).
+
+For complete-data PLSR models, corrected degrees-of-freedom criteria
+from Kramer and Sugiyama (2011) are also available; in the other cases
+the package falls back to naive degrees-of-freedom calculations.
+
+### Bootstrap
+
+The applications note distinguishes two bootstrap strategies that are
+available both for PLSR and PLSGLR:
+
+- bootstrap on `(y, X)`,
+- bootstrap on `(y, T)`.
+
+The `(y, X)` approach resamples the original response-predictor pairs
+and refits the model repeatedly. The `(y, T)` approach resamples the
+response together with the retained latent components, keeping the
+mapping from components back to the original predictors fixed. The
+latter is usually faster and more stable, especially for generalized
+linear models. In current package defaults,
+[`bootpls()`](https://fbertran.github.io/plsRglm/reference/bootpls.md)
+starts with `(y, X)` resampling while
+[`bootplsglm()`](https://fbertran.github.io/plsRglm/reference/bootplsglm.md)
+starts with `(y, T)` resampling.
+
+The implementation is built on top of
+[`boot::boot()`](https://rdrr.io/pkg/boot/man/boot.html), which means
+that different bootstrap schemes such as ordinary, balanced,
+permutation, or antithetic resampling can be forwarded through the
+package API.
+
+## Applications
+
+### Data
+
+The package contains several datasets used throughout the original
+vignette:
+
+- `Cornell`, from Kettaneh-Wold (1992),
+- `pine`, for the pine processionary caterpillar study,
+- `aze` and `aze_compl`, for the allelotyping application,
+- `bordeaux`, for Bordeaux wine quality.
+
+The original PDF also used the `hyptis` dataset from `chemometrics` and
+the base `rock` dataset.
+
+### PLS Regression: Cornell
+
+The Cornell example uses the formula interface of
+[`plsR()`](https://fbertran.github.io/plsRglm/reference/plsR.md) and
+illustrates cross-validation, bootstrap on `(y, X)`, bootstrap on
+`(y, T)`, and the
+[`signpred()`](https://fbertran.github.io/plsRglm/reference/signpred.md)
+summary of variable significance across plausible component counts.
+
+``` r
+data(Cornell)
+
+cv.modpls <- cv.plsR(Y ~ ., data = Cornell, nt = 6, K = 6)
+res.cv.modpls <- cvtable(summary(cv.modpls))
+
+res6 <- plsR(Y ~ ., data = Cornell, nt = 6, typeVC = "standard", pvals.expli = TRUE)
+colSums(res6$pvalstep)
+res6$InfCrit
+
+res6 <- plsR(Y ~ ., data = Cornell, nt = 6, pvals.expli = TRUE)
+colSums(res6$pvalstep)
+```
+
+The original vignette then repeated the 6-fold cross-validation 100
+times and used the empirical distribution of retained component counts
+as a weighting device in later bootstrap-based significance summaries.
+
+``` r
+set.seed(123)
+cv.modpls <- cv.plsR(
+  Y ~ .,
+  data = Cornell,
+  nt = 6,
+  K = 6,
+  NK = 100,
+  random = TRUE,
+  verbose = FALSE
+)
+res.cv.modpls <- cvtable(summary(cv.modpls))
+plot(res.cv.modpls)
+```
+
+The selected model in the PDF retained one component for the final fit.
+
+``` r
+res <- plsR(Y ~ ., data = Cornell, nt = 1, pvals.expli = TRUE)
+res
+res$wwetoile
+biplot(res6$tt, res6$pp)
+
+modpls2 <- plsR(Y ~ ., data = Cornell, 6, sparse = TRUE)
+modpls3 <- plsR(Y ~ ., data = Cornell, 6, sparse = TRUE, sparseStop = FALSE)
+```
+
+#### Bootstrap `(y, X)`
+
+``` r
+set.seed(123)
+Cornell.bootYX1 <- bootpls(res, R = 1000, verbose = FALSE)
+
+boxplots.bootpls(Cornell.bootYX1, indice = 2:8)
+temp.ci <- confints.bootpls(Cornell.bootYX1, indice = 2:8)
+plots.confints.bootpls(
+  temp.ci,
+  typeIC = "BCa",
+  colIC = c("blue", "blue", "blue", "blue"),
+  legendpos = "topright"
+)
+
+plot(Cornell.bootYX1, index = 2, jack = TRUE)
+car::dataEllipse(
+  Cornell.bootYX1$t[, 2],
+  Cornell.bootYX1$t[, 3],
+  cex = 0.3,
+  levels = c(0.5, 0.95, 0.99),
+  robust = TRUE,
+  xlab = "X2",
+  ylab = "X3"
+)
+```
+
+#### Bootstrap `(y, T)`
+
+``` r
+set.seed(123)
+Cornell.bootYT1 <- bootpls(res, typeboot = "fmodel_np", R = 1000)
+boxplots.bootpls(Cornell.bootYT1, indices = 2:8)
+
+temp.ci <- confints.bootpls(Cornell.bootYT1, indices = 2:8)
+plots.confints.bootpls(
+  temp.ci,
+  typeIC = "BCa",
+  colIC = c("blue", "blue", "blue", "blue"),
+  legendpos = "topright"
+)
+
+res2 <- plsR(Y ~ ., data = Cornell, nt = 2)
+Cornell.bootYT2 <- bootpls(res2, typeboot = "fmodel_np", R = 1000)
+temp.ci2 <- confints.bootpls(Cornell.bootYT2, indices = 2:8)
+
+ind.BCa.CornellYT1 <- (temp.ci[, 7] < 0 & temp.ci[, 8] < 0) | (temp.ci[, 7] > 0 & temp.ci[, 8] > 0)
+ind.BCa.CornellYT2 <- (temp.ci2[, 7] < 0 & temp.ci2[, 8] < 0) | (temp.ci2[, 7] > 0 & temp.ci2[, 8] > 0)
+
+matind <- rbind(YT1 = ind.BCa.CornellYT1, YT2 = ind.BCa.CornellYT2)
+pi.e <- prop.table(res.cv.modpls$CVQ2)[-1] %*% matind
+
+signpred(t(matind), labsize = 0.5, plotsize = 12)
+text(1:(ncol(matind)) - 0.5, -0.5, pi.e, cex = 1.4)
+mtext(expression(pi[e]), side = 2, las = 1, line = 2, at = -0.5, cex = 1.4)
+```
+
+### PLS Binary Logistic Regression: Microsatellites
+
+This section reproduces the original allelotyping workflow on both the
+incomplete dataset `aze` and the imputed dataset `aze_compl`.
+
+#### Method and Results: Original Dataset
+
+``` r
+data(aze)
+Xaze <- aze[, 2:34]
+yaze <- aze$y
+```
+
+The original PDF first ran an 8-fold cross-validation with up to 10
+components, then repeated it 100 times to stabilize the choice of the
+final model.
+
+``` r
+cv.modpls <- cv.plsRglm(
+  object = yaze,
+  dataX = Xaze,
+  nt = 10,
+  modele = "pls-glm-logistic",
+  K = 8
+)
+res.cv.modpls <- cvtable(summary(cv.modpls, MClassed = TRUE))
+
+res10 <- plsRglm(yaze, Xaze, nt = 10, modele = "pls-glm-logistic", pvals.expli = TRUE)
+colSums(res10$pvalstep)
+
+modpls2 <- plsRglm(
+  dataY = yaze,
+  dataX = Xaze,
+  nt = 10,
+  modele = "pls-glm-logistic",
+  sparse = TRUE,
+  sparseStop = TRUE
+)
+
+set.seed(123)
+cv.modpls.logit <- cv.plsRglm(
+  object = yaze,
+  dataX = Xaze,
+  nt = 10,
+  modele = "pls-glm-logistic",
+  K = 8,
+  NK = 100
+)
+res.cv.modpls.logit <- cvtable(summary(cv.modpls.logit, MClassed = TRUE))
+plot(res.cv.modpls.logit)
+```
+
+The legacy vignette kept four components for the final logistic model.
+
+``` r
+res <- plsRglm(yaze, Xaze, nt = 4, modele = "pls-glm-logistic", pvals.expli = TRUE)
+res
+res$wwetoile
+biplot(res$tt, res$pp)
+
+modpls3 <- plsRglm(yaze, Xaze, nt = 10, modele = "pls-glm-logistic", sparse = FALSE, pvals.expli = TRUE)
+modpls4 <- plsRglm(yaze, Xaze, nt = 10, modele = "pls-glm-logistic", sparse = TRUE, pvals.expli = TRUE)
+```
+
+##### Bootstrap `(y, X)`
+
+``` r
+set.seed(123)
+aze.bootYX4 <- bootplsglm(res, typeboot = "plsmodel", R = 1000, verbose = FALSE)
+
+boxplots.bootpls(aze.bootYX4, las = 2, mar = c(5, 2, 1, 1) + 0.1)
+temp.ci <- confints.bootpls(aze.bootYX4)
+plots.confints.bootpls(
+  temp.ci,
+  typeIC = "BCa",
+  colIC = c("blue", "blue", "blue", "blue"),
+  legendpos = "topright",
+  las = 2,
+  mar = c(5, 2, 1, 1) + 0.1
+)
+```
+
+##### Bootstrap `(y, T)`
+
+``` r
+set.seed(123)
+aze.bootYT4 <- bootplsglm(res, R = 1000, verbose = FALSE)
+
+boxplots.bootpls(aze.bootYT4, las = 2, mar = c(5, 2, 1, 1) + 0.1)
+temp.ci4 <- confints.bootpls(aze.bootYT4)
+plots.confints.bootpls(
+  temp.ci4,
+  typeIC = "BCa",
+  colIC = c("blue", "blue", "blue", "blue"),
+  legendpos = "topright",
+  las = 2,
+  mar = c(5, 2, 1, 1) + 0.1
+)
+
+res1 <- plsRglm(yaze, Xaze, nt = 1, modele = "pls-glm-logistic")
+res2 <- plsRglm(yaze, Xaze, nt = 2, modele = "pls-glm-logistic")
+res3 <- plsRglm(yaze, Xaze, nt = 3, modele = "pls-glm-logistic")
+res5 <- plsRglm(yaze, Xaze, nt = 5, modele = "pls-glm-logistic")
+res6 <- plsRglm(yaze, Xaze, nt = 6, modele = "pls-glm-logistic")
+res7 <- plsRglm(yaze, Xaze, nt = 7, modele = "pls-glm-logistic")
+res8 <- plsRglm(yaze, Xaze, nt = 8, modele = "pls-glm-logistic")
+
+aze.bootYT1 <- bootplsglm(res1, R = 1000)
+aze.bootYT2 <- bootplsglm(res2, R = 1000)
+aze.bootYT3 <- bootplsglm(res3, R = 1000)
+aze.bootYT5 <- bootplsglm(res5, R = 1000)
+aze.bootYT6 <- bootplsglm(res6, R = 1000)
+aze.bootYT7 <- bootplsglm(res7, R = 1000)
+aze.bootYT8 <- bootplsglm(res8, R = 1000)
+
+temp.ci1 <- confints.bootpls(aze.bootYT1)
+temp.ci2 <- confints.bootpls(aze.bootYT2)
+temp.ci3 <- confints.bootpls(aze.bootYT3)
+temp.ci5 <- confints.bootpls(aze.bootYT5)
+temp.ci6 <- confints.bootpls(aze.bootYT6)
+temp.ci7 <- confints.bootpls(aze.bootYT7)
+temp.ci8 <- confints.bootpls(aze.bootYT8)
+
+ind.BCa.azeYT1 <- (temp.ci1[, 7] < 0 & temp.ci1[, 8] < 0) | (temp.ci1[, 7] > 0 & temp.ci1[, 8] > 0)
+ind.BCa.azeYT2 <- (temp.ci2[, 7] < 0 & temp.ci2[, 8] < 0) | (temp.ci2[, 7] > 0 & temp.ci2[, 8] > 0)
+ind.BCa.azeYT3 <- (temp.ci3[, 7] < 0 & temp.ci3[, 8] < 0) | (temp.ci3[, 7] > 0 & temp.ci3[, 8] > 0)
+ind.BCa.azeYT4 <- (temp.ci4[, 7] < 0 & temp.ci4[, 8] < 0) | (temp.ci4[, 7] > 0 & temp.ci4[, 8] > 0)
+ind.BCa.azeYT5 <- (temp.ci5[, 7] < 0 & temp.ci5[, 8] < 0) | (temp.ci5[, 7] > 0 & temp.ci5[, 8] > 0)
+ind.BCa.azeYT6 <- (temp.ci6[, 7] < 0 & temp.ci6[, 8] < 0) | (temp.ci6[, 7] > 0 & temp.ci6[, 8] > 0)
+ind.BCa.azeYT7 <- (temp.ci7[, 7] < 0 & temp.ci7[, 8] < 0) | (temp.ci7[, 7] > 0 & temp.ci7[, 8] > 0)
+ind.BCa.azeYT8 <- (temp.ci8[, 7] < 0 & temp.ci8[, 8] < 0) | (temp.ci8[, 7] > 0 & temp.ci8[, 8] > 0)
+
+matind <- rbind(
+  YT1 = ind.BCa.azeYT1,
+  YT2 = ind.BCa.azeYT2,
+  YT3 = ind.BCa.azeYT3,
+  YT4 = ind.BCa.azeYT4,
+  YT5 = ind.BCa.azeYT5,
+  YT6 = ind.BCa.azeYT6,
+  YT7 = ind.BCa.azeYT7,
+  YT8 = ind.BCa.azeYT8
+)
+
+pi.e <- weighted_significance(res.cv.modpls.logit$CVMC, matind)
+signpred(t(matind), labsize = 2, plotsize = 12)
+text(1:(ncol(matind)) - 0.5, -1, pi.e, cex = 0.5)
+mtext(expression(pi[e]), side = 2, las = 1, line = 2, at = -1)
+```
+
+#### Specifying Families, Links, or Custom GLRs
+
+The original vignette showed that `modele = "pls-glm-logistic"` is a
+convenience shortcut for `modele = "pls-glm-family"` together with
+`family = binomial(link = logit)`.
+
+``` r
+modpls <- plsRglm(yaze, Xaze, nt = 10, modele = "pls-glm-logistic", MClassed = TRUE, pvals.expli = TRUE)
+modpls2 <- plsRglm(yaze, Xaze, nt = 10, modele = "pls-glm-family", family = binomial(link = "logit"), MClassed = TRUE, pvals.expli = TRUE)
+modpls3 <- plsRglm(yaze, Xaze, nt = 10, modele = "pls-glm-family", family = binomial(link = "probit"), MClassed = TRUE, pvals.expli = TRUE)
+modpls4 <- plsRglm(yaze, Xaze, nt = 10, modele = "pls-glm-family", family = binomial(link = "cauchit"), MClassed = TRUE, pvals.expli = TRUE)
+modpls5 <- plsRglm(yaze, Xaze, nt = 10, modele = "pls-glm-family", family = binomial(link = "cloglog"), MClassed = TRUE, pvals.expli = TRUE)
+
+set.seed(123)
+cv.modpls.probit <- cv.plsRglm(object = yaze, dataX = Xaze, nt = 10, modele = "pls-glm-family", family = binomial(link = "probit"), K = 8, NK = 100)
+cv.modpls.cauchit <- cv.plsRglm(object = yaze, dataX = Xaze, nt = 10, modele = "pls-glm-family", family = binomial(link = "cauchit"), K = 8, NK = 100)
+cv.modpls.cloglog <- cv.plsRglm(object = yaze, dataX = Xaze, nt = 10, modele = "pls-glm-family", family = binomial(link = "cloglog"), K = 8, NK = 100)
+
+res.cv.modpls.probit <- cvtable(summary(cv.modpls.probit, MClassed = TRUE))
+res.cv.modpls.cauchit <- cvtable(summary(cv.modpls.cauchit, MClassed = TRUE))
+
+layout(matrix(1:4, nrow = 2))
+plot(res.cv.modpls.logit)
+plot(res.cv.modpls.probit)
+plot(res.cv.modpls.cauchit)
+layout(1)
+```
+
+#### Method and Results: Imputed Dataset
+
+``` r
+data(aze_compl)
+Xaze_compl <- aze_compl[, 2:34]
+yaze_compl <- aze_compl$y
+
+cv.modpls_compl <- cv.plsRglm(
+  object = yaze_compl,
+  dataX = Xaze_compl,
+  nt = 10,
+  modele = "pls-glm-logistic",
+  K = 8
+)
+res.cv.modpls_compl <- cvtable(summary(cv.modpls_compl, MClassed = TRUE))
+
+set.seed(123)
+cv.modpls_compl <- cv.plsRglm(
+  object = yaze_compl,
+  dataX = Xaze_compl,
+  nt = 10,
+  modele = "pls-glm-logistic",
+  K = 8,
+  NK = 100
+)
+res.cv.modpls_compl <- cvtable(summary(cv.modpls_compl, MClassed = TRUE))
+plot(res.cv.modpls_compl)
+
+res_compl <- plsRglm(yaze_compl, Xaze_compl, nt = 3, modele = "pls-glm-logistic", pvals.expli = TRUE)
+res_compl
+
+aze_compl.bootYX3 <- bootplsglm(res_compl, typeboot = "plsmodel", R = 1000, verbose = FALSE)
+boxplots.bootpls(aze_compl.bootYX3, las = 2, mar = c(5, 2, 1, 1) + 0.1)
+temp.ci <- confints.bootpls(aze_compl.bootYX3)
+plots.confints.bootpls(temp.ci, typeIC = "BCa", colIC = c("blue", "blue", "blue", "blue"), legendpos = "topright", las = 2, mar = c(5, 2, 1, 1) + 0.1)
+
+aze_compl.bootYT3 <- bootplsglm(res_compl, R = 1000, verbose = FALSE)
+boxplots.bootpls(aze_compl.bootYT3, las = 2, mar = c(5, 2, 1, 1) + 0.1)
+temp.ci3 <- confints.bootpls(aze_compl.bootYT3)
+plots.confints.bootpls(temp.ci3, typeIC = "BCa", colIC = c("blue", "blue", "blue", "blue"), legendpos = "topright", las = 2, mar = c(5, 2, 1, 1) + 0.1)
+```
+
+### PLS Regression Bis: Pine Caterpillar
+
+The pine example is the second linear-regression case study in the
+original vignette. It also illustrates incomplete predictors and
+different cross-validation prediction rules.
+
+``` r
+data(pine)
+Xpine <- pine[, 1:10]
+ypine <- pine[, 11]
+
+cv.modpls <- cv.plsR(ypine, Xpine, nt = 10)
+res.cv.modpls <- cvtable(summary(cv.modpls))
+
+res1 <- plsR(ypine, Xpine, nt = 10, typeVC = "standard", pvals.expli = TRUE)
+colSums(res1$pvalstep)
+res1$InfCrit
+
+set.seed(123)
+cv.modpls <- cv.plsR(x11 ~ ., data = pine, nt = 10, NK = 100)
+res.cv.modpls <- cvtable(summary(cv.modpls))
+plot(res.cv.modpls)
+```
+
+``` r
+res <- plsR(x11 ~ ., data = pine, nt = 1, pvals.expli = TRUE)
+res
+biplot(res1$tt, res1$pp)
+
+data(pine_full)
+Xpine_full <- pine_full[, 1:10]
+ypine_full <- pine_full[, 11]
+modpls5 <- plsR(log(ypine_full), Xpine_full, 1)
+
+XpineNAX21 <- Xpine
+XpineNAX21[1, 2] <- NA
+modpls6 <- plsR(ypine, XpineNAX21, 4)
+modpls6$YChapeau[1, ]
+plsR(ypine, XpineNAX21, 2, dataPredictY = XpineNAX21[1, ])$ValsPredictY
+
+modpls7 <- plsR(ypine, XpineNAX21, 4, EstimXNA = TRUE)
+modpls7$XChapeau
+modpls7$XChapeauNA
+
+plsR(ypine, Xpine, 10, typeVC = "none")$InfCrit
+plsR(ypine, Xpine, 10, typeVC = "standard")$InfCrit
+plsR(ypine, Xpine, 10, typeVC = "adaptative")$InfCrit
+plsR(ypine, Xpine, 10, typeVC = "missingdata")$InfCrit
+plsR(ypine, XpineNAX21, 10, typeVC = "none")$InfCrit
+plsR(ypine, XpineNAX21, 10, typeVC = "standard")$InfCrit
+plsR(ypine, XpineNAX21, 10, typeVC = "adaptative")$InfCrit
+plsR(ypine, XpineNAX21, 10, typeVC = "missingdata")$InfCrit
+```
+
+#### Bootstrap `(y, X)` and `(y, T)`
+
+``` r
+set.seed(123)
+Pine.bootYX1 <- bootpls(res, R = 1000)
+boxplots.bootpls(Pine.bootYX1, indice = 2:11)
+temp.ci <- confints.bootpls(Pine.bootYX1, indice = 2:11)
+plots.confints.bootpls(temp.ci, typeIC = "BCa", colIC = c("blue", "blue", "blue", "blue"), legendpos = "topright")
+plot(Pine.bootYX1, index = 2, jack = TRUE)
+car::dataEllipse(Pine.bootYX1$t[, 2], Pine.bootYX1$t[, 3], cex = 0.3, levels = c(0.5, 0.95, 0.99), robust = TRUE, xlab = "X2", ylab = "X3")
+
+set.seed(123)
+Pine.bootYT1 <- bootpls(res, typeboot = "fmodel_np", R = 1000)
+boxplots.bootpls(Pine.bootYT1, indices = 2:11)
+temp.ci <- confints.bootpls(Pine.bootYT1, indices = 2:11)
+plots.confints.bootpls(temp.ci, typeIC = "BCa", colIC = c("blue", "blue", "blue", "blue"), legendpos = "topright")
+```
+
+### PLS Ordinal Logistic Regression: Bordeaux Wine Quality
+
+The Bordeaux section in the original PDF also appears in condensed form
+in the package README.
+
+``` r
+set.seed(12345)
+data(bordeaux)
+bordeaux$Quality <- factor(bordeaux$Quality, ordered = TRUE)
+
+modpls1 <- plsRglm(Quality ~ ., data = bordeaux, 4, modele = "pls-glm-polr", pvals.expli = TRUE)
+modpls1
+
+Xbordeaux <- bordeaux[, 1:4]
+ybordeaux <- bordeaux$Quality
+modpls2 <- plsRglm(ybordeaux, Xbordeaux, 4, modele = "pls-glm-polr", pvals.expli = TRUE)
+modpls2
+
+all(modpls1$InfCrit == modpls2$InfCrit)
+colSums(modpls2$pvalstep)
+
+set.seed(123)
+cv.modpls <- cv.plsRglm(ybordeaux, Xbordeaux, nt = 4, modele = "pls-glm-polr", NK = 100, verbose = FALSE)
+res.cv.modpls <- cvtable(summary(cv.modpls, MClassed = TRUE))
+plot(res.cv.modpls)
+
+res <- plsRglm(ybordeaux, Xbordeaux, 1, modele = "pls-glm-polr")
+res$FinalModel
+biplot(modpls1$tt, modpls1$pp)
+
+XbordeauxNA <- Xbordeaux
+XbordeauxNA[1, 1] <- NA
+modplsNA <- plsRglm(ybordeaux, XbordeauxNA, 4, modele = "pls-glm-polr")
+modplsNA
+data.frame(formula = modpls1$Coeffs, datasets = modpls2$Coeffs, datasetsNA = modplsNA$Coeffs)
+```
+
+#### Bootstrap `(y, X)`
+
+``` r
+options(contrasts = c("contr.treatment", "contr.poly"))
+
+modplsglm3 <- plsRglm(ybordeaux, Xbordeaux, 1, modele = "pls-glm-polr")
+bordeaux.bootYT <- bootplsglm(modplsglm3, sim = "permutation", R = 250, verbose = FALSE)
+boxplots.bootpls(bordeaux.bootYT)
+boxplots.bootpls(bordeaux.bootYT, ranget0 = TRUE)
+
+bordeaux.bootYX1 <- bootplsglm(res, typeboot = "plsmodel", sim = "balanced", R = 1000, verbose = FALSE)
+boxplots.bootpls(bordeaux.bootYX1)
+temp.ci <- confints.bootpls(bordeaux.bootYX1)
+plots.confints.bootpls(temp.ci, typeIC = "BCa", colIC = c("blue", "blue", "blue", "blue"), legendpos = "topright")
+
+bordeaux.bootYX1strata <- bootplsglm(res, typeboot = "plsmodel", sim = "balanced", R = 1000, strata = unclass(ybordeaux), verbose = FALSE)
+boxplots.bootpls(bordeaux.bootYX1strata)
+confints.bootpls(bordeaux.bootYX1strata)
+plots.confints.bootpls(confints.bootpls(bordeaux.bootYX1strata), typeIC = "BCa", colIC = c("blue", "blue", "blue", "blue"), legendpos = "topright")
+```
+
+#### Bootstrap `(y, T)`
+
+``` r
+bordeaux.bootYT1 <- bootplsglm(res, sim = "balanced", R = 1000, verbose = FALSE)
+boxplots.bootpls(bordeaux.bootYT1)
+temp.ci <- confints.bootpls(bordeaux.bootYT1)
+plots.confints.bootpls(temp.ci, typeIC = "BCa", colIC = c("blue", "blue", "blue", "blue"), legendpos = "topright")
+
+bordeaux.bootYT1strata <- bootplsglm(res, sim = "balanced", R = 1000, strata = unclass(ybordeaux), verbose = FALSE)
+boxplots.bootpls(bordeaux.bootYT1strata)
+temp.cis <- confints.bootpls(bordeaux.bootYT1strata)
+plots.confints.bootpls(temp.cis, typeIC = "BCa", colIC = c("blue", "blue", "blue", "blue"), legendpos = "topright")
+
+res2 <- plsRglm(ybordeaux, Xbordeaux, 2, modele = "pls-glm-polr", verbose = FALSE)
+res3 <- plsRglm(ybordeaux, Xbordeaux, 3, modele = "pls-glm-polr", verbose = FALSE)
+res4 <- plsRglm(ybordeaux, Xbordeaux, 4, modele = "pls-glm-polr", verbose = FALSE)
+
+bordeaux.bootYT2 <- bootplsglm(res2, sim = "balanced", R = 1000, verbose = FALSE)
+bordeaux.bootYT3 <- bootplsglm(res3, sim = "balanced", R = 1000, verbose = FALSE)
+bordeaux.bootYT4 <- bootplsglm(res4, sim = "balanced", R = 1000, verbose = FALSE)
+bordeaux.bootYT2s <- bootplsglm(res2, sim = "balanced", R = 1000, strata = unclass(ybordeaux), verbose = FALSE)
+bordeaux.bootYT3s <- bootplsglm(res3, sim = "balanced", R = 1000, strata = unclass(ybordeaux), verbose = FALSE)
+bordeaux.bootYT4s <- bootplsglm(res4, sim = "balanced", R = 1000, strata = unclass(ybordeaux), verbose = FALSE)
+
+temp.ci2 <- confints.bootpls(bordeaux.bootYT2)
+temp.ci3 <- confints.bootpls(bordeaux.bootYT3)
+temp.ci4 <- confints.bootpls(bordeaux.bootYT4)
+temp.cis2 <- confints.bootpls(bordeaux.bootYT2s)
+temp.cis3 <- confints.bootpls(bordeaux.bootYT3s)
+temp.cis4 <- confints.bootpls(bordeaux.bootYT4s)
+
+ind.BCa.bordeauxYT1 <- (temp.ci[, 7] < 0 & temp.ci[, 8] < 0) | (temp.ci[, 7] > 0 & temp.ci[, 8] > 0)
+ind.BCa.bordeauxYT2 <- (temp.ci2[, 7] < 0 & temp.ci2[, 8] < 0) | (temp.ci2[, 7] > 0 & temp.ci2[, 8] > 0)
+ind.BCa.bordeauxYT3 <- (temp.ci3[, 7] < 0 & temp.ci3[, 8] < 0) | (temp.ci3[, 7] > 0 & temp.ci3[, 8] > 0)
+ind.BCa.bordeauxYT4 <- (temp.ci4[, 7] < 0 & temp.ci4[, 8] < 0) | (temp.ci4[, 7] > 0 & temp.ci4[, 8] > 0)
+ind.BCa.bordeauxYT1s <- (temp.cis[, 7] < 0 & temp.cis[, 8] < 0) | (temp.cis[, 7] > 0 & temp.cis[, 8] > 0)
+ind.BCa.bordeauxYT2s <- (temp.cis2[, 7] < 0 & temp.cis2[, 8] < 0) | (temp.cis2[, 7] > 0 & temp.cis2[, 8] > 0)
+ind.BCa.bordeauxYT3s <- (temp.cis3[, 7] < 0 & temp.cis3[, 8] < 0) | (temp.cis3[, 7] > 0 & temp.cis3[, 8] > 0)
+ind.BCa.bordeauxYT4s <- (temp.cis4[, 7] < 0 & temp.cis4[, 8] < 0) | (temp.cis4[, 7] > 0 & temp.cis4[, 8] > 0)
+
+matind <- rbind(YT1 = ind.BCa.bordeauxYT1, YT2 = ind.BCa.bordeauxYT2, YT3 = ind.BCa.bordeauxYT3, YT4 = ind.BCa.bordeauxYT4)
+pi.e <- weighted_significance(res.cv.modpls$CVMC, matind)
+signpred(t(matind), labsize = 0.5, plotsize = 12)
+mtext(expression(pi[e]), side = 2, las = 1, line = 2, at = -0.3, cex = 1.4)
+text(1:(ncol(matind)) - 0.5, -0.3, pi.e, cex = 1.4)
+text(1:(ncol(matind)) - 0.5, -0.75, c("Temp", "Sun", "Heat", "Rain"), cex = 1.4)
+
+matinds <- rbind(YT1 = ind.BCa.bordeauxYT1s, YT2 = ind.BCa.bordeauxYT2s, YT3 = ind.BCa.bordeauxYT3s, YT4 = ind.BCa.bordeauxYT4s)
+pi.es <- weighted_significance(res.cv.modpls$CVMC, matinds)
+signpred(t(matinds), pred.lablength = 10, labsize = 0.5, plotsize = 12)
+mtext(expression(pi[e]), side = 2, las = 1, line = 2, at = -0.3, cex = 1.4)
+text(1:(ncol(matinds)) - 0.5, -0.3, pi.es, cex = 1.4)
+text(1:(ncol(matinds)) - 0.5, -0.75, c("Temp", "Sun", "Heat", "Rain"), cex = 1.4)
+```
+
+### PLS Ordinal Logistic Regression: Hyptis
+
+This section requires the optional `chemometrics` package.
+
+``` r
+data("hyptis", package = "chemometrics")
+yhyptis <- factor(hyptis$Group, ordered = TRUE)
+Xhyptis <- as.data.frame(hyptis[, 1:6])
+
+modpls <- plsRglm(yhyptis, Xhyptis, 6, modele = "pls-glm-polr", pvals.expli = TRUE)
+modpls
+colSums(modpls$pvalstep)
+
+set.seed(123)
+cv.modpls <- cv.plsRglm(object = yhyptis, dataX = Xhyptis, nt = 4, K = 5, NK = 100, modele = "pls-glm-polr")
+res.cv.modpls <- cvtable(summary(cv.modpls, MClassed = TRUE))
+plot(res.cv.modpls)
+
+modpls2 <- plsRglm(yhyptis, Xhyptis, 3, modele = "pls-glm-polr")
+modpls2
+table(yhyptis, predict(modpls2$FinalModel, type = "class"))
+biplot(modpls2$tt, modpls2$pp)
+
+modpls3 <- plsRglm(
+  yhyptis[-c(1, 11, 17, 22)],
+  Xhyptis[-c(1, 11, 17, 22), ],
+  3,
+  modele = "pls-glm-polr",
+  dataPredictY = Xhyptis[c(1, 11, 17, 22), ]
+)
+modpls3$ValsPredictY
+cbind(modpls3$ValsPredictYCat, yhyptis[c(1, 11, 17, 22)])
+
+hyptis.bootYX3 <- bootplsglm(modpls2, typeboot = "plsmodel", R = 1000, strata = unclass(yhyptis), sim = "permutation")
+rownames(hyptis.bootYX3$t0) <- c("1|2\n", "2|3\n", "3|4\n", "Sabi\nnene", "Pin\nene", "Cine\nole", "Terpi\nnene", "Fenc\nhone", "Terpi\nnolene")
+boxplots.bootpls(hyptis.bootYX3, xaxisticks = FALSE, ranget0 = TRUE)
+plots.confints.bootpls(confints.bootpls(hyptis.bootYX3, typeBCa = FALSE), legendpos = "bottomleft", xaxisticks = FALSE)
+points(1:9, hyptis.bootYX3$t0, col = "red", pch = 19)
+
+hyptis.bootYT3 <- bootplsglm(modpls2, R = 1000, strata = unclass(yhyptis), sim = "permutation")
+rownames(hyptis.bootYT3$t0) <- c("Sabi\nnene", "Pin\nene", "Cine\nole", "Terpi\nnene", "Fenc\nhone", "Terpi\nnolene")
+boxplots.bootpls(hyptis.bootYT3, xaxisticks = FALSE, ranget0 = TRUE)
+plots.confints.bootpls(confints.bootpls(hyptis.bootYT3, typeBCa = FALSE), legendpos = "topright", xaxisticks = FALSE)
+points(1:6, hyptis.bootYT3$t0, col = "red", pch = 19)
+```
+
+### PLS Poisson Regression: Rock
+
+The rock example compares a first-order Poisson PLSGLR model with a
+quadratic specification using interactions.
+
+``` r
+data(rock)
+
+modpls <- plsRglm(
+  area ~ .,
+  data = rock,
+  nt = 6,
+  modele = "pls-glm-family",
+  family = poisson(),
+  pvals.expli = TRUE
+)
+modpls
+colSums(modpls$pvalstep)
+
+modpls2 <- plsRglm(
+  area ~ .^2,
+  data = rock,
+  nt = 6,
+  modele = "pls-glm-family",
+  family = poisson(),
+  pvals.expli = TRUE
+)
+modpls2
+colSums(modpls2$pvalstep)
+
+set.seed(123)
+cv.modpls2 <- cv.plsRglm(area ~ .^2, data = rock, nt = 6, modele = "pls-glm-poisson", K = 8, NK = 100)
+res.cv.modpls2 <- cvtable(summary(cv.modpls2))
+plot(res.cv.modpls2, type = "CVPreChi2")
+
+modpls3 <- plsRglm(area ~ .^2, data = rock, nt = 3, modele = "pls-glm-poisson")
+
+rock.bootYX3 <- bootplsglm(modpls3, typeboot = "plsmodel", R = 1000, sim = "antithetic")
+rownames(rock.bootYX3$t0) <- c("Intercept\n", "peri\n", "shape\n", "perm\n", "peri.\nshape", "peri.\nperm", "shape.\nperm")
+boxplots.bootpls(rock.bootYX3, indice = 2:7, xaxisticks = FALSE)
+plots.confints.bootpls(confints.bootpls(rock.bootYX3), legendpos = "topright", xaxisticks = FALSE)
+
+rock.bootYT3 <- bootplsglm(modpls3, R = 1000, stabvalue = 1e10, sim = "antithetic")
+rownames(rock.bootYT3$t0) <- c("peri\n", "shape\n", "perm\n", "peri.\nshape", "peri.\nperm", "shape.\nperm")
+boxplots.bootpls(rock.bootYT3, xaxisticks = FALSE, ranget0 = TRUE)
+plots.confints.bootpls(confints.bootpls(rock.bootYT3), legendpos = "topright", xaxisticks = FALSE)
+```
+
+## Creating Simulated Datasets
+
+### Simulating PLSR Datasets
+
+The original vignette used
+[`simul_data_UniYX()`](https://fbertran.github.io/plsRglm/reference/simul_data_UniYX.md)
+to generate synthetic datasets with a known number of latent components,
+then checked whether cross-validation recovered that number.
+
+``` r
+dimX <- 24
+Astar <- 2
+
+simul_data_UniYX(dimX, Astar)
+dataAstar2 <- as.data.frame(t(replicate(250, simul_data_UniYX(dimX, Astar))))
+
+modpls2 <- plsR(Y ~ ., data = dataAstar2, 10, typeVC = "standard")
+modpls2
+
+set.seed(123)
+cv.modpls2 <- cv.plsR(Y ~ ., data = dataAstar2, nt = 10, K = 10, NK = 100)
+res.cv.modpls2 <- cvtable(summary(cv.modpls2))
+plot(res.cv.modpls2)
+```
+
+### Simulating Logistic Binary PLSGLR Datasets
+
+#### Continuous Covariables
+
+The original PDF dichotomized the simulated response while leaving the
+predictors continuous.
+
+``` r
+ydataAstar2 <- dataAstar2[, 1]
+XdataAstar2 <- dataAstar2[, 2:(dimX + 1)]
+ysimbin1 <- dicho(ydataAstar2)
+
+res <- plsR(ysimbin1, XdataAstar2, 10, typeVC = "standard", MClassed = TRUE)
+res$MissClassed
+res
+
+res$Probs
+res$Probs.trc
+```
+
+#### Dichotomous Only Covariables
+
+The last simulation in the original vignette was meant to mimic the
+structure of the allelotyping example by dichotomizing the whole
+generated dataset.
+
+``` r
+bindataAstar2 <- as.data.frame(dicho(dataAstar2))
+resdicho <- plsR(Y ~ ., data = bindataAstar2, 10, typeVC = "standard", MClassed = TRUE)
+
+resdicho$MissClassed
+resdicho
+
+resdicho$Probs
+resdicho$Probs.trc
+```
+
+## Discussion
+
+### Core Object Classes
+
+The package exposes the following S3 classes for fitted models,
+cross-validation results, and summaries:
+
+- `plsRmodel`
+- `plsRglmmodel`
+- `coef.plsRmodel`
+- `coef.plsRglmmodel`
+- `summary.plsRmodel`
+- `summary.plsRglmmodel`
+- `cv.plsRmodel`
+- `cv.plsRglmmodel`
+- `summary.cv.plsRmodel`
+- `summary.cv.plsRglmmodel`
+- `table.summary.cv.plsRmodel`
+- `table.summary.cv.plsRglmmodel`
+
+### Core S3 Methods
+
+The corresponding S3 methods remain the main entry points for printing,
+summarizing, plotting, and predicting from these objects:
+
+- `coef.plsRmodel`
+- `coef.plsRglmmodel`
+- `plot.table.summary.cv.plsRmodel`
+- `plot.table.summary.cv.plsRglmmodel`
+- `print.coef.plsRmodel`
+- `print.coef.plsRglmmodel`
+- `print.cv.plsRmodel`
+- `print.cv.plsRglmmodel`
+- `summary.cv.plsRmodel`
+- `summary.cv.plsRglmmodel`
+- `predict.plsRmodel`
+- `predict.plsRglmmodel`
+- `print.plsRmodel`
+- `print.plsRglmmodel`
+- `summary.plsRmodel`
+- `summary.plsRglmmodel`
+- `print.summary.plsRmodel`
+- `print.summary.plsRglmmodel`
+
+### Validation Examples
+
+The applications note closes with a pair of validation examples: one
+comparing linear PLSR results with reference results from the
+literature, and one comparing ordinal logistic results for Bordeaux wine
+quality.
+
+``` r
+data(Cornell)
+XCornell <- Cornell[, 1:7]
+yCornell <- Cornell[, 8]
+
+modpls <- plsR(yCornell, XCornell, 3)
+modpls
+modpls$uscores
+modpls$pp
+modpls$Coeffs
+
+modpls2 <- plsR(yCornell, XCornell, 4, typeVC = "standard")
+modpls2$press.ind
+modpls2$press.tot
+modpls2$InfCrit
+```
+
+``` r
+set.seed(12345)
+data(bordeaux)
+Xbordeaux <- bordeaux[, 1:4]
+ybordeaux <- factor(bordeaux$Quality, ordered = TRUE)
+
+modpls <- plsRglm(ybordeaux, Xbordeaux, 4, modele = "pls-glm-polr")
+modpls
+
+XbordeauxNA <- Xbordeaux
+XbordeauxNA[1, 1] <- NA
+modplsNA <- plsRglm(ybordeaux, XbordeauxNA, 10, modele = "pls-glm-polr")
+modplsNA
+```
+
+### Main Features of the Package
+
+The central message of this applications note is that `plsRglm` provides
+a practical toolkit for high-dimensional, collinear, and possibly
+incomplete datasets, especially when generalized linear model extensions
+of PLS are required. The package combines model fitting, repeated
+cross-validation, bootstrap-based variable assessment, incomplete-data
+handling, and several response families in a single interface.
+
+## Export Results to LaTeX
+
+The original applications note included a short example using `xtable`
+to export cross-validation result tables to LaTeX. The exact table
+object comes from the microsatellite cross-validation summary; the
+example below recreates the same pattern in a standalone chunk.
+
+``` r
+CVresults1 <- summary(cv.modpls.logit, MClassed = TRUE)
+
+resCVtab1 <- print(
+  xtable::xtable(
+    CVresults1[[1]][, c(1:6)],
+    digits = c(0, 1, 1, 0, 0, -1, 4),
+    caption = "Cross-validation results, $k=8$, part one"
+  )
+)
+
+resCVtab2 <- print(
+  xtable::xtable(
+    CVresults1[[1]][, c(7:11)],
+    digits = c(0, -1, -1, 1, 1, 3),
+    caption = "Cross-validation results, $k=8$, part two"
+  )
+)
+
+resCVtab1
+resCVtab2
+```
+
+## Session Information
+
+``` r
+sessionInfo()
+#> R version 4.5.2 (2025-10-31)
+#> Platform: aarch64-apple-darwin20
+#> Running under: macOS Sonoma 14.7.1
+#> 
+#> Matrix products: default
+#> BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib 
+#> LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1
+#> 
+#> locale:
+#> [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+#> 
+#> time zone: Europe/Paris
+#> tzcode source: internal
+#> 
+#> attached base packages:
+#> [1] stats     graphics  grDevices utils     datasets  methods   base     
+#> 
+#> other attached packages:
+#> [1] plsRglm_1.7.0
+#> 
+#> loaded via a namespace (and not attached):
+#>  [1] dotCall64_1.2         spam_2.11-3           xfun_0.56            
+#>  [4] bslib_0.10.0          htmlwidgets_1.6.4     lattice_0.22-7       
+#>  [7] vctrs_0.7.1           tools_4.5.2           parallel_4.5.2       
+#> [10] tibble_3.3.1          proxy_0.4-29          DEoptimR_1.1-4       
+#> [13] cluster_2.1.8.2       pkgconfig_2.0.3       Matrix_1.7-4         
+#> [16] som_0.3-5.2           RColorBrewer_1.1-3    desc_1.4.3           
+#> [19] lifecycle_1.0.5       compiler_4.5.2        fields_17.1          
+#> [22] chemometrics_1.4.4    textshaping_1.0.4     carData_3.0-6        
+#> [25] permute_0.9-10        htmltools_0.5.9       maps_3.4.3           
+#> [28] class_7.3-23          sass_0.4.10           yaml_2.3.12          
+#> [31] Formula_1.2-5         car_3.1-5             pkgdown_2.2.0        
+#> [34] pillar_1.11.1         jquerylib_0.1.4       MASS_7.3-65          
+#> [37] cachem_1.1.0          bipartite_2.23        vegan_2.7-2          
+#> [40] boot_1.3-32           abind_1.4-8           rpart_4.1.24         
+#> [43] mclust_6.1.2          nlme_3.1-168          robustbase_0.99-7    
+#> [46] pls_2.9-0             network_1.20.0        digest_0.6.39        
+#> [49] mvtnorm_1.3-3         splines_4.5.2         pcaPP_2.0-5          
+#> [52] fastmap_1.2.0         grid_4.5.2            cli_3.6.5            
+#> [55] magrittr_2.0.4        e1071_1.7-17          rmarkdown_2.30       
+#> [58] igraph_2.2.2          otel_0.2.0            nnet_7.3-20          
+#> [61] ragg_1.5.0            sna_2.8               coda_0.19-4.1        
+#> [64] evaluate_1.0.5        knitr_1.51            viridisLite_0.4.3    
+#> [67] mgcv_1.9-3            lars_1.3              rlang_1.1.7          
+#> [70] Rcpp_1.1.1            xtable_1.8-8          glue_1.8.0           
+#> [73] rstudioapi_0.18.0     jsonlite_2.0.0        R6_2.6.1             
+#> [76] statnet.common_4.13.0 systemfonts_1.3.1     fs_1.6.6
+```
+
+## References
+
+- Astler, V. B. and Coller, F. A. (1954). The prognostic significance of
+  direct extension of carcinoma of the colon and rectum. *Annals of
+  Surgery*, 139(6), 846.
+- Bastien, P., Esposito-Vinzi, V., and Tenenhaus, M. (2005). PLS
+  generalised linear regression. *Computational Statistics & Data
+  Analysis*, 48(1), 17-46.
+- Canty, A. and Ripley, B. D. (2014). `boot`: Bootstrap R (S-Plus)
+  Functions.
+- Davison, A. C. and Hinkley, D. V. (1997). *Bootstrap Methods and Their
+  Applications*. Cambridge University Press.
+- Efron, B. and Tibshirani, R. J. (1993). *An Introduction to the
+  Bootstrap*. Chapman & Hall/CRC.
+- Haaland, D. M. and Howland, J. D. T. (1998). Weighted partial least
+  squares method to improve calibration precision for spectroscopic
+  noise-limited data.
+- Hoskuldsson, A. (1988). PLS regression methods. *Journal of
+  Chemometrics*, 2(3), 211-228.
+- Kettaneh-Wold, N. (1992). Analysis of mixture data with partial least
+  squares. *Chemometrics and Intelligent Laboratory Systems*, 14(1),
+  57-69.
+- Kramer, N. and Sugiyama, M. (2011). The degrees of freedom of partial
+  least squares regression. *Journal of the American Statistical
+  Association*, 106(494).
+- Lazraq, A., Cleroux, R., and Gauchi, J.-P. (2003). Selecting both
+  latent and explanatory variables in the PLS1 regression model.
+  *Chemometrics and Intelligent Laboratory Systems*, 66(2), 117-126.
+- Li, B., Morris, J., and Martin, E. B. (2002). Model selection for
+  partial least squares regression. *Chemometrics and Intelligent
+  Laboratory Systems*, 64(1), 79-89.
+- Meyer, N., Maumy-Bertrand, M., and Bertrand, F. (2010). Comparaison de
+  variantes de regressions logistiques PLS et de regression PLS sur
+  variables qualitatives: application aux donnees d’allelotypage.
+  *Journal de la Societe Francaise de Statistique*, 151(2), 1-18.
+- Moulton, L. H. and Zeger, S. L. (1991). Bootstrapping generalized
+  linear models. *Computational Statistics & Data Analysis*, 11(1),
+  53-63.
+- Naes, T. and Martens, H. (1985). Comparison of prediction methods for
+  multicollinear data. *Communications in Statistics - Simulation and
+  Computation*, 14(3), 545-576.
+- Tenenhaus, M. (1998). *La regression PLS, Theorie et pratique*.
+  Editions Technip.
+- Tenenhaus, M. (2005). La regression logistique PLS. In Droesbeke,
+  Lejeune, and Saporta (eds.), *Modeles statistiques pour donnees
+  qualitatives*. Editions Technip.
+- Tomassone, R., Audrain, S., Lesquoy-de Turckeim, E., and Millier, C.
+  (1992). *La regression, nouveaux regards sur une ancienne methode
+  statistique*. Masson.
+- Wold, H. et al. (1966). Estimation of principal components and related
+  models by iterative least squares.
+- Wold, S., Martens, H., and Wold, H. (1983). The multivariate
+  calibration problem in chemistry solved by the PLS method.
+- Wold, S., Ruhe, A., Wold, H., and Dunn, W. J. (1984). The collinearity
+  problem in linear regression: the partial least squares approach to
+  generalized inverses. *SIAM Journal on Scientific and Statistical
+  Computing*, 5(3), 735-743.
+- Wold, S., Sjostrom, M., and Eriksson, L. (2001). PLS-regression: a
+  basic tool of chemometrics. *Chemometrics and Intelligent Laboratory
+  Systems*, 58(2), 109-130.

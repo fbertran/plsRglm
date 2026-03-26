@@ -39,7 +39,7 @@ Bastien, P., Vinzi, V. E. et Tenenhaus, M. (2005). "PLS generalised linear
 regression". *Computational Statistics & Data Analysis*, **48**(1), 17–46, <http://www.sciencedirect.com/science/article/pii/S0167947304000271>.
 
 
-The package was first developped for the article, written in French, Nicolas Meyer, Myriam Maumy-Bertrand and Frédéric Bertrand (2010), "Comparaison de la régression PLS et de la régression logistique PLS : application aux données d'allélotypage", *Journal de la Société Française de Statistique*, **151**(2), pages 1-18,
+The package was first developed for the article, written in French, Nicolas Meyer, Myriam Maumy-Bertrand and Frédéric Bertrand (2010), "Comparaison de la régression PLS et de la régression logistique PLS : application aux données d'allélotypage", *Journal de la Société Française de Statistique*, **151**(2), pages 1-18,
 <http://journal-sfds.fr/article/view/47>.
 
 
@@ -47,13 +47,13 @@ The package was presented at the [User2014!](http://user2014.r-project.org/) con
 <http://user2014.r-project.org/abstracts/posters/172_Bertrand.pdf>.
 
 
-For more involved number of component selection techniques, see "A new universal resample-stable bootstrap-based stopping criterion for PLS component construction"", Jérémy Magnanensi, Frédéric Bertrand, Myriam Maumy-Bertrand and Nicolas Meyer, *Statistics and Computing* (2017) **27**:757–774, <https://doi.org/10.1007/s11222-016-9651-4>. The new methods presented in that article will be packaged soon.
+For more involved number of component selection techniques, see "A new universal resample-stable bootstrap-based stopping criterion for PLS component construction"", Jérémy Magnanensi, Frédéric Bertrand, Myriam Maumy-Bertrand and Nicolas Meyer, *Statistics and Computing* (2017) **27**:757–774, <https://doi.org/10.1007/s11222-016-9651-4>.
 
 
 A short paper that sums up some of features of the package is available on [arxiv](https://arxiv.org/), Frédéric Bertrand and Myriam Maumy-Bertrand (2018), "plsRglm: Partial least squares linear and generalized linear regression for processing incomplete datasets by cross-validation and bootstrap techniques with R", *arxiv*, [<arXiv:1810.01005>](https://arxiv.org/abs/1810.01005).
 
 
-A [vignette](https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf) is available for the package "plsRglm: Algorithmic insights and applications".
+Start with the [getting started guide](https://fbertran.github.io/plsRglm/articles/getting-started.html) for the current package workflows. The historical applications note, [plsRglm: Historical Applications and Algorithmic Notes](https://fbertran.github.io/plsRglm/articles/plsRglm.html), keeps the original case-study structure while using current package interfaces.
 
 
 The plsRglm package contains some interesting datasets including:
@@ -67,8 +67,6 @@ The plsRglm package contains some interesting datasets including:
 The package was also applied to the Phenyl and Hyptis datasets from the [chemometrics](https://CRAN.R-project.org/package=chemometrics) and the colonCA dataset from the [colonCA](http://bioconductor.org/packages/release/bioc/html/colonCA.html) package.
 
 This website and these examples were created by F. Bertrand and M. Maumy-Bertrand.
-
-Support for parallel computation and GPU is being developped.
 
 
 ## Installation
@@ -87,7 +85,7 @@ devtools::install_github("fbertran/plsRglm")
 
 ## Example for regular PLS regression: Cornell
 
-Read the [vignette of the package](https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf) for algorithmic insights and more examples.
+Read the [getting started guide](https://fbertran.github.io/plsRglm/articles/getting-started.html) for a practical introduction, then the [historical applications vignette](https://fbertran.github.io/plsRglm/articles/plsRglm.html) for the longer case studies and algorithmic notes.
 
 ### Cross validation
 

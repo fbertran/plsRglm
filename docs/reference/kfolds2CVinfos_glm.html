@@ -11,7 +11,7 @@ or classic specifications of the model."><meta property="og:image" content="http
 
     <a class="navbar-brand me-2" href="../index.html">plsRglm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -145,7 +145,7 @@ cross-validation.</p></div>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_3 20.27397   4.418081 0.9905556 -12.937550 5.121086    0.7488308</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_4 21.24240   4.309235 0.9907882 -11.236891 5.103312    0.7387162</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_5 24.51801   3.521924 0.9924713 -11.657929 6.006316    0.7096382</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6       NA   3.496074 0.9925265  -9.746328 7.000002    0.7633343</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6       NA   3.496074 0.9925265  -9.746328 7.000001    0.7633342</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              AIC.dof    BIC.dof GMDL.dof DoF.naive sigmahat.naive  AIC.naive</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0 46.0708838 47.7893514 27.59461         1      6.5212706 46.0708838</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1  4.5699686  4.9558156 21.34020         2      1.8905683  4.1699567</span>
@@ -153,7 +153,7 @@ cross-validation.</p></div>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_3  0.8467795  0.9628191 24.40842         4      0.7431421  0.7363469</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_4  0.8232505  0.9357846 24.23105         5      0.7846050  0.8721072</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_5  0.7976101  0.9198348 28.21184         6      0.7661509  0.8804809</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6  0.9711322  1.1359502 33.18348         7      0.8361907  1.1070902</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6  0.9711319  1.1359499 33.18347         7      0.8361907  1.1070902</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            BIC.naive GMDL.naive</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0 47.7893514   27.59461</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1  4.4588195   18.37545</span>
@@ -396,8 +396,47 @@ cross-validation.</p></div>
 <span class="r-in"><span>random<span class="op">=</span><span class="cn">TRUE</span>,modele<span class="op">=</span><span class="st">"pls-glm-polr"</span>,keepcoeffs<span class="op">=</span><span class="cn">TRUE</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>MClassed<span class="op">=</span><span class="cn">TRUE</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: chemometrics</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>there is no package called ‘chemometrics’</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ____************************************************____</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Model: pls-glm-polr </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Method: logistic </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 1 ____</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 2 ____</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 3 ____</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 4 ____</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 5 ____</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 6 ____</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ____Predicting X without NA neither in X nor in Y____</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ****________________________________________________****</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: algorithm did not converge</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: algorithm did not converge</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: algorithm did not converge</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: algorithm did not converge</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                AIC     BIC MissClassed CV_MissClassed Q2Chisqcum_Y  limQ2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0 86.87461 91.0782          20             NA           NA     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1 72.73191 78.3367          13             15    -3.651759 0.0975</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           Q2Chisq_Y PREChi2_Pearson_Y Chi2_Pearson_Y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0        NA                NA       60.00011</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1 -3.651759           279.106       30.46894</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "summary.cv.plsRglmmodel"</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -411,7 +450,7 @@ cross-validation.</p></div>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

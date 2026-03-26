@@ -30,7 +30,7 @@ Bastien, P., Vinzi, V. E. et Tenenhaus, M. (2005). "PLS generalised linear
 regression". *Computational Statistics & Data Analysis*, **48**(1), 17–46, <http://www.sciencedirect.com/science/article/pii/S0167947304000271>.
 
 
-The package was first developped for the article, written in French, Nicolas Meyer, Myriam Maumy-Bertrand and Frédéric Bertrand (2010), "Comparaison de la régression PLS et de la régression logistique PLS : application aux données d'allélotypage", *Journal de la Société Française de Statistique*, **151**(2), pages 1-18,
+The package was first developed for the article, written in French, Nicolas Meyer, Myriam Maumy-Bertrand and Frédéric Bertrand (2010), "Comparaison de la régression PLS et de la régression logistique PLS : application aux données d'allélotypage", *Journal de la Société Française de Statistique*, **151**(2), pages 1-18,
 <http://journal-sfds.fr/article/view/47>.
 
 
@@ -38,13 +38,13 @@ The package was presented at the [User2014!](http://user2014.r-project.org/) con
 <http://user2014.r-project.org/abstracts/posters/172_Bertrand.pdf>.
 
 
-For more involved number of component selection techniques, see "A new universal resample-stable bootstrap-based stopping criterion for PLS component construction"", Jérémy Magnanensi, Frédéric Bertrand, Myriam Maumy-Bertrand and Nicolas Meyer, *Statistics and Computing* (2017) **27**:757–774, <https://doi.org/10.1007/s11222-016-9651-4>. The new methods presented in that article will be packaged soon.
+For more involved number of component selection techniques, see "A new universal resample-stable bootstrap-based stopping criterion for PLS component construction"", Jérémy Magnanensi, Frédéric Bertrand, Myriam Maumy-Bertrand and Nicolas Meyer, *Statistics and Computing* (2017) **27**:757–774, <https://doi.org/10.1007/s11222-016-9651-4>.
 
 
 A short paper that sums up some of features of the package is available on [arxiv](https://arxiv.org/), Frédéric Bertrand and Myriam Maumy-Bertrand (2018), "plsRglm: Partial least squares linear and generalized linear regression for processing incomplete datasets by cross-validation and bootstrap techniques with R", *arxiv*, [<arXiv:1810.01005>](https://arxiv.org/abs/1810.01005).
 
 
-A [vignette](https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf) is available for the package "plsRglm: Algorithmic insights and applications".
+Start with the [getting started guide](https://fbertran.github.io/plsRglm/articles/getting-started.html) for the current package workflows. The historical applications note, [plsRglm: Historical Applications and Algorithmic Notes](https://fbertran.github.io/plsRglm/articles/plsRglm.html), keeps the original case-study structure while using current package interfaces.
 
 
 The plsRglm package contains some interesting datasets including:
@@ -58,8 +58,6 @@ The plsRglm package contains some interesting datasets including:
 The package was also applied to the Phenyl and Hyptis datasets from the [chemometrics](https://CRAN.R-project.org/package=chemometrics) and the colonCA dataset from the [colonCA](http://bioconductor.org/packages/release/bioc/html/colonCA.html) package.
 
 This website and these examples were created by F. Bertrand and M. Maumy-Bertrand.
-
-Support for parallel computation and GPU is being developped.
 
 
 ## Installation
@@ -80,7 +78,7 @@ devtools::install_github("fbertran/plsRglm")
 
 ## Example for regular PLS regression: Cornell
 
-Read the [vignette of the package](https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf) for algorithmic insights and more examples.
+Read the [getting started guide](https://fbertran.github.io/plsRglm/articles/getting-started.html) for a practical introduction, then the [historical applications vignette](https://fbertran.github.io/plsRglm/articles/plsRglm.html) for the longer case studies and algorithmic notes.
 
 ### Cross validation
 
@@ -218,46 +216,70 @@ colSums(res6$pvalstep)
 
 ``` r
 res6$InfCrit
-#>                AIC   Q2cum_Y LimQ2_Y        Q2_Y   PRESS_Y      RSS_Y
-#> Nb_Comp_0 82.01205        NA      NA          NA        NA 467.796667
-#> Nb_Comp_1 53.15173 0.8966556  0.0975  0.89665563 48.344150  35.742486
-#> Nb_Comp_2 41.08283 0.9175426  0.0975  0.20210989 28.518576  11.066606
-#> Nb_Comp_3 32.06411 0.9399676  0.0975  0.27195907  8.056942   4.418081
-#> Nb_Comp_4 33.76477 0.9197009  0.0975 -0.33759604  5.909608   4.309235
-#> Nb_Comp_5 33.34373 0.9281373  0.0975  0.10506161  3.856500   3.521924
-#> Nb_Comp_6 35.25533 0.9232562  0.0975 -0.06792167  3.761138   3.496074
-#>                R2_Y R2_residY  RSS_residY PRESS_residY   Q2_residY  LimQ2
-#> Nb_Comp_0        NA        NA 11.00000000           NA          NA     NA
-#> Nb_Comp_1 0.9235940 0.9235940  0.84046633   1.13678803  0.89665563 0.0975
-#> Nb_Comp_2 0.9763431 0.9763431  0.26022559   0.67059977  0.20210989 0.0975
-#> Nb_Comp_3 0.9905556 0.9905556  0.10388893   0.18945488  0.27195907 0.0975
-#> Nb_Comp_4 0.9907882 0.9907882  0.10132947   0.13896142 -0.33759604 0.0975
-#> Nb_Comp_5 0.9924713 0.9924713  0.08281624   0.09068364  0.10506161 0.0975
-#> Nb_Comp_6 0.9925265 0.9925265  0.08220840   0.08844125 -0.06792167 0.0975
-#>           Q2cum_residY    AIC.std  DoF.dof sigmahat.dof    AIC.dof
-#> Nb_Comp_0           NA  37.010388 1.000000    6.5212706 46.0708838
-#> Nb_Comp_1    0.8966556   8.150064 2.740749    1.8665281  4.5699686
-#> Nb_Comp_2    0.9175426  -3.918831 5.085967    1.1825195  2.1075461
-#> Nb_Comp_3    0.9399676 -12.937550 5.121086    0.7488308  0.8467795
-#> Nb_Comp_4    0.9197009 -11.236891 5.103312    0.7387162  0.8232505
-#> Nb_Comp_5    0.9281373 -11.657929 6.006316    0.7096382  0.7976101
-#> Nb_Comp_6    0.9232562  -9.746328 7.000002    0.7633343  0.9711322
-#>              BIC.dof GMDL.dof DoF.naive sigmahat.naive  AIC.naive  BIC.naive
-#> Nb_Comp_0 47.7893514 27.59461         1      6.5212706 46.0708838 47.7893514
-#> Nb_Comp_1  4.9558156 21.34020         2      1.8905683  4.1699567  4.4588195
-#> Nb_Comp_2  2.3949331 27.40202         3      1.1088836  1.5370286  1.6860917
-#> Nb_Comp_3  0.9628191 24.40842         4      0.7431421  0.7363469  0.8256118
-#> Nb_Comp_4  0.9357846 24.23105         5      0.7846050  0.8721072  0.9964867
-#> Nb_Comp_5  0.9198348 28.21184         6      0.7661509  0.8804809  1.0227979
-#> Nb_Comp_6  1.1359502 33.18348         7      0.8361907  1.1070902  1.3048716
-#>           GMDL.naive
-#> Nb_Comp_0   27.59461
-#> Nb_Comp_1   18.37545
-#> Nb_Comp_2   17.71117
-#> Nb_Comp_3   19.01033
-#> Nb_Comp_4   24.16510
-#> Nb_Comp_5   28.64206
-#> Nb_Comp_6   33.63927
+#>                AIC   Q2cum_Y LimQ2_Y
+#> Nb_Comp_0 82.01205        NA      NA
+#> Nb_Comp_1 53.15173 0.8966556  0.0975
+#> Nb_Comp_2 41.08283 0.9175426  0.0975
+#> Nb_Comp_3 32.06411 0.9399676  0.0975
+#> Nb_Comp_4 33.76477 0.9197009  0.0975
+#> Nb_Comp_5 33.34373 0.9281373  0.0975
+#> Nb_Comp_6 35.25533 0.9232562  0.0975
+#>                  Q2_Y   PRESS_Y      RSS_Y
+#> Nb_Comp_0          NA        NA 467.796667
+#> Nb_Comp_1  0.89665563 48.344150  35.742486
+#> Nb_Comp_2  0.20210989 28.518576  11.066606
+#> Nb_Comp_3  0.27195907  8.056942   4.418081
+#> Nb_Comp_4 -0.33759604  5.909608   4.309235
+#> Nb_Comp_5  0.10506161  3.856500   3.521924
+#> Nb_Comp_6 -0.06792167  3.761138   3.496074
+#>                R2_Y R2_residY  RSS_residY
+#> Nb_Comp_0        NA        NA 11.00000000
+#> Nb_Comp_1 0.9235940 0.9235940  0.84046633
+#> Nb_Comp_2 0.9763431 0.9763431  0.26022559
+#> Nb_Comp_3 0.9905556 0.9905556  0.10388893
+#> Nb_Comp_4 0.9907882 0.9907882  0.10132947
+#> Nb_Comp_5 0.9924713 0.9924713  0.08281624
+#> Nb_Comp_6 0.9925265 0.9925265  0.08220840
+#>           PRESS_residY   Q2_residY  LimQ2
+#> Nb_Comp_0           NA          NA     NA
+#> Nb_Comp_1   1.13678803  0.89665563 0.0975
+#> Nb_Comp_2   0.67059977  0.20210989 0.0975
+#> Nb_Comp_3   0.18945488  0.27195907 0.0975
+#> Nb_Comp_4   0.13896142 -0.33759604 0.0975
+#> Nb_Comp_5   0.09068364  0.10506161 0.0975
+#> Nb_Comp_6   0.08844125 -0.06792167 0.0975
+#>           Q2cum_residY    AIC.std  DoF.dof
+#> Nb_Comp_0           NA  37.010388 1.000000
+#> Nb_Comp_1    0.8966556   8.150064 2.740749
+#> Nb_Comp_2    0.9175426  -3.918831 5.085967
+#> Nb_Comp_3    0.9399676 -12.937550 5.121086
+#> Nb_Comp_4    0.9197009 -11.236891 5.103312
+#> Nb_Comp_5    0.9281373 -11.657929 6.006316
+#> Nb_Comp_6    0.9232562  -9.746328 7.000001
+#>           sigmahat.dof    AIC.dof    BIC.dof
+#> Nb_Comp_0    6.5212706 46.0708838 47.7893514
+#> Nb_Comp_1    1.8665281  4.5699686  4.9558156
+#> Nb_Comp_2    1.1825195  2.1075461  2.3949331
+#> Nb_Comp_3    0.7488308  0.8467795  0.9628191
+#> Nb_Comp_4    0.7387162  0.8232505  0.9357846
+#> Nb_Comp_5    0.7096382  0.7976101  0.9198348
+#> Nb_Comp_6    0.7633342  0.9711319  1.1359499
+#>           GMDL.dof DoF.naive sigmahat.naive
+#> Nb_Comp_0 27.59461         1      6.5212706
+#> Nb_Comp_1 21.34020         2      1.8905683
+#> Nb_Comp_2 27.40202         3      1.1088836
+#> Nb_Comp_3 24.40842         4      0.7431421
+#> Nb_Comp_4 24.23105         5      0.7846050
+#> Nb_Comp_5 28.21184         6      0.7661509
+#> Nb_Comp_6 33.18347         7      0.8361907
+#>            AIC.naive  BIC.naive GMDL.naive
+#> Nb_Comp_0 46.0708838 47.7893514   27.59461
+#> Nb_Comp_1  4.1699567  4.4588195   18.37545
+#> Nb_Comp_2  1.5370286  1.6860917   17.71117
+#> Nb_Comp_3  0.7363469  0.8256118   19.01033
+#> Nb_Comp_4  0.8721072  0.9964867   24.16510
+#> Nb_Comp_5  0.8804809  1.0227979   28.64206
+#> Nb_Comp_6  1.1070902  1.3048716   33.63927
 ```
 
 The number of significant predictors per components, which is a criteria of significance for [Bastien et al. (2005)](http://www.sciencedirect.com/science/article/pii/S0167947304000271), can be obtained via the following code:
@@ -367,15 +389,24 @@ res
 #> X6          5.5177190
 #> X7        -44.9000310
 #> Information criteria and Fit statistics:
-#>                AIC     RSS_Y     R2_Y R2_residY RSS_residY   AIC.std
-#> Nb_Comp_0 82.01205 467.79667       NA        NA 11.0000000 37.010388
-#> Nb_Comp_1 53.15173  35.74249 0.923594  0.923594  0.8404663  8.150064
-#>            DoF.dof sigmahat.dof   AIC.dof   BIC.dof GMDL.dof DoF.naive
-#> Nb_Comp_0 1.000000     6.521271 46.070884 47.789351 27.59461         1
-#> Nb_Comp_1 2.740749     1.866528  4.569969  4.955816 21.34020         2
-#>           sigmahat.naive AIC.naive BIC.naive GMDL.naive
-#> Nb_Comp_0       6.521271 46.070884  47.78935   27.59461
-#> Nb_Comp_1       1.890568  4.169957   4.45882   18.37545
+#>                AIC     RSS_Y     R2_Y
+#> Nb_Comp_0 82.01205 467.79667       NA
+#> Nb_Comp_1 53.15173  35.74249 0.923594
+#>           R2_residY RSS_residY   AIC.std
+#> Nb_Comp_0        NA 11.0000000 37.010388
+#> Nb_Comp_1  0.923594  0.8404663  8.150064
+#>            DoF.dof sigmahat.dof   AIC.dof
+#> Nb_Comp_0 1.000000     6.521271 46.070884
+#> Nb_Comp_1 2.740749     1.866528  4.569969
+#>             BIC.dof GMDL.dof DoF.naive
+#> Nb_Comp_0 47.789351 27.59461         1
+#> Nb_Comp_1  4.955816 21.34020         2
+#>           sigmahat.naive AIC.naive BIC.naive
+#> Nb_Comp_0       6.521271 46.070884  47.78935
+#> Nb_Comp_1       1.890568  4.169957   4.45882
+#>           GMDL.naive
+#> Nb_Comp_0   27.59461
+#> Nb_Comp_1   18.37545
 ```
 
 It is also possible to obtain the matrix W∗ with the following command line:
@@ -622,12 +653,18 @@ modpls1
 #> Heat         -0.08876364
 #> Rain         -0.02589509
 #> Information criteria and Fit statistics:
-#>                AIC      BIC Missclassed Chi2_Pearson_Y
-#> Nb_Comp_0 78.64736 81.70009          22      62.333333
-#> Nb_Comp_1 36.50286 41.08194           6       9.356521
-#> Nb_Comp_2 35.58058 41.68602           6       8.568956
-#> Nb_Comp_3 36.26588 43.89768           7       8.281011
-#> Nb_Comp_4 38.15799 47.31616           7       8.321689
+#>                AIC      BIC Missclassed
+#> Nb_Comp_0 78.64736 81.70009          22
+#> Nb_Comp_1 36.50286 41.08194           6
+#> Nb_Comp_2 35.58058 41.68602           6
+#> Nb_Comp_3 36.26588 43.89768           7
+#> Nb_Comp_4 38.15799 47.31616           7
+#>           Chi2_Pearson_Y
+#> Nb_Comp_0      62.333333
+#> Nb_Comp_1       9.356521
+#> Nb_Comp_2       8.568956
+#> Nb_Comp_3       8.281011
+#> Nb_Comp_4       8.321689
 ```
 
 
@@ -664,12 +701,18 @@ modpls2
 #> Heat         -0.08876364
 #> Rain         -0.02589509
 #> Information criteria and Fit statistics:
-#>                AIC      BIC Missclassed Chi2_Pearson_Y
-#> Nb_Comp_0 78.64736 81.70009          22      62.333333
-#> Nb_Comp_1 36.50286 41.08194           6       9.356521
-#> Nb_Comp_2 35.58058 41.68602           6       8.568956
-#> Nb_Comp_3 36.26588 43.89768           7       8.281011
-#> Nb_Comp_4 38.15799 47.31616           7       8.321689
+#>                AIC      BIC Missclassed
+#> Nb_Comp_0 78.64736 81.70009          22
+#> Nb_Comp_1 36.50286 41.08194           6
+#> Nb_Comp_2 35.58058 41.68602           6
+#> Nb_Comp_3 36.26588 43.89768           7
+#> Nb_Comp_4 38.15799 47.31616           7
+#>           Chi2_Pearson_Y
+#> Nb_Comp_0      62.333333
+#> Nb_Comp_1       9.356521
+#> Nb_Comp_2       8.568956
+#> Nb_Comp_3       8.281011
+#> Nb_Comp_4       8.321689
 ```
 
 
@@ -681,8 +724,7 @@ all(modpls1$InfCrit==modpls2$InfCrit)
 
 ``` r
 colSums(modpls2$pvalstep)
-#> temppvalstep temppvalstep temppvalstep temppvalstep 
-#>            4            0            0            0
+#> [1] 4 0 0 0
 ```
 
 No discrepancy between formula specification (formula and data) and datasets (dataY and dataX) ones.
@@ -707,9 +749,6 @@ res.cv.modpls=cvtable(summary(cv.modpls, MClassed = TRUE))
 #> Method: logistic 
 #> 
 #> ____Component____ 1 ____
-#> ____Component____ 2 ____
-#> ____Component____ 3 ____
-#> ____Component____ 4 ____
 #> ____Predicting X without NA neither in X nor in Y____
 #> ****________________________________________________****
 #> 
@@ -725,16 +764,16 @@ res.cv.modpls=cvtable(summary(cv.modpls, MClassed = TRUE))
 #> NK: 81,  82,  83,  84,  85,  86,  87,  88,  89,  90
 #> NK: 91,  92,  93,  94,  95,  96,  97,  98,  99,  100
 #> CV MissClassed criterion:
-#>  1  2  3  4 
-#> 89  7  1  3 
+#>   1 
+#> 100 
 #> 
 #> CV Q2Chi2 criterion:
 #>   0 
 #> 100 
 #> 
 #> CV PreChi2 criterion:
-#>  1  2  3  4 
-#> 35 59  4  2
+#>   1 
+#> 100
 ```
 
 According to the results of the cross validation procedure, we retain a single component, which was also, by chance on this dataset, the BIC and raw cross-validation choices.
@@ -837,23 +876,35 @@ modplsNA
 #> Heat         -0.09542680
 #> Rain         -0.02399436
 #> Information criteria and Fit statistics:
-#>                AIC      BIC Missclassed Chi2_Pearson_Y
-#> Nb_Comp_0 78.64736 81.70009          22      62.333333
-#> Nb_Comp_1 36.21263 40.79171           6       9.454055
-#> Nb_Comp_2 35.29582 41.40126           5       8.234674
-#> Nb_Comp_3 35.81623 43.44803           7       7.803408
+#>                AIC      BIC Missclassed
+#> Nb_Comp_0 78.64736 81.70009          22
+#> Nb_Comp_1 36.21263 40.79171           6
+#> Nb_Comp_2 35.29582 41.40126           5
+#> Nb_Comp_3 35.81623 43.44803           7
+#>           Chi2_Pearson_Y
+#> Nb_Comp_0      62.333333
+#> Nb_Comp_1       9.454055
+#> Nb_Comp_2       8.234674
+#> Nb_Comp_3       7.803408
 ```
 
 
 ``` r
 data.frame(formula=modpls1$Coeffs,datasets=modpls2$Coeffs,datasetsNA=modplsNA$Coeffs)
-#>                  formula     datasets   datasetsNA
-#> 1|2         -85.50956454 -85.50956454 -89.16630231
-#> 2|3         -80.55155990 -80.55155990 -84.11693439
-#> Temperature   0.02427235   0.02427235   0.02461148
-#> Sunshine      0.01379029   0.01379029   0.01535315
-#> Heat         -0.08876364  -0.08876364  -0.09542680
-#> Rain         -0.02589509  -0.02589509  -0.02399436
+#>                  formula     datasets
+#> 1|2         -85.50956454 -85.50956454
+#> 2|3         -80.55155990 -80.55155990
+#> Temperature   0.02427235   0.02427235
+#> Sunshine      0.01379029   0.01379029
+#> Heat         -0.08876364  -0.08876364
+#> Rain         -0.02589509  -0.02589509
+#>               datasetsNA
+#> 1|2         -89.16630231
+#> 2|3         -84.11693439
+#> Temperature   0.02461148
+#> Sunshine      0.01535315
+#> Heat         -0.09542680
+#> Rain         -0.02399436
 ```
 
 ### Bootstrap (y,X)
@@ -940,13 +991,20 @@ Stratified balanced bootstrap: CIs for each of the predictors distribution.
 
 ``` r
 confints.bootpls(bordeaux.bootYX1strata)
-#>                                                                            
-#> 1|2         -5.2285517 1.8448908 -3.0266055 2.1579125 -6.6883385 -1.5038206
-#> 2|3         -1.4216229 4.9525537 -2.3021666 3.1831363  1.4147309  6.9000338
-#> Temperature -0.7320271 3.1003955 -1.6883027 2.0324540  1.0278307  4.7485873
-#> Sunshine    -0.8132215 3.5499277 -0.7684357 2.2776395  1.1162563  4.1623315
-#> Heat        -0.7762493 2.4414119 -1.4124977 1.6043794  0.5748209  3.5916981
-#> Rain        -1.8637554 0.3290778 -1.4058759 0.4748013 -2.2942690 -0.4135918
+#>                                            
+#> 1|2         -5.2285517 1.8448908 -3.0266055
+#> 2|3         -1.4216229 4.9525537 -2.3021666
+#> Temperature -0.7320271 3.1003955 -1.6883027
+#> Sunshine    -0.8132215 3.5499277 -0.7684357
+#> Heat        -0.7762493 2.4414119 -1.4124977
+#> Rain        -1.8637554 0.3290778 -1.4058759
+#>                                            
+#> 1|2         2.1579125 -6.6883385 -1.5038206
+#> 2|3         3.1831363  1.4147309  6.9000338
+#> Temperature 2.0324540  1.0278307  4.7485873
+#> Sunshine    2.2776395  1.1162563  4.1623315
+#> Heat        1.6043794  0.5748209  3.5916981
+#> Rain        0.4748013 -2.2942690 -0.4135918
 #>                                  
 #> 1|2         -4.5562748 -1.3483662
 #> 2|3          1.2896677  4.7862147
@@ -1093,14 +1151,16 @@ Compute the empirical measures of significance $\pi_e$ for ordinary balanced boo
 
 ``` r
 pi.e=prop.table(res.cv.modpls$CVMC)%*%matind
+#> Error in `prop.table(res.cv.modpls$CVMC) %*% matind`:
+#> ! non-conformable arguments
 ```
 
 Display the empirical measures of significance $\pi_e$ for ordinary balanced bootstrap.            
 
 ``` r
 pi.e
-#>      Temperature Sunshine Heat Rain
-#> [1,]        0.89     0.89 0.89 0.89
+#> Error:
+#> ! object 'pi.e' not found
 ```
 
 Plot variable selection results and the empirical measures of significance $\pi_e$ for ordinary balanced bootstrap.            
@@ -1109,6 +1169,8 @@ Plot variable selection results and the empirical measures of significance $\pi_
 signpred(t(matind),labsize=.5, plotsize = 12)
 mtext(expression(pi[e]),side=2,las=1,line=2,at=-.3,cex=1.4)
 text(1:(ncol(matind))-.5,-.3,pi.e,cex=1.4)
+#> Error:
+#> ! object 'pi.e' not found
 text(1:(ncol(matind))-.5,-.75,c("Temp","Sun","Heat","Rain"),cex=1.4)
 ```
 
@@ -1132,14 +1194,16 @@ Compute the empirical measures of significance $\pi_e$ for stratified balanced b
 
 ``` r
 pi.es=prop.table(res.cv.modpls$CVMC)%*%matinds
+#> Error in `prop.table(res.cv.modpls$CVMC) %*% matinds`:
+#> ! non-conformable arguments
 ```
 
 Display the empirical measures of significance $\pi_e$ for stratified balanced bootstrap.            
 
 ``` r
 pi.es
-#>      Temperature Sunshine Heat Rain
-#> [1,]        0.96     0.89 0.89 0.89
+#> Error:
+#> ! object 'pi.es' not found
 ```
 
 Plot variable selection results and the empirical measures of significance $\pi_e$ for stratified balanced bootstrap.            
@@ -1148,6 +1212,8 @@ Plot variable selection results and the empirical measures of significance $\pi_
 signpred(t(matinds),pred.lablength=10,labsize=.5, plotsize = 12)
 mtext(expression(pi[es]),side=2,las=1,line=2,at=-.3,cex=1.4)
 text(1:(ncol(matinds))-.5,-.3,pi.es,cex=1.4)
+#> Error:
+#> ! object 'pi.es' not found
 text(1:(ncol(matinds))-.5,-.75,c("Temp","Sun","Heat","Rain"),cex=1.4)
 ```
 

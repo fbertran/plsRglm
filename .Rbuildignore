@@ -25,3 +25,4 @@ genlogo.R
 ^inst/animation*$
 ^\.github$
 \.DS_Store$
+^old_vignettes$

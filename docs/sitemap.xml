@@ -1,5 +1,8 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://fbertran.github.io/plsRglm/404.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/articles/getting-started.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/articles/index.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/articles/plsRglm.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/authors.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/index.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/news/index.html</loc></url>
@@ -18,6 +21,7 @@
 <url><loc>https://fbertran.github.io/plsRglm/reference/bordeaux.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/bordeauxNA.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/boxplots.bootpls.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/classbiplot.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/coef.plsRglmmodel.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/coef.plsRmodel.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/coefs.plsR.html</loc></url>

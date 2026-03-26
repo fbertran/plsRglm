@@ -13,7 +13,7 @@ latent components."><meta property="og:image" content="https://fbertran.github.i
 
     <a class="navbar-brand me-2" href="../index.html">plsRglm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -123,12 +123,12 @@ Systems 64 (2002) 79-89, <a href="https://doi.org/10.1016/S0169-7439%2802%290005
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">simul_data_complete</span><span class="op">(</span><span class="fl">20</span>,<span class="fl">6</span><span class="op">)</span>                          </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $simX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]      [,2]      [,3]     [,4]       [,5]      [,6]     [,7]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -1.712616 -2.708999 0.5089005 1.805394 -0.5960683 -2.198365 1.651388</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          [,8]     [,9]     [,10]    [,11]    [,12]     [,13]      [,14]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 2.335166 2.484493 -1.239708 0.119169 0.616752 -2.469253 -0.2062345</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         [,15]     [,16]     [,17]     [,18]     [,19]     [,20]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 2.483004 -1.225264 0.1188616 0.5938215 -2.460134 -0.195174</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]      [,2]     [,3]     [,4]       [,5]      [,6]     [,7]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.3249479 -1.302068 3.521977 1.286913 0.09277795 -1.698084 3.301232</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           [,8]     [,9]     [,10]    [,11]    [,12]      [,13]    [,14]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.8790774 1.540645 -1.397721 1.816054 1.929831 -0.8677635 1.803039</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         [,15]     [,16]    [,17]    [,18]      [,19]   [,20]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 1.551342 -1.428901 1.821296 1.928866 -0.9087361 1.81602</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $HH</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
@@ -141,13 +141,13 @@ Systems 64 (2002) 79-89, <a href="https://doi.org/10.1016/S0169-7439%2802%290005
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4,]   0.5   0.5   0.5   0.5   0.5   0.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $r</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.5181719  0.2851329 -6.7860253  2.5495065 -1.5436408 -0.6119904</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  3.5832333  3.7769876 -5.7734951 -0.6660961  0.5808390 -0.1603459</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $epsilon</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  0.0190179819  0.0092237542 -0.0123040978 -0.0095696117  0.0044599032</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6]  0.0007421335 -0.0009226144  0.0010871323  0.0125932698 -0.0125990862</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11]  0.0012991337  0.0035771458  0.0045898592 -0.0090410580  0.0111044805</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16]  0.0018442834  0.0009917598 -0.0193532713  0.0137086949  0.0020194035</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] -0.0085617466  0.0052469322  0.0038326312  0.0053674943 -0.0104330966</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] -0.0001248337  0.0133863839 -0.0118234602 -0.0127681172  0.0157861392</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] -0.0009161949  0.0034679718  0.0124481917 -0.0013463205 -0.0020712461</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] -0.0153937623  0.0043261318  0.0025029332 -0.0285243903  0.0116344297</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ksi</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            ksi1       ksi2  ksi3       ksi4       ksi5  ksi6</span>
@@ -173,32 +173,32 @@ Systems 64 (2002) 79-89, <a href="https://doi.org/10.1016/S0169-7439%2802%290005
 <span class="r-out co"><span class="r-pr">#&gt;</span> [20,] 0.2236068  0.2672612  0.00 -0.2236068 -0.2672612  0.00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $crossksi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               ksi1          ksi2 ksi3          ksi4          ksi5 ksi6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ksi1  1.000000e+00 -4.902020e-18    0 -1.574365e-18  1.184091e-17    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ksi2 -4.902020e-18  1.000000e+00    0 -2.036874e-18 -1.030127e-17    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ksi3  0.000000e+00  0.000000e+00    1  0.000000e+00  0.000000e+00    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ksi4 -1.574365e-18 -2.036874e-18    0  1.000000e+00 -4.902020e-18    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ksi5  1.184091e-17 -1.030127e-17    0 -4.902020e-18  1.000000e+00    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ksi6  0.000000e+00  0.000000e+00    0  0.000000e+00  0.000000e+00    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              ksi1         ksi2 ksi3         ksi4         ksi5 ksi6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ksi1 1.000000e+00 2.775558e-17    0  0.00000e+00  0.00000e+00    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ksi2 2.775558e-17 1.000000e+00    0  0.00000e+00  0.00000e+00    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ksi3 0.000000e+00 0.000000e+00    1  0.00000e+00  0.00000e+00    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ksi4 0.000000e+00 0.000000e+00    0  1.00000e+00 -2.45101e-18    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ksi5 0.000000e+00 0.000000e+00    0 -2.45101e-18  1.00000e+00    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ksi6 0.000000e+00 0.000000e+00    0  0.00000e+00  0.00000e+00    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $f</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.3607455854 -0.1446953990 -0.0039547825 -0.0083423154  0.0001853034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [6]  0.0003924178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.5481464154 -0.1296797340 -0.0413287955  0.0013237678 -0.0001064198</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [6] -0.0005108544</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $z</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.8789175  0.1404376 -6.7899801  2.5411641 -1.5434554 -0.6115980</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  3.0350869  3.6473079 -5.8148239 -0.6647723  0.5807326 -0.1608567</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]      [,2]      [,3]      [,4]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -3.619587 -3.634135 -3.622975 -3.575727</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]     [,2]     [,3]      [,4]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.3086506 0.328639 0.306521 0.3387533</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">dimX</span> <span class="op">&lt;-</span> <span class="fl">6</span></span></span>
 <span class="r-in"><span><span class="va">Astar</span> <span class="op">&lt;-</span> <span class="fl">2</span></span></span>
 <span class="r-in"><span><span class="fu">simul_data_complete</span><span class="op">(</span><span class="va">dimX</span>,<span class="va">Astar</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $simX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]      [,2]     [,3]      [,4]      [,5]     [,6]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -4.423119 -4.431336 1.048331 -4.423496 -4.413834 1.045084</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -11.92382 -11.93983 -12.24377 -11.93565 -11.93258 -12.24643</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $HH</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
@@ -210,11 +210,11 @@ Systems 64 (2002) 79-89, <a href="https://doi.org/10.1016/S0169-7439%2802%290005
 <span class="r-out co"><span class="r-pr">#&gt;</span> [3,] 0.4082483 -0.8944272</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $r</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -6.365877  6.310611</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -29.4884597  -0.3327661</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $epsilon</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.0025442301 -0.0107615820  0.0037565033 -0.0029208804  0.0067408226</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [6]  0.0005094681</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  0.018729106  0.002720558 -0.013029374  0.006899366  0.009973634</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [6] -0.015698764</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ksi</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           ksi1       ksi2</span>
@@ -227,18 +227,18 @@ Systems 64 (2002) 79-89, <a href="https://doi.org/10.1016/S0169-7439%2802%290005
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $crossksi</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              ksi1         ksi2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ksi1 1.000000e+00 1.109716e-17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ksi2 1.109716e-17 1.000000e+00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ksi1 1.000000e+00 1.942637e-17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ksi2 1.942637e-17 1.000000e+00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $f</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1493877 0.1110407</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.24499429  0.02645113</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $z</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -6.216489  6.421651</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -29.7334540  -0.3063149</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          [,1]     [,2]      [,3]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -2.52821 -2.18031 -8.268568</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]      [,2]      [,3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -12.11383 -24.43199 -11.83788</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -246,8 +246,8 @@ Systems 64 (2002) 79-89, <a href="https://doi.org/10.1016/S0169-7439%2802%290005
 <span class="r-in"><span><span class="va">Astar</span> <span class="op">&lt;-</span> <span class="fl">3</span></span></span>
 <span class="r-in"><span><span class="fu">simul_data_complete</span><span class="op">(</span><span class="va">dimX</span>,<span class="va">Astar</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $simX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          [,1]      [,2]     [,3]     [,4]      [,5]     [,6]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 5.786717 -3.365062 8.110312 5.793858 -3.356623 8.116651</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          [,1]      [,2]      [,3]     [,4]      [,5]      [,6]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 3.705658 -3.714216 -5.083066 3.689309 -3.706379 -5.081213</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $HH</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
@@ -259,11 +259,11 @@ Systems 64 (2002) 79-89, <a href="https://doi.org/10.1016/S0169-7439%2802%290005
 <span class="r-out co"><span class="r-pr">#&gt;</span> [3,] 0.4082483 -0.8944272  0.1825742</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $r</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  8.599434  7.975830 -9.162390</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -4.157965 -5.856378 -7.411954</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $epsilon</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.002758572  0.007852146 -0.005239954  0.004382694  0.016291245</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [6]  0.001099254</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  0.006571784 -0.001347999 -0.004402565 -0.009776634  0.006489552</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [6] -0.002549603</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ksi</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           ksi1       ksi2 ksi3</span>
@@ -276,19 +276,19 @@ Systems 64 (2002) 79-89, <a href="https://doi.org/10.1016/S0169-7439%2802%290005
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $crossksi</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              ksi1         ksi2 ksi3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ksi1 1.000000e+00 1.109716e-17    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ksi2 1.109716e-17 1.000000e+00    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ksi1 1.000000e+00 1.942637e-17    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ksi2 1.942637e-17 1.000000e+00    0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ksi3 0.000000e+00 0.000000e+00    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $f</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.348428362 -0.264057480  0.006344453</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  0.002308828 -0.033314083  0.065541470</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $z</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  8.251006  7.711772 -9.156045</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -4.155656 -5.889693 -7.346413</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          [,1]     [,2]      [,3]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 11.68288 6.844786 -5.222383</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          [,1]     [,2]    [,3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 5.033656 -8.66688 2.25251</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -296,8 +296,8 @@ Systems 64 (2002) 79-89, <a href="https://doi.org/10.1016/S0169-7439%2802%290005
 <span class="r-in"><span><span class="va">Astar</span> <span class="op">&lt;-</span> <span class="fl">4</span></span></span>
 <span class="r-in"><span><span class="fu">simul_data_complete</span><span class="op">(</span><span class="va">dimX</span>,<span class="va">Astar</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $simX</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            [,1]     [,2]     [,3]       [,4]     [,5]     [,6]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.4552968 5.430575 3.174759 -0.3671978 5.549447 3.267214</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]     [,2]     [,3]     [,4]     [,5]     [,6]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -7.615509 2.714557 4.993652 -2.73239 7.556177 9.864435</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $HH</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
@@ -310,11 +310,11 @@ Systems 64 (2002) 79-89, <a href="https://doi.org/10.1016/S0169-7439%2802%290005
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4,] 0.0000000  0.4472136 -0.9128709  0.0000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $r</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  6.7774988  0.7782884  5.9034128 -0.1237278</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  6.020839  8.600495 10.301002 -5.952019</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $epsilon</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  0.004691429 -0.012849206  0.009023812 -0.008232835  0.004998913</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [6]  0.000454679</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -1.035508e-02  1.870966e-02  5.797451e-05  1.296144e-02  5.262091e-04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [6]  1.103775e-02</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ksi</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           ksi1       ksi2 ksi3       ksi4</span>
@@ -327,20 +327,20 @@ Systems 64 (2002) 79-89, <a href="https://doi.org/10.1016/S0169-7439%2802%290005
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $crossksi</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              ksi1         ksi2 ksi3         ksi4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ksi1 1.000000e+00 1.109716e-17    0 2.293169e-19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ksi2 1.109716e-17 1.000000e+00    0 1.665841e-17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ksi1 1.000000e+00 1.942637e-17    0 0.000000e+00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ksi2 1.942637e-17 1.000000e+00    0 2.775558e-17</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ksi3 0.000000e+00 0.000000e+00    1 0.000000e+00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ksi4 2.293169e-19 1.665841e-17    0 1.000000e+00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ksi4 0.000000e+00 2.775558e-17    0 1.000000e+00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $f</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.79068418 0.15805796 0.01084444 0.01590103</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.072417358  0.022668719  0.025597331  0.008497631</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $z</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  7.5681830  0.9363463  5.9142573 -0.1078268</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  5.948422  8.623164 10.326599 -5.943521</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          [,1]     [,2]       [,3]      [,4]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 3.159941 7.615641 0.02105927 -4.997839</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          [,1]     [,2]      [,3]      [,4]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 7.865419 8.415744 -10.13458 -5.559469</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"dimX"</span>,<span class="st">"Astar"</span><span class="op">)</span><span class="op">)</span></span></span>
@@ -356,7 +356,7 @@ Systems 64 (2002) 79-89, <a href="https://doi.org/10.1016/S0169-7439%2802%290005
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

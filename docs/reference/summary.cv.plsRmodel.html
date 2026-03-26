@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">plsRglm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,14 +82,14 @@ allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>,
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Cornell</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="cv.plsR.html">cv.plsR</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">.</span>,data<span class="op">=</span><span class="va">Cornell</span>,nt<span class="op">=</span><span class="fl">10</span>,K<span class="op">=</span><span class="fl">6</span>, verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>, verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                AIC     Q2cum_Y LimQ2_Y       Q2_Y  PRESS_Y      RSS_Y      R2_Y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0 82.01205          NA      NA         NA       NA 467.796667        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1 53.15173   0.8496596  0.0975  0.8496596 70.32872  35.742486 0.9235940</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_2 41.08283   0.7926079  0.0975 -0.3794841 49.30619  11.066606 0.9763431</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_3 32.06411   0.5788646  0.0975 -1.0306237 22.47211   4.418081 0.9905556</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_4 33.76477  -1.6107564  0.0975 -5.1993283 27.38914   4.309235 0.9907882</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_5 33.34373 -17.5479050  0.0975 -6.1044181 30.61461   3.521924 0.9924713</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6 35.25533          NA  0.0975         NA       NA   3.496074 0.9925265</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                AIC    Q2cum_Y LimQ2_Y        Q2_Y  PRESS_Y      RSS_Y      R2_Y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0 82.01205         NA      NA          NA       NA 467.796667        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1 53.15173  0.8775326  0.0975  0.87753262 57.28983  35.742486 0.9235940</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_2 41.08283  0.8757271  0.0975 -0.01474319 36.26944  11.066606 0.9763431</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_3 32.06411  0.7730217  0.0975 -0.82644991 20.21260   4.418081 0.9905556</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_4 33.76477  0.2356285  0.0975 -2.36759728 14.87832   4.309235 0.9907882</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_5 33.34373 -2.7185700  0.0975 -3.86487254 20.96388   3.521924 0.9924713</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6 35.25533         NA  0.0975          NA       NA   3.496074 0.9925265</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              AIC.std  DoF.dof sigmahat.dof    AIC.dof    BIC.dof GMDL.dof</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0  37.010388 1.000000    6.5212706 46.0708838 47.7893514 27.59461</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1   8.150064 2.740749    1.8665281  4.5699686  4.9558156 21.34020</span>
@@ -97,7 +97,7 @@ allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>,
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_3 -12.937550 5.121086    0.7488308  0.8467795  0.9628191 24.40842</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_4 -11.236891 5.103312    0.7387162  0.8232505  0.9357846 24.23105</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_5 -11.657929 6.006316    0.7096382  0.7976101  0.9198348 28.21184</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6  -9.746328 7.000002    0.7633343  0.9711322  1.1359502 33.18348</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6  -9.746328 7.000001    0.7633342  0.9711319  1.1359499 33.18347</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           DoF.naive sigmahat.naive  AIC.naive  BIC.naive GMDL.naive</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0         1      6.5212706 46.0708838 47.7893514   27.59461</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1         2      1.8905683  4.1699567  4.4588195   18.37545</span>
@@ -123,7 +123,7 @@ allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>,
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

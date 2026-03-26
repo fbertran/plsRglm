@@ -1,0 +1,193 @@
+---
+title: "Getting Started with plsRglm"
+author:
+  - "Frederic Bertrand"
+  - "Myriam Maumy-Bertrand"
+date: "March 2026"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Getting Started with plsRglm}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 7,
+  fig.height = 5,
+  dpi = 150
+)
+
+set.seed(123)
+library(plsRglm)
+```
+
+`plsRglm` provides partial least squares regression for linear and generalized linear models, repeated k-fold cross-validation, bootstrap utilities, and support for incomplete predictor matrices. This vignette is the practical starting point for the current package API. The companion vignette `vignette("plsRglm", package = "plsRglm")` keeps the longer historical case studies and algorithmic notes.
+
+# Core Fitting Workflows
+
+`plsR()` is the dedicated interface for ordinary PLS regression. `plsRglm()` extends the same ideas to generalized linear and ordinal models, and can also fit `modele = "pls"` through the shared interface.
+
+## Linear PLS with matrix and formula interfaces
+
+```{r linear-pls}
+data(Cornell)
+XCornell <- Cornell[, 1:7]
+yCornell <- Cornell$Y
+
+pls_fit_matrix <- plsR(yCornell, XCornell, nt = 3, verbose = FALSE)
+pls_fit_formula <- plsR(Y ~ ., data = Cornell, nt = 3, pvals.expli = TRUE, verbose = FALSE)
+
+pls_fit_formula$InfCrit
+coef(pls_fit_formula)
+```
+
+The fitted model stores the extracted components (`tt`), the loadings (`pp`), the coefficients on the original predictors (`Coeffs`), and information-criterion summaries (`InfCrit`).
+
+## Generalized PLS models
+
+```{r glm-fits}
+data(aze_compl)
+logit_fit <- plsRglm(y ~ ., data = aze_compl, nt = 3, modele = "pls-glm-logistic", verbose = FALSE)
+
+logit_fit$InfCrit
+head(predict(logit_fit, type = "response"))
+
+family_fit <- plsRglm(
+  Y ~ .,
+  data = Cornell,
+  nt = 2,
+  modele = "pls-glm-family",
+  family = gaussian(link = "log"),
+  verbose = FALSE
+)
+
+family_fit$family$family
+family_fit$family$link
+```
+
+`plsRglm()` supports predefined model shortcuts together with a custom-family entry point:
+
+```{r supported-modes, eval = FALSE}
+plsRglm(Y ~ ., data = Cornell, nt = 3, modele = "pls")
+plsRglm(Y ~ ., data = Cornell, nt = 3, modele = "pls-glm-gaussian")
+plsRglm(Y ~ ., data = Cornell, nt = 3, modele = "pls-glm-inverse.gaussian")
+plsRglm(y ~ ., data = aze_compl, nt = 3, modele = "pls-glm-logistic")
+plsRglm(round(x11) ~ ., data = pine, nt = 3, modele = "pls-glm-poisson")
+plsRglm(x11 ~ ., data = pine, nt = 3, modele = "pls-glm-Gamma")
+plsRglm(Quality ~ ., data = bordeaux, nt = 2, modele = "pls-glm-polr")
+plsRglm(
+  Y ~ .,
+  data = Cornell,
+  nt = 3,
+  modele = "pls-glm-family",
+  family = gaussian(link = "log")
+)
+```
+
+Ordinal responses are handled through `modele = "pls-glm-polr"`:
+
+```{r polr-fit}
+data(bordeaux)
+polr_fit <- plsRglm(Quality ~ ., data = bordeaux, nt = 2, modele = "pls-glm-polr", verbose = FALSE)
+
+head(predict(polr_fit, type = "class"))
+```
+
+# Cross-Validation and Model Choice
+
+Use `cv.plsR()` for ordinary PLS regression and `cv.plsRglm()` for generalized models. Both provide repeated k-fold cross-validation and integrate with `summary()` and `cvtable()`.
+
+```{r linear-cv}
+cv_pls <- cv.plsR(Y ~ ., data = Cornell, nt = 3, K = 4, NK = 2, verbose = FALSE)
+cv_pls_summary <- cvtable(summary(cv_pls))
+
+cv_pls_summary
+plot(cv_pls_summary)
+```
+
+```{r glm-cv}
+cv_logit <- cv.plsRglm(
+  y ~ .,
+  data = aze_compl,
+  nt = 3,
+  K = 4,
+  NK = 2,
+  modele = "pls-glm-logistic",
+  verbose = FALSE
+)
+cv_logit_summary <- cvtable(summary(cv_logit, MClassed = TRUE))
+
+cv_logit_summary
+plot(cv_logit_summary)
+```
+
+For generalized models, `summary(..., MClassed = TRUE)` exposes miss-classification information when it is relevant.
+
+# Prediction and Missing Data
+
+Incomplete predictor matrices are a core package feature, both during fitting and during prediction.
+
+```{r prediction-missing}
+data(pine)
+data(pine_sup)
+data(pineNAX21)
+
+pred_fit <- plsRglm(
+  x11 ~ .,
+  data = pine,
+  nt = 3,
+  modele = "pls-glm-family",
+  family = gaussian(),
+  verbose = FALSE
+)
+
+pine_sup_small <- pine_sup[1:3, 1:10]
+pine_sup_small[1, 1] <- NA
+
+predict(pred_fit, newdata = pine_sup_small, type = "response", methodNA = "missingdata")
+predict(pred_fit, newdata = pine_sup_small, type = "scores", methodNA = "missingdata")
+
+missing_train_fit <- plsR(x11 ~ ., data = pineNAX21, nt = 3, verbose = FALSE)
+missing_train_fit$na.miss.X
+```
+
+When `newdata` contains incomplete rows, `methodNA = "missingdata"` treats all prediction rows with the missing-data scoring rule, while `methodNA = "adaptative"` switches between complete-row and incomplete-row formulas automatically.
+
+# Bootstrap Utilities
+
+`bootpls()` and `bootplsglm()` wrap the `boot` package for PLS and PLS-GLM models. The default resampling schemes differ:
+
+- `bootpls()` defaults to `(y, X)` resampling with `typeboot = "plsmodel"`.
+- `bootplsglm()` defaults to `(y, T)` resampling with `typeboot = "fmodel_np"`.
+
+For a lightweight vignette render, the examples below use a small number of resamples and request non-BCa confidence intervals.
+
+```{r bootstrap}
+boot_pls <- bootpls(pls_fit_formula, R = 20, verbose = FALSE)
+dim(boot_pls$t)
+confints.bootpls(boot_pls, indices = 2:4, typeBCa = FALSE)
+
+boot_logit <- bootplsglm(logit_fit, R = 20, verbose = FALSE)
+dim(boot_logit$t)
+confints.bootpls(boot_logit, indices = 1:4, typeBCa = FALSE)
+```
+
+The plotting helpers `boxplots.bootpls()` and `plots.confints.bootpls()` can be applied directly to these bootstrap objects when a graphical summary is helpful.
+
+# Further Reading
+
+- Use `vignette("plsRglm", package = "plsRglm")` for the historical applications and algorithmic note.
+- Use the function help pages for lower-level weighted constructors such as `PLS_lm_wvc()` and `PLS_glm_wvc()`.
+- Use `?cv.plsRglm`, `?bootplsglm`, and `?predict.plsRglmmodel` for the full argument reference.
+
+```{r session-information}
+sessionInfo()
+```

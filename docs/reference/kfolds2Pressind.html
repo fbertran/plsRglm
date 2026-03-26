@@ -9,7 +9,7 @@ least squares regression models."><meta property="og:image" content="https://fbe
 
     <a class="navbar-brand me-2" href="../index.html">plsRglm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -309,7 +309,8 @@ extract and transforms results from k-fold cross validation.</p></div>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 3 ____</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 4 ____</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 5 ____</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 6 ____</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Warning only 5 components could thus be extracted</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ****________________________________________________****</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3 </span>
@@ -320,8 +321,7 @@ extract and transforms results from k-fold cross validation.</p></div>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 3 ____</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 4 ____</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 5 ____</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Warning only 5 components could thus be extracted</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 6 ____</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ****________________________________________________****</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4 </span>
@@ -359,22 +359,22 @@ extract and transforms results from k-fold cross validation.</p></div>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4.880619 9.479174 4.198758 5.262137 9.681688 9.669555</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 31.564554 19.452709  6.403846  5.518035  5.920875  5.616452</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 24.808710 17.584379  9.111413  6.206053  6.259251  6.317143</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.66706618 0.02540345 1.01515025 1.08155633 0.30518759</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.83738525 0.65811917 0.60483914 0.63522265 0.07106985</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12.7082450  1.0186833  0.2740066  0.4714313  0.2948841  0.2824644</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[4]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12.882761 49.116623 38.311814  9.663014 22.578142 71.849877</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[5]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]  4.597799  5.142740  4.371768  6.750691  5.412892 11.637487</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[5]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4.138374 9.348444 3.663063 4.871133 8.908067 9.002826</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[6]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.661627 1.018517 1.303515 2.536627 1.900569 5.465581</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6.2423509 8.1752874 3.9118185 1.8192410 0.9678129 1.9867311</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"XCornell"</span>,<span class="st">"yCornell"</span><span class="op">)</span><span class="op">)</span></span></span>
@@ -386,69 +386,69 @@ extract and transforms results from k-fold cross validation.</p></div>
 <span class="r-in"><span><span class="fu">kfolds2Pressind</span><span class="op">(</span><span class="fu"><a href="cv.plsR.html">cv.plsR</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">ypine</span>,dataX<span class="op">=</span><span class="va">Xpine</span>,nt<span class="op">=</span><span class="fl">10</span>,NK<span class="op">=</span><span class="fl">1</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2.342151 2.218636 2.126248 1.684389 1.563846 1.552798 1.473877 1.538851</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 1.525891 1.545314</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 4.0488459 2.6419005 2.0931074 0.9945233 1.2361610 1.7251410 1.7075649</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 1.8096216 2.9881568 2.9504999</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 5.199456 4.118474 3.850497 3.391300 3.644524 3.596471 3.566044 3.917529</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 4.128891 4.191982</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 6.390972 5.552014 5.517146 4.132977 4.333445 4.240730 4.489146 4.587389</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 4.448139 4.756072</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.752371 2.098495 2.594762 2.899234 2.490813 2.347570 2.304964 2.302503</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 2.242565 2.237447</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 4.426068 4.203625 4.160001 2.707194 2.457752 2.255721 2.079002 2.707203</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 3.150194 3.105966</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[4]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.7826082 3.6071430 3.6587396 4.7975991 4.7680548 4.7571587 4.7413192</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 5.2665608 5.4529557 5.7367919</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.9068526 2.6669519 2.2301527 1.6602976 1.6663093 1.6891594 1.4659527</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 1.4433798 1.4546258 1.4492790</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[5]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 3.696523 3.064659 2.374765 1.813269 2.150099 2.110946 1.973100 2.261847</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 2.136085 2.198083</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.493042 1.772823 2.047642 2.484318 2.879056 2.961044 2.626678 3.212175</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 3.393293 3.410057</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">kfolds2Pressind</span><span class="op">(</span><span class="fu"><a href="cv.plsR.html">cv.plsR</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">ypine</span>,dataX<span class="op">=</span><span class="va">Xpine</span>,nt<span class="op">=</span><span class="fl">10</span>,NK<span class="op">=</span><span class="fl">2</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2.275282 2.987106 3.437917 3.851224 3.423336 3.708752 3.813981 3.943732</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 4.190839 4.252629</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.467380 2.168126 2.695899 2.521611 2.159425 1.924642 1.927995 1.932993</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 1.837238 1.953333</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.956497 2.214037 2.660120 3.371085 3.605217 3.673265 3.830250 3.915479</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 3.948725 3.918604</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.6310018 0.9688999 1.7434467 1.8841259 1.6973504 2.0618149 1.8517636</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 1.8348866 1.8330148 2.0175683</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 3.737994 4.596768 4.043005 3.756683 3.494852 3.374156 3.551765 3.511339</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 3.564252 3.600758</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 4.386981 3.402139 3.086164 2.499676 4.205048 4.671250 6.840667 6.743799</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 7.989124 8.767788</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[4]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 4.145755 2.915002 3.224384 2.447451 2.450237 2.332576 2.605988 2.706925</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 2.658907 2.805306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.8736114 0.8800440 0.9267234 1.5855790 1.3601801 1.4961981 1.4268692</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 1.6380297 2.4713283 2.7237398</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[5]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.4199873 0.5516132 0.9560758 0.7934037 0.5865402 0.4701086 0.4837466</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 0.5320106 0.8890206 0.9157411</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 3.635313 5.412117 4.423254 4.646123 4.549350 4.523811 4.234378 4.725699</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 4.786735 4.778022</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 3.411202 2.822411 3.513383 2.875797 2.634304 2.455586 2.429512 2.330214</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 2.440069 2.538443</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.637415 2.245055 2.934097 3.695443 4.615823 4.853021 4.760955 4.317317</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 4.370336 4.532819</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.682559 1.479959 1.786883 1.837744 1.825986 2.235630 3.631814 3.791986</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 4.814206 5.242127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 7.431612 6.413585 6.424594 5.468000 5.270395 5.003974 5.236600 5.290440</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 5.278781 5.334312</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 3.494780 3.703488 2.195711 1.998145 1.867244 1.803017 1.528848 1.609933</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 1.559220 1.573920</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2.427396 2.354319 3.183985 4.275545 4.618642 4.046329 4.007167 4.468310</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 4.013439 4.291869</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[4]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.761601 1.767602 1.891638 1.550560 1.270254 1.369555 1.332052 1.382803</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 1.345839 1.391600</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.5390503 2.5249782 2.4752179 1.0202539 0.9815462 0.9378263 1.2424764</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] 1.2372781 1.2355224 1.2998315</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[5]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 3.171187 3.778985 3.175236 3.843570 4.067677 4.060807 4.031779 3.983545</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 3.957146 3.947849</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.030394 1.329299 1.749146 1.930631 1.661483 1.456542 1.370672 1.499380</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 1.522270 1.658070</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -457,69 +457,69 @@ extract and transforms results from k-fold cross validation.</p></div>
 <span class="r-in"><span><span class="fu">kfolds2Pressind</span><span class="op">(</span><span class="fu"><a href="cv.plsR.html">cv.plsR</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">ypine</span>,dataX<span class="op">=</span><span class="va">XpineNAX21</span>,nt<span class="op">=</span><span class="fl">10</span>,NK<span class="op">=</span><span class="fl">1</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.849149 5.752942 2.735378 3.984203 2.459746 2.942909 5.273890 6.473331</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 6.539830</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  5.464908  5.049557  4.166369  3.591951  3.177433  3.905476  5.611279</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [8] 11.052210  9.462785</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.7393361 1.1071199 0.4127204 0.3853208 0.4306980 0.3629602 0.4710221</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [8] 0.4896732 0.5083137</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.0599123 1.3364851 0.9436012 1.4537358 1.3330502 1.3936751 1.3997176</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [8] 1.4026369 1.3529485</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.248253 2.944479 3.254695 2.641474 3.191958 3.250845 3.311406 3.447073</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 3.575448</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.979278 2.415208 2.611007 2.168071 2.799951 2.964522 3.127285 3.293346</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 6.508898</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[4]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5.498725 5.122205 3.880136 4.177558 4.348146 4.098910 4.201643 4.223440</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 4.061385</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.818201 2.479678 2.225647 1.992272 1.404085 1.399823 1.214958 1.203648</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 1.206665</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[5]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.636114 1.853155 2.760082 1.872755 1.617061 1.648602 1.753168 1.690348</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 1.262019</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.105783 2.264822 2.641112 2.300512 2.098744 2.209297 2.273085 2.157865</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 2.201445</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">kfolds2Pressind</span><span class="op">(</span><span class="fu"><a href="cv.plsR.html">cv.plsR</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">ypine</span>,dataX<span class="op">=</span><span class="va">XpineNAX21</span>,nt<span class="op">=</span><span class="fl">10</span>,NK<span class="op">=</span><span class="fl">2</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.297974 1.530903 1.536840 1.041452 1.052710 1.173904 1.465349 1.681633</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 2.027705</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.547950 4.767086 4.888301 3.900638 4.170049 4.344046 5.329010 5.117453</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 5.864831</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.943300 1.823133 2.085198 2.145016 2.078058 1.824871 1.707368 1.624454</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 1.613452</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6.728788 5.877879 5.900289 4.846563 4.769718 4.606007 4.593691 4.728711</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 4.556849</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.8807131 2.2204980 3.3987872 4.9532763 2.6831597 1.3558769 0.7035967</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [8] 1.2092064 0.7011148</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.3507121 1.2689860 1.0790356 0.9634752 1.1696518 1.1854162 1.1302727</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [8] 1.1247221 1.1087293</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[4]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.558262 4.040055 3.226564 3.521774 3.586731 3.746520 4.204176 4.065597</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 4.001694</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.3900268 0.2325452 0.5790339 0.8654579 0.5951860 0.5259451 0.4647143</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [8] 0.6640165 0.8373827</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[5]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.096450 2.857964 3.015091 2.883974 3.068952 3.035802 2.942332 2.988776</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 3.380554</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.7385991 4.0581773 3.0556480 4.9111903 0.9353821 8.1270288 3.3396160</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [8] 2.7926172 2.1384669</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.9685304 0.9122828 0.7885177 1.3065461 1.8234641 1.7404674 2.1599134</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [8] 1.9837580 2.2375557</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.629095 1.796776 4.185873 2.969745 2.656988 4.471315 3.730323 1.517183</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 1.240315</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 7.470791 6.871658 6.817698 6.124524 5.937033 5.539184 5.618064 5.927220</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 5.872932</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4.575640 4.123548 4.248780 3.643940 4.668992 4.695260 4.722404 4.820543</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 4.760147</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.594546 2.896596 4.605220 3.139865 4.419324 6.461079 5.035024 6.683542</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 4.720656</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.361355 1.909235 1.795745 1.419175 1.256088 1.414919 1.464476 1.568089</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 1.557506</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[4]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.201038 1.909526 1.839511 1.962370 1.914030 2.190047 2.958085 2.983242</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 4.161789</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.149668 2.262385 1.824475 1.196458 1.240640 1.321145 1.485654 1.511968</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 2.300004</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[5]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.2355768 1.7140491 2.3410282 1.3111511 1.2945952 1.2548052 1.0631360</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [8] 0.9455445 1.2175567</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.402639 4.165198 3.291125 3.052477 3.098406 3.351658 3.484018 3.458543</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 3.513917</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Xpine"</span>,<span class="st">"XpineNAX21"</span>,<span class="st">"ypine"</span><span class="op">)</span><span class="op">)</span></span></span>
@@ -536,7 +536,7 @@ extract and transforms results from k-fold cross validation.</p></div>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

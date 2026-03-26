@@ -2,6 +2,9 @@
 
 * Package code refactored and aligned
 * Added an exported classbiplot() helper that keeps the usual biplot geometry but lets the individual layer be colored by class.  
+* Fixed issues during crossvalidation
+* Fixed missing prediction path for pls models
+* Recreated the source for the package vignette
 
 # plsRglm 1.6.0
 

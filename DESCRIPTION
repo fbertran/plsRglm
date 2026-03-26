@@ -4,8 +4,8 @@ Date: 2026-03-26
 Depends: R (>= 2.10)
 Imports: mvtnorm, boot, bipartite, car, MASS
 Enhances: pls
-Suggests: chemometrics, plsdof, plsdepot, plspm, 
-    plsRcox, R.rsp, testthat (>= 3.0.0)
+Suggests: chemometrics, knitr, plsdof, plsdepot, plspm, 
+    plsRcox, rmarkdown, testthat (>= 3.0.0), xtable
 Title: Partial Least Squares Regression for Generalized Linear Models
 Authors@R: c(
 	person(given = "Frederic", family= "Bertrand", role = c("cre", "aut"), email = "frederic.bertrand@lecnam.net", comment = c(ORCID = "0000-0002-0837-8281")),
@@ -17,7 +17,7 @@ License: GPL-3
 Encoding: UTF-8
 URL: https://fbertran.github.io/plsRglm/, https://github.com/fbertran/plsRglm
 BugReports: https://github.com/fbertran/plsRglm/issues
-VignetteBuilder: R.rsp
+VignetteBuilder: knitr
 Classification/MSC: 62J12, 62J99
 RoxygenNote: 7.3.3
 Config/testthat/edition: 3

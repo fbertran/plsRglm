@@ -9,7 +9,7 @@ partial least squares regression models."><meta property="og:image" content="htt
 
     <a class="navbar-brand me-2" href="../index.html">plsRglm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,7 +107,7 @@ extract and transforms results from k-fold cross validation.</p></div>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">kfolds2Chisq</span><span class="op">(</span><span class="va">bbb2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 69.55157 27.20145 26.54985</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 62.06902 21.17915 19.65666</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"XCornell"</span>,<span class="st">"yCornell"</span>,<span class="st">"bbb"</span>,<span class="st">"bbb2"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -119,12 +119,12 @@ extract and transforms results from k-fold cross validation.</p></div>
 <span class="r-in"><span><span class="va">bbb2</span> <span class="op">&lt;-</span> <span class="fu"><a href="cv.plsRglm.html">cv.plsRglm</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">ypine</span>,dataX<span class="op">=</span><span class="va">Xpine</span>,nt<span class="op">=</span><span class="fl">10</span>,modele<span class="op">=</span><span class="st">"pls-glm-gaussian"</span>,K<span class="op">=</span><span class="fl">10</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">kfolds2Chisq</span><span class="op">(</span><span class="va">bbb</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12.89898 12.44225 10.44155 10.35581</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 14.18541 12.66755 11.29117 12.16633</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">kfolds2Chisq</span><span class="op">(</span><span class="va">bbb2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 13.55527 12.30310 10.45758 10.94869 11.48481 12.23844 12.10153 11.98165</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 12.11042 12.10683</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 16.01037 15.04104 12.82465 13.46816 13.22914 14.40349 14.61850 14.95845</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 14.86388 14.91391</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span>                  </span></span>
 <span class="r-in"><span><span class="va">XpineNAX21</span> <span class="op">&lt;-</span> <span class="va">Xpine</span></span></span>
@@ -132,25 +132,25 @@ extract and transforms results from k-fold cross validation.</p></div>
 <span class="r-in"><span><span class="va">bbbNA</span> <span class="op">&lt;-</span> <span class="fu"><a href="cv.plsRglm.html">cv.plsRglm</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">ypine</span>,dataX<span class="op">=</span><span class="va">XpineNAX21</span>,nt<span class="op">=</span><span class="fl">10</span>,modele<span class="op">=</span><span class="st">"pls"</span>,K<span class="op">=</span><span class="fl">10</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="kfolds2Press.html">kfolds2Press</a></span><span class="op">(</span><span class="va">bbbNA</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  14.05196  14.10976  13.88910  11.23984  11.38487  13.36423  20.93071</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [8]  39.65877 178.10012</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13.67592 14.91544 14.81330 12.40331 12.06289 12.11392 12.83221 21.45890</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 26.94021</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">kfolds2Chisq</span><span class="op">(</span><span class="va">bbbNA</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  14.05196  14.10976  13.88910  11.23984  11.38487  13.36423  20.93071</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [8]  39.65877 178.10012</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13.67592 14.91544 14.81330 12.40331 12.06289 12.11392 12.83221 21.45890</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 26.94021</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="va">bbbNA2</span> <span class="op">&lt;-</span> <span class="fu"><a href="cv.plsRglm.html">cv.plsRglm</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">ypine</span>,dataX<span class="op">=</span><span class="va">XpineNAX21</span>,nt<span class="op">=</span><span class="fl">4</span>,modele<span class="op">=</span><span class="st">"pls-glm-gaussian"</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bbbNA3</span> <span class="op">&lt;-</span> <span class="fu"><a href="cv.plsRglm.html">cv.plsRglm</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">ypine</span>,dataX<span class="op">=</span><span class="va">XpineNAX21</span>,nt<span class="op">=</span><span class="fl">10</span>,modele<span class="op">=</span><span class="st">"pls-glm-gaussian"</span>,K<span class="op">=</span><span class="fl">10</span>,</span></span>
 <span class="r-in"><span>verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">kfolds2Chisq</span><span class="op">(</span><span class="va">bbbNA2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13.88537 13.76352 10.31822 12.90021</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13.20970 31.65945 28.43378 22.55204</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">kfolds2Chisq</span><span class="op">(</span><span class="va">bbbNA3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 14.193035 13.426074 12.152154 12.708522 12.930586 10.740865  9.980292</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [8] 10.665961 10.920715</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 14.32418 14.87616 11.89853 12.62791 14.28605 13.89974 21.94249 12.59579</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 19.89630</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Xpine"</span>,<span class="st">"XpineNAX21"</span>,<span class="st">"ypine"</span>,<span class="st">"bbb"</span>,<span class="st">"bbb2"</span>,<span class="st">"bbbNA"</span>,<span class="st">"bbbNA2"</span>,<span class="st">"bbbNA3"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -161,127 +161,24 @@ extract and transforms results from k-fold cross validation.</p></div>
 <span class="r-in"><span><span class="fu">kfolds2Chisq</span><span class="op">(</span><span class="fu"><a href="cv.plsRglm.html">cv.plsRglm</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">yaze_compl</span>,dataX<span class="op">=</span><span class="va">Xaze_compl</span>,nt<span class="op">=</span><span class="fl">4</span>,modele<span class="op">=</span><span class="st">"pls-glm-family"</span>,</span></span>
 <span class="r-in"><span>family<span class="op">=</span><span class="st">"binomial"</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]   212.6266   367.4410  1786.6113 12084.5509</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  186.4604  268.9234 1574.2969 6408.2692</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">kfolds2Chisq</span><span class="op">(</span><span class="fu"><a href="cv.plsRglm.html">cv.plsRglm</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">yaze_compl</span>,dataX<span class="op">=</span><span class="va">Xaze_compl</span>,nt<span class="op">=</span><span class="fl">4</span>,modele<span class="op">=</span><span class="st">"pls-glm-logistic"</span>,</span></span>
 <span class="r-in"><span>verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]    213.0669   2087.8089  75802.6131 604360.4772</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]     247.6534     580.9059   24264.5656 5442717.3419</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">kfolds2Chisq</span><span class="op">(</span><span class="fu"><a href="cv.plsRglm.html">cv.plsRglm</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">yaze_compl</span>,dataX<span class="op">=</span><span class="va">Xaze_compl</span>,nt<span class="op">=</span><span class="fl">10</span>,modele<span class="op">=</span><span class="st">"pls-glm-family"</span>,</span></span>
 <span class="r-in"><span>family<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">binomial</a></span><span class="op">(</span><span class="op">)</span>,K<span class="op">=</span><span class="fl">10</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]     205.0276     399.5351    5357.1214   19652.8925   22438.1409</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6]   45101.3065   91601.8014  359566.1556  899715.6936 1600524.6150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1.986115e+02 4.625618e+02 1.210752e+04 1.416175e+05 5.670987e+05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] 9.457270e+05 3.882446e+06 1.077786e+07 7.300684e+07 1.367845e+08</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">kfolds2Chisq</span><span class="op">(</span><span class="fu"><a href="cv.plsRglm.html">cv.plsRglm</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">yaze_compl</span>,dataX<span class="op">=</span><span class="va">Xaze_compl</span>,nt<span class="op">=</span><span class="fl">10</span>,modele<span class="op">=</span><span class="st">"pls-glm-logistic"</span>,</span></span>
 <span class="r-in"><span>K<span class="op">=</span><span class="fl">10</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2.225894e+02 5.840101e+02 1.268689e+04 3.661034e+05 1.466490e+08</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] 3.505241e+12 4.505082e+15 1.351087e+16 2.251800e+16 2.251800e+16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]    193.2747    396.3554   4373.4478  23786.8329  46570.8844  63133.7421</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7]  96978.2077 179158.3425 180320.0528 210506.6641</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Xaze_compl"</span>,<span class="st">"yaze_compl"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
@@ -297,7 +194,7 @@ extract and transforms results from k-fold cross validation.</p></div>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

@@ -9,7 +9,7 @@ squares regression models."><meta property="og:image" content="https://fbertran.
 
     <a class="navbar-brand me-2" href="../index.html">plsRglm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -106,7 +106,7 @@ extract and transforms results from k-fold cross validation.</p></div>
 <span class="r-in"><span><span class="fu">kfolds2Press</span><span class="op">(</span><span class="fu"><a href="cv.plsR.html">cv.plsR</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">yCornell</span>,dataX<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">XCornell</span><span class="op">)</span><span class="op">)</span><span class="op">[</span>,<span class="op">]</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>nt<span class="op">=</span><span class="fl">6</span>,K<span class="op">=</span><span class="fl">6</span>,NK<span class="op">=</span><span class="fl">1</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 60.67384 37.44834 17.35983 25.14694 26.97979</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 51.17644 30.35008 19.73907 18.50431 29.77615</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"XCornell"</span>,<span class="st">"yCornell"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -116,34 +116,34 @@ extract and transforms results from k-fold cross validation.</p></div>
 <span class="r-in"><span><span class="va">ypine</span><span class="op">&lt;-</span><span class="va">pine</span><span class="op">[</span>,<span class="fl">11</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="fu">kfolds2Press</span><span class="op">(</span><span class="fu"><a href="cv.plsR.html">cv.plsR</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">ypine</span>,dataX<span class="op">=</span><span class="va">Xpine</span>,nt<span class="op">=</span><span class="fl">10</span>,NK<span class="op">=</span><span class="fl">1</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 13.11383 16.07115 16.80484 16.01002 15.72696 16.01078 16.72261 16.89642</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 16.85360 17.47502</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 11.97615 12.00141 10.69039 10.30474 10.70328 10.57269 11.61333 11.70210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 11.98101 12.10232</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">kfolds2Press</span><span class="op">(</span><span class="fu"><a href="cv.plsR.html">cv.plsR</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">ypine</span>,dataX<span class="op">=</span><span class="va">Xpine</span>,nt<span class="op">=</span><span class="fl">10</span>,NK<span class="op">=</span><span class="fl">2</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 14.34299 13.86224 14.29954 13.07896 13.11752 13.26533 14.52682 15.94571</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 16.40371 16.99492</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 13.31403 13.81107 12.48677 13.62458 17.49581 18.48085 18.01662 17.96863</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 17.94488 18.08595</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 15.67525 15.99173 18.33649 17.94999 16.68851 15.81142 16.55737 17.36604</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 18.05244 18.14532</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 12.234426 12.271449 12.117853 10.314004  9.485939  9.493277  9.443128</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8]  9.439081 10.075595 10.187946</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">XpineNAX21</span> <span class="op">&lt;-</span> <span class="va">Xpine</span></span></span>
 <span class="r-in"><span><span class="va">XpineNAX21</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span></span>
 <span class="r-in"><span><span class="fu">kfolds2Press</span><span class="op">(</span><span class="fu"><a href="cv.plsR.html">cv.plsR</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">ypine</span>,dataX<span class="op">=</span><span class="va">XpineNAX21</span>,nt<span class="op">=</span><span class="fl">10</span>,NK<span class="op">=</span><span class="fl">1</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 14.27440 14.75048 16.91953 15.77344 16.32399 16.01672 18.12347 21.36587</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 19.93249</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13.27636 13.56210 13.74395 12.95239 11.95871 12.45488 14.71568 18.22976</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 17.77810</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">kfolds2Press</span><span class="op">(</span><span class="fu"><a href="cv.plsR.html">cv.plsR</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">ypine</span>,dataX<span class="op">=</span><span class="va">XpineNAX21</span>,nt<span class="op">=</span><span class="fl">10</span>,NK<span class="op">=</span><span class="fl">2</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 15.98650 15.70826 14.85051 13.35485 21.30392 29.71824 21.93329 18.27147</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 18.92796</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13.24267 16.33994 15.91731 14.25737 13.78751 14.49856 17.29316 17.10006</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 16.57428</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 14.58396 15.69717 25.24154 14.46923 21.63037 12.84356 12.93730 28.12907</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 19.54269</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12.22707 15.25976 17.52732 16.28843 14.28885 12.85276 13.40780 22.87170</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] 42.66878</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Xpine"</span>,<span class="st">"XpineNAX21"</span>,<span class="st">"ypine"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
@@ -159,7 +159,7 @@ extract and transforms results from k-fold cross validation.</p></div>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

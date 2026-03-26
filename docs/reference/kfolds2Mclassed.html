@@ -9,7 +9,7 @@ k-fold cross validated partial least squares regression models."><meta property=
 
     <a class="navbar-brand me-2" href="../index.html">plsRglm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,14 +102,14 @@ extract and transforms results from k-fold cross validation.</p></div>
 <span class="r-in"><span><span class="va">yaze_compl</span><span class="op">&lt;-</span><span class="va">aze_compl</span><span class="op">$</span><span class="va">y</span></span></span>
 <span class="r-in"><span><span class="fu">kfolds2Mclassed</span><span class="op">(</span><span class="fu"><a href="cv.plsR.html">cv.plsR</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">yaze_compl</span>,dataX<span class="op">=</span><span class="va">Xaze_compl</span>,nt<span class="op">=</span><span class="fl">10</span>,K<span class="op">=</span><span class="fl">8</span>,NK<span class="op">=</span><span class="fl">1</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 44 48 41 39 39 39 39 38 38 38</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 45 46 42 45 44 45 45 44 44 43</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">kfolds2Mclassed</span><span class="op">(</span><span class="fu"><a href="cv.plsR.html">cv.plsR</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">yaze_compl</span>,dataX<span class="op">=</span><span class="va">Xaze_compl</span>,nt<span class="op">=</span><span class="fl">10</span>,K<span class="op">=</span><span class="fl">8</span>,NK<span class="op">=</span><span class="fl">2</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 49 46 41 45 44 45 44 46 46 46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 41 45 46 47 46 46 44 44 44 44</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 49 48 48 50 48 49 50 52 51 51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 44 43 44 44 46 46 46 47 48 49</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Xaze_compl"</span>,<span class="st">"yaze_compl"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
@@ -125,7 +125,7 @@ extract and transforms results from k-fold cross validation.</p></div>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>
