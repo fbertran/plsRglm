@@ -96,11 +96,12 @@ ifbootfail <- as.matrix(as.numeric(ifelse(any(class(dataset[,1])=="factor"),rep(
 #dataset <- cbind(y = eval(callplsRglm$dataY),eval(callplsRglm$dataX))
 if(!is.null(callplsRglm$modele)){modele <- eval(callplsRglm$modele)} else {modele <- "pls"}
 if(!is.null(callplsRglm$family)){family <- eval(callplsRglm$family)} else {family <- NULL}
+fit_backend <- if (is.null(object$fit_backend)) "stats" else object$fit_backend
 
 if(typeboot=="plsmodel"){
 #return(tilt.boot(data=dataset, statistic=if(!(sim=="permutation")){coefs.plsRglm} else {permcoefs.plsRglm}, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family))
-  temp.tilt.bootplsRglm <- if(!(sim=="permutation")){tilt.boot(data=dataset, statistic=coefs.plsRglm, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail,...)} else {
-    tilt.boot(data=dataset, statistic=permcoefs.plsRglm, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail)}
+  temp.tilt.bootplsRglm <- if(!(sim=="permutation")){tilt.boot(data=dataset, statistic=coefs.plsRglm, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, fit_backend = fit_backend, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail,...)} else {
+    tilt.boot(data=dataset, statistic=permcoefs.plsRglm, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, fit_backend = fit_backend, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail)}
   indices.temp.tilt.bootplsRglm <- !is.na(temp.tilt.bootplsRglm$t[,1])
   temp.tilt.bootplsRglm$t=temp.tilt.bootplsRglm$t[indices.temp.tilt.bootplsRglm,]
   temp.tilt.bootplsRglm$R=sum(indices.temp.tilt.bootplsRglm)
@@ -121,8 +122,8 @@ if(typeboot=="fmodel_np"){
 }
 if(typeboot=="fmodel_par"){
 #return(tilt.boot(data=dataset, statistic=if(!(sim=="permutation")){coefs.plsRglm} else {permcoefs.plsRglm}, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family))
-  temp.tilt.bootplsRglm <- if(!(sim=="permutation")){tilt.boot(data=dataset, statistic=coefs.plsRglm, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail,...)} else {
-    tilt.boot(data=dataset, statistic=permcoefs.plsRglm, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail)}
+  temp.tilt.bootplsRglm <- if(!(sim=="permutation")){tilt.boot(data=dataset, statistic=coefs.plsRglm, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, fit_backend = fit_backend, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail,...)} else {
+    tilt.boot(data=dataset, statistic=permcoefs.plsRglm, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, fit_backend = fit_backend, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail)}
   indices.temp.tilt.bootplsRglm <- !is.na(temp.tilt.bootplsRglm$t[,1])
   temp.tilt.bootplsRglm$t=temp.tilt.bootplsRglm$t[indices.temp.tilt.bootplsRglm,]
   temp.tilt.bootplsRglm$R=sum(indices.temp.tilt.bootplsRglm)

@@ -121,6 +121,10 @@
 #' defaults to \eqn{10^{-12}}{10^{-12}}
 #' @param weights an optional vector of 'prior weights' to be used in the
 #' fitting process. Should be \code{NULL} or a numeric vector.
+#' @param fit_backend backend used for repeated non-ordinal score-space GLM
+#' fits during cross-validation. Use \code{"stats"} for the compatibility
+#' path or \code{"fastglm"} to opt into the accelerated complete-data
+#' backend. Unsupported cases fall back to \code{"stats"} with a warning.
 #' @param subset an optional vector specifying a subset of observations to be
 #' used in the fitting process.
 #' @param start starting values for the parameters in the linear predictor.
@@ -132,79 +136,10 @@
 #' or more \code{\link{offset}} terms can be included in the formula instead or
 #' as well, and if more than one is specified their sum is used. See
 #' \code{\link{model.offset}}.
-#' @param method \describe{ \item{for fitting glms with glm (}{the method to be
-#' used in fitting the model. The default method \code{"glm.fit"} uses
-#' iteratively reweighted least squares (IWLS). User-supplied fitting functions
-#' can be supplied either as a function or a character string naming a
-#' function, with a function which takes the same arguments as \code{glm.fit}.
-#' If "model.frame", the model frame is
-#' returned.}\item{list("\"pls-glm-Gamma\"")}{the method to be used in fitting
-#' the model. The default method \code{"glm.fit"} uses iteratively reweighted
-#' least squares (IWLS). User-supplied fitting functions can be supplied either
-#' as a function or a character string naming a function, with a function which
-#' takes the same arguments as \code{glm.fit}. If "model.frame", the model
-#' frame is returned.}\item{, }{the method to be used in fitting the model. The
-#' default method \code{"glm.fit"} uses iteratively reweighted least squares
-#' (IWLS). User-supplied fitting functions can be supplied either as a function
-#' or a character string naming a function, with a function which takes the
-#' same arguments as \code{glm.fit}. If "model.frame", the model frame is
-#' returned.}\item{list("\"pls-glm-gaussian\"")}{the method to be used in
-#' fitting the model. The default method \code{"glm.fit"} uses iteratively
-#' reweighted least squares (IWLS). User-supplied fitting functions can be
-#' supplied either as a function or a character string naming a function, with
-#' a function which takes the same arguments as \code{glm.fit}. If
-#' "model.frame", the model frame is returned.}\item{, }{the method to be used
-#' in fitting the model. The default method \code{"glm.fit"} uses iteratively
-#' reweighted least squares (IWLS). User-supplied fitting functions can be
-#' supplied either as a function or a character string naming a function, with
-#' a function which takes the same arguments as \code{glm.fit}. If
-#' "model.frame", the model frame is
-#' returned.}\item{list("\"pls-glm-inverse.gaussian\"")}{the method to be used
-#' in fitting the model. The default method \code{"glm.fit"} uses iteratively
-#' reweighted least squares (IWLS). User-supplied fitting functions can be
-#' supplied either as a function or a character string naming a function, with
-#' a function which takes the same arguments as \code{glm.fit}. If
-#' "model.frame", the model frame is returned.}\item{, }{the method to be used
-#' in fitting the model. The default method \code{"glm.fit"} uses iteratively
-#' reweighted least squares (IWLS). User-supplied fitting functions can be
-#' supplied either as a function or a character string naming a function, with
-#' a function which takes the same arguments as \code{glm.fit}. If
-#' "model.frame", the model frame is
-#' returned.}\item{list("\"pls-glm-logistic\"")}{the method to be used in
-#' fitting the model. The default method \code{"glm.fit"} uses iteratively
-#' reweighted least squares (IWLS). User-supplied fitting functions can be
-#' supplied either as a function or a character string naming a function, with
-#' a function which takes the same arguments as \code{glm.fit}. If
-#' "model.frame", the model frame is returned.}\item{, }{the method to be used
-#' in fitting the model. The default method \code{"glm.fit"} uses iteratively
-#' reweighted least squares (IWLS). User-supplied fitting functions can be
-#' supplied either as a function or a character string naming a function, with
-#' a function which takes the same arguments as \code{glm.fit}. If
-#' "model.frame", the model frame is
-#' returned.}\item{list("\"pls-glm-poisson\"")}{the method to be used in
-#' fitting the model. The default method \code{"glm.fit"} uses iteratively
-#' reweighted least squares (IWLS). User-supplied fitting functions can be
-#' supplied either as a function or a character string naming a function, with
-#' a function which takes the same arguments as \code{glm.fit}. If
-#' "model.frame", the model frame is returned.}\item{, }{the method to be used
-#' in fitting the model. The default method \code{"glm.fit"} uses iteratively
-#' reweighted least squares (IWLS). User-supplied fitting functions can be
-#' supplied either as a function or a character string naming a function, with
-#' a function which takes the same arguments as \code{glm.fit}. If
-#' "model.frame", the model frame is
-#' returned.}\item{list("\"modele=pls-glm-family\"")}{the method to be used in
-#' fitting the model. The default method \code{"glm.fit"} uses iteratively
-#' reweighted least squares (IWLS). User-supplied fitting functions can be
-#' supplied either as a function or a character string naming a function, with
-#' a function which takes the same arguments as \code{glm.fit}. If
-#' "model.frame", the model frame is returned.}\item{)}{the method to be used
-#' in fitting the model. The default method \code{"glm.fit"} uses iteratively
-#' reweighted least squares (IWLS). User-supplied fitting functions can be
-#' supplied either as a function or a character string naming a function, with
-#' a function which takes the same arguments as \code{glm.fit}. If
-#' "model.frame", the model frame is returned.}
-#' \item{list("pls-glm-polr")}{logistic, probit, complementary log-log or
-#' cauchit (corresponding to a Cauchy latent variable).}}
+#' @param method For non-ordinal GLM modes this argument is kept for backward
+#' compatibility; use \code{fit_backend} to choose the score-space fitting
+#' backend. For \code{pls-glm-polr}, use \code{logistic}, \code{probit},
+#' complementary log-log or \code{cauchit}.
 #' @param control a list of parameters for controlling the fitting process. For
 #' \code{glm.fit} this is passed to \code{\link{glm.control}}.
 #' @param contrasts an optional list. See the \code{contrasts.arg} of

@@ -134,6 +134,13 @@ predict.plsRglmmodel <- function(object,newdata,comps=object$computed_nt,type=c(
     if (type=="response"){return(attr(object$RepY,"scaled:center")+attr(object$RepY,"scaled:scale")*link_pred)}
     return(NULL)
   }
+  predict_glm_from_scores <- function(scores_mat, type) {
+    if (isTRUE(se.fit)) {
+      ttpred <- data.frame(tt = scores_mat)
+      return(predict(object$FinalModel,newdata=ttpred,type = type,se.fit=se.fit, dispersion = dispersion,...))
+    }
+    pls_glm_predict_score_model(object$FinalModel, scores_mat, type = type)
+  }
   if (missing(newdata) || is.null(newdata)) {
     nrtt <- nrow(object$tt)
     ttpredY<-data.frame(cbind(object$tt[,1:comps],matrix(0,nrow=nrtt,ncol=object$computed_nt-comps)));colnames(ttpredY) <- NULL
@@ -141,13 +148,13 @@ predict.plsRglmmodel <- function(object,newdata,comps=object$computed_nt,type=c(
       return(predict_pls_from_scores(ttpredY, type))
     }
     if (type=="link"){
-                      if("glm" %in% class(object$FinalModel)){ttpred<-data.frame(tt=ttpredY);return(predict(object$FinalModel,newdata=ttpred,type = "link",se.fit=se.fit, dispersion = dispersion,...))}
+                      if("glm" %in% class(object$FinalModel)){return(predict_glm_from_scores(ttpredY, "link"))}
     }
     if (type=="response"){
-                      if("glm" %in% class(object$FinalModel)){ttpred<-data.frame(tt=ttpredY);return(predict(object$FinalModel,newdata=ttpred,type = "response",se.fit=se.fit, dispersion = dispersion,...))}                      
+                      if("glm" %in% class(object$FinalModel)){return(predict_glm_from_scores(ttpredY, "response"))}                      
     }
     if (type=="terms"){
-                       if("glm" %in% class(object$FinalModel)){ttpred<-data.frame(tt=ttpredY);return(predict(object$FinalModel,newdata=ttpred,type = "terms",se.fit=se.fit, dispersion = dispersion,...))}                       
+                       if("glm" %in% class(object$FinalModel)){return(predict_glm_from_scores(ttpredY, "terms"))}                       
     }  
     if (type=="class"){
                        if("polr" %in% class(object$FinalModel)){ttpred<-data.frame(tt=ttpredY);return(predict(object$FinalModel,newdata=ttpred,type = "class",...))}                       
@@ -202,11 +209,11 @@ ttpred<-data.frame(tt=ttpredY)
     return(predict_pls_from_scores(ttpredY, type))
   }
   if("glm" %in% class(object$FinalModel)){
-  if (type=="link"){return(predict(object$FinalModel,newdata=ttpred,type = "link",se.fit=se.fit,dispersion = dispersion,...))                  
+  if (type=="link"){return(predict_glm_from_scores(ttpredY, "link"))                  
   }
-  if (type=="response"){return(predict(object$FinalModel,newdata=ttpred,type = "response",se.fit=se.fit,dispersion = dispersion,...))                    
+  if (type=="response"){return(predict_glm_from_scores(ttpredY, "response"))                    
   }
-  if (type=="terms"){return(predict(object$FinalModel,newdata=ttpred,type = "terms",se.fit=se.fit,dispersion = dispersion,...))
+  if (type=="terms"){return(predict_glm_from_scores(ttpredY, "terms"))
   }
   }
   if("polr" %in% class(object$FinalModel)){

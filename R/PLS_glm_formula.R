@@ -2,7 +2,7 @@
 #' @aliases plsRglm
 #' @export PLS_glm_formula
 
-PLS_glm_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,subset,start=NULL,etastart,mustart,offset,method,control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE,verbose=TRUE) {  
+PLS_glm_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,subset,start=NULL,etastart,mustart,offset,method,control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE,fit_backend="stats",verbose=TRUE) {  
 
 
 ##################################################
@@ -91,6 +91,7 @@ sparseStop = sparseStop,
 pvals.expli = pvals.expli,
 naive = naive,
 naive_missing = naive_missing,
+fit_backend = fit_backend,
 verbose = verbose,
 weighted_naive_message = "Only naive DoF can be used with weighted PLS or PLS glms\n",
 eval_env = parent.frame()
@@ -108,6 +109,7 @@ pvals.expli <- validation$pvals.expli
 dataX <- validation$dataX
 modele <- validation$modele
 family <- validation$family
+fit_backend <- validation$fit_backend
 
 if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {
 mf2$family <- family
@@ -137,10 +139,10 @@ YwotNA <- preprocessed$YwotNA
 PredictYwotNA <- preprocessed$PredictYwotNA
 
 if (modele == "pls-glm-polr") {
-dataY <- as.factor(dataY)
-YwotNA <- as.factor(YwotNA)}
+dataY <- pls_glm_as_polr_response(dataY)
+YwotNA <- pls_glm_as_polr_response(YwotNA)}
 
-res <- list(nr=nrow(ExpliX),nc=ncol(ExpliX),nt=nt,ww=NULL,wwnorm=NULL,wwetoile=NULL,tt=NULL,pp=NULL,CoeffC=NULL,uscores=NULL,YChapeau=NULL,residYChapeau=NULL,RepY=RepY,na.miss.Y=na.miss.Y,YNA=YNA,residY=RepY,ExpliX=ExpliX,na.miss.X=na.miss.X,XXNA=XXNA,residXX=ExpliX,PredictY=PredictYwotNA,RSS=rep(NA,nt),RSSresidY=rep(NA,nt),R2=rep(NA,nt),R2residY=rep(NA,nt),press.ind=NULL,press.tot=NULL,Q2cum=rep(NA, nt),family=family,ttPredictY = NULL,typeVC=typeVC,dataX=dataX,dataY=dataY) 
+res <- list(nr=nrow(ExpliX),nc=ncol(ExpliX),nt=nt,ww=NULL,wwnorm=NULL,wwetoile=NULL,tt=NULL,pp=NULL,CoeffC=NULL,uscores=NULL,YChapeau=NULL,residYChapeau=NULL,RepY=RepY,na.miss.Y=na.miss.Y,YNA=YNA,residY=RepY,ExpliX=ExpliX,na.miss.X=na.miss.X,XXNA=XXNA,residXX=ExpliX,PredictY=PredictYwotNA,RSS=rep(NA,nt),RSSresidY=rep(NA,nt),R2=rep(NA,nt),R2residY=rep(NA,nt),press.ind=NULL,press.tot=NULL,Q2cum=rep(NA, nt),family=family,fit_backend=fit_backend,ttPredictY = NULL,typeVC=typeVC,dataX=dataX,dataY=dataY) 
 if(NoWeights){res$weights<-rep(1L,res$nr)} else {res$weights<-weights}
 res$temppred <- NULL
 
@@ -176,8 +178,12 @@ break_nt_vc <- FALSE
 for (kk in 1:nt) {
 XXwotNA <- as.matrix(res$residXX)
 XXwotNA[!XXNA] <- 0
+if (modele == "pls-glm-polr") {
+YwotNA <- pls_glm_as_polr_response(res$residY)
+} else {
 YwotNA <- as.matrix(res$residY)
 YwotNA[!YNA] <- 0
+}
 tempww <- rep(0,res$nc)
 
 
@@ -232,36 +238,26 @@ res$pvalstep <- cbind(res$pvalstep,sparse_step$temppvalstep)
 ######              PLS-GLM             ######
 ##############################################
 if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {
-if (!pvals.expli) {
-XXwotNA[!XXNA] <- NA
-for (jj in 1:(res$nc)) {
-    mf2[[2]]<-YwotNA~cbind(res$tt,XXwotNA[,jj])
-    tempww[jj] <- coef(eval(mf2, parent.frame(n=sys.nframe())))[kk+1]
-}
-XXwotNA[!XXNA] <- 0
-rm(jj)}
-else {
-XXwotNA[!XXNA] <- NA
-tempvalpvalstep <- rep(0,res$nc)
-for (jj in 1:(res$nc)) {
-    mf2[[2]]<-YwotNA~cbind(res$tt,XXwotNA[,jj])
-    tmww <- summary(eval(mf2, parent.frame(n=sys.nframe())))$coefficients[kk+1,]
-    tempww[jj] <- tmww[1]
-    tempvalpvalstep[jj] <- tmww[4]
-}
-filtered_step <- pls_glm_apply_sparse_filter(
-tempww = tempww,
-tempvalpvalstep = tempvalpvalstep,
+glm_step <- pls_glm_compute_glm_weights(
+modele = modele,
+XXwotNA = XXwotNA,
+XXNA = XXNA,
+YwotNA = YwotNA,
+tt = res$tt,
+family = family,
+method = method,
+kk = kk,
+pvals.expli = pvals.expli,
 alpha.pvals.expli = alpha.pvals.expli,
 sparse = sparse,
-sparseStop = sparseStop
+sparseStop = sparseStop,
+fit_backend = fit_backend
 )
-tempww <- filtered_step$tempww
-break_nt_sparse <- break_nt_sparse | filtered_step$break_nt_sparse
-XXwotNA[!XXNA] <- 0
-rm(jj)
-res$valpvalstep <- cbind(res$valpvalstep,filtered_step$tempvalpvalstep)
-res$pvalstep <- cbind(res$pvalstep,filtered_step$temppvalstep)
+tempww <- glm_step$tempww
+break_nt_sparse <- break_nt_sparse | glm_step$break_nt_sparse
+if (!is.null(glm_step$tempvalpvalstep)) {
+res$valpvalstep <- cbind(res$valpvalstep, glm_step$tempvalpvalstep)
+res$pvalstep <- cbind(res$pvalstep, glm_step$temppvalstep)
 }
 }
 
@@ -269,45 +265,26 @@ res$pvalstep <- cbind(res$pvalstep,filtered_step$temppvalstep)
 ######           PLS-GLM-POLR           ######
 ##############################################
 if (modele %in% c("pls-glm-polr")) {
-YwotNA <- as.factor(YwotNA)
-if (!pvals.expli) {
-XXwotNA[!XXNA] <- NA
-requireNamespace("MASS")
-#library(MASS)
-tts <- res$tt
-for (jj in 1:(res$nc)) {
-    mf2[[2]]<-YwotNA~cbind(tts,XXwotNA[,jj])
-    tempww[jj] <- -1*eval(mf2)$coef[kk] #, parent.frame(n=sys.nframe())
-}
-XXwotNA[!XXNA] <- 0
-rm(jj,tts)}
-else {
-XXwotNA[!XXNA] <- NA
-requireNamespace("MASS")
-#library(MASS)
-tts <- res$tt
-tempvalpvalstep <- rep(0,res$nc)
-mf2$Hess <- TRUE
-for (jj in 1:(res$nc)) {
-    mf2[[2]]<-YwotNA~cbind(tts,XXwotNA[,jj])
-    tmww <- -1*summary(eval(mf2))$coefficients[kk,] #, parent.frame(n=sys.nframe())
-    tempww[jj] <- tmww[1]
-    tempvalpvalstep[jj] <- 2 * pnorm(-abs(tmww[3])) 
-}
-filtered_step <- pls_glm_apply_sparse_filter(
-tempww = tempww,
-tempvalpvalstep = tempvalpvalstep,
+polr_step <- pls_glm_compute_glm_weights(
+modele = modele,
+XXwotNA = XXwotNA,
+XXNA = XXNA,
+YwotNA = YwotNA,
+tt = res$tt,
+family = family,
+method = method,
+kk = kk,
+pvals.expli = pvals.expli,
 alpha.pvals.expli = alpha.pvals.expli,
 sparse = sparse,
-sparseStop = sparseStop
+sparseStop = sparseStop,
+fit_backend = fit_backend
 )
-tempww <- filtered_step$tempww
-break_nt_sparse <- break_nt_sparse | filtered_step$break_nt_sparse
-XXwotNA[!XXNA] <- 0
-rm(jj,tts)
-mf2$Hess <- FALSE
-res$valpvalstep <- cbind(res$valpvalstep,filtered_step$tempvalpvalstep)
-res$pvalstep <- cbind(res$pvalstep,filtered_step$temppvalstep)
+tempww <- polr_step$tempww
+break_nt_sparse <- break_nt_sparse | polr_step$break_nt_sparse
+if (!is.null(polr_step$tempvalpvalstep)) {
+res$valpvalstep <- cbind(res$valpvalstep, polr_step$tempvalpvalstep)
+res$pvalstep <- cbind(res$pvalstep, polr_step$temppvalstep)
 }
 }
 
@@ -393,82 +370,46 @@ rownames(res$Std.Coeffs) <- c("Intercept",colnames(ExpliX))
 ##############################################
 if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {
 if (kk==1) {
-mf2[[2]]<-YwotNA~1
-mf2$model<-TRUE
-tempconstglm <- eval(mf2, parent.frame(n=sys.nframe()))
-mf2$model<-FALSE
+tempconstglm <- pls_glm_fit_intercept_model(
+y = YwotNA,
+family = family,
+fit_backend = fit_backend
+)
 res$AIC <- AIC(tempconstglm)
 res$BIC <- AIC(tempconstglm, k = log(res$nr))
-res$Coeffsmodel_vals <- rbind(summary(tempconstglm)$coefficients,matrix(rep(NA,4*nt),ncol=4))
-res$ChisqPearson <- crossprod(residuals.glm(tempconstglm,type="pearson"))  
-#if ((modele %in% c("pls-glm-logistic"))|(family$family=="binomial")) {
-res$MissClassed <- sum(unclass(res$RepY)!=ifelse(predict(tempconstglm,type="response") < 0.5, 0,1))
-#}
-rm(tempconstglm)
-tttrain<-data.frame(YwotNA=YwotNA,tt=res$tt)
-mf2$data <- tttrain  
-mf2$model <- TRUE
-mf2[[2]]<-YwotNA~.
-tempregglm <- eval(mf2, parent.frame(n=sys.nframe()))
-mf2$model <- FALSE
-rm(tttrain)
-res$AIC <- cbind(res$AIC,AIC(tempregglm))
-res$BIC <- cbind(res$BIC,AIC(tempregglm, k = log(res$nr)))
-res$Coeffsmodel_vals <- cbind(res$Coeffsmodel_vals,rbind(summary(tempregglm)$coefficients,matrix(rep(NA,4*(nt-kk)),ncol=4)))
-res$ChisqPearson <- c(res$ChisqPearson,crossprod(residuals.glm(tempregglm,type="pearson")))
-#if ((modele %in% c("pls-glm-logistic"))|(family$family=="binomial")) {
-res$MissClassed <- cbind(res$MissClassed,sum(unclass(res$RepY)!=ifelse(predict(tempregglm,type="response") < 0.5, 0,1)))
-#}
+res$Coeffsmodel_vals <- rbind(summary(tempconstglm)$coefficients, matrix(rep(NA, 4 * nt), ncol = 4))
+res$ChisqPearson <- crossprod(residuals(tempconstglm, type = "pearson"))
+res$MissClassed <- sum(unclass(res$RepY) != ifelse(tempconstglm$fitted.values < 0.5, 0, 1))
+}
+
+tempregglm <- pls_glm_fit_score_model(
+y = YwotNA,
+tt = res$tt,
+family = family,
+fit_backend = fit_backend
+)
+res$AIC <- cbind(res$AIC, AIC(tempregglm))
+res$BIC <- cbind(res$BIC, AIC(tempregglm, k = log(res$nr)))
+res$Coeffsmodel_vals <- cbind(
+res$Coeffsmodel_vals,
+rbind(summary(tempregglm)$coefficients, matrix(rep(NA, 4 * (nt - kk)), ncol = 4))
+)
+res$ChisqPearson <- c(res$ChisqPearson, crossprod(residuals(tempregglm, type = "pearson")))
+res$MissClassed <- cbind(
+res$MissClassed,
+sum(unclass(res$RepY) != ifelse(tempregglm$fitted.values < 0.5, 0, 1))
+)
 tempCoeffC <- as.vector(coef(tempregglm))
-res$CoeffCFull <- matrix(c(tempCoeffC,rep(NA,nt-kk)),ncol=1)
+if (kk == 1) {
+res$CoeffCFull <- matrix(c(tempCoeffC, rep(NA, nt - kk)), ncol = 1)
 tempCoeffConstante <- tempCoeffC[1]
 res$CoeffConstante <- tempCoeffConstante
-tempCoeffC <- tempCoeffC[-1]
 } else {
-if (!(na.miss.X | na.miss.Y)) {
-tttrain<-data.frame(YwotNA=YwotNA,tt=res$tt)
-mf2$data <- tttrain  
-mf2$model <- TRUE
-mf2[[2]]<-YwotNA~.
-tempregglm <- eval(mf2, parent.frame(n=sys.nframe()))
-mf2$model <- FALSE
-rm(tttrain)
-res$AIC <- cbind(res$AIC,AIC(tempregglm))
-res$BIC <- cbind(res$BIC,AIC(tempregglm, k = log(res$nr)))
-res$Coeffsmodel_vals <- cbind(res$Coeffsmodel_vals,rbind(summary(tempregglm)$coefficients,matrix(rep(NA,4*(nt-kk)),ncol=4)))
-res$ChisqPearson <- c(res$ChisqPearson,crossprod(residuals.glm(tempregglm,type="pearson")))
-#if ((modele %in% c("pls-glm-logistic"))|(family$family=="binomial")) {
-res$MissClassed <- cbind(res$MissClassed,sum(unclass(res$RepY)!=ifelse(predict(tempregglm,type="response") < 0.5, 0,1)))
-#}
-tempCoeffC <- as.vector(coef(tempregglm))  
-res$CoeffCFull <- cbind(res$CoeffCFull,c(tempCoeffC,rep(NA,nt-kk)))
+res$CoeffCFull <- cbind(res$CoeffCFull, c(tempCoeffC, rep(NA, nt - kk)))
 tempCoeffConstante <- tempCoeffC[1]
-res$CoeffConstante <- cbind(res$CoeffConstante,tempCoeffConstante)
+res$CoeffConstante <- cbind(res$CoeffConstante, tempCoeffConstante)
+}
 tempCoeffC <- tempCoeffC[-1]
-}
-else
-{
-tttrain<-data.frame(YwotNA=YwotNA,tt=res$tt)
-mf2$data <- tttrain  
-mf2$model <- TRUE
-mf2[[2]]<-YwotNA~.
-tempregglm <- eval(mf2, parent.frame(n=sys.nframe()))
-mf2$model <- FALSE
-rm(tttrain)
-res$AIC <- cbind(res$AIC,AIC(tempregglm))
-res$BIC <- cbind(res$BIC,AIC(tempregglm, k = log(res$nr)))
-res$Coeffsmodel_vals <- cbind(res$Coeffsmodel_vals,rbind(summary(tempregglm)$coefficients,matrix(rep(NA,4*(nt-kk)),ncol=4)))
-res$ChisqPearson <- c(res$ChisqPearson,crossprod(residuals.glm(tempregglm,type="pearson")))
-#if ((modele %in% c("pls-glm-logistic"))|(family$family=="binomial")) {
-res$MissClassed <- cbind(res$MissClassed,sum(unclass(res$RepY)!=ifelse(predict(tempregglm,type="response") < 0.5, 0,1)))
-#}
-tempCoeffC <- as.vector(coef(tempregglm))  
-res$CoeffCFull <- cbind(res$CoeffCFull,c(tempCoeffC,rep(NA,nt-kk)))
-tempCoeffConstante <- tempCoeffC[1]
-res$CoeffConstante <- cbind(res$CoeffConstante,tempCoeffConstante)
-tempCoeffC <- tempCoeffC[-1]
-}
-}
 
 res$wwetoile <- (res$wwnorm)%*%solve(t(res$pp)%*%res$wwnorm)
 res$CoeffC <- tempCoeffC
@@ -1074,15 +1015,15 @@ if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-i
 res$YChapeau <- as.matrix(tempregglm$fitted.values)            
 rownames(res$YChapeau) <- rownames(ExpliX)
 
-ttpred <- data.frame(tt=res$ttPredictY)
-res$Std.ValsPredictY <- predict(tempregglm,newdata=ttpred)
-res$ValsPredictY <- predict(tempregglm,newdata=ttpred,type = "response")
+res$Std.ValsPredictY <- pls_glm_predict_score_model(tempregglm, res$ttPredictY, type = "link")
+res$ValsPredictY <- pls_glm_predict_score_model(tempregglm, res$ttPredictY, type = "response")
 
 res$Std.XChapeau <- res$tt%*%t(res$pp)
 rownames(res$Std.XChapeau) <- rownames(ExpliX)
 names(res$CoeffC) <- paste("Coeff_Comp_Reg",1:res$computed_nt)
 rownames(res$Coeffs) <- c("Intercept",colnames(ExpliX))
-res$FinalModel <- tempregglm
+res$FinalModel <- pls_glm_refit_compatible_model(YwotNA, res$tt, family)
+attr(res$FinalModel, "fit_backend") <- fit_backend
 }
 
 

@@ -177,27 +177,33 @@ if(!(break_nt_sparse1)){
 }
 break}
 
-tempwwnorm <- tempww/sqrt(drop(crossprod(tempww)))
-
-temptt <- XXwotNA%*%tempwwnorm/(XXNA%*%(tempwwnorm^2))
-
-temppp <- rep(0,res$nc)
-for (jj in 1:(res$nc)) {
-     temppp[jj] <- crossprod(temptt,XXwotNA[,jj])/drop(crossprod(XXNA[,jj],temptt^2))
-}
-res$residXX <- XXwotNA-temptt%*%temppp
+component_cpp <- pls_component_step_cpp(
+  xxwotna_r = as.matrix(XXwotNA),
+  xxna_r = 1 * as.matrix(XXNA),
+  tempww_r = as.numeric(tempww),
+  prev_pp_r = if (is.null(res$pp)) NULL else as.matrix(res$pp),
+  predict_na_r = if (!PredYisdataX && na.miss.PredictY && !na.miss.Y && sparse == FALSE) {
+    1 * as.matrix(PredictYNA)
+  } else {
+    NULL
+  },
+  tol_xi = tol_Xi,
+  check_xx = isTRUE(na.miss.X & !na.miss.Y & sparse == FALSE),
+  check_predict = isTRUE(!PredYisdataX && na.miss.PredictY & !na.miss.Y & sparse == FALSE)
+)
+tempwwnorm <- as.numeric(component_cpp$tempwwnorm)
+temptt <- as.matrix(component_cpp$temptt)
+temppp <- as.numeric(component_cpp$temppp)
+res$residXX <- as.matrix(component_cpp$residXX)
 
 if (na.miss.X & !na.miss.Y) {
   if(sparse==FALSE){
-  for (ii in 1:res$nr) {
-if(rcond(t(cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])<tol_Xi) {
+  ii <- component_cpp$bad_xx_row
+if(ii > 0L) {
 break_nt <- TRUE; res$computed_nt <- kk-1
 if(verbose){cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE] < 10^{-12}\n",sep=""))}
 if(verbose){cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))}
-break
 }
-}
-rm(ii)
 if(break_nt==TRUE) {break}
 }
 }
@@ -205,15 +211,12 @@ if(break_nt==TRUE) {break}
 if(!PredYisdataX){
   if(sparse==FALSE){
 if (na.miss.PredictY & !na.miss.Y) {
-for (ii in 1:nrow(PredictYwotNA)) {
-if(rcond(t(cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])<tol_Xi) {
+ii <- component_cpp$bad_predict_row
+if(ii > 0L) {
 break_nt <- TRUE; res$computed_nt <- kk-1
 if(verbose){cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],])%*%cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],] < 10^{-12}\n",sep=""))}
 if(verbose){cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))}
-break
 }
-}
-rm(ii)
 if(break_nt==TRUE) {break}
 }
 }

@@ -163,6 +163,7 @@
 #' @export bootplsglm
 bootplsglm <- function(object, typeboot="fmodel_np", R=250, statistic=NULL, sim="ordinary", stype="i", stabvalue=1e6,verbose=TRUE,...){
 callplsRglm <- object$call
+dots <- list(...)
 maxcoefvalues <- stabvalue*abs(object$Coeffs)
 dataset <- cbind(y = object$dataY,object$dataX)
 nt <- eval(callplsRglm$nt)
@@ -170,10 +171,25 @@ ifbootfail <- as.matrix(as.numeric(ifelse(any(class(dataset[,1])=="factor"),rep(
 #dataset <- cbind(y = eval(callplsRglm$dataY),eval(callplsRglm$dataX))
 if(!is.null(callplsRglm$modele)){modele <- eval(callplsRglm$modele)} else {modele <- "pls"}
 if(!is.null(callplsRglm$family)){family <- eval(callplsRglm$family)} else {family <- NULL}
+fit_backend <- if (is.null(object$fit_backend)) "stats" else object$fit_backend
 
 if(typeboot=="plsmodel"){
-temp.bootplsRglm <- if(!(sim=="permutation")){if(is.null(statistic)){statistic=coefs.plsRglm};boot(data=dataset, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose,...)} else {
-  if(is.null(statistic)){statistic=permcoefs.plsRglm};boot(data=dataset, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose)}
+temp.bootplsRglm <- if(!(sim=="permutation")){
+  if(is.null(statistic)){statistic=coefs.plsRglm}
+  boot_args <- c(
+    list(data=dataset, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose),
+    if ((identical(statistic, coefs.plsRglm) || identical(statistic, coefs.plsRglm.raw)) && !("fit_backend" %in% names(dots))) list(fit_backend = fit_backend),
+    dots
+  )
+  do.call(boot, boot_args)
+} else {
+  if(is.null(statistic)){statistic=permcoefs.plsRglm}
+  boot_args <- c(
+    list(data=dataset, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose),
+    if (identical(statistic, permcoefs.plsRglm) || identical(statistic, permcoefs.plsRglm.raw)) list(fit_backend = fit_backend)
+  )
+  do.call(boot, boot_args)
+}
 indices.temp.bootplsRglm <- !is.na(temp.bootplsRglm$t[,1])
 temp.bootplsRglm$t=temp.bootplsRglm$t[indices.temp.bootplsRglm,]
 temp.bootplsRglm$R=sum(indices.temp.bootplsRglm)
@@ -194,8 +210,22 @@ return(temp.bootplsRglm)
 }
 
 if(typeboot=="fmodel_par"){
-temp.bootplsRglm <- if(!(sim=="permutation")){if(is.null(statistic)){statistic=coefs.plsRglm};boot(data=dataset, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose,...)} else {
-  if(is.null(statistic)){statistic=permcoefs.plsRglm};boot(data=dataset, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose)}
+temp.bootplsRglm <- if(!(sim=="permutation")){
+  if(is.null(statistic)){statistic=coefs.plsRglm}
+  boot_args <- c(
+    list(data=dataset, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose),
+    if ((identical(statistic, coefs.plsRglm) || identical(statistic, coefs.plsRglm.raw)) && !("fit_backend" %in% names(dots))) list(fit_backend = fit_backend),
+    dots
+  )
+  do.call(boot, boot_args)
+} else {
+  if(is.null(statistic)){statistic=permcoefs.plsRglm}
+  boot_args <- c(
+    list(data=dataset, statistic=statistic, sim=sim, stype=stype, R=R, nt=nt, modele=modele, family=family, maxcoefvalues = maxcoefvalues, ifbootfail=ifbootfail, verbose=verbose),
+    if (identical(statistic, permcoefs.plsRglm) || identical(statistic, permcoefs.plsRglm.raw)) list(fit_backend = fit_backend)
+  )
+  do.call(boot, boot_args)
+}
 indices.temp.bootplsRglm <- !is.na(temp.bootplsRglm$t[,1])
 temp.bootplsRglm$t=temp.bootplsRglm$t[indices.temp.bootplsRglm,]
 temp.bootplsRglm$R=sum(indices.temp.bootplsRglm)

@@ -1,11 +1,12 @@
 Package: plsRglm
 Version: 1.7.0
-Date: 2026-03-26
+Date: 2026-03-27
 Depends: R (>= 2.10)
-Imports: mvtnorm, boot, bipartite, car, MASS
+Imports: mvtnorm, boot, bipartite, car, MASS, Rcpp
+LinkingTo: Rcpp, RcppArmadillo
 Enhances: pls
 Suggests: chemometrics, knitr, plsdof, plsdepot, plspm, 
-    plsRcox, rmarkdown, testthat (>= 3.0.0), xtable
+    fastglm, plsRcox, rmarkdown, testthat (>= 3.0.0), xtable
 Title: Partial Least Squares Regression for Generalized Linear Models
 Authors@R: c(
 	person(given = "Frederic", family= "Bertrand", role = c("cre", "aut"), email = "frederic.bertrand@lecnam.net", comment = c(ORCID = "0000-0002-0837-8281")),

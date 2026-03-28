@@ -1,11 +1,11 @@
 #' @rdname cv.plsRglm
 #' @export
-cv.plsRglmmodel.default <- function(object,dataX,nt=2,limQ2set=.0975,modele="pls", family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights, method, verbose=TRUE,...)
+cv.plsRglmmodel.default <- function(object,dataX,nt=2,limQ2set=.0975,modele="pls", family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights, method, fit_backend="stats", verbose=TRUE,...)
   {
   mf0 <- match.call(expand.dots = FALSE)
-m0 <- match(c("object","dataX","nt","limQ2set","modele", "family", "K", "NK", "grouplist", "random", "scaleX", "scaleY", "keepcoeffs", "keepfolds", "keepdataY", "keepMclassed", "tol_Xi", "weights", "method", "verbose"), names(mf0), 0L)
+m0 <- match(c("object","dataX","nt","limQ2set","modele", "family", "K", "NK", "grouplist", "random", "scaleX", "scaleY", "keepcoeffs", "keepfolds", "keepdataY", "keepMclassed", "tol_Xi", "weights", "method", "fit_backend", "verbose"), names(mf0), 0L)
 mf0$dataY <- mf0$object
-m <- match(c("dataY","dataX","nt","limQ2set","modele", "family", "K", "NK", "grouplist", "random", "scaleX", "scaleY", "keepcoeffs", "keepfolds", "keepdataY", "keepMclassed", "tol_Xi", "weights", "method", "verbose"), names(mf0), 0L)
+m <- match(c("dataY","dataX","nt","limQ2set","modele", "family", "K", "NK", "grouplist", "random", "scaleX", "scaleY", "keepcoeffs", "keepfolds", "keepdataY", "keepMclassed", "tol_Xi", "weights", "method", "fit_backend", "verbose"), names(mf0), 0L)
 mf <- mf0[c(1L, m)]
 mf[[1L]] <- as.name("PLS_glm_kfoldcv")
 cvmodel <- eval(mf, parent.frame())

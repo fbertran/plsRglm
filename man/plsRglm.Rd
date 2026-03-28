@@ -14,23 +14,27 @@ plsRglm(object, \dots)
 dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",
 EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,
 alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,
-sparse=FALSE,sparseStop=TRUE,naive=FALSE,verbose=TRUE,\dots)
+sparse=FALSE,sparseStop=TRUE,naive=FALSE,fit_backend="stats",
+verbose=TRUE,\dots)
 \method{plsRglmmodel}{formula}(object,data=NULL,nt=2,limQ2set=.0975,
 dataPredictY,modele="pls",family=NULL,typeVC="none",
 EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,
 alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,subset,
 start=NULL,etastart,mustart,offset,method="glm.fit",control= list(),
-contrasts=NULL,sparse=FALSE,sparseStop=TRUE,naive=FALSE,verbose=TRUE,\dots)
+contrasts=NULL,sparse=FALSE,sparseStop=TRUE,naive=FALSE,
+fit_backend="stats",verbose=TRUE,\dots)
 PLS_glm(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = dataX, 
 modele = "pls", family = NULL, typeVC = "none", EstimXNA = FALSE, 
 scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
 alpha.pvals.expli = 0.05, MClassed = FALSE, tol_Xi = 10^(-12), weights, 
-method, sparse = FALSE, sparseStop=FALSE, naive=FALSE,verbose=TRUE)
+method, sparse = FALSE, sparseStop=FALSE, naive=FALSE,
+fit_backend="stats",verbose=TRUE)
 PLS_glm_formula(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,
 modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,
 scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,
 tol_Xi=10^(-12),weights,subset,start=NULL,etastart,mustart,offset,method,
-control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE,verbose=TRUE)
+control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE,
+fit_backend="stats",verbose=TRUE)
 }
 \arguments{
   \item{object}{response (training) dataset or an object of class "\code{\link{formula}}" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.}
@@ -56,13 +60,13 @@ control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE,verbose
   \item{MClassed}{number of missclassified cases, should only be used for binary responses}
   \item{tol_Xi}{minimal value for Norm2(Xi) and \eqn{\mathrm{det}(pp' \times pp)}{det(pp'*pp)} if there is any missing value in the \code{dataX}. It defaults to \eqn{10^{-12}}{10^{-12}}}
   \item{weights}{an optional vector of 'prior weights' to be used in the fitting process. Should be \code{NULL} or a numeric vector.}
+  \item{fit_backend}{backend used for repeated non-ordinal score-space GLM fits. Use \code{"stats"} for the compatibility path or \code{"fastglm"} to opt into the accelerated complete-data backend. Unsupported cases fall back to \code{"stats"} with a warning.}
   \item{subset}{an optional vector specifying a subset of observations to be used in the fitting process.}
   \item{start}{starting values for the parameters in the linear predictor.}
   \item{etastart}{starting values for the linear predictor.}
   \item{mustart}{starting values for the vector of means.}
   \item{offset}{this can be used to specify an \emph{a priori} known component to be included in the linear predictor during fitting. This should be \code{NULL} or a numeric vector of length equal to the number of cases. One or more \code{\link{offset}} terms can be included in the formula instead or as well, and if more than one is specified their sum is used. See \code{\link{model.offset}}.}
-  \item{method}{For a glm model (\code{modele="pls-glm-family"}), the method to be used in fitting the model. The default method \code{"glm.fit"} uses iteratively reweighted least squares (IWLS). User-supplied fitting functions can be supplied either as a function or a character string naming a function, with a function which takes the same arguments as \code{glm.fit}.
-  For a polr model (\code{modele="pls-glm-polr"}), \code{logistic} or \code{probit} or (complementary) log-log (\code{loglog} or \code{cloglog}) or \code{cauchit} (corresponding to a Cauchy latent variable).}
+  \item{method}{For non-ordinal GLM modes this argument is kept for backward compatibility; use \code{fit_backend} to choose the score-space fitting backend. For a polr model (\code{modele="pls-glm-polr"}), \code{logistic} or \code{probit} or (complementary) log-log (\code{loglog} or \code{cloglog}) or \code{cauchit} (corresponding to a Cauchy latent variable).}
   \item{control}{a list of parameters for controlling the fitting process. For \code{glm.fit} this is passed to \code{\link{glm.control}}.}
   \item{contrasts}{an optional list. See the \code{contrasts.arg} of \code{model.matrix.default}.}
   \item{sparse}{should the coefficients of non-significant predictors (<\code{alpha.pvals.expli}) be set to 0}
@@ -139,6 +143,7 @@ Depends on the model that was used to fit the model. You can generally at least 
   \item{dataX}{predictor values}
   \item{dataY}{response values}
   \item{weights}{weights of the observations}
+  \item{fit_backend}{backend used for repeated non-ordinal score-space GLM fits}
   \item{computed_nt}{number of components that were computed}
   \item{AIC}{AIC vs number of components}
   \item{BIC}{BIC vs number of components}

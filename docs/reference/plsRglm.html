@@ -44,24 +44,28 @@
 <span>dataPredictY<span class="op">=</span><span class="va">dataX</span>,modele<span class="op">=</span><span class="st">"pls"</span>,family<span class="op">=</span><span class="cn">NULL</span>,typeVC<span class="op">=</span><span class="st">"none"</span>,</span>
 <span>EstimXNA<span class="op">=</span><span class="cn">FALSE</span>,scaleX<span class="op">=</span><span class="cn">TRUE</span>,scaleY<span class="op">=</span><span class="cn">NULL</span>,pvals.expli<span class="op">=</span><span class="cn">FALSE</span>,</span>
 <span>alpha.pvals.expli<span class="op">=</span><span class="fl">.05</span>,MClassed<span class="op">=</span><span class="cn">FALSE</span>,tol_Xi<span class="op">=</span><span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">12</span><span class="op">)</span>,<span class="va">weights</span>,</span>
-<span>sparse<span class="op">=</span><span class="cn">FALSE</span>,sparseStop<span class="op">=</span><span class="cn">TRUE</span>,naive<span class="op">=</span><span class="cn">FALSE</span>,verbose<span class="op">=</span><span class="cn">TRUE</span>,<span class="va">...</span><span class="op">)</span></span>
+<span>sparse<span class="op">=</span><span class="cn">FALSE</span>,sparseStop<span class="op">=</span><span class="cn">TRUE</span>,naive<span class="op">=</span><span class="cn">FALSE</span>,fit_backend<span class="op">=</span><span class="st">"stats"</span>,</span>
+<span>verbose<span class="op">=</span><span class="cn">TRUE</span>,<span class="va">...</span><span class="op">)</span></span>
 <span><span class="co"># S3 method for class 'formula'</span></span>
 <span><span class="fu">plsRglmmodel</span><span class="op">(</span><span class="va">object</span>,data<span class="op">=</span><span class="cn">NULL</span>,nt<span class="op">=</span><span class="fl">2</span>,limQ2set<span class="op">=</span><span class="fl">.0975</span>,</span>
 <span><span class="va">dataPredictY</span>,modele<span class="op">=</span><span class="st">"pls"</span>,family<span class="op">=</span><span class="cn">NULL</span>,typeVC<span class="op">=</span><span class="st">"none"</span>,</span>
 <span>EstimXNA<span class="op">=</span><span class="cn">FALSE</span>,scaleX<span class="op">=</span><span class="cn">TRUE</span>,scaleY<span class="op">=</span><span class="cn">NULL</span>,pvals.expli<span class="op">=</span><span class="cn">FALSE</span>,</span>
 <span>alpha.pvals.expli<span class="op">=</span><span class="fl">.05</span>,MClassed<span class="op">=</span><span class="cn">FALSE</span>,tol_Xi<span class="op">=</span><span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">12</span><span class="op">)</span>,<span class="va">weights</span>,<span class="va">subset</span>,</span>
 <span>start<span class="op">=</span><span class="cn">NULL</span>,<span class="va">etastart</span>,<span class="va">mustart</span>,<span class="va">offset</span>,method<span class="op">=</span><span class="st">"glm.fit"</span>,control<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>contrasts<span class="op">=</span><span class="cn">NULL</span>,sparse<span class="op">=</span><span class="cn">FALSE</span>,sparseStop<span class="op">=</span><span class="cn">TRUE</span>,naive<span class="op">=</span><span class="cn">FALSE</span>,verbose<span class="op">=</span><span class="cn">TRUE</span>,<span class="va">...</span><span class="op">)</span></span>
+<span>contrasts<span class="op">=</span><span class="cn">NULL</span>,sparse<span class="op">=</span><span class="cn">FALSE</span>,sparseStop<span class="op">=</span><span class="cn">TRUE</span>,naive<span class="op">=</span><span class="cn">FALSE</span>,</span>
+<span>fit_backend<span class="op">=</span><span class="st">"stats"</span>,verbose<span class="op">=</span><span class="cn">TRUE</span>,<span class="va">...</span><span class="op">)</span></span>
 <span><span class="fu">PLS_glm</span><span class="op">(</span><span class="va">dataY</span>, <span class="va">dataX</span>, nt <span class="op">=</span> <span class="fl">2</span>, limQ2set <span class="op">=</span> <span class="fl">0.0975</span>, dataPredictY <span class="op">=</span> <span class="va">dataX</span>, </span>
 <span>modele <span class="op">=</span> <span class="st">"pls"</span>, family <span class="op">=</span> <span class="cn">NULL</span>, typeVC <span class="op">=</span> <span class="st">"none"</span>, EstimXNA <span class="op">=</span> <span class="cn">FALSE</span>, </span>
 <span>scaleX <span class="op">=</span> <span class="cn">TRUE</span>, scaleY <span class="op">=</span> <span class="cn">NULL</span>, pvals.expli <span class="op">=</span> <span class="cn">FALSE</span>, </span>
 <span>alpha.pvals.expli <span class="op">=</span> <span class="fl">0.05</span>, MClassed <span class="op">=</span> <span class="cn">FALSE</span>, tol_Xi <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">12</span><span class="op">)</span>, <span class="va">weights</span>, </span>
-<span><span class="va">method</span>, sparse <span class="op">=</span> <span class="cn">FALSE</span>, sparseStop<span class="op">=</span><span class="cn">FALSE</span>, naive<span class="op">=</span><span class="cn">FALSE</span>,verbose<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">method</span>, sparse <span class="op">=</span> <span class="cn">FALSE</span>, sparseStop<span class="op">=</span><span class="cn">FALSE</span>, naive<span class="op">=</span><span class="cn">FALSE</span>,</span>
+<span>fit_backend<span class="op">=</span><span class="st">"stats"</span>,verbose<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu">PLS_glm_formula</span><span class="op">(</span><span class="va">formula</span>,data<span class="op">=</span><span class="cn">NULL</span>,nt<span class="op">=</span><span class="fl">2</span>,limQ2set<span class="op">=</span><span class="fl">.0975</span>,dataPredictY<span class="op">=</span><span class="va">dataX</span>,</span>
 <span>modele<span class="op">=</span><span class="st">"pls"</span>,family<span class="op">=</span><span class="cn">NULL</span>,typeVC<span class="op">=</span><span class="st">"none"</span>,EstimXNA<span class="op">=</span><span class="cn">FALSE</span>,scaleX<span class="op">=</span><span class="cn">TRUE</span>,</span>
 <span>scaleY<span class="op">=</span><span class="cn">NULL</span>,pvals.expli<span class="op">=</span><span class="cn">FALSE</span>,alpha.pvals.expli<span class="op">=</span><span class="fl">.05</span>,MClassed<span class="op">=</span><span class="cn">FALSE</span>,</span>
 <span>tol_Xi<span class="op">=</span><span class="fl">10</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">12</span><span class="op">)</span>,<span class="va">weights</span>,<span class="va">subset</span>,start<span class="op">=</span><span class="cn">NULL</span>,<span class="va">etastart</span>,<span class="va">mustart</span>,<span class="va">offset</span>,<span class="va">method</span>,</span>
-<span>control<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,contrasts<span class="op">=</span><span class="cn">NULL</span>,sparse<span class="op">=</span><span class="cn">FALSE</span>,sparseStop<span class="op">=</span><span class="cn">FALSE</span>,naive<span class="op">=</span><span class="cn">FALSE</span>,verbose<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span>control<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,contrasts<span class="op">=</span><span class="cn">NULL</span>,sparse<span class="op">=</span><span class="cn">FALSE</span>,sparseStop<span class="op">=</span><span class="cn">FALSE</span>,naive<span class="op">=</span><span class="cn">FALSE</span>,</span>
+<span>fit_backend<span class="op">=</span><span class="st">"stats"</span>,verbose<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -128,6 +132,9 @@
   <dt id="arg-weights">weights<a class="anchor" aria-label="anchor" href="#arg-weights"></a></dt>
 <dd><p>an optional vector of 'prior weights' to be used in the fitting process. Should be <code>NULL</code> or a numeric vector.</p></dd>
 
+  <dt id="arg-fit-backend">fit_backend<a class="anchor" aria-label="anchor" href="#arg-fit-backend"></a></dt>
+<dd><p>backend used for repeated non-ordinal score-space GLM fits. Use <code>"stats"</code> for the compatibility path or <code>"fastglm"</code> to opt into the accelerated complete-data backend. Unsupported cases fall back to <code>"stats"</code> with a warning.</p></dd>
+
   <dt id="arg-subset">subset<a class="anchor" aria-label="anchor" href="#arg-subset"></a></dt>
 <dd><p>an optional vector specifying a subset of observations to be used in the fitting process.</p></dd>
 
@@ -144,8 +151,7 @@
 <dd><p>this can be used to specify an <em>a priori</em> known component to be included in the linear predictor during fitting. This should be <code>NULL</code> or a numeric vector of length equal to the number of cases. One or more <code><a href="https://rdrr.io/r/stats/offset.html" class="external-link">offset</a></code> terms can be included in the formula instead or as well, and if more than one is specified their sum is used. See <code><a href="https://rdrr.io/r/stats/model.extract.html" class="external-link">model.offset</a></code>.</p></dd>
 
   <dt id="arg-method">method<a class="anchor" aria-label="anchor" href="#arg-method"></a></dt>
-<dd><p>For a glm model (<code>modele="pls-glm-family"</code>), the method to be used in fitting the model. The default method <code>"glm.fit"</code> uses iteratively reweighted least squares (IWLS). User-supplied fitting functions can be supplied either as a function or a character string naming a function, with a function which takes the same arguments as <code>glm.fit</code>.
-  For a polr model (<code>modele="pls-glm-polr"</code>), <code>logistic</code> or <code>probit</code> or (complementary) log-log (<code>loglog</code> or <code>cloglog</code>) or <code>cauchit</code> (corresponding to a Cauchy latent variable).</p></dd>
+<dd><p>For non-ordinal GLM modes this argument is kept for backward compatibility; use <code>fit_backend</code> to choose the score-space fitting backend. For a polr model (<code>modele="pls-glm-polr"</code>), <code>logistic</code> or <code>probit</code> or (complementary) log-log (<code>loglog</code> or <code>cloglog</code>) or <code>cauchit</code> (corresponding to a Cauchy latent variable).</p></dd>
 
   <dt id="arg-control">control<a class="anchor" aria-label="anchor" href="#arg-control"></a></dt>
 <dd><p>a list of parameters for controlling the fitting process. For <code>glm.fit</code> this is passed to <code><a href="https://rdrr.io/r/stats/glm.control.html" class="external-link">glm.control</a></code>.</p></dd>
@@ -326,6 +332,9 @@
   <dt>weights</dt>
 <dd><p>weights of the observations</p></dd>
 
+  <dt>fit_backend</dt>
+<dd><p>backend used for repeated non-ordinal score-space GLM fits</p></dd>
+
   <dt>computed_nt</dt>
 <dd><p>number of components that were computed</p></dd>
 
@@ -446,7 +455,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 4 ____</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 5 ____</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 6 ____</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Warning : 1 2 3 4 5 6 7 &lt; 10^{-12}</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Warning :  &lt; 10^{-12}</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Warning only 6 components could thus be extracted</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Predicting X without NA neither in X nor in Y____</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ****________________________________________________****</span>
@@ -494,12 +503,12 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> NK: 91,  92,  93,  94,  95,  96,  97,  98,  99,  100</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> CV Q2Chi2 criterion:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0  1  2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0 28 72 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> CV PreChi2 criterion:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1  2  3  4  5 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1 30 47 19  3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res.cv.modplsglm</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plsRglm-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
@@ -549,7 +558,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_3 5.121086    0.7488308  0.8467795  0.9628191 24.40842         4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_4 5.103312    0.7387162  0.8232505  0.9357846 24.23105         5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_5 6.006316    0.7096382  0.7976101  0.9198348 28.21184         6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6 7.000001    0.7633342  0.9711319  1.1359499 33.18347         7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6 7.000002    0.7633343  0.9711321  1.1359501 33.18347         7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           sigmahat.naive  AIC.naive  BIC.naive GMDL.naive</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0      6.5212706 46.0708838 47.7893514   27.59461</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1      1.8905683  4.1699567  4.4588195   18.37545</span>
@@ -719,12 +728,13 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_10 -17.999267  492.33678</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Model with all the required components:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  glm(formula = YwotNA ~ ., family = family, data = tttrain)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  stats::glm(formula = y ~ ., family = family, data = data.frame(y = as.numeric(y), </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     tt = tt))</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)         tt.1         tt.2         tt.3         tt.4         tt.5  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)    tt.Comp_1    tt.Comp_2    tt.Comp_3    tt.Comp_4    tt.Comp_5  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    -0.24597      1.54105      0.47489      0.89142      0.51153      0.33475  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        tt.6         tt.7         tt.8         tt.9        tt.10  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   tt.Comp_6    tt.Comp_7    tt.Comp_8    tt.Comp_9   tt.Comp_10  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     0.35595      0.23350      0.21274      0.09192      0.06302  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom: 103 Total (i.e. Null);  93 Residual</span>
@@ -941,7 +951,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 2 ____</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 3 ____</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 4 ____</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Warning : 1 2 3 4 &lt; 10^{-12}</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Warning :  &lt; 10^{-12}</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Warning only 4 components could thus be extracted</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Predicting X without NA neither in X nor in Y____</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ****________________________________________________****</span>
@@ -1362,40 +1372,40 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> ****________________________________________________****</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="op">(</span><span class="va">ypine</span><span class="op">)</span>,<span class="va">modpls4NA</span><span class="op">$</span><span class="va">ValsPredictY</span>,<span class="va">modplsglm4NA</span><span class="op">$</span><span class="va">ValsPredictY</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    [,1]        [,2]        [,3]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  2.37  2.59632584  2.65655978</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  1.47  1.29283727  1.28488164</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  1.13  1.75173093  1.15999892</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  0.85  1.18716395  0.63676710</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  0.24  0.86910609  0.48002572</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  1.49  1.46921709  1.35213181</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  0.30 -0.21535819 -0.40312929</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  0.07  0.23933510  0.06547790</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  3.00  1.40568878  1.59073347</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 1.21  0.50211746  0.51995031</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 0.38  0.66223983  0.59109134</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 0.70  0.44282335  0.02503985</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 2.64  2.36396443  2.30673885</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 2.05  1.90161042  1.99562658</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 1.75  1.29947548  1.50028142</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16 0.06 -0.46871207 -0.45217350</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17 0.13  0.57159705  0.38572317</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 1.00  0.91390716  0.93127818</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19 0.41  0.66724660  0.69975186</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20 0.72 -0.11983245 -0.17511644</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 0.67  1.05066865  1.10740476</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22 0.12  0.92111414  0.88988795</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23 0.97  0.56876142  1.08147288</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 0.07  0.57008862  0.95768372</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 0.10  0.04444106 -0.37407716</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26 0.68  0.55151878  1.09037413</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 0.13  0.33919018  0.37286685</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28 0.20  1.24427797  1.30885327</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29 1.09  1.34241091  1.60355751</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 0.18  0.49663099  0.45727580</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31 0.35  0.97474814  1.27926735</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32 0.21  0.41013362  0.97635769</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 0.03 -0.37518880 -0.15328541</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       [,1]        [,2]        [,3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1,] 2.37  2.59632584  2.65655978</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2,] 1.47  1.29283727  1.28488164</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3,] 1.13  1.75173093  1.15999892</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4,] 0.85  1.18716395  0.63676710</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5,] 0.24  0.86910609  0.48002572</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6,] 1.49  1.46921709  1.35213181</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7,] 0.30 -0.21535819 -0.40312929</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8,] 0.07  0.23933510  0.06547790</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9,] 3.00  1.40568878  1.59073347</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10,] 1.21  0.50211746  0.51995031</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11,] 0.38  0.66223983  0.59109134</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [12,] 0.70  0.44282335  0.02503985</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13,] 2.64  2.36396443  2.30673885</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [14,] 2.05  1.90161042  1.99562658</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15,] 1.75  1.29947548  1.50028142</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16,] 0.06 -0.46871207 -0.45217350</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17,] 0.13  0.57159705  0.38572317</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [18,] 1.00  0.91390716  0.93127818</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19,] 0.41  0.66724660  0.69975186</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [20,] 0.72 -0.11983245 -0.17511644</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21,] 0.67  1.05066865  1.10740476</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [22,] 0.12  0.92111414  0.88988795</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23,] 0.97  0.56876142  1.08147288</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [24,] 0.07  0.57008862  0.95768372</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25,] 0.10  0.04444106 -0.37407716</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26,] 0.68  0.55151878  1.09037413</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27,] 0.13  0.33919018  0.37286685</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [28,] 0.20  1.24427797  1.30885327</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29,] 1.09  1.34241091  1.60355751</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30,] 0.18  0.49663099  0.45727580</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31,] 0.35  0.97474814  1.27926735</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [32,] 0.21  0.41013362  0.97635769</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33,] 0.03 -0.37518880 -0.15328541</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Xpine"</span>,<span class="st">"ypine"</span>,<span class="st">"modpls4"</span>,<span class="st">"modpls4NA"</span>,<span class="st">"modplsglm4"</span>,<span class="st">"modplsglm4NA"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">fowlkes</span><span class="op">)</span></span></span>
@@ -1449,10 +1459,11 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_4 -4.008764  11463.529</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Model with all the required components:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  glm(formula = YwotNA ~ ., family = family, data = tttrain)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  stats::glm(formula = y ~ ., family = family, data = data.frame(y = as.numeric(y), </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     tt = tt))</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)         tt.1         tt.2         tt.3         tt.4  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)    tt.Comp_1    tt.Comp_2    tt.Comp_3    tt.Comp_4  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   -0.587799     0.177512     0.045112     0.013739     0.007043  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom: 9948 Total (i.e. Null);  9944 Residual</span>
@@ -1477,6 +1488,8 @@
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">yhyptis</span>,<span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">modpls2</span><span class="op">$</span><span class="va">FinalModel</span>,type<span class="op">=</span><span class="st">"class"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"yhyptis"</span>,<span class="st">"Xhyptis"</span>,<span class="st">"modpls2"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: chemometrics</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: rpart</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____************************************************____</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Model: pls-glm-polr </span>
@@ -1510,10 +1523,50 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 5 ____</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 6 ____</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 7 ____</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 8 ____</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Warning : 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 &lt; 10^{-12}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Warning only 8 components could thus be extracted</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 9 ____</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ____Component____ 10 ____</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ____Predicting X without NA neither in X nor in Y____</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ****________________________________________________****</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -1521,68 +1574,73 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of required components:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of successfully computed components:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   [,1]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Intercept  -4.94026470</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X1          0.03575405</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X2        -10.55974934</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X3          1.15593464</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X4         -0.42925052</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X5          0.57136104</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X6          0.43677191</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X7          0.03575405</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X8         24.04985190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X9          1.15593464</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X10        -0.42925052</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X11         0.57136104</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X12         0.43677191</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X13         0.03575405</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X14        -5.31290179</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X15         1.15593464</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X16        -0.42925052</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X17         0.57136104</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X18         0.43677191</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X19         0.03575405</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X20        -5.31290179</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X21         1.15593464</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X22        -0.42925052</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X23         0.57136104</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X24         0.43677191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Intercept  -3.58699879</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X1          0.00239366</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X2         14.79686950</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X3          1.33665709</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X4         -0.54144605</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X5         -3.58692753</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X6         18.76643869</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X7          0.00239366</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X8        -13.88155114</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X9          1.33665709</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X10        -0.54144605</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X11        -3.58692753</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X12        -6.10856600</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X13         0.00239366</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X14        14.85893636</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X15         1.33665709</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X16        -0.54144605</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X17        12.47299459</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X18        -6.10856600</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X19         0.00239366</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X20       -13.88155114</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X21         1.33665709</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X22        -0.54144605</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X23        -3.58692753</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X24        -6.10856600</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Information criteria and Fit statistics:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                AIC      BIC Missclassed Chi2_Pearson_Y    RSS_Y      R2_Y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0 348.5096 352.0310         123       250.0000 62.48400        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1 159.4885 166.5314          34       222.0787 24.68882 0.6048778</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_2 138.8774 149.4418          31       275.2727 20.90597 0.6654188</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_3 140.0717 154.1576          28       245.8402 20.83078 0.6666222</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_4 141.5817 159.1890          32       272.8925 20.86649 0.6660506</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_5 143.4258 164.5546          32       268.9579 20.85505 0.6662337</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6 145.4206 170.0708          32       268.3603 20.85285 0.6662690</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_7 147.3365 175.5082          32       264.5888 20.84915 0.6663282</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_8 149.3365 181.0297          32       264.5888 20.84915 0.6663282</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             R2_residY RSS_residY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0          NA     62.484</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1   -25.72379   1669.809</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_2   -50.67938   3229.134</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_3   -48.58458   3098.243</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_4   -51.75556   3296.378</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_5   -51.51036   3281.058</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6   -51.42983   3276.026</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_7 -1196.70672  74837.507</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_8   -57.88193   3679.178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 AIC      BIC Missclassed Chi2_Pearson_Y    RSS_Y      R2_Y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0  346.9719 350.4933         115       250.0000 62.10000        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1  159.7329 166.7758          34       212.2064 23.96440 0.6140999</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_2  135.3345 145.8989          28       203.6315 19.74367 0.6820665</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_3  136.4909 150.5768          26       191.3673 19.64578 0.6836428</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_4  137.0521 154.6594          30       195.2590 19.54577 0.6852532</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_5  138.6422 159.7710          30       202.8448 19.47499 0.6863930</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6  138.5700 163.2203          29       193.2077 18.92250 0.6952898</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_7  139.6130 167.7846          29       189.6752 18.86887 0.6961535</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_8  141.6130 173.3061          29       189.6752 18.86887 0.6961535</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_9  143.6130 178.8276          29       189.6752 18.86887 0.6961535</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_10 145.6130 184.3490          29       189.6752 18.86887 0.6961535</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              R2_residY RSS_residY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0           NA     62.100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1    -20.41896   1330.118</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_2    -38.72375   2466.845</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_3    -36.34895   2319.370</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_4    -38.11536   2429.064</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_5    -39.11861   2491.366</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6    -38.63956   2461.617</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_7  -8932.71726 554783.842</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_8    -56.49370   3570.359</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_9    -54.27861   3432.802</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_10   -54.27761   3432.740</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Model with all the required components:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  glm(formula = YwotNA ~ ., family = family, data = tttrain)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  stats::glm(formula = y ~ ., family = family, data = data.frame(y = as.numeric(y), </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     tt = tt))</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)         tt.1         tt.2         tt.3         tt.4         tt.5  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   -0.001574     1.434029     0.519441     0.069985     0.153924     0.130296  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        tt.6         tt.7         tt.8  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   -0.029721   106.340171   671.157849  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)    tt.Comp_1    tt.Comp_2    tt.Comp_3    tt.Comp_4    tt.Comp_5  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      0.3127       1.2555       0.8499       0.3405       0.5719       0.5492  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   tt.Comp_6    tt.Comp_7    tt.Comp_8    tt.Comp_9   tt.Comp_10  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     10.3646      13.1816    3716.8395     634.9737    1513.9627  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom: 249 Total (i.e. Null);  241 Residual</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    346.5 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 131.3 	AIC: 149.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom: 249 Total (i.e. Null);  239 Residual</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    345 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 123.6 	AIC: 145.6</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">simbin</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fu"><a href="dicho.html">dicho</a></span><span class="op">(</span><span class="va">dataAstar6</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">cv.modplsglm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/warning.html" class="external-link">suppressWarnings</a></span><span class="op">(</span><span class="fu"><a href="cv.plsRglm.html">cv.plsRglm</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">.</span>,data<span class="op">=</span><span class="va">simbin</span>,nt<span class="op">=</span><span class="fl">10</span>,</span></span>

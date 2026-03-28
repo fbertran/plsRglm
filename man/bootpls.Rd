@@ -17,7 +17,8 @@ bootpls(
 )
 }
 \arguments{
-\item{object}{An object of class \code{plsRmodel} to bootstrap}
+\item{object}{An object of class \code{plsRmodel} or
+\code{plsRmultiModel} to bootstrap.}
 
 \item{typeboot}{The type of bootstrap. Either (Y,X) boostrap
 (\code{typeboot="plsmodel"}) or (Y,T) bootstrap

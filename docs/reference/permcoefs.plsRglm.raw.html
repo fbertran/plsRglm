@@ -44,6 +44,7 @@
 <span>  <span class="va">nt</span>,</span>
 <span>  <span class="va">modele</span>,</span>
 <span>  family <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  fit_backend <span class="op">=</span> <span class="st">"stats"</span>,</span>
 <span>  <span class="va">maxcoefvalues</span>,</span>
 <span>  <span class="va">ifbootfail</span>,</span>
 <span>  <span class="va">verbose</span></span>
@@ -72,6 +73,11 @@
 
 <dt id="arg-family">family<a class="anchor" aria-label="anchor" href="#arg-family"></a></dt>
 <dd><p>glm family to use, see <a href="plsRglm.html">plsRglm</a></p></dd>
+
+
+<dt id="arg-fit-backend">fit_backend<a class="anchor" aria-label="anchor" href="#arg-fit-backend"></a></dt>
+<dd><p>backend used for repeated non-ordinal score-space GLM
+fits. Use <code>"stats"</code> or <code>"fastglm"</code>.</p></dd>
 
 
 <dt id="arg-maxcoefvalues">maxcoefvalues<a class="anchor" aria-label="anchor" href="#arg-maxcoefvalues"></a></dt>

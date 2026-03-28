@@ -11,6 +11,7 @@ coefs.plsRglm(
   nt,
   modele,
   family = NULL,
+  fit_backend = "stats",
   maxcoefvalues,
   ifbootfail,
   verbose
@@ -40,6 +41,11 @@ coefs.plsRglm(
 
   glm family to use, see
   [plsRglm](https://fbertran.github.io/plsRglm/reference/plsRglm.md)
+
+- fit_backend:
+
+  backend used for repeated non-ordinal score-space GLM fits. Use
+  `"stats"` or `"fastglm"`.
 
 - maxcoefvalues:
 

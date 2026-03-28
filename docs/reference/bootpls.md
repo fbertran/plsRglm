@@ -25,7 +25,7 @@ bootpls(
 
 - object:
 
-  An object of class `plsRmodel` to bootstrap
+  An object of class `plsRmodel` or `plsRmultiModel` to bootstrap.
 
 - typeboot:
 
@@ -126,6 +126,7 @@ modpls <- plsR(yCornell,XCornell,3)
 #> ____Component____ 2 ____
 #> ____Component____ 3 ____
 #> ____Predicting X without NA neither in X nor in Y____
+#> Loading required namespace: plsdof
 #> ****________________________________________________****
 #> 
 

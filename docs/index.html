@@ -215,62 +215,46 @@
 <span><span class="co">#&gt; [1] 0 0 3 0 0 0</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res6</span><span class="op">$</span><span class="va">InfCrit</span></span>
-<span><span class="co">#&gt;                AIC   Q2cum_Y LimQ2_Y</span></span>
-<span><span class="co">#&gt; Nb_Comp_0 82.01205        NA      NA</span></span>
-<span><span class="co">#&gt; Nb_Comp_1 53.15173 0.8966556  0.0975</span></span>
-<span><span class="co">#&gt; Nb_Comp_2 41.08283 0.9175426  0.0975</span></span>
-<span><span class="co">#&gt; Nb_Comp_3 32.06411 0.9399676  0.0975</span></span>
-<span><span class="co">#&gt; Nb_Comp_4 33.76477 0.9197009  0.0975</span></span>
-<span><span class="co">#&gt; Nb_Comp_5 33.34373 0.9281373  0.0975</span></span>
-<span><span class="co">#&gt; Nb_Comp_6 35.25533 0.9232562  0.0975</span></span>
-<span><span class="co">#&gt;                  Q2_Y   PRESS_Y      RSS_Y</span></span>
-<span><span class="co">#&gt; Nb_Comp_0          NA        NA 467.796667</span></span>
-<span><span class="co">#&gt; Nb_Comp_1  0.89665563 48.344150  35.742486</span></span>
-<span><span class="co">#&gt; Nb_Comp_2  0.20210989 28.518576  11.066606</span></span>
-<span><span class="co">#&gt; Nb_Comp_3  0.27195907  8.056942   4.418081</span></span>
-<span><span class="co">#&gt; Nb_Comp_4 -0.33759604  5.909608   4.309235</span></span>
-<span><span class="co">#&gt; Nb_Comp_5  0.10506161  3.856500   3.521924</span></span>
-<span><span class="co">#&gt; Nb_Comp_6 -0.06792167  3.761138   3.496074</span></span>
-<span><span class="co">#&gt;                R2_Y R2_residY  RSS_residY</span></span>
-<span><span class="co">#&gt; Nb_Comp_0        NA        NA 11.00000000</span></span>
-<span><span class="co">#&gt; Nb_Comp_1 0.9235940 0.9235940  0.84046633</span></span>
-<span><span class="co">#&gt; Nb_Comp_2 0.9763431 0.9763431  0.26022559</span></span>
-<span><span class="co">#&gt; Nb_Comp_3 0.9905556 0.9905556  0.10388893</span></span>
-<span><span class="co">#&gt; Nb_Comp_4 0.9907882 0.9907882  0.10132947</span></span>
-<span><span class="co">#&gt; Nb_Comp_5 0.9924713 0.9924713  0.08281624</span></span>
-<span><span class="co">#&gt; Nb_Comp_6 0.9925265 0.9925265  0.08220840</span></span>
-<span><span class="co">#&gt;           PRESS_residY   Q2_residY  LimQ2</span></span>
-<span><span class="co">#&gt; Nb_Comp_0           NA          NA     NA</span></span>
-<span><span class="co">#&gt; Nb_Comp_1   1.13678803  0.89665563 0.0975</span></span>
-<span><span class="co">#&gt; Nb_Comp_2   0.67059977  0.20210989 0.0975</span></span>
-<span><span class="co">#&gt; Nb_Comp_3   0.18945488  0.27195907 0.0975</span></span>
-<span><span class="co">#&gt; Nb_Comp_4   0.13896142 -0.33759604 0.0975</span></span>
-<span><span class="co">#&gt; Nb_Comp_5   0.09068364  0.10506161 0.0975</span></span>
-<span><span class="co">#&gt; Nb_Comp_6   0.08844125 -0.06792167 0.0975</span></span>
-<span><span class="co">#&gt;           Q2cum_residY    AIC.std  DoF.dof</span></span>
-<span><span class="co">#&gt; Nb_Comp_0           NA  37.010388 1.000000</span></span>
-<span><span class="co">#&gt; Nb_Comp_1    0.8966556   8.150064 2.740749</span></span>
-<span><span class="co">#&gt; Nb_Comp_2    0.9175426  -3.918831 5.085967</span></span>
-<span><span class="co">#&gt; Nb_Comp_3    0.9399676 -12.937550 5.121086</span></span>
-<span><span class="co">#&gt; Nb_Comp_4    0.9197009 -11.236891 5.103312</span></span>
-<span><span class="co">#&gt; Nb_Comp_5    0.9281373 -11.657929 6.006316</span></span>
-<span><span class="co">#&gt; Nb_Comp_6    0.9232562  -9.746328 7.000001</span></span>
-<span><span class="co">#&gt;           sigmahat.dof    AIC.dof    BIC.dof</span></span>
-<span><span class="co">#&gt; Nb_Comp_0    6.5212706 46.0708838 47.7893514</span></span>
-<span><span class="co">#&gt; Nb_Comp_1    1.8665281  4.5699686  4.9558156</span></span>
-<span><span class="co">#&gt; Nb_Comp_2    1.1825195  2.1075461  2.3949331</span></span>
-<span><span class="co">#&gt; Nb_Comp_3    0.7488308  0.8467795  0.9628191</span></span>
-<span><span class="co">#&gt; Nb_Comp_4    0.7387162  0.8232505  0.9357846</span></span>
-<span><span class="co">#&gt; Nb_Comp_5    0.7096382  0.7976101  0.9198348</span></span>
-<span><span class="co">#&gt; Nb_Comp_6    0.7633342  0.9711319  1.1359499</span></span>
-<span><span class="co">#&gt;           GMDL.dof DoF.naive sigmahat.naive</span></span>
-<span><span class="co">#&gt; Nb_Comp_0 27.59461         1      6.5212706</span></span>
-<span><span class="co">#&gt; Nb_Comp_1 21.34020         2      1.8905683</span></span>
-<span><span class="co">#&gt; Nb_Comp_2 27.40202         3      1.1088836</span></span>
-<span><span class="co">#&gt; Nb_Comp_3 24.40842         4      0.7431421</span></span>
-<span><span class="co">#&gt; Nb_Comp_4 24.23105         5      0.7846050</span></span>
-<span><span class="co">#&gt; Nb_Comp_5 28.21184         6      0.7661509</span></span>
-<span><span class="co">#&gt; Nb_Comp_6 33.18347         7      0.8361907</span></span>
+<span><span class="co">#&gt;                AIC   Q2cum_Y LimQ2_Y        Q2_Y   PRESS_Y</span></span>
+<span><span class="co">#&gt; Nb_Comp_0 82.01205        NA      NA          NA        NA</span></span>
+<span><span class="co">#&gt; Nb_Comp_1 53.15173 0.8966556  0.0975  0.89665563 48.344150</span></span>
+<span><span class="co">#&gt; Nb_Comp_2 41.08283 0.9175426  0.0975  0.20210989 28.518576</span></span>
+<span><span class="co">#&gt; Nb_Comp_3 32.06411 0.9399676  0.0975  0.27195907  8.056942</span></span>
+<span><span class="co">#&gt; Nb_Comp_4 33.76477 0.9197009  0.0975 -0.33759604  5.909608</span></span>
+<span><span class="co">#&gt; Nb_Comp_5 33.34373 0.9281373  0.0975  0.10506161  3.856500</span></span>
+<span><span class="co">#&gt; Nb_Comp_6 35.25533 0.9232562  0.0975 -0.06792167  3.761138</span></span>
+<span><span class="co">#&gt;                RSS_Y      R2_Y R2_residY  RSS_residY</span></span>
+<span><span class="co">#&gt; Nb_Comp_0 467.796667        NA        NA 11.00000000</span></span>
+<span><span class="co">#&gt; Nb_Comp_1  35.742486 0.9235940 0.9235940  0.84046633</span></span>
+<span><span class="co">#&gt; Nb_Comp_2  11.066606 0.9763431 0.9763431  0.26022559</span></span>
+<span><span class="co">#&gt; Nb_Comp_3   4.418081 0.9905556 0.9905556  0.10388893</span></span>
+<span><span class="co">#&gt; Nb_Comp_4   4.309235 0.9907882 0.9907882  0.10132947</span></span>
+<span><span class="co">#&gt; Nb_Comp_5   3.521924 0.9924713 0.9924713  0.08281624</span></span>
+<span><span class="co">#&gt; Nb_Comp_6   3.496074 0.9925265 0.9925265  0.08220840</span></span>
+<span><span class="co">#&gt;           PRESS_residY   Q2_residY  LimQ2 Q2cum_residY</span></span>
+<span><span class="co">#&gt; Nb_Comp_0           NA          NA     NA           NA</span></span>
+<span><span class="co">#&gt; Nb_Comp_1   1.13678803  0.89665563 0.0975    0.8966556</span></span>
+<span><span class="co">#&gt; Nb_Comp_2   0.67059977  0.20210989 0.0975    0.9175426</span></span>
+<span><span class="co">#&gt; Nb_Comp_3   0.18945488  0.27195907 0.0975    0.9399676</span></span>
+<span><span class="co">#&gt; Nb_Comp_4   0.13896142 -0.33759604 0.0975    0.9197009</span></span>
+<span><span class="co">#&gt; Nb_Comp_5   0.09068364  0.10506161 0.0975    0.9281373</span></span>
+<span><span class="co">#&gt; Nb_Comp_6   0.08844125 -0.06792167 0.0975    0.9232562</span></span>
+<span><span class="co">#&gt;              AIC.std  DoF.dof sigmahat.dof    AIC.dof</span></span>
+<span><span class="co">#&gt; Nb_Comp_0  37.010388 1.000000    6.5212706 46.0708838</span></span>
+<span><span class="co">#&gt; Nb_Comp_1   8.150064 2.740749    1.8665281  4.5699686</span></span>
+<span><span class="co">#&gt; Nb_Comp_2  -3.918831 5.085967    1.1825195  2.1075461</span></span>
+<span><span class="co">#&gt; Nb_Comp_3 -12.937550 5.121086    0.7488308  0.8467795</span></span>
+<span><span class="co">#&gt; Nb_Comp_4 -11.236891 5.103312    0.7387162  0.8232505</span></span>
+<span><span class="co">#&gt; Nb_Comp_5 -11.657929 6.006316    0.7096382  0.7976101</span></span>
+<span><span class="co">#&gt; Nb_Comp_6  -9.746328 7.000001    0.7633342  0.9711319</span></span>
+<span><span class="co">#&gt;              BIC.dof GMDL.dof DoF.naive sigmahat.naive</span></span>
+<span><span class="co">#&gt; Nb_Comp_0 47.7893514 27.59461         1      6.5212706</span></span>
+<span><span class="co">#&gt; Nb_Comp_1  4.9558156 21.34020         2      1.8905683</span></span>
+<span><span class="co">#&gt; Nb_Comp_2  2.3949331 27.40202         3      1.1088836</span></span>
+<span><span class="co">#&gt; Nb_Comp_3  0.9628191 24.40842         4      0.7431421</span></span>
+<span><span class="co">#&gt; Nb_Comp_4  0.9357846 24.23105         5      0.7846050</span></span>
+<span><span class="co">#&gt; Nb_Comp_5  0.9198348 28.21184         6      0.7661509</span></span>
+<span><span class="co">#&gt; Nb_Comp_6  1.1359499 33.18347         7      0.8361907</span></span>
 <span><span class="co">#&gt;            AIC.naive  BIC.naive GMDL.naive</span></span>
 <span><span class="co">#&gt; Nb_Comp_0 46.0708838 47.7893514   27.59461</span></span>
 <span><span class="co">#&gt; Nb_Comp_1  4.1699567  4.4588195   18.37545</span></span>
@@ -363,24 +347,18 @@ plot of chunk chunk10
 <span><span class="co">#&gt; X6          5.5177190</span></span>
 <span><span class="co">#&gt; X7        -44.9000310</span></span>
 <span><span class="co">#&gt; Information criteria and Fit statistics:</span></span>
-<span><span class="co">#&gt;                AIC     RSS_Y     R2_Y</span></span>
-<span><span class="co">#&gt; Nb_Comp_0 82.01205 467.79667       NA</span></span>
-<span><span class="co">#&gt; Nb_Comp_1 53.15173  35.74249 0.923594</span></span>
-<span><span class="co">#&gt;           R2_residY RSS_residY   AIC.std</span></span>
-<span><span class="co">#&gt; Nb_Comp_0        NA 11.0000000 37.010388</span></span>
-<span><span class="co">#&gt; Nb_Comp_1  0.923594  0.8404663  8.150064</span></span>
-<span><span class="co">#&gt;            DoF.dof sigmahat.dof   AIC.dof</span></span>
-<span><span class="co">#&gt; Nb_Comp_0 1.000000     6.521271 46.070884</span></span>
-<span><span class="co">#&gt; Nb_Comp_1 2.740749     1.866528  4.569969</span></span>
-<span><span class="co">#&gt;             BIC.dof GMDL.dof DoF.naive</span></span>
-<span><span class="co">#&gt; Nb_Comp_0 47.789351 27.59461         1</span></span>
-<span><span class="co">#&gt; Nb_Comp_1  4.955816 21.34020         2</span></span>
-<span><span class="co">#&gt;           sigmahat.naive AIC.naive BIC.naive</span></span>
-<span><span class="co">#&gt; Nb_Comp_0       6.521271 46.070884  47.78935</span></span>
-<span><span class="co">#&gt; Nb_Comp_1       1.890568  4.169957   4.45882</span></span>
-<span><span class="co">#&gt;           GMDL.naive</span></span>
-<span><span class="co">#&gt; Nb_Comp_0   27.59461</span></span>
-<span><span class="co">#&gt; Nb_Comp_1   18.37545</span></span></code></pre></div>
+<span><span class="co">#&gt;                AIC     RSS_Y     R2_Y R2_residY RSS_residY</span></span>
+<span><span class="co">#&gt; Nb_Comp_0 82.01205 467.79667       NA        NA 11.0000000</span></span>
+<span><span class="co">#&gt; Nb_Comp_1 53.15173  35.74249 0.923594  0.923594  0.8404663</span></span>
+<span><span class="co">#&gt;             AIC.std  DoF.dof sigmahat.dof   AIC.dof</span></span>
+<span><span class="co">#&gt; Nb_Comp_0 37.010388 1.000000     6.521271 46.070884</span></span>
+<span><span class="co">#&gt; Nb_Comp_1  8.150064 2.740749     1.866528  4.569969</span></span>
+<span><span class="co">#&gt;             BIC.dof GMDL.dof DoF.naive sigmahat.naive</span></span>
+<span><span class="co">#&gt; Nb_Comp_0 47.789351 27.59461         1       6.521271</span></span>
+<span><span class="co">#&gt; Nb_Comp_1  4.955816 21.34020         2       1.890568</span></span>
+<span><span class="co">#&gt;           AIC.naive BIC.naive GMDL.naive</span></span>
+<span><span class="co">#&gt; Nb_Comp_0 46.070884  47.78935   27.59461</span></span>
+<span><span class="co">#&gt; Nb_Comp_1  4.169957   4.45882   18.37545</span></span></code></pre></div>
 <p>It is also possible to obtain the matrix W∗ with the following command line:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span><span class="op">$</span><span class="va">wwetoile</span></span>
@@ -558,18 +536,12 @@ plot of chunk chunk32
 <span><span class="co">#&gt; Heat         -0.08876364</span></span>
 <span><span class="co">#&gt; Rain         -0.02589509</span></span>
 <span><span class="co">#&gt; Information criteria and Fit statistics:</span></span>
-<span><span class="co">#&gt;                AIC      BIC Missclassed</span></span>
-<span><span class="co">#&gt; Nb_Comp_0 78.64736 81.70009          22</span></span>
-<span><span class="co">#&gt; Nb_Comp_1 36.50286 41.08194           6</span></span>
-<span><span class="co">#&gt; Nb_Comp_2 35.58058 41.68602           6</span></span>
-<span><span class="co">#&gt; Nb_Comp_3 36.26588 43.89768           7</span></span>
-<span><span class="co">#&gt; Nb_Comp_4 38.15799 47.31616           7</span></span>
-<span><span class="co">#&gt;           Chi2_Pearson_Y</span></span>
-<span><span class="co">#&gt; Nb_Comp_0      62.333333</span></span>
-<span><span class="co">#&gt; Nb_Comp_1       9.356521</span></span>
-<span><span class="co">#&gt; Nb_Comp_2       8.568956</span></span>
-<span><span class="co">#&gt; Nb_Comp_3       8.281011</span></span>
-<span><span class="co">#&gt; Nb_Comp_4       8.321689</span></span></code></pre></div>
+<span><span class="co">#&gt;                AIC      BIC Missclassed Chi2_Pearson_Y</span></span>
+<span><span class="co">#&gt; Nb_Comp_0 78.64736 81.70009          22      62.333333</span></span>
+<span><span class="co">#&gt; Nb_Comp_1 36.50286 41.08194           6       9.356521</span></span>
+<span><span class="co">#&gt; Nb_Comp_2 35.58058 41.68602           6       8.568956</span></span>
+<span><span class="co">#&gt; Nb_Comp_3 36.26588 43.89768           7       8.281011</span></span>
+<span><span class="co">#&gt; Nb_Comp_4 38.15799 47.31616           7       8.321689</span></span></code></pre></div>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Xbordeaux</span><span class="op">&lt;-</span><span class="va">bordeaux</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span>
 <span><span class="va">ybordeaux</span><span class="op">&lt;-</span><span class="va">bordeaux</span><span class="op">$</span><span class="va">Quality</span></span>
@@ -600,18 +572,12 @@ plot of chunk chunk32
 <span><span class="co">#&gt; Heat         -0.08876364</span></span>
 <span><span class="co">#&gt; Rain         -0.02589509</span></span>
 <span><span class="co">#&gt; Information criteria and Fit statistics:</span></span>
-<span><span class="co">#&gt;                AIC      BIC Missclassed</span></span>
-<span><span class="co">#&gt; Nb_Comp_0 78.64736 81.70009          22</span></span>
-<span><span class="co">#&gt; Nb_Comp_1 36.50286 41.08194           6</span></span>
-<span><span class="co">#&gt; Nb_Comp_2 35.58058 41.68602           6</span></span>
-<span><span class="co">#&gt; Nb_Comp_3 36.26588 43.89768           7</span></span>
-<span><span class="co">#&gt; Nb_Comp_4 38.15799 47.31616           7</span></span>
-<span><span class="co">#&gt;           Chi2_Pearson_Y</span></span>
-<span><span class="co">#&gt; Nb_Comp_0      62.333333</span></span>
-<span><span class="co">#&gt; Nb_Comp_1       9.356521</span></span>
-<span><span class="co">#&gt; Nb_Comp_2       8.568956</span></span>
-<span><span class="co">#&gt; Nb_Comp_3       8.281011</span></span>
-<span><span class="co">#&gt; Nb_Comp_4       8.321689</span></span></code></pre></div>
+<span><span class="co">#&gt;                AIC      BIC Missclassed Chi2_Pearson_Y</span></span>
+<span><span class="co">#&gt; Nb_Comp_0 78.64736 81.70009          22      62.333333</span></span>
+<span><span class="co">#&gt; Nb_Comp_1 36.50286 41.08194           6       9.356521</span></span>
+<span><span class="co">#&gt; Nb_Comp_2 35.58058 41.68602           6       8.568956</span></span>
+<span><span class="co">#&gt; Nb_Comp_3 36.26588 43.89768           7       8.281011</span></span>
+<span><span class="co">#&gt; Nb_Comp_4 38.15799 47.31616           7       8.321689</span></span></code></pre></div>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="va">modpls1</span><span class="op">$</span><span class="va">InfCrit</span><span class="op">==</span><span class="va">modpls2</span><span class="op">$</span><span class="va">InfCrit</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
@@ -734,32 +700,20 @@ plot of chunk chunk44
 <span><span class="co">#&gt; Heat         -0.09542680</span></span>
 <span><span class="co">#&gt; Rain         -0.02399436</span></span>
 <span><span class="co">#&gt; Information criteria and Fit statistics:</span></span>
-<span><span class="co">#&gt;                AIC      BIC Missclassed</span></span>
-<span><span class="co">#&gt; Nb_Comp_0 78.64736 81.70009          22</span></span>
-<span><span class="co">#&gt; Nb_Comp_1 36.21263 40.79171           6</span></span>
-<span><span class="co">#&gt; Nb_Comp_2 35.29582 41.40126           5</span></span>
-<span><span class="co">#&gt; Nb_Comp_3 35.81623 43.44803           7</span></span>
-<span><span class="co">#&gt;           Chi2_Pearson_Y</span></span>
-<span><span class="co">#&gt; Nb_Comp_0      62.333333</span></span>
-<span><span class="co">#&gt; Nb_Comp_1       9.454055</span></span>
-<span><span class="co">#&gt; Nb_Comp_2       8.234674</span></span>
-<span><span class="co">#&gt; Nb_Comp_3       7.803408</span></span></code></pre></div>
+<span><span class="co">#&gt;                AIC      BIC Missclassed Chi2_Pearson_Y</span></span>
+<span><span class="co">#&gt; Nb_Comp_0 78.64736 81.70009          22      62.333333</span></span>
+<span><span class="co">#&gt; Nb_Comp_1 36.21263 40.79171           6       9.454055</span></span>
+<span><span class="co">#&gt; Nb_Comp_2 35.29582 41.40126           5       8.234674</span></span>
+<span><span class="co">#&gt; Nb_Comp_3 35.81623 43.44803           7       7.803408</span></span></code></pre></div>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>formula<span class="op">=</span><span class="va">modpls1</span><span class="op">$</span><span class="va">Coeffs</span>,datasets<span class="op">=</span><span class="va">modpls2</span><span class="op">$</span><span class="va">Coeffs</span>,datasetsNA<span class="op">=</span><span class="va">modplsNA</span><span class="op">$</span><span class="va">Coeffs</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                  formula     datasets</span></span>
-<span><span class="co">#&gt; 1|2         -85.50956454 -85.50956454</span></span>
-<span><span class="co">#&gt; 2|3         -80.55155990 -80.55155990</span></span>
-<span><span class="co">#&gt; Temperature   0.02427235   0.02427235</span></span>
-<span><span class="co">#&gt; Sunshine      0.01379029   0.01379029</span></span>
-<span><span class="co">#&gt; Heat         -0.08876364  -0.08876364</span></span>
-<span><span class="co">#&gt; Rain         -0.02589509  -0.02589509</span></span>
-<span><span class="co">#&gt;               datasetsNA</span></span>
-<span><span class="co">#&gt; 1|2         -89.16630231</span></span>
-<span><span class="co">#&gt; 2|3         -84.11693439</span></span>
-<span><span class="co">#&gt; Temperature   0.02461148</span></span>
-<span><span class="co">#&gt; Sunshine      0.01535315</span></span>
-<span><span class="co">#&gt; Heat         -0.09542680</span></span>
-<span><span class="co">#&gt; Rain         -0.02399436</span></span></code></pre></div>
+<span><span class="co">#&gt;                  formula     datasets   datasetsNA</span></span>
+<span><span class="co">#&gt; 1|2         -85.50956454 -85.50956454 -89.16630231</span></span>
+<span><span class="co">#&gt; 2|3         -80.55155990 -80.55155990 -84.11693439</span></span>
+<span><span class="co">#&gt; Temperature   0.02427235   0.02427235   0.02461148</span></span>
+<span><span class="co">#&gt; Sunshine      0.01379029   0.01379029   0.01535315</span></span>
+<span><span class="co">#&gt; Heat         -0.08876364  -0.08876364  -0.09542680</span></span>
+<span><span class="co">#&gt; Rain         -0.02589509  -0.02589509  -0.02399436</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="bootstrap-yx-1">Bootstrap (y,X)<a class="anchor" aria-label="anchor" href="#bootstrap-yx-1"></a>
@@ -778,10 +732,18 @@ plot of chunk chunk44
 <span><span class="co">#&gt; ****________________________________________________****</span></span>
 <span><span class="va">bordeaux.bootYT</span><span class="op">&lt;-</span> <span class="fu"><a href="reference/bootplsglm.html">bootplsglm</a></span><span class="op">(</span><span class="va">modplsglm3</span>, sim<span class="op">=</span><span class="st">"permutation"</span>, R<span class="op">=</span><span class="fl">250</span>, verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/boxplots.bootpls.html">boxplots.bootpls</a></span><span class="op">(</span><span class="va">bordeaux.bootYT</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk48-1.png" title="plot of chunk chunk48" alt="plot of chunk chunk48" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk48-1.png" alt="plot of chunk chunk48" width="100%"><p class="caption">
+plot of chunk chunk48
+</p>
+</div>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/boxplots.bootpls.html">boxplots.bootpls</a></span><span class="op">(</span><span class="va">bordeaux.bootYT</span>,ranget0<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-chunk48-2.png" title="plot of chunk chunk48" alt="plot of chunk chunk48" width="100%"></p>
+<div class="figure">
+<img src="reference/figures/README-chunk48-2.png" alt="plot of chunk chunk48" width="100%"><p class="caption">
+plot of chunk chunk48
+</p>
+</div>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span></span>
@@ -820,27 +782,20 @@ plot of chunk chunk53
 <p>Stratified balanced bootstrap: CIs for each of the predictors distribution.</p>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/confints.bootpls.html">confints.bootpls</a></span><span class="op">(</span><span class="va">bordeaux.bootYX1strata</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                                            </span></span>
-<span><span class="co">#&gt; 1|2         -5.2285517 1.8448908 -3.0266055</span></span>
-<span><span class="co">#&gt; 2|3         -1.4216229 4.9525537 -2.3021666</span></span>
-<span><span class="co">#&gt; Temperature -0.7320271 3.1003955 -1.6883027</span></span>
-<span><span class="co">#&gt; Sunshine    -0.8132215 3.5499277 -0.7684357</span></span>
-<span><span class="co">#&gt; Heat        -0.7762493 2.4414119 -1.4124977</span></span>
-<span><span class="co">#&gt; Rain        -1.8637554 0.3290778 -1.4058759</span></span>
-<span><span class="co">#&gt;                                            </span></span>
-<span><span class="co">#&gt; 1|2         2.1579125 -6.6883385 -1.5038206</span></span>
-<span><span class="co">#&gt; 2|3         3.1831363  1.4147309  6.9000338</span></span>
-<span><span class="co">#&gt; Temperature 2.0324540  1.0278307  4.7485873</span></span>
-<span><span class="co">#&gt; Sunshine    2.2776395  1.1162563  4.1623315</span></span>
-<span><span class="co">#&gt; Heat        1.6043794  0.5748209  3.5916981</span></span>
-<span><span class="co">#&gt; Rain        0.4748013 -2.2942690 -0.4135918</span></span>
-<span><span class="co">#&gt;                                  </span></span>
-<span><span class="co">#&gt; 1|2         -4.5562748 -1.3483662</span></span>
-<span><span class="co">#&gt; 2|3          1.2896677  4.7862147</span></span>
-<span><span class="co">#&gt; Temperature  0.9261003  3.2057586</span></span>
-<span><span class="co">#&gt; Sunshine     1.0299078  3.0499807</span></span>
-<span><span class="co">#&gt; Heat         0.5437488  2.7944714</span></span>
-<span><span class="co">#&gt; Rain        -1.9548575 -0.3625478</span></span>
+<span><span class="co">#&gt;                                                      </span></span>
+<span><span class="co">#&gt; 1|2         -5.2285585 1.8448981 -3.0266055 2.1579125</span></span>
+<span><span class="co">#&gt; 2|3         -1.4216276 4.9525580 -2.3021666 3.1831363</span></span>
+<span><span class="co">#&gt; Temperature -0.7320288 3.1003971 -1.6883027 2.0324540</span></span>
+<span><span class="co">#&gt; Sunshine    -0.8132278 3.5499337 -0.7684357 2.2776395</span></span>
+<span><span class="co">#&gt; Heat        -0.7762507 2.4414133 -1.4124977 1.6043794</span></span>
+<span><span class="co">#&gt; Rain        -1.8637573 0.3290798 -1.4058759 0.4748013</span></span>
+<span><span class="co">#&gt;                                                        </span></span>
+<span><span class="co">#&gt; 1|2         -6.6883385 -1.5038206 -4.5562748 -1.3483662</span></span>
+<span><span class="co">#&gt; 2|3          1.4147309  6.9000338  1.2896677  4.7862148</span></span>
+<span><span class="co">#&gt; Temperature  1.0278307  4.7485873  0.9261003  3.2057587</span></span>
+<span><span class="co">#&gt; Sunshine     1.1162563  4.1623315  1.0299078  3.0499807</span></span>
+<span><span class="co">#&gt; Heat         0.5748209  3.5916981  0.5437488  2.7944715</span></span>
+<span><span class="co">#&gt; Rain        -2.2942690 -0.4135918 -1.9548576 -0.3625478</span></span>
 <span><span class="co">#&gt; attr(,"typeBCa")</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <p>Stratified balanced bootstrap: plot of the CIs for each of the predictors distribution.</p>

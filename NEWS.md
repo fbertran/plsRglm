@@ -5,6 +5,8 @@
 * Fixed issues during crossvalidation
 * Fixed missing prediction path for plsr models
 * Recreated the source for the package vignette
+* Added optional use of fastglm to speed up model fit
+* Added experimental functions for PLS2 fit/predict/CV/bootstrap
 
 # plsRglm 1.6.0
 

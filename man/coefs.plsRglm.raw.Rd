@@ -10,6 +10,7 @@ coefs.plsRglm.raw(
   nt,
   modele,
   family = NULL,
+  fit_backend = "stats",
   maxcoefvalues,
   ifbootfail,
   verbose
@@ -25,6 +26,9 @@ coefs.plsRglm.raw(
 \item{modele}{type of modele to use, see \link{plsRglm}}
 
 \item{family}{glm family to use, see \link{plsRglm}}
+
+\item{fit_backend}{backend used for repeated non-ordinal score-space GLM
+fits. Use \code{"stats"} or \code{"fastglm"}.}
 
 \item{maxcoefvalues}{maximum values allowed for the estimates of the
 coefficients to discard those coming from singular bootstrap samples}

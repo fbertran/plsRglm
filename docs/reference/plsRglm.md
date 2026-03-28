@@ -12,24 +12,28 @@ plsRglmmodel(object,dataX,nt=2,limQ2set=.0975,
 dataPredictY=dataX,modele="pls",family=NULL,typeVC="none",
 EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,
 alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,
-sparse=FALSE,sparseStop=TRUE,naive=FALSE,verbose=TRUE,...)
+sparse=FALSE,sparseStop=TRUE,naive=FALSE,fit_backend="stats",
+verbose=TRUE,...)
 # S3 method for class 'formula'
 plsRglmmodel(object,data=NULL,nt=2,limQ2set=.0975,
 dataPredictY,modele="pls",family=NULL,typeVC="none",
 EstimXNA=FALSE,scaleX=TRUE,scaleY=NULL,pvals.expli=FALSE,
 alpha.pvals.expli=.05,MClassed=FALSE,tol_Xi=10^(-12),weights,subset,
 start=NULL,etastart,mustart,offset,method="glm.fit",control= list(),
-contrasts=NULL,sparse=FALSE,sparseStop=TRUE,naive=FALSE,verbose=TRUE,...)
+contrasts=NULL,sparse=FALSE,sparseStop=TRUE,naive=FALSE,
+fit_backend="stats",verbose=TRUE,...)
 PLS_glm(dataY, dataX, nt = 2, limQ2set = 0.0975, dataPredictY = dataX, 
 modele = "pls", family = NULL, typeVC = "none", EstimXNA = FALSE, 
 scaleX = TRUE, scaleY = NULL, pvals.expli = FALSE, 
 alpha.pvals.expli = 0.05, MClassed = FALSE, tol_Xi = 10^(-12), weights, 
-method, sparse = FALSE, sparseStop=FALSE, naive=FALSE,verbose=TRUE)
+method, sparse = FALSE, sparseStop=FALSE, naive=FALSE,
+fit_backend="stats",verbose=TRUE)
 PLS_glm_formula(formula,data=NULL,nt=2,limQ2set=.0975,dataPredictY=dataX,
 modele="pls",family=NULL,typeVC="none",EstimXNA=FALSE,scaleX=TRUE,
 scaleY=NULL,pvals.expli=FALSE,alpha.pvals.expli=.05,MClassed=FALSE,
 tol_Xi=10^(-12),weights,subset,start=NULL,etastart,mustart,offset,method,
-control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE,verbose=TRUE)
+control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE,
+fit_backend="stats",verbose=TRUE)
 ```
 
 ## Arguments
@@ -140,6 +144,13 @@ control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE,verbose
   an optional vector of 'prior weights' to be used in the fitting
   process. Should be `NULL` or a numeric vector.
 
+- fit_backend:
+
+  backend used for repeated non-ordinal score-space GLM fits. Use
+  `"stats"` for the compatibility path or `"fastglm"` to opt into the
+  accelerated complete-data backend. Unsupported cases fall back to
+  `"stats"` with a warning.
+
 - subset:
 
   an optional vector specifying a subset of observations to be used in
@@ -169,14 +180,11 @@ control= list(),contrasts=NULL,sparse=FALSE,sparseStop=FALSE,naive=FALSE,verbose
 
 - method:
 
-  For a glm model (`modele="pls-glm-family"`), the method to be used in
-  fitting the model. The default method `"glm.fit"` uses iteratively
-  reweighted least squares (IWLS). User-supplied fitting functions can
-  be supplied either as a function or a character string naming a
-  function, with a function which takes the same arguments as `glm.fit`.
-  For a polr model (`modele="pls-glm-polr"`), `logistic` or `probit` or
-  (complementary) log-log (`loglog` or `cloglog`) or `cauchit`
-  (corresponding to a Cauchy latent variable).
+  For non-ordinal GLM modes this argument is kept for backward
+  compatibility; use `fit_backend` to choose the score-space fitting
+  backend. For a polr model (`modele="pls-glm-polr"`), `logistic` or
+  `probit` or (complementary) log-log (`loglog` or `cloglog`) or
+  `cauchit` (corresponding to a Cauchy latent variable).
 
 - control:
 
@@ -453,6 +461,10 @@ at least find these items.
 
   weights of the observations
 
+- fit_backend:
+
+  backend used for repeated non-ordinal score-space GLM fits
+
 - computed_nt:
 
   number of components that were computed
@@ -605,7 +617,7 @@ modplsglm <- plsRglm(yCornell,XCornell,10,modele="pls-glm-gaussian")
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
 #> ____Component____ 6 ____
-#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
+#> Warning :  < 10^{-12}
 #> Warning only 6 components could thus be extracted
 #> ____Predicting X without NA neither in X nor in Y____
 #> ****________________________________________________****
@@ -653,12 +665,12 @@ res.cv.modplsglm<-cvtable(summary(cv.modplsglm))
 #> NK: 91,  92,  93,  94,  95,  96,  97,  98,  99,  100
 #> 
 #> CV Q2Chi2 criterion:
-#>  0  1  2 
-#>  0 28 72 
+#> 0 
+#> 0 
 #> 
 #> CV PreChi2 criterion:
-#>  1  2  3  4  5 
-#>  1 30 47 19  3 
+#> 1 
+#> 0 
 plot(res.cv.modplsglm)
 
 
@@ -708,7 +720,7 @@ modpls
 #> Nb_Comp_3 5.121086    0.7488308  0.8467795  0.9628191 24.40842         4
 #> Nb_Comp_4 5.103312    0.7387162  0.8232505  0.9357846 24.23105         5
 #> Nb_Comp_5 6.006316    0.7096382  0.7976101  0.9198348 28.21184         6
-#> Nb_Comp_6 7.000001    0.7633342  0.9711319  1.1359499 33.18347         7
+#> Nb_Comp_6 7.000002    0.7633343  0.9711321  1.1359501 33.18347         7
 #>           sigmahat.naive  AIC.naive  BIC.naive GMDL.naive
 #> Nb_Comp_0      6.5212706 46.0708838 47.7893514   27.59461
 #> Nb_Comp_1      1.8905683  4.1699567  4.4588195   18.37545
@@ -878,12 +890,13 @@ modpls
 #> Nb_Comp_10 -17.999267  492.33678
 #> Model with all the required components:
 #> 
-#> Call:  glm(formula = YwotNA ~ ., family = family, data = tttrain)
+#> Call:  stats::glm(formula = y ~ ., family = family, data = data.frame(y = as.numeric(y), 
+#>     tt = tt))
 #> 
 #> Coefficients:
-#> (Intercept)         tt.1         tt.2         tt.3         tt.4         tt.5  
+#> (Intercept)    tt.Comp_1    tt.Comp_2    tt.Comp_3    tt.Comp_4    tt.Comp_5  
 #>    -0.24597      1.54105      0.47489      0.89142      0.51153      0.33475  
-#>        tt.6         tt.7         tt.8         tt.9        tt.10  
+#>   tt.Comp_6    tt.Comp_7    tt.Comp_8    tt.Comp_9   tt.Comp_10  
 #>     0.35595      0.23350      0.21274      0.09192      0.06302  
 #> 
 #> Degrees of Freedom: 103 Total (i.e. Null);  93 Residual
@@ -1100,7 +1113,7 @@ modpls <- plsRglm(ybordeaux,Xbordeaux,10,modele="pls-glm-polr",pvals.expli=TRUE)
 #> ____Component____ 2 ____
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
-#> Warning : 1 2 3 4 < 10^{-12}
+#> Warning :  < 10^{-12}
 #> Warning only 4 components could thus be extracted
 #> ____Predicting X without NA neither in X nor in Y____
 #> ****________________________________________________****
@@ -1521,40 +1534,40 @@ modplsglm4NA <- plsRglm(ypine,XpineNAX21,4,modele="pls-glm-gaussian")
 #> ****________________________________________________****
 #> 
 cbind((ypine),modpls4NA$ValsPredictY,modplsglm4NA$ValsPredictY)
-#>    [,1]        [,2]        [,3]
-#> 1  2.37  2.59632584  2.65655978
-#> 2  1.47  1.29283727  1.28488164
-#> 3  1.13  1.75173093  1.15999892
-#> 4  0.85  1.18716395  0.63676710
-#> 5  0.24  0.86910609  0.48002572
-#> 6  1.49  1.46921709  1.35213181
-#> 7  0.30 -0.21535819 -0.40312929
-#> 8  0.07  0.23933510  0.06547790
-#> 9  3.00  1.40568878  1.59073347
-#> 10 1.21  0.50211746  0.51995031
-#> 11 0.38  0.66223983  0.59109134
-#> 12 0.70  0.44282335  0.02503985
-#> 13 2.64  2.36396443  2.30673885
-#> 14 2.05  1.90161042  1.99562658
-#> 15 1.75  1.29947548  1.50028142
-#> 16 0.06 -0.46871207 -0.45217350
-#> 17 0.13  0.57159705  0.38572317
-#> 18 1.00  0.91390716  0.93127818
-#> 19 0.41  0.66724660  0.69975186
-#> 20 0.72 -0.11983245 -0.17511644
-#> 21 0.67  1.05066865  1.10740476
-#> 22 0.12  0.92111414  0.88988795
-#> 23 0.97  0.56876142  1.08147288
-#> 24 0.07  0.57008862  0.95768372
-#> 25 0.10  0.04444106 -0.37407716
-#> 26 0.68  0.55151878  1.09037413
-#> 27 0.13  0.33919018  0.37286685
-#> 28 0.20  1.24427797  1.30885327
-#> 29 1.09  1.34241091  1.60355751
-#> 30 0.18  0.49663099  0.45727580
-#> 31 0.35  0.97474814  1.27926735
-#> 32 0.21  0.41013362  0.97635769
-#> 33 0.03 -0.37518880 -0.15328541
+#>       [,1]        [,2]        [,3]
+#>  [1,] 2.37  2.59632584  2.65655978
+#>  [2,] 1.47  1.29283727  1.28488164
+#>  [3,] 1.13  1.75173093  1.15999892
+#>  [4,] 0.85  1.18716395  0.63676710
+#>  [5,] 0.24  0.86910609  0.48002572
+#>  [6,] 1.49  1.46921709  1.35213181
+#>  [7,] 0.30 -0.21535819 -0.40312929
+#>  [8,] 0.07  0.23933510  0.06547790
+#>  [9,] 3.00  1.40568878  1.59073347
+#> [10,] 1.21  0.50211746  0.51995031
+#> [11,] 0.38  0.66223983  0.59109134
+#> [12,] 0.70  0.44282335  0.02503985
+#> [13,] 2.64  2.36396443  2.30673885
+#> [14,] 2.05  1.90161042  1.99562658
+#> [15,] 1.75  1.29947548  1.50028142
+#> [16,] 0.06 -0.46871207 -0.45217350
+#> [17,] 0.13  0.57159705  0.38572317
+#> [18,] 1.00  0.91390716  0.93127818
+#> [19,] 0.41  0.66724660  0.69975186
+#> [20,] 0.72 -0.11983245 -0.17511644
+#> [21,] 0.67  1.05066865  1.10740476
+#> [22,] 0.12  0.92111414  0.88988795
+#> [23,] 0.97  0.56876142  1.08147288
+#> [24,] 0.07  0.57008862  0.95768372
+#> [25,] 0.10  0.04444106 -0.37407716
+#> [26,] 0.68  0.55151878  1.09037413
+#> [27,] 0.13  0.33919018  0.37286685
+#> [28,] 0.20  1.24427797  1.30885327
+#> [29,] 1.09  1.34241091  1.60355751
+#> [30,] 0.18  0.49663099  0.45727580
+#> [31,] 0.35  0.97474814  1.27926735
+#> [32,] 0.21  0.41013362  0.97635769
+#> [33,] 0.03 -0.37518880 -0.15328541
 rm(list=c("Xpine","ypine","modpls4","modpls4NA","modplsglm4","modplsglm4NA"))
 
 data(fowlkes)
@@ -1608,10 +1621,11 @@ modpls
 #> Nb_Comp_4 -4.008764  11463.529
 #> Model with all the required components:
 #> 
-#> Call:  glm(formula = YwotNA ~ ., family = family, data = tttrain)
+#> Call:  stats::glm(formula = y ~ ., family = family, data = data.frame(y = as.numeric(y), 
+#>     tt = tt))
 #> 
 #> Coefficients:
-#> (Intercept)         tt.1         tt.2         tt.3         tt.4  
+#> (Intercept)    tt.Comp_1    tt.Comp_2    tt.Comp_3    tt.Comp_4  
 #>   -0.587799     0.177512     0.045112     0.013739     0.007043  
 #> 
 #> Degrees of Freedom: 9948 Total (i.e. Null);  9944 Residual
@@ -1636,6 +1650,8 @@ modpls2$Std.Coeffs
 table(yhyptis,predict(modpls2$FinalModel,type="class"))
 rm(list=c("yhyptis","Xhyptis","modpls2"))
 }
+#> Loading required package: chemometrics
+#> Loading required package: rpart
 #> ____************************************************____
 #> 
 #> Model: pls-glm-polr 
@@ -1669,10 +1685,50 @@ modplsglm <- plsRglm(ysimbin1,Xsimbin1,10,modele="pls-glm-logistic")
 #> ____Component____ 5 ____
 #> ____Component____ 6 ____
 #> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
 #> ____Component____ 7 ____
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
 #> ____Component____ 8 ____
-#> Warning : 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 < 10^{-12}
-#> Warning only 8 components could thus be extracted
+#> ____Component____ 9 ____
+#> ____Component____ 10 ____
 #> ____Predicting X without NA neither in X nor in Y____
 #> ****________________________________________________****
 #> 
@@ -1680,68 +1736,73 @@ modplsglm
 #> Number of required components:
 #> [1] 10
 #> Number of successfully computed components:
-#> [1] 8
+#> [1] 10
 #> Coefficients:
 #>                   [,1]
-#> Intercept  -4.94026470
-#> X1          0.03575405
-#> X2        -10.55974934
-#> X3          1.15593464
-#> X4         -0.42925052
-#> X5          0.57136104
-#> X6          0.43677191
-#> X7          0.03575405
-#> X8         24.04985190
-#> X9          1.15593464
-#> X10        -0.42925052
-#> X11         0.57136104
-#> X12         0.43677191
-#> X13         0.03575405
-#> X14        -5.31290179
-#> X15         1.15593464
-#> X16        -0.42925052
-#> X17         0.57136104
-#> X18         0.43677191
-#> X19         0.03575405
-#> X20        -5.31290179
-#> X21         1.15593464
-#> X22        -0.42925052
-#> X23         0.57136104
-#> X24         0.43677191
+#> Intercept  -3.58699879
+#> X1          0.00239366
+#> X2         14.79686950
+#> X3          1.33665709
+#> X4         -0.54144605
+#> X5         -3.58692753
+#> X6         18.76643869
+#> X7          0.00239366
+#> X8        -13.88155114
+#> X9          1.33665709
+#> X10        -0.54144605
+#> X11        -3.58692753
+#> X12        -6.10856600
+#> X13         0.00239366
+#> X14        14.85893636
+#> X15         1.33665709
+#> X16        -0.54144605
+#> X17        12.47299459
+#> X18        -6.10856600
+#> X19         0.00239366
+#> X20       -13.88155114
+#> X21         1.33665709
+#> X22        -0.54144605
+#> X23        -3.58692753
+#> X24        -6.10856600
 #> Information criteria and Fit statistics:
-#>                AIC      BIC Missclassed Chi2_Pearson_Y    RSS_Y      R2_Y
-#> Nb_Comp_0 348.5096 352.0310         123       250.0000 62.48400        NA
-#> Nb_Comp_1 159.4885 166.5314          34       222.0787 24.68882 0.6048778
-#> Nb_Comp_2 138.8774 149.4418          31       275.2727 20.90597 0.6654188
-#> Nb_Comp_3 140.0717 154.1576          28       245.8402 20.83078 0.6666222
-#> Nb_Comp_4 141.5817 159.1890          32       272.8925 20.86649 0.6660506
-#> Nb_Comp_5 143.4258 164.5546          32       268.9579 20.85505 0.6662337
-#> Nb_Comp_6 145.4206 170.0708          32       268.3603 20.85285 0.6662690
-#> Nb_Comp_7 147.3365 175.5082          32       264.5888 20.84915 0.6663282
-#> Nb_Comp_8 149.3365 181.0297          32       264.5888 20.84915 0.6663282
-#>             R2_residY RSS_residY
-#> Nb_Comp_0          NA     62.484
-#> Nb_Comp_1   -25.72379   1669.809
-#> Nb_Comp_2   -50.67938   3229.134
-#> Nb_Comp_3   -48.58458   3098.243
-#> Nb_Comp_4   -51.75556   3296.378
-#> Nb_Comp_5   -51.51036   3281.058
-#> Nb_Comp_6   -51.42983   3276.026
-#> Nb_Comp_7 -1196.70672  74837.507
-#> Nb_Comp_8   -57.88193   3679.178
+#>                 AIC      BIC Missclassed Chi2_Pearson_Y    RSS_Y      R2_Y
+#> Nb_Comp_0  346.9719 350.4933         115       250.0000 62.10000        NA
+#> Nb_Comp_1  159.7329 166.7758          34       212.2064 23.96440 0.6140999
+#> Nb_Comp_2  135.3345 145.8989          28       203.6315 19.74367 0.6820665
+#> Nb_Comp_3  136.4909 150.5768          26       191.3673 19.64578 0.6836428
+#> Nb_Comp_4  137.0521 154.6594          30       195.2590 19.54577 0.6852532
+#> Nb_Comp_5  138.6422 159.7710          30       202.8448 19.47499 0.6863930
+#> Nb_Comp_6  138.5700 163.2203          29       193.2077 18.92250 0.6952898
+#> Nb_Comp_7  139.6130 167.7846          29       189.6752 18.86887 0.6961535
+#> Nb_Comp_8  141.6130 173.3061          29       189.6752 18.86887 0.6961535
+#> Nb_Comp_9  143.6130 178.8276          29       189.6752 18.86887 0.6961535
+#> Nb_Comp_10 145.6130 184.3490          29       189.6752 18.86887 0.6961535
+#>              R2_residY RSS_residY
+#> Nb_Comp_0           NA     62.100
+#> Nb_Comp_1    -20.41896   1330.118
+#> Nb_Comp_2    -38.72375   2466.845
+#> Nb_Comp_3    -36.34895   2319.370
+#> Nb_Comp_4    -38.11536   2429.064
+#> Nb_Comp_5    -39.11861   2491.366
+#> Nb_Comp_6    -38.63956   2461.617
+#> Nb_Comp_7  -8932.71726 554783.842
+#> Nb_Comp_8    -56.49370   3570.359
+#> Nb_Comp_9    -54.27861   3432.802
+#> Nb_Comp_10   -54.27761   3432.740
 #> Model with all the required components:
 #> 
-#> Call:  glm(formula = YwotNA ~ ., family = family, data = tttrain)
+#> Call:  stats::glm(formula = y ~ ., family = family, data = data.frame(y = as.numeric(y), 
+#>     tt = tt))
 #> 
 #> Coefficients:
-#> (Intercept)         tt.1         tt.2         tt.3         tt.4         tt.5  
-#>   -0.001574     1.434029     0.519441     0.069985     0.153924     0.130296  
-#>        tt.6         tt.7         tt.8  
-#>   -0.029721   106.340171   671.157849  
+#> (Intercept)    tt.Comp_1    tt.Comp_2    tt.Comp_3    tt.Comp_4    tt.Comp_5  
+#>      0.3127       1.2555       0.8499       0.3405       0.5719       0.5492  
+#>   tt.Comp_6    tt.Comp_7    tt.Comp_8    tt.Comp_9   tt.Comp_10  
+#>     10.3646      13.1816    3716.8395     634.9737    1513.9627  
 #> 
-#> Degrees of Freedom: 249 Total (i.e. Null);  241 Residual
-#> Null Deviance:       346.5 
-#> Residual Deviance: 131.3     AIC: 149.3
+#> Degrees of Freedom: 249 Total (i.e. Null);  239 Residual
+#> Null Deviance:       345 
+#> Residual Deviance: 123.6     AIC: 145.6
 
 simbin=data.frame(dicho(dataAstar6))
 cv.modplsglm <- suppressWarnings(cv.plsRglm(Y~.,data=simbin,nt=10,

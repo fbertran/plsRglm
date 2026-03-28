@@ -30,12 +30,23 @@ break_nt_sparse = break_nt_sparse
 )
 }
 
+pls_glm_as_polr_response <- function(y) {
+if (is.matrix(y) || is.data.frame(y)) {
+y <- y[, 1]
+}
+if (is.ordered(y)) {
+return(as.ordered(y))
+}
+as.factor(y)
+}
+
 pls_glm_validate_inputs <- function(dataY, dataX, dataPredictY,
                                     weights, weights_missing,
                                     method, method_missing,
                                     modele, family,
                                     sparse, sparseStop,
                                     pvals.expli, naive, naive_missing,
+                                    fit_backend = "stats",
                                     verbose,
                                     weighted_naive_message = "Only naive DoF can be used with weighted PLS\n",
                                     eval_env = parent.frame()) {
@@ -161,6 +172,13 @@ family <- poisson(link = "log")
 if (modele == "pls-glm-polr") {
 family <- NULL
 }
+fit_backend <- pls_glm_resolve_fit_backend(
+fit_backend = fit_backend,
+modele = modele,
+pvals.expli = pvals.expli,
+has_missing = na.miss.X | na.miss.Y,
+has_weights = !NoWeights
+)
 if (!is.null(family)) {
 if (is.character(family)) {
 family <- get(family, mode = "function", envir = eval_env)
@@ -206,7 +224,8 @@ sparseStop = sparseStop,
 pvals.expli = pvals.expli,
 dataX = dataX,
 modele = modele,
-family = family
+family = family,
+fit_backend = fit_backend
 )
 }
 
@@ -317,7 +336,8 @@ PredictYwotNA = PredictYwotNA
 pls_glm_compute_glm_weights <- function(modele, XXwotNA, XXNA, YwotNA,
                                         tt, family, method, kk,
                                         pvals.expli, alpha.pvals.expli,
-                                        sparse, sparseStop) {
+                                        sparse, sparseStop,
+                                        fit_backend = "stats") {
 supported_modeles <- c(
 "pls-glm-family", "pls-glm-Gamma", "pls-glm-gaussian",
 "pls-glm-inverse.gaussian", "pls-glm-logistic", "pls-glm-poisson",
@@ -330,6 +350,7 @@ stop("Unsupported 'modele' for GLM-specific weighting", call. = FALSE)
 tempww <- rep(0, ncol(XXwotNA))
 XXglm <- XXwotNA
 XXglm[!XXNA] <- NA
+yglm <- drop(YwotNA)
 
 if (modele %in% c(
 "pls-glm-family", "pls-glm-Gamma", "pls-glm-gaussian",
@@ -337,16 +358,30 @@ if (modele %in% c(
 )) {
 if (!pvals.expli) {
 for (jj in 1:ncol(XXglm)) {
-tempww[jj] <- coef(glm(YwotNA ~ cbind(tt, XXglm[, jj]), family = family))[kk + 1]
+tempww[jj] <- pls_glm_fit_weight_column(
+tt = tt,
+xcol = XXglm[, jj],
+y = yglm,
+family = family,
+fit_backend = fit_backend,
+compute_pvalue = FALSE
+)$coef
 }
 return(list(tempww = tempww, break_nt_sparse = FALSE))
 }
 
 tempvalpvalstep <- rep(0, ncol(XXglm))
 for (jj in 1:ncol(XXglm)) {
-tmww <- summary(glm(YwotNA ~ cbind(tt, XXglm[, jj]), family = family))$coefficients[kk + 1, ]
-tempww[jj] <- tmww[1]
-tempvalpvalstep[jj] <- tmww[4]
+tmww <- pls_glm_fit_weight_column(
+tt = tt,
+xcol = XXglm[, jj],
+y = yglm,
+family = family,
+fit_backend = "stats",
+compute_pvalue = TRUE
+)
+tempww[jj] <- tmww$coef
+tempvalpvalstep[jj] <- tmww$p_value
 }
 filtered <- pls_glm_apply_sparse_filter(
 tempww = tempww,
@@ -358,7 +393,7 @@ sparseStop = sparseStop
 return(filtered)
 }
 
-YwotNA <- as.factor(YwotNA)
+YwotNA <- pls_glm_as_polr_response(YwotNA)
 requireNamespace("MASS")
 tts <- tt
 
@@ -427,22 +462,29 @@ should_break = TRUE
 ))
 }
 
-tempwwnorm <- tempww / sqrt(drop(crossprod(tempww)))
-temptt <- XXwotNA %*% tempwwnorm / (XXNA %*% (tempwwnorm^2))
-
-temppp <- rep(0, res$nc)
-for (jj in 1:res$nc) {
-temppp[jj] <- crossprod(temptt, XXwotNA[, jj]) /
-drop(crossprod(XXNA[, jj], temptt^2))
-}
-res$residXX <- XXwotNA - temptt %*% temppp
+component_cpp <- pls_component_step_cpp(
+xxwotna_r = as.matrix(XXwotNA),
+xxna_r = 1 * as.matrix(XXNA),
+tempww_r = as.numeric(tempww),
+prev_pp_r = if (is.null(res$pp)) NULL else as.matrix(res$pp),
+predict_na_r = if ((!PredYisdataX) && (na.miss.PredictY & !na.miss.Y) && (sparse == FALSE)) {
+1 * as.matrix(PredictYNA)
+} else {
+NULL
+},
+tol_xi = tol_Xi,
+check_xx = isTRUE(na.miss.X & !na.miss.Y & (sparse == FALSE)),
+check_predict = isTRUE((!PredYisdataX) && (na.miss.PredictY & !na.miss.Y) && (sparse == FALSE))
+)
+tempwwnorm <- as.numeric(component_cpp$tempwwnorm)
+temptt <- as.matrix(component_cpp$temptt)
+temppp <- as.numeric(component_cpp$temppp)
+res$residXX <- as.matrix(component_cpp$residXX)
 
 break_nt <- FALSE
 if (na.miss.X & !na.miss.Y) {
-if (sparse == FALSE) {
-for (ii in 1:res$nr) {
-if (rcond(t(cbind(res$pp, temppp)[XXNA[ii, ], , drop = FALSE]) %*%
-cbind(res$pp, temppp)[XXNA[ii, ], , drop = FALSE]) < tol_Xi) {
+if (sparse == FALSE && component_cpp$bad_xx_row > 0L) {
+ii <- component_cpp$bad_xx_row
 break_nt <- TRUE
 res$computed_nt <- kk - 1
 if (verbose) {
@@ -456,18 +498,13 @@ sep = ""
 ))
 cat(paste("Warning only ", res$computed_nt, " components could thus be extracted\n", sep = ""))
 }
-break
-}
-}
 }
 }
 
 if ((!PredYisdataX) && (!break_nt)) {
 if (na.miss.PredictY & !na.miss.Y) {
-if (sparse == FALSE) {
-for (ii in 1:nrow(PredictYwotNA)) {
-if (rcond(t(cbind(res$pp, temppp)[PredictYNA[ii, ], , drop = FALSE]) %*%
-cbind(res$pp, temppp)[PredictYNA[ii, ], , drop = FALSE]) < tol_Xi) {
+if (sparse == FALSE && component_cpp$bad_predict_row > 0L) {
+ii <- component_cpp$bad_predict_row
 break_nt <- TRUE
 res$computed_nt <- kk - 1
 if (verbose) {
@@ -480,9 +517,6 @@ ii,
 sep = ""
 ))
 cat(paste("Warning only ", res$computed_nt, " components could thus be extracted\n", sep = ""))
-}
-break
-}
 }
 }
 }

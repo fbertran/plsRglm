@@ -87,6 +87,10 @@
 #' defaults to \eqn{10^{-12}}{10^{-12}}
 #' @param weights an optional vector of 'prior weights' to be used in the
 #' fitting process. Should be \code{NULL} or a numeric vector.
+#' @param fit_backend backend used for repeated non-ordinal score-space GLM
+#' fits. Use \code{"stats"} for the compatibility path or
+#' \code{"fastglm"} to opt into the accelerated complete-data backend.
+#' Unsupported cases fall back to \code{"stats"} with a warning.
 #' @param method logistic, probit, complementary log-log or cauchit
 #' (corresponding to a Cauchy latent variable).
 #' @param verbose should info messages be displayed ?
@@ -171,7 +175,7 @@
 #' }
 #' 
 #' @export PLS_glm_wvc
-PLS_glm_wvc <- function(dataY,dataX,nt=2,dataPredictY=dataX,modele="pls",family=NULL,scaleX=TRUE,scaleY=NULL,keepcoeffs=FALSE,keepstd.coeffs=FALSE,tol_Xi=10^(-12),weights,method="logistic",verbose=TRUE) {
+PLS_glm_wvc <- function(dataY,dataX,nt=2,dataPredictY=dataX,modele="pls",family=NULL,scaleX=TRUE,scaleY=NULL,keepcoeffs=FALSE,keepstd.coeffs=FALSE,tol_Xi=10^(-12),weights,method="logistic",fit_backend="stats",verbose=TRUE) {
 
 ##################################################
 #                                                #
@@ -214,6 +218,13 @@ if (!is.null(family)) {
     if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {if(verbose){print(family)}}
     if (modele %in% c("pls-glm-polr")) {if(verbose){cat("\nModel:", modele, "\n");cat("Method:", method, "\n\n")}}
     if (modele=="pls") {if(verbose){cat("\nModel:", modele, "\n\n")}}
+fit_backend <- pls_glm_resolve_fit_backend(
+fit_backend = fit_backend,
+modele = modele,
+pvals.expli = FALSE,
+has_missing = na.miss.X | na.miss.Y,
+has_weights = !NoWeights
+)
 
 scaleY <- NULL
 if (is.null(scaleY)) {
@@ -264,10 +275,10 @@ PredictYwotNA [is.na(PredictY)] <- 0
 }
 
 if (modele %in% "pls-glm-polr") {
-dataY <- as.factor(dataY)
-YwotNA <- as.factor(YwotNA)}
+dataY <- pls_glm_as_polr_response(dataY)
+YwotNA <- pls_glm_as_polr_response(YwotNA)}
 
-res <- list(nr=nrow(ExpliX),nc=ncol(ExpliX),ww=NULL,wwnorm=NULL,wwetoile=NULL,tt=NULL,pp=NULL,CoeffC=NULL,uscores=NULL,YChapeau=NULL,residYChapeau=NULL,RepY=RepY,na.miss.Y=na.miss.Y,YNA=YNA,residY=RepY,ExpliX=ExpliX,na.miss.X=na.miss.X,XXNA=XXNA,residXX=ExpliX,PredictY=PredictYwotNA,RSS=rep(NA,nt),RSSresidY=rep(NA,nt),R2=rep(NA,nt),R2residY=rep(NA,nt),press.ind=NULL,press.tot=NULL,Q2cum=rep(NA, nt),family=family,ttPredictY = NULL,typeVC="none",listValsPredictY=NULL) 
+res <- list(nr=nrow(ExpliX),nc=ncol(ExpliX),ww=NULL,wwnorm=NULL,wwetoile=NULL,tt=NULL,pp=NULL,CoeffC=NULL,uscores=NULL,YChapeau=NULL,residYChapeau=NULL,RepY=RepY,na.miss.Y=na.miss.Y,YNA=YNA,residY=RepY,ExpliX=ExpliX,na.miss.X=na.miss.X,XXNA=XXNA,residXX=ExpliX,PredictY=PredictYwotNA,RSS=rep(NA,nt),RSSresidY=rep(NA,nt),R2=rep(NA,nt),R2residY=rep(NA,nt),press.ind=NULL,press.tot=NULL,Q2cum=rep(NA, nt),family=family,fit_backend=fit_backend,ttPredictY = NULL,typeVC="none",listValsPredictY=NULL) 
 if(NoWeights){res$weights<-rep(1L,res$nr)} else {res$weights<-weights}
 res$temppred <- NULL
 
@@ -315,8 +326,12 @@ res$computed_nt <- kk
 
 XXwotNA <- as.matrix(res$residXX)
 XXwotNA[!XXNA] <- 0
+if (modele %in% c("pls-glm-polr")) {
+YwotNA <- pls_glm_as_polr_response(res$residY)
+} else {
 YwotNA <- as.matrix(res$residY)
 YwotNA[!YNA] <- 0
+}
 tempww <- rep(0,res$nc)
 
 
@@ -344,7 +359,14 @@ tempww <- t(XXwotNA*weights)%*%YwotNA/(t(XXNA*weights)%*%YwotNA^2)
 if (modele %in% c("pls-glm-logistic","pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-poisson")) {
 XXwotNA[!XXNA] <- NA
 for (jj in 1:(res$nc)) {
-    tempww[jj] <- coef(glm(YwotNA~cbind(res$tt,XXwotNA[,jj]),family=family))[kk+1]
+    tempww[jj] <- pls_glm_fit_weight_column(
+      tt = res$tt,
+      xcol = XXwotNA[, jj],
+      y = drop(YwotNA),
+      family = family,
+      fit_backend = fit_backend,
+      compute_pvalue = FALSE
+    )$coef
 }
 XXwotNA[!XXNA] <- 0
 rm(jj)}
@@ -354,7 +376,7 @@ rm(jj)}
 ######           PLS-GLM-POLR           ######
 ##############################################
 if (modele %in% c("pls-glm-polr")) {
-YwotNA <- as.factor(YwotNA)
+YwotNA <- pls_glm_as_polr_response(YwotNA)
 XXwotNA[!XXNA] <- NA
 requireNamespace("MASS")
 tts <- res$tt
@@ -373,40 +395,43 @@ rm(jj,tts)}
 #                                            #
 ##############################################
 
-tempwwnorm <- tempww/sqrt(drop(crossprod(tempww)))
-
-temptt <- XXwotNA%*%tempwwnorm/(XXNA%*%(tempwwnorm^2))
-
-temppp <- rep(0,res$nc)
-for (jj in 1:(res$nc)) {
-     temppp[jj] <- crossprod(temptt,XXwotNA[,jj])/drop(crossprod(XXNA[,jj],temptt^2))
-}
-res$residXX <- XXwotNA-temptt%*%temppp
+component_cpp <- pls_component_step_cpp(
+  xxwotna_r = as.matrix(XXwotNA),
+  xxna_r = 1 * as.matrix(XXNA),
+  tempww_r = as.numeric(tempww),
+  prev_pp_r = if (is.null(res$pp)) NULL else as.matrix(res$pp),
+  predict_na_r = if (!PredYisdataX && na.miss.PredictY && !na.miss.Y) {
+    1 * as.matrix(PredictYNA)
+  } else {
+    NULL
+  },
+  tol_xi = tol_Xi,
+  check_xx = isTRUE(na.miss.X & !na.miss.Y),
+  check_predict = isTRUE(!PredYisdataX && na.miss.PredictY & !na.miss.Y)
+)
+tempwwnorm <- as.numeric(component_cpp$tempwwnorm)
+temptt <- as.matrix(component_cpp$temptt)
+temppp <- as.numeric(component_cpp$temppp)
+res$residXX <- as.matrix(component_cpp$residXX)
 
 if (na.miss.X & !na.miss.Y) {
-for (ii in 1:res$nr) {
-if(rcond(t(cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[ii,],,drop=FALSE])<tol_Xi) {
+ii <- component_cpp$bad_xx_row
+if(ii > 0L) {
 break_nt <- TRUE; res$computed_nt <- kk-1
 if(verbose){cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE])%*%cbind(res$pp,temppp)[XXNA[",ii,",],,drop=FALSE] < 10^{-12}\n",sep=""))}
 if(verbose){cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))}
-break
 }
-}
-rm(ii)
 if(break_nt) {break}
 }
 
 if(!PredYisdataX){
 if (na.miss.PredictY & !na.miss.Y) {
-for (ii in 1:nrow(PredictYwotNA)) {
-if(rcond(t(cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])%*%cbind(res$pp,temppp)[PredictYNA[ii,],,drop=FALSE])<tol_Xi) {
+ii <- component_cpp$bad_predict_row
+if(ii > 0L) {
 break_nt <- TRUE; res$computed_nt <- kk-1
 if(verbose){cat(paste("Warning : reciprocal condition number of t(cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],])%*%cbind(res$pp,temppp)[PredictYNA[",ii,",,drop=FALSE],] < 10^{-12}\n",sep=""))}
 if(verbose){cat(paste("Warning only ",res$computed_nt," components could thus be extracted\n",sep=""))}
-break
 }
-}
-rm(ii)
 if(break_nt) {break}
 }
 }  
@@ -463,43 +488,34 @@ rownames(res$Std.Coeffs) <- c("Intercept",colnames(ExpliX))
 ##############################################
 if (modele %in% c("pls-glm-logistic","pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-poisson")) {
 if (kk==1) {
-tempconstglm <- glm(YwotNA~1,family=family)
-res$Coeffsmodel_vals <- rbind(summary(tempconstglm)$coefficients,matrix(rep(NA,4*nt),ncol=4))
-rm(tempconstglm)
-tt<-res$tt
-tempregglm <- glm(YwotNA~tt,family=family)
-rm(tt)
-res$Coeffsmodel_vals <- cbind(res$Coeffsmodel_vals,rbind(summary(tempregglm)$coefficients,matrix(rep(NA,4*(nt-kk)),ncol=4)))
+tempconstglm <- pls_glm_fit_intercept_model(
+y = YwotNA,
+family = family,
+fit_backend = fit_backend
+)
+res$Coeffsmodel_vals <- rbind(summary(tempconstglm)$coefficients, matrix(rep(NA, 4 * nt), ncol = 4))
+}
+tempregglm <- pls_glm_fit_score_model(
+y = YwotNA,
+tt = res$tt,
+family = family,
+fit_backend = fit_backend
+)
+res$Coeffsmodel_vals <- cbind(
+res$Coeffsmodel_vals,
+rbind(summary(tempregglm)$coefficients, matrix(rep(NA, 4 * (nt - kk)), ncol = 4))
+)
 tempCoeffC <- as.vector(coef(tempregglm))
-res$CoeffCFull <- matrix(c(tempCoeffC,rep(NA,nt-kk)),ncol=1)
+if (kk == 1) {
+res$CoeffCFull <- matrix(c(tempCoeffC, rep(NA, nt - kk)), ncol = 1)
 tempCoeffConstante <- tempCoeffC[1]
 res$CoeffConstante <- tempCoeffConstante
-tempCoeffC <- tempCoeffC[-1]
 } else {
-if (!(na.miss.X | na.miss.Y)) {
-tt<-res$tt
-tempregglm <- glm(YwotNA~tt,family=family)
-rm(tt)
-res$Coeffsmodel_vals <- cbind(res$Coeffsmodel_vals,rbind(summary(tempregglm)$coefficients,matrix(rep(NA,4*(nt-kk)),ncol=4)))
-tempCoeffC <- as.vector(coef(tempregglm))  
-res$CoeffCFull <- cbind(res$CoeffCFull,c(tempCoeffC,rep(NA,nt-kk)))
+res$CoeffCFull <- cbind(res$CoeffCFull, c(tempCoeffC, rep(NA, nt - kk)))
 tempCoeffConstante <- tempCoeffC[1]
-res$CoeffConstante <- cbind(res$CoeffConstante,tempCoeffConstante)
+res$CoeffConstante <- cbind(res$CoeffConstante, tempCoeffConstante)
+}
 tempCoeffC <- tempCoeffC[-1]
-}
-else
-{
-tt<-res$tt
-tempregglm <- glm(YwotNA~tt,family=family)
-rm(tt)
-res$Coeffsmodel_vals <- cbind(res$Coeffsmodel_vals,rbind(summary(tempregglm)$coefficients,matrix(rep(NA,4*(nt-kk)),ncol=4)))
-tempCoeffC <- as.vector(coef(tempregglm))  
-res$CoeffCFull <- cbind(res$CoeffCFull,c(tempCoeffC,rep(NA,nt-kk)))
-tempCoeffConstante <- tempCoeffC[1]
-res$CoeffConstante <- cbind(res$CoeffConstante,tempCoeffConstante)
-tempCoeffC <- tempCoeffC[-1]
-}
-}
 
 res$wwetoile <- (res$wwnorm)%*%solve(t(res$pp)%*%res$wwnorm)
 res$CoeffC <- tempCoeffC
@@ -834,8 +850,10 @@ res$listValsPredictY <- cbind(res$listValsPredictY,attr(res$RepY,"scaled:center"
 ######              PLS-GLM             ######
 ##############################################
 if (modele %in% c("pls-glm-logistic","pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-poisson")) {
-tt <- res$ttPredictY
-res$listValsPredictY <- cbind(res$listValsPredictY,predict(object=tempregglm,newdata=data.frame(tt),type = "response"))
+res$listValsPredictY <- cbind(
+res$listValsPredictY,
+pls_glm_predict_score_model(tempregglm, res$ttPredictY, type = "response")
+)
 }
 
 

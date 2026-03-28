@@ -2,7 +2,7 @@
 #' @aliases cv.plsRglm
 #' @export PLS_glm_kfoldcv_formula
 
-PLS_glm_kfoldcv_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls", family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12),weights,subset,start=NULL,etastart,mustart,offset,method,control= list(),contrasts=NULL, verbose=TRUE) {
+PLS_glm_kfoldcv_formula <- function(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls", family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12),weights,subset,start=NULL,etastart,mustart,offset,method,control= list(),contrasts=NULL, fit_backend="stats", verbose=TRUE) {
 
     if (missing(data)) {data <- environment(formula)}
     mf <- match.call(expand.dots = FALSE)
@@ -67,6 +67,13 @@ if(match("method",names(call), 0L)==0L){method<-"logistic"} else {if(!(call$meth
         if (is.function(call$family)) {call$family <- call$family()}
         if (is.language(call$family)) {call$family <- eval(call$family)}
     }
+    fit_backend <- pls_glm_resolve_fit_backend(
+        fit_backend = fit_backend,
+        modele = modele,
+        pvals.expli = FALSE,
+        has_missing = any(is.na(dataX)) | any(is.na(dataY)),
+        has_weights = !NoWeights
+    )
     if (modele %in% c("pls-glm-family","pls-glm-Gamma","pls-glm-gaussian","pls-glm-inverse.gaussian","pls-glm-logistic","pls-glm-poisson")) {if(verbose){print(family)}}
     if (modele %in% c("pls-glm-polr")) {if(verbose){cat("\nModel:", modele, "\n");cat("Method:", method, "\n\n")}}
     if (modele=="pls") {if(verbose){cat("\nModel:", modele, "\n\n")}}
@@ -179,7 +186,7 @@ if (!is.data.frame(dataX)) {dataX <- data.frame(dataX)}
             else folds = c(folds, list(as.vector(unlist(groups[-ii]))))
             if (K == 1) {
                 mf2 <- match.call(expand.dots = FALSE)
-                m2 <- match(c("nt","modele","family","scaleX","scaleY","keepcoeffs","tol_Xi","weights","subset","start","etastart","mustart","offset","control","method","contrasts","verbose"), names(mf2), 0L)
+                m2 <- match(c("nt","modele","family","scaleX","scaleY","keepcoeffs","tol_Xi","weights","subset","start","etastart","mustart","offset","control","method","contrasts","fit_backend","verbose"), names(mf2), 0L)
                 mf2 <- mf2[c(1L, m2)]
                 mf2[[1L]] <- as.name("PLS_glm_wvc")
                 mf2$family <- family
@@ -203,7 +210,7 @@ if(match("method",names(call), 0L)==0L){mf2$method<-"logistic"} else {if(!(call$
             else {
               if(verbose){cat(paste(ii,"\n"))}
                   mf2 <- match.call(expand.dots = FALSE)
-                  m2 <- match(c("nt","modele","family","scaleX","scaleY","keepcoeffs","tol_Xi","weights","subset","start","etastart","mustart","offset","control","method","contrasts","sparse","sparseStop","naive","verbose"), names(mf2), 0L)
+                  m2 <- match(c("nt","modele","family","scaleX","scaleY","keepcoeffs","tol_Xi","weights","subset","start","etastart","mustart","offset","control","method","contrasts","sparse","sparseStop","naive","fit_backend","verbose"), names(mf2), 0L)
                   mf2 <- mf2[c(1L, m2)]
                   mf2[[1L]] <- as.name("PLS_glm_wvc")
                   mf2$family <- family
@@ -228,6 +235,7 @@ results <- list(results_kfolds=respls_kfolds)
 if (keepcoeffs) {results$coeffs_kfolds <- coeffs_kfolds}
 if (keepfolds) {results$folds <- folds_kfolds}
 if (keepdataY) {results$dataY_kfolds <- dataY_kfolds}
+results$fit_backend <- fit_backend
 results$call <- call
 return(results)
 }

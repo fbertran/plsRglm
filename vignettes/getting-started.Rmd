@@ -80,6 +80,7 @@ plsRglm(Y ~ ., data = Cornell, nt = 3, modele = "pls")
 plsRglm(Y ~ ., data = Cornell, nt = 3, modele = "pls-glm-gaussian")
 plsRglm(Y ~ ., data = Cornell, nt = 3, modele = "pls-glm-inverse.gaussian")
 plsRglm(y ~ ., data = aze_compl, nt = 3, modele = "pls-glm-logistic")
+data(pine)
 plsRglm(round(x11) ~ ., data = pine, nt = 3, modele = "pls-glm-poisson")
 plsRglm(x11 ~ ., data = pine, nt = 3, modele = "pls-glm-Gamma")
 plsRglm(Quality ~ ., data = bordeaux, nt = 2, modele = "pls-glm-polr")
@@ -92,10 +93,11 @@ plsRglm(
 )
 ```
 
-Ordinal responses are handled through `modele = "pls-glm-polr"`:
+Ordinal responses are handled through `modele = "pls-glm-polr"`. As with `MASS::polr()`, the response should be an ordered factor:
 
 ```{r polr-fit}
 data(bordeaux)
+bordeaux$Quality <- factor(bordeaux$Quality, ordered = TRUE)
 polr_fit <- plsRglm(Quality ~ ., data = bordeaux, nt = 2, modele = "pls-glm-polr", verbose = FALSE)
 
 head(predict(polr_fit, type = "class"))

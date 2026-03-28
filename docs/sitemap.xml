@@ -33,6 +33,7 @@
 <url><loc>https://fbertran.github.io/plsRglm/reference/confints.bootpls.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/cv.plsR.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/cv.plsRglm.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/cv.plsRmulti.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/cvtable.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/dicho.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/fowlkes.html</loc></url>
@@ -65,8 +66,10 @@
 <url><loc>https://fbertran.github.io/plsRglm/reference/plsR.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/plsRglm-package.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/plsRglm.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/plsRmulti.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/predict.plsRglmmodel.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/predict.plsRmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/predict.plsRmultiModel.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/print.coef.plsRglmmodel.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/print.coef.plsRmodel.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/print.cv.plsRglmmodel.html</loc></url>
@@ -82,6 +85,7 @@
 <url><loc>https://fbertran.github.io/plsRglm/reference/simul_data_complete.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/summary.cv.plsRglmmodel.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/summary.cv.plsRmodel.html</loc></url>
+<url><loc>https://fbertran.github.io/plsRglm/reference/summary.cv.plsRmultiModel.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/summary.plsRglmmodel.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/summary.plsRmodel.html</loc></url>
 <url><loc>https://fbertran.github.io/plsRglm/reference/tilt.bootpls.html</loc></url>

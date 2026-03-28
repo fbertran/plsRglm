@@ -18,6 +18,7 @@ PLS_glm_wvc(
   tol_Xi = 10^(-12),
   weights,
   method = "logistic",
+  fit_backend = "stats",
   verbose = TRUE
 )
 }
@@ -64,6 +65,11 @@ fitting process. Should be \code{NULL} or a numeric vector.}
 
 \item{method}{logistic, probit, complementary log-log or cauchit
 (corresponding to a Cauchy latent variable).}
+
+\item{fit_backend}{backend used for repeated non-ordinal score-space GLM
+fits. Use \code{"stats"} for the compatibility path or
+\code{"fastglm"} to opt into the accelerated complete-data backend.
+Unsupported cases fall back to \code{"stats"} with a warning.}
 
 \item{verbose}{should info messages be displayed ?}
 }

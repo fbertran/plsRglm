@@ -8,6 +8,8 @@
 #' @param nt number of components to use
 #' @param modele type of modele to use, see \link{plsRglm}
 #' @param family glm family to use, see \link{plsRglm}
+#' @param fit_backend backend used for repeated non-ordinal score-space GLM
+#' fits. Use \code{"stats"} or \code{"fastglm"}.
 #' @param maxcoefvalues maximum values allowed for the estimates of the
 #' coefficients to discard those coming from singular bootstrap samples
 #' @param ifbootfail value to return if the estimation fails on a bootstrap
@@ -38,6 +40,7 @@ coefs.plsRglm <-
            nt,
            modele,
            family = NULL,
+           fit_backend = "stats",
            maxcoefvalues,
            ifbootfail,
            verbose)
@@ -49,6 +52,7 @@ coefs.plsRglm <-
         nt = nt,
         modele = modele,
         family = family,
+        fit_backend = fit_backend,
         keepstd.coeffs = TRUE,
         verbose = verbose
       )$std.coeffs,

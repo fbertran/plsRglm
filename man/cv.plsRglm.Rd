@@ -14,23 +14,24 @@ cv.plsRglm(object, \dots)
 modele="pls", family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, 
 scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, 
 keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12), weights, method,
-verbose=TRUE,\dots)
+fit_backend="stats",verbose=TRUE,\dots)
 \method{cv.plsRglmmodel}{formula}(object,data=NULL,nt=2,limQ2set=.0975,
 modele="pls", family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, 
 scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, 
 keepdataY=TRUE, keepMclassed=FALSE, tol_Xi=10^(-12),weights,subset,
 start=NULL,etastart,mustart,offset,method,control= list(),contrasts=NULL,
-verbose=TRUE,\dots)
+fit_backend="stats",verbose=TRUE,\dots)
 PLS_glm_kfoldcv(dataY, dataX, nt = 2, limQ2set = 0.0975, modele = "pls", 
 family = NULL, K = 5, NK = 1, grouplist = NULL, random = TRUE, 
 scaleX = TRUE, scaleY = NULL, keepcoeffs = FALSE, keepfolds = FALSE, 
 keepdataY = TRUE, keepMclassed=FALSE, tol_Xi = 10^(-12), weights, method,
-verbose=TRUE)
+fit_backend="stats",verbose=TRUE)
 PLS_glm_kfoldcv_formula(formula,data=NULL,nt=2,limQ2set=.0975,modele="pls",
 family=NULL, K=5, NK=1, grouplist=NULL, random=TRUE, 
 scaleX=TRUE, scaleY=NULL, keepcoeffs=FALSE, keepfolds=FALSE, keepdataY=TRUE, 
 keepMclassed=FALSE, tol_Xi=10^(-12),weights,subset,start=NULL,etastart,
-mustart,offset,method,control= list(),contrasts=NULL, verbose=TRUE)
+mustart,offset,method,control= list(),contrasts=NULL, fit_backend="stats",
+verbose=TRUE)
 }
 \arguments{
   \item{object}{response (training) dataset or an object of class "\code{\link{formula}}" (or one that can be coerced to that class): a symbolic description of the model to be fitted. The details of model specification are given under 'Details'.}
@@ -54,14 +55,13 @@ mustart,offset,method,control= list(),contrasts=NULL, verbose=TRUE)
   \item{keepMclassed}{shall the number of miss classed be returned (unavailable)}
   \item{tol_Xi}{minimal value for Norm2(Xi) and \eqn{\mathrm{det}(pp' \times pp)}{det(pp'*pp)} if there is any missing value in the \code{dataX}. It defaults to \eqn{10^{-12}}{10^{-12}}}
   \item{weights}{an optional vector of 'prior weights' to be used in the fitting process. Should be \code{NULL} or a numeric vector.}
+  \item{fit_backend}{backend used for repeated non-ordinal score-space GLM fits during cross-validation. Use \code{"stats"} for the compatibility path or \code{"fastglm"} to opt into the accelerated complete-data backend. Unsupported cases fall back to \code{"stats"} with a warning.}
   \item{subset}{an optional vector specifying a subset of observations to be used in the fitting process.}
   \item{start}{starting values for the parameters in the linear predictor.}
   \item{etastart}{starting values for the linear predictor.}
   \item{mustart}{starting values for the vector of means.}
   \item{offset}{this can be used to specify an \emph{a priori} known component to be included in the linear predictor during fitting. This should be \code{NULL} or a numeric vector of length equal to the number of cases. One or more \code{\link{offset}} terms can be included in the formula instead or as well, and if more than one is specified their sum is used. See \code{\link{model.offset}}.}
-  \item{method}{\describe{
-  \item{for fitting glms with glm (\code{"pls-glm-Gamma"}, \code{"pls-glm-gaussian"}, \code{"pls-glm-inverse.gaussian"}, \code{"pls-glm-logistic"}, \code{"pls-glm-poisson"}, \code{"modele=pls-glm-family"})}{the method to be used in fitting the model. The default method \code{"glm.fit"} uses iteratively reweighted least squares (IWLS). User-supplied fitting functions can be supplied either as a function or a character string naming a function, with a function which takes the same arguments as \code{glm.fit}. If "model.frame", the model frame is returned.}
-  \item{\code{pls-glm-polr}}{logistic, probit, complementary log-log or cauchit (corresponding to a Cauchy latent variable).}}}
+  \item{method}{For non-ordinal GLM modes this argument is kept for backward compatibility; use \code{fit_backend} to choose the score-space fitting backend. For \code{pls-glm-polr}, use \code{logistic}, \code{probit}, complementary log-log or \code{cauchit}.}
   \item{control}{a list of parameters for controlling the fitting process. For \code{glm.fit} this is passed to \code{\link{glm.control}}.}
   \item{contrasts}{an optional list. See the \code{contrasts.arg} of \code{model.matrix.default}.}
   \item{verbose}{should info messages be displayed ?}
@@ -121,6 +121,7 @@ Non-NULL weights can be used to indicate that different observations have differ
     \item{list}{ of \code{K} matrices of size about \code{nrow(dataX)/K * 1} with the observed values of the response}
     }
   }
+  \item{fit_backend}{backend used for repeated non-ordinal score-space GLM fits during cross-validation}
   \item{call}{the call of the function}
 }
 \references{

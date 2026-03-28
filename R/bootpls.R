@@ -7,7 +7,8 @@
 #' More details on bootstrap techniques are available in the help of the
 #' \code{\link[boot:boot]{boot}} function.
 #' 
-#' @param object An object of class \code{plsRmodel} to bootstrap
+#' @param object An object of class \code{plsRmodel} or
+#' \code{plsRmultiModel} to bootstrap.
 #' @param typeboot The type of bootstrap. Either (Y,X) boostrap
 #' (\code{typeboot="plsmodel"}) or (Y,T) bootstrap
 #' (\code{typeboot="fmodel_np"}). Defaults to (Y,X) resampling.
@@ -144,6 +145,20 @@
 #' 
 #' @export bootpls
 bootpls <- function(object, typeboot="plsmodel", R=250, statistic=NULL, sim="ordinary", stype="i", stabvalue=1e6, verbose=TRUE,...){
+if (inherits(object, "plsRmultiModel")) {
+return(bootpls_multi(
+object = object,
+typeboot = typeboot,
+R = R,
+statistic = statistic,
+sim = sim,
+stype = stype,
+stabvalue = stabvalue,
+verbose = verbose,
+...
+))
+}
+
 callplsR <- object$call
 maxcoefvalues <- stabvalue*abs(object$Coeffs)
 dataset <- cbind(y = object$dataY,object$dataX)

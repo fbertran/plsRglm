@@ -107,6 +107,7 @@ plsRglm(Y ~ ., data = Cornell, nt = 3, modele = "pls")
 plsRglm(Y ~ ., data = Cornell, nt = 3, modele = "pls-glm-gaussian")
 plsRglm(Y ~ ., data = Cornell, nt = 3, modele = "pls-glm-inverse.gaussian")
 plsRglm(y ~ ., data = aze_compl, nt = 3, modele = "pls-glm-logistic")
+data(pine)
 plsRglm(round(x11) ~ ., data = pine, nt = 3, modele = "pls-glm-poisson")
 plsRglm(x11 ~ ., data = pine, nt = 3, modele = "pls-glm-Gamma")
 plsRglm(Quality ~ ., data = bordeaux, nt = 2, modele = "pls-glm-polr")
@@ -119,10 +120,13 @@ plsRglm(
 )
 ```
 
-Ordinal responses are handled through `modele = "pls-glm-polr"`:
+Ordinal responses are handled through `modele = "pls-glm-polr"`. As with
+[`MASS::polr()`](https://rdrr.io/pkg/MASS/man/polr.html), the response
+should be an ordered factor:
 
 ``` r
 data(bordeaux)
+bordeaux$Quality <- factor(bordeaux$Quality, ordered = TRUE)
 polr_fit <- plsRglm(Quality ~ ., data = bordeaux, nt = 2, modele = "pls-glm-polr", verbose = FALSE)
 
 head(predict(polr_fit, type = "class"))
@@ -207,31 +211,31 @@ cv_logit_summary <- cvtable(summary(cv_logit, MClassed = TRUE))
 #> 
 #> CV MissClassed criterion:
 #> 1 
-#> 2 
+#> 0 
 #> 
 #> CV Q2Chi2 criterion:
 #> 0 
-#> 2 
+#> 0 
 #> 
 #> CV PreChi2 criterion:
 #> 1 
-#> 2
+#> 0
 
 cv_logit_summary
 #> $CVMC
 #> 
 #> 1 
-#> 2 
+#> 0 
 #> 
 #> $CVQ2Chi2
 #> 
 #> 0 
-#> 2 
+#> 0 
 #> 
 #> $CVPreChi2
 #> 
 #> 1 
-#> 2 
+#> 0 
 #> 
 #> attr(,"class")
 #> [1] "table.summary.cv.plsRglmmodel"
@@ -267,8 +271,7 @@ pine_sup_small[1, 1] <- NA
 
 predict(pred_fit, newdata = pine_sup_small, type = "response", methodNA = "missingdata")
 #> Prediction as if missing values in every row.
-#>        1        2        3 
-#> 1.069831 1.044208 1.099871
+#> [1] 1.069831 1.044208 1.099871
 predict(pred_fit, newdata = pine_sup_small, type = "scores", methodNA = "missingdata")
 #> Prediction as if missing values in every row.
 #>          Comp_1     Comp_2      Comp_3

@@ -68,6 +68,10 @@
   [`PLS_glm_kfoldcv_formula()`](https://fbertran.github.io/plsRglm/reference/cv.plsRglm.md)
   : Partial least squares regression glm models with k-fold cross
   validation
+- [`cv.plsRmulti()`](https://fbertran.github.io/plsRglm/reference/cv.plsRmulti.md)
+  [`cv.plsRmultiModel(`*`<default>`*`)`](https://fbertran.github.io/plsRglm/reference/cv.plsRmulti.md)
+  [`cv.plsRmultiModel(`*`<formula>`*`)`](https://fbertran.github.io/plsRglm/reference/cv.plsRmulti.md)
+  : Experimental k-fold cross-validation for multivariate-response PLS2
 - [`cvtable()`](https://fbertran.github.io/plsRglm/reference/cvtable.md)
   : Table method for summary of cross validated PLSR and PLSGLR models
 - [`dicho()`](https://fbertran.github.io/plsRglm/reference/dicho.md) :
@@ -148,10 +152,16 @@
   [`PLS_glm()`](https://fbertran.github.io/plsRglm/reference/plsRglm.md)
   [`PLS_glm_formula()`](https://fbertran.github.io/plsRglm/reference/plsRglm.md)
   : Partial least squares Regression generalized linear models
+- [`plsRmulti()`](https://fbertran.github.io/plsRglm/reference/plsRmulti.md)
+  [`plsRmultiModel(`*`<default>`*`)`](https://fbertran.github.io/plsRglm/reference/plsRmulti.md)
+  [`plsRmultiModel(`*`<formula>`*`)`](https://fbertran.github.io/plsRglm/reference/plsRmulti.md)
+  : Experimental multivariate-response PLS2 models
 - [`predict(`*`<plsRglmmodel>`*`)`](https://fbertran.github.io/plsRglm/reference/predict.plsRglmmodel.md)
   : Print method for plsRglm models
 - [`predict(`*`<plsRmodel>`*`)`](https://fbertran.github.io/plsRglm/reference/predict.plsRmodel.md)
   : Print method for plsR models
+- [`predict(`*`<plsRmultiModel>`*`)`](https://fbertran.github.io/plsRglm/reference/predict.plsRmultiModel.md)
+  : Predict method for experimental plsRmulti models
 - [`print(`*`<coef.plsRglmmodel>`*`)`](https://fbertran.github.io/plsRglm/reference/print.coef.plsRglmmodel.md)
   : Print method for plsRglm models
 - [`print(`*`<coef.plsRmodel>`*`)`](https://fbertran.github.io/plsRglm/reference/print.coef.plsRmodel.md)
@@ -182,6 +192,8 @@
   : Summary method for plsRglm models
 - [`summary(`*`<cv.plsRmodel>`*`)`](https://fbertran.github.io/plsRglm/reference/summary.cv.plsRmodel.md)
   : Summary method for plsR models
+- [`summary(`*`<cv.plsRmultiModel>`*`)`](https://fbertran.github.io/plsRglm/reference/summary.cv.plsRmultiModel.md)
+  : Summary method for experimental multivariate PLS2 CV models
 - [`summary(`*`<plsRglmmodel>`*`)`](https://fbertran.github.io/plsRglm/reference/summary.plsRglmmodel.md)
   : Summary method for plsRglm models
 - [`summary(`*`<plsRmodel>`*`)`](https://fbertran.github.io/plsRglm/reference/summary.plsRmodel.md)
