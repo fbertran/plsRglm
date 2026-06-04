@@ -578,7 +578,7 @@ Nicolas Meyer, Myriam Maumy-Bertrand et Frederic Bertrand (2010).
 Comparaison de la regression PLS et de la regression logistique PLS :
 application aux donnees d'allelotypage. *Journal de la Societe Francaise
 de Statistique*, 151(2), pages 1-18.
-<https://www.numdam.org/item/JSFS_2010__151_2_1_0/>
+<https://ojs-test.apps.ocp.math.cnrs.fr/index.php/J-SFdS/article/view/47/>
 
 ## Author
 
@@ -1650,8 +1650,6 @@ modpls2$Std.Coeffs
 table(yhyptis,predict(modpls2$FinalModel,type="class"))
 rm(list=c("yhyptis","Xhyptis","modpls2"))
 }
-#> Loading required package: chemometrics
-#> Loading required package: rpart
 #> ____************************************************____
 #> 
 #> Model: pls-glm-polr 
@@ -1685,50 +1683,10 @@ modplsglm <- plsRglm(ysimbin1,Xsimbin1,10,modele="pls-glm-logistic")
 #> ____Component____ 5 ____
 #> ____Component____ 6 ____
 #> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
 #> ____Component____ 7 ____
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
-#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
 #> ____Component____ 8 ____
-#> ____Component____ 9 ____
-#> ____Component____ 10 ____
+#> Warning :  < 10^{-12}
+#> Warning only 8 components could thus be extracted
 #> ____Predicting X without NA neither in X nor in Y____
 #> ****________________________________________________****
 #> 
@@ -1736,59 +1694,55 @@ modplsglm
 #> Number of required components:
 #> [1] 10
 #> Number of successfully computed components:
-#> [1] 10
+#> [1] 8
 #> Coefficients:
 #>                   [,1]
-#> Intercept  -3.58699879
-#> X1          0.00239366
-#> X2         14.79686950
-#> X3          1.33665709
-#> X4         -0.54144605
-#> X5         -3.58692753
-#> X6         18.76643869
-#> X7          0.00239366
-#> X8        -13.88155114
-#> X9          1.33665709
-#> X10        -0.54144605
-#> X11        -3.58692753
-#> X12        -6.10856600
-#> X13         0.00239366
-#> X14        14.85893636
-#> X15         1.33665709
-#> X16        -0.54144605
-#> X17        12.47299459
-#> X18        -6.10856600
-#> X19         0.00239366
-#> X20       -13.88155114
-#> X21         1.33665709
-#> X22        -0.54144605
-#> X23        -3.58692753
-#> X24        -6.10856600
+#> Intercept  -4.94026470
+#> X1          0.03575405
+#> X2        -10.55974928
+#> X3          1.15593464
+#> X4         -0.42925052
+#> X5          0.57136104
+#> X6          0.43677191
+#> X7          0.03575405
+#> X8         24.04985186
+#> X9          1.15593464
+#> X10        -0.42925052
+#> X11         0.57136104
+#> X12         0.43677191
+#> X13         0.03575405
+#> X14        -5.31290180
+#> X15         1.15593464
+#> X16        -0.42925052
+#> X17         0.57136104
+#> X18         0.43677191
+#> X19         0.03575405
+#> X20        -5.31290180
+#> X21         1.15593464
+#> X22        -0.42925052
+#> X23         0.57136104
+#> X24         0.43677191
 #> Information criteria and Fit statistics:
-#>                 AIC      BIC Missclassed Chi2_Pearson_Y    RSS_Y      R2_Y
-#> Nb_Comp_0  346.9719 350.4933         115       250.0000 62.10000        NA
-#> Nb_Comp_1  159.7329 166.7758          34       212.2064 23.96440 0.6140999
-#> Nb_Comp_2  135.3345 145.8989          28       203.6315 19.74367 0.6820665
-#> Nb_Comp_3  136.4909 150.5768          26       191.3673 19.64578 0.6836428
-#> Nb_Comp_4  137.0521 154.6594          30       195.2590 19.54577 0.6852532
-#> Nb_Comp_5  138.6422 159.7710          30       202.8448 19.47499 0.6863930
-#> Nb_Comp_6  138.5700 163.2203          29       193.2077 18.92250 0.6952898
-#> Nb_Comp_7  139.6130 167.7846          29       189.6752 18.86887 0.6961535
-#> Nb_Comp_8  141.6130 173.3061          29       189.6752 18.86887 0.6961535
-#> Nb_Comp_9  143.6130 178.8276          29       189.6752 18.86887 0.6961535
-#> Nb_Comp_10 145.6130 184.3490          29       189.6752 18.86887 0.6961535
-#>              R2_residY RSS_residY
-#> Nb_Comp_0           NA     62.100
-#> Nb_Comp_1    -20.41896   1330.118
-#> Nb_Comp_2    -38.72375   2466.845
-#> Nb_Comp_3    -36.34895   2319.370
-#> Nb_Comp_4    -38.11536   2429.064
-#> Nb_Comp_5    -39.11861   2491.366
-#> Nb_Comp_6    -38.63956   2461.617
-#> Nb_Comp_7  -8932.71726 554783.842
-#> Nb_Comp_8    -56.49370   3570.359
-#> Nb_Comp_9    -54.27861   3432.802
-#> Nb_Comp_10   -54.27761   3432.740
+#>                AIC      BIC Missclassed Chi2_Pearson_Y    RSS_Y      R2_Y
+#> Nb_Comp_0 348.5096 352.0310         123       250.0000 62.48400        NA
+#> Nb_Comp_1 159.4885 166.5314          34       222.0787 24.68882 0.6048778
+#> Nb_Comp_2 138.8774 149.4418          31       275.2727 20.90597 0.6654188
+#> Nb_Comp_3 140.0717 154.1576          28       245.8402 20.83078 0.6666222
+#> Nb_Comp_4 141.5817 159.1890          32       272.8925 20.86649 0.6660506
+#> Nb_Comp_5 143.4258 164.5546          32       268.9579 20.85505 0.6662337
+#> Nb_Comp_6 145.4206 170.0708          32       268.3603 20.85285 0.6662690
+#> Nb_Comp_7 147.3365 175.5082          32       264.5888 20.84915 0.6663282
+#> Nb_Comp_8 149.3365 181.0297          32       264.5888 20.84915 0.6663282
+#>             R2_residY RSS_residY
+#> Nb_Comp_0          NA     62.484
+#> Nb_Comp_1   -25.72379   1669.809
+#> Nb_Comp_2   -50.67938   3229.134
+#> Nb_Comp_3   -48.58458   3098.243
+#> Nb_Comp_4   -51.75556   3296.378
+#> Nb_Comp_5   -51.51036   3281.058
+#> Nb_Comp_6   -51.42983   3276.026
+#> Nb_Comp_7 -1196.70677  74837.510
+#> Nb_Comp_8   -57.88193   3679.178
 #> Model with all the required components:
 #> 
 #> Call:  stats::glm(formula = y ~ ., family = family, data = data.frame(y = as.numeric(y), 
@@ -1796,13 +1750,13 @@ modplsglm
 #> 
 #> Coefficients:
 #> (Intercept)    tt.Comp_1    tt.Comp_2    tt.Comp_3    tt.Comp_4    tt.Comp_5  
-#>      0.3127       1.2555       0.8499       0.3405       0.5719       0.5492  
-#>   tt.Comp_6    tt.Comp_7    tt.Comp_8    tt.Comp_9   tt.Comp_10  
-#>     10.3646      13.1816    3716.8395     634.9737    1513.9627  
+#>   -0.001574     1.434029     0.519441     0.069985     0.153924     0.130296  
+#>   tt.Comp_6    tt.Comp_7    tt.Comp_8  
+#>   -0.029721   106.340172   671.157829  
 #> 
-#> Degrees of Freedom: 249 Total (i.e. Null);  239 Residual
-#> Null Deviance:       345 
-#> Residual Deviance: 123.6     AIC: 145.6
+#> Degrees of Freedom: 249 Total (i.e. Null);  241 Residual
+#> Null Deviance:       346.5 
+#> Residual Deviance: 131.3     AIC: 149.3
 
 simbin=data.frame(dicho(dataAstar6))
 cv.modplsglm <- suppressWarnings(cv.plsRglm(Y~.,data=simbin,nt=10,

@@ -998,20 +998,27 @@ distribution.
 
 ``` r
 confints.bootpls(bordeaux.bootYX1strata)
-#>                                                      
-#> 1|2         -5.2285585 1.8448981 -3.0266055 2.1579125
-#> 2|3         -1.4216276 4.9525580 -2.3021666 3.1831363
-#> Temperature -0.7320288 3.1003971 -1.6883027 2.0324540
-#> Sunshine    -0.8132278 3.5499337 -0.7684357 2.2776395
-#> Heat        -0.7762507 2.4414133 -1.4124977 1.6043794
-#> Rain        -1.8637573 0.3290798 -1.4058759 0.4748013
-#>                                                        
-#> 1|2         -6.6883385 -1.5038206 -4.5562748 -1.3483662
-#> 2|3          1.4147309  6.9000338  1.2896677  4.7862148
-#> Temperature  1.0278307  4.7485873  0.9261003  3.2057587
-#> Sunshine     1.1162563  4.1623315  1.0299078  3.0499807
-#> Heat         0.5748209  3.5916981  0.5437488  2.7944715
-#> Rain        -2.2942690 -0.4135918 -1.9548576 -0.3625478
+#>             Normal.Lower Normal.Upper Basic.Lower
+#> 1|2           -5.2285585    1.8448981  -3.0266055
+#> 2|3           -1.4216276    4.9525580  -2.3021666
+#> Temperature   -0.7320288    3.1003971  -1.6883027
+#> Sunshine      -0.8132278    3.5499337  -0.7684357
+#> Heat          -0.7762507    2.4414133  -1.4124977
+#> Rain          -1.8637573    0.3290798  -1.4058759
+#>             Basic.Upper Percentile.Lower Percentile.Upper
+#> 1|2           2.1579125       -6.6883385       -1.5038206
+#> 2|3           3.1831363        1.4147309        6.9000338
+#> Temperature   2.0324540        1.0278307        4.7485873
+#> Sunshine      2.2776395        1.1162563        4.1623315
+#> Heat          1.6043794        0.5748209        3.5916981
+#> Rain          0.4748013       -2.2942690       -0.4135918
+#>              BCa.Lower  BCa.Upper
+#> 1|2         -4.5562748 -1.3483662
+#> 2|3          1.2896677  4.7862148
+#> Temperature  0.9261003  3.2057587
+#> Sunshine     1.0299078  3.0499807
+#> Heat         0.5437488  2.7944715
+#> Rain        -1.9548576 -0.3625478
 #> attr(,"typeBCa")
 #> [1] TRUE
 ```
@@ -1306,6 +1313,8 @@ computer.
   : Coefficients for bootstrap computations of PLSR models
 - [`confints.bootpls()`](https://fbertran.github.io/plsRglm/reference/confints.bootpls.md)
   : Bootstrap confidence intervals
+- [`confints2signifind()`](https://fbertran.github.io/plsRglm/reference/confints2signifind.md)
+  : Detect significant predictors from bootstrap confidence intervals
 - [`cv.plsR()`](https://fbertran.github.io/plsRglm/reference/cv.plsR.md)
   [`cv.plsRmodel(`*`<default>`*`)`](https://fbertran.github.io/plsRglm/reference/cv.plsR.md)
   [`cv.plsRmodel(`*`<formula>`*`)`](https://fbertran.github.io/plsRglm/reference/cv.plsR.md)

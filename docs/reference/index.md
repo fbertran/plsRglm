@@ -55,6 +55,8 @@
   : Coefficients for bootstrap computations of PLSR models
 - [`confints.bootpls()`](https://fbertran.github.io/plsRglm/reference/confints.bootpls.md)
   : Bootstrap confidence intervals
+- [`confints2signifind()`](https://fbertran.github.io/plsRglm/reference/confints2signifind.md)
+  : Detect significant predictors from bootstrap confidence intervals
 - [`cv.plsR()`](https://fbertran.github.io/plsRglm/reference/cv.plsR.md)
   [`cv.plsRmodel(`*`<default>`*`)`](https://fbertran.github.io/plsRglm/reference/cv.plsR.md)
   [`cv.plsRmodel(`*`<formula>`*`)`](https://fbertran.github.io/plsRglm/reference/cv.plsR.md)

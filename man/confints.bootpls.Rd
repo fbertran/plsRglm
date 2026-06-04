@@ -20,7 +20,9 @@ based CI fails whereas the other types of CI can still be derived.}
 Matrix with the limits of bootstrap based CI for all (defaults) or
 only the selected predictors (\code{indices} option). The limits are given
 in that order: Normal Lower then Upper Limit, Basic Lower then Upper Limit,
-Percentile Lower then Upper Limit, BCa Lower then Upper Limit.
+Percentile Lower then Upper Limit, BCa Lower then Upper Limit. Column names
+are added so that the returned matrix can be reused by downstream helpers
+such as \code{\link{confints2signifind}}.
 }
 \description{
 This function is a wrapper for \code{\link[boot:boot.ci]{boot.ci}} to derive

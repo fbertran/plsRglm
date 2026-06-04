@@ -1,3 +1,8 @@
+# plsRglm 1.7.1
+
+* Fixed url link
+* Added confints2signifind() helper
+
 # plsRglm 1.7.0
 
 * Package code refactored and aligned

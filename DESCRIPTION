@@ -1,6 +1,6 @@
 Package: plsRglm
-Version: 1.7.0
-Date: 2026-03-27
+Version: 1.7.1
+Date: 2026-06-04
 Depends: R (>= 2.10)
 Imports: mvtnorm, boot, bipartite, car, MASS, Rcpp
 LinkingTo: Rcpp, RcppArmadillo

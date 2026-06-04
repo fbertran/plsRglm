@@ -13,7 +13,9 @@
 #' @return Matrix with the limits of bootstrap based CI for all (defaults) or
 #' only the selected predictors (\code{indices} option). The limits are given
 #' in that order: Normal Lower then Upper Limit, Basic Lower then Upper Limit,
-#' Percentile Lower then Upper Limit, BCa Lower then Upper Limit.
+#' Percentile Lower then Upper Limit, BCa Lower then Upper Limit. Column names
+#' are added so that the returned matrix can be reused by downstream helpers
+#' such as \code{\link{confints2signifind}}.
 #' @author Frédéric Bertrand\cr
 #' \email{frederic.bertrand@@lecnam.net}\cr
 #' \url{https://fbertran.github.io/homepage/}
@@ -49,6 +51,18 @@ temptemp.ci <- rbind(temptemp.ci,c(boot::boot.ci(bootobject, conf = 0.95, type =
 }
 }
 attr(temptemp.ci, "typeBCa") <- typeBCa
-rownames(temptemp.ci) <- rownames(bootobject$t0)[indices]
+if(typeBCa){
+colnames(temptemp.ci) <- c("Normal.Lower", "Normal.Upper",
+                           "Basic.Lower", "Basic.Upper",
+                           "Percentile.Lower", "Percentile.Upper",
+                           "BCa.Lower", "BCa.Upper")
+} else {
+colnames(temptemp.ci) <- c("Normal.Lower", "Normal.Upper",
+                           "Basic.Lower", "Basic.Upper",
+                           "Percentile.Lower", "Percentile.Upper")
+}
+predictor_names <- rownames(bootobject$t0)
+if(is.null(predictor_names)){predictor_names <- names(bootobject$t0)}
+if(!is.null(predictor_names)){rownames(temptemp.ci) <- predictor_names[indices]}
 return(temptemp.ci)
 }

@@ -34,7 +34,7 @@ Nicolas Meyer, Myriam Maumy-Bertrand et Frédéric Bertrand (2010).
 Comparing the linear and the logistic PLS regression with qualitative
 predictors: application to allelotyping data. *Journal de la Societe
 Francaise de Statistique*, 151(2), pages 1-18.
-<https://www.numdam.org/item/JSFS_2010__151_2_1_0/>
+<https://ojs-test.apps.ocp.math.cnrs.fr/index.php/J-SFdS/article/view/47/>
 
 ## See also
 
@@ -61,8 +61,7 @@ cv.modpls <- cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=5)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
-#> Warning only 5 components could thus be extracted
+#> ____Component____ 6 ____
 #> ****________________________________________________****
 #> 
 #> 2 
@@ -106,7 +105,8 @@ cv.modpls <- cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=5)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> ____Component____ 6 ____
+#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
+#> Warning only 5 components could thus be extracted
 #> ****________________________________________________****
 #> 
 #> 6 
@@ -163,7 +163,8 @@ cv.modpls <- cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=5)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> ____Component____ 6 ____
+#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
+#> Warning only 5 components could thus be extracted
 #> ****________________________________________________****
 #> 
 #> 5 
@@ -185,8 +186,7 @@ cv.modpls <- cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=5)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
-#> Warning only 5 components could thus be extracted
+#> ____Component____ 6 ____
 #> ****________________________________________________****
 #> 
 #> NK: 3 
@@ -210,8 +210,7 @@ cv.modpls <- cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=5)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
-#> Warning only 5 components could thus be extracted
+#> ____Component____ 6 ____
 #> ****________________________________________________****
 #> 
 #> 3 
@@ -222,7 +221,8 @@ cv.modpls <- cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=5)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> ____Component____ 6 ____
+#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
+#> Warning only 5 components could thus be extracted
 #> ****________________________________________________****
 #> 
 #> 4 
@@ -268,8 +268,7 @@ cv.modpls <- cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=5)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
-#> Warning only 5 components could thus be extracted
+#> ____Component____ 6 ____
 #> ****________________________________________________****
 #> 
 #> 2 
@@ -280,7 +279,8 @@ cv.modpls <- cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=5)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> ____Component____ 6 ____
+#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
+#> Warning only 5 components could thus be extracted
 #> ****________________________________________________****
 #> 
 #> 3 
@@ -337,8 +337,7 @@ cv.modpls <- cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=5)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
-#> Warning only 5 components could thus be extracted
+#> ____Component____ 6 ____
 #> ****________________________________________________****
 #> 
 #> 2 
@@ -382,7 +381,8 @@ cv.modpls <- cv.plsR(Y~.,data=Cornell,nt=6,K=6,NK=5)
 #> ____Component____ 3 ____
 #> ____Component____ 4 ____
 #> ____Component____ 5 ____
-#> ____Component____ 6 ____
+#> Warning : 1 2 3 4 5 6 7 < 10^{-12}
+#> Warning only 5 components could thus be extracted
 #> ****________________________________________________****
 #> 
 #> 6 
@@ -412,11 +412,11 @@ res.cv.modpls <- cvtable(summary(cv.modpls))
 #> 
 #> CV Q2 criterion:
 #> 0 1 2 
-#> 0 4 1 
+#> 0 2 3 
 #> 
 #> CV Press criterion:
 #> 1 2 3 4 
-#> 0 0 4 1 
+#> 0 0 1 4 
 plot(res.cv.modpls) #defaults to type="CVQ2"
 
 rm(list=c("cv.modpls","res.cv.modpls"))
@@ -446,7 +446,7 @@ res.cv.modpls <- cvtable(summary(cv.modpls))
 #> 
 #> CV Press criterion:
 #>  1  2  3  4  5 
-#>  0  0  8 13  4 
+#>  0  0  9 12  4 
 plot(res.cv.modpls) #defaults to type="CVQ2"
 
 rm(list=c("cv.modpls","res.cv.modpls"))
@@ -478,11 +478,11 @@ res.cv.modpls <- cvtable(summary(cv.modpls))
 #> 
 #> CV Q2 criterion:
 #>  0  1  2 
-#>  0 88 12 
+#>  0 90 10 
 #> 
 #> CV Press criterion:
 #>  1  2  3  4  5 
-#>  0  0 42 52  6 
+#>  0  0 52 41  7 
 plot(res.cv.modpls) #defaults to type="CVQ2"
 
 rm(list=c("cv.modpls","res.cv.modpls"))
@@ -518,12 +518,12 @@ res.cv.modplsglm <- cvtable(summary(cv.modplsglm))
 #> NK: 91,  92,  93,  94,  95,  96,  97,  98,  99,  100
 #> 
 #> CV Q2Chi2 criterion:
-#>  0  1  2 
-#>  0 20 80 
+#> 0 
+#> 0 
 #> 
 #> CV PreChi2 criterion:
-#>  1  2  3  4 
-#>  0 23 62 15 
+#> 1 
+#> 0 
 plot(res.cv.modplsglm) #defaults to type="CVQ2Chi2"
 
 rm(list=c("res.cv.modplsglm"))

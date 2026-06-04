@@ -29,7 +29,7 @@ Nicolas Meyer, Myriam Maumy-Bertrand et Frédéric Bertrand (2010).
 Comparing the linear and the logistic PLS regression with qualitative
 predictors: application to allelotyping data. *Journal de la Societe
 Francaise de Statistique*, 151(2), pages 1-18.
-<https://www.numdam.org/item/JSFS_2010__151_2_1_0/>
+<https://ojs-test.apps.ocp.math.cnrs.fr/index.php/J-SFdS/article/view/47/>
 
 ## See also
 
@@ -47,14 +47,14 @@ Frédéric Bertrand
 data(Cornell)
 summary(cv.plsR(Y~.,data=Cornell,nt=10,K=6, verbose=FALSE), verbose=FALSE)
 #> [[1]]
-#>                AIC    Q2cum_Y LimQ2_Y        Q2_Y  PRESS_Y      RSS_Y      R2_Y
-#> Nb_Comp_0 82.01205         NA      NA          NA       NA 467.796667        NA
-#> Nb_Comp_1 53.15173  0.8775326  0.0975  0.87753262 57.28983  35.742486 0.9235940
-#> Nb_Comp_2 41.08283  0.8757271  0.0975 -0.01474319 36.26944  11.066606 0.9763431
-#> Nb_Comp_3 32.06411  0.7730217  0.0975 -0.82644991 20.21260   4.418081 0.9905556
-#> Nb_Comp_4 33.76477  0.2356285  0.0975 -2.36759728 14.87832   4.309235 0.9907882
-#> Nb_Comp_5 33.34373 -2.7185700  0.0975 -3.86487254 20.96388   3.521924 0.9924713
-#> Nb_Comp_6 35.25533         NA  0.0975          NA       NA   3.496074 0.9925265
+#>                AIC    Q2cum_Y LimQ2_Y       Q2_Y  PRESS_Y      RSS_Y      R2_Y
+#> Nb_Comp_0 82.01205         NA      NA         NA       NA 467.796667        NA
+#> Nb_Comp_1 53.15173  0.8895316  0.0975  0.8895316 51.67675  35.742486 0.9235940
+#> Nb_Comp_2 41.08283  0.9070130  0.0975  0.1582476 30.08632  11.066606 0.9763431
+#> Nb_Comp_3 32.06411  0.8359239  0.0975 -0.7645048 19.52708   4.418081 0.9905556
+#> Nb_Comp_4 33.76477  0.3021130  0.0975 -3.2534351 18.79202   4.309235 0.9907882
+#> Nb_Comp_5 33.34373 -3.6467314  0.0975 -5.6582867 28.69212   3.521924 0.9924713
+#> Nb_Comp_6 35.25533         NA  0.0975         NA       NA   3.496074 0.9925265
 #>              AIC.std  DoF.dof sigmahat.dof    AIC.dof    BIC.dof GMDL.dof
 #> Nb_Comp_0  37.010388 1.000000    6.5212706 46.0708838 47.7893514 27.59461
 #> Nb_Comp_1   8.150064 2.740749    1.8665281  4.5699686  4.9558156 21.34020

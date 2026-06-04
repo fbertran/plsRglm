@@ -1,6 +1,13 @@
 # Changelog
 
+## plsRglm 1.7.1
+
+- Fixed url link
+- Added confints2signifind() helper
+
 ## plsRglm 1.7.0
+
+CRAN release: 2026-03-28
 
 - Package code refactored and aligned
 - Added an exported classbiplot() helper that keeps the usual biplot

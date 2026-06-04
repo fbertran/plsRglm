@@ -996,7 +996,7 @@ sessionInfo()
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] plsRglm_1.7.0
+#> [1] plsRglm_1.7.1
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] dotCall64_1.2         spam_2.11-3           xfun_0.56            

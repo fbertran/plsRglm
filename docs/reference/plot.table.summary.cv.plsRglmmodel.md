@@ -34,7 +34,7 @@ Nicolas Meyer, Myriam Maumy-Bertrand et Frédéric Bertrand (2010).
 Comparing the linear and the logistic PLS regression with qualitative
 predictors: application to allelotyping data. *Journal de la Societe
 Francaise de Statistique*, 151(2), pages 1-18.
-<https://www.numdam.org/item/JSFS_2010__151_2_1_0/>
+<https://ojs-test.apps.ocp.math.cnrs.fr/index.php/J-SFdS/article/view/47/>
 
 ## See also
 
@@ -55,12 +55,12 @@ modele="pls-glm-family",family=gaussian(), verbose=FALSE)
 plot(cvtable(summary(bbb,verbose=FALSE)),type="CVQ2Chi2")
 #> 
 #> CV Q2Chi2 criterion:
-#> 0 1 2 
-#> 0 0 1 
+#> 0 
+#> 0 
 #> 
 #> CV PreChi2 criterion:
-#> 1 2 
-#> 0 1 
+#> 1 
+#> 0 
 
 rm(list=c("bbb"))
 
@@ -71,12 +71,11 @@ modele="pls-glm-family",family=gaussian(), verbose=FALSE),
 verbose=FALSE)),type="CVQ2Chi2")
 #> 
 #> CV Q2Chi2 criterion:
-#>  0  1  2 
-#>  0 30 70 
+#> 0 
+#> 0 
 #> 
 #> CV PreChi2 criterion:
-#>  1  2  3  4  5 
-#>  0 20 55 22  3 
-
+#> 1 
+#> 0 
 # }
 ```

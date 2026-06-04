@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">plsRglm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,13 +37,13 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="active nav-item"><a class="nav-link" href="index.html"><span class="fa fa-home"></span></a></li>
+<li class="active nav-item"><a class="nav-link" aria-label="Home" href="index.html"><span class="fa fa-home"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/fbertran/plsRglm"><span class="fa fa-github"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" aria-label="GitHub" href="https://github.com/fbertran/plsRglm"><span class="fa fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -782,20 +782,27 @@ plot of chunk chunk53
 <p>Stratified balanced bootstrap: CIs for each of the predictors distribution.</p>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/confints.bootpls.html">confints.bootpls</a></span><span class="op">(</span><span class="va">bordeaux.bootYX1strata</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                                                      </span></span>
-<span><span class="co">#&gt; 1|2         -5.2285585 1.8448981 -3.0266055 2.1579125</span></span>
-<span><span class="co">#&gt; 2|3         -1.4216276 4.9525580 -2.3021666 3.1831363</span></span>
-<span><span class="co">#&gt; Temperature -0.7320288 3.1003971 -1.6883027 2.0324540</span></span>
-<span><span class="co">#&gt; Sunshine    -0.8132278 3.5499337 -0.7684357 2.2776395</span></span>
-<span><span class="co">#&gt; Heat        -0.7762507 2.4414133 -1.4124977 1.6043794</span></span>
-<span><span class="co">#&gt; Rain        -1.8637573 0.3290798 -1.4058759 0.4748013</span></span>
-<span><span class="co">#&gt;                                                        </span></span>
-<span><span class="co">#&gt; 1|2         -6.6883385 -1.5038206 -4.5562748 -1.3483662</span></span>
-<span><span class="co">#&gt; 2|3          1.4147309  6.9000338  1.2896677  4.7862148</span></span>
-<span><span class="co">#&gt; Temperature  1.0278307  4.7485873  0.9261003  3.2057587</span></span>
-<span><span class="co">#&gt; Sunshine     1.1162563  4.1623315  1.0299078  3.0499807</span></span>
-<span><span class="co">#&gt; Heat         0.5748209  3.5916981  0.5437488  2.7944715</span></span>
-<span><span class="co">#&gt; Rain        -2.2942690 -0.4135918 -1.9548576 -0.3625478</span></span>
+<span><span class="co">#&gt;             Normal.Lower Normal.Upper Basic.Lower</span></span>
+<span><span class="co">#&gt; 1|2           -5.2285585    1.8448981  -3.0266055</span></span>
+<span><span class="co">#&gt; 2|3           -1.4216276    4.9525580  -2.3021666</span></span>
+<span><span class="co">#&gt; Temperature   -0.7320288    3.1003971  -1.6883027</span></span>
+<span><span class="co">#&gt; Sunshine      -0.8132278    3.5499337  -0.7684357</span></span>
+<span><span class="co">#&gt; Heat          -0.7762507    2.4414133  -1.4124977</span></span>
+<span><span class="co">#&gt; Rain          -1.8637573    0.3290798  -1.4058759</span></span>
+<span><span class="co">#&gt;             Basic.Upper Percentile.Lower Percentile.Upper</span></span>
+<span><span class="co">#&gt; 1|2           2.1579125       -6.6883385       -1.5038206</span></span>
+<span><span class="co">#&gt; 2|3           3.1831363        1.4147309        6.9000338</span></span>
+<span><span class="co">#&gt; Temperature   2.0324540        1.0278307        4.7485873</span></span>
+<span><span class="co">#&gt; Sunshine      2.2776395        1.1162563        4.1623315</span></span>
+<span><span class="co">#&gt; Heat          1.6043794        0.5748209        3.5916981</span></span>
+<span><span class="co">#&gt; Rain          0.4748013       -2.2942690       -0.4135918</span></span>
+<span><span class="co">#&gt;              BCa.Lower  BCa.Upper</span></span>
+<span><span class="co">#&gt; 1|2         -4.5562748 -1.3483662</span></span>
+<span><span class="co">#&gt; 2|3          1.2896677  4.7862148</span></span>
+<span><span class="co">#&gt; Temperature  0.9261003  3.2057587</span></span>
+<span><span class="co">#&gt; Sunshine     1.0299078  3.0499807</span></span>
+<span><span class="co">#&gt; Heat         0.5437488  2.7944715</span></span>
+<span><span class="co">#&gt; Rain        -1.9548576 -0.3625478</span></span>
 <span><span class="co">#&gt; attr(,"typeBCa")</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <p>Stratified balanced bootstrap: plot of the CIs for each of the predictors distribution.</p>

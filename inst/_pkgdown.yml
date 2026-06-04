@@ -8,6 +8,7 @@ navbar:
   type: inverse
   left:
     - icon: fa-home
+      aria-label: Home
       href: index.html
     - text: "Vignette"
       href: https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf
@@ -17,4 +18,5 @@ navbar:
       href: news/index.html
   right:
     - icon: fa-github
+      aria-label: GitHub
       href: https://github.com/fbertran/plsRglm

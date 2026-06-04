@@ -29,7 +29,7 @@ Nicolas Meyer, Myriam Maumy-Bertrand et Frédéric Bertrand (2010).
 Comparaison de la régression PLS et de la régression logistique PLS :
 application aux données d'allélotypage. *Journal de la Société Française
 de Statistique*, 151(2), pages 1-18.
-<https://www.numdam.org/item/JSFS_2010__151_2_1_0/>
+<https://ojs-test.apps.ocp.math.cnrs.fr/index.php/J-SFdS/article/view/47/>
 
 ## See also
 
@@ -89,10 +89,11 @@ print(modplsglm)
 #> Nb_Comp_3   4.230693
 #> Model with all the required components:
 #> 
-#> Call:  glm(formula = YwotNA ~ ., family = family, data = tttrain)
+#> Call:  stats::glm(formula = y ~ ., family = family, data = data.frame(y = as.numeric(y), 
+#>     tt = tt))
 #> 
 #> Coefficients:
-#> (Intercept)         tt.1         tt.2         tt.3  
+#> (Intercept)    tt.Comp_1    tt.Comp_2    tt.Comp_3  
 #>     88.5833       3.1435       2.8745       0.9767  
 #> 
 #> Degrees of Freedom: 11 Total (i.e. Null);  8 Residual

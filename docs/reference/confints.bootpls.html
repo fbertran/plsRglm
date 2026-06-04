@@ -9,7 +9,7 @@ bootstrap-based confidence intervals from a "boot" object.'><meta property="og:i
 
     <a class="navbar-brand me-2" href="../index.html">plsRglm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,11 +17,11 @@ bootstrap-based confidence intervals from a "boot" object.'><meta property="og:i
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html"><span class="fa fa-home"></span></a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" aria-label="Home" href="../index.html"><span class="fa fa-home"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
-      </ul><ul class="navbar-nav"><li class="nav-item"><a class="external-link nav-link" href="https://github.com/fbertran/plsRglm"><span class="fa fa-github"></span></a></li>
+      </ul><ul class="navbar-nav"><li class="nav-item"><a class="external-link nav-link" aria-label="GitHub" href="https://github.com/fbertran/plsRglm"><span class="fa fa-github"></span></a></li>
       </ul></div>
 
 
@@ -68,7 +68,9 @@ based CI fails whereas the other types of CI can still be derived.</p></dd>
     <p>Matrix with the limits of bootstrap based CI for all (defaults) or
 only the selected predictors (<code>indices</code> option). The limits are given
 in that order: Normal Lower then Upper Limit, Basic Lower then Upper Limit,
-Percentile Lower then Upper Limit, BCa Lower then Upper Limit.</p>
+Percentile Lower then Upper Limit, BCa Lower then Upper Limit. Column names
+are added so that the returned matrix can be reused by downstream helpers
+such as <code><a href="confints2signifind.html">confints2signifind</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -100,33 +102,41 @@ Percentile Lower then Upper Limit, BCa Lower then Upper Limit.</p>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>extreme order statistics used as endpoints</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>extreme order statistics used as endpoints</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>extreme order statistics used as endpoints</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X1 -0.2305299 -0.03654653 -0.2146155 -0.01243502 -0.2657483 -0.063567788</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X2 -0.3824730 -0.12056633 -0.4240731 -0.16474400 -0.2526435  0.006685662</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X3 -0.2262325 -0.03807142 -0.2115428 -0.01464437 -0.2604663 -0.063567788</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X4 -0.4336032 -0.19861671 -0.4793055 -0.22524165 -0.3610949 -0.107030999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X5 -0.2895056  0.13307318 -0.3083408  0.07915147 -0.1560125  0.231479782</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X6  0.3197348  0.65767612  0.3256605  0.67125328  0.2415264  0.587119147</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X7 -0.2387634 -0.03963758 -0.2590735 -0.03271142 -0.2540574 -0.027695351</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X1 -0.2867282 -0.07494113</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X2 -0.2795110 -0.11744873</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X3 -0.2795040 -0.07955903</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X4 -0.4109452 -0.17018880</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X5 -0.1803183  0.17569760</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X6  0.3172633  0.64752609</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X7 -0.2222602  0.03146667</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Normal.Lower Normal.Upper Basic.Lower Basic.Upper Percentile.Lower</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X1   -0.2305299  -0.03654653  -0.2146155 -0.01243502       -0.2657483</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X2   -0.3824730  -0.12056633  -0.4240731 -0.16474400       -0.2526435</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X3   -0.2262325  -0.03807142  -0.2115428 -0.01464437       -0.2604663</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X4   -0.4336032  -0.19861671  -0.4793055 -0.22524165       -0.3610949</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X5   -0.2895056   0.13307318  -0.3083408  0.07915147       -0.1560125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X6    0.3197348   0.65767612   0.3256605  0.67125328        0.2415264</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X7   -0.2387634  -0.03963758  -0.2590735 -0.03271142       -0.2540574</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Percentile.Upper  BCa.Lower   BCa.Upper</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X1     -0.063567788 -0.2867282 -0.07494113</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X2      0.006685662 -0.2795110 -0.11744873</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X3     -0.063567788 -0.2795040 -0.07955903</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X4     -0.107030999 -0.4109452 -0.17018880</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X5      0.231479782 -0.1803183  0.17569760</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X6      0.587119147  0.3172633  0.64752609</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X7     -0.027695351 -0.2222602  0.03146667</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"typeBCa")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span><span class="fu">confints.bootpls</span><span class="op">(</span><span class="va">Cornell.bootYX</span>,<span class="fl">2</span><span class="op">:</span><span class="fl">8</span>,typeBCa<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X1 -0.2305299 -0.03654653 -0.2146155 -0.01243502 -0.2657483 -0.063567788</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X2 -0.3824730 -0.12056633 -0.4240731 -0.16474400 -0.2526435  0.006685662</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X3 -0.2262325 -0.03807142 -0.2115428 -0.01464437 -0.2604663 -0.063567788</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X4 -0.4336032 -0.19861671 -0.4793055 -0.22524165 -0.3610949 -0.107030999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X5 -0.2895056  0.13307318 -0.3083408  0.07915147 -0.1560125  0.231479782</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X6  0.3197348  0.65767612  0.3256605  0.67125328  0.2415264  0.587119147</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> X7 -0.2387634 -0.03963758 -0.2590735 -0.03271142 -0.2540574 -0.027695351</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Normal.Lower Normal.Upper Basic.Lower Basic.Upper Percentile.Lower</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X1   -0.2305299  -0.03654653  -0.2146155 -0.01243502       -0.2657483</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X2   -0.3824730  -0.12056633  -0.4240731 -0.16474400       -0.2526435</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X3   -0.2262325  -0.03807142  -0.2115428 -0.01464437       -0.2604663</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X4   -0.4336032  -0.19861671  -0.4793055 -0.22524165       -0.3610949</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X5   -0.2895056   0.13307318  -0.3083408  0.07915147       -0.1560125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X6    0.3197348   0.65767612   0.3256605  0.67125328        0.2415264</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X7   -0.2387634  -0.03963758  -0.2590735 -0.03271142       -0.2540574</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Percentile.Upper</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X1     -0.063567788</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X2      0.006685662</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X3     -0.063567788</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X4     -0.107030999</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X5      0.231479782</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X6      0.587119147</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> X7     -0.027695351</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"typeBCa")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>

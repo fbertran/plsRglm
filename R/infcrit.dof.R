@@ -46,6 +46,9 @@ infcrit.dof <-
     if (modplsR$na.miss.X | modplsR$na.miss.Y) {
       naive = TRUE
     }
+    if (!naive && !plsR_has_plsdof()) {
+      naive = TRUE
+    }
     if (!naive) {
       tempmodplsR_dof <- plsR.dof(modplsR, naive = FALSE)
       tempAIC.dof <- aic.dof(modplsR$RSS, modplsR$nr, tempmodplsR_dof$DoF, 

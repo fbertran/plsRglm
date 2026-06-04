@@ -131,6 +131,7 @@ hist(t(replicate(100,simul_data_UniYX_binom(4,4,link="log")))[,1])
 #> Warning: NAs produced
 #> Warning: NAs produced
 #> Warning: NAs produced
+#> Warning: NAs produced
 
 layout(1)
 
@@ -221,6 +222,8 @@ hist(t(replicate(100,simul_data_UniYX_binom(4,4,link="log",offset=5)))[,1])
 #> Warning: NAs produced
 #> Warning: NAs produced
 #> Warning: NAs produced
+#> Warning: NAs produced
+#> Warning: NAs produced
 
 layout(1)
 
@@ -238,8 +241,6 @@ hist(t(replicate(100,simul_data_UniYX_binom(4,4,link="cauchit",offset=-5)))[,1])
 hist(t(replicate(100,simul_data_UniYX_binom(4,4,link="loglog",offset=-5)))[,1])
 # log link
 hist(t(replicate(100,simul_data_UniYX_binom(4,4,link="log",offset=-5)))[,1])
-#> Warning: NAs produced
-#> Warning: NAs produced
 #> Warning: NAs produced
 #> Warning: NAs produced
 #> Warning: NAs produced

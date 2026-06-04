@@ -29,7 +29,7 @@ Nicolas Meyer, Myriam Maumy-Bertrand et Frédéric Bertrand (2010).
 Comparaison de la régression PLS et de la régression logistique PLS :
 application aux données d'allélotypage. *Journal de la Société Française
 de Statistique*, 151(2), pages 1-18.
-<https://www.numdam.org/item/JSFS_2010__151_2_1_0/>
+<https://ojs-test.apps.ocp.math.cnrs.fr/index.php/J-SFdS/article/view/47/>
 
 ## See also
 

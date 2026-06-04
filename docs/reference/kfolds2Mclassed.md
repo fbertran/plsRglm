@@ -44,7 +44,7 @@ Nicolas Meyer, Myriam Maumy-Bertrand et Frédéric Bertrand (2010).
 Comparing the linear and the logistic PLS regression with qualitative
 predictors: application to allelotyping data. *Journal de la Societe
 Francaise de Statistique*, 151(2), pages 1-18.
-<https://www.numdam.org/item/JSFS_2010__151_2_1_0/>
+<https://ojs-test.apps.ocp.math.cnrs.fr/index.php/J-SFdS/article/view/47/>
 
 ## See also
 
@@ -70,14 +70,14 @@ Xaze_compl<-aze_compl[,2:34]
 yaze_compl<-aze_compl$y
 kfolds2Mclassed(cv.plsR(object=yaze_compl,dataX=Xaze_compl,nt=10,K=8,NK=1,verbose=FALSE))
 #> [[1]]
-#>  [1] 45 46 42 45 44 45 45 44 44 43
+#>  [1] 45 43 42 46 44 46 47 47 46 46
 #> 
 kfolds2Mclassed(cv.plsR(object=yaze_compl,dataX=Xaze_compl,nt=10,K=8,NK=2,verbose=FALSE))
 #> [[1]]
-#>  [1] 41 45 46 47 46 46 44 44 44 44
+#>  [1] 44 49 48 48 51 50 47 46 46 46
 #> 
 #> [[2]]
-#>  [1] 44 43 44 44 46 46 46 47 48 49
+#>  [1] 51 50 47 48 51 53 54 55 55 56
 #> 
 rm(list=c("Xaze_compl","yaze_compl"))
 # }

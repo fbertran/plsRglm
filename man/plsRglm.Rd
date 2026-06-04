@@ -178,7 +178,7 @@ Depends on the model that was used to fit the model. You can generally at least 
 }
 \references{
 Nicolas Meyer, Myriam Maumy-Bertrand et \enc{Frederic}{Fr\'ed\'eric} Bertrand (2010). Comparaison de la \enc{regression}{r\'egression} PLS et de la \enc{regression}{r\'egression} logistique PLS : application aux \enc{donnees}{donn\'ees} \enc{d'allelotypage}{d'all\'elotypage}. \emph{Journal de la Societe Francaise de Statistique}, 151(2), pages 1-18.
-\url{https://www.numdam.org/item/JSFS_2010__151_2_1_0/}
+\url{https://ojs-test.apps.ocp.math.cnrs.fr/index.php/J-SFdS/article/view/47/}
 }
 \author{\enc{Frederic}{Fr\'ed\'eric} Bertrand\cr
 \email{frederic.bertrand@lecnam.net}\cr

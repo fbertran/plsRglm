@@ -15,14 +15,14 @@ Source:
 
 Frederic Bertrand and Myriam Maumy-Bertrand (2026). Partial Least
 Squares Regression for Generalized Linear Models, R package version
-1.7.0. doi:10.32614/CRAN.package.plsRglm.
+1.7.1. doi:10.32614/CRAN.package.plsRglm.
 
     @Manual{,
       title = {Partial Least Squares Regression for Generalized Linear Models},
       author = {Frederic Bertrand and Myriam Maumy},
       publisher = {manual},
       year = {2026},
-      note = {R package version 1.7.0},
+      note = {R package version 1.7.1},
       url = {https://fbertran.github.io/homepage/},
       doi = {10.32614/CRAN.package.plsRglm},
     }

@@ -156,7 +156,6 @@ modpls <- plsR(ypine,Xpine,10)
 #> ____Component____ 9 ____
 #> ____Component____ 10 ____
 #> ____Predicting X without NA neither in X nor in Y____
-#> Loading required namespace: plsdof
 #> ****________________________________________________****
 #> 
 modpls$Std.Coeffs

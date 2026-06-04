@@ -52,7 +52,9 @@ colnames(temp.object$Yhat) <- paste("Nt_",0:modplsR$computed_nt,sep="")
 if(!naive){
 temp.object$TT <- sweep(modplsR$tt,MARGIN=2,FUN="/",sqrt(diag(crossprod(modplsR$tt))))
 
-requireNamespace("plsdof")
+if (!plsR_has_plsdof()) {
+stop("Package 'plsdof' is required to compute non-naive degrees of freedom.", call. = FALSE)
+}
 pls.doftemp <- function (pls.object, n, y, K, m, DoF.max) 
 {
     TT <- pls.object$TT

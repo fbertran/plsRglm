@@ -9,7 +9,7 @@ k-fold cross validated partial least squares regression models."><meta property=
 
     <a class="navbar-brand me-2" href="../index.html">plsRglm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,11 +17,11 @@ k-fold cross validated partial least squares regression models."><meta property=
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../index.html"><span class="fa fa-home"></span></a></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" aria-label="Home" href="../index.html"><span class="fa fa-home"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://cran.r-project.org/web/packages/plsRglm/vignettes/plsRglm.pdf">Vignette</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
-      </ul><ul class="navbar-nav"><li class="nav-item"><a class="external-link nav-link" href="https://github.com/fbertran/plsRglm"><span class="fa fa-github"></span></a></li>
+      </ul><ul class="navbar-nav"><li class="nav-item"><a class="external-link nav-link" aria-label="GitHub" href="https://github.com/fbertran/plsRglm"><span class="fa fa-github"></span></a></li>
       </ul></div>
 
 
@@ -80,7 +80,7 @@ Frédéric Bertrand (2010). Comparing the linear and the
 logistic PLS regression with qualitative predictors: application to
 allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>,
 151(2), pages 1-18.
-<a href="https://www.numdam.org/item/JSFS_2010__151_2_1_0/" class="external-link">https://www.numdam.org/item/JSFS_2010__151_2_1_0/</a></p>
+<a href="https://ojs-test.apps.ocp.math.cnrs.fr/index.php/J-SFdS/article/view/47/" class="external-link">https://ojs-test.apps.ocp.math.cnrs.fr/index.php/J-SFdS/article/view/47/</a></p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -102,14 +102,14 @@ extract and transforms results from k-fold cross validation.</p></div>
 <span class="r-in"><span><span class="va">yaze_compl</span><span class="op">&lt;-</span><span class="va">aze_compl</span><span class="op">$</span><span class="va">y</span></span></span>
 <span class="r-in"><span><span class="fu">kfolds2Mclassed</span><span class="op">(</span><span class="fu"><a href="cv.plsR.html">cv.plsR</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">yaze_compl</span>,dataX<span class="op">=</span><span class="va">Xaze_compl</span>,nt<span class="op">=</span><span class="fl">10</span>,K<span class="op">=</span><span class="fl">8</span>,NK<span class="op">=</span><span class="fl">1</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 45 46 42 45 44 45 45 44 44 43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 45 43 42 46 44 46 47 47 46 46</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu">kfolds2Mclassed</span><span class="op">(</span><span class="fu"><a href="cv.plsR.html">cv.plsR</a></span><span class="op">(</span>object<span class="op">=</span><span class="va">yaze_compl</span>,dataX<span class="op">=</span><span class="va">Xaze_compl</span>,nt<span class="op">=</span><span class="fl">10</span>,K<span class="op">=</span><span class="fl">8</span>,NK<span class="op">=</span><span class="fl">2</span>,verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 41 45 46 47 46 46 44 44 44 44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 44 49 48 48 51 50 47 46 46 46</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 44 43 44 44 46 46 46 47 48 49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 51 50 47 48 51 53 54 55 55 56</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span>list<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Xaze_compl"</span>,<span class="st">"yaze_compl"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>

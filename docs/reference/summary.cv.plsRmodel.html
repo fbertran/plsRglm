@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">plsRglm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +65,7 @@ Frédéric Bertrand (2010). Comparing the linear and the
 logistic PLS regression with qualitative predictors: application to
 allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>,
 151(2), pages 1-18.
-<a href="https://www.numdam.org/item/JSFS_2010__151_2_1_0/" class="external-link">https://www.numdam.org/item/JSFS_2010__151_2_1_0/</a></p>
+<a href="https://ojs-test.apps.ocp.math.cnrs.fr/index.php/J-SFdS/article/view/47/" class="external-link">https://ojs-test.apps.ocp.math.cnrs.fr/index.php/J-SFdS/article/view/47/</a></p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -82,14 +82,14 @@ allelotyping data. <em>Journal de la Societe Francaise de Statistique</em>,
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Cornell</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="cv.plsR.html">cv.plsR</a></span><span class="op">(</span><span class="va">Y</span><span class="op">~</span><span class="va">.</span>,data<span class="op">=</span><span class="va">Cornell</span>,nt<span class="op">=</span><span class="fl">10</span>,K<span class="op">=</span><span class="fl">6</span>, verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>, verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                AIC    Q2cum_Y LimQ2_Y        Q2_Y  PRESS_Y      RSS_Y      R2_Y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0 82.01205         NA      NA          NA       NA 467.796667        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1 53.15173  0.8775326  0.0975  0.87753262 57.28983  35.742486 0.9235940</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_2 41.08283  0.8757271  0.0975 -0.01474319 36.26944  11.066606 0.9763431</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_3 32.06411  0.7730217  0.0975 -0.82644991 20.21260   4.418081 0.9905556</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_4 33.76477  0.2356285  0.0975 -2.36759728 14.87832   4.309235 0.9907882</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_5 33.34373 -2.7185700  0.0975 -3.86487254 20.96388   3.521924 0.9924713</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6 35.25533         NA  0.0975          NA       NA   3.496074 0.9925265</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                AIC    Q2cum_Y LimQ2_Y       Q2_Y  PRESS_Y      RSS_Y      R2_Y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0 82.01205         NA      NA         NA       NA 467.796667        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1 53.15173  0.8895316  0.0975  0.8895316 51.67675  35.742486 0.9235940</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_2 41.08283  0.9070130  0.0975  0.1582476 30.08632  11.066606 0.9763431</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_3 32.06411  0.8359239  0.0975 -0.7645048 19.52708   4.418081 0.9905556</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_4 33.76477  0.3021130  0.0975 -3.2534351 18.79202   4.309235 0.9907882</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_5 33.34373 -3.6467314  0.0975 -5.6582867 28.69212   3.521924 0.9924713</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_6 35.25533         NA  0.0975         NA       NA   3.496074 0.9925265</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              AIC.std  DoF.dof sigmahat.dof    AIC.dof    BIC.dof GMDL.dof</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_0  37.010388 1.000000    6.5212706 46.0708838 47.7893514 27.59461</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nb_Comp_1   8.150064 2.740749    1.8665281  4.5699686  4.9558156 21.34020</span>

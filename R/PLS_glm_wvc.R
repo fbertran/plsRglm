@@ -110,7 +110,7 @@
 #' logistic PLS regression with qualitative predictors: application to
 #' allelotyping data. \emph{Journal de la Societe Francaise de Statistique},
 #' 151(2), pages 1-18.
-#' \url{https://www.numdam.org/item/JSFS_2010__151_2_1_0/}
+#' \url{https://ojs-test.apps.ocp.math.cnrs.fr/index.php/J-SFdS/article/view/47/}
 #' @keywords models regression
 #' @examples
 #' 

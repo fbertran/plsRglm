@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">plsRglm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -358,10 +358,14 @@ number of resamples and request non-BCa confidence intervals.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">boot_pls</span><span class="op">$</span><span class="va">t</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 20  8</span></span>
 <span><span class="fu"><a href="../reference/confints.bootpls.html">confints.bootpls</a></span><span class="op">(</span><span class="va">boot_pls</span>, indices <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">4</span>, typeBCa <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                                                                        </span></span>
-<span><span class="co">#&gt; X1 -0.2475717 -0.03327075 -0.2245013 -0.02750589 -0.2506774 -0.05368204</span></span>
-<span><span class="co">#&gt; X2 -0.3536188 -0.13085016 -0.3745613 -0.16541114 -0.2519763 -0.04282623</span></span>
-<span><span class="co">#&gt; X3 -0.2439306 -0.03274124 -0.2214286 -0.02580527 -0.2493054 -0.05368204</span></span>
+<span><span class="co">#&gt;    Normal.Lower Normal.Upper Basic.Lower Basic.Upper Percentile.Lower</span></span>
+<span><span class="co">#&gt; X1   -0.2475717  -0.03327075  -0.2245013 -0.02750589       -0.2506774</span></span>
+<span><span class="co">#&gt; X2   -0.3536188  -0.13085016  -0.3745613 -0.16541114       -0.2519763</span></span>
+<span><span class="co">#&gt; X3   -0.2439306  -0.03274124  -0.2214286 -0.02580527       -0.2493054</span></span>
+<span><span class="co">#&gt;    Percentile.Upper</span></span>
+<span><span class="co">#&gt; X1      -0.05368204</span></span>
+<span><span class="co">#&gt; X2      -0.04282623</span></span>
+<span><span class="co">#&gt; X3      -0.05368204</span></span>
 <span><span class="co">#&gt; attr(,"typeBCa")</span></span>
 <span><span class="co">#&gt; [1] FALSE</span></span>
 <span></span>
@@ -369,11 +373,16 @@ number of resamples and request non-BCa confidence intervals.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">boot_logit</span><span class="op">$</span><span class="va">t</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 20 33</span></span>
 <span><span class="fu"><a href="../reference/confints.bootpls.html">confints.bootpls</a></span><span class="op">(</span><span class="va">boot_logit</span>, indices <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, typeBCa <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                                                                                </span></span>
-<span><span class="co">#&gt; D2S138  -0.06589283 -0.008551969 -0.06363197 -0.01614121 -0.06403926 -0.0165485</span></span>
-<span><span class="co">#&gt; D18S61   0.05549884  0.211389097  0.05344981  0.21637898  0.06378505  0.2267142</span></span>
-<span><span class="co">#&gt; D16S422 -0.05412552 -0.010392387 -0.05157091 -0.01447845 -0.05425966 -0.0171672</span></span>
-<span><span class="co">#&gt; D17S794  0.02916771  0.100612731  0.02988348  0.10029296  0.03541179  0.1058213</span></span>
+<span><span class="co">#&gt;         Normal.Lower Normal.Upper Basic.Lower Basic.Upper Percentile.Lower</span></span>
+<span><span class="co">#&gt; D2S138   -0.06589283 -0.008551969 -0.06363197 -0.01614121      -0.06403926</span></span>
+<span><span class="co">#&gt; D18S61    0.05549884  0.211389097  0.05344981  0.21637898       0.06378505</span></span>
+<span><span class="co">#&gt; D16S422  -0.05412552 -0.010392387 -0.05157091 -0.01447845      -0.05425966</span></span>
+<span><span class="co">#&gt; D17S794   0.02916771  0.100612731  0.02988348  0.10029296       0.03541179</span></span>
+<span><span class="co">#&gt;         Percentile.Upper</span></span>
+<span><span class="co">#&gt; D2S138        -0.0165485</span></span>
+<span><span class="co">#&gt; D18S61         0.2267142</span></span>
+<span><span class="co">#&gt; D16S422       -0.0171672</span></span>
+<span><span class="co">#&gt; D17S794        0.1058213</span></span>
 <span><span class="co">#&gt; attr(,"typeBCa")</span></span>
 <span><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
 <p>The plotting helpers <code><a href="../reference/boxplots.bootpls.html">boxplots.bootpls()</a></code> and
@@ -411,7 +420,7 @@ such as <code><a href="../reference/PLS_lm_wvc.html">PLS_lm_wvc()</a></code> and
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt; [1] plsRglm_1.7.0</span></span>
+<span><span class="co">#&gt; [1] plsRglm_1.7.1</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
 <span><span class="co">#&gt;  [1] sass_0.4.10           lattice_0.22-7        digest_0.6.39        </span></span>
